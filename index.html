@@ -13635,6 +13635,8 @@ Level <em>STEP</em> can show business-related information in the console output,
 <li><strong>domain</strong> – web application root URL (used if we work with one application in tests). Can be also read from the command line, e.g. <em>${domain}</em></li>
 <li><strong>page.load.strategy</strong> - like in <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/capabilities_exports_PageLoadStrategy.html" target="_blank">Selenium strategies</a> to load the page. Options: <em>normal, eager, none</em></li>
 <li><strong>browser.size</strong> - the size of the tested browser. By default, JDI Light will maximize browser, but we can set exact values.</li>
+<li><strong>screenshot.strategy</strong> - defines screenshoting strategy. If it set to &quot;on fail&quot; value, then when test fails, web element last processed will be highlighted and page screenshot will be taken, saved and added to Allure report as well, if possible. Options: <em>on fail, off</em></li>
+<li><strong>html.code.logging</strong> - defines a strategy for writting html-code of the web element last processed before test failure to log. If it set to &quot;on fail&quot; value, then web element&#39;s html-code will be logged (and added to Allure report as well) when test fails, if possible. Options: <em>on fail, off</em></li>
 </ul>
 <h2 id='softasserts'>SoftAsserts</h2><pre class="highlight java tab-java"><code>    <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonSoftAssertTest</span><span class="o">()</span> <span class="o">{</span>
