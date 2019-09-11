@@ -9015,7 +9015,65 @@ This ensures we’re not doubling up on padding unnecessarily on lower viewports
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
-<p><img src="images/bootstrap/navbar-placement-html.png" alt="Containers HTML example" /></p>
+<p><img src="images/bootstrap/navbar-placement-html.png" alt="Containers HTML example" />
+<br></p>
+<h4 id='responsive-behaviors'>Responsive behaviors</h4>
+<p>Navbars can utilize <code>.navbar-toggler</code>, <code>.navbar-collapse</code>, and <code>.navbar-expand{-sm|-md|-lg|-xl}</code> classes to change when their content collapses behind a button. 
+In combination with other utilities, you can easily choose when to show or hide particular elements.</p>
+
+<p>For navbars that never collapse, add the <code>.navbar-expand</code> class on the navbar. 
+For navbars that always collapse, don’t add any <code>.navbar-expand</code> class.</p>
+<h4 id='navbar-toggler'>Navbar Toggler</h4>
+<p>Navbar togglers are left-aligned by default, but should they follow a sibling element like a <code>.navbar-brand</code>, they’ll automatically be aligned to the far right. 
+Reversing your markup will reverse the placement of the toggler. 
+Below are examples of different toggle styles.</p>
+
+<p><strong>1. With no <code>.navbar-brand</code> shown in lowest breakpoint</strong></p>
+
+<p><code>FullScreen</code>
+<img src="images/bootstrap/nobrand-lg.png" alt="No .navbar-brand full screen example" /></p>
+
+<p><code>Collapsed</code>
+<img src="images/bootstrap/nobrand-collapsed.png" alt="No .navbar-brand collapsed example" /></p>
+
+<p><code>Expanded</code>
+<img src="images/bootstrap/nobrand-expanded.png" alt="No .navbar-brand expanded example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/nobrand-html.png" alt="No .navbar-brand HTML example" /></p>
+
+<p><strong>2. With a brand name shown on the left and toggler on the right</strong></p>
+
+<p><code>FullScreen</code>
+<img src="images/bootstrap/toggler-right-lg.png" alt="Toggler Right FullScreen example" /></p>
+
+<p><code>Collapsed</code>
+<img src="images/bootstrap/toggler-right-collapsed.png" alt="Toggler Right Collapsed example" /></p>
+
+<p><code>Expanded</code>
+<img src="images/bootstrap/toggler-right-expanded.png" alt="Toggler Right Expanded example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/toggler-right-html.png" alt="Toggler Right HTML example" /></p>
+
+<p><strong>3. With a toggler on the left and brand name on the right</strong></p>
+
+<p><code>FullScreen</code>
+<img src="images/bootstrap/toggler-left-lg.png" alt="Toggler Left FullScreen example" /></p>
+
+<p><code>Collapsed</code>
+<img src="images/bootstrap/toggler-left-collapsed.png" alt="Toggler Left Collapsed example" /></p>
+
+<p><code>Expanded</code>
+<img src="images/bootstrap/toggler-left-expanded.png" alt="Toggler Left Expanded example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/toggler-left-html.png" alt="Toggler Left HTML example" /></p>
+
+<p><br></p>
 <h4 id='external-content'>External content</h4>
 <p>Plugin to trigger hidden content elsewhere on the page.</p>
 
