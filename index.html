@@ -12074,26 +12074,27 @@ Form can consists of:
 </tr>
 </tbody></table>
 
-<p>### Jumbotron</p>
-<pre class="highlight java tab-java"><code>   <span class="nd">@Css</span><span class="o">(</span><span class="s">"#jumbotron"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Jumbotron</span> <span class="n">jumbotron</span><span class="o">;</span>
+<p>### Jumbotron
+```java 
+   @Css(&quot;#jumbotron&quot;) public static Jumbotron jumbotron;</p>
 
-   <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Jumbotron</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="kd">implements</span> <span class="n">IsJumbotron</span> <span class="o">{</span>
-       <span class="nd">@Css</span><span class="o">(</span><span class="s">".display-4"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
-       <span class="nd">@Css</span><span class="o">(</span><span class="s">".lead"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">description</span><span class="o">;</span>
-       <span class="nd">@Css</span><span class="o">(</span><span class="s">".btn"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">learnMoreBtn</span><span class="o">;</span>
-   <span class="o">}</span>
+<p>public class Jumbotron extends Section implements IsJumbotron {
+       @Css(&quot;.display-4&quot;) public Text title;
+       @Css(&quot;.lead&quot;) public Text description;
+       @Css(&quot;.btn&quot;) public Button learnMoreBtn;
+   }</p>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">jumbotron</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">mJumbotronWithButton</span><span class="o">);</span>
-    <span class="o">}</span>
+<p>@Test
+    public void getTextTest() {
+        assertEquals(jumbotron.getText(), mJumbotronWithButton);
+    }</p>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseValidationTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">baseValidation</span><span class="o">(</span><span class="n">jumbotron</span><span class="o">);</span>
-    <span class="o">}</span>  
-</code></pre>
-<p><strong>Jumbotron</strong> – Lightweight, flexible component for showcasing hero unit style content.</p>
+<p>@Test
+    public void baseValidationTest() {
+        baseValidation(jumbotron);
+    }<br>
+```
+<strong>Jumbotron</strong> – Lightweight, flexible component for showcasing hero unit style content.</p>
 
 <p><img src="images/bootstrap/jumbotron.png" alt="Jumbotron" /></p>
 
