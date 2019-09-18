@@ -8071,7 +8071,35 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/breadcrumb-html.png" alt="Breadcrumb HTML example" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#breadcrumb"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Breadcrumb</span> <span class="n">breadcrumb</span><span class="o">;</span>
 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Breadcrumb</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">IList</span><span class="o">&lt;</span><span class="n">UIElement</span><span class="o">&gt;,</span> <span class="n">HasUIList</span><span class="o">,</span> <span class="n">IClickable</span> <span class="o">{</span>
+    <span class="nd">@Css</span><span class="o">(</span><span class="s">".breadcrumb-item a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">ancestorList</span><span class="o">;</span>
+    <span class="nd">@Css</span><span class="o">(</span><span class="s">".breadcrumb-item.active"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">currentItem</span><span class="o">;</span>
+
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickByNameTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">breadcrumb</span><span class="o">.</span><span class="na">ancestorList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">HOME</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+
+     <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">getWindowHandles</span><span class="o">());</span>
+     <span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">();</span>
+     <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+
+     <span class="n">assertTrue</span><span class="o">(</span><span class="n">WebPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="n">HOME</span><span class="o">));</span>
+
+     <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+     <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+<span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValueTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ancestorValues</span> <span class="o">=</span> <span class="n">breadcrumb</span><span class="o">.</span><span class="na">ancestorList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">UIElement:</span><span class="o">:</span><span class="n">getValue</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">breadcrumb</span><span class="o">.</span><span class="na">currentItem</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">BOOTSTRAP</span><span class="o">));</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">ancestorValues</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">ANCESTOR_VALUES</span><span class="o">));</span>
+    <span class="o">}</span>
+</code></pre>
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
