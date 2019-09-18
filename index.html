@@ -587,10 +587,16 @@
 								<a href="#modal" class="toc-h2 h3 toc-link" data-title="Modal">Modal</a>
                             </li>
                             <li>
-								<a href="#wrapping-input-group" class="toc-h2 h3 toc-link" data-title="Wrapping (Input group)">Wrapping (Input group)</a>
+								<a href="#basic-example-input-group" class="toc-h2 h3 toc-link" data-title="Basic example (Input group)">Basic example (Input group)</a>
                             </li>
                             <li>
 								<a href="#sizing-input-group" class="toc-h2 h3 toc-link" data-title="Sizing (Input group)">Sizing (Input group)</a>
+                            </li>
+                            <li>
+								<a href="#wrapping-input-group" class="toc-h2 h3 toc-link" data-title="Wrapping (Input group)">Wrapping (Input group)</a>
+                            </li>
+                            <li>
+								<a href="#sizing-input-group-2" class="toc-h2 h3 toc-link" data-title="Sizing (Input group)">Sizing (Input group)</a>
                             </li>
                             <li>
 								<a href="#checkboxes-and-radios-input-group" class="toc-h2 h3 toc-link" data-title="Checkboxes and radios (Input group)">Checkboxes and radios (Input group)</a>
@@ -11725,6 +11731,83 @@ Form can consists of:
 </tbody></table>
 
 <p><br></p>
+<h3 id='basic-example-input-group'>Basic example (Input group)</h3>
+<p><strong>Input with several addons</strong></p>
+
+<p><img src="images/bootstrap/input-twospans.png" alt="Input with several addons" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/input-twospans-html.png" alt="Input with several addons example" /></p>
+
+<p><strong>Input with textarea</strong> </p>
+
+<p><img src="images/bootstrap/input-textarea.png" alt="Input group with textarea" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/input-textarea-html.png" alt="Input group with textarea example" /></p>
+
+<p>Input group are represented by Section class in Java:</p>
+
+<ul>
+<li><em>com.epam.jdi.light.elements.composite.Section</em></li>
+</ul>
+
+<p>Inner elements of input group can be represented by following classes:</p>
+
+<ul>
+<li><em>com.epam.jdi.light.ui.html.common.Text</em></li>
+<li><em>com.epam.jdi.light.ui.html.common.TextField</em></li>
+<li><em>com.epam.jdi.light.ui.html.common.TextArea</em></li>
+</ul>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup">Bootstrap test example </a></p>
+<h3 id='sizing-input-group'>Sizing (Input group)</h3>
+<p><strong>Sizing</strong> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
+
+<p><strong>Sizing on the individual input group elements isn’t supported.</strong>
+<img src="images/bootstrap/sizing.png" alt="Sizing" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/sizing_code.png" alt="Sizing example" /></p>
+
+<p>And here are methods available in Java:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <h3 id='wrapping-input-group'>Wrapping (Input group)</h3><pre class="highlight java tab-java"><code>   <span class="nd">@Css</span><span class="o">(</span><span class="s">"#input-group-username"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithText</span> <span class="n">inputGroupUsername</span><span class="o">;</span>
 
    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupInputWithText</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
@@ -11765,7 +11848,7 @@ Form can consists of:
 </ul>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup">Bootstrap test examples</a></p>
-<h3 id='sizing-input-group'>Sizing (Input group)</h3>
+<h3 id='sizing-input-group-2'>Sizing (Input group)</h3>
 <p><strong>Sizing</strong> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
 
 <p><strong>Sizing on the individual input group elements isn’t supported.</strong>
