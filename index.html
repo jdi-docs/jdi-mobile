@@ -12250,7 +12250,42 @@ Form can consists of:
 </tbody></table>
 
 <p><br></p>
-<h3 id='jumbotron-2'>Jumbotron</h3><pre class="highlight java tab-java"><code>   <span class="nd">@Css</span><span class="o">(</span><span class="s">"#jumbotron"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Jumbotron</span> <span class="n">jumbotron</span><span class="o">;</span>
+<h3 id='jumbotron-2'>Jumbotron</h3><pre class="highlight java tab-java"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <span class="nd">@Css</span><span class="o">(</span><span class="s">"#jumbotron"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#jumbotron")</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="n">Jumbotron</span> <span class="n">jumbotron</span><span class="o">;</span>
 
    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Jumbotron</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="kd">implements</span> <span class="n">IsJumbotron</span> <span class="o">{</span>
        <span class="nd">@Css</span><span class="o">(</span><span class="s">".display-4"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
@@ -12268,7 +12303,7 @@ Form can consists of:
         <span class="n">baseValidation</span><span class="o">(</span><span class="n">jumbotron</span><span class="o">);</span>
     <span class="o">}</span>  
 </code></pre>
-<p><strong>Jumbotron</strong> – Lightweight, flexible component for showcasing hero unit style content.</p>
+<p><strong><a href="https://getbootstrap.com/docs/4.0/components/jumbotron/">Jumbotron</a></strong> – Lightweight, flexible component for showcasing hero unit style content.</p>
 
 <p><img src="images/bootstrap/jumbotron.png" alt="Jumbotron" /></p>
 
@@ -12278,16 +12313,19 @@ Form can consists of:
 
 <p>Jumbotron is represented by Section class in Java:</p>
 
-<ul>
-<li><em>com.epam.jdi.light.elements.composite.Section</em></li>
-</ul>
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
 
 <p>Inner elements of jumbotron can be represented by the following classes:</p>
 
-<ul>
-<li><em>com.epam.jdi.light.ui.html.common.Text</em></li>
-<li><em>com.epam.jdi.light.ui.html.common.Button</em></li>
-</ul>
+<p><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#label">Label</a></p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/jumbotron">Bootstrap test examples</a></p>
 <h2 id='jdi-light-bdd-steps'>JDI Light BDD Steps</h2><h3 id='label-2'>Label</h3><pre class="highlight plaintext"><code>Label action examples:
