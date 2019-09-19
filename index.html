@@ -8158,37 +8158,39 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tbody></table>
 
 <p><br><br></p>
-<h3 id='breadcrumb'>Breadcrumb</h3><pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#breadcrumb"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Breadcrumb</span> <span class="n">breadcrumb</span><span class="o">;</span>
+<h3 id='breadcrumb'>Breadcrumb</h3><pre class="highlight java tab-java"><code>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Breadcrumb</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">IList</span><span class="o">&lt;</span><span class="n">UIElement</span><span class="o">&gt;,</span> <span class="n">HasUIList</span><span class="o">,</span> <span class="n">IClickable</span> <span class="o">{</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".breadcrumb-item a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">ancestorList</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".breadcrumb-item.active"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">currentItem</span><span class="o">;</span>
+
+
+
+
+
+
+
+
+<span class="c1">// @FindBy(css = "#breadcrumb")</span>
+<span class="nd">@Css</span><span class="o">(</span><span class="s">"#breadcrumb"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Breadcrumb</span> <span class="n">breadcrumb</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Breadcrumb</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">IList</span><span class="o">&lt;</span><span class="n">UIElement</span><span class="o">&gt;,</span> <span class="n">HasUIList</span><span class="o">,</span> <span class="n">IClickable</span><span class="o">{</span>
+    <span class="c1">// @FindBy(css = ".breadcrumb-item")</span>
+    <span class="nd">@Css</span><span class="o">(</span><span class="s">".breadcrumb-item"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">itemns</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValueTest</span><span class="o">()</span> <span class="o">{</span>
-     <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ancestorValues</span> <span class="o">=</span> 
-     <span class="n">breadcrumb</span><span class="o">.</span><span class="na">ancestorList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">UIElement:</span><span class="o">:</span><span class="n">getValue</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">itemsValues</span> <span class="o">=</span> <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">UIElement:</span><span class="o">:</span><span class="n">getValue</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
 
-     <span class="n">assertThat</span><span class="o">(</span><span class="n">breadcrumb</span><span class="o">.</span><span class="na">currentItem</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="s">"Bootstrap"</span><span class="o">));</span>
-     <span class="n">assertThat</span><span class="o">(</span><span class="n">ancestorValues</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"Home"</span><span class="o">,</span> <span class="s">"HTML 5"</span><span class="o">})));</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="n">ITEMS_VALUES</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">itemsValues</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"Home"</span><span class="o">,</span> <span class="s">"HTML 5"</span><span class="o">,</span> <span class="s">"Bootstrap"</span><span class="o">})));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickByNameTest</span><span class="o">()</span> <span class="o">{</span>
-     <span class="n">breadcrumb</span><span class="o">.</span><span class="na">ancestorList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"Home"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-
-     <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">getWindowHandles</span><span class="o">());</span>
-     <span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">();</span>
-     <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
-
-     <span class="n">assertEquals</span><span class="o">(</span><span class="s">"Home Page"</span><span class="o">,</span> <span class="n">WebPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
-
-     <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-     <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getCurrectItem</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">breadcrumb</span><span class="o">.</span><span class="na">getCurrectItem</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Bootstrap"</span><span class="o">);</span>
+     <span class="n">breadcrumb</span><span class="o">.</span><span class="na">getCurrectItem</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">WebPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
 <span class="o">}</span>
 </code></pre>
-<p>A breadcrumb is a control element  used for navigational on web pages</p>
+<p>A <a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/">breadcrumb</a> is a control element  used for navigational on web pages</p>
 
 <p><img src="images/bootstrap/breadcrumb.png" alt="Breadcrumb example" /></p>
 
@@ -8206,31 +8208,46 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tr>
 </thead><tbody>
 <tr>
-<td>****</td>
-<td>TBD</td>
-<td></td>
+<td>click()</td>
+<td>Click the item</td>
+<td>void</td>
 </tr>
 <tr>
-<td>****</td>
-<td></td>
-<td></td>
+<td>getText()</td>
+<td>Get item text</td>
+<td>String</td>
 </tr>
 <tr>
-<td>****</td>
-<td></td>
-<td></td>
+<td>getValue()</td>
+<td>Get item value</td>
+<td>String</td>
 </tr>
 <tr>
-<td>****</td>
-<td></td>
-<td></td>
+<td>get(String option)</td>
+<td>Get item by Text</td>
+<td>UIElement</td>
 </tr>
 <tr>
-<td>****</td>
-<td></td>
-<td></td>
+<td>get(int index)</td>
+<td>Get item by Text</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td>is()</td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td>assertThat()</td>
+<td>Assert action</td>
+<td>UIAssert</td>
 </tr>
 </tbody></table>
+
+<p>Breadcrumb has been implemented as WebList.</p>
+
+<p>WebList is located in the following classes:
+Java: com.epam.jdi.light.elements.complex.WebList</p>
 <h3 id='navs'>Navs</h3>
 <p>Nav - navigation component</p>
 
