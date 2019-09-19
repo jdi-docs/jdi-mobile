@@ -7622,7 +7622,6 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <ul>
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Button</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Button</em></li>
 </ul>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[text()='Red button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "//*[text()='Red button']")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">redButton</span><span class="o">;</span>
@@ -7638,24 +7637,6 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">redButton</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Red button"</span><span class="o">);</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code>
-<span class="na">[FindBy(Css = "//*[text()='Red button']</span><span class="s">")]
-</span><span class="k">public</span> <span class="n">Button</span> <span class="n">RedButton</span><span class="p">;</span>
-
-<span class="na">[Test]</span>
-<span class="k">public</span> <span class="k">void</span> <span class="nf">ClickTest</span><span class="p">()</span> 
-<span class="p">{</span>
-    <span class="n">RedButton</span><span class="p">.</span><span class="nf">Click</span><span class="p">();</span>
-    <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEqual</span><span class="p">(</span><span class="nf">GetAlert</span><span class="p">().</span><span class="nf">GetAlertText</span><span class="p">(),</span> <span class="s">"Red button"</span><span class="p">);</span>
-    <span class="nf">GetAlert</span><span class="p">().</span><span class="nf">AcceptAlert</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="na">[Test]</span>
-<span class="k">public</span> <span class="k">void</span> <span class="nf">GetTextTest</span><span class="p">()</span> 
-<span class="p">{</span>
-    <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEqual</span><span class="p">(</span><span class="n">RedButton</span><span class="p">.</span><span class="nf">GetText</span><span class="p">(),</span> <span class="s">"Red button"</span><span class="p">);</span>
-<span class="p">}</span>
-
 </code></pre>
 <p>Here is an example with provided HTML code:</p>
 
@@ -7692,53 +7673,15 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/ButtonTests.java">Java test examples</a>
-<br>
-<a href="https://jdi-docs.github.io/jdi-light/?java#button-3">BDD Steps example</a></p>
+<p><br></p>
 
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>Click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>GetText()</strong></td>
-<td>Get button text</td>
-<td>string</td>
-</tr>
-<tr>
-<td><strong>Is</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>AssertThat</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/ButtonTests.cs">C# test examples</a> <br>
-<a href="https://jdi-docs.github.io/jdi-light/?java#button-3">BDD Steps example</a><br></p>
-
-<p><strong>Disabled Button</strong> – Element that represents a Not clickable button</p>
-
-<p><img src="images/bootstrap/disabled_button.png" alt="Disabled button" /></p>
+<p><strong>Disabled Button</strong> – Element that represents a Not clickable button
+<img src="images/bootstrap/disabled_button.png" alt="Disabled button" /></p>
 
 <p>Button is located in the following classes:</p>
 
 <ul>
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Button</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Button</em></li>
 </ul>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[text()='Disabled button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "//*[text()='Disabled button']")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">disabledButton</span><span class="o">;</span>
@@ -7770,17 +7713,22 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>GetText()</strong></td>
-<td>Get button text</td>
-<td>string</td>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
 </tr>
 <tr>
-<td><strong>Is</strong></td>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
 <td>Assert action</td>
 <td>TextAssert</td>
 </tr>
 <tr>
-<td><strong>AssertThat</strong></td>
+<td><strong>assertThat()</strong></td>
 <td>Assert action</td>
 <td>TextAssert</td>
 </tr>
