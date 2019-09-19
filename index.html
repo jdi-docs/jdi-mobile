@@ -12072,7 +12072,38 @@ Form can consists of:
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='buttons-with-dropdowns-input-group'>Buttons with dropdowns (Input group)</h3>
+<h3 id='buttons-with-dropdowns-input-group'>Buttons with dropdowns (Input group)</h3><pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonWithDropdown</span> <span class="n">buttonWithDropdown</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#button-with-dropdown") public static ButtonWithDropdown buttonWithDropdown;</span>
+
+<span class="nd">@Css</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">textInputArea</span><span class="o">;</span>
+<span class="nd">@Css</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">dropdownButton</span><span class="o">;</span>
+<span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".input-group-prepend"</span><span class="o">,</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+        <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownMenuTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">action</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">textInputAreaTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">textInputArea</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">testText</span><span class="o">);</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">textInputArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">testText</span><span class="o">);</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">textInputArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">textInputArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownButtonTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">dropdownButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">dropdownButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">dropdownButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">dropdownButton</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p><strong>Buttons with dropdowns</strong> – Buttons with dropdowns have no detailed information on Bootstrap website</p>
 
 <p><img src="images/bootstrap/buttons_with_dropdowns.png" alt="Buttons with dropdowns" /></p>
