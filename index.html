@@ -7801,7 +7801,34 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Button</em></li>
 <li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Button</em></li>
 </ul>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-group1"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#button-group1")</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">DefaultButtonGroup</span> <span class="n">defaultButtonGroup</span><span class="o">;</span>
 
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">redButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+      <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Red Button"</span><span class="o">));</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">redButton</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Red Button"</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">greenButton</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Green Button"</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">dropdownButton</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">optionToOpenNewTab</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">windowsCount</span><span class="o">(),</span> <span class="mi">2</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">valuesTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">dropdownButton</span><span class="o">.</span><span class="na">values</span><span class="o">(),</span> <span class="n">expectedValues</span><span class="o">);</span>
+  <span class="o">}</span>
+
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/button_group-html.png" alt="Button group example" /></p>
@@ -7816,26 +7843,53 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>doubleClick()</strong></td>
+<td>Double Click on button</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>rightClick()</strong></td>
+<td>Right Click the button</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select(String option)</strong></td>
+<td>Select option by text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>select(int option)</strong></td>
+<td>Select option by index</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>values()</strong></td>
+<td>Get list of all available values</td>
+<td>List<String></td>
 </tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/ButtonGroupTest.java">Java test examples</a></p>
 
 <p>Available methods and properties in C# JDI Light:</p>
 
