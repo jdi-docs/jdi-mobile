@@ -8180,7 +8180,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValueTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">itemsValues</span> <span class="o">=</span> <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">UIElement:</span><span class="o">:</span><span class="n">getValue</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
 
-    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="n">ITEMS_VALUES</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
     <span class="n">assertThat</span><span class="o">(</span><span class="n">itemsValues</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"Home"</span><span class="o">,</span> <span class="s">"HTML 5"</span><span class="o">,</span> <span class="s">"Bootstrap"</span><span class="o">})));</span>
 <span class="o">}</span>
 
@@ -8224,12 +8224,12 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tr>
 <tr>
 <td>get(String option)</td>
-<td>Get item by Text</td>
+<td>Get item by text</td>
 <td>UIElement</td>
 </tr>
 <tr>
 <td>get(int index)</td>
-<td>Get item by Text</td>
+<td>Get item by index</td>
 <td>UIElement</td>
 </tr>
 <tr>
@@ -8244,10 +8244,11 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tr>
 </tbody></table>
 
-<p>Breadcrumb has been implemented as WebList.</p>
+<p>In this java test case example Breadcrumb has been implemented as WebList.</p>
 
-<p>WebList is located in the following classes:
-Java: com.epam.jdi.light.elements.complex.WebList</p>
+<p>WebList is located in the following classes:</p>
+
+<p>Java: com.epam.jdi.light.elements.complex.WebList</p>
 <h3 id='navs'>Navs</h3>
 <p>Nav - navigation component</p>
 
