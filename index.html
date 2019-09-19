@@ -12499,11 +12499,17 @@ Form can consists of:
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseValidationTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">baseValidation</span><span class="o">(</span><span class="n">jumbotron</span><span class="o">);</span>
-    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">jumbotron</span><span class="o">.</span><span class="na">learnMoreBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">getWindowHandles</span><span class="o">());</span>
+        <span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">();</span>
+        <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">mJumbotronUrl</span><span class="o">);</span>
+        <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+    <span class="o">}</span> 
 </code></pre>
-<p><strong><a href="https://getbootstrap.com/docs/4.0/components/jumbotron/">Jumbotron</a></strong> – Lightweight, flexible component for showcasing hero unit style content.</p>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.0/components/jumbotron" target="_blank">Jumbotron</a> – Lightweight, flexible component for showcasing hero</p>
 
 <p><img src="images/bootstrap/jumbotron.png" alt="Jumbotron" /></p>
 
