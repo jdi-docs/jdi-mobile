@@ -7866,7 +7866,37 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tbody></table>
 
 <p><br><br></p>
-<h3 id='alert'>Alert</h3>
+<h3 id='alert'>Alert</h3><pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#simple-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">simpleAlert</span><span class="o">;</span>
+<span class="nd">@Css</span><span class="o">(</span><span class="s">"#dismissible-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">dismissibleAlert</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleAlertExistingTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">simpleAlert</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">simpleAlert</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleAlertLinkClickableTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">simpleAlert</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">switchToNewWindow</span><span class="o">();</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getTitle</span><span class="o">(),</span> <span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">closeWindow</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dismissibleAlertButtonIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">dismissButton</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span> <span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dismissibleAlertButtonClickTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">dismissButton</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
 <p><strong>Alert</strong> – Element that provides contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
 
 <p><img src="images/bootstrap/alert-dismissible.png" alt="Alert" /></p>
