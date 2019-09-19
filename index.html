@@ -12075,12 +12075,14 @@ Form can consists of:
 <h3 id='buttons-with-dropdowns-input-group'>Buttons with dropdowns (Input group)</h3><pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonWithDropdown</span> <span class="n">buttonWithDropdown</span><span class="o">;</span>
 <span class="c1">// @FindBy(css = "#button-with-dropdown") public static ButtonWithDropdown buttonWithDropdown;</span>
 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
 <span class="nd">@Css</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">textInputArea</span><span class="o">;</span>
 <span class="nd">@Css</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">dropdownButton</span><span class="o">;</span>
 <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".input-group-prepend"</span><span class="o">,</span>
         <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
         <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
+<span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownMenuTests</span><span class="o">()</span> <span class="o">{</span>
