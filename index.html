@@ -623,6 +623,9 @@
 								<a href="#custom-file-input-input-group" class="toc-h2 h3 toc-link" data-title="Custom file input (Input group)">Custom file input (Input group)</a>
                             </li>
                             <li>
+								<a href="#card-2" class="toc-h2 h3 toc-link" data-title="Card">Card</a>
+                            </li>
+                            <li>
 								<a href="#jumbotron-2" class="toc-h2 h3 toc-link" data-title="Jumbotron">Jumbotron</a>
                             </li>
                         </ul>
@@ -12313,6 +12316,85 @@ Form can consists of:
 </tbody></table>
 
 <p><br></p>
+<h3 id='card-2'>Card</h3><pre class="highlight java tab-java"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#card-example"</span><span class="o">)</span>  <span class="c1">//FindBy(css = "#card-example")</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardExample</span> <span class="n">cardExample</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardExample</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+        <span class="nd">@Css</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+        <span class="nd">@Css</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+        <span class="nd">@Css</span><span class="o">(</span><span class="s">".btn"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+        <span class="nd">@Css</span><span class="o">(</span><span class="s">".card-img-top"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
+    <span class="o">}</span>    
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cardExample</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">titleText</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cardExample</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">Alerts</span><span class="o">.</span><span class="na">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">alertText</span><span class="o">));</span>
+    <span class="o">}</span>
+</code></pre>
+<p>Bootstrap’s <strong><a href="https://getbootstrap.com/docs/4.3/components/card/">cards</a></strong> provide a flexible and extensible content container with multiple variants and options.</p>
+
+<p><strong>Card Example</strong></p>
+
+<p><img src="images/bootstrap/simplecard.png" alt="Simple Card Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/simplecard-html.png" alt="Simple Card Example Code" /></p>
+
+<p>Card is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+
+<p>Inner elements of card can be represented by the following classes:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
+<a href="https://jdi-docs.github.io/jdi-light/#button">Button</a><br>
+<a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card">Bootstrap test examples</a>
+<br>
+<br></p>
 <h3 id='jumbotron-2'>Jumbotron</h3><pre class="highlight java tab-java"><code>
 
 
