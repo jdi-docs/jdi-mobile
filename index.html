@@ -11117,12 +11117,12 @@ You may also swap the text out of the spinner element and utilize button text as
     <span class="nd">@Test</span>
         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">collapseGroupOneTest</span><span class="o">()</span> <span class="o">{</span>
             <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">toggle</span><span class="o">();</span>
+            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
 
             <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
             <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">groupOneText</span><span class="o">);</span>
 
-            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">toggle</span><span class="o">();</span>
+            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
             <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">collapsed</span><span class="o">();</span>
         <span class="o">}</span>
 </code></pre>
@@ -11148,8 +11148,13 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>toggle()</strong></td>
-<td>Toggles collapse</td>
+<td><strong>expand()</strong></td>
+<td>Expands element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>collapse()</strong></td>
+<td>Collapses element</td>
 <td>void</td>
 </tr>
 <tr>
