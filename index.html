@@ -11982,7 +11982,7 @@ Form can consists of:
 </tr>
 </tbody></table>
 <h3 id='checkboxes-and-radios-input-group'>Checkboxes and radios (Input group)</h3>
-<p>Checkboxes and radios – Place any checkbox or radio option within an input group’s addon instead of text.</p>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.0/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a> – Place any checkbox or radio option within an input group’s addon instead of text.</p>
 
 <p><strong>Example with radio</strong></p>
 <pre class="highlight java tab-java"><code>  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-radio"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithRadio</span> <span class="n">inputGroupRadio</span><span class="o">;</span><span class="c1">// @FindBy(css = "#input-group-radio")</span>
@@ -12011,9 +12011,36 @@ Form can consists of:
 
 <p><img src="images/bootstrap/input-group-radio-html.png" alt="radio example" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupRadioTests">Bootstrap test example with radio</a><br />
-<br /><br /><br /><br />
-<strong>Example with checkbox</strong></p>
+<p>This input group example is represented by the following classes in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a><br>
+  <a href="https://jdi-docs.github.io/jdi-light/#radiobuttons">RadioButtons</a>   </p>
+
+<p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupRadioTests.java" target="_blank">Bootstrap test example with radio</a></p>
+
+<p><br /></p>
+<pre class="highlight java tab-java"><code> <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-checkbox"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithCheckBox</span> <span class="n">inputGroupCheckBox</span><span class="o">;</span><span class="c1">// @FindBy(css = "#input-group-checkbox")</span>
+
+ <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupInputWithCheckBox</span> <span class="kd">extends</span> <span class="n">Section</span><span class="o">{</span>
+     <span class="nd">@Css</span><span class="o">(</span><span class="s">"[type=\"checkbox\"]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span>
+     <span class="nd">@Css</span><span class="o">(</span><span class="s">".form-control"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input</span><span class="o">;</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkCheckboxTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">inputGroupCheckBox</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+     <span class="n">inputGroupCheckBox</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">isSelected</span><span class="o">();</span>
+ <span class="o">}</span>
+
+   <span class="nd">@Test</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">inputTest</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">inputGroupRadio</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">new_text</span><span class="o">);</span>
+       <span class="n">inputGroupRadio</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">new_text</span><span class="o">));</span>
+   <span class="o">}</span>
+
+
+</code></pre>
+<p><strong>Example with checkbox</strong></p>
 
 <p><img src="images/bootstrap/input-group-checkbox.png" alt="Checkbox" /></p>
 
@@ -12021,8 +12048,14 @@ Form can consists of:
 
 <p><img src="images/bootstrap/input-group-checkbox-html.png" alt="Checkboxes example" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCheckboxesTests">Bootstrap test example with checkbox</a>
-<br /><br /><br /><br /><br /></p>
+<p>This input group example is represented by the following classes in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a><br>
+  <a href="https://jdi-docs.github.io/jdi-light/#checkbox">CheckBox</a></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCheckboxesTests.java" target="_blank">Bootstrap test example with checkbox</a></p>
+
+<p><br /><br /><br /><br /><br /></p>
 <h3 id='multiple-inputs-input-group'>Multiple inputs (Input group)</h3>
 <p><strong>Multiple inputs</strong> – While multiple inputs are supported visually, validation styles are only available for input groups with a single input.</p>
 
@@ -12235,7 +12268,7 @@ Form can consists of:
 </tbody></table>
 <h3 id='segmented-buttons-input-group'>Segmented buttons (Input group)</h3>
 <p><strong>Segmented buttons</strong> – Segmented buttons have no detailed information on Bootstrap website
-```java 
+```java
 @UI(&quot;#segmented-button&quot;) public static SegmentedButton segmentedButton;
 // @FindBy(css = &quot;#segmented-button&quot;) public static SegmentedButton segmentedButton;</p>
 
