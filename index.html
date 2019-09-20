@@ -11966,7 +11966,7 @@ Form can consists of:
 
    <span class="nd">@Test</span>
    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNoWrapping</span><span class="o">()</span> <span class="o">{</span>
-       <span class="n">inputGroupNowrap</span><span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"flex-nowrap"</span><span class="o">);</span>
+       <span class="n">assertTrue</span><span class="o">(</span><span class="n">inputGroupNowrap</span><span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"flex-nowrap"</span><span class="o">));</span>
        <span class="n">inputGroupNowrap</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"flex-wrap"</span><span class="o">,</span> <span class="s">"nowrap"</span><span class="o">);</span>
    <span class="o">}</span> 
 </code></pre>
@@ -11978,13 +11978,13 @@ Form can consists of:
 
 <p><img src="images/bootstrap/wrapping_code.png" alt="Wrapping example" /></p>
 
-<p>Wrapping property can be check by using foloowing class:</p>
+<p>Wrapping property can be checked by using following class:</p>
 
 <ul>
 <li><em>com.epam.jdi.light.elements.common.UIElement</em></li>
 </ul>
 
-<p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupWrapping" target="_blank">Bootstrap test example wrapping</a></p>
+<p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupWrapping.java" target="_blank">Bootstrap test example wrapping</a></p>
 <h3 id='sizing-input-group-2'>Sizing (Input group)</h3>
 <p><strong>Sizing</strong> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
 
