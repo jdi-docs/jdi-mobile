@@ -8943,7 +8943,7 @@ Below are examples of different toggle styles.</p>
 </tr>
 </tbody></table>
 <h3 id='carousel'>Carousel</h3>
-<p><strong>Carousel</strong> - a slideshow component for cycling through elements—images or slides of text—like a carousel.</p>
+<p><a style="font-weight:bold" href="https://https://getbootstrap.com/docs/4.3/components/carousel/" target="_blank">Carousel</a> - a slideshow component for cycling through elements—images or slides of text—like a carousel.<br></p>
 
 <p><strong>Slides only</strong><br>
 Here’s a carousel with slides only. Note the presence of the .d-block and .w-100 on carousel images to prevent browser default image alignment.</p>
@@ -9000,9 +9000,25 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 <p>Carousel is located in the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: TBD</li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.Carousel</em></li>
 </ul>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#carousel-example-controls"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#carousel-example-controls")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Carousel</span> <span class="n">carouselWithControls</span><span class="o">;</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">prevTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">prev</span><span class="o">();</span>    
+    <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">firstSlideText</span><span class="o">);</span>
+
+    <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>    
+    <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">secondSlideText</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">carouselWithControls</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">thirdSlideText</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -9050,7 +9066,7 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 <tr>
 <td>interval()</td>
 <td>Return current slide interval</td>
-<td>long</td>
+<td>int</td>
 </tr>
 <tr>
 <td>is()</td>
