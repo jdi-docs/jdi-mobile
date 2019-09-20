@@ -535,9 +535,6 @@
 								<a href="#progress" class="toc-h2 h3 toc-link" data-title="Progress">Progress</a>
                             </li>
                             <li>
-								<a href="#collapse" class="toc-h2 h3 toc-link" data-title="Collapse">Collapse</a>
-                            </li>
-                            <li>
 								<a href="#carousel" class="toc-h2 h3 toc-link" data-title="Carousel">Carousel</a>
                             </li>
                             <li>
@@ -563,6 +560,9 @@
                   <li>
                     <a href="#bootstrap-complex-elements" class="toc-h2 toc-link" data-title="Bootstrap Complex elements">Bootstrap Complex elements</a>
                         <ul class="toc-list-h2">
+                            <li>
+								<a href="#collapse" class="toc-h2 h3 toc-link" data-title="Collapse">Collapse</a>
+                            </li>
                             <li>
 								<a href="#dropdown-2" class="toc-h2 h3 toc-link" data-title="Dropdown">Dropdown</a>
                             </li>
@@ -8931,50 +8931,6 @@ Below are examples of different toggle styles.</p>
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='collapse'>Collapse</h3>
-<p>The collapse is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. </p>
-
-<p><img src="images/bootstrap/collapse.png" alt="Collapse example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/collapse-html.png" alt="Collapse HTML example" /></p>
-
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>****</td>
-<td>TBD</td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
 <h3 id='carousel'>Carousel</h3>
 <p><strong>Carousel</strong> - a slideshow component for cycling through elements—images or slides of text—like a carousel.</p>
 
@@ -11169,7 +11125,70 @@ You may also swap the text out of the spinner element and utilize button text as
 </tbody></table>
 
 <p><br></p>
-<h2 id='bootstrap-complex-elements'>Bootstrap Complex elements</h2><h3 id='dropdown-2'>Dropdown</h3>
+<h2 id='bootstrap-complex-elements'>Bootstrap Complex elements</h2><h3 id='collapse'>Collapse</h3><pre class="highlight java tab-java"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">"#bs-group-toggle-one"</span><span class="o">,</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="s">"#bs-group-one"</span><span class="o">,</span>
+                <span class="n">list</span> <span class="o">=</span> <span class="s">"#bs-group-one-body"</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="n">Collapse</span> <span class="n">collapseGroupOne</span><span class="o">;</span>   
+
+    <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">collapseGroupOneTest</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">toggle</span><span class="o">();</span>
+
+            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
+            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">groupOneText</span><span class="o">);</span>
+
+            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">toggle</span><span class="o">();</span>
+            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">collapsed</span><span class="o">();</span>
+        <span class="o">}</span>
+</code></pre>
+<p>The collapse is used to show and hide content. 
+Buttons or anchors are used as triggers that are mapped to specific elements you toggle.
+You can declare a Collapse on your Page Object with a <code>@JDropdown</code> annotation. </p>
+
+<p><img src="images/bootstrap/collapse.png" alt="Collapse example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/collapse-html.png" alt="Collapse HTML example" /></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/CollapseTests.java">Bootstrap test examples</a></p>
+<h3 id='dropdown-2'>Dropdown</h3>
 <p><strong>Dropdown</strong> – a graphical control element, that allows the user to choose one value from a list.</p>
 
 <p>Dropdown is located in the following classes:</p>
