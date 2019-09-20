@@ -11240,7 +11240,10 @@ You may also swap the text out of the spinner element and utilize button text as
         <span class="o">}</span>
 </code></pre>
 <p>The <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/collapse/" target="_blank">collapse</a> is used to show and hide content. 
-Buttons or anchors are used as triggers that are mapped to specific elements you toggle. </p>
+Buttons or anchors are used as triggers that are mapped to specific elements you toggle.</p>
+
+<p><code>Collapse</code> extends JDI Light&#39;s <code>DropdownExpand</code>, thus inheriting its methods.<br>
+You can use a <code>@JDropdown</code> annotation to declare a Collapse on your Page Object. </p>
 
 <p><img src="images/bootstrap/collapse.png" alt="Collapse example" /></p>
 
@@ -11248,7 +11251,41 @@ Buttons or anchors are used as triggers that are mapped to specific elements you
 
 <p><img src="images/bootstrap/collapse-html.png" alt="Collapse HTML example" /></p>
 
-<p>You can use a <code>@JDropdown</code> annotation to declare a Collapse on your Page Object.</p>
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>toggle()</strong></td>
+<td>Toggles collapse</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Checks whether collapse is expanded</td>
+<td>UISelectAssert</td>
+</tr>
+<tr>
+<td><strong>collapsed()</strong></td>
+<td>Checks whether collapse is collapsed</td>
+<td>UISelectAssert</td>
+</tr>
+<tr>
+<td><strong>value()</strong></td>
+<td>Returns collapse <code>value()</code> property</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>list()</strong></td>
+<td>Returns collapse <code>list()</code> property</td>
+<td>UIElement</td>
+</tr>
+</tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/CollapseTests.java">Bootstrap test examples</a></p>
 <h3 id='dropdown-2'>Dropdown</h3>
