@@ -7894,6 +7894,8 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><img src="images/bootstrap/button_toolbar_mixed-html.png" alt="Button toolbar_mixed example" /></p>
 <h3 id='alert'>Alert</h3><pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#simple-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">simpleAlert</span><span class="o">;</span>
 <span class="nd">@Css</span><span class="o">(</span><span class="s">"#dismissible-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">dismissibleAlert</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#simple-alert") public static Alert simpleAlert;</span>
+<span class="c1">// @FindBy(css = "#dismissible-alert") public static Alert dismissibleAlert;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleAlertExistingTest</span><span class="o">()</span> <span class="o">{</span>
@@ -12409,13 +12411,98 @@ Form can consists of:
 </tr>
 </tbody></table>
 <h3 id='custom-select-input-group'>Custom select (Input group)</h3>
-<p><strong>Custom select</strong> – Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.</p>
+<p><strong>Custom select</strong> – Input groups include support for custom selects and text field. Browser default versions of these are not supported.</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-select-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomSelect</span> <span class="n">customSelect</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#custom-select-01") public static CustomSelect customSelect;</span>
 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomSelect</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".input-group-prepend"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">optionText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inputGroupSelect01"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Selector</span> <span class="n">selector</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationOptionsSectionTests</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">customSelect</span><span class="o">.</span><span class="na">optionText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">optionText</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectorByIndexTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectChoose</span><span class="o">);</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectOne</span><span class="o">);</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectChoose</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectorByValueTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">selectOne</span><span class="o">);</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectOne</span><span class="o">);</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">selectTwo</span><span class="o">);</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectTwo</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectorIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/custom_select.png" alt="Custom select" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/custom_select_code.png" alt="Custom select example" /></p>
+
+<p><strong>Custom select with button</strong> – Input groups include support for custom selects and button. Browser default versions of these are not supported.</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-select-button-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomSelectWithButton</span> <span class="n">customSelectWithButton</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#custom-select-button-01") public static CustomSelect customSelect;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomSelectWithButton</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inputGroupSelect03"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Selector</span> <span class="n">selector</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">buttonText</span><span class="o">);</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">hover</span><span class="o">();</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonClickAlert</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectorByIndexTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectChoose</span><span class="o">);</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectOne</span><span class="o">);</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectTwo</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectorByValueTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">selectTwo</span><span class="o">);</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectTwo</span><span class="o">);</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">selectThree</span><span class="o">);</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">selectThree</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectorIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/custom-select-with-button.png" alt="Custom select with button" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/custom-select-with-button-html.png" alt="Custom select with button example" /></p>
 
 <p>And here are methods available in Java:</p>
 
