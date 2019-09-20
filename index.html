@@ -12316,51 +12316,50 @@ Form can consists of:
 </tr>
 </tbody></table>
 <h3 id='segmented-buttons-input-group'>Segmented buttons (Input group)</h3>
-<p><strong>Segmented buttons</strong> – Segmented buttons have no detailed information on Bootstrap website
-```java
-@UI(&quot;#segmented-button&quot;) public static SegmentedButton segmentedButton;
-// @FindBy(css = &quot;#segmented-button&quot;) public static SegmentedButton segmentedButton;</p>
+<p><strong>Segmented buttons</strong> – Segmented buttons have no detailed information on Bootstrap website</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#segmented-button"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SegmentedButton</span> <span class="n">segmentedButton</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#segmented-button") public static SegmentedButton segmentedButton;</span>
 
-<p>public class SegmentedButton extends Section {
-    @UI(&quot;#Segmented-action-button&quot;) public Button actionButton;
-    @UI(&quot;input&quot;) public TextField textInputArea;
-    @JDropdown(expand = &quot;.dropdown-toggle&quot;,
-            value = &quot;.sr-only&quot;,
-            list = &quot;.dropdown-item&quot;)
-    public Dropdown dropdownMenu;
-}</p>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SegmentedButton</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#Segmented-action-button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">actionButton</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">textInputArea</span><span class="o">;</span>
+    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">".sr-only"</span><span class="o">,</span>
+            <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
+<span class="o">}</span>
 
-<p>@Test
-public void textInputAreaTests() {
-    segmentedButton.textInputArea.is()
-            .displayed()
-            .enabled();
-    segmentedButton.textInputArea.sendKeys(testText);
-    segmentedButton.textInputArea.is().text(testText);
-    segmentedButton.textInputArea.clear();
-    segmentedButton.textInputArea.is().text(&quot;&quot;);
-}</p>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">textInputAreaTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">textInputArea</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">textInputArea</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">testText</span><span class="o">);</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">textInputArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">testText</span><span class="o">);</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">textInputArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">textInputArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+<span class="o">}</span>
 
-<p>@Test
-public void dropdownMenuTests() {
-    segmentedButton.dropdownMenu.expand();
-    segmentedButton.dropdownMenu.is().expanded();
-    segmentedButton.dropdownMenu.is().size(4);
-    segmentedButton.dropdownMenu.list().get(0).is().text(action);
-    segmentedButton.dropdownMenu.select(action);
-    newWindowTitleCheck();
-}</p>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownMenuTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">action</span><span class="o">);</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">action</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">();</span>
+<span class="o">}</span>
 
-<p>@Test
-public void actionButtonTests() {
-    segmentedButton.actionButton.is().displayed();
-    segmentedButton.actionButton.is().enabled();
-    segmentedButton.actionButton.is().text(action);
-    segmentedButton.actionButton.click();
-    validateAlert(is(actionButtonClickAlert));
-}
-```
-<img src="images/bootstrap/segmented_buttons.png" alt="Segmented buttons" /></p>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionButtonTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">actionButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">actionButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">actionButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">action</span><span class="o">);</span>
+    <span class="n">segmentedButton</span><span class="o">.</span><span class="na">actionButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">actionButtonClickAlert</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/segmented_buttons.png" alt="Segmented buttons" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
