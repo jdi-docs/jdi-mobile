@@ -11951,25 +11951,21 @@ Form can consists of:
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='wrapping-input-group'>Wrapping (Input group)</h3><pre class="highlight java tab-java"><code>   <span class="nd">@Css</span><span class="o">(</span><span class="s">"#input-group-username"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithText</span> <span class="n">inputGroupUsername</span><span class="o">;</span>
+<h3 id='wrapping-input-group'>Wrapping (Input group)</h3><pre class="highlight java tab-java"><code>   <span class="kd">public</span> <span class="kd">static</span> <span class="n">UIElement</span> <span class="n">inputGroupWrap</span><span class="o">,</span><span class="n">inputGroupNowrap</span><span class="o">;</span><span class="c1">//@FindBy(css = "#input-group-wrap")</span>
 
-   <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupInputWithText</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-       <span class="nd">@Css</span><span class="o">(</span><span class="s">".input-group-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
-       <span class="nd">@Css</span><span class="o">(</span><span class="s">".form-control"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input</span><span class="o">;</span>
+   <span class="nd">@Test</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkWrapping</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">assertFalse</span><span class="o">(</span><span class="n">inputGroupWrap</span><span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"flex-nowrap"</span><span class="o">));</span>
+       <span class="n">inputGroupWrap</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"flex-wrap"</span><span class="o">,</span> <span class="s">"wrap"</span><span class="o">);</span>
    <span class="o">}</span>
 
    <span class="nd">@Test</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTextSymbolsTest</span><span class="o">()</span> <span class="o">{</span>
-       <span class="n">inputGroupUsername</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">symbols</span><span class="o">);</span>
-       <span class="n">assertEquals</span><span class="o">(</span><span class="n">inputGroupUsername</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">symbols</span><span class="o">);</span>
-   <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertValidationTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">inputGroupUsername</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">addon_text</span><span class="o">));</span>
-    <span class="o">}</span>  
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNoWrapping</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">inputGroupNowrap</span><span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"flex-nowrap"</span><span class="o">);</span>
+       <span class="n">inputGroupNowrap</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"flex-wrap"</span><span class="o">,</span> <span class="s">"nowrap"</span><span class="o">);</span>
+   <span class="o">}</span> 
 </code></pre>
-<p><strong>Wrapping</strong> – Input groups wrap by default via flex-wrap: wrap in order to accommodate custom form field validation within an input group. You may disable this with .flex-nowrap.</p>
+<p><strong><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#wrapping" target="_blank">Wrapping</a></strong> – Input groups wrap by default via flex-wrap: wrap in order to accommodate custom form field validation within an input group. You may disable this with .flex-nowrap.</p>
 
 <p><img src="images/bootstrap/wrapping.png" alt="Wrapping" /></p>
 
@@ -11977,20 +11973,13 @@ Form can consists of:
 
 <p><img src="images/bootstrap/wrapping_code.png" alt="Wrapping example" /></p>
 
-<p>Input group are represented by Section class in Java:</p>
+<p>Wrapping property can be check by using foloowing class:</p>
 
 <ul>
-<li><em>com.epam.jdi.light.elements.composite.Section</em></li>
+<li><em>com.epam.jdi.light.elements.common.UIElement</em></li>
 </ul>
 
-<p>Inner elements of input group can be represented by following classes:</p>
-
-<ul>
-<li><em>com.epam.jdi.light.ui.html.common.Text</em></li>
-<li><em>com.epam.jdi.light.ui.html.common.TextField</em></li>
-</ul>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupInputWithTextTests">Bootstrap test examples</a></p>
+<p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupWrapping" target="_blank">Bootstrap test example wrapping</a></p>
 <h3 id='sizing-input-group-2'>Sizing (Input group)</h3>
 <p><strong>Sizing</strong> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
 
@@ -12037,7 +12026,7 @@ Form can consists of:
 </tr>
 </tbody></table>
 <h3 id='checkboxes-and-radios-input-group'>Checkboxes and radios (Input group)</h3>
-<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.0/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a> – Place any checkbox or radio option within an input group’s addon instead of text.</p>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a> – Place any checkbox or radio option within an input group’s addon instead of text.</p>
 
 <p><strong>Example with radio</strong></p>
 <pre class="highlight java tab-java"><code>  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-radio"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithRadio</span> <span class="n">inputGroupRadio</span><span class="o">;</span><span class="c1">// @FindBy(css = "#input-group-radio")</span>
