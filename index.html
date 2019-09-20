@@ -8220,26 +8220,27 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 
 
 
-<span class="c1">// @FindBy(css = "#breadcrumb")</span>
-<span class="nd">@Css</span><span class="o">(</span><span class="s">"#breadcrumb"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Breadcrumb</span> <span class="n">breadcrumb</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "#breadcrumb")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#breadcrumb"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Breadcrumb</span> <span class="n">breadcrumb</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Breadcrumb</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">IList</span><span class="o">&lt;</span><span class="n">UIElement</span><span class="o">&gt;,</span> <span class="n">HasUIList</span><span class="o">,</span> <span class="n">IClickable</span><span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Breadcrumb</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;{</span>
     <span class="c1">// @FindBy(css = ".breadcrumb-item")</span>
     <span class="nd">@Css</span><span class="o">(</span><span class="s">".breadcrumb-item"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">itemns</span><span class="o">;</span>
 <span class="o">}</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValueTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">itemsValues</span> <span class="o">=</span> <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">UIElement:</span><span class="o">:</span><span class="n">getValue</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">itemsValues</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"Home"</span><span class="o">,</span> <span class="s">"HTML 5"</span><span class="o">,</span> <span class="s">"Bootstrap"</span><span class="o">})));</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">TEXT</span><span class="o">,</span> <span class="n">hasItems</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"Home"</span><span class="o">,</span> <span class="s">"HTML 5"</span><span class="o">,</span> <span class="s">"Bootstrap"</span><span class="o">}));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getCurrectItem</span><span class="o">()</span> <span class="o">{</span>
-     <span class="n">breadcrumb</span><span class="o">.</span><span class="na">getCurrectItem</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Bootstrap"</span><span class="o">);</span>
-     <span class="n">breadcrumb</span><span class="o">.</span><span class="na">getCurrectItem</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">WebPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getCurrectItemTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">last</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Bootstrap"</span><span class="o">);</span>
+    <span class="n">beadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">last</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Bootstrap"</span><span class="o">);</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">last</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">WebPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">last</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">WebPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
 <span class="o">}</span>
 </code></pre>
 <p>A <a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/">breadcrumb</a> is a control element  used for navigational on web pages</p>
@@ -8282,6 +8283,16 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <tr>
 <td>get(int index)</td>
 <td>Get item by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td>last()</td>
+<td>Get last (current) item</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td>first()</td>
+<td>Get first item</td>
 <td>UIElement</td>
 </tr>
 <tr>
