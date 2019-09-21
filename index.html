@@ -639,6 +639,9 @@
                             <li>
 								<a href="#json-based-pages" class="toc-h2 h3 toc-link" data-title="Json-based pages">Json-based pages</a>
                             </li>
+                            <li>
+								<a href="#non-page-object-implementation-for-basic-steps" class="toc-h2 h3 toc-link" data-title="Non page object implementation for basic steps">Non page object implementation for basic steps</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -12874,6 +12877,13 @@ Instead of this: <br></p>
 
 <p>Pages are defined via <strong>pages.json</strong>. <br>
 Note: domain is read from test.properties automatically <br></p>
+<h3 id='non-page-object-implementation-for-basic-steps'>Non page object implementation for basic steps</h3>
+<p>You are able to use parameter locator instead of an element name in you features: <br></p>
+
+<p><strong>When</strong> I click on <strong>&quot;[value*=&#39;Red Button&#39;]&quot;</strong> element <br>
+<strong>When</strong> I send keys &quot;simple 1234&quot; to <strong>&quot;#name&quot;</strong> element <br>
+<strong>Then</strong> the <strong>&quot;#name&quot;</strong> element&#39;s text matches to &quot;\w{6} \d{4}&quot; <br>
+etc.</p>
 <h2 id='jdi-light-bdd-steps'>JDI Light BDD Steps</h2><h3 id='label-2'>Label</h3><pre class="highlight plaintext"><code>Label action examples:
 
 When I click on "JDI Title"
