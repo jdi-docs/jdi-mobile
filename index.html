@@ -12722,14 +12722,14 @@ Form can consists of:
 
 
 
-<span class="nd">@Css</span><span class="o">(</span><span class="s">"#card-example"</span><span class="o">)</span>  <span class="c1">//FindBy(css = "#card-example")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-example"</span><span class="o">)</span>  <span class="c1">//FindBy(css = "#card-example")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardExample</span> <span class="n">cardExample</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardExample</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".btn"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".card-img-top"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".btn"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-img-top"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
 <span class="o">}</span>    
 
 <span class="nd">@Test</span>
@@ -12763,7 +12763,7 @@ Form can consists of:
 <a href="https://jdi-docs.github.io/jdi-light/#button">Button</a><br>
 <a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card">Bootstrap test examples</a>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardExampleTests.java">Bootstrap test examples</a>
 <br></p>
 <h4 id='card-with-subtitles-and-links'>Card with Subtitles and Links</h4><pre class="highlight java tab-java"><code>
 
@@ -12791,33 +12791,34 @@ Form can consists of:
 
 
 
-<span class="nd">@Css</span><span class="o">(</span><span class="s">"#card-subtitle-link"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-subtitle-link")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-subtitle-link"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-subtitle-link")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithSubtitlesAndLinks</span> <span class="n">cardWithSubtitlesAndLinks</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithSubtitlesAndLinks</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".card-subtitle"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">subtitle</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">mainText</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#bs-card-2-link1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">link1</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#bs-card-2-link2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">link2</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-subtitle"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">subtitle</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">mainText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#bs-card-2-link1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">link1</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#bs-card-2-link2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">link2</span><span class="o">;</span>
 <span class="o">}</span>
-<span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLink1TextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardWithSubtitlesAndLinks</span><span class="o">.</span><span class="na">link1</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">link1Text</span><span class="o">);</span>
-    <span class="o">}</span>
 
 <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickLink1Test</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">cardWithSubtitlesAndLinks</span><span class="o">.</span><span class="na">link1</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">getWindowHandles</span><span class="o">());</span>
-        <span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">();</span>
-        <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">getUrl</span><span class="o">()</span> <span class="o">,</span> <span class="n">link1Ref</span><span class="o">);</span>
-        <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
-    <span class="o">}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLink1TextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardWithSubtitlesAndLinks</span><span class="o">.</span><span class="na">link1</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">link1Text</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickLink1Test</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardWithSubtitlesAndLinks</span><span class="o">.</span><span class="na">link1</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">getWindowHandles</span><span class="o">());</span>
+    <span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">();</span>
+    <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getUrl</span><span class="o">()</span> <span class="o">,</span> <span class="n">link1Ref</span><span class="o">);</span>
+    <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre>
-<p>Card titles are used by adding <em>.card-title</em> to a <code>&lt;h*&gt;</code> tag. In the same way, links are added and placed next to each other by adding <em>.card-link</em> to an <code>&lt;a&gt;</code> tag.</p>
+<p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/card/#titles-text-and-links">Card titles</a> are used by adding <em>.card-title</em> to a <code>&lt;h*&gt;</code> tag. In the same way, links are added and placed next to each other by adding <em>.card-link</em> to an <code>&lt;a&gt;</code> tag.</p>
 
 <p>Subtitles are used by adding a <em>.card-subtitle</em> to a <code>&lt;h*&gt;</code> tag. If the <em>.card-title</em> and the <em>.card-subtitle</em> items are placed in a <em>.card-body</em> item, the card title and subtitle are aligned nicely.</p>
 
@@ -12827,14 +12828,48 @@ Form can consists of:
 
 <p><img src="images/bootstrap/cardsubslinks-html.png" alt="Card Body Example Code" /></p>
 
-<p>Inner elements of Card with Subtitles and Links represented by the following classes:</p>
+<p>Inner elements of Card with Subtitles and Links represented by the following classes:<br>
+<a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
+<a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
-<a href="https://jdi-docs.github.io/jdi-light/#link">Link</a><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithSubtitlesAndLinksTests.java">Bootstrap test examples</a></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card">Bootstrap test examples</a></p>
+<p><br><br><br><br><br><br></p>
+<h4 id='card-body'>Card Body</h4><pre class="highlight java tab-java"><code>
 
-<p><br><br><br><br><br></p>
+
+
+
+
+
+
+
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-body"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-body")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardBody</span> <span class="n">cardBody</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardBody</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getBodyTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardBody</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+<p>The building block of a card is the <em>.<a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/card/#body">card-body</a></em>. Use it whenever you need a padded section within a card.</p>
+
+<p><img src="images/bootstrap/cardbody.png" alt="Card Body Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/cardbody-html.png" alt="Card Body Example Code" /></p>
+
+<p>Inner elements of Card Body represented by the following classes:
+<a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardBodyTests.java">Bootstrap test examples</a>
+ <br></p>
 <h3 id='jumbotron'>Jumbotron</h3><pre class="highlight java tab-java"><code>
 
 
