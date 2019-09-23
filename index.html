@@ -7982,12 +7982,8 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
     <span class="n">buttonGroupNesting</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
     <span class="n">buttonGroupNesting</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
     <span class="n">buttonGroupNesting</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">dropdownMenuLinkOne</span><span class="o">);</span>
-    <span class="n">buttonGroupNesting</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">dropdownMenuLinkTwo</span><span class="o">);</span>
-    <span class="n">buttonGroupNesting</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
     <span class="n">buttonGroupNesting</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">dropdownMenuLinkOne</span><span class="o">);</span>
     <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">linkOnePageTitle</span><span class="o">);</span>
-    <span class="n">buttonGroupNesting</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">dropdownMenuLinkTwo</span><span class="o">);</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">linkTwoPageTitle</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
 <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
@@ -8022,6 +8018,16 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="s">"16px"</span><span class="o">);</span>
     <span class="n">buttonGroupVerticalVariation</span><span class="o">.</span><span class="na">buttonOne</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
     <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonOneClickAlert</span><span class="o">));</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownMenuTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">buttonGroupVerticalVariation</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">buttonGroupVerticalVariation</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
+    <span class="n">buttonGroupVerticalVariation</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">buttonGroupVerticalVariation</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">dropdownMenuLinkTwo</span><span class="o">);</span>
+    <span class="n">buttonGroupVerticalVariation</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">dropdownMenuLinkTwo</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">linkTwoPageTitle</span><span class="o">);</span>
+<span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
 <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
