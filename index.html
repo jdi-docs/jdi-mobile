@@ -7894,50 +7894,46 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><img src="images/bootstrap/button_toolbar.png" alt="Button toolbar" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".btn-toolbar"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonToolbar</span> <span class="n">buttonToolbar</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = ".btn-toolbar") public static ButtonToolbar buttonToolbar;</span>
 
-<p><img src="images/bootstrap/button_toolbar-html.png" alt="Button toolbar example" />
-```java
-@UI(&quot;.btn-toolbar&quot;) public static ButtonToolbar buttonToolbar;
-// @FindBy(css = &quot;.btn-toolbar&quot;) public static ButtonToolbar buttonToolbar;</p>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonToolbar</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">buttonsInToolbar</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">inputAreaInToolbar</span><span class="o">;</span>
 
-<p>public class ButtonToolbar extends Section {
-    @UI(&quot;button&quot;) public WebList buttonsInToolbar;
-    @UI(&quot;input&quot;) public TextField inputAreaInToolbar;</p>
-
-<p>@Test
-    public void buttonsInButtonToolbarTest() {
-        buttonToolbar.buttonsInToolbar.forEach(button -&gt; {
-            button.is().displayed();
-            button.is().enabled();
-            button.assertThat().css(&quot;background-color&quot;, backgroundColorBeforeHovering);
-            button.core().hover();
-            button.assertThat().css(&quot;background-color&quot;, backgroundColorAfterHovering);
-            button.assertThat().css(&quot;border-color&quot;, borderColorBeforeClicking);
-            button.click();
-            validateAlert(containsString(&quot;button is clicked&quot;));
-            button.assertThat().css(&quot;border-color&quot;, borderColorAfterClicking);
-        });
-    }
-}
-```</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonsInButtonToolbarTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">buttonToolbar</span><span class="o">.</span><span class="na">buttonsInToolbar</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">button</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+            <span class="n">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+            <span class="n">button</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">backgroundColorBeforeHovering</span><span class="o">);</span>
+            <span class="n">button</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">hover</span><span class="o">();</span>
+            <span class="n">button</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">backgroundColorAfterHovering</span><span class="o">);</span>
+            <span class="n">button</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="n">borderColorBeforeClicking</span><span class="o">);</span>
+            <span class="n">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">validateAlert</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"button is clicked"</span><span class="o">));</span>
+            <span class="n">button</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="n">borderColorAfterClicking</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/button_toolbar-html.png" alt="Button toolbar example" /></p>
 
 <p>It is possible to mix input groups with button groups in your toolbars.</p>
 
 <p><img src="images/bootstrap/button_toolbar_mixed.png" alt="Button toolbar_mixed" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-
+<pre class="highlight java tab-java"><code>    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">inputFieldInButtonToolbarTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">buttonToolbar</span><span class="o">.</span><span class="na">inputAreaInToolbar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">buttonToolbar</span><span class="o">.</span><span class="na">inputAreaInToolbar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+        <span class="n">buttonToolbar</span><span class="o">.</span><span class="na">inputAreaInToolbar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"placeholder"</span><span class="o">,</span> <span class="n">placeholderForInputField</span><span class="o">);</span>
+        <span class="n">buttonToolbar</span><span class="o">.</span><span class="na">inputAreaInToolbar</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">textForTestingInputField</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">buttonToolbar</span><span class="o">.</span><span class="na">inputAreaInToolbar</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">textForTestingInputField</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/button_toolbar_mixed-html.png" alt="Button toolbar_mixed example" />
-<code>java
-    @Test
-    public void inputFieldInButtonToolbarTest() {
-        buttonToolbar.inputAreaInToolbar.is().displayed();
-        buttonToolbar.inputAreaInToolbar.is().enabled();
-        buttonToolbar.inputAreaInToolbar.is().core().attr(&quot;placeholder&quot;, placeholderForInputField);
-        buttonToolbar.inputAreaInToolbar.setValue(textForTestingInputField);
-        assertEquals(buttonToolbar.inputAreaInToolbar.getValue(), textForTestingInputField);
-    }
-</code>
 <br></p>
 
 <p><strong>Button Group Sizing</strong></p>
