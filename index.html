@@ -8114,6 +8114,23 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 
 <p><br></p>
 <h3 id='badge'>Badge</h3>
+<p>Badge is located in the following class: <br>
+- <strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.common.Badge</em></p>
+
+<p><a href="https://getbootstrap.com/docs/4.3/components/badge/">Bootstrap page documentation</a> <br></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#badge-secondary"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#badge-secondary")</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">badgeSecondary</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">badgeSecondaryText</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">badgeSecondary</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">badgeSecondaryText</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleVisibilityTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">badgeSecondary</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">());</span>
+    <span class="o">}</span>
+</code></pre>
 <p><strong>1) Badge</strong> - Element that scale to match the size of the immediate parent element by using relative font sizing and em units.<br></p>
 
 <p><img src="images/bootstrap/badge_heading.png" alt="Badge" /><br>
@@ -8133,58 +8150,30 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
+<pre class="highlight java tab-java"><code>  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#btn-primary"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#btn-primary")</span>
 
-<p>Available methods and properties in C# JDI Light::</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">badgeTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">buttonPrimary</span><span class="o">.</span><span class="na">badge</span><span class="o">().</span><span class="na">isDisplayed</span><span class="o">());</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">buttonPrimary</span><span class="o">.</span><span class="na">badgeText</span><span class="o">(),</span> <span class="s">"9"</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">buttonPrimary</span><span class="o">.</span><span class="na">badgeValue</span><span class="o">(),</span> <span class="s">"9"</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
 <p><strong>2) Badge</strong> - Element which used as part of buttons to provide a counter. Unless the context is clear (as with the “Notifications” example, where it is understood that the “4” is the number of notifications), consider including additional context with a visually hidden piece of additional text.<br></p>
 
 <p><img src="images/bootstrap/badge_button.png" alt="Badge" /><br>
@@ -8204,58 +8193,34 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#badge-success"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#badge-success")</span>
 
-<p>Available methods and properties in C# JDI Light::</p>
+        <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">assertEquals</span><span class="o">(</span><span class="n">badgeSuccess</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">badgeSuccessText</span><span class="o">);</span>
+            <span class="n">assertEquals</span><span class="o">(</span><span class="n">badgeSuccess</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">badgeSuccessText</span><span class="o">);</span>
+        <span class="o">}</span>
 
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
+        <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleVisibilityTest</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">assertTrue</span><span class="o">(</span><span class="n">badgeSuccess</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">());</span>
+        <span class="o">}</span>
+</code></pre>
 <p><strong>3) Badge</strong> - .badge-* classes on an link element quickly provide actionable badges with hover and focus states.<br>
    <img src="images/bootstrap/badge_link.png" alt="Badge" /><br>
    Here is an example with provided Bootstrap v4.3 code:<br>
@@ -8274,55 +8239,19 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Available methods and properties in C# JDI Light::</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
 
