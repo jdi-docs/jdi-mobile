@@ -12978,7 +12978,8 @@ The [attribute*="value"] selector is used here to select elements whose attribut
 <strong>Then</strong> the <strong>&quot;Name&quot;</strong> element&#39;s text matches to &quot;\w{6} \d{4}&quot; <br>
 etc. <br></p>
 
-<p>Elements <strong>Red button</strong> and <strong>Name</strong> are described in <strong><em>html5page.json</em></strong>. <br>
+<p>Elements <strong>Red button</strong> and <strong>Name</strong> are defined via <strong><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/json/page/objects/html5page.json">html5page.json</a></strong>.<br>
+Note that you may call this json file as you wish but it should be located in <strong>json.page.objects</strong> package.<br>
 Example <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithProperties.feature">feature</a></p>
 <h3 id='bdd-smart-locators'>BDD Smart locators</h3><pre class="highlight plaintext"><code>
 html5page.json for smart locators:
@@ -13015,7 +13016,7 @@ Instead of this: <br></p>
 
 <p><strong>Given</strong> I open &quot;Bootstrap Page&quot; <br></p>
 
-<p>Pages are defined via <strong>pages.json</strong>. <br>
+<p>Pages are defined via <strong><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/json/page/objects/pages.json">pages.json</a></strong>. <br>
 Note: domain is read from test.properties automatically. <br>
 Example <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/features/JsonBasedPage.feature">feature</a></p>
 <h3 id='non-page-object-implementation-for-basic-steps'>Non page object implementation for basic steps</h3>
