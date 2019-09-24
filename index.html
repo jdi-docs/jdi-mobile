@@ -7942,7 +7942,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <p><strong>Button Group Sizing</strong></p>
 
-<p>Instead of applying <a href="https://getbootstrap.com/docs/4.0/components/button-group/#sizing" target="_blank">button sizing</a> classes to every button in a group, 
+<p>Instead of applying <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.0/components/button-group/#sizing" target="_blank">button sizing</a> classes to every button in a group, 
 just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including each one when nesting multiple groups.</p>
 
 <p><img src="images/bootstrap/bgroup-sizing.png" alt="Button Group Sizing Example" /></p>
@@ -9977,79 +9977,36 @@ Below are examples of different toggle styles.</p>
 <p>You can quickly change the text alignment of any card — in its entirety or specific parts — with Bootstrap&#39;s <a href="https://getbootstrap.com/docs/4.3/utilities/text/#text-alignment" target="_blank">text align classes</a>.</p>
 
 <p><img src="images/bootstrap/cardtextalignment.png" alt="Card Text Alignment Example" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-text-left"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardTextAlignment</span> <span class="n">cardLeftTextAlignment</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-text-center"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardTextAlignment</span> <span class="n">cardCenterTextAlignment</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-text-right"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardTextAlignment</span> <span class="n">cardRightTextAlignment</span><span class="o">;</span>
 
+<span class="n">String</span> <span class="n">alertText</span> <span class="o">=</span> <span class="s">"Button Clicked!"</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardLeftTextAlignment</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">cardLeftTextAlignment</span><span class="o">.</span><span class="na">cardButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">alertText</span><span class="o">));</span>
+
+    <span class="n">cardCenterTextAlignment</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">cardCenterTextAlignment</span><span class="o">.</span><span class="na">cardButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">alertText</span><span class="o">));</span>
+
+    <span class="n">cardRightTextAlignment</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">cardRightTextAlignment</span><span class="o">.</span><span class="na">cardButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">alertText</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/cardtextalignment-html.png" alt="Card Text Alignment Example Code" /></p>
 
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardTextAlignmentTests.java" target="_blank">Bootstrap test examples</a>
+<br></p>
 
 <p><strong>Card Navigation</strong></p>
 
