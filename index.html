@@ -10706,7 +10706,61 @@ For example .card-columns class to generate a set of responsive tiers for changi
 
 <p><img src="images/bootstrap/card-groups.png" alt="Card_groups example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<p>Here is an example with provided Bootstrap v4.3 code:
+```java 
+   @UI(&quot;.card-group:nth-of-type(1)&quot;) public static CardGroup cardGroupWithoutFooter;
+   //@FindBy(css=&#39;.card-group:nth-of-type(1)&#39;)</p>
+
+<p>public class Card extends Section {
+    @UI(&quot;.card-title&quot;) public Text title;
+    @UI(&quot;.card-text:nth-of-type(1)&quot;) public Text mainText;
+    @UI(&quot;.card-text .text-muted&quot;) public Text mutedText;
+    @UI(&quot;.card-img-top&quot;) public Image image;
+    @UI(&quot;.card-footer small&quot;) public Text footerText;
+    }</p>
+
+<p>public class CardGroup extends Card {
+    @UI(&quot;.card:nth-of-type(1)&quot;) public Card card1;
+    }</p>
+
+<p>@Test
+    public void getSrcTest() {
+        assertEquals(cardGroupWithoutFooter.card1.image.src(), card1ImageSrc);
+        assertEquals(cardGroupWithoutFooter.card2.image.src(), card2ImageSrc);
+        assertEquals(cardGroupWithFooter.card1.image.src(), card1ImageSrc);
+        assertEquals(cardGroupWithFooter.card2.image.src(), card2ImageSrc);
+    }</p>
+
+<p>@Test
+    public void getAltTest() {
+        assertEquals(cardGroupWithoutFooter.card1.image.alt(), card1ImageAlt);
+        assertEquals(cardGroupWithoutFooter.card2.image.alt(), card2ImageAlt);
+        assertEquals(cardGroupWithFooter.card1.image.alt(), card1ImageAlt);
+        assertEquals(cardGroupWithFooter.card2.image.alt(), card2ImageAlt);
+    }</p>
+
+<p>@Test
+    public void getTitleTextTest() {
+        assertEquals(cardGroupWithoutFooter.card1.title.getText(), card1Title);
+        assertEquals(cardGroupWithoutFooter.card2.title.getText(), card2Title);
+        assertEquals(cardGroupWithFooter.card1.title.getText(), card1Title);
+        assertEquals(cardGroupWithFooter.card2.title.getText(), card2Title);
+    }</p>
+
+<p>@Test
+    public void getMainTextTest() {
+        assertEquals(cardGroupWithoutFooter.card1.mainText.getText(), card1MainText);
+        assertEquals(cardGroupWithoutFooter.card2.mainText.getText(), card2MainText);
+        assertEquals(cardGroupWithFooter.card1.mainText.getText(), card1MainText);
+        assertEquals(cardGroupWithFooter.card2.mainText.getText(), card2MainText);
+    }</p>
+
+<p>@Test
+    public void getMutedTextTest() {
+        assertEquals(cardGroupWithoutFooter.card1.mutedText.getText(), card1HeroName);
+        assertEquals(cardGroupWithoutFooter.card2.mutedText.getText(), card2HeroName);
+    }
+```</p>
 
 <p><img src="images/bootstrap/card-groups-html.png" alt="Card_groups HTML example" /></p>
 
@@ -10714,9 +10768,75 @@ For example .card-columns class to generate a set of responsive tiers for changi
 
 <p><img src="images/bootstrap/card-groups-with-footer.png" alt="Card_groups example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<p>Here is an example with provided Bootstrap v4.3 code:
+```java 
+   @UI(&quot;.card-group:nth-of-type(2)&quot;) public static CardGroup cardGroupWithFooter;
+   //@FindBy(css=&#39;.card-group:nth-of-type(2)&#39;)</p>
+
+<p>public class Card extends Section {
+    @UI(&quot;.card-title&quot;) public Text title;
+    @UI(&quot;.card-text:nth-of-type(1)&quot;) public Text mainText;
+    @UI(&quot;.card-text .text-muted&quot;) public Text mutedText;
+    @UI(&quot;.card-img-top&quot;) public Image image;
+    @UI(&quot;.card-footer small&quot;) public Text footerText;
+    }</p>
+
+<p>public class CardGroup extends Card {
+    @UI(&quot;.card:nth-of-type(2)&quot;) public Card card2;
+    }</p>
+
+<p>@Test
+    public void getSrcTest() {
+        assertEquals(cardGroupWithoutFooter.card1.image.src(), card1ImageSrc);
+        assertEquals(cardGroupWithoutFooter.card2.image.src(), card2ImageSrc);
+        assertEquals(cardGroupWithFooter.card1.image.src(), card1ImageSrc);
+        assertEquals(cardGroupWithFooter.card2.image.src(), card2ImageSrc);
+    }</p>
+
+<p>@Test
+    public void getAltTest() {
+        assertEquals(cardGroupWithoutFooter.card1.image.alt(), card1ImageAlt);
+        assertEquals(cardGroupWithoutFooter.card2.image.alt(), card2ImageAlt);
+        assertEquals(cardGroupWithFooter.card1.image.alt(), card1ImageAlt);
+        assertEquals(cardGroupWithFooter.card2.image.alt(), card2ImageAlt);
+    }</p>
+
+<p>@Test
+    public void getTitleTextTest() {
+        assertEquals(cardGroupWithoutFooter.card1.title.getText(), card1Title);
+        assertEquals(cardGroupWithoutFooter.card2.title.getText(), card2Title);
+        assertEquals(cardGroupWithFooter.card1.title.getText(), card1Title);
+        assertEquals(cardGroupWithFooter.card2.title.getText(), card2Title);
+    }</p>
+
+<p>@Test
+    public void getMainTextTest() {
+        assertEquals(cardGroupWithoutFooter.card1.mainText.getText(), card1MainText);
+        assertEquals(cardGroupWithoutFooter.card2.mainText.getText(), card2MainText);
+        assertEquals(cardGroupWithFooter.card1.mainText.getText(), card1MainText);
+        assertEquals(cardGroupWithFooter.card2.mainText.getText(), card2MainText);
+    }</p>
+
+<p>@Test
+    public void getFooterTextTest() {
+        assertEquals(cardGroupWithFooter.card1.footerText.getText(), card1HeroName);
+        assertEquals(cardGroupWithFooter.card2.footerText.getText(), card2HeroName);
+    }
+```</p>
 
 <p><img src="images/bootstrap/card-groups-with-footer-html.png" alt="Card_groups HTML example" /></p>
+
+<p>Card groups are represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+
+<p>Inner elements of Card groups can be represented by the following classes:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardGroupsTests">Bootstrap test examples</a></p>
 <h4 id='card-decks'>Card decks</h4>
 <p>Use card decks for a set of equal width and height cards that aren’t attached to one another.</p>
 
