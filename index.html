@@ -7725,47 +7725,14 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <p><br><br></p>
 <h3 id='button-group'>Button group</h3>
-<p><strong>Button group</strong> – Element that groups a series of buttons together on a single line with the button group, and super-power them with JavaScript.</p>
+<p>**<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/button-group/" target="_blank">Button group</a> – Element that groups a series of buttons together on a single line with the button group, and super-power them with JavaScript.</p>
 
-<p><img src="images/bootstrap/button_group.png" alt="Button group" /></p>
-
-<p>Button group is located in the following classes:</p>
+<p>Button group is located in the following packages:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Button</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Button</em></li>
+<li><strong>Java</strong>: <em>io.github.epam.bootstrap.tests.composite.section.buttonGroup</em></li>
+<li><strong>C#</strong>:</li>
 </ul>
-<pre class="highlight java tab-java"><code>
-  <span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-group1"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#button-group1")</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="n">DefaultButtonGroup</span> <span class="n">defaultButtonGroup</span><span class="o">;</span>
-
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">redButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-      <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Red Button"</span><span class="o">));</span>
-  <span class="o">}</span>
-
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">redButton</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Red Button"</span><span class="o">);</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">greenButton</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Green Button"</span><span class="o">);</span>
-  <span class="o">}</span>
-
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">dropdownButton</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">optionToOpenNewTab</span><span class="o">);</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">windowsCount</span><span class="o">(),</span> <span class="mi">2</span><span class="o">);</span>
-  <span class="o">}</span>
-
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">valuesTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">defaultButtonGroup</span><span class="o">.</span><span class="na">dropdownButton</span><span class="o">.</span><span class="na">values</span><span class="o">(),</span> <span class="n">expectedValues</span><span class="o">);</span>
-  <span class="o">}</span>
-
-</code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/button_group-html.png" alt="Button group example" /></p>
 
 <p>Available methods in Java JDI Light:</p>
 
