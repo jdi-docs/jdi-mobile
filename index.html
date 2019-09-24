@@ -9391,9 +9391,9 @@ Below are examples of different toggle styles.</p>
 <ul>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#label">Label</a> </li>
-    <li><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a>  </li>
-    <li><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a>  </li>
-    <li><a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a></li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#link">Link</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#image">Image</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a> </li>
 </ul></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/mediaObject/MediaObjectTests.java" target=a_blank> Bootstrap test examples </a></p>
@@ -9794,85 +9794,72 @@ Below are examples of different toggle styles.</p>
 </tbody></table>
 
 <p><br></p>
+<h4 id='card-with-header-and-footer'><strong>Card with Header and Footer</strong></h4>
+<p>Add an optional<a href="https://getbootstrap.com/docs/4.3/components/card/#header-and-footer" target="a_blank"> header and/or footer </a>within a card.</p>
+<pre class="highlight java tab-java"><code>
 
-<p><strong>Card with Header and Footer</strong></p>
 
-<p>Add an optional header and/or footer within a card.</p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithHeaderAndFooter</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
+    <span class="nd">@Title</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">paragraph</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span><span class="kd">public</span> <span class="n">Text</span> <span class="n">header</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'footer')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footer</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-header-and-footer"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardWithHeaderAndFooter</span><span class="o">;</span> <span class="c1">//FindBy(id = "card-with-header-and-footer")</span>
+
+
+
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getFooterTextCardWithHeaderAndFooterTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cardWithHeaderAndFooter</span><span class="o">.</span><span class="na">footer</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">textFooterCardWithHeaderAndFooter</span><span class="o">);</span>
+    <span class="o">}</span>
+
+ <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getHeaderTextCardWithHeaderAndFooterTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cardWithHeaderAndFooter</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">textHeaderCardWithHeaderAndFooter</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre>
 <p><img src="images/bootstrap/cardheaderfooter.png" alt="Card with Header and Footer Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/cardheaderfooter-html.png" alt="Card with Header and Footer Code" /></p>
 
-<p>Available methods in Java JDI Light:</p>
+<p>Card is represented by Section class in Java:</p>
 
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
 
-<p>Available methods and properties in C# JDI Light:</p>
+<p>Inner elements of card can be represented by the following classes:
+<ul>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#label">Label</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button">Button</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a></li>
+</ul></p>
 
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/Card/CardWithHeaderAndFooterTests.java" target=a_blank> Bootstrap test examples </a>
+ <br></p>
 
 <p><strong>Card with Grid Markup</strong></p>
 
