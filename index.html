@@ -7859,27 +7859,31 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><br></p>
 
 <p><strong>Button Group Basic Example</strong></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#basic-example"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupBasicExample</span> <span class="n">buttonGroupBasicExample</span><span class="o">;</span>
-<span class="c1">// @FindBy(css = "#basic-example") public static ButtonGroupBasicExample buttonGroupBasicExample;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonGroupBasicExample</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Left']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">leftButton</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Middle']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">middleButton</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Right']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">rightButton</span><span class="o">;</span>
-<span class="o">}</span>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/button-group/#basic-example">Button Group Basic Example</a></strong> - wrapping a series of buttons with .btn in .btn-group.
+```java
+@UI(&quot;#basic-example&quot;) public static ButtonGroupBasicExample buttonGroupBasicExample;
+// @FindBy(css = &quot;#basic-example&quot;) public static ButtonGroupBasicExample buttonGroupBasicExample;</p>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">leftButtonTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">buttonGroupBasicExample</span><span class="o">.</span><span class="na">leftButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"btn btn-secondary"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="s">"16px"</span><span class="o">);</span>
-    <span class="n">buttonGroupBasicExample</span><span class="o">.</span><span class="na">leftButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">leftButtonClickAlert</span><span class="o">));</span>
-<span class="o">}</span>
-</code></pre>
+<p>public class ButtonGroupBasicExample extends Section {
+    @UI(&quot;//button[text()=&#39;Left&#39;]&quot;) public Button leftButton;
+    @UI(&quot;//button[text()=&#39;Middle&#39;]&quot;) public Button middleButton;
+    @UI(&quot;//button[text()=&#39;Right&#39;]&quot;) public Button rightButton;
+}</p>
+
+<p>@Test
+public void leftButtonTests() {
+    buttonGroupBasicExample.leftButton.is()
+            .displayed()
+            .enabled()
+            .core()
+            .hasClass(&quot;btn btn-secondary&quot;)
+            .css(&quot;font-size&quot;, &quot;16px&quot;);
+    buttonGroupBasicExample.leftButton.click();
+    validateAlert(is(leftButtonClickAlert));
+}
+```</p>
+
 <p><img src="images/bootstrap/bgroup-basic-example-screen.png" alt="Button Group Basic Example HTML" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
@@ -7983,7 +7987,7 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
     <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">linkOnePageTitle</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
-<p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/button-group/#nesting">Button Group Nesting</a></strong> - placing a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
 
 <p><img src="images/bootstrap/bgroup-nesting.png" alt="Button Group Nesting Example" /></p>
 
@@ -8027,7 +8031,7 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-<p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/button-group/#vertical-variation">Button Group Vertical Variation</a></strong> - making a set of buttons appear vertically stacked rather than horizontally.</p>
 
 <p><img src="images/bootstrap/bgroup-vertical-variation.png" alt="Button Group Nesting Example" /></p>
 
@@ -8068,7 +8072,7 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
     <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre>
-<p><strong>Alert</strong> – Element that provides contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/alerts/">Alert</a></strong> – Element that provides contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
 
 <p><img src="images/bootstrap/alert-dismissible.png" alt="Alert" /></p>
 
@@ -12316,7 +12320,7 @@ Form can consists of:
     <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">dropdownButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">dropdownButton</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
-<p><strong>Buttons with dropdowns</strong> – Buttons with dropdowns have no detailed information on Bootstrap website</p>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#buttons-with-dropdowns">Buttons with dropdowns</a></strong> – Buttons with dropdowns have no detailed information on Bootstrap website</p>
 
 <p><img src="images/bootstrap/buttons_with_dropdowns.png" alt="Buttons with dropdowns" /></p>
 
@@ -12360,7 +12364,7 @@ Form can consists of:
 </tr>
 </tbody></table>
 <h4 id='segmented-buttons'>Segmented buttons</h4>
-<p><strong>Segmented buttons</strong> – Segmented buttons have no detailed information on Bootstrap website</p>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#segmented-buttons">Segmented buttons</a></strong> – Segmented buttons have no detailed information on Bootstrap website</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#segmented-button"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SegmentedButton</span> <span class="n">segmentedButton</span><span class="o">;</span>
 <span class="c1">// @FindBy(css = "#segmented-button") public static SegmentedButton segmentedButton;</span>
 
@@ -12445,7 +12449,7 @@ Form can consists of:
 </tr>
 </tbody></table>
 <h4 id='custom-select'>Custom select</h4>
-<p><strong>Custom select</strong> – Input groups include support for custom selects and text field. Browser default versions of these are not supported.</p>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-select">Custom select</a></strong> – Input groups include support for custom selects and text field. Browser default versions of these are not supported.</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-select-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomSelect</span> <span class="n">customSelect</span><span class="o">;</span>
 <span class="c1">// @FindBy(css = "#custom-select-01") public static CustomSelect customSelect;</span>
 
@@ -12489,7 +12493,7 @@ Form can consists of:
 
 <p><img src="images/bootstrap/custom-select-code.png" alt="Custom select example" /></p>
 
-<p><strong>Custom select with button</strong> – Input groups include support for custom selects and button. Browser default versions of these are not supported.</p>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-select">Custom select with button</a></strong> – Input groups include support for custom selects and button. Browser default versions of these are not supported.</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-select-button-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomSelectWithButton</span> <span class="n">customSelectWithButton</span><span class="o">;</span>
 <span class="c1">// @FindBy(css = "#custom-select-button-01") public static CustomSelect customSelect;</span>
 
