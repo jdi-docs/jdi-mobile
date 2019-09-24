@@ -10706,128 +10706,120 @@ For example .card-columns class to generate a set of responsive tiers for changi
 
 <p><img src="images/bootstrap/card-groups.png" alt="Card_groups example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:
-<br>
-```java 
-   @UI(&quot;.card-group:nth-of-type(1)&quot;) public static CardGroup cardGroupWithoutFooter;
-   //@FindBy(css=&#39;.card-group:nth-of-type(1)&#39;)</p>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>   <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardGroup</span> <span class="n">cardGroupWithoutFooter</span><span class="o">;</span>
+   <span class="c1">//@FindBy(css='.card-group:nth-of-type(1)')</span>
 
-<p>public class Card extends Section {
-    @UI(&quot;.card-title&quot;) public Text title;
-    @UI(&quot;.card-text:nth-of-type(1)&quot;) public Text mainText;
-    @UI(&quot;.card-text .text-muted&quot;) public Text mutedText;
-    @UI(&quot;.card-img-top&quot;) public Image image;
-    @UI(&quot;.card-footer small&quot;) public Text footerText;
-    }</p>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Card</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text:nth-of-type(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">mainText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text .text-muted"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">mutedText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-img-top"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-footer small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footerText</span><span class="o">;</span>
+    <span class="o">}</span>
 
-<p>public class CardGroup extends Card {
-    @UI(&quot;.card:nth-of-type(1)&quot;) public Card card1;
-    }</p>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardGroup</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Card</span> <span class="n">card1</span><span class="o">;</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getSrcTest() {
-        assertEquals(cardGroupWithoutFooter.card1.image.src(), card1ImageSrc);
-        assertEquals(cardGroupWithoutFooter.card2.image.src(), card2ImageSrc);
-        assertEquals(cardGroupWithFooter.card1.image.src(), card1ImageSrc);
-        assertEquals(cardGroupWithFooter.card2.image.src(), card2ImageSrc);
-    }</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSrcTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card1ImageSrc</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card2ImageSrc</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card1ImageSrc</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card2ImageSrc</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getAltTest() {
-        assertEquals(cardGroupWithoutFooter.card1.image.alt(), card1ImageAlt);
-        assertEquals(cardGroupWithoutFooter.card2.image.alt(), card2ImageAlt);
-        assertEquals(cardGroupWithFooter.card1.image.alt(), card1ImageAlt);
-        assertEquals(cardGroupWithFooter.card2.image.alt(), card2ImageAlt);
-    }</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getAltTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getTitleTextTest() {
-        assertEquals(cardGroupWithoutFooter.card1.title.getText(), card1Title);
-        assertEquals(cardGroupWithoutFooter.card2.title.getText(), card2Title);
-        assertEquals(cardGroupWithFooter.card1.title.getText(), card1Title);
-        assertEquals(cardGroupWithFooter.card2.title.getText(), card2Title);
-    }</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getMainTextTest() {
-        assertEquals(cardGroupWithoutFooter.card1.mainText.getText(), card1MainText);
-        assertEquals(cardGroupWithoutFooter.card2.mainText.getText(), card2MainText);
-        assertEquals(cardGroupWithFooter.card1.mainText.getText(), card1MainText);
-        assertEquals(cardGroupWithFooter.card2.mainText.getText(), card2MainText);
-    }</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getMainTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getMutedTextTest() {
-        assertEquals(cardGroupWithoutFooter.card1.mutedText.getText(), card1HeroName);
-        assertEquals(cardGroupWithoutFooter.card2.mutedText.getText(), card2HeroName);
-    }
-```
-<br></p>
-
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getMutedTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mutedText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1HeroName</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mutedText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2HeroName</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/card-groups-html.png" alt="Card_groups HTML example" /></p>
 
 <p><strong>Card groups with footer</strong></p>
 
 <p><img src="images/bootstrap/card-groups-with-footer.png" alt="Card_groups example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:
-<br>
-```java 
-   @UI(&quot;.card-group:nth-of-type(2)&quot;) public static CardGroup cardGroupWithFooter;
-   //@FindBy(css=&#39;.card-group:nth-of-type(2)&#39;)</p>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>   <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(2)"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardGroup</span> <span class="n">cardGroupWithFooter</span><span class="o">;</span>
+   <span class="c1">//@FindBy(css='.card-group:nth-of-type(2)')</span>
 
-<p>public class Card extends Section {
-    @UI(&quot;.card-title&quot;) public Text title;
-    @UI(&quot;.card-text:nth-of-type(1)&quot;) public Text mainText;
-    @UI(&quot;.card-text .text-muted&quot;) public Text mutedText;
-    @UI(&quot;.card-img-top&quot;) public Image image;
-    @UI(&quot;.card-footer small&quot;) public Text footerText;
-    }</p>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Card</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text:nth-of-type(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">mainText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text .text-muted"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">mutedText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-img-top"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-footer small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footerText</span><span class="o">;</span>
+    <span class="o">}</span>
 
-<p>public class CardGroup extends Card {
-    @UI(&quot;.card:nth-of-type(2)&quot;) public Card card2;
-    }</p>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardGroup</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(2)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Card</span> <span class="n">card2</span><span class="o">;</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getSrcTest() {
-        assertEquals(cardGroupWithoutFooter.card1.image.src(), card1ImageSrc);
-        assertEquals(cardGroupWithoutFooter.card2.image.src(), card2ImageSrc);
-        assertEquals(cardGroupWithFooter.card1.image.src(), card1ImageSrc);
-        assertEquals(cardGroupWithFooter.card2.image.src(), card2ImageSrc);
-    }</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSrcTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card1ImageSrc</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card2ImageSrc</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card1ImageSrc</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card2ImageSrc</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getAltTest() {
-        assertEquals(cardGroupWithoutFooter.card1.image.alt(), card1ImageAlt);
-        assertEquals(cardGroupWithoutFooter.card2.image.alt(), card2ImageAlt);
-        assertEquals(cardGroupWithFooter.card1.image.alt(), card1ImageAlt);
-        assertEquals(cardGroupWithFooter.card2.image.alt(), card2ImageAlt);
-    }</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getAltTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getTitleTextTest() {
-        assertEquals(cardGroupWithoutFooter.card1.title.getText(), card1Title);
-        assertEquals(cardGroupWithoutFooter.card2.title.getText(), card2Title);
-        assertEquals(cardGroupWithFooter.card1.title.getText(), card1Title);
-        assertEquals(cardGroupWithFooter.card2.title.getText(), card2Title);
-    }</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getMainTextTest() {
-        assertEquals(cardGroupWithoutFooter.card1.mainText.getText(), card1MainText);
-        assertEquals(cardGroupWithoutFooter.card2.mainText.getText(), card2MainText);
-        assertEquals(cardGroupWithFooter.card1.mainText.getText(), card1MainText);
-        assertEquals(cardGroupWithFooter.card2.mainText.getText(), card2MainText);
-    }</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getMainTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void getFooterTextTest() {
-        assertEquals(cardGroupWithFooter.card1.footerText.getText(), card1HeroName);
-        assertEquals(cardGroupWithFooter.card2.footerText.getText(), card2HeroName);
-    }
-```
-<br></p>
-
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getFooterTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">footerText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1HeroName</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">footerText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2HeroName</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/card-groups-with-footer-html.png" alt="Card_groups HTML example" /></p>
 
 <p>Card groups are represented by Section class in Java:</p>
