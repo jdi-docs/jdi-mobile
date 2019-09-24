@@ -7860,35 +7860,33 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <p><strong>Button Group Basic Example</strong></p>
 
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/button-group/#basic-example">Button Group Basic Example</a></strong> - wrapping a series of buttons with .btn in .btn-group.
-```java
-@UI(&quot;#basic-example&quot;) public static ButtonGroupBasicExample buttonGroupBasicExample;
-// @FindBy(css = &quot;#basic-example&quot;) public static ButtonGroupBasicExample buttonGroupBasicExample;</p>
-
-<p>public class ButtonGroupBasicExample extends Section {
-    @UI(&quot;//button[text()=&#39;Left&#39;]&quot;) public Button leftButton;
-    @UI(&quot;//button[text()=&#39;Middle&#39;]&quot;) public Button middleButton;
-    @UI(&quot;//button[text()=&#39;Right&#39;]&quot;) public Button rightButton;
-}</p>
-
-<p>@Test
-public void leftButtonTests() {
-    buttonGroupBasicExample.leftButton.is()
-            .displayed()
-            .enabled()
-            .core()
-            .hasClass(&quot;btn btn-secondary&quot;)
-            .css(&quot;font-size&quot;, &quot;16px&quot;);
-    buttonGroupBasicExample.leftButton.click();
-    validateAlert(is(leftButtonClickAlert));
-}
-```</p>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/button-group/#basic-example">Button Group Basic Example</a></strong> - wrapping a series of buttons with .btn in .btn-group.</p>
 
 <p><img src="images/bootstrap/bgroup-basic-example-screen.png" alt="Button Group Basic Example HTML" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#basic-example"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupBasicExample</span> <span class="n">buttonGroupBasicExample</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#basic-example") public static ButtonGroupBasicExample buttonGroupBasicExample;</span>
 
-<p><img src="images/bootstrap/bgroup-basic-example-html.png" alt="Button Group Nesting HTML Example" />
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonGroupBasicExample</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Left']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">leftButton</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Middle']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">middleButton</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Right']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">rightButton</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">leftButtonTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">buttonGroupBasicExample</span><span class="o">.</span><span class="na">leftButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"btn btn-secondary"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="s">"16px"</span><span class="o">);</span>
+    <span class="n">buttonGroupBasicExample</span><span class="o">.</span><span class="na">leftButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">leftButtonClickAlert</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/bgroup-basic-example-html.png" alt="Button Group Basic Example Example" />
 <br><br><br><br><br><br><br></p>
 
 <p><strong>Button toolbar</strong>
@@ -7897,7 +7895,8 @@ public void leftButtonTests() {
 
 <p><img src="images/bootstrap/button_toolbar.png" alt="Button toolbar" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<p>Here is an example with provided Bootstrap v4.3 code:
+<br><br><br><br><br><br></p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".btn-toolbar"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonToolbar</span> <span class="n">buttonToolbar</span><span class="o">;</span>
 <span class="c1">// @FindBy(css = ".btn-toolbar") public static ButtonToolbar buttonToolbar;</span>
 
