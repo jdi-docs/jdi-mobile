@@ -7955,23 +7955,23 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Right')]"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Button</span> <span class="n">rightBtn</span><span class="o">;</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">lgLeftBtnAlertText</span><span class="o">));</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">midBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">lgMidBtnAlertText</span><span class="o">));</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">rightBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">lgRightBtnAlertText</span><span class="o">));</span>
+<span class="n">String</span> <span class="n">leftBtnText</span> <span class="o">=</span> <span class="s">"Left"</span><span class="o">;</span>
 
-    <span class="n">smallBtnGroup</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">smallBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">smLeftBtnAlertText</span><span class="o">));</span>
-    <span class="n">smallBtnGroup</span><span class="o">.</span><span class="na">midBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">smMidBtnAlertText</span><span class="o">));</span>
-    <span class="n">smallBtnGroup</span><span class="o">.</span><span class="na">rightBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">smRightBtnAlertText</span><span class="o">));</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">leftBtnText</span><span class="o">));</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Le"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">));</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">leftBtnText</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"btn btn-secondary"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
