@@ -11908,7 +11908,21 @@ Form can consists of:
 <h3 id='input-group'>Input group</h3><h4 id='basic-example'>Basic Example</h4>
 <p><strong><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#basic-example" target="_blank">Input group</a></strong> – Place one add-on or button on either side of an input. You may also place one on both sides of an input.
 <br /></p>
+<pre class="highlight java tab-java"><code>
+   <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-basic-example1"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithText</span> <span class="n">inputGroupBasicExample1</span><span class="o">;</span><span class="c1">//@FindBy(css = "#input-group-basic-example1")</span>
 
+   <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupInputWithText</span> <span class="kd">extends</span> <span class="n">Section</span><span class="o">{</span>
+       <span class="nd">@UI</span><span class="o">(</span><span class="s">".input-group-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+       <span class="nd">@UI</span><span class="o">(</span><span class="s">".form-control"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Test</span><span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTextTestExample1</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">inputGroupBasicExample1</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">textExample1</span><span class="o">);</span>
+        <span class="n">inputGroupBasicExample1</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">textExample1</span><span class="o">));</span>
+   <span class="o">}</span>
+
+</code></pre>
 <p><strong>1.Input group example - Input + left span</strong></p>
 
 <p><img src="images/bootstrap/input-group-base-example1.png" alt="Input group example1" height="50%" width="50%"></p>
@@ -11916,32 +11930,93 @@ Form can consists of:
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/input-group-base-example1-html.png" alt="Input group example1 html"> </p>
+<pre class="highlight java tab-java"><code>
+   <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-basic-example2"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithText</span> <span class="n">inputGroupBasicExample2</span><span class="o">;</span><span class="c1">//@FindBy(css = "#input-group-basic-example2")</span>
 
-<p><strong>2.Input group example - Input + right span</strong> </p>
+   <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupInputWithText</span> <span class="kd">extends</span> <span class="n">Section</span><span class="o">{</span>
+       <span class="nd">@UI</span><span class="o">(</span><span class="s">".input-group-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+       <span class="nd">@UI</span><span class="o">(</span><span class="s">".form-control"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input</span><span class="o">;</span>
+   <span class="o">}</span>
+
+    <span class="nd">@Test</span><span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">4</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkAddonConsistTextTestExample2</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">inputGroupBasicExample2</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">partOfAddonExample2</span><span class="o">));</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><br /><br /><br /><br /><br /><br />
+<strong>2.Input group example - Input + right span</strong> </p>
 
 <p><img src="images/bootstrap/input-group-base-example2.png" alt="Input group example1" height="50%" width="50%"></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/input-group-base-example2-html.png" alt="Input group example2 html">  </p>
+<pre class="highlight java tab-java"><code>
+   <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-basic-example3"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithLabelAndText</span> <span class="n">inputGroupBasicExample3</span><span class="o">;</span><span class="c1">//@FindBy(css = "#input-group-basic-example3")</span>
 
-<p><strong>3.Input group example - Input + label + left span</strong></p>
+   <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupInputWithLabelAndText</span> <span class="kd">extends</span> <span class="n">Section</span><span class="o">{</span>
+       <span class="nd">@UI</span><span class="o">(</span><span class="s">".input-group-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+       <span class="nd">@UI</span><span class="o">(</span><span class="s">"#basic-url"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Test</span><span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">6</span><span class="o">)</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkLabelExample3</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">assertEquals</span><span class="o">(</span><span class="n">inputGroupBasicExample3</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">label</span><span class="o">().</span><span class="na">getText</span><span class="o">(),</span> <span class="n">labelExample3</span><span class="o">);</span>
+   <span class="o">}</span>
+
+</code></pre>
+<p><br /><br /><br /><br />
+<strong>3.Input group example - Input + label + left span</strong></p>
 
 <p><img src="images/bootstrap/input-group-base-example3.png" alt="Input group example1" height="50%" width="50%"></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
-<p><img src="images/bootstrap/input-group-base-example3-html.png" alt="Input group example3 html"> </p>
+<p><img src="images/bootstrap/input-group-base-example3-html.png" alt="Input group example3 html"></p>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-basic-example4"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithTwoText</span> <span class="n">inputGroupBasicExample4</span><span class="o">;</span><span class="c1">//@FindBy(css = "#input-group-basic-example4")</span>
 
-<p><strong>4.Input group example - Input + left and right span</strong></p>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupInputWithTwoText</span> <span class="kd">extends</span> <span class="n">Section</span><span class="o">{</span>
+      <span class="nd">@UI</span><span class="o">(</span><span class="s">".input-group-prepend .input-group-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text_pretend</span><span class="o">;</span>
+      <span class="nd">@UI</span><span class="o">(</span><span class="s">".input-group-append .input-group-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text_append</span><span class="o">;</span>
+      <span class="nd">@UI</span><span class="o">(</span><span class="s">".form-control"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Test</span><span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">7</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkAddonsExample4</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">inputGroupBasicExample4</span><span class="o">.</span><span class="na">text_append</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+      <span class="n">inputGroupBasicExample4</span><span class="o">.</span><span class="na">text_append</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">addonAppendExample4</span><span class="o">));</span>
+      <span class="n">inputGroupBasicExample4</span><span class="o">.</span><span class="na">text_pretend</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+      <span class="n">inputGroupBasicExample4</span><span class="o">.</span><span class="na">text_pretend</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">addonPretendExample4</span><span class="o">));</span>
+  <span class="o">}</span>
+
+</code></pre>
+<p><br /><br /><br />
+<strong>4.Input group example - Input + left and right span</strong></p>
 
 <p><img src="images/bootstrap/input-group-base-example4.png" alt="Input group example4" height="50%" width="50%"></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/input-group-base-example4-html.png" alt="Input group example4 html"> </p>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-basic-example5"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupTextareaWithText</span> <span class="n">inputGroupBasicExample5</span><span class="o">;</span><span class="c1">//@FindBy(css = "#input-group-basic-example5")</span>
 
-<p><strong>5.Input group example - Input + textarea</strong></p>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupTextareaWithText</span> <span class="kd">extends</span> <span class="n">Section</span><span class="o">{</span>
+      <span class="nd">@UI</span><span class="o">(</span><span class="s">".input-group-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+      <span class="nd">@UI</span><span class="o">(</span><span class="s">".form-control"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextArea</span> <span class="n">area</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Test</span><span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">9</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLinesTestExample5</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">inputGroupBasicExample5</span><span class="o">.</span><span class="na">area</span><span class="o">.</span><span class="na">setLines</span><span class="o">(</span><span class="n">linesTextArea</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">inputGroupBasicExample5</span><span class="o">.</span><span class="na">area</span><span class="o">.</span><span class="na">getLines</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="n">linesTextArea</span><span class="o">));</span>
+  <span class="o">}</span>
+
+</code></pre>
+<p><br /><br /><br />
+<strong>5.Input group example - Input + textarea</strong></p>
 
 <p><img src="images/bootstrap/input-group-base-example5.png" alt="Input group example5" height="50%" width="50%"></p>
 
