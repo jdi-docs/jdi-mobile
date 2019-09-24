@@ -12941,6 +12941,64 @@ Form can consists of:
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardBodyTests.java">Bootstrap test examples</a>
  <br></p>
+<h4 id='card-using-custom-css'>Card using custom CSS</h4><pre class="highlight java tab-java"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-custom-css-1"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-custom-css-1")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithCustomCss13Rem</span> <span class="n">cardWithCustomCss13Rem</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithCustomCss13Rem</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".btn"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardWithCustomCss13Rem</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardWithCustomCss13Rem</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"width"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"208px"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"margin-bottom"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"10px"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+<p>Use <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.0/components/card/#using-custom-css">custom CSS</a> custom CSS in your stylesheets or as inline styles to set a width.</p>
+
+<p><img src="images/bootstrap/card_custom_CSS.png" alt="Card custom CSS Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/card_custom_CSS_html.png" alt="Card custom CSS Example Code" /></p>
+
+<p>Inner elements of Card using custom CSS represented by the following classes:<br>
+<a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
+<a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithCustomCss13RemTests.java">Bootstrap test examples</a></p>
 <h3 id='jumbotron'>Jumbotron</h3><pre class="highlight java tab-java"><code>
 
 
