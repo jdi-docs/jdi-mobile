@@ -11965,8 +11965,28 @@ Form can consists of:
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup">Bootstrap test example </a></p>
 <h4 id='sizing-2'>Sizing</h4>
-<p><strong>Sizing</strong> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#sizing" target="_blank">Sizing</a> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
+<pre class="highlight java tab-java"><code>    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-default"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupSizing</span> <span class="n">inputGroupDefaultSizing</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-small"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupSizing</span> <span class="n">inputGroupSmallSizing</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-large"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupSizing</span> <span class="n">inputGroupLargeSizing</span><span class="o">;</span>
 
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextFromSizingTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">inputGroupDefaultSizing</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">inputGroupSmallSizing</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">inputGroupLargeSizing</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearSizingTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">inputGroupDefaultSizing</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">inputGroupDefaultSizing</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">""</span><span class="o">);</span>
+        <span class="n">inputGroupSmallSizing</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">inputGroupDefaultSizing</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">""</span><span class="o">);</span>
+        <span class="n">inputGroupLargeSizing</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">inputGroupDefaultSizing</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">""</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
 <p><strong>Sizing on the individual input group elements isn’t supported.</strong>
 <img src="images/bootstrap/sizing.png" alt="Sizing" /></p>
 
@@ -11978,35 +11998,45 @@ Form can consists of:
 
 <table><thead>
 <tr>
-<th>Method</th>
+<th>Method / Property</th>
 <th>Description</th>
 <th>Return Type</th>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>setText(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>clear()</strong></td>
+<td>clears the text field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>focus()</strong></td>
+<td>places cursor within the text field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
 <h4 id='wrapping'>Wrapping</h4><pre class="highlight java tab-java"><code>   <span class="kd">public</span> <span class="kd">static</span> <span class="n">UIElement</span> <span class="n">inputGroupWrap</span><span class="o">,</span><span class="n">inputGroupNowrap</span><span class="o">;</span><span class="c1">//@FindBy(css = "#input-group-wrap")</span>
