@@ -7946,11 +7946,41 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including each one when nesting multiple groups.</p>
 
 <p><img src="images/bootstrap/bgroup-sizing.png" alt="Button Group Sizing Example" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#btn-lg-group"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupSizing</span> <span class="n">largeBtnGroup</span><span class="o">;</span>
 
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Left')]"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">leftBtn</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Middle')]"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">midBtn</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Right')]"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">rightBtn</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">lgLeftBtnAlertText</span><span class="o">));</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">midBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">lgMidBtnAlertText</span><span class="o">));</span>
+    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">rightBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">lgRightBtnAlertText</span><span class="o">));</span>
+
+    <span class="n">smallBtnGroup</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">smallBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">smLeftBtnAlertText</span><span class="o">));</span>
+    <span class="n">smallBtnGroup</span><span class="o">.</span><span class="na">midBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">smMidBtnAlertText</span><span class="o">));</span>
+    <span class="n">smallBtnGroup</span><span class="o">.</span><span class="na">rightBtn</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">smRightBtnAlertText</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
-<p><img src="images/bootstrap/bgroup-sizing-html.png" alt="Button Group Sizing HTML Example" />
-<br></p>
+<p><img src="images/bootstrap/bgroup-sizing-html.png" alt="Button Group Sizing HTML Example" /></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/SizingTests.java" target="_blank">Bootstrap test examples</a></p>
+
+<p><br></p>
 
 <p><strong>Button Group Nesting</strong></p>
 
