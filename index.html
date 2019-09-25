@@ -13060,11 +13060,9 @@ Form can consists of:
 
 <p>Inner elements of Card Example represented by the following classes:</p>
 
-<ul>
-<li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br></li>
-<li><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a><br></li>
-<li><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></li>
-</ul>
+<p><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
+<a href="https://jdi-docs.github.io/jdi-light/#button">Button</a><br>
+<a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardExampleTests.java">Bootstrap test examples</a>
 <br></p>
@@ -13132,8 +13130,8 @@ Form can consists of:
 <p><img src="images/bootstrap/cardsubslinks-html.png" alt="Card Body Example Code" /></p>
 
 <p>Inner elements of Card with Subtitles and Links represented by the following classes:<br>
-- <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
-- <a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></p>
+<a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
+<a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithSubtitlesAndLinksTests.java">Bootstrap test examples</a></p>
 
@@ -13227,82 +13225,10 @@ Form can consists of:
 <p><img src="images/bootstrap/card_custom_CSS_html.png" alt="Card custom CSS Example Code" /></p>
 
 <p>Inner elements of Card using custom CSS represented by the following classes:<br>
-- <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
-- <a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></p>
+<a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
+<a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithCustomCss13RemTests.java">Bootstrap test examples</a></p>
-<h4 id='card-horizontal-2'>Card Horizontal</h4><pre class="highlight java tab-java"><code>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-horizontal"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-horizontal")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardHorizontal</span> <span class="n">cardHorizontal</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardHorizontal</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//p[contains(text(), 'fictional character')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">mainText</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".text-muted"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">smallText</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-img"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".col-md-4"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">colMd4</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".col-md-8"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">colMd8</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSrcTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardHorizontal</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">imageSrc</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">cardHorizontal</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">titleText</span><span class="o">));</span>
-    <span class="n">cardHorizontal</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">mainText</span><span class="o">));</span>
-    <span class="n">cardHorizontal</span><span class="o">.</span><span class="na">smallText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">smallText</span><span class="o">))</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"11.2px"</span><span class="o">))</span>
-            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"small"</span><span class="o">));</span>
-</code></pre>
-<p>Using a combination of grid and utility classes, cards can be made <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/card/#horizontal">horizontal</a> in a mobile-friendly and responsive way.</p>
-
-<p><img src="images/bootstrap/card_horizontal.png" alt="Card horizontal example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/card_horizontal-html.png" alt="Card horizontal example" /></p>
-
-<p>Inner elements of Card using custom CSS represented by the following classes:<br>
- - <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
- - <a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardHorizontalTests.java">Bootstrap test examples</a></p>
-
-<p><br><br><br><br><br></p>
 <h3 id='jumbotron'>Jumbotron</h3><pre class="highlight java tab-java"><code>
 
 
