@@ -10117,84 +10117,122 @@ Below are examples of different toggle styles.</p>
 <p><strong>Card Navigation</strong></p>
 
 <p>Add some navigation to a card’s header (or block) with Bootstrap’s
- <a href="https://getbootstrap.com/docs/4.3/components/navs/" target="_blank">
+ <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/navs/" target="_blank">
  nav components
  </a>.</p>
 
 <p><img src="images/bootstrap/cardnav.png" alt="Card Navigation Example" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-navigation"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardNavigation</span> <span class="n">cardNavigation</span><span class="o">;</span>
 
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".nav"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Menu</span> <span class="n">nav</span><span class="o">;</span>
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#activeLink"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Link</span> <span class="n">activeLink</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdiLink"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Link</span> <span class="n">jdiLink</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabledLink"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Link</span> <span class="n">disabledLink</span><span class="o">;</span>
+
+<span class="nd">@Title</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Text</span> <span class="n">subtitle</span><span class="o">;</span>
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+
+<span class="n">String</span> <span class="n">titleText</span> <span class="o">=</span> <span class="s">"SPECIAL TITLE TREATMENT"</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">subtitleText</span> <span class="o">=</span> <span class="s">"With supporting text below as a natural lead-in to additional content."</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">buttonText</span> <span class="o">=</span> <span class="s">"Click Me!"</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">activeLinkText</span> <span class="o">=</span> <span class="s">"Active"</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">jdiLinkText</span> <span class="o">=</span> <span class="s">"JDI"</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">disabledLinkText</span> <span class="o">=</span> <span class="s">"Disabled"</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">activeLinkRef</span> <span class="o">=</span> <span class="s">"javascript: void()"</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">jdiLinkRef</span> <span class="o">=</span> <span class="s">"https://github.com/jdi-testing/jdi-light"</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">disabledLinkRef</span> <span class="o">=</span> <span class="s">"javascript: void()"</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">activeLinkAlert</span> <span class="o">=</span> <span class="s">"Active Tab Clicked!"</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">titleText</span><span class="o">);</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">subtitle</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">subtitleText</span><span class="o">);</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">subtitle</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">activeLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">activeLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">jdiLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">jdiLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">disabledLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">disabledLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">disabled</span><span class="o">();</span>
+
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">activeLink</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">activeLinkText</span><span class="o">));</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">jdiLink</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">jdiLinkText</span><span class="o">));</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">disabledLink</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">disabledLinkText</span><span class="o">));</span>
+
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">activeLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ref</span><span class="o">(</span><span class="n">activeLinkRef</span><span class="o">);</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">jdiLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ref</span><span class="o">(</span><span class="n">jdiLinkRef</span><span class="o">);</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">disabledLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ref</span><span class="o">(</span><span class="n">disabledLinkRef</span><span class="o">);</span>
+
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonText</span><span class="o">));</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Click"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">cardNavigation</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"16px"</span><span class="o">));</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"btn btn-primary"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"onclick"</span><span class="o">,</span> <span class="s">"alert('Button Clicked!');"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/cardnav-html.png" alt="Card Navigation Example Code" /></p>
 
+<p>Card Navigation is represented by Section class in Java:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+</ul>
+
+<p>Inner elements of jumbotron can be represented by the following classes:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#menu">Menu</a></li>
+</ul>
+
+<p><a href="javascript: void()">Bootstrap test examples</a></p>
+
 <p>Available methods in Java JDI Light:</p>
 
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><br></p>
+<p>|Method | Description | Return Type
+<strong>getText()</strong> | Get element text | String
+<strong>getValue()</strong> | Get element value | String
+<strong>click()</strong> | Click element | void
+<strong>displayed()</strong> | Check that element is displayed | TextAssert
+<strong>enabled()</strong> | Check that element is enabled | UIAssert
+<strong>disabled()</strong> | Check that element is disabled | UIAssert
+<strong>url()</strong> | Get element URL | URL
+<strong>ref()</strong> | Get link ref attribute value | String
+<strong>getPath()</strong> | Get element&#39;s URL path part | String
+<strong>css()</strong> | Get button css value | String
+<strong>cssClass()</strong> | Assert element css class | IsAssert
+<strong>attr()</strong> | Assert element attribute | IsAssert
+<strong>tag()</strong> | Assert element tag | IsAssert
+<strong>is()</strong> | Assert action | TextAssert 
+<strong>assertThat()</strong> | Assert action | TextAssert
+ <br></p>
 
 <p><strong>Card Image Caps</strong></p>
 
