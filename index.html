@@ -7913,7 +7913,8 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including each one when nesting multiple groups.</p>
 
 <p><img src="images/bootstrap/bgroup-sizing.png" alt="Button Group Sizing Example" /></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#btn-lg-group"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupSizing</span> <span class="n">largeBtnGroup</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#btn-lg-group"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "btn-lg-group")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupSizing</span> <span class="n">largeBtnGroup</span><span class="o">;</span>
 
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Left')]"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Button</span> <span class="n">leftBtn</span><span class="o">;</span>
@@ -10122,7 +10123,8 @@ Below are examples of different toggle styles.</p>
  </a>.</p>
 
 <p><img src="images/bootstrap/cardnav.png" alt="Card Navigation Example" /></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-navigation"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardNavigation</span> <span class="n">cardNavigation</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-navigation"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "card-navigation")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardNavigation</span> <span class="n">cardNavigation</span><span class="o">;</span>
 
 <span class="nd">@UI</span><span class="o">(</span><span class="s">".nav"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Menu</span> <span class="n">nav</span><span class="o">;</span>
