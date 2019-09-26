@@ -12485,51 +12485,6 @@ Form can consists of:
 </ul>
 
 <p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupWrapping.java" target="_blank">Bootstrap test example wrapping</a></p>
-<h4 id='sizing-3'>Sizing</h4>
-<p><strong>Sizing</strong> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
-
-<p><strong>Sizing on the individual input group elements isn’t supported.</strong>
-<img src="images/bootstrap/sizing.png" alt="Sizing" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/sizing_code.png" alt="Sizing example" /></p>
-
-<p>And here are methods available in Java:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
 <h4 id='checkboxes-and-radios'>Checkboxes and radios</h4>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a> – Place any checkbox or radio option within an input group’s addon instead of text.</p>
 
@@ -12650,49 +12605,64 @@ Form can consists of:
 </tr>
 </tbody></table>
 <h4 id='multiple-addons'>Multiple addons</h4>
-<p><strong>Multiple addons</strong> – Multiple add-ons are supported and can be mixed with checkbox and radio input versions.</p>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#multiple-addons" target="_blank">Multiple addons</a> are supported and can be mixed with checkbox and radio input versions.</p>
 
 <p><img src="images/bootstrap/multiple_addons.png" alt="Multiple addons" /></p>
+<pre class="highlight java tab-java"><code> <span class="nd">@UI</span><span class="o">(</span><span class="s">"#multiple-addons-1"</span><span class="o">)</span>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupMultipleAddonsUpper</span> <span class="n">multipleAddonUpper</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#multiple-addons-1")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#multiple-addons-2"</span><span class="o">)</span>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupMultipleAddonsLower</span> <span class="n">multipleAddonLower</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#multiple-addons-2")</span>
 
+ <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupMultipleAddonsUpper</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#left-sign"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">firstLabel</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#left-sign")</span>
+     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#left-nil"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">secondLabel</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#left-nil")</span>
+     <span class="nd">@UI</span><span class="o">(</span><span class="s">".form-control"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">textField</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".form-control")</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"InputGroupMultipleAddonsLabels"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertTextFromValueTest</span><span class="o">(</span><span class="n">Label</span> <span class="n">multipleAddonsLabel</span><span class="o">,</span> <span class="n">String</span> <span class="n">labelValue</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">multipleAddonsLabel</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">labelValue</span><span class="o">);</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"InputGroupMultipleAddonsLabels"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Label</span> <span class="n">multipleAddonsLabel</span><span class="o">,</span> <span class="n">String</span> <span class="n">labelValue</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">multipleAddonsLabel</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"input-group-text"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">labelValue</span><span class="o">);</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"InputGroupMultipleAddonsTextFields"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">inputTest</span><span class="o">(</span><span class="n">TextField</span> <span class="n">textField</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">textField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+     <span class="n">textField</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"InputGroupMultipleAddonsTextFields"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">textFieldTests</span><span class="o">(</span><span class="n">TextField</span> <span class="n">textField</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">textField</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+     <span class="n">textField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+     <span class="n">textField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">partOfText</span><span class="o">));</span>
+     <span class="n">textField</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+     <span class="n">textField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">emptyText</span><span class="o">);</span>
+ <span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/multiple_addons_code.png" alt="Multiple addons example" /></p>
 
-<p>And here are methods available in Java:</p>
+<p>Multiple input is represented by Section class in Java:</p>
 
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+
+<p>Inner elements of multiple input can be represented by the following classes:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#textfield">TextField</a></p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#label">Label</a></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupMultipleAddonsTests.java" target="_blank">Bootstrap test example with multiple addons</a></p>
+
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /> </p>
 <h4 id='button-addons'>Button addons</h4>
 <p><strong>Button addons</strong> – Multiple buttons have no detailed information on Bootstrap website</p>
 
