@@ -13383,13 +13383,70 @@ Form can consists of:
 
 <p><img src="images/bootstrap/card_horizontal-html.png" alt="Card horizontal example" /></p>
 
-<p>Inner elements of Card using custom CSS represented by the following classes:<br>
+<p>Inner elements of Card Horizontal represented by the following classes:<br>
  - <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
  - <a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardHorizontalTests.java">Bootstrap test examples</a></p>
 
 <p><br><br><br><br><br></p>
+<h4 id='card-mixins-utilities'>Card Mixins Utilities</h4><pre class="highlight java tab-java"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-mixins-utilities"</span><span class="o">)</span>  <span class="c1">//FindBy(css = "#card-mixins-utilities")         </span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardMixinsUtilities</span> <span class="n">cardMixinsUtilities</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardMixinsUtilities</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">header</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-footer"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footer</span><span class="o">;</span>
+    <span class="nd">@Title</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getHeaderTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardMixinsUtilities</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">header</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardMixinsUtilities</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="s">"rgb(40, 167, 69)"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+<p>You can also <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/card/#mixins-utilities">change</a> the borders on the card header and footer as needed, and even remove their background-color
+with .bg-transparent.</p>
+
+<p><img src="images/bootstrap/card-mixins-utilities.png" alt="Card Mixins Utilities Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/card-mixins-utilities-html.png" alt="Card Mixins Utilities Example Code" /></p>
+
+<p>Inner elements of Card Mixing Utilities represented by the following classes:
+<a href="https://jdi-docs.github.io/jdi-light/#text">Text</a>
+<br><br><br><br><br><br><br><br></p>
 <h3 id='jumbotron'>Jumbotron</h3><pre class="highlight java tab-java"><code>
 
 
