@@ -8119,6 +8119,9 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <p><img src="images/bootstrap/bgroup-vertical-variation-html.png" alt="Button Group Vertical Variation Example" />
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h3 id='alert'>Alert</h3>
+<p>Alert is located in the following class: <br>
+- <strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.common.Alert</em></p>
+
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/alerts/">Alert</a></strong> – Element that provides contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
 
 <p><img src="images/bootstrap/alert-dismissible.png" alt="Alert" /></p>
@@ -8171,33 +8174,41 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Get alert text</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>hidden()</strong></td>
+<td>Check that element is hidden</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click to hide assert</td>
+<td>Action</td>
 </tr>
 </tbody></table>
 
-<p><br><br><br><br><br></p>
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/AlertTests.java">Alert test examples</a>
+<br><br><br><br><br></p>
 <h3 id='badge'>Badge</h3>
 <p>Badge is located in the following class: <br>
 - <strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.common.Badge</em></p>
@@ -11454,7 +11465,7 @@ You may also swap the text out of the spinner element and utilize button text as
             <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
             <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">groupOneText</span><span class="o">);</span>
 
-            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
+            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span><span class="n">alert</span>
             <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">collapsed</span><span class="o">();</span>
         <span class="o">}</span>
 </code></pre>
@@ -12758,31 +12769,73 @@ Form can consists of:
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>setText(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>sendKeys(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>clear()</strong></td>
+<td>clears the text field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>focus()</strong></td>
+<td>places cursor within the text field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>check item is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>check item is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>expand dropdown menu</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>check that dropdown is expanded</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonWithDropdownTests.java">Buttons with dropdowns test examples</a> <br></p>
 <h4 id='segmented-buttons'>Segmented buttons</h4>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#segmented-buttons">Segmented buttons</a></strong> – Segmented buttons have no detailed information on Bootstrap website</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#segmented-button"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SegmentedButton</span> <span class="n">segmentedButton</span><span class="o">;</span>
@@ -12843,31 +12896,73 @@ Form can consists of:
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>setText(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>sendKeys(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>clear()</strong></td>
+<td>clears the text field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>focus()</strong></td>
+<td>places cursor within the text field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>check item is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>check item is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>expand dropdown menu</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>check that dropdown is expanded</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupSegmentedButtonTests.java">Segmented buttons test examples</a> <br></p>
 <h4 id='custom-select'>Custom select</h4>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-select">Custom select</a></strong> – Input groups include support for custom selects and text field. Browser default versions of these are not supported.</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-select-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomSelect</span> <span class="n">customSelect</span><span class="o">;</span>
@@ -12972,31 +13067,74 @@ Form can consists of:
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>setText(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>sendKeys(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>clear()</strong></td>
+<td>clears the text field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>focus()</strong></td>
+<td>places cursor within the text field</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select(int value)</strong></td>
+<td>choose item by index</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected</strong></td>
+<td>returns text from the selected item</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>check item is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>check item is enabled</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelect.java">Custom select test examples</a> <br>
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelectWithButton.java">Custom select with button test examples</a></p>
 <h4 id='custom-file-input'>Custom file input</h4>
 <p><strong>Custom file input</strong> – Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.</p>
 
