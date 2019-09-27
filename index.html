@@ -13051,7 +13051,13 @@ Form can consists of:
 <td></td>
 </tr>
 </tbody></table>
-<h4 id='buttons-with-dropdowns'>Buttons with dropdowns</h4><pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonWithDropdown</span> <span class="n">buttonWithDropdown</span><span class="o">;</span>
+<h4 id='buttons-with-dropdowns'>Buttons with dropdowns</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#buttons-with-dropdowns">Buttons with dropdowns</a></strong> – Buttons with dropdowns have no detailed information on Bootstrap website</p>
+
+<p><img src="images/bootstrap/buttons_with_dropdowns.png" alt="Buttons with dropdowns" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonWithDropdown</span> <span class="n">buttonWithDropdown</span><span class="o">;</span>
 <span class="c1">// @FindBy(css = "#button-with-dropdown") public static ButtonWithDropdown buttonWithDropdown;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
@@ -13086,12 +13092,6 @@ Form can consists of:
     <span class="n">buttonWithDropdown</span><span class="o">.</span><span class="na">dropdownButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">dropdownButton</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#buttons-with-dropdowns">Buttons with dropdowns</a></strong> – Buttons with dropdowns have no detailed information on Bootstrap website</p>
-
-<p><img src="images/bootstrap/buttons_with_dropdowns.png" alt="Buttons with dropdowns" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
 <p><img src="images/bootstrap/buttons-with-dropdowns-html.png" alt="Buttons with dropdowns example" /></p>
 
 <p>And here are methods available in Java:</p>
@@ -13193,6 +13193,10 @@ Input group are represented by Section class in Java:</p>
 <br></p>
 <h4 id='segmented-buttons'>Segmented buttons</h4>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#segmented-buttons">Segmented buttons</a></strong> – Segmented buttons have no detailed information on Bootstrap website</p>
+
+<p><img src="images/bootstrap/segmented_buttons.png" alt="Segmented buttons" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#segmented-button"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SegmentedButton</span> <span class="n">segmentedButton</span><span class="o">;</span>
 <span class="c1">// @FindBy(css = "#segmented-button") public static SegmentedButton segmentedButton;</span>
 
@@ -13235,10 +13239,6 @@ Input group are represented by Section class in Java:</p>
     <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">actionButtonClickAlert</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
-<p><img src="images/bootstrap/segmented_buttons.png" alt="Segmented buttons" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
 <p><img src="images/bootstrap/segmented-button-html.png" alt="Segmented buttons example" /></p>
 
 <p>And here are methods available in Java:</p>
@@ -13339,6 +13339,10 @@ Input group are represented by Section class in Java:</p>
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupSegmentedButtonTests.java">Segmented buttons test examples</a> <br></p>
 <h4 id='custom-select'>Custom select</h4>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-select">Custom select</a></strong> – Input groups include support for custom selects and text field. Browser default versions of these are not supported.</p>
+
+<p><img src="images/bootstrap/custom_select.png" alt="Custom select" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-select-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomSelect</span> <span class="n">customSelect</span><span class="o">;</span>
 <span class="c1">// @FindBy(css = "#custom-select-01") public static CustomSelect customSelect;</span>
 
@@ -13376,13 +13380,13 @@ Input group are represented by Section class in Java:</p>
     <span class="n">customSelect</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
-<p><img src="images/bootstrap/custom_select.png" alt="Custom select" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
 <p><img src="images/bootstrap/custom-select-code.png" alt="Custom select example" /></p>
 
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-select">Custom select with button</a></strong> – Input groups include support for custom selects and button. Browser default versions of these are not supported.</p>
+
+<p><img src="images/bootstrap/custom-select-with-button.png" alt="Custom select with button" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-select-button-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomSelectWithButton</span> <span class="n">customSelectWithButton</span><span class="o">;</span>
 <span class="c1">// @FindBy(css = "#custom-select-button-01") public static CustomSelect customSelect;</span>
 
@@ -13425,10 +13429,6 @@ Input group are represented by Section class in Java:</p>
     <span class="n">customSelectWithButton</span><span class="o">.</span><span class="na">selector</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
-<p><img src="images/bootstrap/custom-select-with-button.png" alt="Custom select with button" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
 <p><img src="images/bootstrap/custom-select-with-button-html.png" alt="Custom select with button example" /></p>
 
 <p>And here are methods available in Java:</p>
