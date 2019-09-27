@@ -13526,52 +13526,101 @@ Input group are represented by Section class in Java:</p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelect.java">Custom select test examples</a> <br>
 <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelectWithButton.java">Custom select with button test examples</a></p>
-<h4 id='custom-file-input'>Custom file input</h4>
-<p><strong>Custom file input</strong> – Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.</p>
+<h4 id='custom-file-input'>Custom file input</h4><pre class="highlight java tab-java"><code>
 
-<p><img src="images/bootstrap/custom_file_input.png" alt="Custom file input" /></p>
+
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-file-input-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomFileInput</span> <span class="n">customFileInputPrepend</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-file-input-02"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomFileInput</span> <span class="n">customFileInputAppend</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomFileInput</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>     
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".input-group-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">upload</span><span class="o">;</span>     <span class="c1">//@FindBy(css = ".input-group-text")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".custom-file-input"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">FileInput</span> <span class="n">input</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".custom-file-input")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".custom-file-label"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">label</span><span class="o">;</span>     <span class="c1">//@FindBy(css = ".custom-file-label")</span>
+    <span class="o">}</span>
+
+     <span class="nd">@Test</span>
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTextTests</span><span class="o">()</span> <span class="o">{</span>
+         <span class="n">customFileInputPrepend</span><span class="o">.</span><span class="na">upload</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Upload"</span><span class="o">);</span>
+         <span class="n">customFileInputPrepend</span><span class="o">.</span><span class="na">upload</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Upload"</span><span class="o">);</span>
+
+         <span class="n">customFileInputAppend</span><span class="o">.</span><span class="na">upload</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Upload"</span><span class="o">);</span>
+         <span class="n">customFileInputAppend</span><span class="o">.</span><span class="na">upload</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Upload"</span><span class="o">);</span>
+     <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">uploadTest</span><span class="o">()</span> <span class="o">{</span>
+         <span class="n">customFileInputPrepend</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+         <span class="n">customFileInputPrepend</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">mergePath</span><span class="o">(</span><span class="n">PROJECT_PATH</span><span class="o">,/</span><span class="n">src</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">general</span><span class="o">.</span><span class="na">xml</span><span class="s">"));
+         customFileInputAppend.click();
+         customFileInputAppend.input.setValue(mergePath(PROJECT_PATH,/src/test/resources/general.xml"</span><span class="o">));</span>
+
+         <span class="n">customFileInputPrepend</span><span class="o">.</span><span class="na">label</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">);</span>
+         <span class="n">customFileInputPrepend</span><span class="o">.</span><span class="na">label</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">);</span>
+         <span class="n">customFileInputAppend</span><span class="o">.</span><span class="na">label</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">);</span>
+         <span class="n">customFileInputAppend</span><span class="o">.</span><span class="na">label</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">);</span>
+     <span class="o">}</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-file-input-button-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomFileInputWithButton</span> <span class="n">customFileInputWithButtonPrepend</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-file-input-button-02"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomFileInputWithButton</span> <span class="n">customFileInputWithButtonAppend</span><span class="o">;</span>    
+
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomFileInputWithButton</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>      
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".btn.btn-outline-secondary"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span> <span class="c1">//@FindBy (css = ".btn.btn-outline-secondary")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".custom-file-input"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">FileInput</span> <span class="n">input</span><span class="o">;</span>       <span class="c1">//@FindBy (css = ".custom-file-input")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".custom-file-label"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">label</span><span class="o">;</span>           <span class="c1">//@FindBy (css = ".custom-file-label")</span>
+    <span class="o">}</span>
+
+     <span class="nd">@Test</span>
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">inputTextTests</span><span class="o">()</span> <span class="o">{</span>
+         <span class="n">customFileInputWithButtonPrepend</span><span class="o">.</span><span class="na">label</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Choose file"</span><span class="o">);</span>
+         <span class="n">customFileInputWithButtonPrepend</span><span class="o">.</span><span class="na">label</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Choose file"</span><span class="o">);</span>
+
+         <span class="n">customFileInputWithButtonAppend</span><span class="o">.</span><span class="na">label</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Choose file"</span><span class="o">);</span>
+         <span class="n">customFileInputWithButtonAppend</span><span class="o">.</span><span class="na">label</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Choose file"</span><span class="o">);</span>
+     <span class="o">}</span>   
+
+       <span class="nd">@Test</span>
+       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonAppendClickTests</span><span class="o">()</span> <span class="o">{</span>
+           <span class="n">customFileInputWithButtonAppend</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">hover</span><span class="o">();</span>
+           <span class="n">customFileInputWithButtonAppend</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+           <span class="n">customFileInputWithButtonAppend</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+           <span class="n">customFileInputWithButtonAppend</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+           <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Button clicked, thank you!"</span><span class="o">));</span>
+       <span class="o">}</span>         
+
+</code></pre>
+<p><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-file-input">Custom file input</a> – Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.</p>
+
+<p>Custom file input example
+<img src="images/bootstrap/custom_file_input.png" alt="Custom file input" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/custom_file_input_code.png" alt="Custom file input example" /></p>
 
+<p>Custom file input with button example
+ <img src="images/bootstrap/custom_file_input_with_button.png" alt="Custom file input with button" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/custom_file_input_with_button_code.png" alt="Custom file input with button example" /></p>
+
 <p>And here are methods available in Java:</p>
 
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<p>|Method | Description | Return Type
+ --- | --- | ---
+ is()| check condition   | UIAssert
+ click()|  click on element | void
+ hover()| hover on element| void
+ setValue() | upload file  | void</p>
 
 <p><br></p>
+
+<p>The Custom file input is defined as a section and uses additional web elements: Button, FileInput and Label.
+They are located in the following Java classes:
+- com.epam.jdi.light.ui.html.common.Button
+- com.epam.jdi.light.elements.common;
+- com.epam.jdi.light.ui.bootstrap.elements.common;</p>
 <h3 id='card-2'>Card</h3><pre class="highlight java tab-java"><code>
 
 
