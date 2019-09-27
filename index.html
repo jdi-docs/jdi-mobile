@@ -13561,6 +13561,13 @@ Input group are represented by Section class in Java:</p>
          <span class="n">customFileInputAppend</span><span class="o">.</span><span class="na">label</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">);</span>
      <span class="o">}</span>
 
+
+
+
+
+
+
+
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-file-input-button-01"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomFileInputWithButton</span> <span class="n">customFileInputWithButtonPrepend</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-file-input-button-02"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CustomFileInputWithButton</span> <span class="n">customFileInputWithButtonAppend</span><span class="o">;</span>    
 
@@ -13591,15 +13598,17 @@ Input group are represented by Section class in Java:</p>
 </code></pre>
 <p><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-file-input">Custom file input</a> – Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.</p>
 
-<p>Custom file input example
-<img src="images/bootstrap/custom_file_input.png" alt="Custom file input" /></p>
+<p>Custom file input example</p>
+
+<p><img src="images/bootstrap/custom_file_input.png" alt="Custom file input" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/custom_file_input_code.png" alt="Custom file input example" /></p>
 
-<p>Custom file input with button example
- <img src="images/bootstrap/custom_file_input_with_button.png" alt="Custom file input with button" /></p>
+<p>Custom file input with button example</p>
+
+<p><img src="images/bootstrap/custom_file_input_with_button.png" alt="Custom file input with button" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
@@ -13607,12 +13616,54 @@ Input group are represented by Section class in Java:</p>
 
 <p>And here are methods available in Java:</p>
 
-<p>|Method | Description | Return Type
- --- | --- | ---
- is()| check condition   | UIAssert
- click()|  click on element | void
- hover()| hover on element| void
- setValue() | upload file  | void</p>
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>hover()</strong></td>
+<td>hover on element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue(String value)</strong></td>
+<td>set file path to input</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>upload(String value)</strong></td>
+<td>set file path to input</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>returns text of input field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>returns text of input field</td>
+<td>String</td>
+</tr>
+</tbody></table>
 
 <p><br></p>
 
