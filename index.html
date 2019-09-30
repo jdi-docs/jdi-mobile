@@ -15141,8 +15141,8 @@ Input group are represented by Section class in Java:</p>
 <p><img src="images/bootstrap/cardsubslinks-html.png" alt="Card Body Example Code" /></p>
 
 <p>Inner elements of Card with Subtitles and Links represented by the following classes:<br>
-- <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
-- <a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></p>
++ <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
++ <a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithSubtitlesAndLinksTests.java">Bootstrap test examples</a></p>
 
@@ -15330,8 +15330,8 @@ Input group are represented by Section class in Java:</p>
 <p><img src="images/bootstrap/card_custom_CSS_html.png" alt="Card custom CSS Example Code" /></p>
 
 <p>Inner elements of Card using custom CSS represented by the following classes:<br>
-- <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
-- <a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></p>
++ <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
++ <a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithCustomCss13RemTests.java">Bootstrap test examples</a></p>
 <h4 id='card-horizontal-2'>Card Horizontal</h4><pre class="highlight java tab-java"><code>
@@ -15398,8 +15398,8 @@ Input group are represented by Section class in Java:</p>
 <p><img src="images/bootstrap/card_horizontal-html.png" alt="Card horizontal example" /></p>
 
 <p>Inner elements of Card Horizontal represented by the following classes:<br>
- - <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
- - <a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p>
+ + <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br>
+ + <a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardHorizontalTests.java">Bootstrap test examples</a></p>
 
@@ -15463,6 +15463,130 @@ with .bg-transparent.</p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardMixinsUtilitiesTests.java">Bootstrap test examples</a>
 <br><br><br><br><br><br><br><br></p>
+<h4 id='card-border'>Card Border</h4><pre class="highlight java tab-java"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-border-primary"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-border-primatry")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardBorder</span> <span class="n">cardBorderPrimary</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardBorder</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">border</span><span class="o">;</span>
+    <span class="nd">@Title</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">body</span><span class="o">;</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"cardBorderColor"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getBorderColorTest</span><span class="o">(</span><span class="n">CardBorder</span> <span class="n">cardBorder</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">cardBorder</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"border-bottom-color"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">color</span><span class="o">));</span>
+    <span class="n">cardBorder</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"border-left-color"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">color</span><span class="o">));</span>
+    <span class="n">cardBorder</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"border-right-color"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">color</span><span class="o">));</span>
+    <span class="n">cardBorder</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"border-top-color"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">color</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"cardBorderHeaderText"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getHeaderTextTest</span><span class="o">(</span><span class="n">CardBorder</span> <span class="n">cardBorder</span><span class="o">,</span> <span class="n">String</span> <span class="n">headerText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardBorder</span><span class="o">.</span><span class="na">border</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">headerText</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+<p>Use <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/card/#border">border</a> utilities to change just the border-color of a card. 
+Note that you can put .text-{color} classes on the parent .card or a subset of the card’s contents as shown below.</p>
+
+<p><img src="images/bootstrap/cardborders.png" alt="Card Borders Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/cardborders-html.png" alt="Card Borders Example Code" /></p>
+
+<p>Inner elements of Card Border represented by the following classes:
+<a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardBorderTests.java">Bootstrap test examples</a></p>
 <h3 id='jumbotron'>Jumbotron</h3><pre class="highlight java tab-java"><code>
 
 
