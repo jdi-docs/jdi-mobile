@@ -10102,9 +10102,11 @@ Below are examples of different toggle styles.</p>
 </tbody></table>
 
 <p><br></p>
-<h4 id='card-with-header-and-footer'><strong>Card with Header and Footer</strong></h4>
+<h4 id='card-with-header-and-footer'>Card with Header and Footer</h4>
 <p>Add an optional<a href="https://getbootstrap.com/docs/4.3/components/card/#header-and-footer" target="a_blank"> header and/or footer </a>within a card.</p>
 <pre class="highlight java tab-java"><code>
+
+
 
 
 
@@ -10133,7 +10135,8 @@ Below are examples of different toggle styles.</p>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'footer')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footer</span><span class="o">;</span>
 <span class="o">}</span>
 
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-header-and-footer"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardWithHeaderAndFooter</span><span class="o">;</span> <span class="c1">//FindBy(id = "card-with-header-and-footer")</span>
+<span class="c1">//FindBy(id = "card-with-header-and-footer")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-header-and-footer"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardWithHeaderAndFooter</span><span class="o">;</span>
 
 
 
@@ -10168,36 +10171,97 @@ Below are examples of different toggle styles.</p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/Card/CardWithHeaderAndFooterTests.java" target=a_blank> Bootstrap test examples </a>
  <br></p>
+<h4 id='card-with-grid-markup'>Card with Grid Markup</h4>
+<p>Using the <a href="https://getbootstrap.com/docs/4.3/components/card/#using-grid-markup" target="a_blank">grid, wrap cards in columns  and rows</a> as needed.</p>
+<pre class="highlight java tab-java"><code>
 
-<p><strong>Card with Grid Markup</strong></p>
 
-<p>Using the grid, wrap cards in columns and rows as needed.</p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithGridMarkup</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
+    <span class="nd">@Title</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span> <span class="c1">//@FindVBy(css = ".card-title")</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">paragraph</span><span class="o">;</span> <span class="c1">//@FindVBy(css = ".card-body p")</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span> <span class="c1">//@FindVBy(css = "button")</span>
+
+    <span class="c1">//@FindVBy(css = ".row .col-sm-6")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".row .col-sm-6"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">CardWithHeaderAndFooter</span><span class="o">&gt;</span> <span class="n">listCard</span><span class="o">;</span> 
+<span class="o">}</span>
+
+<span class="c1">//@FindBy(id = "card-with-grid-markup")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-grid-markup"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithGridMarkup</span> <span class="n">cardWithGridMarkup</span><span class="o">;</span>
+
+
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTextCardWithGridMarkup11Test</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cardWithGridMarkup</span><span class="o">.</span><span class="na">listCard</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">textTitleCardWithGridMarkup11</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getButtonTextCardWithGridMarkup22Test</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cardWithGridMarkup</span><span class="o">.</span><span class="na">listCard</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">textButtonCardWithGridMarkup22</span><span class="o">);</span>
+        <span class="n">cardWithGridMarkup</span><span class="o">.</span><span class="na">listCard</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">textAlert</span><span class="o">));</span>
+        <span class="n">cardWithGridMarkup</span><span class="o">.</span><span class="na">listCard</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">displayed</span><span class="o">();</span>
+<span class="o">}</span>
+
+
+
+
+
+
+
+
+</code></pre>
 <p><img src="images/bootstrap/card_grid.png" alt="Card with Header and Footer Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/card_grid_html.png" alt="Card with Header and Footer Code" /></p>
 
-<p>Available methods in Java JDI Light:</p>
+<p>Card is represented by Section class in Java:</p>
 
-<p>|Method | Description | Return Type
- --- | --- | ---
-  |  | 
-  |  | 
-  |  | 
-  |  | 
-  |  | </p>
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
 
-<p>Available methods and properties in C# JDI Light:</p>
+<p>Inner elements of card can be represented by the following classes:
+<ul>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#label">Label</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button">Button</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a> </li>
+</ul></p>
 
-<p>|Method/Property | Description | Return Type
- --- | --- | ---
-  |  | 
-  |  | 
-  |  |
-  |  |
-  <br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/Card/CardWithGridMarkupTests.java" target=a_blank> Bootstrap test examples </a>
+ <br></p>
 
 <p><strong>Card utilities</strong></p>
 
