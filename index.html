@@ -587,6 +587,9 @@
 								<a href="#modal" class="toc-h2 h3 toc-link" data-title="Modal">Modal</a>
                             </li>
                             <li>
+								<a href="#list-group-2" class="toc-h2 h3 toc-link" data-title="List group">List group</a>
+                            </li>
+                            <li>
 								<a href="#input-group" class="toc-h2 h3 toc-link" data-title="Input group">Input group</a>
                             </li>
                             <li>
@@ -7736,8 +7739,6 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton</em></li>
 </ul>
 
-<p><a href="https://getbootstrap.com/docs/4.3/components/buttons/">Bootstrap page documentation</a></p>
-
 <p><img src="images/bootstrap/radio-button.png" alt="Radio button example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
@@ -7782,9 +7783,6 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </code></pre>
 <p><img src="images/bootstrap/radio-button-html.png" alt="Radio button example html" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/RadioButtonTests.java">Java test examples</a>
-<br></p>
-
 <table><thead>
 <tr>
 <th>Method</th>
@@ -7828,6 +7826,15 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <td>action</td>
 </tr>
 </tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/RadioButtonTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
 
 <p><br></p>
 <h3 id='button-group'>Button group</h3>
@@ -12683,7 +12690,648 @@ Form can consists of:
 </tbody></table>
 
 <p><br></p>
-<h3 id='input-group'>Input group</h3><h4 id='basic-example'>Basic Example</h4>
+<h3 id='list-group-2'>List group</h3>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/">List groups</a></em></strong> are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
+<h4 id='basic-example'>Basic Example</h4>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#basic-example">List group basic example</a></em></strong> - an unordered list with list items and the proper classes.</p>
+
+<p>List Group is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
+</ul>
+
+<p><img src="images/bootstrap/list-group-basic.png" alt="List group basic example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/list-group-basic-html.png" alt="List group basic example html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/BasicExampleTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='active-items'>Active Items</h4>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#active-items">List group active Items</a></em></strong></p>
+
+<p>List Group is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
+</ul>
+
+<p><img src="images/bootstrap/list-group-active.png" alt="List group basic example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/list-group-active-html.png" alt="List group active items example html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/ActiveItemsTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='disabled-items'>Disabled Items</h4>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#disabled-items">List group disabled Items</a></em></strong></p>
+
+<p>List Group is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
+</ul>
+
+<p><img src="images/bootstrap/list-group-disabled.png" alt="List group disabled items example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/list-group-disabled-html.png" alt="List group disabled items html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/DisabledItemsTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='links'>Links</h4>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#links-and-buttons">List group links and buttons</a></em></strong></p>
+
+<p>List Group is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
+</ul>
+
+<p><img src="images/bootstrap/list-group-links.png" alt="List group links example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/list-group-links-html.png" alt="List group links html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/LinksTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='buttons'>Buttons</h4>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#links-and-buttons">List group links and buttons</a></em></strong></p>
+
+<p>List Group is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
+</ul>
+
+<p><img src="images/bootstrap/list-group-buttons.png" alt="List group buttons example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/list-group-buttons-html.png" alt="List group buttons html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/Buttons.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='flush'>Flush</h4>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#flush">List group flush</a></em></strong></p>
+
+<p>List Group is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
+</ul>
+
+<p><img src="images/bootstrap/list-group-flush.png" alt="List group flush example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/list-group-flush-html.png" alt="List group flush html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/FlushTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='horizontal'>Horizontal</h4>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#horizontal">List group horizontal</a></em></strong></p>
+
+<p>List Group is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
+</ul>
+
+<p><img src="images/bootstrap/list-group-horizontal.png" alt="List group horizontal example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/list-group-horizontal-html.png" alt="List group horizontal html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/Horizontal.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='with-badges'>With Badges</h4>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#with-badges">List group with badges</a></em></strong></p>
+
+<p>List Group is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
+</ul>
+
+<p><img src="images/bootstrap/list-group-badges.png" alt="List group with badges example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/list-group-badges-html.png" alt="List group with badges html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/WithBadgesTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='custom-content'>Custom Content</h4>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#custom-content">List group custom content</a></em></strong></p>
+
+<p>List Group is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
+</ul>
+
+<p><img src="images/bootstrap/list-group-custom.png" alt="List group custom content example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/list-group-custom-html.png" alt="List group custom content html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/CustomContentTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h3 id='input-group'>Input group</h3><h4 id='basic-example-2'>Basic Example</h4>
 <p><strong><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#basic-example" target="_blank">Input group</a></strong> – Place one add-on or button on either side of an input. You may also place one on both sides of an input.
 <br /></p>
 <pre class="highlight java tab-java"><code>
