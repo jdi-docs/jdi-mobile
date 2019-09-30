@@ -11057,30 +11057,28 @@ For example .card-columns class to generate a set of responsive tiers for changi
 
 <p><img src="images/bootstrap/card-columns.png" alt="Card Columns Example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:
- ```java
-    @UI(&quot;.card-columns&quot;) public static CardColumns cardColumns; //@FindBy(css=&#39;.card-columns&#39;)</p>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-columns"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardColumns</span> <span class="n">cardColumns</span><span class="o">;</span> <span class="c1">//@FindBy(css='.card-columns')</span>
 
-<p>public class CardColumns extends CardWithinCardColumns {</p>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardColumns</span> <span class="kd">extends</span> <span class="n">CardWithinCardColumns</span> <span class="o">{</span>
 
-<p>@UI(&quot;.card:nth-of-type(1)&quot;) public CardWithinCardColumns topLeftCard;
-    @UI(&quot;.card:nth-of-type(2)&quot;) public CardWithinCardColumns bottomLeftCard;
-    @UI(&quot;.card:nth-of-type(3)&quot;) public CardWithinCardColumns topRightCard;
-    @UI(&quot;.card:nth-of-type(4)&quot;) public CardWithinCardColumns middleRightCard;
-    @UI(&quot;.card:nth-of-type(5)&quot;) public CardWithinCardColumns bottomRightCard;
-    }</p>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardWithinCardColumns</span> <span class="n">topLeftCard</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(2)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardWithinCardColumns</span> <span class="n">bottomLeftCard</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(3)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardWithinCardColumns</span> <span class="n">topRightCard</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(4)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardWithinCardColumns</span> <span class="n">middleRightCard</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(5)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardWithinCardColumns</span> <span class="n">bottomRightCard</span><span class="o">;</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void checkElementsPositionTest() {
-        assertTrue(cardColumns.topLeftCard.core().getLocation().x &lt; cardColumns.topRightCard.core().getLocation().x);
-        assertTrue(cardColumns.topLeftCard.core().getLocation().y &lt; cardColumns.bottomLeftCard.core().getLocation().y);
-        assertTrue(cardColumns.topRightCard.core().getLocation().y &lt; cardColumns.middleRightCard.core().getLocation().y);
-        assertTrue(cardColumns.middleRightCard.core().getLocation().y &lt; cardColumns.bottomRightCard.core().getLocation().y);
-        assertTrue(cardColumns.bottomLeftCard.core().getLocation().x &lt; cardColumns.bottomRightCard.core().getLocation().x);
-        assertTrue(cardColumns.bottomLeftCard.core().getLocation().x &lt; cardColumns.middleRightCard.core().getLocation().x);
-    }
- ```</p>
-
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkElementsPositionTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">cardColumns</span><span class="o">.</span><span class="na">topLeftCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">x</span> <span class="o">&lt;</span> <span class="n">cardColumns</span><span class="o">.</span><span class="na">topRightCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">x</span><span class="o">);</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">cardColumns</span><span class="o">.</span><span class="na">topLeftCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">y</span> <span class="o">&lt;</span> <span class="n">cardColumns</span><span class="o">.</span><span class="na">bottomLeftCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">y</span><span class="o">);</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">cardColumns</span><span class="o">.</span><span class="na">topRightCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">y</span> <span class="o">&lt;</span> <span class="n">cardColumns</span><span class="o">.</span><span class="na">middleRightCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">y</span><span class="o">);</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">cardColumns</span><span class="o">.</span><span class="na">middleRightCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">y</span> <span class="o">&lt;</span> <span class="n">cardColumns</span><span class="o">.</span><span class="na">bottomRightCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">y</span><span class="o">);</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">cardColumns</span><span class="o">.</span><span class="na">bottomLeftCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">x</span> <span class="o">&lt;</span> <span class="n">cardColumns</span><span class="o">.</span><span class="na">bottomRightCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">x</span><span class="o">);</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">cardColumns</span><span class="o">.</span><span class="na">bottomLeftCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">x</span> <span class="o">&lt;</span> <span class="n">cardColumns</span><span class="o">.</span><span class="na">middleRightCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">x</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/card-columns-html.png" alt="Card Columns Example Code" /></p>
 
 <p>Card sections are represented by Section class in Java:
