@@ -10800,82 +10800,82 @@ Depending on the image, you may or may not need additional styles or utilities.<
 
 <p><strong>Card Background And Color</strong></p>
 
-<p>Use text and background utilities to change the appearance of a card.</p>
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/#background-and-color" target="a_blank"> Card Background And Color</a> - use text and background utilities to change the appearance of a card.</p>
 
 <p><img src="images/bootstrap/cardbackgroundandcolor.png" alt="Card Background And Color Example" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithHeaderAndFooter</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
+    <span class="nd">@Title</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".card-title"")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">paragraph</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span><span class="kd">public</span> <span class="n">Text</span> <span class="n">header</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'footer')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footer</span><span class="o">;</span>
+<span class="o">}</span>
 
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-header-and-footer"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardWithHeaderAndFooter</span><span class="o">;</span><span class="c1">//@FindBy(css = "#card-with-header-and-footer")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-bright-blue"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardBrightBlue</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-grey"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardGrey</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-green"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardGreen</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-red"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardRed</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-yellow"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardYellow</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-blue"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardBlue</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-light"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardLight</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-dark"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardDark</span><span class="o">;</span>
+
+<span class="nd">@DataProvider</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"cardColors"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">cardColors</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+            <span class="o">{</span><span class="n">cardBrightBlue</span><span class="o">,</span> <span class="s">"bg-primary"</span><span class="o">,</span> <span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">cardGrey</span><span class="o">,</span> <span class="s">"bg-secondary"</span><span class="o">,</span> <span class="s">"rgba(108, 117, 125, 1)"</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">cardGreen</span><span class="o">,</span> <span class="s">"bg-success"</span><span class="o">,</span> <span class="s">"rgba(40, 167, 69, 1)"</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">cardRed</span><span class="o">,</span> <span class="s">"bg-danger"</span><span class="o">,</span> <span class="s">"rgba(220, 53, 69, 1)"</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">cardYellow</span><span class="o">,</span> <span class="s">"bg-warning"</span><span class="o">,</span> <span class="s">"rgba(255, 193, 7, 1)"</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">cardBlue</span><span class="o">,</span> <span class="s">"bg-info"</span><span class="o">,</span> <span class="s">"rgba(23, 162, 184, 1)"</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">cardLight</span><span class="o">,</span> <span class="s">"bg-light"</span><span class="o">,</span> <span class="s">"rgba(248, 249, 250, 1)"</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">cardDark</span><span class="o">,</span> <span class="s">"bg-dark"</span><span class="o">,</span> <span class="s">"rgba(52, 58, 64, 1)"</span><span class="o">},</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"cardColors"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkColorCardsTest</span><span class="o">(</span><span class="n">CardWithHeaderAndFooter</span> <span class="n">card</span><span class="o">,</span> <span class="n">String</span> <span class="n">cssClass</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">card</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">cssClass</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">color</span><span class="o">));</span>
+
+    <span class="n">card</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">().</span><span class="na">and</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"rgba(0, 0, 0, 0.03)"</span><span class="o">));</span>
+
+    <span class="n">card</span><span class="o">.</span><span class="na">paragraph</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">().</span><span class="na">and</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"rgba(0, 0, 0, 0)"</span><span class="o">));</span>
+
+<span class="o">}</span>
+
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/cardbackgroundandcolor-html.png" alt="Card Background And Color Code" /></p>
 
-<p>Available methods in Java JDI Light:</p>
+<p>Card Navigation is represented by Section class in Java:</p>
 
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+</ul>
 
-<p>Available methods and properties in C# JDI Light:</p>
+<p>Inner elements of Card Navigation can be represented by the following classes:</p>
 
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#menu">Menu</a></li>
+</ul>
 
-<p><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardBackgroundAndColorTests.java" target="_blank">Bootstrap test examples</a>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 
 <p><strong>Card Border</strong></p>
 
