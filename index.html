@@ -11052,83 +11052,49 @@ Note that you can put .text-{color} classes on the parent .card or a subset of t
 
 <p><br>  <strong>Card Columns</strong></p>
 
-<p>Card columns can also be extended and customized with some additional code. 
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/#card-columns" target="a_blank">Card columns </a>can also be extended and customized with some additional code. 
 For example .card-columns class to generate a set of responsive tiers for changing the number of columns.</p>
 
 <p><img src="images/bootstrap/card-columns.png" alt="Card Columns Example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<p>Here is an example with provided Bootstrap v4.3 code:
+ ```java
+    @UI(&quot;.card-columns&quot;) public static CardColumns cardColumns; //@FindBy(css=&#39;.card-columns&#39;)</p>
+
+<p>public class CardColumns extends CardWithinCardColumns {</p>
+
+<p>@UI(&quot;.card:nth-of-type(1)&quot;) public CardWithinCardColumns topLeftCard;
+    @UI(&quot;.card:nth-of-type(2)&quot;) public CardWithinCardColumns bottomLeftCard;
+    @UI(&quot;.card:nth-of-type(3)&quot;) public CardWithinCardColumns topRightCard;
+    @UI(&quot;.card:nth-of-type(4)&quot;) public CardWithinCardColumns middleRightCard;
+    @UI(&quot;.card:nth-of-type(5)&quot;) public CardWithinCardColumns bottomRightCard;
+    }</p>
+
+<p>@Test
+    public void checkElementsPositionTest() {
+        assertTrue(cardColumns.topLeftCard.core().getLocation().x &lt; cardColumns.topRightCard.core().getLocation().x);
+        assertTrue(cardColumns.topLeftCard.core().getLocation().y &lt; cardColumns.bottomLeftCard.core().getLocation().y);
+        assertTrue(cardColumns.topRightCard.core().getLocation().y &lt; cardColumns.middleRightCard.core().getLocation().y);
+        assertTrue(cardColumns.middleRightCard.core().getLocation().y &lt; cardColumns.bottomRightCard.core().getLocation().y);
+        assertTrue(cardColumns.bottomLeftCard.core().getLocation().x &lt; cardColumns.bottomRightCard.core().getLocation().x);
+        assertTrue(cardColumns.bottomLeftCard.core().getLocation().x &lt; cardColumns.middleRightCard.core().getLocation().x);
+    }
+ ```</p>
 
 <p><img src="images/bootstrap/card-columns-html.png" alt="Card Columns Example Code" /></p>
 
-<p>Available methods in Java JDI Light:</p>
+<p>Card sections are represented by Section class in Java:
+  <ul>
+  <li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+  </ul></p>
 
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<p>Inner elements of Card groups can be represented by the following classes:
+ <ul>
+ <li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></li>
+ <li><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></li>
+ </ul></p>
 
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardColumnsTests.java">Bootstrap test examples</a></p>
 <h4 id='card-groups'>Card groups</h4>
 <p>Use <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/card/#card-groups" target="_blank">card groups</a> to render cards as a single, attached element with equal width and height columns.</p>
 
@@ -11164,28 +11130,6 @@ For example .card-columns class to generate a set of responsive tiers for changi
         <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
         <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
         <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getMainTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getMutedTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mutedText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1HeroName</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mutedText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2HeroName</span><span class="o">);</span>
     <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/card-groups-html.png" alt="Card_groups HTML example" /></p>
@@ -11224,28 +11168,6 @@ For example .card-columns class to generate a set of responsive tiers for changi
         <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
         <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
         <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getMainTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getFooterTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">footerText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1HeroName</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">footerText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2HeroName</span><span class="o">);</span>
     <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/card-groups-with-footer-html.png" alt="Card_groups HTML example" /></p>
