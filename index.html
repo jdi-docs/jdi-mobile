@@ -511,6 +511,9 @@
 								<a href="#button-2" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
                             </li>
                             <li>
+								<a href="#radio-button" class="toc-h2 h3 toc-link" data-title="Radio button">Radio button</a>
+                            </li>
+                            <li>
 								<a href="#button-group" class="toc-h2 h3 toc-link" data-title="Button group">Button group</a>
                             </li>
                             <li>
@@ -7724,6 +7727,109 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tbody></table>
 
 <p><br><br></p>
+<h3 id='radio-button'>Radio button</h3>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#default-stacked">Radio button</a></strong> – Element that can be represented with one or more clickable buttons aiming to choose only one button of the group.</p>
+
+<p>Radio button is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton</em></li>
+</ul>
+
+<p><a href="https://getbootstrap.com/docs/4.3/components/buttons/">Bootstrap page documentation</a></p>
+
+<p><img src="images/bootstrap/radio-button.png" alt="Radio button example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#radio-buttons"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonGroup</span> <span class="n">radioButtonGroup</span><span class="o">;</span>
+<span class="c1">//@FindBy(css = "#radio-buttons") public static RadioButtonGroup radioButtonGroup;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonGroup</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios2"</span> <span class="o">)</span><span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio3</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[type='radio']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios3']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio3Label</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio2</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">disabled</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByLabelTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio2Label</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">value2</span><span class="o">));</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">select</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/radio-button-html.png" alt="Radio button example html" /></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/RadioButtonTests.java">Java test examples</a>
+<br></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
 <h3 id='button-group'>Button group</h3>
 <p><strong><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/button-group/" target="_blank">Button group</a></strong> – Element that groups a series of buttons together on a single line with the button group, and super-power them with JavaScript.</p>
 
