@@ -13377,7 +13377,7 @@ Form can consists of:
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#pagination-overview"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">PaginationOverview</span> <span class="n">paginationOverview</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaginationOverview</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItems</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItems</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public Pagination paginationItems;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
