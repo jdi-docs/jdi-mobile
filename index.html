@@ -12704,7 +12704,23 @@ Form can consists of:
 <p><img src="images/bootstrap/list-group-basic.png" alt="List group basic example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-group-basic-example"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroupBasicExample</span> <span class="n">listGroupBasicExample</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#list-group-basic-example") public static ListGroupBasicExample listGroupBasicExample;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListGroupBasicExample</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">listGroupIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">listGroupBasicExample</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">listGroupTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listGroupBasicExample</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">num</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/list-group-basic-html.png" alt="List group basic example html" /></p>
@@ -12716,11 +12732,6 @@ Form can consists of:
 <th>Return Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
 <tr>
 <td><strong>getText()</strong></td>
 <td>Get button text</td>
@@ -12734,16 +12745,6 @@ Form can consists of:
 <tr>
 <td><strong>assertThat()</strong></td>
 <td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
 <td>TextAssert</td>
 </tr>
 <tr>
@@ -12772,10 +12773,34 @@ Form can consists of:
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup</em></li>
 </ul>
 
-<p><img src="images/bootstrap/list-group-active.png" alt="List group basic example" /></p>
+<p><img src="images/bootstrap/list-group-active.png" alt="List group active items example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-group-active-items"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroupActiveItems</span> <span class="n">listGroupActiveItems</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#list-group-active-items") public static ListGroupActiveItems listGroupActiveItems;)</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListGroupActiveItems</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">listGroupTextTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listGroupActiveItems</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">num</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">listGroupActiveItems</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">listGroupActiveItems</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"list-group"</span><span class="o">);</span>
+    <span class="n">listGroupActiveItems</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">listClass</span> <span class="o">+</span> <span class="s">" active"</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/list-group-active-html.png" alt="List group active items example html" /></p>
@@ -12787,11 +12812,6 @@ Form can consists of:
 <th>Return Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
 <tr>
 <td><strong>getText()</strong></td>
 <td>Get button text</td>
@@ -12805,16 +12825,6 @@ Form can consists of:
 <tr>
 <td><strong>assertThat()</strong></td>
 <td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
 <td>TextAssert</td>
 </tr>
 <tr>
@@ -12846,7 +12856,32 @@ Form can consists of:
 <p><img src="images/bootstrap/list-group-disabled.png" alt="List group disabled items example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabled-items"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroupDisabledItems</span> <span class="n">listGroupDisabledItems</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#disabled-items") public static ListGroupDisabledItems listGroupDisabledItems;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListGroupDisabledItems</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">listGroupDisabledItems</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">listGroupDisabledItems</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"list-group"</span><span class="o">);</span>
+    <span class="n">listGroupDisabledItems</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">listClass</span> <span class="o">+</span> <span class="s">" disabled"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-disabled"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">listGroupTextTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listGroupDisabledItems</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">num</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/list-group-disabled-html.png" alt="List group disabled items html" /></p>
@@ -12858,11 +12893,6 @@ Form can consists of:
 <th>Return Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
 <tr>
 <td><strong>getText()</strong></td>
 <td>Get button text</td>
@@ -12876,16 +12906,6 @@ Form can consists of:
 <tr>
 <td><strong>assertThat()</strong></td>
 <td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
 <td>TextAssert</td>
 </tr>
 <tr>
@@ -12917,7 +12937,35 @@ Form can consists of:
 <p><img src="images/bootstrap/list-group-links.png" alt="List group links example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-group-links"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroupLinks</span> <span class="n">listGroupLinks</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#list-group-links") public static ListGroupLinks listGroupLinks;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListGroupLinks</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listGroupLinks</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">listGroupLinks</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">listGroupLinks</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">listGroupLinks</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">listGroupLinks</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"list-group"</span><span class="o">);</span>
+    <span class="n">listGroupLinks</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">listClass</span> <span class="o">+</span> <span class="s">" active"</span><span class="o">);</span>
+    <span class="n">listGroupLinks</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">listClass</span> <span class="o">+</span> <span class="s">" disabled"</span><span class="o">);</span>
+    <span class="n">assertFalse</span><span class="o">(</span><span class="n">listGroupLinks</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">isClickable</span><span class="o">());</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/list-group-links-html.png" alt="List group links html" /></p>
@@ -12950,16 +12998,6 @@ Form can consists of:
 <td>TextAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
 <td>action</td>
@@ -12988,7 +13026,34 @@ Form can consists of:
 <p><img src="images/bootstrap/list-group-buttons.png" alt="List group buttons example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-group-buttons"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroupButtons</span> <span class="n">listGroupButtons</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#list-group-buttons") public static ListGroupButtons listGroupButtons;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListGroupButtons</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">listGroupButtons</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">listGroupButtons</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"list-group"</span><span class="o">);</span>
+    <span class="n">listGroupButtons</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">listClass</span> <span class="o">+</span> <span class="s">" active"</span><span class="o">);</span>
+    <span class="n">listGroupButtons</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">disabled</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listGroupButtons</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">listGroupButtons</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
+    <span class="n">listGroupButtons</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/list-group-buttons-html.png" alt="List group buttons html" /></p>
@@ -13021,16 +13086,6 @@ Form can consists of:
 <td>TextAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
 <td>action</td>
@@ -13059,7 +13114,28 @@ Form can consists of:
 <p><img src="images/bootstrap/list-group-flush.png" alt="List group flush example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-group-flush"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroupFlush</span> <span class="n">listGroupFlush</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#list-group-flush") public static ListGroupFlush listGroupFlush;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListGroupFlush</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">listGroupTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listGroupFlush</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">num</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">initTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">listGroupFlush</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">listGroupFlush</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"list-group list-group-flush"</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/list-group-flush-html.png" alt="List group flush html" /></p>
@@ -13071,11 +13147,6 @@ Form can consists of:
 <th>Return Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
 <tr>
 <td><strong>getText()</strong></td>
 <td>Get button text</td>
@@ -13089,16 +13160,6 @@ Form can consists of:
 <tr>
 <td><strong>assertThat()</strong></td>
 <td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
 <td>TextAssert</td>
 </tr>
 <tr>
@@ -13130,7 +13191,24 @@ Form can consists of:
 <p><img src="images/bootstrap/list-group-horizontal.png" alt="List group horizontal example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-group-horizontal"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroupHorizontal</span> <span class="n">listGroupHorizontal</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#list-group-horizontal") public static ListGroupHorizontal listGroupHorizontal;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListGroupHorizontal</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">initTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">listGroupHorizontal</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">listGroupTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listGroupHorizontal</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">num</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/list-group-horizontal-html.png" alt="List group horizontal html" /></p>
@@ -13142,11 +13220,6 @@ Form can consists of:
 <th>Return Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
 <tr>
 <td><strong>getText()</strong></td>
 <td>Get button text</td>
@@ -13160,16 +13233,6 @@ Form can consists of:
 <tr>
 <td><strong>assertThat()</strong></td>
 <td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
 <td>TextAssert</td>
 </tr>
 <tr>
@@ -13201,7 +13264,28 @@ Form can consists of:
 <p><img src="images/bootstrap/list-group-badges.png" alt="List group with badges example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-group-with-badges"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroupWithBadges</span> <span class="n">listGroupWithBadges</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#list-group-with-badges") public static ListGroupWithBadges listGroupWithBadges;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListGroupWithBadges</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li span"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">badge</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">initTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">listGroupWithBadges</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">listGroupWithBadges</span><span class="o">.</span><span class="na">badge</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">listGroupTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listGroupWithBadges</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">num</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">text</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"list-group-item d-flex justify-content-between align-items-center"</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/list-group-badges-html.png" alt="List group with badges html" /></p>
@@ -13213,11 +13297,6 @@ Form can consists of:
 <th>Return Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
 <tr>
 <td><strong>getText()</strong></td>
 <td>Get button text</td>
@@ -13231,16 +13310,6 @@ Form can consists of:
 <tr>
 <td><strong>assertThat()</strong></td>
 <td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
 <td>TextAssert</td>
 </tr>
 <tr>
@@ -13272,7 +13341,32 @@ Form can consists of:
 <p><img src="images/bootstrap/list-group-custom.png" alt="List group custom content example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-group-custom-content"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroupCustomContent</span> <span class="n">listGroupCustomContent</span><span class="o">;</span>
+<span class="c1">// @FindBy(css = "#list-group-custom-content") public static ListGroupCustomContent listGroupCustomContent;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListGroupCustomContent</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a div h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a div small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">dateText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"small.footer"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">footer</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">container</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">listGroupCustomContent</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+     <span class="n">listGroupCustomContent</span><span class="o">.</span><span class="na">container</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listGroupCustomContent</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">listGroupCustomContent</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">listGroupCustomContent</span><span class="o">.</span><span class="na">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/list-group-custom-html.png" alt="List group custom content html" /></p>
