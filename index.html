@@ -10460,24 +10460,24 @@ Below are examples of different toggle styles.</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-navigation"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "card-navigation")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardNavigation</span> <span class="n">cardNavigation</span><span class="o">;</span>
 
-<span class="nd">@UI</span><span class="o">(</span><span class="s">".nav"</span><span class="o">)</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".nav"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".nav")</span>
 <span class="kd">public</span> <span class="n">Menu</span> <span class="n">nav</span><span class="o">;</span>
 
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#activeLink"</span><span class="o">)</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#activeLink"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "activeLink")</span>
 <span class="kd">public</span> <span class="n">Link</span> <span class="n">activeLink</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdiLink"</span><span class="o">)</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdiLink"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "jdiLink")</span>
 <span class="kd">public</span> <span class="n">Link</span> <span class="n">jdiLink</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabledLink"</span><span class="o">)</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabledLink"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "disabledLink")</span>
 <span class="kd">public</span> <span class="n">Link</span> <span class="n">disabledLink</span><span class="o">;</span>
 
 <span class="nd">@Title</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span> <span class="c1">// @FindBy(tagName = "h5")</span>
 <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
 
-<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-text")</span>
 <span class="kd">public</span> <span class="n">Text</span> <span class="n">subtitle</span><span class="o">;</span>
 
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="c1">// @FindBy(tagName = "button")</span>
 <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
 
 <span class="n">String</span> <span class="n">titleText</span> <span class="o">=</span> <span class="s">"SPECIAL TITLE TREATMENT"</span><span class="o">;</span>
