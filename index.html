@@ -13373,7 +13373,40 @@ Form can consists of:
 <p><img src="images/bootstrap/pagination-overview-example.png" alt="Pagination overview example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#pagination-overview") public static PaginationOverview paginationOverview;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#pagination-overview"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">PaginationOverview</span> <span class="n">paginationOverview</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaginationOverview</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItems</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">paginationOverview</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+     <span class="n">paginationOverview</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"pagination"</span><span class="o">);</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkTextTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">paginationOverview</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">))</span>
+             <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"page-item"</span><span class="o">)</span>
+             <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listPageTitles"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">paginationOverview</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">hover</span><span class="o">();</span>
+     <span class="n">paginationOverview</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+     <span class="n">paginationOverview</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+     <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+     <span class="n">paginationOverview</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+ <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/pagination-overview-html.png" alt="Pagination overview html" /></p>
 
@@ -13386,7 +13419,22 @@ Form can consists of:
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>hover()</strong></td>
+<td>Hover on the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Highlight element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Unhighlight element</td>
 <td>void</td>
 </tr>
 <tr>
@@ -13405,19 +13453,9 @@ Form can consists of:
 <td>TextAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
 </tr>
 </tbody></table>
 
@@ -13443,7 +13481,30 @@ Form can consists of:
 <p><img src="images/bootstrap/pagination-icons-example.png" alt="Pagination working with icons example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#pagination-icons") public static PaginationIcons paginationIcons;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#pagination-icons"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">PaginationIcons</span> <span class="n">paginationIcons</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaginationIcons</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItems</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public Pagination paginationItems;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">paginationIcons</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">paginationIcons</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"pagination"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listPageTitles"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">paginationIcons</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">hover</span><span class="o">();</span>
+    <span class="n">paginationIcons</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">paginationIcons</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">paginationIcons</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/pagination-with-icons-html.png" alt="Pagination working with icons html" /></p>
 
@@ -13456,7 +13517,22 @@ Form can consists of:
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>hover()</strong></td>
+<td>Hover on the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Highlight element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Unhighlight element</td>
 <td>void</td>
 </tr>
 <tr>
@@ -13475,19 +13551,9 @@ Form can consists of:
 <td>TextAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
 </tr>
 </tbody></table>
 
@@ -13513,7 +13579,36 @@ Form can consists of:
 <p><img src="images/bootstrap/pagination-dis-and-active-example.png" alt="Pagination disabled and active states example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#pagination-states") public static PaginationStates paginationStates;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#pagination-states"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">PaginationStates</span> <span class="n">paginationStates</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaginationStates</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItems</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public Pagination paginationItems;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">paginationStates</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">paginationStates</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"pagination"</span><span class="o">);</span>
+    <span class="n">paginationStates</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+    <span class="n">paginationStates</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listPageTitles"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">paginationStates</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">hover</span><span class="o">();</span>
+    <span class="n">paginationStates</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">paginationStates</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">paginationStates</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/pagination-dis-and-active-html.png" alt="Pagination disabled and active states html" /></p>
 
@@ -13526,7 +13621,22 @@ Form can consists of:
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>hover()</strong></td>
+<td>Hover on the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Highlight element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Unhighlight element</td>
 <td>void</td>
 </tr>
 <tr>
@@ -13545,19 +13655,9 @@ Form can consists of:
 <td>TextAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
 </tr>
 </tbody></table>
 
@@ -13583,7 +13683,44 @@ Form can consists of:
 <p><img src="images/bootstrap/pagination-sizing-example.png" alt="Pagination sizing example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#pagination-big") public static PaginationSizeBig paginationSizeBig;</span>
+<span class="c1">// @FindBy(css = "#pagination-small") public static PaginationSizeSmall paginationSizeSmall;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#pagination-big"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">PaginationSizeBig</span> <span class="n">paginationSizeBig</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#pagination-small"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">PaginationSizeSmall</span> <span class="n">paginationSizeSmall</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaginationSizeBig</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItems</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public Pagination paginationItems;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".page-link"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItemsText</span><span class="o">;</span> <span class="c1">// @FindBy(css = ".page-link") public Pagination paginationItemsText;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaginationSizeSmall</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItems</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public Pagination paginationItems;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".page-link"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItemsText</span><span class="o">;</span> <span class="c1">// @FindBy(css = ".page-link") public Pagination paginationItemsText;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">paginationSizeBig</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">paginationSizeBig</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"pagination pagination-lg"</span><span class="o">);</span>
+    <span class="n">paginationSizeSmall</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">paginationSizeSmall</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"pagination pagination-sm"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkTextTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">paginationSizeBig</span><span class="o">.</span><span class="na">paginationItemsText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">));</span>
+    <span class="n">paginationSizeSmall</span><span class="o">.</span><span class="na">paginationItemsText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/pagination-sizing-html.png" alt="Pagination sizing html" /></p>
 
@@ -13596,7 +13733,22 @@ Form can consists of:
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>hover()</strong></td>
+<td>Hover on the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Highlight element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Unhighlight element</td>
 <td>void</td>
 </tr>
 <tr>
@@ -13615,19 +13767,9 @@ Form can consists of:
 <td>TextAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
 </tr>
 </tbody></table>
 
@@ -13642,7 +13784,7 @@ Form can consists of:
 
 <p><br></p>
 <h4 id='alignment'>Alignment</h4>
-<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/pagination/#alignment">Pagination sizing</a></em></strong></p>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/pagination/#alignment">Pagination alignment</a></em></strong></p>
 
 <p>List Group is located in the following classes:</p>
 
@@ -13650,12 +13792,52 @@ Form can consists of:
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination</em></li>
 </ul>
 
-<p><img src="images/bootstrap/pagination-alignment-example.png" alt="Pagination sizing example" /></p>
+<p><img src="images/bootstrap/pagination-alignment-example.png" alt="Pagination alignment example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#pagination-center") public static PaginationAlignCenter paginationAlignCenter;</span>
+<span class="c1">// @FindBy(css = "#pagination-end") public static PaginationAlignEnd paginationAlignEnd; </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#pagination-center"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">PaginationAlignCenter</span> <span class="n">paginationAlignCenter</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#pagination-end"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">PaginationAlignEnd</span> <span class="n">paginationAlignEnd</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaginationAlignCenter</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItems</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public Pagination paginationItems;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaginationAlignEnd</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Pagination</span> <span class="n">paginationItems</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public Pagination paginationItems;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">paginationAlignCenter</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">paginationAlignCenter</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"pagination justify-content-center"</span><span class="o">);</span>
+    <span class="n">paginationAlignCenter</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+    <span class="n">paginationAlignEnd</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">paginationAlignEnd</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"pagination justify-content-end"</span><span class="o">);</span>
+    <span class="n">paginationAlignEnd</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listPageTitles"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableCenterTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">paginationAlignCenter</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">hover</span><span class="o">();</span>
+    <span class="n">paginationAlignCenter</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">paginationAlignCenter</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">paginationAlignCenter</span><span class="o">.</span><span class="na">paginationItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
-<p><img src="images/bootstrap/pagination-alignment-html.png" alt="Pagination sizing html" /></p>
+<p><img src="images/bootstrap/pagination-alignment-html.png" alt="Pagination alignment html" /></p>
 
 <table><thead>
 <tr>
@@ -13666,7 +13848,22 @@ Form can consists of:
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>hover()</strong></td>
+<td>Hover on the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Highlight element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Unhighlight element</td>
 <td>void</td>
 </tr>
 <tr>
@@ -13685,19 +13882,9 @@ Form can consists of:
 <td>TextAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
 </tr>
 </tbody></table>
 
