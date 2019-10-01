@@ -12620,7 +12620,43 @@ Form can consists of:
 <p><img src="images/bootstrap/nav-base.png" alt="Nav base example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-base-li") public static NavsBaseLi navsBaseLi;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-base-li"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsBaseLi</span> <span class="n">navsBaseLi</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsBaseLi</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-link"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/nav-base-li-html.png" alt="Nav base example html" /></p>
 
@@ -12651,7 +12687,22 @@ Form can consists of:
 <tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
 </tr>
 </tbody></table>
 
@@ -12672,7 +12723,45 @@ Form can consists of:
 <p><img src="images/bootstrap/nav-align-right.png" alt="Nav horizontal alignmen example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-center") public static NavsAlignmentCenter navsAlignmentCenter;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-center"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsAlignmentCenter</span> <span class="n">navsAlignmentCenter</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsAlignmentCenter</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav justify-content-center"</span><span class="o">);</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-item"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/nav-align-center-html.png" alt="Nav horizontal alignmen example html" /></p>
 
@@ -12703,7 +12792,22 @@ Form can consists of:
 <tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
 </tr>
 </tbody></table>
 
@@ -12722,7 +12826,40 @@ Form can consists of:
 <p><img src="images/bootstrap/nav-vertical.png" alt="Nav vertical alignmen example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-vert-li") public static NavsVerticalLi navsVerticalLi;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-vert-li"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsVerticalLi</span> <span class="n">navsVerticalLi</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsVerticalLi</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav flex-column"</span><span class="o">);</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/nav-vertical-li-html.png" alt="Nav vertical alignmen example html" /></p>
 
@@ -12753,7 +12890,22 @@ Form can consists of:
 <tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
 </tr>
 </tbody></table>
 
@@ -12772,7 +12924,40 @@ Form can consists of:
 <p><img src="images/bootstrap/nav-tabs.png" alt="Nav tabs example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-tabs") public static NavsTabs navsTabs;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-tabs"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsTabs</span> <span class="n">navsTabs</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsTabs</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav nav-tabs"</span><span class="o">);</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/nav-tabs-html.png" alt="Nav tabs example html" /></p>
 
@@ -12801,7 +12986,22 @@ Form can consists of:
 <tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
 </tr>
 </tbody></table>
 
@@ -12820,7 +13020,35 @@ Form can consists of:
 <p><img src="images/bootstrap/nav-pills.png" alt="Nav pills example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-pills") public static NavsPills navsPills;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-pills"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsPills</span> <span class="n">navsPills</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsPills</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-item"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-link"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/nav-pills-html.png" alt="Nav pills example html" /></p>
 
@@ -12849,7 +13077,22 @@ Form can consists of:
 <tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
 </tr>
 </tbody></table>
 
@@ -12868,7 +13111,35 @@ Form can consists of:
 <p><img src="images/bootstrap/nav-fill-and-justify.png" alt="Nav fill and justify example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-justify") public static NavsJustify navsJustify;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-justify"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsJustify</span> <span class="n">navsJustify</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsJustify</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-item"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-link"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/nav-fill-and-justify-html.png" alt="Nav fill and justify example html" /></p>
 
@@ -12897,7 +13168,22 @@ Form can consists of:
 <tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
 </tr>
 </tbody></table>
 
@@ -12916,7 +13202,55 @@ Form can consists of:
 <p><img src="images/bootstrap/nav-tabs-with-dropdowns.png" alt="Nav tabs with dropdowns example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-with-dropdown") public static NavsTabsWithDropdown navsTabsWithDropdown;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsTabsWithDropdown</span> <span class="n">navsTabsWithDropdown</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsTabsWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a.nav-link"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "a.nav-link") public ListGroup navItemLink;</span>
+    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+            <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav nav-tabs"</span><span class="o">);</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">expanded</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-toggle"</span><span class="o">,</span> <span class="s">"dropdown"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-haspopup"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-expanded"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/nav-tabs-with-dropdown-html.png" alt="Nav tabs with dropdowns example html" /></p>
 
@@ -12945,7 +13279,32 @@ Form can consists of:
 <tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Get button text</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
 
@@ -12964,7 +13323,45 @@ Form can consists of:
 <p><img src="images/bootstrap/nav-pills-with-dropdowns.png" alt="Nav pills with dropdowns example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-pills-drop") public static NavsPillsWithDropdown navsPillsWithDropdown;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-pills-drop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsPillsWithDropdown</span> <span class="n">navsPillsWithDropdown</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsPillsWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span> <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a.nav-link"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "a.nav-link") public ListGroup navItemLink;</span>
+    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+            <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">expanded</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-toggle"</span><span class="o">,</span> <span class="s">"dropdown"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-haspopup"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-expanded"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownClickableTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop1</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle1</span><span class="o">);</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop2</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle2</span><span class="o">);</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop3</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle3</span><span class="o">);</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop4</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle4</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/nav-pills-with-dropdown-html.png" alt="Nav pills with dropdowns example html" /></p>
 
@@ -12993,7 +13390,32 @@ Form can consists of:
 <tr>
 <td><strong>get()</strong></td>
 <td>Select button by index</td>
-<td>action</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Get button text</td>
+<td>TextAssertn</td>
 </tr>
 </tbody></table>
 
