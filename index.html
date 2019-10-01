@@ -15134,66 +15134,57 @@ Form can consists of:
 
 <p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /> </p>
 <h4 id='button-addons'>Button addons</h4><pre class="highlight java tab-java"><code>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonAddons</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-<span class="c1">// Button addons locators</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-addon1"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Button</span> <span class="n">button1</span><span class="o">;</span>
-    <span class="nd">@XPath</span><span class="o">(</span><span class="s">"//*[@aria-describedby='button-addon1']"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input1</span><span class="o">;</span>
-<span class="c1">//</span>
-    <span class="nd">@XPath</span><span class="o">(</span><span class="s">"//*[@aria-describedby='button-addon2']"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input2</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-addon2"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Button</span> <span class="n">button2</span><span class="o">;</span>
-<span class="c1">//</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-addon3 &gt; button"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">anyButtons</span><span class="o">;</span>
-    <span class="nd">@XPath</span><span class="o">(</span><span class="s">"//*[@aria-describedby='button-addon3']"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input3</span><span class="o">;</span>
-<span class="c1">//</span>
-    <span class="nd">@XPath</span><span class="o">(</span><span class="s">"//*[@aria-describedby='button-addon4']"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input4</span><span class="o">;</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#button-addon4 &gt; button"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">nextButtons</span><span class="o">;</span>
-<span class="o">}</span>
-
 <span class="c1">// Button addons</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-button-addon1"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonAddons</span> <span class="n">inputGroupButtonAddons1</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-button-addon2"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonAddons</span> <span class="n">inputGroupButtonAddons2</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-button-addon3"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonAddons</span> <span class="n">inputGroupButtonAddons3</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-button-addon4"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonAddons</span> <span class="n">inputGroupButtonAddons4</span><span class="o">;</span>
+<span class="c1">//    @FindBy(css = "#input-group-button-addon4") public static ButtonAddons inputGroupButtonAddons4;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonAddons</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+<span class="c1">// Button addons locators</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">input</span><span class="o">;</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listButtons</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">inputField</span><span class="o">;</span>
+<span class="o">}</span>
 
 <span class="c1">// Button addons tests</span>
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonAddon1Test</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">inputGroupButtonAddons1</span><span class="o">.</span><span class="na">input1</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons1</span><span class="o">.</span><span class="na">button1</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">inputGroupButtonAddons1</span><span class="o">.</span><span class="na">input1</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons1</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons1</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">inputGroupButtonAddons1</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonAddon2Test</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input2</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">button2</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input2</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input2</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonAddon3Test</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">inputGroupButtonAddons3</span><span class="o">.</span><span class="na">input3</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons3</span><span class="o">.</span><span class="na">anyButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">inputGroupButtonAddons3</span><span class="o">.</span><span class="na">anyButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">inputGroupButtonAddons3</span><span class="o">.</span><span class="na">input3</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons3</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons3</span><span class="o">.</span><span class="na">listButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">inputGroupButtonAddons3</span><span class="o">.</span><span class="na">listButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">inputGroupButtonAddons3</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonAddon4Test</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">input4</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">nextButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">input4</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">nextButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">input4</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">listButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
+        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">listButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
     <span class="o">}</span>
 
 </code></pre>
