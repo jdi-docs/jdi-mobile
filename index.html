@@ -9870,6 +9870,63 @@ Below are examples of different toggle styles.</p>
 
 <p><br></p>
 
+<p><strong>Card list groups</strong> </p>
+
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.0/components/jumbotron" target="_blank">Card list groups</a> – Create lists of content in a card with a flush list group.</p>
+<pre class="highlight java tab-java"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardListGroups</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">cardHeader</span><span class="o">;</span> <span class="c1">//@FindBy(".card-header"))</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".list-group-item"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">listGroups</span><span class="o">;</span> <span class="c1">//@FindBy(".list-group-item")</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkCardListHeaderTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cardListGroups</span><span class="o">.</span><span class="na">cardHeader</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">cardHeaderText</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkCardListCellsQuantity</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardListGroups</span><span class="o">.</span><span class="na">listGroups</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">cardListGroupsSize</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkCardListGroupsValues</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">checkedValues</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">WebElement</span> <span class="n">s</span> <span class="o">:</span> <span class="n">cardListGroups</span><span class="o">.</span><span class="na">listGroups</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">cardListGroupsValues</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getText</span><span class="o">()))</span> <span class="o">{</span>
+                <span class="n">checkedValues</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardListGroupsValues</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">checkedValues</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre>
+<p><img src="images/bootstrap/card_list_groups.png" alt="Card list groups" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/card_list_groups_code.png" alt="Card Body Example Code" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>getText()</td>
+<td>Returns text of list cell</td>
+<td>String</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>Returns cells quantity of list groups</td>
+<td>int</td>
+</tr>
+</tbody></table>
+
 <p><strong>Kitchen Sink</strong></p>
 
 <p>Mix and match multiple content types to create the card you need, all wrapped in a fixed-width card.</p>
