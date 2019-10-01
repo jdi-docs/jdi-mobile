@@ -11544,16 +11544,112 @@ You can use any of our text color utilities on the standard spinner.</p>
 
 <p><strong>Growing Spinners</strong></p>
 
-<p>If you don’t fancy a border spinner, switch to the grow spinner.</p>
+<p>If you don’t fancy a border spinner, switch to the <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/spinners/#growing-spinner" target="_blank">grow spinner</a>.</p>
 
 <p>Once again, this spinner is built with currentColor, so you can easily change its appearance with <a href="https://getbootstrap.com/docs/4.3/utilities/colors/" target="_blank">text color utilities</a>. 
 Below it is in blue, along with the supported variants.</p>
 
 <p><img src="images/bootstrap/growingspinners.png" alt="Growing Spinners Example" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">// @FindBy(id = "growing-spinners")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#growing-spinners"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">GrowingSpinners</span> <span class="n">growingSpinners</span><span class="o">;</span>
 
+<span class="c1">// @FindBy(css = ".text-primary")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".text-primary"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">primarySpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".text-secondary")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".text-secondary"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">secondarySpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".text-success")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".text-success"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">successSpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".text-danger")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".text-danger"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">dangerSpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".text-warning")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".text-warning"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">warningSpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".text-info")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".text-info"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">infoSpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".text-light")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".text-light"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">lightSpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".text-dark")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".text-dark"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">darkSpinner</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerGrowClass</span> <span class="o">=</span> <span class="s">"spinner-grow"</span><span class="o">;</span>
+
+<span class="nd">@DataProvider</span>
+<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">spinnerData</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]</span> <span class="o">{</span>
+            <span class="o">{</span><span class="n">growingSpinners</span><span class="o">.</span><span class="na">primarySpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">growingSpinners</span><span class="o">.</span><span class="na">secondarySpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">growingSpinners</span><span class="o">.</span><span class="na">successSpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">growingSpinners</span><span class="o">.</span><span class="na">dangerSpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">growingSpinners</span><span class="o">.</span><span class="na">warningSpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">growingSpinners</span><span class="o">.</span><span class="na">infoSpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">growingSpinners</span><span class="o">.</span><span class="na">lightSpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">growingSpinners</span><span class="o">.</span><span class="na">darkSpinner</span><span class="o">}</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">spinnerHasGrowClassTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">spinnerGrowClass</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">().</span><span class="na">and</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/growingspinners-html.png" alt="Growing Spinners HTML Example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Asserts element</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Asserts element is displayed</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Asserts element is enabled</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>hasClass()</strong></td>
+<td>Match passed value with element class</td>
+<td>UISelectAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="javascript: void();">Bootstrap Test Examples</a></p>
 
 <p><strong>Spinner Alignment</strong></p>
 
