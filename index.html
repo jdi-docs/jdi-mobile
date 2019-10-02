@@ -11783,7 +11783,7 @@ You may also swap the text out of the spinner element and utilize button text as
 
 <p><br></p>
 <h3 id='tooltip'>Tooltip</h3>
-<p><strong>Tooltip</strong> – is a hint that used in conjuction with a pointer.</p>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/tooltips/" target="_blank">Tooltip</a> is a hint that used in conjuction with a pointer.</p>
 
 <p><img src="images/bootstrap/tooltip_top.png" alt="Tooltip top" /></p>
 
@@ -11796,48 +11796,41 @@ You may also swap the text out of the spinner element and utilize button text as
 <p><img src="images/bootstrap/tooltip_with_html.png" alt="Tooltip with title" /></p>
 
 <p><img src="images/bootstrap/tooltip_disabled.png" alt="Tooltip disabled" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#tooltipOnTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Tooltip</span> <span class="n">tooltipOnTopButton</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#tooltipOnTop")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#tooltipOnLeft"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Tooltip</span> <span class="n">tooltipOnLeftButton</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#tooltipOnLeft")</span>
 
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Tooltips"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTooltipTextTests</span><span class="o">(</span><span class="n">Tooltip</span> <span class="n">tooltip</span><span class="o">,</span> <span class="n">String</span> <span class="n">tooltipText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">tooltip</span><span class="o">.</span><span class="na">getTooltipText</span><span class="o">(),</span> <span class="n">tooltipText</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"TooltipsPlacements"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">tooltipPlacementTests</span><span class="o">(</span><span class="n">Tooltip</span> <span class="n">tooltip</span><span class="o">,</span> <span class="n">String</span> <span class="n">placement</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">tooltip</span><span class="o">.</span><span class="na">getTooltipPlacement</span><span class="o">(),</span> <span class="n">placement</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Tooltips"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">tooltipIsVisibleByHoverTests</span><span class="o">(</span><span class="n">Tooltip</span> <span class="n">tooltip</span><span class="o">,</span> <span class="n">String</span> <span class="n">__</span><span class="o">)</span>
+    <span class="n">tooltip</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">hover</span><span class="o">();</span>
+    <span class="n">tooltip</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">isVisible</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Tooltips"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">tooltipIsInvisibleTests</span><span class="o">(</span><span class="n">Tooltip</span> <span class="n">tooltip</span><span class="o">,</span> <span class="n">String</span> <span class="n">__</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">tooltip</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">tooltipWithHtmlTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertTrue</span><span class="o">(</span><span class="n">tooltipWithHTML</span><span class="o">.</span><span class="na">isTooltipWithHTML</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/popover-html.png" alt="Tooltip example" /></p>
 
 <p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Available methods and properties in C# JDI Light:</p>
 
 <table><thead>
 <tr>
@@ -11847,26 +11840,48 @@ You may also swap the text out of the spinner element and utilize button text as
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>click()</td>
+<td>Click the item</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>getText()</td>
+<td>Get item text</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>getValue()</td>
+<td>Get item value</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>getTooltipText()</td>
+<td>Get tooltip text</td>
+<td>String</td>
+</tr>
+<tr>
+<td>getTooltipPlacement()</td>
+<td>Get tooltip placement</td>
+<td>String</td>
+</tr>
+<tr>
+<td>isTooltipWithHTML()</td>
+<td>Check that tooltip contains html text</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>is()</td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td>assertThat()</td>
+<td>Assert action</td>
+<td>UIpAssert</td>
 </tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/TooltipTests.java" target="_blank">Bootstrap test example with tooltips</a></p>
 
 <p><br></p>
 <h3 id='popover'>Popover</h3>
