@@ -547,6 +547,9 @@
 								<a href="#spinners" class="toc-h2 h3 toc-link" data-title="Spinners">Spinners</a>
                             </li>
                             <li>
+								<a href="#colored-spinners" class="toc-h2 h3 toc-link" data-title="Colored Spinners">Colored Spinners</a>
+                            </li>
+                            <li>
 								<a href="#tooltip" class="toc-h2 h3 toc-link" data-title="Tooltip">Tooltip</a>
                             </li>
                             <li>
@@ -11432,18 +11435,83 @@ Their appearance, alignment, and sizing can be easily customized with Bootstrap 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/borderspinner-html.png" alt="Border Spinner HTML Example" /></p>
-
-<p><strong>Colored Spinners</strong></p>
-
-<p>The border spinner uses currentColor for its border-color, 
+<h3 id='colored-spinners'>Colored Spinners</h3>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/spinners/#colors" target="_blank">Colored spinners</a>.
+The border spinner uses currentColor for its border-color, 
 meaning you can customize the color with <a href="https://getbootstrap.com/docs/4.3/utilities/colors/" target="_blank">text color utilities</a>. 
 You can use any of our text color utilities on the standard spinner.</p>
+<pre class="highlight java tab-java"><code>
 
-<p><img src="images/bootstrap/coloredspinners.png" alt="Colored Spinners Example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+
+
+ <span class="c1">// @FindBy(id = "spinner-text-primary")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-text-primary"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ColorSpinner</span> <span class="n">spinnerWithTextPrimary</span><span class="o">;</span> 
+ <span class="c1">// @FindBy(css = "#spinner-text-light")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-text-light"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ColorSpinner</span> <span class="n">spinnerWithTextLight</span><span class="o">;</span> 
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertColorTests</span><span class="o">(</span><span class="n">ColorSpinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">);</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertSpinnerColorTests</span><span class="o">(</span><span class="n">ColorSpinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">color</span><span class="o">));</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertColorByHasClassTests</span><span class="o">(</span><span class="n">ColorSpinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">colorSpinner</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"spinner-border"</span> <span class="o">+</span> <span class="n">color</span><span class="o">);</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">ColorSpinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">__</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"spinner-border"</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"status"</span><span class="o">);</span>
+ <span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/coloredspinners.png" alt="Colored Spinners Example" />
+Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/coloredspinners-html.png" alt="Colored Spinners HTML Example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>getColor()</td>
+<td>Get item color</td>
+<td>String</td>
+</tr>
+<tr>
+<td>is()</td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td>assertThat()</td>
+<td>Assert action</td>
+<td>UIpAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ColorSpinnersTests.java" target="_blank">Bootstrap test example with colored spinners</a></p>
+
+<p><br></p>
 
 <p><strong>Growing Spinners</strong></p>
 
