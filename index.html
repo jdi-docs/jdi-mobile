@@ -11501,6 +11501,12 @@ Below it is in blue, along with the supported variants.</p>
 
 <p><img src="images/bootstrap/growingspinners-html.png" alt="Growing Spinners HTML Example" /></p>
 
+<p>Spinner is represented by Section class in Java:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+</ul>
+
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -11589,7 +11595,58 @@ to place spinners exactly where you need them in any situation.</p>
 that can quickly be used within other components.</p>
 
 <p><img src="images/bootstrap/spinner-size-native.png" alt="Spinner Size Native Example" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">// @FindBy(id = "spinner-size")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-size"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SpinnerSize</span> <span class="n">spinnerSize</span><span class="o">;</span>
 
+<span class="c1">// @FindBy(css = ".spinner-border-sm")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".spinner-border-sm"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">smallSpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".spinner-grow-sm")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".spinner-grow-sm"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">smallGrowingSpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(id = "spinBorder")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinBorder"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">spinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(id = "spinGrow")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinGrow"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">growingSpinner</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">smallSpinnerClass</span> <span class="o">=</span> <span class="s">"spinner-border-sm"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">smallGrowingSpinnerClass</span> <span class="o">=</span> <span class="s">"spinner-grow-sm"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerStyleValue</span> <span class="o">=</span> <span class="s">"width: 3rem; height: 3rem;"</span><span class="o">;</span>
+
+<span class="nd">@DataProvider</span>
+<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">spinnerData</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]</span> <span class="o">{</span>
+            <span class="o">{</span><span class="n">spinnerSize</span><span class="o">.</span><span class="na">smallSpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerSize</span><span class="o">.</span><span class="na">smallGrowingSpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerSize</span><span class="o">.</span><span class="na">spinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerSize</span><span class="o">.</span><span class="na">growingSpinner</span><span class="o">}</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">().</span><span class="na">and</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">spinnerClassTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">smallSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">smallSpinnerClass</span><span class="o">);</span>
+    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">smallGrowingSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">smallGrowingSpinnerClass</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">spinnerStylingTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"style"</span><span class="o">,</span> <span class="n">spinnerStyleValue</span><span class="o">);</span>
+    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">growingSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"style"</span><span class="o">,</span> <span class="n">spinnerStyleValue</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/spinner-size-native-html.png" alt="Spinner Size Native HTML Example" /></p>
@@ -11601,6 +11658,50 @@ that can quickly be used within other components.</p>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/spinner-size-css-html.png" alt="Spinner Size CSS HTML Example" /></p>
+
+<p>Spinner is represented by Section class in Java:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Asserts element</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Asserts element is displayed</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Asserts element is enabled</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>hasClass()</strong></td>
+<td>Match passed value with element class</td>
+<td>UISelectAssert</td>
+</tr>
+<tr>
+<td><strong>attr()</strong></td>
+<td>Match passed value with element attribute</td>
+<td>IsAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="javascript: void();">Bootstrap test examples</a></p>
 
 <p><strong>Spinner Buttons</strong></p>
 
