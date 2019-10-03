@@ -9410,14 +9410,27 @@ Below are examples of different toggle styles.</p>
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='progress'>Progress</h3>
-<p>Progress is custom progress bar featuring support for stacked bars, animated backgrounds, and text labels.</p>
+<h3 id='progress'>Progress</h3><pre class="highlight java tab-java"><code>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressWidth"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getWidthTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">width</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressColor"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getColorTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+<p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/">Progress</a> is custom progress bar featuring support for stacked bars, animated backgrounds, and text labels.</p>
 
 <p><img src="images/bootstrap/progress.png" alt="Progress example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/progress-html.png" alt="Progress HTML example" /></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBaseTests.java">Bootstrap test examples</a></p>
 
 <p><strong>With label</strong></p>
 
