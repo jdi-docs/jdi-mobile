@@ -9412,10 +9412,15 @@ Below are examples of different toggle styles.</p>
 </tbody></table>
 <h3 id='progress'>Progress</h3><pre class="highlight java tab-java"><code>
 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Progress</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;</span> <span class="o">{</span>
+<span class="o">}</span>
+
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressWidth"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getWidthTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">width</span><span class="o">);</span>
     <span class="o">}</span>
+
+
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressColor"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getColorTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
@@ -9433,12 +9438,40 @@ Below are examples of different toggle styles.</p>
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBaseTests.java">Bootstrap test examples</a></p>
 
 <p><strong>With label</strong></p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">//@FindBy(css = "#progress-with-labels")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-with-labels"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressWithLabels</span><span class="o">;</span> 
 
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getDefaultPercentTest</span><span class="o">()</span> <span class="o">{</span>
+         <span class="n">assertThat</span><span class="o">(</span><span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getText</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">defaultPercent</span><span class="o">));</span>
+    <span class="o">}</span>
+
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getPercentTest</span><span class="o">()</span> <span class="o">{</span>
+         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">defaultPercent</span><span class="o">);</span>
+         <span class="n">minus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"20%"</span><span class="o">);</span>
+         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">minus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+         <span class="o">}</span>
+         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">minPercent</span><span class="o">);</span>
+         <span class="n">plus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"5%"</span><span class="o">);</span>
+         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="n">plus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+         <span class="o">}</span>
+         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">maxPercent</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre>
 <p><img src="images/bootstrap/progress-label.png" alt="Progress label example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/progress-label-html.png" alt="Progress label HTML example" /></p>
+
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 
 <p><strong>With backgrounds</strong></p>
 
