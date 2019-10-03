@@ -11441,13 +11441,64 @@ Their appearance, alignment, and sizing can be easily customized with Bootstrap 
 
 <p><strong>Border Spinner</strong></p>
 
-<p>Use the border spinners for a lightweight loading indicator.</p>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/spinners/#border-spinner" target="_blank">Border Spinner</a> - use the border spinners for a lightweight loading indicator.</p>
 
 <p><img src="images/bootstrap/borderspinner.png" alt="Border Spinner Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">// @FindBy(id = "button-show-spinner-border")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#button-show-spinner-border"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">buttonSpinnerBorder</span><span class="o">;</span> 
+<span class="c1">// @FindBy(css = "#spinner-border")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-border"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Spinner</span> <span class="n">spinnerBorder</span><span class="o">;</span> 
 
+<span class="nd">@Test</span><span class="o">()</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkSpinnerClass</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">spinnerBorder</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"spinner-border"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkSpinnerAppearAndThenDisappear</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">buttonSpinnerBorder</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+  <span class="n">spinnerBorder</span><span class="o">.</span><span class="na">disappearAfter</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+<span class="o">}</span>
+
+</code></pre>
 <p><img src="images/bootstrap/borderspinner-html.png" alt="Border Spinner HTML Example" /></p>
+
+<p>Border Spinner are represented by the following class:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Spinner</em></li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>disappearAfter(int sec)</td>
+<td>Wait when spinner dissapear</td>
+<td>Spinner</td>
+</tr>
+<tr>
+<td>is()</td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td>assertThat()</td>
+<td>Assert action</td>
+<td>UIpAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/spinner/SpinnerBorderTests.java">Bootstrap test examples</a></p>
 <h3 id='colored-spinners'>Colored Spinners</h3>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/spinners/#colors" target="_blank">Colored spinners</a>.
 The border spinner uses currentColor for its border-color, 
