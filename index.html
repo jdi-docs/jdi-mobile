@@ -9990,10 +9990,44 @@ Below are examples of different toggle styles.</p>
 <p><br><br><br><br><br><br></p>
 
 <p><strong>With backgrounds</strong></p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">//@FindBy(css = "#progress-background-green")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-backgrounds-green"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressBackgroundGreen</span><span class="o">;</span>
+<span class="c1">//@FindBy(css = "#progress-background-blue")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-backgrounds-blue"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressBackgroundBlue</span><span class="o">;</span>
+<span class="c1">//@FindBy(css = "#progress-background-yellow")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-backgrounds-yellow"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressBackgroundYellow</span><span class="o">;</span>
+<span class="c1">//@FindBy(css = "#progress-background-red")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-backgrounds-red"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressBackgroundRed</span><span class="o">;</span>
 
+<span class="nd">@DataProvider</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"progressBackgroundsWithAttributes"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">progressBackgroundsWithAttributes</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+                <span class="o">{</span><span class="n">progressBackgroundGreen</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="s">"rgba(40, 167, 69, 1)"</span><span class="o">},</span>
+                <span class="o">{</span><span class="n">progressBackgroundBlue</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="s">"rgba(23, 162, 184, 1)"</span><span class="o">},</span>
+                <span class="o">{</span><span class="n">progressBackgroundYellow</span><span class="o">,</span> <span class="mi">75</span><span class="o">,</span> <span class="s">"rgba(255, 193, 7, 1)"</span><span class="o">},</span>
+                <span class="o">{</span><span class="n">progressBackgroundRed</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="s">"rgba(220, 53, 69, 1)"</span><span class="o">}</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressBackgroundsWithAttributes"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">ICoreElement</span> <span class="n">progressBackground</span><span class="o">,</span> <span class="kt">int</span> <span class="n">widthNumber</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">progressBackground</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"progressbar"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"style"</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"width: %s%%;"</span><span class="o">,</span> <span class="n">widthNumber</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuenow"</span><span class="o">,</span> <span class="n">widthNumber</span> <span class="o">+</span> <span class="s">""</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuemin"</span><span class="o">,</span> <span class="s">"0"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuemax"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">color</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre>
 <p><img src="images/bootstrap/progress-backgrounds.png" alt="Progress backgroundsexample" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ProgressBackgroundTests.java" target=a_blank> Bootstrap test examples </a></p>
 
 <p><img src="images/bootstrap/progress-backgrounds-html.png" alt="Progress backgrounds HTML example" /></p>
 
