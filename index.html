@@ -9412,19 +9412,25 @@ Below are examples of different toggle styles.</p>
 </tbody></table>
 <h3 id='progress'>Progress</h3><pre class="highlight java tab-java"><code>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Progress</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;</span> <span class="o">{</span>
-<span class="o">}</span>
+
+
+
+
+
+
+
+<span class="c1">//FindBy(id = "#progress-bar-base-width-25 .progress-bar"</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-bar-base-width-25 .progress-bar"</span><span class="o">)</span>  
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressBaseWidth25</span><span class="o">;</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressWidth"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getWidthTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">width</span><span class="o">);</span>
-    <span class="o">}</span>
-
-
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getWidthTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ariaValue</span><span class="o">(</span><span class="n">width</span><span class="o">);</span>
+<span class="o">}</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressColor"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getColorTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">);</span>
+   <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
 <p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/">Progress</a> is custom progress bar featuring support for stacked bars, animated backgrounds, and text labels.</p>
@@ -9435,9 +9441,9 @@ Below are examples of different toggle styles.</p>
 
 <p><img src="images/bootstrap/progress-html.png" alt="Progress HTML example" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBaseTests.java">Bootstrap test examples</a></p>
-
-<p><strong>With label</strong></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBaseTests.java">Bootstrap test examples</a>
+<br><br>
+<strong>With label</strong></p>
 <pre class="highlight java tab-java"><code>
 <span class="c1">//@FindBy(css = "#progress-with-labels")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-with-labels"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressWithLabels</span><span class="o">;</span> 
@@ -9515,29 +9521,19 @@ Below are examples of different toggle styles.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>****</td>
-<td>TBD</td>
-<td></td>
+<td><strong>getAriaValue()</strong></td>
+<td>Get aria value of the bar</td>
+<td>String</td>
 </tr>
 <tr>
-<td>****</td>
-<td></td>
-<td></td>
+<td><strong>getColor()</strong></td>
+<td>Get color of the bar</td>
+<td>String</td>
 </tr>
 <tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Various assert actions for Progress</td>
+<td>ProgressAssert</td>
 </tr>
 </tbody></table>
 
