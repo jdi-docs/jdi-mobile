@@ -15364,57 +15364,57 @@ Form can consists of:
 
 <p><br /><br /><br /><br /><br /></p>
 <h4 id='multiple-inputs'>Multiple inputs</h4>
-<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">Multiple inputs<a> – While multiple inputs are supported visually, validation styles are only available for input groups with a single input.</p>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">Multiple inputs</a> – While multiple inputs are supported visually, validation styles are only available for input groups with a single input.</p>
 
 <p><img src="images/bootstrap/multiple_inputs.png" alt="Multiple inputs" /></p>
-<pre class="highlight java tab-java"><code>    <span class="c1">//FindBy(css = "#multiple-inputs"")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#multiple-inputs"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MultipleInputs</span> <span class="n">multipleInputs</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="c1">//FindBy(css = "#multiple-inputs"")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#multiple-inputs"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MultipleInputs</span> <span class="n">multipleInputs</span><span class="o">;</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
 
-        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">multipleInputs</span><span class="o">.</span><span class="na">getText</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">));</span>
+     <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">multipleInputs</span><span class="o">.</span><span class="na">getText</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+     <span class="n">assertEquals</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">));</span>
 
-        <span class="n">String</span> <span class="n">surname</span> <span class="o">=</span> <span class="n">multipleInputs</span><span class="o">.</span><span class="na">getText</span><span class="o">(</span><span class="s">"#mi-i-2"</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">surname</span><span class="o">,</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+     <span class="n">String</span> <span class="n">surname</span> <span class="o">=</span> <span class="n">multipleInputs</span><span class="o">.</span><span class="na">getText</span><span class="o">(</span><span class="s">"#mi-i-2"</span><span class="o">);</span>
+     <span class="n">assertEquals</span><span class="o">(</span><span class="n">surname</span><span class="o">,</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
 
-        <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="n">multipleInputs</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">text</span><span class="o">,</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
-    <span class="o">}</span>
+     <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="n">multipleInputs</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+     <span class="n">assertEquals</span><span class="o">(</span><span class="n">text</span><span class="o">,</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextAllTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">multipleInputs</span><span class="o">.</span><span class="na">getAllTexts</span><span class="o">(),</span> <span class="n">inputDataList</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextAllTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multipleInputs</span><span class="o">.</span><span class="na">getAllTexts</span><span class="o">(),</span> <span class="n">inputDataList</span><span class="o">);</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setValueTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">clearAll</span><span class="o">();</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setValueTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">clearAll</span><span class="o">();</span>
 
-        <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
 
-        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
-        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span>
 
-        <span class="n">String</span> <span class="n">locator</span> <span class="o">=</span> <span class="s">"#mi-i-2"</span><span class="o">;</span>
-        <span class="n">String</span> <span class="n">surname</span> <span class="o">=</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">clear</span><span class="o">(</span><span class="n">locator</span><span class="o">);</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">surname</span><span class="o">,</span> <span class="n">locator</span><span class="o">);</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">surname</span><span class="o">,</span> <span class="n">locator</span><span class="o">);</span>
-    <span class="o">}</span>
+    <span class="n">String</span> <span class="n">locator</span> <span class="o">=</span> <span class="s">"#mi-i-2"</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">surname</span> <span class="o">=</span> <span class="n">inputData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">clear</span><span class="o">(</span><span class="n">locator</span><span class="o">);</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">surname</span><span class="o">,</span> <span class="n">locator</span><span class="o">);</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">surname</span><span class="o">,</span> <span class="n">locator</span><span class="o">);</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAllValuesTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">clearAll</span><span class="o">();</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">setAllValues</span><span class="o">(</span><span class="n">inputDataList</span><span class="o">);</span>
-        <span class="n">multipleInputs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">texts</span><span class="o">(</span><span class="n">inputDataList</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAllValuesTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">clearAll</span><span class="o">();</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">setAllValues</span><span class="o">(</span><span class="n">inputDataList</span><span class="o">);</span>
+    <span class="n">multipleInputs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">texts</span><span class="o">(</span><span class="n">inputDataList</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
