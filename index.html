@@ -511,7 +511,7 @@
 								<a href="#button-2" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
                             </li>
                             <li>
-								<a href="#radio-button" class="toc-h2 h3 toc-link" data-title="Radio button">Radio button</a>
+								<a href="#checkboxes-and-radios" class="toc-h2 h3 toc-link" data-title="Checkboxes and radios">Checkboxes and radios</a>
                             </li>
                             <li>
 								<a href="#button-group" class="toc-h2 h3 toc-link" data-title="Button group">Button group</a>
@@ -7736,7 +7736,241 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tbody></table>
 
 <p><br><br></p>
-<h3 id='radio-button'>Radio button</h3>
+<h3 id='checkboxes-and-radios'>Checkboxes and radios</h3>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#default-stacked">Checkbox default</a></strong> </p>
+
+<p>Checkbox is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Checkbox</em></li>
+</ul>
+
+<p><img src="images/bootstrap/checkbox-default.png" alt="Checkbox default example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "body") public static CheckboxesDefault checkboxesDefault;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesDefault</span> <span class="n">checkboxesDefault</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesDefault</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#defaultCheck1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxOne</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#defaultCheck1") public Checkbox checkboxOne;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#defaultCheck2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxTwo</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#defaultCheck2") public Checkbox checkboxTwo;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxesDefault</span><span class="o">.</span><span class="na">checkboxOne</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"checkbox"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-input"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+    <span class="n">checkboxesDefault</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">label</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-label"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Default checkbox"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"label"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickableTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxesDefault</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">checkboxesDefault</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">checkboxesDefault</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
+    <span class="n">checkboxesDefault</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/checkbox-default-html.png" alt="Checkbox default example html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>check()</strong></td>
+<td>Select the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>uncheck()</strong></td>
+<td>Deselect the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/CheckboxesDefaultTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#inline">Checkbox default inline</a></strong> </p>
+
+<p>Checkbox is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Checkbox</em></li>
+</ul>
+
+<p><img src="images/bootstrap/checkbox-default-inline.png" alt="Checkbox default inline example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "body") public static CheckboxesDefaultInline checkboxesDefaultInline;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesDefaultInline</span> <span class="n">checkboxesDefaultInline</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesDefaultInline</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineCheckbox1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxOne</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#inlineCheckbox1") public Checkbox checkboxOne;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineCheckbox2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxTwo</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#inlineCheckbox2") public Checkbox checkboxTwo;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineCheckbox3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxThree</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#inlineCheckbox3") public Checkbox checkboxThree;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxesDefaultInline</span><span class="o">.</span><span class="na">checkboxOne</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"checkbox"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-input"</span><span class="o">);</span>
+    <span class="n">checkboxesDefaultInline</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">label</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-label"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickableTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxesDefaultInline</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">checkboxesDefaultInline</span><span class="o">.</span><span class="na">checkboxOne</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">checkboxesDefaultInline</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
+    <span class="n">checkboxesDefaultInline</span><span class="o">.</span><span class="na">checkboxOne</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">checkboxesDefaultInline</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">checkboxesDefaultInline</span><span class="o">.</span><span class="na">checkboxOne</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/checkbox-default-inline-html.png" alt="Checkbox default inline example html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>check()</strong></td>
+<td>Select the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>uncheck()</strong></td>
+<td>Deselect the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/CheckboxesDefaultInlineTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#default-stacked">Radio button</a></strong> – Element that can be represented with one or more clickable buttons aiming to choose only one button of the group.</p>
 
 <p>Radio button is located in the following classes:</p>
@@ -7748,17 +7982,17 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><img src="images/bootstrap/radio-button.png" alt="Radio button example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#radio-buttons"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonGroup</span> <span class="n">radioButtonGroup</span><span class="o">;</span>
-<span class="c1">//@FindBy(css = "#radio-buttons") public static RadioButtonGroup radioButtonGroup;</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#radio-buttons") public static RadioButtonGroup radioButtonGroup;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#radio-buttons"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonGroup</span> <span class="n">radioButtonGroup</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonGroup</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios2"</span> <span class="o">)</span><span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio3</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[type='radio']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios3']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio3Label</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#exampleRadios1") public RadioButton radio1;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios2"</span> <span class="o">)</span><span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#exampleRadios2" )public RadioButton radio2;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio3</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#exampleRadios3") public RadioButton radio3;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[type='radio']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">//@FindBy(css = "input[type='radio']") public RadioButton radioButton;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='exampleRadios1']") public Label radio1Label;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='exampleRadios2']") public Label radio2Label;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios3']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio3Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='exampleRadios3']") public Label radio3Label;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -7836,6 +8070,228 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><br></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/RadioButtonTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#inline">Radio button inline inline</a></strong> </p>
+
+<p>Checkbox is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton</em></li>
+</ul>
+
+<p><img src="images/bootstrap/radio-default-inline.png" alt="Radio button inline example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "body") public static RadioButtonsDefaultInline radioButtonsDefaultInline;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonsDefaultInline</span> <span class="n">radioButtonsDefaultInline</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonsDefaultInline</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[name='inlineRadioOptions']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">//@FindBy(css = "input[name='inlineRadioOptions']") public RadioButton radioButton;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineRadio1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#inlineRadio1") public RadioButton radio1;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineRadio2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#inlineRadio2") public RadioButton radio2;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineRadio3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio3</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#inlineRadio3") public RadioButton radio3;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='inlineRadio1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='inlineRadio1']") public Label radio1Label;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='inlineRadio2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='inlineRadio2']") public Label radio2Label;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='inlineRadio3']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio3Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='inlineRadio3']") public Label radio3Label;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span>
+             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radio1Label</span>
+             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-label"</span><span class="o">)</span>
+             <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label1</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByIndexTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radio1Label</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/radio-default-inline-html.png" alt="Radio button inline example html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/RadioButtonsDefaultInlineTests.java">Java test examples</a>
+<br></p>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#checkboxes">Checkbox custom</a></strong> </p>
+
+<p>Checkbox is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Checkbox</em></li>
+</ul>
+
+<p><img src="images/bootstrap/checkbox-custom.png" alt="Checkbox custom example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "body") public static CheckboxesCustom checkboxesCustom;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesCustom</span> <span class="n">checkboxesCustom</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesCustom</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheck1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheck1-div") public Checkbox checkboxContainer;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheck1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheck1") public Checkbox checkbox;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">disappear</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"checkbox"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">label</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-label"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Check this custom checkbox"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"label"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickableTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkboxContainer</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/checkbox-custom-html.png" alt="Checkbox custom example html" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>check()</strong></td>
+<td>Select the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>uncheck()</strong></td>
+<td>Deselect the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/CheckboxesCustomTests.java">Java test examples</a>
 <br></p>
 
 <p>Button group is represented by Section class in Java:</p>
@@ -15340,7 +15796,7 @@ Form can consists of:
 </ul>
 
 <p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupWrapping.java" target="_blank">Bootstrap test example wrapping</a></p>
-<h4 id='checkboxes-and-radios'>Checkboxes and radios</h4>
+<h4 id='checkboxes-and-radios-2'>Checkboxes and radios</h4>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a> – Place any checkbox or radio option within an input group’s addon instead of text.</p>
 
 <p><strong>Example with radio</strong></p>
