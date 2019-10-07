@@ -10060,6 +10060,22 @@ Below are examples of different toggle styles.</p>
 <p><img src="images/bootstrap/progress-striped-html.png" alt="Progress striped HTML example" /></p>
 
 <p><strong>With animated design</strong></p>
+<pre class="highlight java tab-java"><code>
+
+
+<span class="c1">//FindBy(css = "#progress-animated")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-animated"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressAnimated</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">progressAnimated</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">animated</span><span class="o">(</span><span class="s">"progress-bar-stripes"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">ariaValue</span><span class="o">(</span><span class="s">"75"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+<p>The striped gradient can also be <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#animated-stripes">animated</a>.
+Add .progress-bar-animated to .progress-bar to animate the stripes right to left via CSS3 animations.</p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
@@ -10091,7 +10107,8 @@ Below are examples of different toggle styles.</p>
 </tr>
 </tbody></table>
 
-<p><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressAnimatedStripesTests.java">Bootstrap test examples</a>
+<br></p>
 <h3 id='media-object'>Media object</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MediaObject</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
 <span class="o">}</span>
 </code></pre>
