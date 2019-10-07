@@ -12581,19 +12581,52 @@ that can quickly be used within other components.</p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/spinner/SpinnerSizeTests.java" target="_blank">Bootstrap Test Examples</a></p>
-
-<p><strong>Spinner Buttons</strong></p>
-
-<p>Use spinners within buttons to indicate an action is currently processing or taking place. 
+<h4 id='spinner-buttons'>Spinner Buttons</h4>
+<p>Use <a href="https://getbootstrap.com/docs/4.3/components/spinners/#buttons" target="_blank">spinners within buttons</a> to indicate an action is currently processing or taking place. 
 You may also swap the text out of the spinner element and utilize button text as needed.</p>
 
 <p><img src="images/bootstrap/spinnerbuttons.png" alt="Spinner Buttons Example" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonWithSpinner</span> <span class="kd">extends</span> <span class="n">Button</span> <span class="kd">implements</span> <span class="n">PageObject</span> <span class="o">{</span>
+    <span class="c1">// @FindBy(css = "[class*='spinner']")</span>
+    <span class="kd">public</span> <span class="nd">@UI</span><span class="o">(</span><span class="s">"[class*='spinner']"</span><span class="o">)</span> <span class="n">Spinner</span> <span class="n">spinner</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "[class*='spinner'] + span")</span>
+    <span class="kd">public</span> <span class="nd">@UI</span><span class="o">(</span><span class="s">"[class*='spinner'] + span"</span><span class="o">)</span>  <span class="n">TextField</span> <span class="n">span</span><span class="o">;</span>
+<span class="o">}</span>
 
+<span class="c1">// @FindBy(id = "#button-with-spinner-and-text")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#button-with-spinner-and-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonWithSpinner</span> <span class="n">buttonWithSpinnerAndText</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerClass</span> <span class="o">=</span> <span class="s">"spinner-border"</span><span class="o">;</span>
+
+<span class="nd">@Test</span><span class="o">()</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonText</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertTrue</span><span class="o">(</span><span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">());</span>
+    <span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">()</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkSpinnerInButtonWithText</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">spinnerClass</span><span class="o">);</span>
+    <span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">spinner</span>
+        <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
+<span class="o">}</span>
+
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/spinnerbuttons-html.png" alt="Spinner Buttons HTML Example" /></p>
 
-<p>Available methods in Java JDI Light:</p>
+<p>Spinner is represented by ButtonWithSpinner class in Java:</p>
+
+<ul>
+<li>com.epam.jdi.light.ui.bootstrap.elements.complex.ButtonWithSpinner</li>
+</ul>
+
+<p>Available methods in Java JDI Light for ButtonWithSpinner:</p>
 
 <table><thead>
 <tr>
@@ -12603,64 +12636,35 @@ You may also swap the text out of the spinner element and utilize button text as
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
 
-<p>Available methods and properties in C# JDI Light:</p>
+<p>Inner elements of are represented by following classes:</p>
 
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#spinners">Spinner</a></li>
+</ul>
 
-<p><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/spinner/SpinnerButtonsTests.java" target="_blank">Bootstrap Test Examples</a></p>
 <h3 id='tooltip'>Tooltip</h3>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/tooltips/" target="_blank">Tooltip</a> is a hint that used in conjuction with a pointer.</p>
 
