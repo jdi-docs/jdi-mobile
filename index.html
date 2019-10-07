@@ -13280,7 +13280,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
 
 <p><img src="images/bootstrap/dropdown-menu-content-form-html.png" alt="Form HTML example" /></p>
 <h3 id='toast'>Toast</h3>
-<p>Toasts are lightweight notifications designed to mimic the push notifications.
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/" target="_blank">Toast</a> - Toasts are lightweight notifications designed to mimic the push notifications.
 <br />
 <strong>Options for toasts:</strong>
 <br />
@@ -13295,6 +13295,36 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
   - <em>hide.bs.toast</em> - this event is fired immediately when the hide instance method has been called.<br/>
   - <em>hidden.bs.toast</em> - this event is fired when the toast has finished being hidden from the user<br/>
  <br /> </p>
+<pre class="highlight java tab-java"><code>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastRightTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithTopAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastRightTop")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#simpleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">simpleToast</span><span class="o">;</span> <span class="c1">//@FindBy("#simpleToast")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#firstMultipleToast")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#secondMultipleToast")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#firstStackToast")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#secondStackToast")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastCenterTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithCenterAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastCenterTop")</span>
+
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleToastValidationTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">simpleToastButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+     <span class="n">simpleToast</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+     <span class="n">simpleToast</span><span class="o">.</span><span class="na">headerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastHeaderText</span><span class="o">);</span>
+     <span class="n">simpleToast</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastBodyText</span><span class="o">);</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toastWithTopAlignValidationTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">toastWithTopAlignButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+     <span class="n">toastWithTopAlign</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+     <span class="n">toastWithTopAlign</span><span class="o">.</span><span class="na">headerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastHeaderText</span><span class="o">);</span>
+     <span class="n">toastWithTopAlign</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastBodyText</span><span class="o">);</span>
+     <span class="n">toastWithTopAlign</span><span class="o">.</span><span class="na">closeButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+     <span class="n">toastWithTopAlign</span><span class="o">.</span><span class="na">base</span><span class="o">().</span><span class="na">waitSec</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+     <span class="n">toastWithTopAlign</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
+   <span class="o">}</span>
+
+</code></pre>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/">Toast test examples</a></p>
 
 <p><img src="images/bootstrap/toast.png" alt="Toast example" /></p>
 
@@ -13350,60 +13380,29 @@ Example with top right align:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Get toast text</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>isDisplayed()</strong></td>
+<td>Show\wait that toast element displayed on the screen</td>
+<td>Boolean</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>close()</strong></td>
+<td>Close toast</td>
+<td>void</td>
 </tr>
 </tbody></table>
 
