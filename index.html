@@ -9513,20 +9513,84 @@ Navbar brand as heading <br>
 </tbody></table>
 
 <p><br><br></p>
-<h4 id='nav'>Nav</h4>
+<h4 id='nav'>Nav</h4><pre class="highlight java tab-java"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Navbar</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">//FindBy(xpath = "//*[contains(@class, 'nav-item')]")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'nav-item')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">navbarLinks</span><span class="o">;</span>
+    <span class="c1">//FindBy(css = ".navbar-brand")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarBrand</span><span class="o">;</span>
+    <span class="c1">//FindBy(css = "button.navbar-toggler")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button.navbar-toggler"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">togglerButton</span><span class="o">;</span>
+    <span class="c1">//FindBy(xpath = "//*[contains(@class, 'nav-link dropdown-toggle')]")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'nav-link dropdown-toggle')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">navbarDropdown</span><span class="o">;</span>
+<span class="o">}</span>
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-nav-with-disabled"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarNavWithDisabled</span><span class="o">;</span>
+
+ <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isDisabledItem</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">navbarNavWithDisabled</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">disabled</span><span class="o">();</span>
+    <span class="o">}</span>
+
+
+
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-nav-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarNavWithDropdown</span><span class="o">;</span>
+
+ <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickNavbarNavWithDropdownLinksTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">RuntimeException</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">navbarNavWithDropdown</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">navbarNavWithDropdown</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">textLinksnavbarNavWithDropdown</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">navbarNavWithDropdown</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">navbarNavWithDropdown</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"class"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="s">"nav-item dropdown show"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">assertThat</span><span class="o">(</span><span class="n">windowsCount</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+                <span class="n">switchToWindow</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+                <span class="n">assertThat</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">urlLinksnavbarNavWithDropdown</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
+                <span class="n">closeWindow</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">RuntimeException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">assertThat</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"is not clickable in any parts"</span><span class="o">));</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+
+
+
+</code></pre>
+<p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/navbar/#nav">Navbar</a> navigation links require the use of toggle classes for proper responsive styling.</p>
+
 <p><img src="images/bootstrap/nav.png" alt="Color Nav example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/nav-html.png" alt="Color Nav HTML example" /></p>
 
-<p><strong>With dropdown</strong></p>
+<p>With dropdown</p>
 
 <p><img src="images/bootstrap/nav-dropdown.png" alt="Color Nav example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/nav-dropdown-html.png" alt="Color Nav HTML example" /></p>
+
+<p>Media object is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+
+<p>Inner elements of media object can be represented by the following classes:
+<ul>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#link">Link</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button">Button</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#dropdown">DropDown</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a> </li>
+</ul></p>
+
+<p><a style="font-weight: bold;" target="_blank" href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarNavsTests.java">Bootstrap test examples</a></p>
 <h4 id='forms'>Forms</h4>
 <p>Place various form controls and components within a navbar with .form-inline.</p>
 
@@ -9909,8 +9973,6 @@ Below are examples of different toggle styles.</p>
 
 <p><img src="images/bootstrap/progress-html.png" alt="Progress HTML example" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBaseTests.java">Bootstrap test examples</a></p>
-
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -9935,7 +9997,14 @@ Below are examples of different toggle styles.</p>
 <td>Various assert actions for Progress</td>
 <td>ProgressAssert</td>
 </tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBaseTests.java">Bootstrap test examples</a></p>
 
 <p><strong>With label</strong></p>
 <pre class="highlight java tab-java"><code>
@@ -9971,8 +10040,6 @@ Below are examples of different toggle styles.</p>
 
 <p><img src="images/bootstrap/progress-label-html.png" alt="Progress label HTML example" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ProgressWithLabelsTests.java" target=a_blank> Bootstrap test examples </a></p>
-
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -9997,7 +10064,14 @@ Below are examples of different toggle styles.</p>
 <td>Various assert actions for Progress</td>
 <td>ProgressAssert</td>
 </tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ProgressWithLabelsTests.java" target=a_blank> Bootstrap test examples </a></p>
 
 <p><br><br><br><br><br><br></p>
 
