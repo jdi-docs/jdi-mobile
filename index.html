@@ -12319,7 +12319,74 @@ This means they can easily be resized, recolored, and quickly aligned.</p>
 <p>Use margin utilities like <code>.m-5</code> for easy spacing.</p>
 
 <p><img src="images/bootstrap/spinnermargin.png" alt="Spinner Margin Example" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">// @FindBy(id = "spinner-alignment")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-alignment"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SpinnerAlignment</span> <span class="n">spinnerAlignment</span><span class="o">;</span>
 
+<span class="c1">// @FindBy(xpath = "//div[@class='border mb-3 p-3']")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='border mb-3 p-3']"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">spinnerLeft</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(xpath = "//div[@class='d-flex justify-content-center border mb-3 p-3']")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='d-flex justify-content-center border mb-3 p-3']"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">flexJustifySpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(xpath = "//div[@class='d-flex align-items-center border mb-3 p-3']")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='d-flex align-items-center border mb-3 p-3']"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">flexAlignCenterSpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(xpath = "//div[@class='clearfix border mb-3 p-3']")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='clearfix border mb-3 p-3']"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">clearfixSpinner</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(xpath = "//div[@class='text-center mb-3 border p-3']")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='text-center mb-3 border p-3']"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">textCenterSpinner</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerBorderStyle</span> <span class="o">=</span> <span class="s">"spinner-border"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerMarginStyle</span> <span class="o">=</span> <span class="s">"mb-3"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerJustifyContentStyle</span> <span class="o">=</span> <span class="s">"justify-content-center"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerAlignCenterStyle</span> <span class="o">=</span> <span class="s">"align-items-center"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerClearfixStyle</span> <span class="o">=</span> <span class="s">"clearfix"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerTextCenterStyle</span> <span class="o">=</span> <span class="s">"text-center"</span><span class="o">;</span>
+
+<span class="nd">@DataProvider</span>
+<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">spinnerStyleData</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]</span> <span class="o">{</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">spinnerLeft</span><span class="o">,</span> <span class="n">spinnerMarginStyle</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">flexJustifySpinner</span><span class="o">,</span> <span class="n">spinnerJustifyContentStyle</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">flexAlignCenterSpinner</span><span class="o">,</span> <span class="n">spinnerAlignCenterStyle</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">clearfixSpinner</span><span class="o">,</span> <span class="n">spinnerClearfixStyle</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">textCenterSpinner</span><span class="o">,</span> <span class="n">spinnerTextCenterStyle</span><span class="o">},</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@DataProvider</span>
+<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">spinnerData</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]</span> <span class="o">{</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">spinnerLeft</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">flexJustifySpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">flexAlignCenterSpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">clearfixSpinner</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">textCenterSpinner</span><span class="o">},</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">spinner</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerStyleData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">spinnerAlignmentStyleTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">style</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">style</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/spinnermargin-html.png" alt="Spinner Margin HTML Example" /></p>
@@ -12357,6 +12424,50 @@ to place spinners exactly where you need them in any situation.</p>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/spinner-text-align-html.png" alt="Spinner Text Align Center HTML Example" /></p>
+
+<p>Spinner is represented by Section class in Java:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Asserts element</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Asserts element is displayed</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Asserts element is enabled</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>hasClass()</strong></td>
+<td>Match passed value with element class</td>
+<td>UISelectAssert</td>
+</tr>
+<tr>
+<td><strong>attr()</strong></td>
+<td>Match passed value with element attribute</td>
+<td>IsAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="javascript: void();">Bootstrap Test Examples</a></p>
 <h3 id='spinner-size'>Spinner Size</h3>
 <p>Add <code>.spinner-border-sm</code> and <code>.spinner-grow-sm</code> 
 to make a <a href="https://getbootstrap.com/docs/4.3/components/spinners/#size" target="_blank">smaller spinner</a> 
