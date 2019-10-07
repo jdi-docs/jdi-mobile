@@ -10126,8 +10126,91 @@ Below are examples of different toggle styles.</p>
 <p><img src="images/bootstrap/progress-multiple-html.png" alt="Progress multiple HTML example" /></p>
 
 <p><strong>With striped design</strong></p>
+<pre class="highlight java tab-java"><code>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BootstrapPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#striped-base .progress"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">ProgressSection</span><span class="o">&gt;</span> <span class="n">progressSections</span><span class="o">;</span>
+    <span class="o">}</span>
 
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProgressSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+        <span class="c1">//@FindBy(css = ".progress-bar")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".progress-bar"</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="n">Progress</span> <span class="n">progress</span><span class="o">;</span>
+    <span class="o">}</span>
+
+
+    <span class="nd">@DataProvider</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">progressData</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+                <span class="o">{</span><span class="s">"striped_ordinary"</span><span class="o">,</span> <span class="s">"10"</span><span class="o">,</span> <span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">,</span> <span class="s">"0"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">,</span> <span class="s">"progress-bar-striped"</span><span class="o">},</span>
+                <span class="o">{</span><span class="s">"striped_success"</span><span class="o">,</span> <span class="s">"25"</span><span class="o">,</span> <span class="s">"rgba(40, 167, 69, 1)"</span><span class="o">,</span> <span class="s">"0"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">,</span> <span class="s">"progress-bar-striped"</span><span class="o">},</span>
+                <span class="o">{</span><span class="s">"striped_info"</span><span class="o">,</span> <span class="s">"50"</span><span class="o">,</span> <span class="s">"rgba(23, 162, 184, 1)"</span><span class="o">,</span> <span class="s">"0"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">,</span> <span class="s">"progress-bar-striped"</span><span class="o">},</span>
+                <span class="o">{</span><span class="s">"striped_warning"</span><span class="o">,</span> <span class="s">"75"</span><span class="o">,</span> <span class="s">"rgba(255, 193, 7, 1)"</span><span class="o">,</span> <span class="s">"0"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">,</span> <span class="s">"progress-bar-striped"</span><span class="o">},</span>
+                <span class="o">{</span><span class="s">"striped_danger"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">,</span> <span class="s">"rgba(220, 53, 69, 1)"</span><span class="o">,</span> <span class="s">"0"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">,</span> <span class="s">"progress-bar-striped"</span><span class="o">}</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressData"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkProgressData</span><span class="o">(</span><span class="n">String</span> <span class="n">progressId</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">,</span>
+                                  <span class="n">String</span> <span class="n">min</span><span class="o">,</span> <span class="n">String</span> <span class="n">max</span><span class="o">,</span> <span class="n">String</span> <span class="n">classStriped</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="n">progressSections</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">progressSection</span> <span class="o">-&gt;</span>
+                <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">progressId</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span>
+                <span class="n">progressSection</span> <span class="o">-&gt;</span> <span class="o">{</span>
+                    <span class="n">assertThat</span><span class="o">(</span><span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"class"</span><span class="o">),</span> <span class="n">containsString</span><span class="o">(</span><span class="n">classStriped</span><span class="o">));</span>
+                    <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ariaValue</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
+                                                 <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">)</span>
+                                                 <span class="o">.</span><span class="na">minValue</span><span class="o">(</span><span class="n">min</span><span class="o">)</span>
+                                                 <span class="o">.</span><span class="na">maxValue</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
+                <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseValidationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">progressSections</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span>
+                <span class="n">progressSection</span> <span class="o">-&gt;</span>
+                        <span class="n">baseValidation</span><span class="o">(</span><span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">));</span>
+
+    <span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/progress-striped.png" alt="Progress striped example" /></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listprogressbars/ProgressBarsListTests.java" target=a_blank> Bootstrap test examples </a></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getAriaValue()</strong></td>
+<td>Get aria value of the bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getColor()</strong></td>
+<td>Get color of the bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getMaxValue()</strong></td>
+<td>Get max value of the bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getMinValue()</strong></td>
+<td>Get max value of the bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Various assert actions for Progress</td>
+<td>ProgressAssert</td>
+</tr>
+</tbody></table>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
