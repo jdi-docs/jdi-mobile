@@ -12232,7 +12232,11 @@ Below it is in blue, along with the supported variants.</p>
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerData"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">spinner</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">().</span><span class="na">and</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">spinner</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
