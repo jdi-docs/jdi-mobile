@@ -8210,7 +8210,52 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><img src="images/bootstrap/default-without-labels.png" alt="Radio button and checkbox without labels example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "body") public static CheckboxesAndRadiosWithoutLabels checkboxesAndRadiosWithoutLabels);</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesAndRadiosWithoutLabels</span> <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesAndRadiosWithoutLabels</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#blankCheckbox"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#blankCheckbox") public Checkbox checkbox;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#blankRadio1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#blankRadio1") public RadioButton radioButton;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">checkbox</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"checkbox"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-label"</span><span class="o">,</span> <span class="s">"..."</span><span class="o">);</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButton</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"option1"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"radio"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-label"</span><span class="o">,</span> <span class="s">"..."</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkboxClickableTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">checkbox</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">checkbox</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">select</span><span class="o">();</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButton</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/default-without-labels-html.png" alt="Radio button and checkbox without labels example html" /></p>
 
@@ -8232,6 +8277,11 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <td>void</td>
 </tr>
 <tr>
+<td><strong>checked()</strong></td>
+<td>Click the button</td>
+<td>TextAssert</td>
+</tr>
+<tr>
 <td><strong>is()</strong></td>
 <td>Assert action</td>
 <td>TextAssert</td>
@@ -8248,6 +8298,11 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </tr>
 <tr>
 <td><strong>selected()</strong></td>
+<td>Radio button is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>deselected()</strong></td>
 <td>Radio button is selected</td>
 <td>TextAssert</td>
 </tr>
@@ -8394,7 +8449,43 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><img src="images/bootstrap/custom-radio.png" alt="Radio button custom example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#custom-radio-con") public static RadioButtonsCustom radioButtonCustom;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-radio-con"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonsCustom</span> <span class="n">radioButtonCustom</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonsCustom</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadio1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadio1") public RadioButton radio1;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadio2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadio2") public RadioButton radio2;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".custom-radio"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = ".custom-radio") public RadioButton radioButton;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadio1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadio1']") public Label radio1Label;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadio2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadio2']") public Label radio2Label;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio2</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio1Label</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label1</span><span class="o">));</span>
+    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio2Label</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label2</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioOneIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio1</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hidden</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"radio"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"customRadio"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/custom-radio-html.png" alt="Radio button custom example html" /></p>
 
@@ -8474,7 +8565,42 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><img src="images/bootstrap/custom-radio-inline.png" alt="Radio button custom inline example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "body") public static RadioButtonsCustomInline radioButtonsCustomInline;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonsCustomInline</span> <span class="n">radioButtonsCustomInline</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonsCustomInline</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioInline1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioInline1") public RadioButton radio1;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioInline2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioInline2") public RadioButton radio2;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".custom-control-inline"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = ".custom-control-inline") public RadioButton radioButton;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadioInline1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadioInline1']") public Label radio1Label;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadioInline2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadioInline2']") public Label radio2Label;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByIndexTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio2</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio2</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioOneIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hidden</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"radio"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"customRadioInline1"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/custom-radio-inline-html.png" alt="Radio button custom inline example html" /></p>
 
@@ -8554,7 +8680,38 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><img src="images/bootstrap/custom-disabled.png" alt="Custom disabled example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "body") public static CheckboxAndRadioButtonCustomDisabled checkboxAndRadioButtonCustomDisabled;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxAndRadioButtonCustomDisabled</span> <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxAndRadioButtonCustomDisabled</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheckDisabled1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheckDisabled1-div") public Checkbox checkboxContainer;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheckDisabled1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheckDisabled1") public Checkbox checkbox;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioDisabled2-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButtonContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioDisabled2-div") public RadioButton radioButtonContainer;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioDisabled2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioDisabled2") public RadioButton radioButton;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadioDisabled2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadioDisabled2']") public Label radio1Label;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hidden</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">disabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"radio"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"radioDisabled"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">Matchers</span><span class="o">.</span><span class="na">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButtonContainer</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radio1Label</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label1</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/custom-disabled-html.png" alt="Custom disabled example html" /></p>
 
@@ -8634,7 +8791,49 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><img src="images/bootstrap/switches.png" alt="Switches custom example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Switches</span> <span class="n">switches</span><span class="o">;</span> <span class="c1">// @FindBy(css = "body") public static Switches switches;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Switches</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch1") public Checkbox checkbox;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch1-div") public Checkbox checkboxContainer;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxDisabled</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch2") public Checkbox checkboxDisabled;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch2-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxDisabledContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch2-div") public Checkbox checkboxDisabledContainer;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hidden</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"checkbox"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+    <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">label</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-label"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Toggle this switch element"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"label"</span><span class="o">));</span>
+    <span class="n">switches</span><span class="o">.</span><span class="na">checkboxContainer</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control custom-switch"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickableTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">switches</span><span class="o">.</span><span class="na">checkboxContainer</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">switches</span><span class="o">.</span><span class="na">checkboxContainer</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/switches-html.png" alt="Switches custom example html" /></p>
 
