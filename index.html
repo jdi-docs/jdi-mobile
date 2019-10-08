@@ -10583,7 +10583,7 @@ Below are examples of different toggle styles.</p>
         <span class="n">progressSections</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">progressSection</span> <span class="o">-&gt;</span>
                 <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">progressId</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span>
                 <span class="n">progressSection</span> <span class="o">-&gt;</span> <span class="o">{</span>
-                    <span class="n">assertThat</span><span class="o">(</span><span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"class"</span><span class="o">),</span> <span class="n">containsString</span><span class="o">(</span><span class="n">classStriped</span><span class="o">));</span>
+                    <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">classStriped</span><span class="o">)</span>
                     <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ariaValue</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
                                                  <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">)</span>
                                                  <span class="o">.</span><span class="na">minValue</span><span class="o">(</span><span class="n">min</span><span class="o">)</span>
@@ -10596,7 +10596,6 @@ Below are examples of different toggle styles.</p>
         <span class="n">progressSections</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span>
                 <span class="n">progressSection</span> <span class="o">-&gt;</span>
                         <span class="n">baseValidation</span><span class="o">(</span><span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">));</span>
-
     <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/progress-striped.png" alt="Progress striped example" /></p>
@@ -10612,6 +10611,11 @@ Below are examples of different toggle styles.</p>
 <th>Return Type</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
 <tr>
 <td><strong>getAriaValue()</strong></td>
 <td>Get aria value of the bar</td>
