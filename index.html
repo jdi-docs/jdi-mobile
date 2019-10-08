@@ -10740,17 +10740,86 @@ Below are examples of different toggle styles.</p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ProgressBackgroundTests.java" target=a_blank> Bootstrap test examples </a></p>
 
-<p><br><br><br><br><br><br><br><br><br><br><br></p>
+<p><br><br><br><br><br><br><br></p>
 
 <p><strong>With multiple bars</strong></p>
 
-<p><img src="images/bootstrap/progress-multiple.png" alt="Progress multiple sexample" /></p>
+<p>Include <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#multiple-bars">multiple progress bars</a>  in a progress component if you need.</p>
+
+<p><img src="images/bootstrap/progress-multiple.png" alt="Progress multiple example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">//@FindBy(id = "progress-multiple-bars")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-bars"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ProgressMultipleBars</span> <span class="n">progressMultipleBars</span><span class="o">;</span>
 
+<span class="c1">//@FindBy(id = "progress-multiple-ordinary")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-ordinary"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Progress</span> <span class="n">multipleOrdinary</span><span class="o">;</span>
+
+<span class="c1">//@FindBy(id = "progress-multiple-success")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-success"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Progress</span> <span class="n">multipleSuccess</span><span class="o">;</span>
+
+<span class="c1">//@FindBy(id = "progress-multiple-info")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-info"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Progress</span> <span class="n">multipleInfo</span><span class="o">;</span>
+
+<span class="nd">@DataProvider</span>
+<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">progressMultipleBarsData</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+        <span class="o">{</span><span class="n">progressMultipleBars</span><span class="o">.</span><span class="na">multipleOrdinary</span><span class="o">},</span>
+        <span class="o">{</span><span class="n">progressMultipleBars</span><span class="o">.</span><span class="na">multipleSuccess</span><span class="o">},</span>
+        <span class="o">{</span><span class="n">progressMultipleBars</span><span class="o">.</span><span class="na">multipleInfo</span><span class="o">}</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressMultipleBarsData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">().</span><span class="na">and</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">progress</span><span class="o">.</span><span class="na">assertThat</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"progress-bar"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"progressbar"</span><span class="o">);</span>
+<span class="o">}</span>
+
+</code></pre>
 <p><img src="images/bootstrap/progress-multiple-html.png" alt="Progress multiple HTML example" /></p>
 
-<p><br><br><br><br><br><br></p>
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getAriaValue()</strong></td>
+<td>Get aria value of the bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getColor()</strong></td>
+<td>Get color of the bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Various assert actions for Progress</td>
+<td>ProgressAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/ProgressMultipleBarsTests.java" target=a_blank> Bootstrap test examples </a></p>
+
+<p><br><br><br><br><br><br><br><br><br></p>
 
 <p><strong>With striped design</strong></p>
 <pre class="highlight java tab-java"><code>
