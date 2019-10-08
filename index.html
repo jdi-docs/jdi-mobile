@@ -14166,16 +14166,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
 
 
 
-
-
-
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastRightTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithTopAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastRightTop")</span>
  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#simpleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">simpleToast</span><span class="o">;</span> <span class="c1">//@FindBy("#simpleToast")</span>
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#firstMultipleToast")</span>
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#secondMultipleToast")</span>
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#firstStackToast")</span>
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#secondStackToast")</span>
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastCenterTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithCenterAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastCenterTop")</span>
 
  <span class="nd">@Test</span>
  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleToastValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -14184,6 +14175,72 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
      <span class="n">simpleToast</span><span class="o">.</span><span class="na">headerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastHeaderText</span><span class="o">);</span>
      <span class="n">simpleToast</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastBodyText</span><span class="o">);</span>
  <span class="o">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#translucentToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">translucentToast</span><span class="o">;</span> <span class="c1">//@FindBy("#translucentToast")</span>
+
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">translucentToastValidationTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">translucentToastButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+     <span class="n">translucentToast</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+     <span class="n">translucentToast</span><span class="o">.</span><span class="na">headerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastHeaderText</span><span class="o">);</span>
+     <span class="n">translucentToast</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastBodyText</span><span class="o">);</span>
+ <span class="o">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#firstMultipleToast")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#secondMultipleToast")</span>
+
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stackOfToastsValidationTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">stackOfToastsButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+     <span class="n">firstStackToast</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+     <span class="n">secondStackToast</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+     <span class="n">firstStackToast</span><span class="o">.</span><span class="na">headerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastHeaderText</span><span class="o">);</span>
+     <span class="n">firstStackToast</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">stackToastBodyText</span><span class="o">);</span>
+     <span class="n">secondStackToast</span><span class="o">.</span><span class="na">headerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastHeaderText</span><span class="o">);</span>
+     <span class="n">secondStackToast</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">secondStackToastBodyText</span><span class="o">);</span>
+     <span class="o">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastRightTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithTopAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastRightTop")</span>
 
  <span class="nd">@Test</span>
  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toastWithTopAlignValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -14194,16 +14251,74 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
      <span class="n">toastWithTopAlign</span><span class="o">.</span><span class="na">closeButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
      <span class="n">toastWithTopAlign</span><span class="o">.</span><span class="na">base</span><span class="o">().</span><span class="na">waitSec</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
      <span class="n">toastWithTopAlign</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
-   <span class="o">}</span>
+ <span class="o">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#firstStackToast")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#secondStackToast")</span>
+
+ <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stackOfTopAlignToastsValidationTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">stackOfToastsWithTopAlignButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+      <span class="n">firstTopAlignStackToast</span><span class="o">.</span><span class="na">headerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastHeaderText</span><span class="o">);</span>
+      <span class="n">firstTopAlignStackToast</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">stackToastBodyText</span><span class="o">);</span>
+      <span class="n">secondTopAlignStackToast</span><span class="o">.</span><span class="na">headerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastHeaderText</span><span class="o">);</span>
+      <span class="n">secondTopAlignStackToast</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">secondStackToastBodyText</span><span class="o">);</span>
+      <span class="n">firstTopAlignStackToast</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">secondTopAlignStackToast</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+  <span class="o">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastCenterTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithCenterAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastCenterTop")</span>
+  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastRightTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithTopAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastRightTop")</span>
+
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toastWithCenterAlignValidationTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">toastWithCenterAlignButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+      <span class="n">toastWithCenterAlign</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">toastWithCenterAlign</span><span class="o">.</span><span class="na">headerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastHeaderText</span><span class="o">);</span>
+      <span class="n">toastWithCenterAlign</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">toastBodyText</span><span class="o">);</span>
+      <span class="n">toastWithCenterAlign</span><span class="o">.</span><span class="na">closeButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+      <span class="n">toastWithCenterAlign</span><span class="o">.</span><span class="na">base</span><span class="o">().</span><span class="na">waitSec</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+      <span class="n">toastWithCenterAlign</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
+  <span class="o">}</span>
 
 </code></pre>
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/">Toast test examples</a></p>
-
-<p><img src="images/bootstrap/toast.png" alt="Toast example" /></p>
+<p><img src="images/bootstrap/toast.png" alt="Simple toast example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/toast_html.png" alt="Toast HTML example" /></p>
+
+<p><br></p>
+
+<p><img src="images/bootstrap/toast_center.png" alt="Translucent toast example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/translucent_toast_code.png" alt="Toast HTML example" /></p>
 
 <p><strong>Stacking</strong><br />
 When you have multiple toasts, we default to vertically stacking them in a readable manner</p>
@@ -14279,7 +14394,9 @@ Example with top right align:</p>
 </tr>
 </tbody></table>
 
-<p><br><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/">Toast test examples</a></p>
+
+<p><br></p>
 <h2 id='bootstrap-composite-elements'>Bootstrap Composite elements</h2><h3 id='forms-2'>Forms</h3>
 <p><strong>Forms</strong> – logical part of a web page that represents an HTML form.
 Form can consists of:
