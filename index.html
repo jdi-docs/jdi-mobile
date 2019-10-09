@@ -14183,7 +14183,9 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
 
 
 
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#simpleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">simpleToast</span><span class="o">;</span> <span class="c1">//@FindBy("#simpleToast")</span>
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#simpleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">simpleToast</span><span class="o">;</span> <span class="c1">//@FindBy(id="simpleToast")</span>
 
  <span class="nd">@Test</span>
  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleToastValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -14220,7 +14222,9 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
 
 
 
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#translucentToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">translucentToast</span><span class="o">;</span> <span class="c1">//@FindBy("#translucentToast")</span>
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#translucentToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">translucentToast</span><span class="o">;</span> <span class="c1">//@FindBy(id="translucentToast")</span>
 
  <span class="nd">@Test</span>
  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">translucentToastValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -14257,8 +14261,14 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
 
 
 
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#firstMultipleToast")</span>
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#secondMultipleToast")</span>
+
+
+
+
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstStackToast</span><span class="o">;</span> <span class="c1">//@FindBy(id="firstMultipleToast")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondMultipleToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondStackToast</span><span class="o">;</span> <span class="c1">//@FindBy(id="secondMultipleToast")</span>
 
  <span class="nd">@Test</span>
  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stackOfToastsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -14297,7 +14307,11 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
 
 
 
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastRightTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithTopAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastRightTop")</span>
+
+
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastRightTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithTopAlign</span><span class="o">;</span> <span class="c1">//@FindBy(id="toastRightTop")</span>
 
  <span class="nd">@Test</span>
  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toastWithTopAlignValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -14328,8 +14342,13 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
 
 
 
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#firstStackToast")</span>
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy("#secondStackToast")</span>
+
+
+
+
+
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#firstStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">firstTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy(id="firstStackToast")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#secondStackToast"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">secondTopAlignStackToast</span><span class="o">;</span> <span class="c1">//@FindBy(id="secondStackToast")</span>
 
  <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stackOfTopAlignToastsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -14361,8 +14380,14 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use marg
 
 
 
-  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastCenterTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithCenterAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastCenterTop")</span>
-  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastRightTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithTopAlign</span><span class="o">;</span> <span class="c1">//@FindBy("#toastRightTop")</span>
+
+
+
+
+
+
+  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastCenterTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithCenterAlign</span><span class="o">;</span> <span class="c1">//@FindBy(id="toastCenterTop")</span>
+  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#toastRightTop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Toast</span> <span class="n">toastWithTopAlign</span><span class="o">;</span> <span class="c1">//@FindBy(id="toastRightTop")</span>
 
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toastWithCenterAlignValidationTest</span><span class="o">()</span> <span class="o">{</span>
