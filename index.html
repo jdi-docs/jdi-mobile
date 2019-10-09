@@ -10797,32 +10797,7 @@ Below are examples of different toggle styles.</p>
 <p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#striped>Striped multiple bars</a></p>
 
 <p><img src="images/bootstrap/progress-striped.png" alt="Progress striped example" /></p>
-<pre class="highlight java tab-java"><code>
-    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BootstrapPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#striped-base .progress"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">ProgressSection</span><span class="o">&gt;</span> <span class="n">progressSections</span><span class="o">;</span>
-    <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProgressSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-        <span class="c1">//@FindBy(css = ".progress-bar")</span>
-        <span class="nd">@UI</span><span class="o">(</span><span class="s">".progress-bar"</span><span class="o">)</span>
-        <span class="kd">public</span> <span class="n">Progress</span> <span class="n">progress</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressData"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkProgressData</span><span class="o">(</span><span class="n">String</span> <span class="n">progressId</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">,</span>
-                                  <span class="n">String</span> <span class="n">min</span><span class="o">,</span> <span class="n">String</span> <span class="n">max</span><span class="o">,</span> <span class="n">String</span> <span class="n">classStriped</span><span class="o">)</span> <span class="o">{</span>
-
-        <span class="n">progressSections</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">progressSection</span> <span class="o">-&gt;</span>
-                <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">progressId</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span>
-                <span class="n">progressSection</span> <span class="o">-&gt;</span> <span class="o">{</span>
-                    <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">classStriped</span><span class="o">);</span>
-                    <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ariaValue</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
-                                                 <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">)</span>
-                                                 <span class="o">.</span><span class="na">minValue</span><span class="o">(</span><span class="n">min</span><span class="o">)</span>
-                                                 <span class="o">.</span><span class="na">maxValue</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
-                <span class="o">});</span>
-    <span class="o">}</span>
-</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/progress-striped-html.png" alt="Progress striped HTML example" /></p>
