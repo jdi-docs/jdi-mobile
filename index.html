@@ -10425,14 +10425,69 @@ Below are examples of different toggle styles.</p>
 <p><img src="images/bootstrap/toggler-left-html.png" alt="Toggler Left HTML example" /></p>
 
 <p><br></p>
-<h4 id='external-content'>External content</h4>
-<p>Plugin to trigger hidden content elsewhere on the page.</p>
+<h4 id='external-content'>External content</h4><pre class="highlight java tab-java"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="c1">//FindBy(css = "#navbar-external-content")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-external-content"</span><span class="o">)</span>  
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarExternalContent</span> <span class="n">navbarExternalContent</span><span class="o">;</span>
+
+ <span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">expandingTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">expander</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="n">ariaExpanded</span><span class="o">,</span> <span class="s">"false"</span><span class="o">);</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">expander</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="n">ariaExpanded</span><span class="o">,</span> <span class="s">"true"</span><span class="o">);</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">expander</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="n">ariaExpanded</span><span class="o">,</span> <span class="s">"false"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">mutedText</span><span class="o">);</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/navbar/#external-content">Plugin</a> to trigger hidden content elsewhere on the page.</p>
 
 <p><img src="images/bootstrap/navbar-external.png" alt="Color Nav example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/navbar-external-html.png" alt="Color Nav HTML example" /></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section//ProgressBackgroundTests.java" target=a_blank> Bootstrap test examples </a>
+<br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h3 id='pagination'>Pagination</h3>
 <p>Pagination is functionality for navigating through pages.</p>
 
@@ -10512,7 +10567,7 @@ Below are examples of different toggle styles.</p>
 
 
 
-<span class="c1">//FindBy(id = "#progress-bar-base-width-25 .progress-bar"</span>
+<span class="c1">//FindBy(css = "#progress-bar-base-width-25 .progress-bar"</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-bar-base-width-25 .progress-bar"</span><span class="o">)</span>  
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressBaseWidth25</span><span class="o">;</span>
 
