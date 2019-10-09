@@ -10181,13 +10181,36 @@ Navbar brand as heading <br>
 </ul></p>
 
 <p><a style="font-weight: bold;" target="_blank" href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarNavsTests.java">Bootstrap test examples</a></p>
-<h4 id='forms'>Forms</h4>
-<p>Place various form controls and components within a navbar with .form-inline.</p>
 
 <p><br></p>
+<h4 id='forms'>Forms</h4>
+<p>Place various form controls and components within a <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/navbar/#forms" target="_blank">navbar</a> with .form-inline.</p>
 
 <p><img src="images/bootstrap/navbar-forms1.png" alt="Forms example" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">//FindBy(id = "#navbar-form-2")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-form-2"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarForm</span> <span class="n">navbarFormWithText</span><span class="o">;</span>
+<span class="c1">//FindBy(id = "#navbar-form-3")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-form-3"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarWithInputGroupForm</span> <span class="n">navbarFormWithInputGroup</span><span class="o">;</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkSetValueInputGroup</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navbarFormWithInputGroup</span><span class="o">.</span><span class="na">inputGroup</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">inputText</span><span class="o">);</span>
+    <span class="n">navbarFormWithInputGroup</span><span class="o">.</span><span class="na">inputGroup</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">inputText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkFormElements</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">UIElement</span> <span class="n">input</span> <span class="o">=</span> <span class="n">navbarFormWithText</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">find</span><span class="o">((</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"input"</span><span class="o">)));</span>
+    <span class="n">UIElement</span> <span class="n">button</span> <span class="o">=</span> <span class="n">navbarFormWithText</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">find</span><span class="o">((</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">)));</span>
+    <span class="n">input</span><span class="o">.</span><span class="na">shouldBe</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">button</span><span class="o">.</span><span class="na">shouldBe</span><span class="o">().</span><span class="na">enabled</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonText</span><span class="o">));</span>
+    <span class="n">navbarFormWithText</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+<span class="o">}</span>
+
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/navbar-forms1-html.png" alt="Forms HTML example" /></p>
@@ -10208,74 +10231,22 @@ Navbar brand as heading <br>
 
 <p><img src="images/bootstrap/navbar-forms3-html.png" alt="Forms HTML example" /></p>
 
-<p>Available methods in Java JDI Light:</p>
+<p>Media object is represented by Section class in Java:</p>
 
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
 
-<p>Available methods and properties in C# JDI Light:</p>
+<p>Inner elements of media object can be represented by the following classes:</p>
 
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#form">Form</a><br></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#textfield">TextField</a><br></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a><br></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a><br></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a> </li>
+</ul>
 
-<p><br><br></p>
+<p><a style="font-weight: bold;" target="_blank" href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarFormsTests.java">Bootstrap test examples</a>
+<br><br></p>
 <h4 id='text-2'>Text</h4>
 <p>Navbars may contain bits of text with the help of .navbar-text. 
 This class adjusts vertical alignment and horizontal spacing for strings of text.</p>
