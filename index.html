@@ -10248,7 +10248,7 @@ Navbar brand as heading <br>
 <p><a style="font-weight: bold;" target="_blank" href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarFormsTests.java">Bootstrap test examples</a>
 <br><br></p>
 <h4 id='text-2'>Text</h4>
-<p>Navbars may contain bits of text with the help of .navbar-text. 
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navbar/#text">Navbar-text</a></strong> – Navbars may contain bits of text with the help of .navbar-text. 
 This class adjusts vertical alignment and horizontal spacing for strings of text.</p>
 
 <p><br></p>
@@ -10256,7 +10256,19 @@ This class adjusts vertical alignment and horizontal spacing for strings of text
 <p><img src="images/bootstrap/navbar-text1.png" alt="Text example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(xpath = "//h4[.='Navbar - Text']/../..") public static NavbarText navbarText;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//h4[.='Navbar - Text']/../.."</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarText</span> <span class="n">navbarText</span><span class="o">;</span>
 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarText</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav:nth-child(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">simpleText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav.navbar.navbar-expand-lg.navbar-light.bg-light"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">NavbarTextLinks</span> <span class="n">complexNavbar</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">verifySimpleNavbarTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">inlineElement</span><span class="o">,</span><span class="n">navbarText</span><span class="o">.</span><span class="na">simpleText</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/navbar-text1-html.png" alt="Text HTML example" /></p>
 
 <p>Mix and match with other components and utilities as needed.</p>
@@ -10264,7 +10276,25 @@ This class adjusts vertical alignment and horizontal spacing for strings of text
 <p><img src="images/bootstrap/navbar-text2.png" alt="Text example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarTextLinks</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">brand</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"ul li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">listPages</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">simpleText</span><span class="o">;</span>
+<span class="o">}</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">verifyComplexNavbarHomeTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">linkName1</span><span class="o">,</span><span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">getText</span><span class="o">());</span>
+    <span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">page1</span><span class="o">);</span>
+    <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">linkName2</span><span class="o">,</span><span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">getText</span><span class="o">());</span>
+    <span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">page2</span><span class="o">);</span>
+    <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">linkName3</span><span class="o">,</span><span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">getText</span><span class="o">());</span>
+    <span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">page3</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/navbar-text2-html.png" alt="Text HTML example" /></p>
 
 <p>Available methods in Java JDI Light:</p>
@@ -10277,31 +10307,33 @@ This class adjusts vertical alignment and horizontal spacing for strings of text
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>action</td>
 </tr>
 </tbody></table>
+
+<p><br><br> </p>
 
 <p>Available methods and properties in C# JDI Light:</p>
 
