@@ -593,12 +593,6 @@
 								<a href="#scrollspy" class="toc-h2 h3 toc-link" data-title="Scrollspy">Scrollspy</a>
                             </li>
                             <li>
-								<a href="#modal" class="toc-h2 h3 toc-link" data-title="Modal">Modal</a>
-                            </li>
-                            <li>
-								<a href="#popovers" class="toc-h2 h3 toc-link" data-title="Popovers">Popovers</a>
-                            </li>
-                            <li>
 								<a href="#navs-2" class="toc-h2 h3 toc-link" data-title="Navs">Navs</a>
                             </li>
                             <li>
@@ -14562,399 +14556,290 @@ Form can consists of:
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar">Scrollspy</a></strong> – automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
 <br>
 1. <a href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar">Scrollspy in navbar</a> 
-<br></p>
-<pre class="highlight java tab-java"><code>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example2"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarWithDropdown</span> <span class="n">navbarWithDropdown</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example2~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollspyNav</span> <span class="n">scrollspyInNavbar</span><span class="o">;</span>
+<br>
+<br>
+```java 
+    @UI(&quot;#navbar-example2&quot;) public static NavbarWithDropdown navbarWithDropdown;
+    @UI(&quot;#navbar-example2~div&quot;) public static ScrollspyNav scrollspyInNavbar;</p>
+
+<p>public class NavbarWithDropdown extends Section {
+    @UI(&quot;ul&gt;li&quot;) // @FindBy(css = &quot;ul&gt;li&quot;)
+    public ListGroup navGroup;
+    @UI(&quot;ul&gt;li&gt;a&quot;) // @FindBy(css =&quot;ul&gt;li&gt;a&quot;)
+    public ListGroup navItemLink;
+    @JDropdown(expand = &quot;.dropdown-toggle&quot;,
+            value = &quot;.dropdown-toggle&quot;,
+            list = &quot;.dropdown-item&quot;)
+    public Dropdown dropdownMenu;
+    @UI(&quot;.navbar-brand&quot;) // @FindBy(css = &quot;.navbar-brand&quot;)
+    public Link navbarLink;
+}</p>
+
+<p>public class ScrollspyNav extends Section {
+    @UI(&quot;.//h4 | .//h5&quot;) public ListGroup header;//@FindBy(xpath = &quot;.//h4 | .//h5&quot;)
+    @UI(&quot;p&quot;) public ListGroup mainText;          // @FindBy(css = &quot;p&quot;)
+}</p>
+
+<p>@Test
+    public void navbarLinkClickableTests() {
+        navbarWithDropdown.navbarLink.click();
+        newWindowTitleCheck(&quot;Scrollspy · Bootstrap&quot;);
+    }</p>
+
+<p>@Test
+    public void isValidationTests() {
+        navbarWithDropdown.navItemLink.is().size(3);
+        navbarWithDropdown.navGroup.is().size(3);
+        scrollspyInNavbar.mainText.is().size(5);
+        scrollspyInNavbar.header.is().size(5);</p>
+
+<p>navbarWithDropdown.dropdownMenu.expand();
+        navbarWithDropdown.dropdownMenu.is().size(3);</p>
+
+<p>navbarWithDropdown.find(By.className(&quot;dropdown-divider&quot;)).is()
+                .core()
+                .displayed()
+                .enabled()
+                .attr(&quot;role&quot;, &quot;separator&quot;);
+    }</p>
+
+<p>@UI(&quot;#navbar-example3&quot;) public static NestedNav nestedNav;
+    @UI(&quot;#navbar-example3~div&quot;) public static ScrollspyNav scrollspyWithNestedNav;</p>
+
+<p>public class NestedNav extends Section {
+    @UI(&quot;nav&quot;) public ListGroup navGroup;             // @FindBy(css = &quot;nav&quot;)
+    @UI(&quot;nav nav a&quot;) public ListGroup navItemLink;        // @FindBy(css = &quot;nav nav a&quot;)
+    @UI(&quot;.navbar-brand&quot;) public Link navbarLink; // @FindBy(css = &quot;.navbar-brand&quot;)
+}</p>
+
+<p>public class ScrollspyNav extends Section {
+    @UI(&quot;.//h4 | .//h5&quot;) public ListGroup header;//@FindBy(xpath = &quot;.//h4 | .//h5&quot;)
+    @UI(&quot;p&quot;) public ListGroup mainText;          // @FindBy(css = &quot;p&quot;)
+}</p>
+
+<p>@Test
+    public void highlightFocusedItemsTests() {
+        nestedNav.navItemLink.get(7).click();</p>
+
+<p>nestedNav.navItemLink.get(7).is()
+                .core()
+                .displayed()
+                .enabled()
+                .cssClass(&quot;nav-link ml-3 my-1 active&quot;);</p>
+
+<p>nestedNav.navItemLink.get(5).is()
+                .core()
+                .displayed()
+                .enabled()
+                .cssClass(&quot;nav-link active&quot;);
+    }</p>
+
+<p>@Test
+    public void isValidationTests() {
+        nestedNav.navItemLink.is().size(7);
+        nestedNav.navGroup.is().size(3);
+        scrollspyWithNestedNav.mainText.is().size(7);
+        scrollspyWithNestedNav.header.is().size(7);
+    }</p>
+
+<p>@UI(&quot;#list-example&gt;a&quot;) public static ListGroup listGroupForScrollspy;
+     @UI(&quot;#list-example~div&quot;) public static ScrollspyNav scrollspyWithListGroup;   </p>
+
+<p>public class ScrollspyNav extends Section {
+     @UI(&quot;.//h4 | .//h5&quot;) public ListGroup header;//@FindBy(xpath = &quot;.//h4 | .//h5&quot;)
+     @UI(&quot;p&quot;) public ListGroup mainText;          // @FindBy(css = &quot;p&quot;)
+ }</p>
+
+<p>@Test(dataProvider = &quot;itemsCheck&quot;)
+        public void paragraphClickableTests(int index) {
+            scrollspyWithListGroup.mainText.get(index).highlight();
+            scrollspyWithListGroup.mainText.get(index).show();</p>
+
+<p>if (listGroupForScrollspy.get(index).core().hasClass(&quot;list-group-item list-group-item-action&quot;) &amp;&amp;
+                   index &lt; scrollspyWithListGroup.header.size())
+               scrollspyWithListGroup.header.get(index+1).show();</p>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"ul&gt;li"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "ul&gt;li")</span>
-    <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navGroup</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"ul&gt;li&gt;a"</span><span class="o">)</span> <span class="c1">// @FindBy(css ="ul&gt;li&gt;a")</span>
-    <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
-            <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".navbar-brand")</span>
-    <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>
-<span class="o">}</span>
+<p>listGroupForScrollspy.get(index)
+                    .is()
+                    .core()
+                    .displayed()
+                    .enabled()
+                    .cssClass(&quot;list-group-item list-group-item-action active&quot;)
+                    .css(&quot;background-color&quot;, &quot;rgba(0, 123, 255, 1)&quot;)//#007bff Color Hex
+                    .css(&quot;border-color&quot;, &quot;rgb(0, 123, 255)&quot;);//#007bff Color Hex</p>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollspyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
-<span class="o">}</span>
+<p>listGroupForScrollspy.get(index).unhighlight();
+        }</p>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">navbarLinkClickableTests</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">navbarLink</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
-    <span class="o">}</span>
+<p>@Test
+        public void isValidationTests() {
+            scrollspyWithListGroup.header.is().size(4);
+            scrollspyWithListGroup.mainText.is().size(4);
+            listGroupForScrollspy.is().size(4);
+        }</p>
+<pre class="highlight plaintext"><code>
+![Scrollspy](../images/bootstrap/scroll_spy1.png)&lt;br&gt;
+![Scrollspy](../images/bootstrap/scroll_spy1_html.png)&lt;br&gt;
+&lt;br&gt;
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">navGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-        <span class="n">scrollspyInNavbar</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
-        <span class="n">scrollspyInNavbar</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+2. [Scrollspy with nested nav] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-nested-nav)
+&lt;br&gt; 
 
-        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
-        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+![Scrollspy](../images/bootstrap/scroll_spy2.png)&lt;br&gt;
+![Scrollspy](../images/bootstrap/scroll_spy2_html.png)&lt;br&gt;
+&lt;br&gt;
 
-        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">className</span><span class="o">(</span><span class="s">"dropdown-divider"</span><span class="o">)).</span><span class="na">is</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"separator"</span><span class="o">);</span>
-    <span class="o">}</span>
+3. [Scrollspy with list-group] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-list-group)
+&lt;br&gt;
 
+![Scrollspy](../images/bootstrap/scroll_spy3.png)&lt;br&gt;
+![Scrollspy](../images/bootstrap/scroll_spy3_html.png)
 
+Available methods in Java JDI Light:
 
+|Method | Description | Return Type
+--- | --- | ---
+**getText()**|Get text    | String
+**getValue()**| Get value | String
+**is()**        |  Assert action    | TextAssert
+**assertThat()**    |  Assert action    | TextAssert
+**get(int)**    | Select element by index    | UIElement
+**get(String)** | Select element by text     | UIElement
+**list()**| Get list of dropdown | WebList
+**size()**| Get WebList size| int
+**click()** | Click element | void
+**expand()**| Expand dropdown|void  
+**show ()**| Scroll to element| void
 
+In these java test cases examples next classes have been used:
 
+ - Java: com.epam.jdi.light.elements.composite.Section
 
+ - Java: com.epam.jdi.light.elements.complex.ListGroup
 
+ - Java: com.epam.jdi.light.ui.bootstrap.elements.common.Link
 
+ - Java: com.epam.jdi.light.elements.complex.dropdown.Dropdown
 
+[Scrollspy in navbar Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyInNavbarTests.java)
 
+[Scrollspy with nested nav Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithNestedNavTests.java)
 
+[Scrollspy with list-group Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithListGroupTests.java)
 
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example3"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NestedNav</span> <span class="n">nestedNav</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example3~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollspyNav</span> <span class="n">scrollspyWithNestedNav</span><span class="o">;</span>
+&lt;br&gt;&lt;br&gt;
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NestedNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navGroup</span><span class="o">;</span>             <span class="c1">// @FindBy(css = "nav")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav nav a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>        <span class="c1">// @FindBy(css = "nav nav a")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = ".navbar-brand")</span>
-<span class="o">}</span>
+### Modal
+**Modal** – is a dialog box/popup window that is displayed on page.
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollspyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
-<span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">highlightFocusedItemsTests</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">7</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-
-        <span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">7</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"nav-link ml-3 my-1 active"</span><span class="o">);</span>
-
-        <span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"nav-link active"</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
-        <span class="n">nestedNav</span><span class="o">.</span><span class="na">navGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-        <span class="n">scrollspyWithNestedNav</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
-        <span class="n">scrollspyWithNestedNav</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
-    <span class="o">}</span>
-
-
-
-
-
-
-
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-example&gt;a"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroup</span> <span class="n">listGroupForScrollspy</span><span class="o">;</span>
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-example~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollspyNav</span> <span class="n">scrollspyWithListGroup</span><span class="o">;</span>   
-
- <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollspyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
- <span class="o">}</span>
-
-        <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"itemsCheck"</span><span class="o">)</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paragraphClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
-            <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-
-           <span class="k">if</span> <span class="o">(</span><span class="n">listGroupForScrollspy</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"list-group-item list-group-item-action"</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
-                   <span class="n">index</span> <span class="o">&lt;</span> <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span>
-               <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-
-            <span class="n">listGroupForScrollspy</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
-                    <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"list-group-item list-group-item-action active"</span><span class="o">)</span>
-                    <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">)</span><span class="c1">//#007bff Color Hex</span>
-                    <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="s">"rgb(0, 123, 255)"</span><span class="o">);</span><span class="c1">//#007bff Color Hex</span>
-
-            <span class="n">listGroupForScrollspy</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
-        <span class="o">}</span>
-
-        <span class="nd">@Test</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-            <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-            <span class="n">listGroupForScrollspy</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-        <span class="o">}</span>
-
-</code></pre>
-<p><img src="images/bootstrap/scroll_spy1.png" alt="Scrollspy" /><br>
-<img src="images/bootstrap/scroll_spy1_html.png" alt="Scrollspy" /><br></p>
-
-<ol>
-<li><a href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-nested-nav">Scrollspy with nested nav</a>
-<br> </li>
-</ol>
-
-<p><img src="images/bootstrap/scroll_spy2.png" alt="Scrollspy" /><br>
-<img src="images/bootstrap/scroll_spy2_html.png" alt="Scrollspy" /><br></p>
-
-<ol>
-<li><a href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-list-group">Scrollspy with list-group</a>
-<br></li>
-</ol>
-
-<p><img src="images/bootstrap/scroll_spy3.png" alt="Scrollspy" /><br>
-<img src="images/bootstrap/scroll_spy3_html.png" alt="Scrollspy" /></p>
-
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>getValue()</strong></td>
-<td>Get value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get(int)</strong></td>
-<td>Select element by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>get(String)</strong></td>
-<td>Select element by text</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>list()</strong></td>
-<td>Get list of dropdown</td>
-<td>WebList</td>
-</tr>
-<tr>
-<td><strong>size()</strong></td>
-<td>Get WebList size</td>
-<td>int</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click element</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Expand dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>show ()</strong></td>
-<td>Scroll to element</td>
-<td>void</td>
-</tr>
-</tbody></table>
-
-<p>In these java test cases examples next classes have been used:</p>
-
-<ul>
-<li><p>Java: com.epam.jdi.light.elements.composite.Section</p></li>
-<li><p>Java: com.epam.jdi.light.elements.complex.ListGroup</p></li>
-<li><p>Java: com.epam.jdi.light.ui.bootstrap.elements.common.Link</p></li>
-<li><p>Java: com.epam.jdi.light.elements.complex.dropdown.Dropdown</p></li>
-</ul>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyInNavbarTests.java">Scrollspy in navbar Tests Example</a></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithNestedNavTests.java">Scrollspy with nested nav Tests Example</a></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithListGroupTests.java">Scrollspy with list-group Tests Example</a></p>
-
-<p><br><br></p>
-<h3 id='modal'>Modal</h3>
-<p><strong>Modal</strong> – is a dialog box/popup window that is displayed on page.</p>
-
-<p>Here are examples of the modals with provided Bootstrap v4.3 code:</p>
-
-<p><em>Example:</em> Simple Modal with elements</p>
-
-<p><img src="images/bootstrap/modal_composite.png" alt="Modal composite" /></p>
-
-<p><img src="images/bootstrap/modal-html.png" alt="Modal composite" /></p>
-
-<p><em>Example:</em> Modal scrollable</p>
-
-<p><img src="images/bootstrap/modal_scrollable1.png" alt="Modal long scrollable" /></p>
-
-<p><img src="images/bootstrap/modal_scrollable2.png" alt="Modal scrollable" /></p>
-
-<p><img src="images/bootstrap/modal_scrollable-html.png" alt="Modal scrollable example" /></p>
-
-<p><em>Example:</em> Modal centered</p>
-
-<p><img src="images/bootstrap/modal_centered.png" alt="Modal centered" /></p>
-
-<p><img src="images/bootstrap/modal_centered-html.png" alt="Modal centered example" /></p>
-
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-<h3 id='popovers'>Popovers</h3>
-<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/popovers/">Popovers</a></em></strong></p>
-<h4 id='example'>Example</h4>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/popovers/#example">Popover example</a></strong> </p>
-
-<p><img src="images/bootstrap/popover-title.png" alt="Popover example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Popover</span> <span class="n">popover</span><span class="o">;</span> <span class="c1">// @FindBy(css = "body") public static Popover popover;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">getPopover</span><span class="o">(</span><span class="n">locator</span><span class="o">);</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">popoverButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-toggle"</span><span class="o">,</span> <span class="s">"popover"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-content"</span><span class="o">,</span> <span class="n">popoverBody</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-original-title"</span><span class="o">,</span> <span class="n">popoverHeader</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonText</span><span class="o">));</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">container</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"popover fade bs-popover-right show"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"tooltip"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"x-placement"</span><span class="o">,</span> <span class="s">"right"</span><span class="o">);</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">body</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"popover-body"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">popoverBody</span><span class="o">));</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">header</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"popover-header"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">popoverHeader</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">()));</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">popoverButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">()</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickableTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">getPopover</span><span class="o">(</span><span class="n">locator</span><span class="o">);</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">popoverButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">popoverButton</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-describedby"</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"popover"</span><span class="o">));</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">container</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">container</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">popover</span><span class="o">.</span><span class="na">popoverButton</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-describedby"</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
-    <span class="n">assertFalse</span><span class="o">(</span><span class="n">popover</span><span class="o">.</span><span class="na">container</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">());</span>
-<span class="o">}</span>
+Here are examples of the modals with provided Bootstrap v4.3 code:
+
+*Example:* Simple Modal with elements
+
+![Modal composite](../images/bootstrap/modal_composite.png)
+
+![Modal composite](../images/bootstrap/modal-html.png)
+
+*Example:* Modal scrollable
+
+![Modal long scrollable](../images/bootstrap/modal_scrollable1.png)
+
+![Modal scrollable](../images/bootstrap/modal_scrollable2.png)
+
+![Modal scrollable example](../images/bootstrap/modal_scrollable-html.png)
+
+*Example:* Modal centered
+
+![Modal centered](../images/bootstrap/modal_centered.png)
+
+![Modal centered example](../images/bootstrap/modal_centered-html.png)
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+ |  | 
+
+
+Available methods and properties in C# JDI Light:
+
+|Method/Property | Description | Return Type
+--- | --- | ---
+ |  | 
+ |  | 
+ |  |
+ |  | 
+&lt;br&gt;
+
+
+### Popovers
+
+***[Popovers](https://getbootstrap.com/docs/4.3/components/popovers/)***
+
+#### Example
+**[Popover example](https://getbootstrap.com/docs/4.3/components/popovers/#example)** 
+
+![Popover example](../images/bootstrap/popover-title.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("body") public static Popover popover; // @FindBy(css = "body") public static Popover popover;
+
+@Test
+public void isValidationTests() {
+    popover.getPopover(locator);
+    popover.popoverButton.is()
+            .displayed()
+            .enabled()
+            .core()
+            .attr("data-toggle", "popover")
+            .attr("data-content", popoverBody)
+            .attr("data-original-title", popoverHeader)
+            .text(is(buttonText));
+    popover.container
+            .is()
+            .enabled()
+            .core()
+            .hasClass("popover fade bs-popover-right show")
+            .attr("role", "tooltip")
+            .attr("x-placement", "right");
+    popover.body
+            .is()
+            .enabled()
+            .core()
+            .hasClass("popover-body")
+            .text(is(popoverBody));
+    popover.header
+            .is()
+            .core()
+            .hasClass("popover-header")
+            .text(is(popoverHeader.toUpperCase()));
+    popover.popoverButton.click();
+}
+
+@Test()
+public void clickableTests() {
+    popover.getPopover(locator);
+    popover.popoverButton.click();
+    popover.popoverButton
+            .is()
+            .core()
+            .attr("aria-describedby", containsString("popover"));
+    popover.container
+            .is()
+            .enabled();
+    popover.container.click();
+    popover.popoverButton
+            .is()
+            .core()
+            .attr("aria-describedby", "");
+    assertFalse(popover.container.isDisplayed());
+}
 </code></pre>
 <p><img src="images/bootstrap/popover-title-html.png" alt="Popover example html" /></p>
 
