@@ -10266,7 +10266,9 @@ This class adjusts vertical alignment and horizontal spacing for strings of text
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">verifySimpleNavbarTextTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">inlineElement</span><span class="o">,</span><span class="n">navbarText</span><span class="o">.</span><span class="na">simpleText</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+    <span class="n">navbarText</span><span class="o">.</span><span class="na">simpleText</span>
+        <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">inlineElement</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/navbar-text1-html.png" alt="Text HTML example" /></p>
@@ -10284,16 +10286,22 @@ This class adjusts vertical alignment and horizontal spacing for strings of text
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">verifyComplexNavbarHomeTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">linkName1</span><span class="o">,</span><span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">getText</span><span class="o">());</span>
+    <span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkName1</span><span class="o">));</span>
     <span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
     <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">page1</span><span class="o">);</span>
-    <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">linkName2</span><span class="o">,</span><span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">getText</span><span class="o">());</span>
+    <span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkName2</span><span class="o">));</span>
     <span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
     <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">page2</span><span class="o">);</span>
-    <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">linkName3</span><span class="o">,</span><span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">getText</span><span class="o">());</span>
+    <span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkName3</span><span class="o">));</span>
     <span class="n">navbarText</span><span class="o">.</span><span class="na">complexNavbar</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
     <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">page3</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/navbar-text2-html.png" alt="Text HTML example" /></p>
 
