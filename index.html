@@ -18295,8 +18295,7 @@ Form can consists of:
 <p><img src="images/bootstrap/button_addons.png" alt="Button addons" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
-<span class="c1">//@FindBy(css = "#input-group-button-addon4") public static ButtonAddons inputGroupButtonAddons4;</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#input-group-button-addon4") public static ButtonAddons inputGroupButtonAddons4;</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-button-addon1"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonAddons</span> <span class="n">inputGroupButtonAddons1</span><span class="o">;</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-button-addon2"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonAddons</span> <span class="n">inputGroupButtonAddons2</span><span class="o">;</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-button-addon3"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonAddons</span> <span class="n">inputGroupButtonAddons3</span><span class="o">;</span>
@@ -18309,24 +18308,22 @@ Form can consists of:
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">inputField</span><span class="o">;</span>
 <span class="o">}</span>
 
-<span class="c1">// Button addons tests</span>
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonAddon2Test</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonAddon2Test</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
+    <span class="n">inputGroupButtonAddons2</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonAddon4Test</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">listButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">listButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
-    <span class="o">}</span>
-
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonAddon4Test</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">listButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
+    <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">listButtons</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">inputGroupButtonAddons4</span><span class="o">.</span><span class="na">inputField</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">placeholder_text</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/button_addons_code.png" alt="Button addons example" /></p>
 
@@ -18429,6 +18426,8 @@ Input group are represented by Section class in Java:</p>
 <p><li>  <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a> </li> 
  </ul>
  <br></p>
+
+<p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonAddonsTests.java" target="_blank">Button Addons test example</a></p>
 <h4 id='buttons-with-dropdowns'>Buttons with dropdowns</h4>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#buttons-with-dropdowns">Buttons with dropdowns</a></strong> – Buttons with dropdowns have no detailed information on Bootstrap website</p>
 
