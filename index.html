@@ -9929,7 +9929,8 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 
 <p>.collapse.navbar-collapse for grouping and hiding navbar contents by a parent breakpoint.</p>
 
-<p>Here’s an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the lg (large) breakpoint.
+<p>Here are the examples of all the sub-components included in a responsive light-themed navbar 
+that automatically collapses at the lg (large) breakpoint. Bootstrap v4.3 code is provided below each example.
 <br>
 1. Navbar with content <br>
 <img src="images/bootstrap/navbar-supported-content-normal.png" alt="Supported content" /><br>
@@ -9940,8 +9941,74 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 3. Uncollapsed navbar <br>
 <img src="images/bootstrap/navbar-supported-content-uncollapsed.png" alt="Supported content" />
 <img src="images/bootstrap/navbar-supported-content-uncollapsed-html.png" alt="Supported content" /></p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(id = "navbar-supported-content")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-supported-content"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarSupportedContent</span> <span class="n">navbarSupportedContent</span><span class="o">;</span>
 
-<p>Here is an examples with provided Bootstrap v4.3 code:</p>
+<span class="c1">// @FindBy(css = ".navbar-brand")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Link</span> <span class="n">brand</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(tagName = "button[data-toggle=collapse]")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"button[data-toggle=collapse]"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">navExpand</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(tagName = "input")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">TextField</span> <span class="n">searchField</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".btn-outline-success")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".btn-outline-success"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">searchButton</span><span class="o">;</span>
+
+<span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">".navbar-nav"</span><span class="o">,</span>
+        <span class="n">list</span> <span class="o">=</span> <span class="s">"a"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Collapse</span> <span class="n">nav</span><span class="o">;</span>
+
+<span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">".dropdown"</span><span class="o">,</span>
+        <span class="n">expand</span> <span class="o">=</span> <span class="s">"#navbarDropdown"</span><span class="o">,</span>
+        <span class="n">list</span> <span class="o">=</span> <span class="s">"a"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Collapse</span> <span class="n">dropdown</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">activeLinkText</span> <span class="o">=</span> <span class="s">"Active link"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">jdiLinkText</span> <span class="o">=</span> <span class="s">"JDI Light"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">dropdownLinkText</span> <span class="o">=</span> <span class="s">"Dropdown"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">dropdownAction</span> <span class="o">=</span> <span class="s">"Action"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">dropdownAnotherAction</span> <span class="o">=</span> <span class="s">"Another action"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">dropdownSmthElse</span> <span class="o">=</span> <span class="s">"Something else here"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">disabledLinkText</span> <span class="o">=</span> <span class="s">"Disabled link"</span><span class="o">;</span>
+
+<span class="nd">@DataProvider</span>
+<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">collapseLinkTextData</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]</span> <span class="o">{</span>
+            <span class="o">{</span><span class="n">activeLinkText</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">jdiLinkText</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">dropdownLinkText</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">dropdownAction</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">dropdownAnotherAction</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">dropdownSmthElse</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">disabledLinkText</span><span class="o">}</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"collapseLinkTextData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">collapseLinkTextTest</span><span class="o">(</span><span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Dimension</span> <span class="n">dimension</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dimension</span><span class="o">(</span><span class="mi">900</span><span class="o">,</span> <span class="mi">600</span><span class="o">);</span>
+    <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">manage</span><span class="o">().</span><span class="na">window</span><span class="o">().</span><span class="na">setSize</span><span class="o">(</span><span class="n">dimension</span><span class="o">);</span>
+
+    <span class="n">navbarSupportedContent</span><span class="o">.</span><span class="na">navExpand</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">navbarSupportedContent</span><span class="o">.</span><span class="na">navExpand</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+    <span class="n">navbarSupportedContent</span><span class="o">.</span><span class="na">nav</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
+
+    <span class="n">assertTrue</span><span class="o">(</span><span class="n">navbarSupportedContent</span><span class="o">.</span><span class="na">nav</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">values</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+<p>Navbar is represented by Section class in Java:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+</ul>
 
 <p>Available methods in Java JDI Light:</p>
 
@@ -9953,64 +10020,69 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Asserts element</td>
+<td>UIAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>displayed()</strong></td>
+<td>Asserts element is displayed</td>
+<td>UIAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>hasClass()</strong></td>
+<td>Checks whether element has class</td>
+<td>boolean</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>click()</strong></td>
+<td>Click on element</td>
+<td>void</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>list()</strong></td>
+<td>Return a list of dropdown elements</td>
+<td>WebList</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Check whether a text matches a pattern</td>
+<td>IsAssert</td>
+</tr>
+<tr>
+<td><strong>attr()</strong></td>
+<td>Check whether an element has attribute of specified name and with given value</td>
+<td>IsAssert</td>
+</tr>
+<tr>
+<td><strong>toggle()</strong></td>
+<td>Toggle collapse</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select a dropdown element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Check whether a dropdown is expanded</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue()</strong></td>
+<td>Set a value for input group</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get value from input group</td>
+<td>String</td>
 </tr>
 </tbody></table>
 
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><br><br></p>
+<p><a href="javascript: void();">Bootstrap Test Examples</a> 
+<br><br></p>
 <h4 id='brand'>Brand</h4>
 <p>The .navbar-brand can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
 <br></p>
