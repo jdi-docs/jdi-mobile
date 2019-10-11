@@ -10556,9 +10556,8 @@ Choose from .navbar-light for use with light background colors, or .navbar-dark 
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarColorSchemeTests.java">Bootstrap test examples</a></p>
 
-<p><br><br> </p>
-<h4 id='containers'>Containers</h4><pre class="highlight java tab-java"><code>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Navbar</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+<p><br><br></p>
+<h4 id='containers'>Containers</h4><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Navbar</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
     <span class="c1">//@FindBy(xpath = "//*[contains(@class, 'nav-item')]")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'nav-item')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">navbarLinks</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarBrand</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".navbar-brand")</span>
@@ -10567,8 +10566,10 @@ Choose from .navbar-light for use with light background colors, or .navbar-dark 
     <span class="c1">//@FindBy(xpath = "//*[contains(@class, 'nav-link dropdown-toggle')]")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'nav-link dropdown-toggle')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">navbarDropdown</span><span class="o">;</span>
 <span class="o">}</span>
+
 <span class="c1">//@FindBy(id = "navbar-containers-centred")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-containers-centred"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarCentredContainer</span><span class="o">;</span>
+
 <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNameNavbarContainerBrandTest</span><span class="o">()</span> <span class="o">{</span>
      <span class="n">navbarCentredContainer</span><span class="o">.</span><span class="na">navbarBrand</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">textNavbarCentredContainer</span><span class="o">);</span>
@@ -10579,9 +10580,9 @@ Choose from .navbar-light for use with light background colors, or .navbar-dark 
 
 
 
-
 <span class="c1">//@FindBy(id = "navbar-containers-expanded")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-containers-expanded"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarExpandedContainer</span><span class="o">;</span>
+
 <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickNavbarCentredContainerLinksTest</span><span class="o">()</span> <span class="o">{</span>
      <span class="n">navbarCentredContainer</span><span class="o">.</span><span class="na">navbarBrand</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
@@ -10590,11 +10591,6 @@ Choose from .navbar-light for use with light background colors, or .navbar-dark 
      <span class="n">assertThat</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">url</span><span class="o">));</span>
      <span class="n">WindowsManager</span><span class="o">.</span><span class="na">closeWindow</span><span class="o">();</span>
     <span class="o">}</span>
-
-
-
-
-
 
 
 
