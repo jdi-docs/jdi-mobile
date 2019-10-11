@@ -10458,45 +10458,45 @@ Choose from .navbar-light for use with light background colors, or .navbar-dark 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarColorScheme</span> <span class="kd">extends</span> <span class="n">Navbar</span> <span class="o">{</span>
 
+    <span class="c1">//@FindBy(className = "navbar-brand")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>
 
+    <span class="c1">//@FindBy(linkText = "Home\n(current)")</span>
     <span class="nd">@ByText</span><span class="o">(</span><span class="s">"Home"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="n">Link</span> <span class="n">homeLink</span><span class="o">;</span>
 
+    <span class="c1">//@FindBy(linkText = "Contact form")</span>
     <span class="nd">@ByText</span><span class="o">(</span><span class="s">"Contact form"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="n">Link</span> <span class="n">contactFormLink</span><span class="o">;</span>
 
+    <span class="c1">//@FindBy(linkText = "Metals &amp; Colors")</span>
     <span class="nd">@ByText</span><span class="o">(</span><span class="s">"Metals &amp; Colors"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="n">Link</span> <span class="n">metalsAndColorsLink</span><span class="o">;</span>
 
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"form input"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">searchFormInput</span><span class="o">;</span>
-
+    <span class="c1">//@FindBy(xpath = "//form/button")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"form button"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="n">Button</span> <span class="n">searchButton</span><span class="o">;</span>
 <span class="o">}</span>
 
-<span class="nd">@DataProvider</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"navbarColorSchemesWithColors"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">navbarColorSchemesWithColors</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
-            <span class="o">{</span><span class="n">navbarDarkColorScheme</span><span class="o">,</span> <span class="s">"rgba(52, 58, 64, 1)"</span><span class="o">,</span> <span class="s">"rgba(255, 255, 255, 1)"</span><span class="o">,</span> <span class="s">"rgba(255, 255, 255, 0.5)"</span><span class="o">,</span> <span class="s">"(23, 162, 184"</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">navbarBlueColorScheme</span><span class="o">,</span> <span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">,</span> <span class="s">"rgba(255, 255, 255, 1)"</span><span class="o">,</span> <span class="s">"rgba(255, 255, 255, 0.5)"</span><span class="o">,</span> <span class="s">"(248, 249, 250"</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">navbarLightColorScheme</span><span class="o">,</span> <span class="s">"rgba(227, 242, 253, 1)"</span><span class="o">,</span> <span class="s">"rgba(0, 0, 0, 0.9)"</span><span class="o">,</span> <span class="s">"rgba(0, 0, 0, 0.5)"</span><span class="o">,</span> <span class="s">"(0, 123, 255"</span><span class="o">}</span>
-    <span class="o">};</span>
-<span class="o">}</span>
-
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarColorSchemesWithColors"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">colorSchemeAccordanceTest</span><span class="o">(</span><span class="n">NavbarColorScheme</span> <span class="n">navbarColorScheme</span><span class="o">,</span> <span class="n">String</span> <span class="n">backgroundColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">navbarAndHomeColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">contactAndMetalsColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">searchColor</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">colorSchemeAccordanceTest</span><span class="o">(</span><span class="n">NavbarColorScheme</span> <span class="n">navbarColorScheme</span><span class="o">,</span> <span class="n">String</span> <span class="n">backgroundColor</span><span class="o">,</span> 
+<span class="n">String</span> <span class="n">navbarAndHomeColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">contactAndMetalsColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">searchColor</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">backgroundColor</span><span class="o">);</span>
     <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">navbarLink</span><span class="o">,</span> <span class="n">navbarAndHomeColor</span><span class="o">);</span>
     <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">homeLink</span><span class="o">,</span> <span class="n">navbarAndHomeColor</span><span class="o">);</span>
     <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">contactFormLink</span><span class="o">,</span> <span class="n">contactAndMetalsColor</span><span class="o">);</span>
     <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">metalsAndColorsLink</span><span class="o">,</span> <span class="n">contactAndMetalsColor</span><span class="o">);</span>
-    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">searchButton</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"rgba%s, 1)"</span><span class="o">,</span> <span class="n">searchColor</span><span class="o">));</span>
+    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">searchButton</span><span class="o">,</span> 
+<span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"rgba%s, 1)"</span><span class="o">,</span> <span class="n">searchColor</span><span class="o">));</span>
     <span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">searchButton</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"rgb%s)"</span><span class="o">,</span> <span class="n">searchColor</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkColorOfElement</span><span class="o">(</span><span class="n">ICoreElement</span> <span class="n">elem</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">elem</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"color"</span><span class="o">,</span> <span class="n">color</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/navbar-color-schemes-html.png" alt="Color schemes HTML example" /></p>
@@ -10530,16 +10530,11 @@ Choose from .navbar-light for use with light background colors, or .navbar-dark 
 <td>Assert action</td>
 <td>TextAssert</td>
 </tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>action</td>
-</tr>
 </tbody></table>
 
-<p><br><br> </p>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarColorSchemeTests.java">Bootstrap test examples</a></p>
+
+<p><br><br> </p>
 <h4 id='containers'>Containers</h4>
 <p>Although it’s not required, you can wrap a navbar in a .container to center it on a page or add one within to only center the contents of a fixed or static top navbar.</p>
 
