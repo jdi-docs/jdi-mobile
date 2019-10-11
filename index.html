@@ -10085,9 +10085,26 @@ that automatically collapses at the lg (large) breakpoint.
 
 <p><a href="javascript: void();">Bootstrap Test Examples</a> 
 <br><br></p>
-<h4 id='brand'>Brand</h4><pre class="highlight java tab-java"><code>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-base-for-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarSection</span> <span class="n">navbarSection</span><span class="o">;</span>
+<h4 id='brand'>Brand</h4>
+<p><a href="https://getbootstrap.com/docs/4.3/components/navbar/#brand">Bootstrap page documentation</a></p>
 
+<p>The .navbar-brand can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
+<br></p>
+
+<p>Navbar brand as a link <br>
+<img src="images/bootstrap/navbar-brand-link.png" alt="Brand" /><br>
+<br>
+Navbar brand as heading <br> 
+<img src="images/bootstrap/navbar-brand-heading.png" alt="Brand" /><br>
+<br></p>
+
+<p>Adding images to the .navbar-brand will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.<br></p>
+
+<p><img src="images/bootstrap/navbar-brand-image.png" alt="Brand" /><br>
+<br>
+<img src="images/bootstrap/navbar-brand-image-and-link.png" alt="Brand" /><br>
+<br></p>
+<pre class="highlight java tab-java"><code>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BootstrapPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-base-for-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarSection</span> <span class="n">navbarSection</span><span class="o">;</span>
 <span class="o">}</span>
@@ -10134,24 +10151,7 @@ that automatically collapses at the lg (large) breakpoint.
     <span class="o">}</span>
 
 </code></pre>
-<p>The .navbar-brand can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
-<br></p>
-
-<p>Navbar brand as a link <br>
-<img src="images/bootstrap/navbar-brand-link.png" alt="Brand" /><br>
-<br>
-Navbar brand as heading <br> 
-<img src="images/bootstrap/navbar-brand-heading.png" alt="Brand" /><br>
-<br></p>
-
-<p>Adding images to the .navbar-brand will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.<br></p>
-
-<p><img src="images/bootstrap/navbar-brand-image.png" alt="Brand" /><br>
-<br>
-<img src="images/bootstrap/navbar-brand-image-and-link.png" alt="Brand" /><br>
-<br></p>
-
-<p><img src="images/bootstrap/navbar-brand-all.png" alt="Brand" /></p>
+<p><img src="images/bootstrap/navbar-brand-all-html.png" alt="Brand" /></p>
 
 <p>Available methods in Java JDI Light:</p>
 
@@ -10194,38 +10194,7 @@ Navbar brand as heading <br>
 </tr>
 </tbody></table>
 
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><br><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbarbrand/NavbarBrandTests.java">Bootstrap test examples</a></p>
 <h4 id='nav'>Nav</h4><pre class="highlight java tab-java"><code>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Navbar</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
     <span class="c1">//FindBy(xpath = "//*[contains(@class, 'nav-item')]")</span>
