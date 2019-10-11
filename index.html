@@ -19538,53 +19538,55 @@ Input group are represented by Section class in Java:</p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageTests.java">Card Image test examples</a></p>
-<h4 id='card-image-overlays'>Card Image Overlays</h4><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-svg"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-svg")</span>
-<span class="kd">public</span> <span class="n">VectorImage</span> <span class="n">vectorImage</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-overlay-section"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-overlay-section")</span>
-<span class="kd">public</span> <span class="n">OverlaySection</span> <span class="n">overlaySection</span><span class="o">;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">availabilityTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">overlaySection</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
-    <span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">overlaySection</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">overlaySection</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">TITLE</span><span class="o">));</span>
-    <span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">vectorImage</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">HEIGHT</span><span class="o">));</span>
-    <span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">vectorImage</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">WIDTH</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseValidationTest</span><span class="o">()</span> <span class="o">{</span>
-     <span class="n">baseValidation</span><span class="o">(</span><span class="n">cardImage</span><span class="o">.</span><span class="na">image</span><span class="o">);</span>
-     <span class="n">baseValidation</span><span class="o">(</span><span class="n">cardImage</span><span class="o">.</span><span class="na">text</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">classTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">overlaySection</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">OVERLAY_CLASS</span><span class="o">);</span>
-    <span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">overlaySection</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">OVERLAY_CLASS</span><span class="o">);</span>
-    <span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">vectorImage</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">IMAGE_TOP_CLASS</span><span class="o">);</span>
-    <span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">vectorImage</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">IMAGE_TOP_CLASS</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">vectorInternalElementsTest</span><span class="o">()</span> <span class="o">{</span>
-     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">vectorImage</span><span class="o">.</span><span class="na">getText</span><span class="o">(</span><span class="n">VECTOR_TEXT_TAG</span><span class="o">),</span> <span class="n">VECTOR_TEXT</span><span class="o">);</span>
-     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">vectorImage</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="n">VECTOR_TEXT_TAG</span><span class="o">,</span> <span class="n">VECTOR_TEXT_ATTR</span><span class="o">),</span> <span class="n">VECTOR_TEXT_VALUE</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
+<h4 id='card-image-overlays'>Card Image Overlays</h4>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/card/#image-overlays" target="_blank">Card Image Overlays</a> turn an image into a card background and overlay your card’s text. Depending on the image, you may or may not need additional styles or utilities..</p>
 
 <p><img src="images/bootstrap/card-image-overlays.png" alt="Card Image Example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<p>Here is an example with provided Bootstrap v4.3 code:
+```java
+@UI(&quot;#card-svg&quot;) //FindBy(css = &quot;#card-svg&quot;)
+public VectorImage vectorImage;
+@UI(&quot;#card-overlay-section&quot;) //FindBy(css = &quot;#card-overlay-section&quot;)
+public OverlaySection overlaySection;</p>
+
+<p>@Test
+public void availabilityTest() {
+    cardImageOverlays.overlaySection.title.is()
+            .displayed()
+            .enabled();
+    cardImageOverlays.overlaySection.title.is()
+            .displayed()
+            .enabled();
+}</p>
+
+<p>@Test
+public void isValidationTest() {
+    cardImageOverlays.overlaySection.title.is().text(is(TITLE));
+    cardImageOverlays.vectorImage.assertThat().height(is(HEIGHT));
+    cardImageOverlays.vectorImage.assertThat().width(is(WIDTH));
+}</p>
+
+<p>@Test
+public void baseValidationTest() {
+     baseValidation(cardImage.image);
+     baseValidation(cardImage.text);
+}</p>
+
+<p>@Test
+public void classTest() {
+    cardImageOverlays.overlaySection.is().core().hasClass(OVERLAY_CLASS);
+    cardImageOverlays.overlaySection.assertThat().core().hasClass(OVERLAY_CLASS);
+    cardImageOverlays.vectorImage.is().core().hasClass(IMAGE_TOP_CLASS);
+    cardImageOverlays.vectorImage.assertThat().core().hasClass(IMAGE_TOP_CLASS);
+}</p>
+
+<p>@Test
+public void vectorInternalElementsTest() {
+     assertEquals(cardImageOverlays.vectorImage.getText(VECTOR_TEXT_TAG), VECTOR_TEXT);
+     assertEquals(cardImageOverlays.vectorImage.getAttribute(VECTOR_TEXT_TAG, VECTOR_TEXT_ATTR), VECTOR_TEXT_VALUE);
+}
+```</p>
 
 <p><img src="images/bootstrap/card-image-overlays-html.png" alt="Card Image Example Code" /></p>
 
