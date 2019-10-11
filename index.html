@@ -9990,8 +9990,7 @@ that automatically collapses at the lg (large) breakpoint.
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"collapseLinkTextData"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">collapseLinkTextTest</span><span class="o">(</span><span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">Dimension</span> <span class="n">dimension</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dimension</span><span class="o">(</span><span class="mi">900</span><span class="o">,</span> <span class="mi">600</span><span class="o">);</span>
-    <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">manage</span><span class="o">().</span><span class="na">window</span><span class="o">().</span><span class="na">setSize</span><span class="o">(</span><span class="n">dimension</span><span class="o">);</span>
+    <span class="n">WindowsManager</span><span class="o">.</span><span class="na">resizeWindow</span><span class="o">(</span><span class="mi">900</span><span class="o">,</span> <span class="mi">600</span><span class="o">);</span>
 
     <span class="n">navbarSupportedContent</span><span class="o">.</span><span class="na">navExpand</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
     <span class="n">navbarSupportedContent</span><span class="o">.</span><span class="na">navExpand</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
