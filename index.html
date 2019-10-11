@@ -10085,29 +10085,73 @@ that automatically collapses at the lg (large) breakpoint.
 
 <p><a href="javascript: void();">Bootstrap Test Examples</a> 
 <br><br></p>
-<h4 id='brand'>Brand</h4>
+<h4 id='brand'>Brand</h4><pre class="highlight java tab-java"><code>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-base-for-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarSection</span> <span class="n">navbarSection</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BootstrapPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-base-for-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarSection</span> <span class="n">navbarSection</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">//@FindBy(css = ".navbar-brand")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">NavbarBrand</span><span class="o">&gt;</span> <span class="n">navbarBrandJList</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarBrandData"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNavbarText</span><span class="o">(</span><span class="n">String</span> <span class="n">navbarId</span><span class="o">,</span> <span class="n">String</span> <span class="n">navbarText</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">navbarBrandList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">navbarBrand</span> <span class="o">-&gt;</span>
+                <span class="n">navbarBrand</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">navbarId</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span><span class="n">nbb</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">nbb</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+            <span class="n">nbb</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">navbarText</span><span class="o">);</span>
+            <span class="n">nbb</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNavbarClickImage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">navbarBrandList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">nbb</span> <span class="o">-&gt;</span> <span class="n">nbb</span><span class="o">.</span><span class="na">isLink</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">nbb</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">nbbWithIm</span> <span class="o">-&gt;</span> <span class="n">nbbWithIm</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">imgFromNavbar</span> <span class="o">-&gt;</span> <span class="o">{</span>
+                    <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">highlight</span><span class="o">(</span><span class="s">"blue"</span><span class="o">);</span>
+                    <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"src"</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="n">imgPath</span><span class="o">))</span>
+                            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"img"</span><span class="o">);</span>
+                    <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+
+                    <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+                    <span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">();</span>
+                    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span>
+                              <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">getWindowHandles</span><span class="o">()</span>
+                    <span class="o">);</span>
+                    <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">));</span>
+                    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">navbarUrl</span><span class="o">);</span>
+                    <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                    <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">2</span><span class="o">));</span>
+                <span class="o">});</span>
+    <span class="o">}</span>
+
+</code></pre>
 <p>The .navbar-brand can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
 <br></p>
 
 <p>Navbar brand as a link <br>
 <img src="images/bootstrap/navbar-brand-link.png" alt="Brand" /><br>
 <br>
-<img src="images/bootstrap/navbar-brand-link-html.png" alt="Brand" /><br>
-<br>
 Navbar brand as heading <br> 
 <img src="images/bootstrap/navbar-brand-heading.png" alt="Brand" /><br>
-<br>
-<img src="images/bootstrap/navbar-brand-heading-html.png" alt="Brand" /><br></p>
+<br></p>
 
 <p>Adding images to the .navbar-brand will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.<br></p>
 
 <p><img src="images/bootstrap/navbar-brand-image.png" alt="Brand" /><br>
 <br>
-<img src="images/bootstrap/navbar-brand-image-html.png" alt="Brand" /><br>
-<br>
 <img src="images/bootstrap/navbar-brand-image-and-link.png" alt="Brand" /><br>
-<br>
-<img src="images/bootstrap/navbar-brand-image-and-link-html.png" alt="Brand" /></p>
+<br></p>
+
+<p><img src="images/bootstrap/navbar-brand-all.png" alt="Brand" /></p>
 
 <p>Available methods in Java JDI Light:</p>
 
@@ -10119,29 +10163,34 @@ Navbar brand as heading <br>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>isNavbarBrand()</strong></td>
+<td>Check it is navbar-brand class</td>
+<td>boolean</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>isLink()</strong></td>
+<td>Check it is link</td>
+<td>boolean</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getRef()</strong></td>
+<td>Get link</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
 </tr>
 </tbody></table>
 
