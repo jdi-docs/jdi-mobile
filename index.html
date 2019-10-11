@@ -14703,7 +14703,7 @@ Form can consists of:
 - <a href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar">Scrollspy in navbar</a> 
 <br></p>
 <pre class="highlight java tab-java"><code>    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example2"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarWithDropdown</span> <span class="n">navbarWithDropdown</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example2~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollspyNav</span> <span class="n">scrollspyInNavbar</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example2~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollSpyNav</span> <span class="n">scrollSpyInNavbar</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"ul&gt;li"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "ul&gt;li")</span>
@@ -14718,23 +14718,32 @@ Form can consists of:
     <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>
 <span class="o">}</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollspyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollSpyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollParagraph</span><span class="o">(</span><span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">){</span>
+        <span class="n">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(!</span><span class="n">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">className</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+                <span class="n">index</span> <span class="o">&lt;</span> <span class="n">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">navbarLinkClickableTests</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">navbarLink</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="s">"Scrollspy · Bootstrap"</span><span class="o">);</span>
+        <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">dropdown</span><span class="o">);</span>
+        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">dropdown</span><span class="o">);</span>
         <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
         <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">navGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-        <span class="n">scrollspyInNavbar</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
-        <span class="n">scrollspyInNavbar</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
 
         <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
         <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
@@ -14769,42 +14778,45 @@ Form can consists of:
 
 
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example3"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NestedNav</span> <span class="n">nestedNav</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example3~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollspyNav</span> <span class="n">scrollspyWithNestedNav</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example3~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollSpyNav</span> <span class="n">scrollSpyWithNestedNav</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NestedNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navGroup</span><span class="o">;</span>             <span class="c1">// @FindBy(css = "nav")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav nav a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>        <span class="c1">// @FindBy(css = "nav nav a")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = ".navbar-brand")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navGroup</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "nav")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav nav a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "nav nav a")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>   <span class="c1">// @FindBy(css = ".navbar-brand")</span>
 <span class="o">}</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollspyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollSpyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollParagraph</span><span class="o">(</span><span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">){</span>
+        <span class="n">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(!</span><span class="n">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">className</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+                <span class="n">index</span> <span class="o">&lt;</span> <span class="n">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">highlightFocusedItemsTests</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">7</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"itemsCheck"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paragraphClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">scrollSpyWithNestedNav</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
 
-        <span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">7</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"nav-link ml-3 my-1 active"</span><span class="o">);</span>
+        <span class="n">scrollSpyWithNestedNav</span><span class="o">.</span><span class="na">scrollParagraph</span><span class="o">(</span><span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">,</span> <span class="n">index</span><span class="o">,</span> <span class="n">CLASS_NAME_ACTIVE</span><span class="o">);</span>
 
-        <span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"nav-link active"</span><span class="o">);</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">hasClass</span><span class="o">(</span><span class="n">CLASS_NAME_ACTIVE</span><span class="o">));</span>
+        <span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
     <span class="o">}</span>
+
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">nestedNav</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
         <span class="n">nestedNav</span><span class="o">.</span><span class="na">navGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-        <span class="n">scrollspyWithNestedNav</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
-        <span class="n">scrollspyWithNestedNav</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
+        <span class="n">scrollSpyWithNestedNav</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
+        <span class="n">scrollSpyWithNestedNav</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
     <span class="o">}</span>
 
 
@@ -14833,41 +14845,47 @@ Form can consists of:
 
 
 
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-example&gt;a"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroup</span> <span class="n">listGroupForScrollspy</span><span class="o">;</span>
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-example~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollspyNav</span> <span class="n">scrollspyWithListGroup</span><span class="o">;</span>   
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-example&gt;a"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroup</span> <span class="n">listGroupForScrollSpy</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-example~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollSpyNav</span> <span class="n">scrollSpyWithListGroup</span><span class="o">;</span>
 
- <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollspyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
- <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollSpyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
 
-        <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"itemsCheck"</span><span class="o">)</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paragraphClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
-            <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollParagraph</span><span class="o">(</span><span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">){</span>
+        <span class="n">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
 
-           <span class="k">if</span> <span class="o">(</span><span class="n">listGroupForScrollspy</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"list-group-item list-group-item-action"</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
-                   <span class="n">index</span> <span class="o">&lt;</span> <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span>
-               <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-
-            <span class="n">listGroupForScrollspy</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
-                    <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"list-group-item list-group-item-action active"</span><span class="o">)</span>
-                    <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">)</span><span class="c1">//#007bff Color Hex</span>
-                    <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="s">"rgb(0, 123, 255)"</span><span class="o">);</span><span class="c1">//#007bff Color Hex</span>
-
-            <span class="n">listGroupForScrollspy</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">className</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+                <span class="n">index</span> <span class="o">&lt;</span> <span class="n">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
         <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 
-        <span class="nd">@Test</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-            <span class="n">scrollspyWithListGroup</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-            <span class="n">listGroupForScrollspy</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-        <span class="o">}</span>
+    <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"itemsCheck"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paragraphClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">scrollSpyWithListGroup</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+
+        <span class="n">scrollSpyWithListGroup</span><span class="o">.</span><span class="na">scrollParagraph</span><span class="o">(</span><span class="n">listGroupForScrollSpy</span><span class="o">,</span> <span class="n">index</span><span class="o">,</span> <span class="n">CLASS_NAME_ACTIVE</span><span class="o">);</span>
+
+        <span class="n">listGroupForScrollSpy</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="n">CLASS_NAME_LIST_GROUP_ITEM_LIST_GROUP_ITEM_ACTION_ACTIVE</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="n">CSS_NAME_BACKGROUND_COLOR</span><span class="o">,</span> <span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">)</span><span class="c1">//#007bff Color Hex</span>
+                <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="n">CSS_NAME_BORDER_COLOR</span><span class="o">,</span> <span class="s">"rgb(0, 123, 255)"</span><span class="o">);</span><span class="c1">//#007bff Color Hex</span>
+
+        <span class="n">listGroupForScrollSpy</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">scrollSpyWithListGroup</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+        <span class="n">scrollSpyWithListGroup</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+        <span class="n">listGroupForScrollSpy</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="o">}</span>
 
 </code></pre>
 <p><img src="images/bootstrap/scroll_spy1.png" alt="Scrollspy" /><br>
