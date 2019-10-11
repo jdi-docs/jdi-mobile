@@ -10264,16 +10264,16 @@ Navbar brand as heading <br>
 
 <p><img src="images/bootstrap/nav-dropdown-html.png" alt="Color Nav HTML example" /></p>
 
-<p>Media object is represented by Section class in Java:</p>
+<p>Nav is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
 
 <p>Inner elements of media object can be represented by the following classes:
 <ul>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#link">Link</a>  </li>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#button">Button</a>  </li>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#dropdown">DropDown</a>  </li>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#collapse">Collapse</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#dropdown-2">DropDown</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#bootstrap-common-elements">See more elements</a> </li>
 </ul></p>
 
 <p><a style="font-weight: bold;" target="_blank" href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarNavsTests.java">Bootstrap test examples</a></p>
@@ -10557,8 +10557,53 @@ Choose from .navbar-light for use with light background colors, or .navbar-dark 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarColorSchemeTests.java">Bootstrap test examples</a></p>
 
 <p><br><br> </p>
-<h4 id='containers'>Containers</h4>
-<p>Although it’s not required, you can wrap a navbar in a .container to center it on a page or add one within to only center the contents of a fixed or static top navbar.</p>
+<h4 id='containers'>Containers</h4><pre class="highlight java tab-java"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Navbar</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">//@FindBy(xpath = "//*[contains(@class, 'nav-item')]")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'nav-item')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">navbarLinks</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarBrand</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".navbar-brand")</span>
+    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".navbar-toggler-icon"</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">".navbar-nav"</span><span class="o">,</span> <span class="n">list</span> <span class="o">=</span> <span class="s">"a"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Collapse</span> <span class="n">collapseButton</span><span class="o">;</span>
+    <span class="c1">//@FindBy(xpath = "//*[contains(@class, 'nav-link dropdown-toggle')]")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'nav-link dropdown-toggle')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">navbarDropdown</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="c1">//@FindBy(id = "navbar-containers-centred")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-containers-centred"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarCentredContainer</span><span class="o">;</span>
+<span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNameNavbarContainerBrandTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">navbarCentredContainer</span><span class="o">.</span><span class="na">navbarBrand</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">textNavbarCentredContainer</span><span class="o">);</span>
+  <span class="o">}</span>
+
+
+
+
+
+
+
+<span class="c1">//@FindBy(id = "navbar-containers-expanded")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-containers-expanded"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarExpandedContainer</span><span class="o">;</span>
+<span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickNavbarCentredContainerLinksTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">navbarCentredContainer</span><span class="o">.</span><span class="na">navbarBrand</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+     <span class="n">assertThat</span><span class="o">(</span><span class="n">WindowsManager</span><span class="o">.</span><span class="na">windowsCount</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+     <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+     <span class="n">assertThat</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">url</span><span class="o">));</span>
+     <span class="n">WindowsManager</span><span class="o">.</span><span class="na">closeWindow</span><span class="o">();</span>
+    <span class="o">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+<p>Although it’s not required, you can <a href = "https://getbootstrap.com/docs/4.3/components/navbar/#containers" target = "a_blank"> wrap a navbar in a .container </a> to center it on a page or add one within to only center the contents of a fixed or static top navbar.</p>
 
 <p><img src="images/bootstrap/navbar-containers.png" alt="Containers schemes example" /></p>
 
@@ -10570,6 +10615,19 @@ Choose from .navbar-light for use with light background colors, or .navbar-dark 
 This ensures we’re not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed.</p>
 
 <p><img src="images/bootstrap/navbar-containers2-html.png" alt="Containers HTML example" /></p>
+
+<p>Container is represented by Section class in Java:</p>
+
+<p><a href = "https://github.com/jdi-testing/jdi-light/blob/master/jdi-light/src/main/java/com/epam/jdi/light/elements/composite/Section.java" target = "a_blank"> Section.java </a></p>
+
+<p>Inner elements of media object can be represented by the following classes:
+<ul>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#collapse">Collapse</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#dropdown-2">DropDown</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#bootstrap-common-elements">See more elements</a> </li>
+</ul></p>
+
+<p><a style="font-weight: bold;" target="_blank" href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/NavbarContainersTest.java">Bootstrap test examples</a></p>
 <h4 id='placement'>Placement</h4>
 <p>Use our position utilities to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). Fixed navbars use position: fixed, meaning they’re pulled from the normal flow of the DOM and may require custom CSS (e.g., padding-top on the <body>) to prevent overlap with other elements.</p>
 
