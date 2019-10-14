@@ -10959,7 +10959,74 @@ Below are examples of different toggle styles.</p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ProgressWithLabelsTests.java" target=a_blank> Bootstrap test examples </a></p>
 
-<p><br><br><br><br><br><br></p>
+<p><br><br></p>
+
+<p><strong>With height</strong></p>
+
+<p>We only set a <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#height">height</a>
+ value on the .progress, so if you change that value the inner .progress-bar will automatically resize accordingly.</p>
+
+<p><img src="images/bootstrap/progress_height.PNG" alt="Progress height example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#progress-height .progress")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-height .progress"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">ProgressSection</span><span class="o">&gt;</span> <span class="n">progressHeightSections</span><span class="o">;</span>
+
+ <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">heightOfSectionShouldBeValid</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">ProgressSection</span> <span class="n">section</span> <span class="o">:</span> <span class="n">progressHeightSections</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">actualHeight</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getSize</span><span class="o">().</span><span class="na">getHeight</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">expectedHeight</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="na">getProgressSectionHeightValueInPx</span><span class="o">();</span>
+            <span class="n">assertEquals</span><span class="o">(</span><span class="n">actualHeight</span><span class="o">,</span> <span class="n">expectedHeight</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">heightOfBarShouldBeValid</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">ProgressSection</span> <span class="n">section</span> <span class="o">:</span> <span class="n">progressHeightSections</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">expectedBarHeight</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="na">getProgressSectionHeightValueInPx</span><span class="o">();</span>
+            <span class="n">section</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">expectedBarHeight</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/bootstrap/progress_height_DOM.PNG" alt="Progress label HTML example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getAriaValue()</strong></td>
+<td>Get aria value of the bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getColor()</strong></td>
+<td>Get color of the bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Various assert actions for Progress</td>
+<td>ProgressAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressHeightTests.java" target=a_blank> Bootstrap test examples </a></p>
+
+<p><br><br></p>
 
 <p><strong>With backgrounds</strong></p>
 
