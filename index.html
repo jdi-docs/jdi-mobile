@@ -12014,7 +12014,14 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 <p><img src="images/bootstrap/card_grid.png" alt="Card with Header and Footer Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-
+<pre class="highlight java tab-java"><code><span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"cardUtilitiesElementsWithWidth"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cardValidationTest</span><span class="o">(</span><span class="n">CardUtilities</span> <span class="n">cardUtilitiesElem</span><span class="o">,</span> <span class="kt">int</span> <span class="n">widthInPercent</span><span class="o">,</span> <span class="n">String</span> <span class="n">widthInPixels</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">cardUtilitiesElem</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"card w-%d"</span><span class="o">,</span> <span class="n">widthInPercent</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"width"</span><span class="o">,</span> <span class="n">widthInPixels</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">whiteColor</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/card_grid_html.png" alt="Card with Header and Footer Code" /></p>
 
 <p>Card is represented by Section class in Java:</p>
@@ -12032,9 +12039,11 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/Card/CardWithGridMarkupTests.java" target=a_blank> Bootstrap test examples </a>
  <br></p>
 
+<p><br><br></p>
+
 <p><strong>Card utilities</strong></p>
 
-<p>Use  handful of available sizing utilities to quickly set a card’s width.</p>
+<p>Use  handful of available <a href="https://getbootstrap.com/docs/4.3/components/card/#using-utilities">sizing utilities</a> to quickly set a card’s width.</p>
 
 <p><img src="images/bootstrap/card_utilities.png" alt="Card utilities Example" /></p>
 
@@ -12109,7 +12118,9 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 </tr>
 </tbody></table>
 
-<p><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardUtilitiesTests.java"> Bootstrap test examples </a></p>
+
+<p><br><br></p>
 
 <p><strong>Card custom CSS</strong></p>
 
