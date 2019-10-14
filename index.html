@@ -15296,9 +15296,116 @@ Form can consists of:
 
 <p><br><br></p>
 <h3 id='modal'>Modal</h3>
-<p><strong>Modal</strong> – is a dialog box/popup window that is displayed on page.</p>
+<p><strong>Modal</strong> is a dialog box/popup window that is displayed on page.</p>
+<h4 id='vertically-centered-modal'>Vertically Centered Modal</h4>
+<p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#vertically-centered" target="_blank">vertically center</a> the modal.</p>
 
-<p>Here are examples of the modals with provided Bootstrap v4.3 code:</p>
+<p><img src="images/bootstrap/modal-vertically-centered.png" alt="Modal Vertically Centered" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">// @FindBy(id = "modal-vertically-centered")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-vertically-centered"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ModalVerticallyCentered</span> <span class="n">modalVerticallyCentered</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".button:nth-of-type(1)")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"button:nth-of-type(1)"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">modalCenterTrigger</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = ".button:nth-of-type(2)")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"button:nth-of-type(2)"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">modalCenterScrollableTrigger</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(id = "modal-vertical-content-1")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-vertical-content-1"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Modal</span> <span class="n">modal1</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(id = "modal-vertical-content-2")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-vertical-content-2"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Modal</span> <span class="n">modal2</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(id = "//*[@id='modal-vertical-content-1']//button[contains(., 'Close')]")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[@id='modal-vertical-content-1']//button[contains(., 'Close')]"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">dismissModal1Close</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(id = "//*[@id='modal-vertical-content-2']//button[contains(., 'Close')]")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[@id='modal-vertical-content-2']//button[contains(., 'Close')]"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">dismissModal2Close</span><span class="o">;</span>
+
+<span class="nd">@DataProvider</span>
+<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">modalBasicData</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+            <span class="o">{</span>
+                    <span class="n">modalVerticallyCentered</span><span class="o">.</span><span class="na">modalCenterTrigger</span><span class="o">,</span>
+                    <span class="n">modalVerticallyCentered</span><span class="o">.</span><span class="na">dismissModal1Close</span><span class="o">,</span>
+                    <span class="n">modalVerticallyCentered</span><span class="o">.</span><span class="na">modal1</span><span class="o">,</span>
+                    <span class="s">"modal-vertical-content-1"</span>
+            <span class="o">},</span>
+
+            <span class="o">{</span>
+                    <span class="n">modalVerticallyCentered</span><span class="o">.</span><span class="na">modalCenterScrollableTrigger</span><span class="o">,</span>
+                    <span class="n">modalVerticallyCentered</span><span class="o">.</span><span class="na">dismissModal2Close</span><span class="o">,</span>
+                    <span class="n">modalVerticallyCentered</span><span class="o">.</span><span class="na">modal2</span><span class="o">,</span>
+                    <span class="s">"modal-vertical-content-2"</span>
+            <span class="o">}</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"modalBasicData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">modalBasicFunctionalityTest</span><span class="o">(</span><span class="n">Button</span> <span class="n">showButton</span><span class="o">,</span>
+                                        <span class="n">Button</span> <span class="n">dismissButton</span><span class="o">,</span>
+                                        <span class="n">Modal</span> <span class="n">modal</span><span class="o">,</span>
+                                        <span class="n">String</span> <span class="n">modalId</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">WebDriverWait</span> <span class="n">wait</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverWait</span><span class="o">(</span><span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">(),</span> <span class="mi">5</span><span class="o">);</span>
+
+    <span class="n">showButton</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">showButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+    <span class="n">wait</span><span class="o">.</span><span class="na">until</span><span class="o">(</span><span class="n">ExpectedConditions</span><span class="o">.</span><span class="na">visibilityOfElementLocated</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="n">modalId</span><span class="o">)));</span>
+
+    <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+    <span class="n">dismissButton</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">dismissButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+    <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/modal-vertically-centered-html.png" alt="Modal Vertically Centered HTML" /></p>
+
+<p>Modal is represented by Section class in Java:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Asserts element</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Asserts element is displayed</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>hidden()</strong></td>
+<td>Asserts element is hidden</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="javascript: void();" target="_blank">Bootstrap Test Examples</a></p>
 
 <p><em>Example:</em> Simple Modal with elements</p>
 
