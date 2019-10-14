@@ -10687,35 +10687,13 @@ Below are examples of different toggle styles.</p>
 <p><img src="images/bootstrap/toggler-left-html.png" alt="Toggler Left HTML example" /></p>
 
 <p><br></p>
-<h4 id='external-content'>External content</h4><pre class="highlight java tab-java"><code>
+<h4 id='external-content'>External content</h4>
+<p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/navbar/#external-content">Plugin</a> to trigger hidden content elsewhere on the page.</p>
 
+<p><img src="images/bootstrap/navbar-external.png" alt="External_content example" /></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-external-content"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#navbar-external-content")</span>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-external-content"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#navbar-external-content")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarExternalContent</span> <span class="n">navbarExternalContent</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -10738,13 +10716,8 @@ Below are examples of different toggle styles.</p>
             <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">mutedText</span><span class="o">);</span>
     <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
 <span class="o">}</span>
+
 </code></pre>
-<p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/navbar/#external-content">Plugin</a> to trigger hidden content elsewhere on the page.</p>
-
-<p><img src="images/bootstrap/navbar-external.png" alt="External_content example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
 <p><img src="images/bootstrap/navbar-external-html.png" alt="External_content HTML example" /></p>
 
 <p>Navbar - External content is represented by Section class in Java:</p>
@@ -15030,37 +15003,13 @@ Form can consists of:
 </ul></p>
 
 <p><br></p>
-<h4 id='sizing-2'>Sizing</h4><pre class="highlight java tab-java"><code>
+<h4 id='sizing-2'>Sizing</h4>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.0/components/jumbotron" target="_blank">Set</a> heights using classes like .form-control-lg and .form-control-sm.</p>
 
+<p><img src="images/bootstrap/forms-sizing.png" alt="Forms_sizing" /></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#forms-sizing"</span><span class="o">)</span>  <span class="c1">//@FindBy(css = "#forms-sizing")</span>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#forms-sizing"</span><span class="o">)</span>  <span class="c1">//@FindBy(css = "#forms-sizing")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">FormsSizing</span> <span class="n">formsSizing</span><span class="o">;</span>
 
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-sizing-lg"</span><span class="o">)</span>  <span class="c1">//@FindBy(css = "#form-sizing-lg")</span>
@@ -15087,13 +15036,8 @@ Form can consists of:
     <span class="n">formsSizing</span><span class="o">.</span><span class="na">largeTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
     <span class="n">formsSizing</span><span class="o">.</span><span class="na">largeSelect</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Large select"</span><span class="o">);</span>
 <span class="o">}</span>
+
 </code></pre>
-<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.0/components/jumbotron" target="_blank">Set</a> heights using classes like .form-control-lg and .form-control-sm.</p>
-
-<p><img src="images/bootstrap/forms-sizing.png" alt="Forms_sizing" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
 <p><img src="images/bootstrap/forms-sizing-html.png" alt="Forms_sizing_example" /></p>
 
 <p>Forms - Sizing is represented by <a href="https://jdi-docs.github.io/jdi-light/#section">Section</a> class in Java:</p>
