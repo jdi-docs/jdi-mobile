@@ -10715,10 +10715,10 @@ Below are examples of different toggle styles.</p>
 
 
 
-<span class="c1">//FindBy(css = "#navbar-external-content")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-external-content"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarExternalContent</span> <span class="n">navbarExternalContent</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-external-content"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#navbar-external-content")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarExternalContent</span> <span class="n">navbarExternalContent</span><span class="o">;</span>
 
- <span class="nd">@Test</span>
+<span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">expandingTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">expander</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="n">ariaExpanded</span><span class="o">,</span> <span class="s">"false"</span><span class="o">);</span>
     <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
@@ -10741,25 +10741,61 @@ Below are examples of different toggle styles.</p>
 </code></pre>
 <p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/navbar/#external-content">Plugin</a> to trigger hidden content elsewhere on the page.</p>
 
-<p><img src="images/bootstrap/navbar-external.png" alt="Color Nav example" /></p>
-
-<p>Navbar - Sizing is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
-
-<p>Inner elements of Navbar - Sizing can be represented by the following classes:</p>
-
-<ul>
-<li><a href="https://jdi-docs.github.io/jdi-light/#collapse">Collapse</a><br></li>
-<li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br></li>
-</ul>
+<p><img src="images/bootstrap/navbar-external.png" alt="External_content example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
-<p><img src="images/bootstrap/navbar-external-html.png" alt="Color Nav HTML example" /></p>
+<p><img src="images/bootstrap/navbar-external-html.png" alt="External_content HTML example" /></p>
+
+<p>Navbar - External content is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+
+<p>Inner elements of Navbar - External content can be represented by the following classes:</p>
+
+<ul>
+<li><p><a href="https://jdi-docs.github.io/jdi-light/#collapse">Collapse</a>   </p></li>
+<li><p><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a>       </p></li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>expand()</strong></td>
+<td>Expands element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>collapse()</strong></td>
+<td>Collapses element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get current value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/ExternalContentTests.java" target=a_blank> Bootstrap test examples </a>
-<br><br><br></p>
+<br></p>
 <h3 id='pagination'>Pagination</h3>
 <p>Pagination is functionality for navigating through pages.</p>
 
@@ -14994,7 +15030,64 @@ Form can consists of:
 </ul></p>
 
 <p><br></p>
-<h4 id='sizing-2'>Sizing</h4>
+<h4 id='sizing-2'>Sizing</h4><pre class="highlight java tab-java"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#forms-sizing"</span><span class="o">)</span>  <span class="c1">//@FindBy(css = "#forms-sizing")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">FormsSizing</span> <span class="n">formsSizing</span><span class="o">;</span>
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-sizing-lg"</span><span class="o">)</span>  <span class="c1">//@FindBy(css = "#form-sizing-lg")</span>
+<span class="kd">public</span> <span class="n">TextField</span> <span class="n">largeTextField</span><span class="o">;</span>
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-sizing-select-lg"</span><span class="o">)</span>  <span class="c1">//@FindBy(css = "#form-sizing-select-lg")</span>
+<span class="kd">public</span> <span class="n">DropdownSelect</span> <span class="n">largeSelect</span><span class="o">;</span>
+
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendKeysTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">formsSizing</span><span class="o">.</span><span class="na">largeTextField</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">formsSizing</span><span class="o">.</span><span class="na">largeTextField</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">+</span><span class="s">"Test"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectOptionTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">formsSizing</span><span class="o">.</span><span class="na">largeSelect</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Large select"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">formsSizing</span><span class="o">.</span><span class="na">largeSelect</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Large select"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">formsSizing</span><span class="o">.</span><span class="na">largeTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
+    <span class="n">formsSizing</span><span class="o">.</span><span class="na">largeSelect</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Large select"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.0/components/jumbotron" target="_blank">Set</a> heights using classes like .form-control-lg and .form-control-sm.</p>
 
 <p><img src="images/bootstrap/forms-sizing.png" alt="Forms_sizing" /></p>
@@ -15003,16 +15096,58 @@ Form can consists of:
 
 <p><img src="images/bootstrap/forms-sizing-html.png" alt="Forms_sizing_example" /></p>
 
-<p>Forms - Sizing is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+<p>Forms - Sizing is represented by <a href="https://jdi-docs.github.io/jdi-light/#section">Section</a> class in Java:</p>
 
 <p>Inner elements of Forms - Sizing are represented by the following classes:</p>
 
 <ul>
 <li><p><a href="https://jdi-docs.github.io/jdi-light/#textfield">TextField</a></p></li>
-<li><p><a href="https://jdi-docs.github.io/jdi-light/#datalist">DataList</a></p></li>
+<li><p><a href="https://jdi-docs.github.io/jdi-light/">DropdownSelect</a></p></li>
 </ul>
+
+<table><thead>
+<tr>
+<th>Method / Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>SendKeys(string value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>SetText(String value)</strong></td>
+<td>sets new text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>GetText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>GetValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>select(string/int)</strong></td>
+<td>Select data by value/index</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>Is</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>AssertThat</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/forms/FormsSizingTests.java">Bootstrap test examples</a></p>
 <h3 id='scrollspy'>Scrollspy</h3>
