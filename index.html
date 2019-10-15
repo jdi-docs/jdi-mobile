@@ -9940,33 +9940,19 @@ that automatically collapses at the lg (large) breakpoint.
 </ol>
 <pre class="highlight java tab-java"><code><span class="c1">// @FindBy(id = "navbar-supported-content")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-supported-content"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarSupportedContent</span> <span class="n">navbarSupportedContent</span><span class="o">;</span>
-
-<span class="c1">// @FindBy(css = ".navbar-brand")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Link</span> <span class="n">brand</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarSupportedContent</span> <span class="n">navbarSupportedContent</span>
 
 <span class="c1">// @FindBy(tagName = "button[data-toggle=collapse]")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"button[data-toggle=collapse]"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Button</span> <span class="n">navExpand</span><span class="o">;</span>
 
-<span class="c1">// @FindBy(tagName = "input")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">TextField</span> <span class="n">searchField</span><span class="o">;</span>
-
-<span class="c1">// @FindBy(css = ".btn-outline-success")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">".btn-outline-success"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Button</span> <span class="n">searchButton</span><span class="o">;</span>
-
 <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">".navbar-nav"</span><span class="o">,</span>
         <span class="n">list</span> <span class="o">=</span> <span class="s">"a"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Collapse</span> <span class="n">nav</span><span class="o">;</span>
 
-<span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">".dropdown"</span><span class="o">,</span>
-        <span class="n">expand</span> <span class="o">=</span> <span class="s">"#navbarDropdown"</span><span class="o">,</span>
-        <span class="n">list</span> <span class="o">=</span> <span class="s">"a"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Collapse</span> <span class="n">dropdown</span><span class="o">;</span>
-
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">bootstrapNavPageUrl</span> <span class="o">=</span> <span class="s">"https://getbootstrap.com/docs/4.3/components/navbar/#nav"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">jdiPageUrl</span> <span class="o">=</span> <span class="s">"https://github.com/jdi-testing/jdi-light/"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">jdiBootstrapPageUrl</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/bootstrap.html#"</span><span class="o">;</span>
 <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">activeLinkText</span> <span class="o">=</span> <span class="s">"Active link"</span><span class="o">;</span>
 <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">jdiLinkText</span> <span class="o">=</span> <span class="s">"JDI Light"</span><span class="o">;</span>
 <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">dropdownLinkText</span> <span class="o">=</span> <span class="s">"Dropdown"</span><span class="o">;</span>
@@ -9974,6 +9960,8 @@ that automatically collapses at the lg (large) breakpoint.
 <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">dropdownAnotherAction</span> <span class="o">=</span> <span class="s">"Another action"</span><span class="o">;</span>
 <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">dropdownSmthElse</span> <span class="o">=</span> <span class="s">"Something else here"</span><span class="o">;</span>
 <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">disabledLinkText</span> <span class="o">=</span> <span class="s">"Disabled link"</span><span class="o">;</span>
+
+
 
 <span class="nd">@DataProvider</span>
 <span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">collapseLinkTextData</span><span class="o">()</span> <span class="o">{</span>
@@ -9986,6 +9974,27 @@ that automatically collapses at the lg (large) breakpoint.
             <span class="o">{</span><span class="n">dropdownSmthElse</span><span class="o">},</span>
             <span class="o">{</span><span class="n">disabledLinkText</span><span class="o">}</span>
     <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@DataProvider</span>
+<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">navbarLinkData</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+            <span class="o">{</span><span class="n">activeLinkText</span><span class="o">,</span> <span class="n">activeLinkText</span><span class="o">,</span> <span class="n">bootstrapNavPageUrl</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">jdiLinkText</span><span class="o">,</span> <span class="n">jdiLinkText</span><span class="o">,</span> <span class="n">jdiPageUrl</span><span class="o">},</span>
+            <span class="o">{</span><span class="n">disabledLinkText</span><span class="o">,</span> <span class="n">disabledLinkText</span><span class="o">,</span> <span class="n">jdiBootstrapPageUrl</span><span class="o">}</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarLinkData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">navLinkContentsTest</span><span class="o">(</span><span class="n">String</span> <span class="n">elementName</span><span class="o">,</span>
+                                <span class="n">String</span> <span class="n">elementText</span><span class="o">,</span>
+                                <span class="n">String</span> <span class="n">elementUrl</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navbarSupportedContent</span><span class="o">.</span><span class="na">nav</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">navbarSupportedContent</span><span class="o">.</span><span class="na">nav</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="n">elementName</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">elementText</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"href"</span><span class="o">,</span> <span class="n">elementUrl</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"collapseLinkTextData"</span><span class="o">)</span>
