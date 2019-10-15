@@ -15489,6 +15489,95 @@ Form can consists of:
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/forms/FormsSizingTests.java">Bootstrap test examples</a></p>
+
+<p><br><br>
+<strong>Readonly plain text</strong></p>
+
+<p>If you want to have input readonly elements in your form styled as 
+<a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#readonly-plain-text">plain text</a>,
+ use the <b>.form-control-plaintext</b> class to remove the default form field styling and preserve the correct margin and padding.
+Compare items with plaintext mark (upper) and without it (lower):</p>
+
+<p><img src="images/bootstrap/readonly_plain_text.png" alt="Forms_readonly_plain_text_example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#readonlyPlainText1")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#readonlyPlainText1"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ReadonlyPlainText</span> <span class="n">readonlyPlainText1</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-control-plaintext"</span><span class="o">);</span>
+    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"readonly"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">),</span> <span class="s">"text"</span><span class="o">);</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"email@example.com"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValueTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"email@example.com"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">labelText</span><span class="o">(),</span> <span class="s">"Email"</span><span class="o">);</span>
+    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Email"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/readonly_plain_text_DOM.png" alt="Forms_readonly_plain_text_HTML_example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Various assert actions for Progress</td>
+<td>ProgressAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get item value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>hasClass()</strong></td>
+<td>Match passed value with element class</td>
+<td>ICoreElement</td>
+</tr>
+<tr>
+<td><strong>attr()</strong></td>
+<td>Match passed value with element attribute</td>
+<td>ICoreElement</td>
+</tr>
+<tr>
+<td><strong>label()</strong></td>
+<td>Get label associated with an item</td>
+<td>Label</td>
+</tr>
+<tr>
+<td><strong>labelText</strong></td>
+<td>Get text of a label associated with an item</td>
+<td>String</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/mposite.section.form.ReadonlyPlainTextTests.java" target=a_blank> Bootstrap test examples </a></p>
+
+<p><br><br></p>
 <h3 id='scrollspy'>Scrollspy</h3>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar">Scrollspy</a></strong> – automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
 <br><br>
