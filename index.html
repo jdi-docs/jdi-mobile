@@ -9961,30 +9961,6 @@ that automatically collapses at the lg (large) breakpoint.
 <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">dropdownSmthElse</span> <span class="o">=</span> <span class="s">"Something else here"</span><span class="o">;</span>
 <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">disabledLinkText</span> <span class="o">=</span> <span class="s">"Disabled link"</span><span class="o">;</span>
 
-
-
-<span class="nd">@DataProvider</span>
-<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">collapseLinkTextData</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]</span> <span class="o">{</span>
-            <span class="o">{</span><span class="n">activeLinkText</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">jdiLinkText</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">dropdownLinkText</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">dropdownAction</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">dropdownAnotherAction</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">dropdownSmthElse</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">disabledLinkText</span><span class="o">}</span>
-    <span class="o">};</span>
-<span class="o">}</span>
-
-<span class="nd">@DataProvider</span>
-<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">navbarLinkData</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
-            <span class="o">{</span><span class="n">activeLinkText</span><span class="o">,</span> <span class="n">activeLinkText</span><span class="o">,</span> <span class="n">bootstrapNavPageUrl</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">jdiLinkText</span><span class="o">,</span> <span class="n">jdiLinkText</span><span class="o">,</span> <span class="n">jdiPageUrl</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">disabledLinkText</span><span class="o">,</span> <span class="n">disabledLinkText</span><span class="o">,</span> <span class="n">jdiBootstrapPageUrl</span><span class="o">}</span>
-    <span class="o">};</span>
-<span class="o">}</span>
-
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarLinkData"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">navLinkContentsTest</span><span class="o">(</span><span class="n">String</span> <span class="n">elementName</span><span class="o">,</span>
                                 <span class="n">String</span> <span class="n">elementText</span><span class="o">,</span>
