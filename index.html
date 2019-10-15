@@ -602,6 +602,9 @@
 								<a href="#navs-2" class="toc-h2 h3 toc-link" data-title="Navs">Navs</a>
                             </li>
                             <li>
+								<a href="#kitchen-sink" class="toc-h2 h3 toc-link" data-title="Kitchen sink">Kitchen sink</a>
+                            </li>
+                            <li>
 								<a href="#list-group" class="toc-h2 h3 toc-link" data-title="List group">List group</a>
                             </li>
                             <li>
@@ -17473,6 +17476,81 @@ Compare items with plaintext mark (upper) and without it (lower):</p>
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
 
 <p><br></p>
+<h3 id='kitchen-sink'>Kitchen sink</h3><pre class="highlight java tab-java"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-kitchen-sink"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardKitchenSink</span> <span class="n">cardKitchenSink</span><span class="o">;</span> 
+   <span class="c1">// @FindBy(css = "#card-kitchen-sink") public static CardKitchenSink cardKitchenSink; </span>
+
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardKitchenSink</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-img-top"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">body</span><span class="o">;</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".list-group"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">list</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">item0Text</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">item1Text</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">item2Text</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">item0Text</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">item1Text</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">item2Text</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">imgSrc</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">imgAlt</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">86</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">137</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">titleText</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">titleText</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">cardText</span><span class="o">));</span>
+        <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">cardText</span><span class="o">));</span>
+    <span class="o">}</span>
+</code></pre>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/card/#kitchen-sink" target="_blank">Kitchen sink</a> – Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.</p>
+
+<p><img src="images/bootstrap/card-kitchen-sink.png" alt="Kitchen sink" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/card-kitchen-sink-html.png" alt="Kitchen sink example" /></p>
+
+<p>Kitchen sink is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+
+<p>Inner elements of kitchen sink can be represented by the following classes:</p>
+
+<ul>
+<li><p><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p></li>
+<li><p><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p></li>
+<li><p><a href="https://jdi-docs.github.io/jdi-light/#title">Title</a></p></li>
+<li><p><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></p></li>
+</ul>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardKitchenSinkTests.java">Bootstrap test examples</a></p>
 <h3 id='list-group'>List group</h3>
 <p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/">List groups</a></em></strong> are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
 <h4 id='basic-example'>Basic Example</h4>
