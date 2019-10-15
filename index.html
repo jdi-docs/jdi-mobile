@@ -12060,7 +12060,11 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 <p><img src="images/bootstrap/card_utilities.png" alt="Card utilities Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>  <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"cardUtilitiesElementsWithWidth"</span><span class="o">)</span>
+<pre class="highlight java tab-java"><code>    <span class="c1">//@FindBy(className = ".w-75")</span>
+      <span class="nd">@UI</span><span class="o">(</span><span class="s">".w-75"</span><span class="o">)</span>  
+      <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardUtilities</span> <span class="n">cardWidth75</span><span class="o">;</span>
+
+  <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"cardUtilitiesElementsWithWidth"</span><span class="o">)</span>
       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cardValidationTest</span><span class="o">(</span><span class="n">CardUtilities</span> <span class="n">cardUtilitiesElem</span><span class="o">,</span> <span class="kt">int</span> <span class="n">widthInPercent</span><span class="o">,</span> <span class="n">String</span> <span class="n">widthInPixels</span><span class="o">)</span> <span class="o">{</span>
           <span class="n">cardUtilitiesElem</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
                   <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"card w-%d"</span><span class="o">,</span> <span class="n">widthInPercent</span><span class="o">))</span>
