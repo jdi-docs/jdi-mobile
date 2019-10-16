@@ -403,7 +403,7 @@
                     <a href="#extended-selenium-features" class="toc-h2 toc-link" data-title="Extended Selenium features">Extended Selenium features</a>
                   </li>
                   <li>
-                    <a href="#html5-common-elements" class="toc-h2 toc-link" data-title="Html5 Common elements">Html5 Common elements</a>
+                    <a href="#html5-common-elements" class="toc-h2 toc-link" data-title="HTML5 Common elements">HTML5 Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
 								<a href="#label" class="toc-h2 h3 toc-link" data-title="Label">Label</a>
@@ -2010,18 +2010,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <p>TBD</p>
 <h1 id='documentation'>Documentation</h1><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
-<h2 id='html5-common-elements'>Html5 Common elements</h2><h3 id='label'>Label</h3>
-<p><strong>Label</strong> – Elements&#39; caption for a big number of JDI common elements </p>
-
-<p><img src="images/colorpicker.png" alt="Label" /> </p>
-
-<p>Label&#39;s implementation is located in the following classes: </p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.elements.base.BaseUIElement</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Base.UIElement</em></li>
-</ul>
-<pre class="highlight java tab-java"><code>
+<h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
 
   <span class="nd">@UI</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#name")</span>
@@ -2069,6 +2058,17 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
  <span class="p">}</span> 
 
 </code></pre>
+<p><strong>Label</strong> – Elements&#39; caption for a big number of JDI common elements. </p>
+
+<p><img src="images/colorpicker.png" alt="Label" /> </p>
+
+<p>Label&#39;s implementation is located in the following classes: </p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.elements.base.BaseUIElement</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Base.UIElement</em></li>
+</ul>
+
 <p>Available methods in C# JDI Light: </p>
 
 <table><thead>
@@ -2090,23 +2090,12 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/LabelsTests.cs">C# test examples</a> </p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/LabelTests.java" target="_blank">C# test examples</a> </p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/LabelTests.java">Java test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/LabelTests.java" target="_blank">Java test examples</a> </p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#label-2">BDD Steps examples</a></p>
-<h3 id='button'>Button</h3>
-<p><strong>Button</strong> – Element that represents a clickable button</p>
-
-<p><img src="images/button.png" alt="Button" /></p>
-
-<p>Button is located in the following classes:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Button</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Button</em></li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[value*='Red Button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "[value*='Red Button']")</span>
+<h3 id='button'>Button</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[value*='Red Button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "[value*='Red Button']")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">redButton</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -2139,6 +2128,17 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="p">}</span>
 
 </code></pre>
+<p><strong>Button</strong> – Element that represents a clickable button.</p>
+
+<p><img src="images/button.png" alt="Button" /></p>
+
+<p>Button is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Button</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Button</em></li>
+</ul>
+
 <p>Here is an example with provided HTML code:</p>
 
 <p><img src="images/html/button_html.png" alt="Button example" /></p>
@@ -2174,7 +2174,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/ButtonTests.java">Java test examples</a>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/ButtonTests.java" target="_blank">Java test examples</a>
 <br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#button-3">BDD Steps example</a></p>
 
@@ -2209,20 +2209,10 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/ButtonTests.cs">C# test examples</a> <br>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ButtonTests.cs" target="_blank">C# test examples</a>
+<br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#button-3">BDD Steps example</a></p>
-<h3 id='checkbox'>Checkbox</h3>
-<p><strong>Checkbox</strong> – Element allows you to select single value for submission.</p>
-
-<p><img src="images/checkbox.png" alt="Checkbox" /></p>
-
-<p>Checkbox is located in the following classes:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Checkbox*</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.CheckBox*</em></li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#accept-conditions"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "accept-conditions")</span>
+<h3 id='checkbox'>Checkbox</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#accept-conditions"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "accept-conditions")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Checkbox</span> <span class="n">acceptConditions</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -2331,6 +2321,17 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="p">}</span>
 
 </code></pre>
+<p><strong>Checkbox</strong> – Element allows you to select single value for submission.</p>
+
+<p><img src="images/checkbox.png" alt="Checkbox" /></p>
+
+<p>Checkbox is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Checkbox*</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.CheckBox*</em></li>
+</ul>
+
 <p>Here is an example with provided HTML code:</p>
 
 <p><img src="images/html/checkbox_html.png" alt="Checkbox example" /></p>
@@ -2448,22 +2449,12 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/CheckboxTests.java">Java test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/CheckboxTests.java" target="_blank">Java test examples</a></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/CheckBoxTests.cs">C# test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/CheckBoxTests.cs" target="_blank">C# test examples</a></p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#checkbox-2">BDD Steps example</a></p>
-<h3 id='colorpicker'>ColorPicker</h3>
-<p><strong>ColorPicker</strong> – Elements of this type provide a user interface element that lets a user specify a color, either by using a visual color picker interface or by entering the color into a text field in &quot;#rrggbb&quot; hexadecimal format. Only simple colors (with no alpha channel) are allowed. The values are compatible with CSS.</p>
-
-<p><img src="images/colorpicker.png" alt="ColorPicker" /></p>
-
-<p>Colorpicker is located in the following classes:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.ColorPicker*</em></li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#color-picker"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "color-picker")</span>
+<h3 id='colorpicker'>ColorPicker</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#color-picker"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "color-picker")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">ColorPicker</span> <span class="n">colorPicker</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -2498,6 +2489,16 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="p">}</span>
 
 </code></pre>
+<p><strong>ColorPicker</strong> – Elements of this type provide a user interface element that lets a user specify a color, either by using a visual color picker interface or by entering the color into a text field in &quot;#rrggbb&quot; hexadecimal format. Only simple colors (with no alpha channel) are allowed. The values are compatible with CSS.</p>
+
+<p><img src="images/colorpicker.png" alt="ColorPicker" /></p>
+
+<p>Colorpicker is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.ColorPicker*</em></li>
+</ul>
+
 <p>Here is an example with provided HTML code:</p>
 
 <p><img src="images/html/colorpicker_html.png" alt="ColorPicker" /></p>
@@ -2533,7 +2534,8 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/ColorPickerTests.java">Java test examples</a><br>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/ColorPickerTests.java" target="_blank">Java test examples</a>
+<br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#colorpicker-2">BDD Steps example</a><br></p>
 
 <p>Here is the list of some available methods in C#:</p>
@@ -2567,10 +2569,11 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ColorPickerTests.cs">Test examples in C#</a><br>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ColorPickerTests.cs" target="_blank">Test examples in C#</a>
+<br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#colorpicker-2">BDD Steps example</a><br></p>
 <h3 id='datetimeselector'>DateTimeSelector</h3>
-<p><strong>DateTimeSelector</strong> is used for Input Type Date and its derivatives and allows users to set the value of date and/or time.</p>
+<p><strong>DateTimeSelector</strong> - Is used for Input Type Date and its derivatives and allows users to set the value of date and/or time.</p>
 
 <p>The list of supported elements:</p>
 
@@ -2705,13 +2708,13 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
     <span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">BirthDate</span><span class="p">.</span><span class="nf">AssertThat</span><span class="p">().</span><span class="nf">SelectedTime</span><span class="p">(</span><span class="n">Is</span><span class="p">.</span><span class="nf">EqualToIgnoringCase</span><span class="p">(</span><span class="s">"2019-04-01"</span><span class="p">));</span>   
 <span class="p">}</span>
 </code></pre>
-<p><strong>Input Type Date</strong> – a graphical control element that allows user to set value for date.</p>
+<p><strong>Input Type Date</strong> – A graphical control element that allows user to set value for date.</p>
 
 <p><img src="images/html/inputTypeDate_html.png" alt="InputTypeDate" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DateTimeTests.cs">Test examples in C#</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/DateTimeTests.cs" target="_blank">Test examples in C#</a></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/DateTests.java">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/DateTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><strong>Input Type Week</strong></p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#autumn-week"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#autumn-week") </span>
@@ -2743,13 +2746,13 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
     <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEqual</span><span class="p">(</span><span class="n">setValue</span><span class="p">,</span> <span class="s">"2019-W13"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
-<p><strong>Input Type Week</strong> – a graphical control element that allows user to set values for week and year.</p>
+<p><strong>Input Type Week</strong> – A graphical control element that allows user to set values for week and year.</p>
 
 <p><img src="images/html/inputTypeWeek_html.png" alt="InputTypeWeek" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DateTimeTests.cs">Test examples in C#</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/DateTimeTests.cs" target="_blank">Test examples in C#</a></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/WeekTests.java">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/WeekTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><strong>Input Type Month</strong></p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#month-date"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#month-date") </span>
