@@ -15468,9 +15468,9 @@ Compare items with plaintext mark (upper) and without it (lower):</p>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-control-plaintext"</span><span class="o">);</span>
-    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"readonly"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">),</span> <span class="s">"text"</span><span class="o">);</span>
+    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-control-plaintext"</span><span class="o">);</span>
+    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"readonly"</span><span class="o">);</span>
+    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"text"</span><span class="o">);</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
@@ -15478,14 +15478,18 @@ Compare items with plaintext mark (upper) and without it (lower):</p>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValueTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"email@example.com"</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">textValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"email@example.com"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">valueValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"email@example.com"</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">labelText</span><span class="o">(),</span> <span class="s">"Email"</span><span class="o">);</span>
-    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Email"</span><span class="o">));</span>
+    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Email"</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/readonly_plain_text_DOM.png" alt="Forms_readonly_plain_text_HTML_example" /></p>
@@ -15530,7 +15534,7 @@ Compare items with plaintext mark (upper) and without it (lower):</p>
 <td>Label</td>
 </tr>
 <tr>
-<td><strong>labelText</strong></td>
+<td><strong>labelText()</strong></td>
 <td>Get text of a label associated with an item</td>
 <td>String</td>
 </tr>
