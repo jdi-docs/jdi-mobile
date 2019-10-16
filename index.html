@@ -15473,18 +15473,8 @@ Compare items with plaintext mark (upper) and without it (lower):</p>
     <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"text"</span><span class="o">);</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"email@example.com"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">textValidationTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"email@example.com"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">valueValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">readonlyPlainText1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"email@example.com"</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
