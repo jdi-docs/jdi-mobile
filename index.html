@@ -15370,9 +15370,6 @@ Form can consists of:
     <span class="kd">public</span> <span class="n">Boolean</span> <span class="n">accept</span><span class="o">;</span>
 <span class="o">}</span>
 
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="n">FormSignUp</span> <span class="n">DEFAULT_CREDENTIALS</span> <span class="o">=</span> <span class="n">defaultUser</span><span class="o">();</span>
-
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkboxTests</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">formOverview</span><span class="o">.</span><span class="na">accept</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
@@ -15383,8 +15380,8 @@ Form can consists of:
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fillTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">formOverview</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">DEFAULT_CREDENTIALS</span><span class="o">);</span>
-        <span class="n">formOverview</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">DEFAULT_CREDENTIALS</span><span class="o">);</span>
+        <span class="n">formOverview</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">defaultUser</span><span class="o">());</span>
+        <span class="n">formOverview</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">defaultUser</span><span class="o">());</span>
         <span class="n">checkContactFormSubmitted</span><span class="o">();</span>
     <span class="o">}</span>
 
@@ -15454,20 +15451,22 @@ Form can consists of:
 
 <p><br></p>
 
-<p>Form group is represented by Section class in Java:</p>
+<p>Form group is represented by Form class in Java:</p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+<ul>
+<li>com.epam.jdi.light.elements.composite.Form</li>
+</ul>
 
 <p>Inner elements represented by the following Java classes:</p>
 
 <ul>
 <li><p>TextField: com.epam.jdi.light.ui.bootstrap.elements.common.TextField</p></li>
-<li><p>Label: om.epam.jdi.light.elements.common.Label</p></li>
+<li><p>Label: com.epam.jdi.light.elements.common.Label</p></li>
 <li><p>Checkbox:com.epam.jdi.light.ui.bootstrap.elements.common.Checkbox</p></li>
 <li><p>Button: com.epam.jdi.light.ui.bootstrap.elements.common.Button</p></li>
 </ul>
 
-<p><img src="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormOverviewTests.java" alt="Forms Overview Tests Example" /></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormOverviewTests.java">Forms Overview Tests Example</a></p>
 
 <p><br></p>
 <h4 id='sizing-2'>Sizing</h4>
