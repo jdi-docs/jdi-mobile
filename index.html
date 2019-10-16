@@ -10189,44 +10189,36 @@ Navbar brand as heading <br>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'nav-item')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">navbarLinks</span><span class="o">;</span>
     <span class="c1">//FindBy(css = ".navbar-brand")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarBrand</span><span class="o">;</span>
-    <span class="c1">//FindBy(css = "button.navbar-toggler")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button.navbar-toggler"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">togglerButton</span><span class="o">;</span>
-    <span class="c1">//FindBy(xpath = "//*[contains(@class, 'nav-link dropdown-toggle')]")</span>
+    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".navbar-toggler-icon"</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">".navbar-nav"</span><span class="o">,</span> <span class="n">list</span> <span class="o">=</span> <span class="s">"a"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Collapse</span> <span class="n">collapseButton</span><span class="o">;</span>    <span class="c1">//FindBy(xpath = "//*[contains(@class, 'nav-link dropdown-toggle')]")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'nav-link dropdown-toggle')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">navbarDropdown</span><span class="o">;</span>
 <span class="o">}</span>
 
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-nav-with-disabled"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarNavWithDisabled</span><span class="o">;</span>
-
- <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isDisabledItem</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">navbarNavWithDisabled</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">disabled</span><span class="o">();</span>
-    <span class="o">}</span>
 
 
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-nav-with-disabled"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarNavWithDisabled</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isDisabledItemNavWithDisabled</span><span class="o">(){</span>
+       <span class="n">navbarNavWithDisabled</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">disabled</span><span class="o">();</span>
+   <span class="o">}</span>
 
 
 
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-nav-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarNavWithDropdown</span><span class="o">;</span>
 
- <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickNavbarNavWithDropdownLinksTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">RuntimeException</span> <span class="o">{</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">navbarNavWithDropdown</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">navbarNavWithDropdown</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">textLinksnavbarNavWithDropdown</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
-            <span class="k">try</span> <span class="o">{</span>
-                <span class="n">navbarNavWithDropdown</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">navbarNavWithDropdown</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"class"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="s">"nav-item dropdown show"</span><span class="o">))</span> <span class="o">{</span>
-                    <span class="k">break</span><span class="o">;</span>
-                <span class="o">}</span>
-                <span class="n">assertThat</span><span class="o">(</span><span class="n">windowsCount</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
-                <span class="n">switchToWindow</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
-                <span class="n">assertThat</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">urlLinksnavbarNavWithDropdown</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
-                <span class="n">closeWindow</span><span class="o">();</span>
-            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">RuntimeException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">assertThat</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"is not clickable in any parts"</span><span class="o">));</span>
-                <span class="k">break</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-nav-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Navbar</span> <span class="n">navbarNavWithDropdown</span><span class="o">;</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"linkNavbarWithDropdownTest"</span><span class="o">)</span>
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickNavbarNavWithDropdownLinksTest</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">,</span> <span class="n">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">UIElement</span> <span class="n">link</span> <span class="o">=</span> <span class="n">navbarNavWithDropdown</span><span class="o">.</span><span class="na">navbarLinks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+         <span class="n">link</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+         <span class="n">link</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+         <span class="n">assertThat</span><span class="o">(</span><span class="n">WindowsManager</span><span class="o">.</span><span class="na">windowsCount</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+         <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+         <span class="n">assertThat</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">url</span><span class="o">));</span>
+         <span class="n">WindowsManager</span><span class="o">.</span><span class="na">closeWindow</span><span class="o">();</span>
+     <span class="o">}</span>
 
 
 
