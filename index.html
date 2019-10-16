@@ -13548,56 +13548,7 @@ This means they can easily be resized, recolored, and <a style="font-weight: bol
 <p><img src="images/bootstrap/spinnermargin.png" alt="Spinner Margin Example" /></p>
 <pre class="highlight java tab-java"><code>
 <span class="c1">// @FindBy(id = "spinner-alignment")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-alignment"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SpinnerAlignment</span> <span class="n">spinnerAlignment</span><span class="o">;</span>
-
-<span class="c1">// @FindBy(xpath = "//div[@class='border mb-3 p-3']")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='border mb-3 p-3']"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">spinnerLeft</span><span class="o">;</span>
-
-<span class="c1">// @FindBy(xpath = "//div[@class='d-flex justify-content-center border mb-3 p-3']")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='d-flex justify-content-center border mb-3 p-3']"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">flexJustifySpinner</span><span class="o">;</span>
-
-<span class="c1">// @FindBy(xpath = "//div[@class='d-flex align-items-center border mb-3 p-3']")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='d-flex align-items-center border mb-3 p-3']"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">flexAlignCenterSpinner</span><span class="o">;</span>
-
-<span class="c1">// @FindBy(xpath = "//div[@class='clearfix border mb-3 p-3']")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='clearfix border mb-3 p-3']"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">clearfixSpinner</span><span class="o">;</span>
-
-<span class="c1">// @FindBy(xpath = "//div[@class='text-center mb-3 border p-3']")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='text-center mb-3 border p-3']"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Spinner</span> <span class="n">textCenterSpinner</span><span class="o">;</span>
-
-<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerBorderStyle</span> <span class="o">=</span> <span class="s">"spinner-border"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerMarginStyle</span> <span class="o">=</span> <span class="s">"mb-3"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerJustifyContentStyle</span> <span class="o">=</span> <span class="s">"justify-content-center"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerAlignCenterStyle</span> <span class="o">=</span> <span class="s">"align-items-center"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerClearfixStyle</span> <span class="o">=</span> <span class="s">"clearfix"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerTextCenterStyle</span> <span class="o">=</span> <span class="s">"text-center"</span><span class="o">;</span>
-
-<span class="nd">@DataProvider</span>
-<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">spinnerStyleData</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]</span> <span class="o">{</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">spinnerLeft</span><span class="o">,</span> <span class="n">spinnerMarginStyle</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">flexJustifySpinner</span><span class="o">,</span> <span class="n">spinnerJustifyContentStyle</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">flexAlignCenterSpinner</span><span class="o">,</span> <span class="n">spinnerAlignCenterStyle</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">clearfixSpinner</span><span class="o">,</span> <span class="n">spinnerClearfixStyle</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">textCenterSpinner</span><span class="o">,</span> <span class="n">spinnerTextCenterStyle</span><span class="o">},</span>
-    <span class="o">};</span>
-<span class="o">}</span>
-
-<span class="nd">@DataProvider</span>
-<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">spinnerData</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]</span> <span class="o">{</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">spinnerLeft</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">flexJustifySpinner</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">flexAlignCenterSpinner</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">clearfixSpinner</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">spinnerAlignment</span><span class="o">.</span><span class="na">textCenterSpinner</span><span class="o">},</span>
-    <span class="o">};</span>
-<span class="o">}</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-alignment"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SpinnerAlignment</span> <span class="n">spinnerAlignment</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerData"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">)</span> <span class="o">{</span>
