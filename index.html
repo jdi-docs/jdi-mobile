@@ -16082,11 +16082,11 @@ Compare items with plaintext mark (upper) and without it (lower):</p>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="n">GridRow</span> <span class="nf">getGridRow</span><span class="o">(</span><span class="kt">int</span> <span class="n">rowN</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">allGridRows</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rowN</span><span class="o">);</span>
+   <span class="k">return</span> <span class="n">allGridRows</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rowN</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="n">GridCell</span> <span class="nf">getCellInRow</span><span class="o">(</span><span class="kt">int</span> <span class="n">rowN</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cellN</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nf">getGridRow</span><span class="o">(</span><span class="n">rowN</span><span class="o">).</span><span class="na">getCell</span><span class="o">(</span><span class="n">cellN</span><span class="o">);</span>
+    <span class="k">return</span> <span class="nf">getGridRow</span><span class="o">(</span><span class="n">rowN</span><span class="o">).</span><span class="na">getCell</span><span class="o">(</span><span class="n">cellN</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTextFromCellInRow</span><span class="o">(</span><span class="kt">int</span> <span class="n">rowN</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cellN</span><span class="o">)</span> <span class="o">{</span>
@@ -16097,26 +16097,26 @@ Compare items with plaintext mark (upper) and without it (lower):</p>
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"gridData"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkTextInCell</span><span class="o">(</span><span class="kt">int</span> <span class="n">rowN</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cellN</span><span class="o">,</span> <span class="n">String</span> <span class="n">textExpected</span><span class="o">,</span> <span class="n">String</span> <span class="n">max_width</span><span class="o">)</span> <span class="o">{</span>
 <span class="n">GridCell</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">getBody</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">getCellInRow</span><span class="o">(</span><span class="n">rowN</span><span class="o">,</span> <span class="n">cellN</span><span class="o">);</span>
-        <span class="n">cell</span><span class="o">.</span><span class="na">highlight</span><span class="o">(</span><span class="s">"blue"</span><span class="o">);</span>
-        <span class="n">cell</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">()</span>
-                 <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">textExpected</span><span class="o">)</span>
-                 <span class="o">.</span><span class="na">and</span><span class="o">()</span>
-                 <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"max-width"</span><span class="o">,</span> <span class="n">startsWith</span><span class="o">(</span><span class="n">max_width</span><span class="o">));</span>
-        <span class="n">cell</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+    <span class="o">.</span><span class="na">getCellInRow</span><span class="o">(</span><span class="n">rowN</span><span class="o">,</span> <span class="n">cellN</span><span class="o">);</span>
+    <span class="n">cell</span><span class="o">.</span><span class="na">highlight</span><span class="o">(</span><span class="s">"blue"</span><span class="o">);</span>
+    <span class="n">cell</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">textExpected</span><span class="o">)</span>
+             <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"max-width"</span><span class="o">,</span> <span class="n">startsWith</span><span class="o">(</span><span class="n">max_width</span><span class="o">));</span>
+    <span class="n">cell</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
     <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkCloseXModalButton</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">getBtnCloseX</span><span class="o">().</span><span class="na">highlight</span><span class="o">(</span><span class="s">"red"</span><span class="o">);</span>
-        <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">clickBtnCloseX</span><span class="o">();</span>
-        <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">disappear</span><span class="o">();</span>
+     <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">getBtnCloseX</span><span class="o">().</span><span class="na">highlight</span><span class="o">(</span><span class="s">"red"</span><span class="o">);</span>
+     <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">clickBtnCloseX</span><span class="o">();</span>
+     <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">disappear</span><span class="o">();</span>
     <span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkCloseByEscapeButton</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">Keys</span><span class="o">.</span><span class="na">ESCAPE</span><span class="o">);</span>
-        <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">disappear</span><span class="o">();</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkCloseByEscapeButton</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">Keys</span><span class="o">.</span><span class="na">ESCAPE</span><span class="o">);</span>
+     <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">disappear</span><span class="o">();</span>
     <span class="o">}</span>
 </code></pre>
 <p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/modal/#using-the-grid">Modal using grid</a></p>
