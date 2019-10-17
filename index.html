@@ -16390,7 +16390,7 @@ using .form-control-range.</p>
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkCloseXModalButton</span><span class="o">()</span> <span class="o">{</span>
      <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">getBtnCloseX</span><span class="o">().</span><span class="na">highlight</span><span class="o">(</span><span class="s">"red"</span><span class="o">);</span>
-     <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">clickBtnCloseX</span><span class="o">();</span>
+     <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">close</span><span class="o">();</span>
      <span class="n">gridModalSection</span><span class="o">.</span><span class="na">getGridModalWindow</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">disappear</span><span class="o">();</span>
     <span class="o">}</span>
 
@@ -16422,8 +16422,8 @@ using .form-control-range.</p>
 <td>GridRow</td>
 </tr>
 <tr>
-<td><strong>clickBtnCloseX()</strong></td>
-<td>Close Modal Window</td>
+<td><strong>close()</strong></td>
+<td>Close Modal Window using X control</td>
 <td>void</td>
 </tr>
 <tr>
@@ -16435,6 +16435,16 @@ using .form-control-range.</p>
 <td><strong>getTitle()</strong></td>
 <td>Get Modal Window Title</td>
 <td>Text</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Asserts element is displayed</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>disappear()</strong></td>
+<td>Asserts element is not displayed</td>
+<td>UIAssert</td>
 </tr>
 </tbody></table>
 
