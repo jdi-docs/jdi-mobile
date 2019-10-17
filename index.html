@@ -15689,28 +15689,27 @@ using .form-control-range.</p>
 
 <p><img src="images/bootstrap/range_input.png" alt="Forms_range_input_example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:
-```java 
-//@FindBy(css = &quot;#formControlRange&quot;)
-@UI(&quot;#formControlRange&quot;)
-public static RangeInput rangeInput;</p>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#formControlRange")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#formControlRange"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">RangeInput</span> <span class="n">rangeInput</span><span class="o">;</span>
 
-<p>@Test
- public void itemHasProperClass() {
-    rangeInput.is().core().hasClass(&quot;form-control-range&quot;);
- }</p>
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemHasProperClass</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">rangeInput</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-control-range"</span><span class="o">);</span>
+ <span class="o">}</span>
 
-<p>@Test
- public void itemHasProperType() {
-    rangeInput.is().core().attr(&quot;type&quot;, &quot;range&quot;);
- }</p>
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemHasProperType</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">rangeInput</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"range"</span><span class="o">);</span>
+ <span class="o">}</span>
 
-<p>@Test
- public void labelValidationTest() {
-    rangeInput.label().is().text(&quot;Example Range input&quot;);
- }
-```
-<img src="images/bootstrap/range_input_html.png" alt="Forms_range_input_HTML_example" /></p>
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">rangeInput</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Example Range input"</span><span class="o">);</span>
+ <span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/range_input_html.png" alt="Forms_range_input_HTML_example" /></p>
 
 <p>Available methods in Java JDI Light:</p>
 
