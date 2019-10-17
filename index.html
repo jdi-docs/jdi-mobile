@@ -2784,7 +2784,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/DateTimeTests.cs" target="_blank">Test examples in C#</a></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/MonthTests.java">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/MonthTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><strong>Input Type Time</strong></p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#booking-date"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#booking-time") </span>
@@ -2813,13 +2813,13 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
     <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEqual</span><span class="p">(</span><span class="n">setValue</span><span class="p">,</span> <span class="s">"15:00"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
-<p><strong>Input Type Time</strong> – a graphical control element that allows user to set time.</p>
+<p><strong>Input Type Time</strong> – A graphical control element that allows user to set time.</p>
 
 <p><img src="images/html/inputTypeTime_html.png" alt="InputTypeTime" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DateTimeTests.cs">Test examples in C#</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/DateTimeTests.cs" target="_blank">Test examples in C#</a></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/TimeTests.java">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/TimeTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><strong>Input Type DateTime-Local</strong></p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#party-time"</span><span class="o">)</span> <span class="c1">//@FindBy(id = "party-time")</span>
@@ -2842,25 +2842,14 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
     <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEqual</span><span class="p">(</span><span class="n">setValue</span><span class="p">,</span> <span class="n">_dateTime</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
-<p><strong>Input Type DateTime-Local</strong> – a graphical control element that allows user to set time and date.</p>
+<p><strong>Input Type DateTime-Local</strong> – A graphical control element that allows user to set time and date.</p>
 
 <p><img src="images/html/inputDateTimeLocal_html.png" alt="InputTypeDateTime" /></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/DateTimeTests.java">Java test example</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/DateTimeTests.java" target="_blank">Test examples in Java</a></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DateTimeTests.cs">C# test examples</a></p>
-<h3 id='fileinput'>FileInput</h3>
-<p><strong>FileInput</strong> - a graphical control element that allows user to upload documents to web site</p>
-
-<p><img src="images/fileinput.png" alt="FileInput" /></p>
-
-<p>FileInput element is located in JDI Light in:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.FileInput</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.FileInput</em></li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#avatar"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "avatar")</span>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/DateTimeTests.cs" target="_blank">Test examples in C#</a></p>
+<h3 id='fileinput'>FileInput</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#avatar"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "avatar")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">FileInput</span> <span class="n">avatar</span><span class="o">;</span> 
 
 <span class="nd">@Test</span>
@@ -2906,6 +2895,17 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="p">}</span>
 
 </code></pre>
+<p><strong>FileInput</strong> - A graphical control element that allows user to upload documents to web site.</p>
+
+<p><img src="images/fileinput.png" alt="FileInput" /></p>
+
+<p>FileInput element is located in JDI Light in:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.FileInput</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.FileInput</em></li>
+</ul>
+
 <p>Here is an example with HTML code provided:</p>
 
 <p><img src="images/html/fileinput_html.png" alt="FileInput example" /></p>
@@ -2973,9 +2973,9 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/FileUploadTests.java">Java test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/FileUploadTests.java">Test examples in Java</a></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/FileInputTests.cs">C# test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/FileInputTests.cs">Test examples in C#</a></p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#fileinput-2">BDD Steps example</a></p>
 <h3 id='icon'>Icon</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdi-logo"</span><span class="o">)</span> 
@@ -3006,7 +3006,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
      <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">LogoImage</span><span class="p">.</span><span class="nf">GetAlt</span><span class="p">(),</span> <span class="n">Alt</span><span class="p">);</span>
    <span class="p">}</span>
 </code></pre>
-<p><strong>Icon</strong> – is a simple element type that represents icons and graphic images.</p>
+<p><strong>Icon</strong> – Is a simple element type that represents icons and graphic images.</p>
 
 <p><img src="images/html/image_html.png" alt="Icon" /></p>
 
@@ -3109,9 +3109,11 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/ImageTests.java">Test examples in Java</a><br>
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ImagesTests.cs">Test examples in C#</a><br>
-<a href="https://jdi-docs.github.io/jdi-light/?java#icon-2">BDD Steps example</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/ImageTests.java" target="_blank">Test examples in Java</a><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ImagesTests.cs" target="_blank">Test examples in C#</a><br></p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/?java#icon-2">BDD Steps example</a></p>
 <h3 id='image'>Image</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdi-logo"</span><span class="o">)</span> 
 <span class="c1">// same as FindBy(css = "#jdi-logo")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Image</span> <span class="n">jdiLogo</span><span class="o">;</span>
@@ -3139,7 +3141,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
      <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">LogoImage</span><span class="p">.</span><span class="nf">GetAlt</span><span class="p">(),</span> <span class="n">Alt</span><span class="p">);</span>
    <span class="p">}</span>
 </code></pre>
-<p><strong>Image</strong> – is a simple element type that represents graphic images.</p>
+<p><strong>Image</strong> – Is a simple element type that represents graphic images.</p>
 
 <p><img src="images/html/image_html.png" alt="Image" /></p>
 
@@ -3196,7 +3198,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ImagesTests.cs">Test examples in C#</a> <br>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ImagesTests.cs" target="_blank">Test examples in C#</a><br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#image-2">BDD Steps example</a> <br></p>
 
 <p>And here are methods available in Java:</p>
@@ -3245,18 +3247,9 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/ImageTests.java">Test examples in Java</a><br>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/ImageTests.java" target="_blank">Test examples in Java</a><br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#image-2">BDD Steps example</a><br></p>
-<h3 id='link'>Link</h3>
-<p><strong>Link</strong> – a graphical control element that allows user to link from one page to other web pages, files, locations within the same page, email addresses, or any other URL.</p>
-
-<p>Link are represented by the following class:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Link</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Link</em></li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=github-link]"</span><span class="o">)</span> 
+<h3 id='link'>Link</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=github-link]"</span><span class="o">)</span> 
 <span class="c1">// equal to @FindBy(css = "[ui=github-link]") </span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Link</span> <span class="n">githubLink</span><span class="o">;</span>
 
@@ -3279,6 +3272,15 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
      <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEqual</span><span class="p">(</span><span class="n">GithubLink</span><span class="p">.</span><span class="nf">Url</span><span class="p">(),</span> <span class="s">"https://epam.github.io/JDI/html5.html"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
+<p><strong>Link</strong> – A graphical control element that allows user to link from one page to other web pages, files, locations within the same page, email addresses, or any other URL.</p>
+
+<p>Link are represented by the following class:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Link</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Link</em></li>
+</ul>
+
 <p><img src="images/html/link_html.png" alt="Link" /></p>
 
 <p>Here is the list of available methods in Java:</p>
@@ -3327,7 +3329,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/simple/LinkTests.java">Java test examples</a><br>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/LinkTests.java" target="_blank">Test examples in Java</a><br>
 <a href="https://jdi-docs.github.io/jdi-light/#link-2">BDD Steps example</a></p>
 
 <p>Here is the list of available methods in C#:</p>
@@ -3376,19 +3378,10 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/LinkTests.cs">C# test examples</a><br>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/LinkTests.cs" target="_blank">Test examples in C#</a>
+<br>
 <a href="https://jdi-docs.github.io/jdi-light/#link-2">BDD Steps example</a></p>
-<h3 id='menu'>Menu</h3>
-<p><strong>Menu</strong> - a list of links, which leads to different pages or sections of website</p>
-
-<p>Menu element is located in JDI Light in:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html. element
-.Menu</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.Menu</em></li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".sidebar-menu span&lt;[*'%s']&lt;&lt;"</span><span class="o">)</span> 
+<h3 id='menu'>Menu</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".sidebar-menu span&lt;[*'%s']&lt;&lt;"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Menu</span> <span class="n">leftMenu</span><span class="o">;</span>
 <span class="nd">@Url</span><span class="o">(</span><span class="s">"/metals-colors.html"</span><span class="o">)</span> <span class="nd">@Title</span><span class="o">(</span><span class="s">"Metal and Colors"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">MetalAndColorsPage</span> <span class="n">metalAndColorsPage</span><span class="o">;</span>
@@ -3423,6 +3416,16 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="p">}</span>
 
 </code></pre>
+<p><strong>Menu</strong> - A list of links, which leads to different pages or sections of website</p>
+
+<p>Menu element is located in JDI Light in:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html. element
+.Menu</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.Menu</em></li>
+</ul>
+
 <p>Here is an example with provided HTML code:</p>
 
 <p><img src="images/html/menu.png" alt="Menu example" /></p>
@@ -3569,6 +3572,8 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <td>MenuSelectAssert</td>
 </tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/DateTimeTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/complex/MenuTests.java">Java test examples</a></p>
 
