@@ -16144,6 +16144,58 @@ using .form-control-range.</p>
 <p><br><br></p>
 <h3 id='modal'>Modal</h3>
 <p><strong>Modal</strong> is a dialog box/popup window that is displayed on page.</p>
+<h4 id='scrolling-long-content-modal'>Scrolling Long Content Modal</h4>
+<p>When modals become too long for the user’s viewport or device, <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#scrolling-long-content" target="_blank">they scroll</a> independent of the page itself. Try the demo below to see what we mean.</p>
+
+<p><img src="images/bootstrap/modal_scrollable1.png" alt="Modal long scrollable" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">// @FindBy(id = "modal-scroll-long")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-scroll-long"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">SectionModalLongScrolling</span> <span class="n">sectionModalLongScrolling</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(id = "exampleModalLong")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleModalLong"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">ModalWithButtons</span> <span class="n">modalLong</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(id = "exampleModalScrollable")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleModalScrollable"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">ModalWithButtons</span> <span class="n">modalScrollable</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = "#modal-scroll-long div:nth-child(2) button")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"div:nth-child(2) button"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">buttonLongScroll</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = "#modal-scroll-long div:nth-child(4) button")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"div:nth-child(4) button"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">buttonLongScrollable</span><span class="o">;</span>
+
+<span class="nd">@DataProvider</span>
+<span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">listData</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+        <span class="o">{</span><span class="n">sectionModalLongScrolling</span><span class="o">.</span><span class="na">buttonLongScroll</span><span class="o">,</span> <span class="n">sectionModalLongScrolling</span><span class="o">.</span><span class="na">modalLong</span><span class="o">},</span>
+        <span class="o">{</span><span class="n">sectionModalLongScrolling</span><span class="o">.</span><span class="na">buttonLongScrollable</span><span class="o">,</span> <span class="n">sectionModalLongScrolling</span><span class="o">.</span><span class="na">modalScrollable</span><span class="o">}</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">bottomButtonsTest</span><span class="o">(</span><span class="n">Button</span> <span class="n">showModal</span><span class="o">,</span> <span class="n">ModalWithButtons</span> <span class="n">modal</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">showModal</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">modal</span><span class="o">.</span><span class="na">bottomSave</span><span class="o">();</span>
+    <span class="n">modal</span><span class="o">.</span><span class="na">bottomClose</span><span class="o">();</span>
+    <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">disappear</span><span class="o">();</span>
+<span class="o">}</span>
+
+</code></pre>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/modal_scrollable-html1.png" alt="Modal scrollable example" /></p>
+
+<p><img src="images/bootstrap/modal_scrollable2.png" alt="Modal scrollable" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/modal_scrollable-html2.png" alt="Modal scrollable example" /></p>
 <h4 id='vertically-centered-modal'>Vertically Centered Modal</h4>
 <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#vertically-centered" target="_blank">vertically center</a> the modal.</p>
 
@@ -16259,14 +16311,6 @@ using .form-control-range.</p>
 <p><img src="images/bootstrap/modal_composite.png" alt="Modal composite" /></p>
 
 <p><img src="images/bootstrap/modal-html.png" alt="Modal composite" /></p>
-
-<p><em>Example:</em> Modal scrollable</p>
-
-<p><img src="images/bootstrap/modal_scrollable1.png" alt="Modal long scrollable" /></p>
-
-<p><img src="images/bootstrap/modal_scrollable2.png" alt="Modal scrollable" /></p>
-
-<p><img src="images/bootstrap/modal_scrollable-html.png" alt="Modal scrollable example" /></p>
 
 <p><em>Example:</em> Modal centered</p>
 
