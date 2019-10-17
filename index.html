@@ -11119,18 +11119,19 @@ Below are examples of different toggle styles.</p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code>
-<span class="c1">//@FindBy(id = "progress-multiple-bars")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-bars"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ProgressMultipleBars</span> <span class="n">progressMultipleBars</span><span class="o">;</span>
+<span class="c1">// @FindBy(id = "progress-multiple-bars")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-bars"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ProgressMultipleBars</span> <span class="n">progressMultipleBars</span><span class="o">;</span>
 
-<span class="c1">//@FindBy(id = "progress-multiple-ordinary")</span>
+<span class="c1">// @FindBy(id = "progress-multiple-ordinary")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-ordinary"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Progress</span> <span class="n">multipleOrdinary</span><span class="o">;</span>
 
-<span class="c1">//@FindBy(id = "progress-multiple-success")</span>
+<span class="c1">// @FindBy(id = "progress-multiple-success")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-success"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Progress</span> <span class="n">multipleSuccess</span><span class="o">;</span>
 
-<span class="c1">//@FindBy(id = "progress-multiple-info")</span>
+<span class="c1">// @FindBy(id = "progress-multiple-info")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-info"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Progress</span> <span class="n">multipleInfo</span><span class="o">;</span>
 
@@ -11186,7 +11187,7 @@ Below are examples of different toggle styles.</p>
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/ProgressMultipleBarsTests.java" target=a_blank> Bootstrap test examples </a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/ProgressMultipleBarsTests.java">Bootstrap test examples</a></p>
 
 <p><br><br><br><br><br><br><br><br><br><br></p>
 
@@ -16145,7 +16146,7 @@ using .form-control-range.</p>
 <h3 id='modal'>Modal</h3>
 <p><strong>Modal</strong> is a dialog box/popup window that is displayed on page.</p>
 <h4 id='scrolling-long-content-modal'>Scrolling Long Content Modal</h4>
-<p>When modals become too long for the user’s viewport or device, <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#scrolling-long-content" target="_blank">they scroll</a> independent of the page itself. Try the demo below to see what we mean.</p>
+<p>When modals become too long for the user’s viewport or device, <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#scrolling-long-content" target="_blank">they scroll</a> independent of the page itself.</p>
 
 <p><img src="images/bootstrap/modal_scrollable1.png" alt="Modal long scrollable" /></p>
 <pre class="highlight java tab-java"><code>
@@ -16196,6 +16197,30 @@ using .form-control-range.</p>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/modal_scrollable-html2.png" alt="Modal scrollable example" /></p>
+
+<p>Modal is represented by Section class in Java:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Asserts element</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalScrollingLongContentTests.java">Bootstrap test examples</a></p>
 <h4 id='vertically-centered-modal'>Vertically Centered Modal</h4>
 <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#vertically-centered" target="_blank">vertically center</a> the modal.</p>
 
@@ -16311,81 +16336,6 @@ using .form-control-range.</p>
 <p><img src="images/bootstrap/modal_composite.png" alt="Modal composite" /></p>
 
 <p><img src="images/bootstrap/modal-html.png" alt="Modal composite" /></p>
-
-<p><em>Example:</em> Modal centered</p>
-
-<p><img src="images/bootstrap/modal_centered.png" alt="Modal centered" /></p>
-
-<p><img src="images/bootstrap/modal_centered-html.png" alt="Modal centered example" /></p>
-
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><br></p>
 
 <p><strong>Modal using grid</strong></p>
 
