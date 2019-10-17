@@ -15601,7 +15601,77 @@ Form can consists of:
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/forms/FormsSizingTests.java">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormReadOnlyTests.java">Bootstrap test examples</a></p>
+
+<p><br><br>
+<strong>Readonly</strong></p>
+
+<p>Add the <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#readonly">readonly</a> boolean attribute on an input to prevent modification of the input’s value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.</p>
+
+<p><img src="images/bootstrap/form-readonly.png" alt="Forms_readonly_example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#forms-readonly-input")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#forms-readonly-input"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">readonlyInput</span><span class="o">;</span>
+
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkReadonlyAttribute</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertTrue</span><span class="o">(</span><span class="n">readonlyInput</span><span class="o">.</span><span class="na">attrs</span><span class="o">().</span><span class="na">has</span><span class="o">(</span><span class="s">"readonly"</span><span class="o">));</span>
+    <span class="n">readonlyInput</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">readonlyInput</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">expectedExceptions</span> <span class="o">=</span> <span class="o">{</span><span class="n">InvalidElementStateException</span><span class="o">.</span><span class="na">class</span><span class="o">})</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">check</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">readonlyInput</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="n">readonlyInput</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+<span class="o">}</span>
+
+
+</code></pre>
+<p><img src="images/bootstrap/form-readonly-html.png" alt="Forms_readonly_plain_text_HTML_example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Various assert actions for Progress</td>
+<td>ProgressAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get item value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>hasClass()</strong></td>
+<td>Match passed value with element class</td>
+<td>ICoreElement</td>
+</tr>
+<tr>
+<td><strong>attr()</strong></td>
+<td>Match passed value with element attribute</td>
+<td>ICoreElement</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite.section.form.FormReadOnlyTests.java" target=a_blank> Bootstrap test examples </a></p>
 
 <p><br><br>
 <strong>Readonly plain text</strong></p>
