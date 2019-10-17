@@ -12068,7 +12068,7 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 
   <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"cardUtilitiesElementsWithWidth"</span><span class="o">)</span>
       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cardValidationTest</span><span class="o">(</span><span class="n">CardUtilities</span> <span class="n">cardUtilitiesElem</span><span class="o">,</span> 
-<span class="kt">int</span> <span class="n">widthInPercent</span><span class="o">,</span> <span class="n">String</span> <span class="n">widthInPixels</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">widthInPercent</span><span class="o">,</span> <span class="n">String</span> <span class="n">widthInPixels</span><span class="o">)</span> <span class="o">{</span>
           <span class="n">cardUtilitiesElem</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
                   <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"card w-%d"</span><span class="o">,</span> <span class="n">widthInPercent</span><span class="o">))</span>
                   <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"width"</span><span class="o">,</span> <span class="n">widthInPixels</span><span class="o">)</span>
@@ -16332,30 +16332,31 @@ using .form-control-range.</p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/GridModalTests.java">Bootstrap test examples</a></p>
 
-<p><br><br><br><br><br><br><br>  </p>
+<p><br><br><br><br><br><br><br><br><br><br><br></p>
 
 <p><strong>Varying modal content</strong></p>
 
 <p>Have a bunch of buttons that all trigger the same modal with slightly different contents? Use event.relatedTarget and HTML data-* attributes (possibly via jQuery) to <a href="https://getbootstrap.com/docs/4.3/components/modal/#varying-modal-content">vary the contents</a> of the modal depending on which button was clicked.</p>
 
-<p><img src="images/bootstrap/modal-varying-content.png" alt="Varying modal content example" /></p>
+<p><img src="images/bootstrap/modal-varying-content.PNG" alt="Varying modal content example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Modal</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-
+        <span class="c1">//@FindBy(xpath = "div/h5[@class='modal-title']")</span>
         <span class="nd">@UI</span><span class="o">(</span><span class="s">".modal-header .modal-title"</span><span class="o">)</span>
         <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModalVaryingContent</span> <span class="kd">extends</span> <span class="n">Modal</span> <span class="o">{</span>
-
+        <span class="c1">//@FindBy(xpath = "div/button[@class='close']")</span>
         <span class="nd">@UI</span><span class="o">(</span><span class="s">".modal-header .close"</span><span class="o">)</span>
         <span class="kd">public</span> <span class="n">Button</span> <span class="n">closeX</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"modalVaryingContentButtonsWithRecipients"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">modalButtonsTest</span><span class="o">(</span><span class="n">Button</span> <span class="n">modalButton</span><span class="o">,</span> <span class="n">String</span> <span class="n">recipient</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">checkButton</span><span class="o">(</span><span class="n">modalButton</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Open modal for @%s"</span><span class="o">,</span> <span class="n">recipient</span><span class="o">),</span> <span class="n">whiteColor</span><span class="o">,</span> <span class="n">blueColorBackground</span><span class="o">,</span> <span class="n">blueColorBorder</span><span class="o">);</span>
+        <span class="n">checkButton</span><span class="o">(</span><span class="n">modalButton</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Open modal for @%s"</span><span class="o">,</span> <span class="n">recipient</span><span class="o">),</span> 
+        <span class="n">whiteColor</span><span class="o">,</span> <span class="n">blueColorBackground</span><span class="o">,</span> <span class="n">blueColorBorder</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"modalVaryingContentButtonsWithRecipients"</span><span class="o">)</span>
@@ -16368,7 +16369,8 @@ using .form-control-range.</p>
         <span class="n">modalVaryingContentWindow</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
     <span class="o">}</span>
 
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkButton</span><span class="o">(</span><span class="n">Button</span> <span class="n">button</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">,</span> <span class="n">String</span> <span class="n">backgroundColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">borderColor</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkButton</span><span class="o">(</span><span class="n">Button</span> <span class="n">button</span><span class="o">,</span> <span class="n">String</span> <span class="n">text</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">,</span> 
+    <span class="n">String</span> <span class="n">backgroundColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">borderColor</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">()</span>
                 <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span>
@@ -16377,7 +16379,7 @@ using .form-control-range.</p>
                 <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="n">borderColor</span><span class="o">);</span>
     <span class="o">}</span>
 </code></pre>
-<p><img src="images/bootstrap/modal-varying-content-html.png" alt="Varying modal content HTML example" /></p>
+<p><img src="images/bootstrap/modal-varying-content-html.PNG" alt="Varying modal content HTML example" /></p>
 
 <p>Available methods in Java JDI Light:</p>
 
