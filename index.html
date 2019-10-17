@@ -10093,32 +10093,35 @@ Navbar brand as heading <br>
 
 <p><img src="images/bootstrap/navbar-brand-image.png" alt="Brand" /><br>
 <img src="images/bootstrap/navbar-brand-image-and-link.png" alt="Brand" /><br></p>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BootstrapPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-base-for-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarSection</span> <span class="n">navbarSection</span><span class="o">;</span>
-<span class="o">}</span>
+<pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BootstrapPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-base-for-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarSection</span> <span class="n">navbarSection</span><span class="o">;</span>
+    <span class="o">}</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="c1">//@FindBy(css = ".navbar-brand")</span>
+    <span class="c1">//FindBy(css = ".navbar-brand")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">NavbarBrand</span><span class="o">&gt;</span> <span class="n">navbarBrandJList</span><span class="o">;</span>
-<span class="o">}</span>
+    <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">NavbarBrand</span><span class="o">&gt;</span> <span class="n">allNavbarBrands</span><span class="o">;</span>
 
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarBrandData"</span><span class="o">)</span>
+    <span class="c1">//FindBy(css = "#brand-as-image,#brand-as-image-and-link")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#brand-as-image,#brand-as-image-and-link"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">NavbarBrand</span><span class="o">&gt;</span> <span class="n">navbarBrandWithImage</span><span class="o">;</span>
+
+    <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarBrandData"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNavbarText</span><span class="o">(</span><span class="n">String</span> <span class="n">navbarId</span><span class="o">,</span> <span class="n">String</span> <span class="n">navbarText</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">navbarBrandList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">navbarBrand</span> <span class="o">-&gt;</span>
-                <span class="n">navbarBrand</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">navbarId</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span><span class="n">nbb</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="n">nbb</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-            <span class="n">nbb</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">navbarText</span><span class="o">);</span>
-            <span class="n">nbb</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
-        <span class="o">});</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">navbarSection</span><span class="o">.</span><span class="na">allNavbarBrands</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">NavbarBrand</span> <span class="n">nbb</span> <span class="o">=</span> <span class="n">navbarSection</span><span class="o">.</span><span class="na">allNavbarBrands</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nbb</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">navbarId</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">nbb</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+                <span class="n">nbb</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">navbarText</span><span class="o">);</span>
+                <span class="n">nbb</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNavbarClickImage</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">navbarBrandList</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="n">navbarSection</span><span class="o">.</span><span class="na">navbarBrandWithImage</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
                 <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">nbb</span> <span class="o">-&gt;</span> <span class="n">nbb</span><span class="o">.</span><span class="na">isLink</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">nbb</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">nbbWithIm</span> <span class="o">-&gt;</span> <span class="n">nbbWithIm</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">nbbWithIm</span> <span class="o">-&gt;</span> <span class="n">nbbWithIm</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
                 <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">imgFromNavbar</span> <span class="o">-&gt;</span> <span class="o">{</span>
                     <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">highlight</span><span class="o">(</span><span class="s">"blue"</span><span class="o">);</span>
                     <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"src"</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="n">imgPath</span><span class="o">))</span>
@@ -10126,11 +10129,9 @@ Navbar brand as heading <br>
                     <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
 
                     <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-
                     <span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">();</span>
-                    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span>
-                              <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">getWindowHandles</span><span class="o">()</span>
-                    <span class="o">);</span>
+                    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">()</span>
+                            <span class="o">.</span><span class="na">getWindowHandles</span><span class="o">());</span>
                     <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">));</span>
                     <span class="n">assertEquals</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">navbarUrl</span><span class="o">);</span>
                     <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
@@ -10181,7 +10182,7 @@ Navbar brand as heading <br>
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbarbrand/NavbarBrandTests.java">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarBrandTests.java">Bootstrap test examples</a></p>
 
 <p><br><br><br><br><br><br><br><br></p>
 <h4 id='nav'>Nav</h4><pre class="highlight java tab-java"><code>
