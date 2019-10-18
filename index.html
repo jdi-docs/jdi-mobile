@@ -17197,6 +17197,8 @@ modal demo by clicking the button below. It will slide down and fade in from the
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalVaryingContentTests.java">Bootstrap test examples</a></p>
 
+<p><br><br></p>
+
 <p><strong>Embedding YouTube videos</strong></p>
 
 <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. See <a href="https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">this helpful Stack Overflow post</a> for more information.</p>
@@ -17204,43 +17206,7 @@ modal demo by clicking the button below. It will slide down and fade in from the
 <p><img src="images/bootstrap/modal-youtube.png" alt="Embedding YouTube video example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmbeddedVideoModal</span> <span class="kd">extends</span> <span class="n">Modal</span> <span class="o">{</span>
-    <span class="nd">@Frame</span><span class="o">(</span><span class="n">xpath</span> <span class="o">=</span> <span class="s">"//iframe"</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">EmbeddedVideoModalFrame</span> <span class="n">videoModalFrameInModal</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="n">EmbeddedVideoModalFrame</span> <span class="nf">getVideoModalFrame</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">videoModalFrameInModal</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmbeddedVideoModalFrame</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".ytp-title-link"</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">Link</span> <span class="n">title</span><span class="o">;</span>
-
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".ytp-progress-bar"</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">UIElement</span> <span class="n">progressBar</span><span class="o">;</span>
-
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".ytp-large-play-button"</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">Button</span> <span class="n">playButton</span><span class="o">;</span>
-
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"video.video-stream"</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">UIElement</span> <span class="n">video</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="n">Link</span> <span class="nf">getVideoTitle</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">title</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">UIElement</span> <span class="nf">getProgressBar</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">progressBar</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">Button</span> <span class="nf">getPlayButton</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">playButton</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">UIElement</span> <span class="nf">getVideo</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">video</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-youtube button.btn-primary"</span><span class="o">)</span>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-youtube button.btn-primary"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">modalEmbeddedVideoButton</span><span class="o">;</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#youTubeModalLabel"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">EmbeddedVideoModal</span> <span class="n">embeddedVideoModal</span><span class="o">;</span>
@@ -17268,7 +17234,6 @@ modal demo by clicking the button below. It will slide down and fade in from the
         <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuenow"</span><span class="o">,</span> <span class="n">Matchers</span><span class="o">.</span><span class="na">matchesPattern</span><span class="o">(</span><span class="s">"[1-9]{1}[0-9]*"</span><span class="o">));</span>
     <span class="n">embeddedVideoModal</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
 <span class="o">}</span>
-
 </code></pre>
 <p><img src="images/bootstrap/modal-youtube-html.png" alt="Embedding YouTube video example" /></p>
 
