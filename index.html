@@ -14982,6 +14982,7 @@ Form can consists of:
 <ul>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#text">TextField</a> </li>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#textfield">Checkbox</a></li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button-2">Button</a> </li>
 </ul></p>
 
 <p><br>
@@ -15107,6 +15108,10 @@ Form can consists of:
 
 <p><br></p>
 
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormBrowserDefaultsTests.java">Java test examples</a></p>
+
+<p><br></p>
+
 <p>Form group is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
@@ -15115,6 +15120,7 @@ Form can consists of:
 <ul>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#text">TextField</a> </li>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button-2">Button</a> </li>
 </ul></p>
 
 <p><br></p>
@@ -15240,6 +15246,10 @@ Form can consists of:
 
 <p><br></p>
 
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormServerSideTests.java">Java test examples</a></p>
+
+<p><br></p>
+
 <p>Form group is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
@@ -15248,6 +15258,7 @@ Form can consists of:
 <ul>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#text">TextField</a> </li>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button-2">Button</a> </li>
 </ul></p>
 
 <p><br></p>
@@ -15369,6 +15380,10 @@ Form can consists of:
 
 <p><br></p>
 
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormTooltipTests.java">Java test examples</a></p>
+
+<p><br></p>
+
 <p>Form group is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
@@ -15377,6 +15392,148 @@ Form can consists of:
 <ul>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#text">TextField</a> </li>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button-2">Button</a> </li>
+</ul></p>
+
+<p><br></p>
+
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#horizontal-form">Form horizontal</a></strong></p>
+
+<p><img src="images/bootstrap/form-horizontal.png" alt="Form horizontal Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// FindBy(css = "#form-horizontal") public static FormHorizontal formHorizontal;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-horizontal"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">FormHorizontal</span> <span class="n">formHorizontal</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FormHorizontal</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">FormContacts</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="c1">// FindBy(css = "#inputEmail3") public TextField email;</span>
+    <span class="c1">// FindBy(css = "#inputPassword3") public TextField password;</span>
+    <span class="c1">// FindBy(css = "input[name='gridRadios']") public RadioButton radio;</span>
+    <span class="c1">// FindBy(css = "#gridCheck1") public Checkbox accept;</span>
+    <span class="c1">// FindBy(css = "button") public Button submit;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inputEmail3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">email</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inputPassword3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">password</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[name='gridRadios']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#gridCheck1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">accept</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">submit</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">formTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">HORIZONTAL_FORM_CONTACT</span><span class="o">);</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">HORIZONTAL_FORM_CONTACT</span><span class="o">);</span>
+    <span class="n">checkSubmitClicked</span><span class="o">();</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">HORIZONTAL_FORM_DEFAULT</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">directFillingTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">email</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">BLANK_CONTACT</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">c</span> <span class="o">-&gt;</span> <span class="n">c</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">));</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">password</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">password</span><span class="o">);</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">BLANK_CONTACT</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">c</span> <span class="o">-&gt;</span> <span class="n">c</span><span class="o">.</span><span class="na">password</span> <span class="o">=</span> <span class="n">password</span><span class="o">));</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">radio</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">BLANK_CONTACT</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">c</span> <span class="o">-&gt;</span> <span class="n">c</span><span class="o">.</span><span class="na">radio</span> <span class="o">=</span> <span class="n">radio</span><span class="o">));</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">accept</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">accept</span><span class="o">);</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">BLANK_CONTACT</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">c</span> <span class="o">-&gt;</span> <span class="n">c</span><span class="o">.</span><span class="na">accept</span> <span class="o">=</span> <span class="n">accept</span><span class="o">));</span>
+    <span class="n">checkSubmitClicked</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Form submitted successfully"</span><span class="o">));</span>
+    <span class="n">formHorizontal</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">HORIZONTAL_FORM_DEFAULT</span><span class="o">);</span>
+    <span class="n">clearBlankContact</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p><br></p>
+
+<p><img src="images/bootstrap/form-horizontal-html1.png" alt="Form horizontal Example" />
+<img src="images/bootstrap/form-horizontal-html2.png" alt="Form horizontal Example" /></p>
+
+<p><br></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get button value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>check()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>deselected()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormHorizontalTests.java">Java test examples</a></p>
+
+<p><br></p>
+
+<p>Form group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p>Inner elements represented by the following classes:
+<ul>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#text">TextField</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button-2">Button</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#checkboxes-and-radios">Checkbox</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#checkboxes-and-radios">RadioButton</a> </li>
 </ul></p>
 
 <p><br></p>
@@ -15500,22 +15657,17 @@ Form can consists of:
 
 <p><br></p>
 
-<p>Form group is represented by Form class in Java:</p>
+<p>Form group is represented by Section class in Java:</p>
 
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p>Inner elements represented by the following classes:
 <ul>
-<li>com.epam.jdi.light.elements.composite.Form</li>
-</ul>
-
-<p>Inner elements represented by the following Java classes:</p>
-
-<p><br></p>
-
-<ul>
-<li><p>TextField: com.epam.jdi.light.ui.bootstrap.elements.common.TextField</p></li>
-<li><p>Label: com.epam.jdi.light.elements.common.Label</p></li>
-<li><p>Checkbox:com.epam.jdi.light.ui.bootstrap.elements.common.Checkbox</p></li>
-<li><p>Button: com.epam.jdi.light.ui.bootstrap.elements.common.Button</p></li>
-</ul>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#text">TextField</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button-2">Button</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#checkboxes-and-radios">Checkbox</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#checkboxes-and-radios">RadioButton</a> </li>
+</ul></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormOverviewTests.java">Forms Overview Tests Example</a></p>
 
