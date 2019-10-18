@@ -15538,6 +15538,265 @@ Form can consists of:
 
 <p><br></p>
 
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#disabled-forms">Form disabled</a></strong></p>
+
+<p><img src="images/bootstrap/form-disabled.png" alt="Form disabled Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#form-disabled"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">FormDisabled</span> <span class="n">formDisabled</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-disabled"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">FormDisabled</span> <span class="n">formDisabled</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FormDisabled</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"fieldset"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">MediaObject</span> <span class="n">formContainer</span><span class="o">;</span>
+    <span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#disabledTextInput"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">textField</span><span class="o">;</span>
+    <span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#disabledSelect"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Selector</span> <span class="n">selector</span><span class="o">;</span>
+    <span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#disabledFieldsetCheck"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span>
+    <span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">submit</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"fieldset"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">MediaObject</span> <span class="n">formContainer</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabledTextInput"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">textField</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabledSelect"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Selector</span> <span class="n">selector</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabledFieldsetCheck"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">submit</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">formDisabled</span><span class="o">.</span><span class="na">formContainer</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">disabled</span><span class="o">();</span>
+    <span class="n">formDisabled</span><span class="o">.</span><span class="na">textField</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">disabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-control"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"placeholder"</span><span class="o">,</span> <span class="s">"Disabled input"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+    <span class="n">formDisabled</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">label</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Disabled input"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+<p><br></p>
+
+<p><img src="images/bootstrap/form-disabled-html.png" alt="Form disabled Example" /></p>
+
+<p><br></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get button value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>check()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>deselected()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormDisabledTests.java">Java test examples</a></p>
+
+<p><br></p>
+
+<p>Form group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p>Inner elements represented by the following classes:
+<ul>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#text">TextField</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#button-2">Button</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#checkboxes-and-radios">Checkbox</a> </li>
+</ul></p>
+
+<p><br></p>
+
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#help-text">Form help text</a></strong></p>
+
+<p><img src="images/bootstrap/form-help-text.png" alt="Form help text Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> 
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-help-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">FormHelpText</span> <span class="n">formHelpText</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FormHelpText</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#inputPassword5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">passwordOne</span><span class="o">;</span>
+    <span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#inputPassword6"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">passwordTwo</span><span class="o">;</span>
+    <span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"//input[@id='inputPassword5']/../small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">passwordOneHelpText</span><span class="o">;</span>
+    <span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"//input[@id='inputPassword6']/../small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">passwordTwoHelpText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inputPassword5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">passwordOne</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inputPassword6"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">passwordTwo</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inputPassword5']/../small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">passwordOneHelpText</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inputPassword6']/../small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">passwordTwoHelpText</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">helpTextTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">formHelpText</span><span class="o">.</span><span class="na">passwordOneHelpText</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-text"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"text-muted"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">passwordOneHelpText</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"small"</span><span class="o">));</span>
+    <span class="n">formHelpText</span><span class="o">.</span><span class="na">passwordTwoHelpText</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"text-muted"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">passwordTwoHelpText</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"small"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+<p><br></p>
+
+<p><img src="images/bootstrap/form-help-text-html.png" alt="Form help text Example" /></p>
+
+<p><br></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get button value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>check()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>deselected()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormHelpText.java">Java test examples</a></p>
+
+<p><br></p>
+
+<p>Form group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p>Inner elements represented by the following classes:
+<ul>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#text">TextField</a> </li>
+</ul></p>
+
+<p><br></p>
+
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#overview">Forms Overview</a></strong></p>
 
 <p><img src="images/bootstrap/form-overview.png" alt="Forms Overview Example" /></p>
