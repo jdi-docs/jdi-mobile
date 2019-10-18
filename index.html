@@ -14170,11 +14170,11 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 
 <p>TBD</p>
 
+<p><br></p>
+
 <p><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#examples"><strong>Examples</strong></a></p>
 
 <p>Wrap the dropdown’s toggle (your button or link) and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Dropdowns can be triggered from <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements to better fit your potential needs.</p>
-
-<p><br></p>
 
 <ul>
 <li><strong><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#single-button">Single button</a></strong></li>
@@ -14183,6 +14183,8 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 <p>Any single <code>.btn</code> can be turned into a dropdown toggle with some markup changes. Here’s how you can put them to work with either <code>&lt;button&gt;</code> elements:</p>
 
 <p><img src="images/bootstrap/dropdown-single-button.png" alt="Single button dropdown example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-toggle"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">dropdownToggle</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".dropdown-toggle")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-menu"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">dropdownMenu</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".dropdown-menu")</span>
 
@@ -14205,8 +14207,6 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
             <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
 <p><img src="images/bootstrap/dropdown-single-button-html.png" alt="Single button dropdown HTML example" /></p>
 
 <p>Available methods in Java JDI Light:</p>
@@ -14218,49 +14218,45 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 <th>Return Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>click()</td>
-<td>Click the item</td>
-<td>void</td>
-</tr>
-<tr>
-<td>getText()</td>
-<td>Get item text</td>
-<td>String</td>
-</tr>
-<tr>
-<td>getValue()</td>
-<td>Get item value</td>
-<td>String</td>
-</tr>
-<tr>
-<td>getTooltipText()</td>
-<td>Get tooltip text</td>
-<td>String</td>
-</tr>
-<tr>
-<td>getTooltipPlacement()</td>
-<td>Get tooltip placement</td>
-<td>String</td>
-</tr>
-<tr>
-<td>isTooltipWithHTML()</td>
-<td>Check that tooltip contains html text</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>is()</td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td>assertThat()</td>
-<td>Assert action</td>
-<td>UIpAssert</td>
-</tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/TooltipTests.java" target="_blank">Bootstrap test example with tooltips</a></p>
+<p>Bootstrap test examples</p>
+
+<ul>
+<li><strong><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#split-button">Split button</a></strong></li>
+</ul>
+
+<p>Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of <code>.dropdown-toggle-split</code> for proper spacing around the dropdown caret.</p>
+
+<p>We use this extra class to reduce the horizontal <code>padding</code> on either side of the caret by 25% and remove the <code>margin-left</code> that’s added for regular button dropdowns. Those extra changes keep the caret centered in the split button and provide a more appropriately sized hit area next to the main button.</p>
+
+<p><br></p>
+
+<p><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#sizing"><strong>Sizing</strong></a></p>
+
+<p>Button dropdowns work with buttons of all sizes, including default and split dropdown buttons.</p>
+
+<p><br></p>
+
+<p><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#directions"><strong>Directions</strong></a></p>
+
+<ul>
+<li><strong><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#dropup">Dropup</a></strong></li>
+</ul>
+
+<p>Trigger dropdown menus above elements by adding <code>.dropup</code> to the parent element.</p>
+
+<ul>
+<li><strong><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#dropright">Dropright</a></strong></li>
+</ul>
+
+<p>Trigger dropdown menus at the right of the elements by adding <code>.dropright</code> to the parent element.</p>
+
+<ul>
+<li><strong><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#dropleft">Dropleft</a></strong></li>
+</ul>
+
+<p>Trigger dropdown menus at the left of the elements by adding <code>.dropleft</code> to the parent element.</p>
 
 <p><br><br><br></p>
 <h3 id='carousel'>Carousel</h3>
