@@ -16744,6 +16744,106 @@ using .form-control-range.</p>
 <p><br><br></p>
 <h3 id='modal'>Modal</h3>
 <p><strong>Modal</strong> is a dialog box/popup window that is displayed on page.</p>
+<h4 id='modal-live-demo'>Modal Live demo</h4>
+<p>Toggle a working <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#live-demo" target="_blank">modal demo</a> 
+modal demo by clicking the button below. It will slide down and fade in from the top of the page.</p>
+
+<p><img src="images/bootstrap/modal-live-demo.png" alt="Modal_Live_demo" /></p>
+<pre class="highlight java tab-java"><code><span class="c1">//FindBy(css = "#modal-live-demo .bd-example .btn")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-live-demo .bd-example .btn"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">modalLiveDemoLaunchButton</span><span class="o">;</span>
+
+<span class="c1">//FindBy(css = "#exampleModalLive")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleModalLive"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ModalLiveDemo</span> <span class="n">modalLiveDemo</span><span class="o">;</span>
+
+<span class="c1">//FindBy(css = "#modal-live-demo")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".modal-body"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">Text</span> <span class="n">body</span><span class="o">;</span>
+
+<span class="c1">//FindBy(css = "//div[@class='modal-footer']//button[1]")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='modal-footer']//button[1]"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">closeButton</span><span class="o">;</span>
+
+<span class="c1">//FindBy(css = "//div[@class='modal-footer']//button[2]")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='modal-footer']//button[2]"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">saveButton</span><span class="o">;</span>
+
+<span class="c1">//FindBy(css = ".modal-header .close")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".modal-header .close"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">closeX</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">modalContentTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">modalLiveDemoLaunchButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">launchButtonText</span><span class="o">));</span>
+    <span class="n">modalLiveDemoLaunchButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">titleText</span><span class="o">));</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyText</span><span class="o">));</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">saveButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">saveButtonText</span><span class="o">));</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">closeButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">closeButtonText</span><span class="o">));</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveAndCloseButtonsTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">modalLiveDemoLaunchButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">saveButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">closeButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">modalLiveDemo</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
+<span class="o">}</span>
+
+</code></pre>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/modal-live-demo-html.png" alt="Modal Live_demo HTML" /></p>
+
+<p>Modal is represented by Section class in Java:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></li>
+</ul>
+
+<p>Inner elements of Modal- Live demo are represented by the following classes:</p>
+
+<ul>
+<li><p><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p></li>
+<li><p><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></p></li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>close()</strong></td>
+<td>Close modal</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Returns text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Asserts element</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalLiveDemoTests.java">Bootstrap test examples</a></p>
 <h4 id='scrolling-long-content-modal'>Scrolling Long Content Modal</h4>
 <p>When modals become too long for the user’s viewport or device, <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#scrolling-long-content" target="_blank">they scroll</a> independent of the page itself.</p>
 
