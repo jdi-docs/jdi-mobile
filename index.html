@@ -14172,13 +14172,95 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 
 <p><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#examples"><strong>Examples</strong></a></p>
 
-<p>Wrap the dropdown’s toggle (your button or link) and the dropdown menu within .dropdown, or another element that declares position: relative;. Dropdowns can be triggered from <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements to better fit your potential needs.</p>
+<p>Wrap the dropdown’s toggle (your button or link) and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Dropdowns can be triggered from <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements to better fit your potential needs.</p>
 
 <p><br></p>
 
-<p><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#single-button"><strong>Single button</strong></a></p>
+<ul>
+<li><strong><a href = "https://getbootstrap.com/docs/4.3/components/dropdowns/#single-button">Single button</a></strong></li>
+</ul>
 
-<p>Any single .btn can be turned into a dropdown toggle with some markup changes. Here’s how you can put them to work with either <code>&lt;button&gt;</code> elements:</p>
+<p>Any single <code>.btn</code> can be turned into a dropdown toggle with some markup changes. Here’s how you can put them to work with either <code>&lt;button&gt;</code> elements:</p>
+
+<p><img src="images/bootstrap/dropdown-single-button.png" alt="Single button dropdown example" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-toggle"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">dropdownToggle</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".dropdown-toggle")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-menu"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">dropdownMenu</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".dropdown-menu")</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">simpleDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"dropdown"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">));</span>
+    <span class="n">simpleDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"dropdown-menu"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">));</span>
+    <span class="n">simpleDropdown</span><span class="o">.</span><span class="na">dropdownToggle</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"btn"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"btn-primary"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"dropdown-toggle"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-toggle"</span><span class="o">,</span> <span class="s">"dropdown"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/dropdown-single-button-html.png" alt="Single button dropdown HTML example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>click()</td>
+<td>Click the item</td>
+<td>void</td>
+</tr>
+<tr>
+<td>getText()</td>
+<td>Get item text</td>
+<td>String</td>
+</tr>
+<tr>
+<td>getValue()</td>
+<td>Get item value</td>
+<td>String</td>
+</tr>
+<tr>
+<td>getTooltipText()</td>
+<td>Get tooltip text</td>
+<td>String</td>
+</tr>
+<tr>
+<td>getTooltipPlacement()</td>
+<td>Get tooltip placement</td>
+<td>String</td>
+</tr>
+<tr>
+<td>isTooltipWithHTML()</td>
+<td>Check that tooltip contains html text</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>is()</td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td>assertThat()</td>
+<td>Assert action</td>
+<td>UIpAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/TooltipTests.java" target="_blank">Bootstrap test example with tooltips</a></p>
 
 <p><br><br><br></p>
 <h3 id='carousel'>Carousel</h3>
