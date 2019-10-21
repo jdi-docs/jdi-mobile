@@ -12522,7 +12522,41 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 top and bottom “image caps” — images at the top or bottom of a card.</p>
 
 <p><img src="images/bootstrap/cardimagecaps.png" alt="Card Image Caps Example" /></p>
+<pre class="highlight java tab-java"><code>    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-image-caps-1"</span><span class="o">)</span> <span class="c1">//@FindBy(id = card-image-caps-1)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardImageCaps</span> <span class="n">cardImageOnTop</span><span class="o">;</span>
 
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSrcTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">topCardData</span><span class="o">.</span><span class="na">getSrcAttr</span><span class="o">());</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">bottomCardData</span><span class="o">.</span><span class="na">getSrcAttr</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getAltTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">topCardData</span><span class="o">.</span><span class="na">getAltAttr</span><span class="o">());</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">bottomCardData</span><span class="o">.</span><span class="na">getAltAttr</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">topCardData</span><span class="o">.</span><span class="na">getText</span><span class="o">()));</span>
+        <span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">topCardData</span><span class="o">.</span><span class="na">getSrcAttr</span><span class="o">()));</span>
+        <span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">topCardData</span><span class="o">.</span><span class="na">getAltAttr</span><span class="o">()));</span>
+        <span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+        <span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">topCardData</span><span class="o">.</span><span class="na">getWidth</span><span class="o">()));</span>
+        <span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">topCardData</span><span class="o">.</span><span class="na">getHeight</span><span class="o">()));</span>
+
+        <span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bottomCardData</span><span class="o">.</span><span class="na">getText</span><span class="o">()));</span>
+        <span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bottomCardData</span><span class="o">.</span><span class="na">getSrcAttr</span><span class="o">()));</span>
+        <span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bottomCardData</span><span class="o">.</span><span class="na">getAltAttr</span><span class="o">()));</span>
+        <span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+        <span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bottomCardData</span><span class="o">.</span><span class="na">getWidth</span><span class="o">()));</span>
+        <span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bottomCardData</span><span class="o">.</span><span class="na">getHeight</span><span class="o">()));</span>
+
+        <span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">imageOnTop</span><span class="o">();</span>
+        <span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">imageBelow</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
 <p><img src="images/bootstrap/cardimagecaps-html.png" alt="Card Image Caps Example Code" /></p>
@@ -12537,64 +12571,35 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getText()</strong></td>
+<td>Returns text of card</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>getName()</strong></td>
+<td>Returns name of card</td>
+<td>String</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>isDisplayed()</strong></td>
+<td>Returns true if card is displayed, false if not</td>
+<td>boolean</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
 </tr>
 </tbody></table>
 
 <p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageCapsTest.java" target="_blank">Bootstrap test example with card image caps</a></p>
 
 <p><strong>Card Image Overlays</strong></p>
 
@@ -20594,6 +20599,8 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
 <td>MultipleInputsAssert</td>
 </tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/MultipleInputsTests.java" target="_blank">Bootstrap test example with multiple inputs</a></p>
 <h4 id='multiple-addons'>Multiple addons</h4>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#multiple-addons" target="_blank">Multiple addons</a> are supported and can be mixed with checkbox and radio input versions.</p>
 
