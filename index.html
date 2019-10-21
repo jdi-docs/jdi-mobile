@@ -17044,6 +17044,92 @@ using .form-control-range.</p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalVerticallyCenteredTests.java" target="_blank">Bootstrap Test Examples</a></p>
+<h4 id='modal-tooltips-and-popovers'>Modal - Tooltips and popovers</h4>
+<p><strong>Modal - Tooltips and popovers</strong></p>
+
+<p>Tooltips and popovers can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.</p>
+
+<p><img src="images/bootstrap/modal-tooltips-and-popovers.png" alt="Modal - Tooltips and popovers" /></p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//h4[.='Modal - Tooltips and popovers']/../.."</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ModalTooltipsAndPopovers</span> <span class="n">modalTooltipsAndPopovers</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModalTooltipsAndPopovers</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">demoModalButton</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">ModalTooltipsAndPopoversDialog</span> <span class="n">modalDlg</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModalTooltipsAndPopoversDialog</span> <span class="kd">extends</span> <span class="n">Modal</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".modal-body"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">ModalTooltipsAndPopoversBody</span> <span class="n">body</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='modal-footer']//button[1]"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">closeButton</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='modal-footer']//button[2]"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">saveButton</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModalTooltipsAndPopoversBody</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"h5:nth-child(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title1</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p:nth-child(2) &gt; a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">buttonTriggers</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"h5:nth-child(4)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title2</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p:nth-child(5) &gt; a:nth-child(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">thisLink</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p:nth-child(5) &gt; a:nth-child(2)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">thatLink</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">verifyOpenModalDialogTooltips</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">modalTooltipsAndPopovers</span><span class="o">.</span><span class="na">demoModalButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">modalTooltipsAndPopovers</span><span class="o">.</span><span class="na">modalDlg</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">TITLE</span><span class="o">));</span>
+    <span class="n">modalTooltipsAndPopovers</span><span class="o">.</span><span class="na">modalDlg</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">title1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">BODY_TITLE1</span><span class="o">));</span>
+    <span class="n">modalTooltipsAndPopovers</span><span class="o">.</span><span class="na">modalDlg</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">title2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">BODY_TITLE2</span><span class="o">));</span>
+    <span class="n">modalTooltipsAndPopovers</span><span class="o">.</span><span class="na">modalDlg</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">thisLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">THIS_LINK</span><span class="o">));</span>
+    <span class="n">modalTooltipsAndPopovers</span><span class="o">.</span><span class="na">modalDlg</span><span class="o">.</span><span class="na">body</span><span class="o">.</span><span class="na">thatLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">THAT_LINK</span><span class="o">));</span>
+    <span class="n">modalTooltipsAndPopovers</span><span class="o">.</span><span class="na">modalDlg</span><span class="o">.</span><span class="na">saveButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">SAVE_BUTTON</span><span class="o">));</span>
+    <span class="n">modalTooltipsAndPopovers</span><span class="o">.</span><span class="na">modalDlg</span><span class="o">.</span><span class="na">closeButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">CLOSE_BUTTON</span><span class="o">));</span>
+    <span class="n">modalTooltipsAndPopovers</span><span class="o">.</span><span class="na">modalDlg</span><span class="o">.</span><span class="na">closeButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+<span class="o">}</span>
+
+</code></pre>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/modal-tooltips-and-popovers-html.png" alt="Modal Tooltips and Popovers HTML" /></p>
+
+<p>Modal is represented by Section class in Java:</p>
+
+<ul>
+<li>Section #BS</li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Asserts element</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Asserts element is displayed</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>hidden()</strong></td>
+<td>Asserts element is hidden</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>close()</strong></td>
+<td>Close modal</td>
+<td>void</td>
+</tr>
+</tbody></table>
 
 <p><strong>Modal using grid</strong></p>
 
