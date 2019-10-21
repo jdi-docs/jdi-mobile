@@ -16966,15 +16966,14 @@ using .form-control-range.</p>
 <td>Asserts element is hidden</td>
 <td>UIAssert</td>
 </tr>
+<tr>
+<td><strong>close()</strong></td>
+<td>Close modal</td>
+<td>void</td>
+</tr>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalVerticallyCenteredTests.java" target="_blank">Bootstrap Test Examples</a></p>
-
-<p><em>Example:</em> Simple Modal with elements</p>
-
-<p><img src="images/bootstrap/modal_composite.png" alt="Modal composite" /></p>
-
-<p><img src="images/bootstrap/modal-html.png" alt="Modal composite" /></p>
 
 <p><strong>Modal using grid</strong></p>
 
@@ -17253,7 +17252,105 @@ using .form-control-range.</p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalEmbeddingVideoTests.java">Bootstrap test examples</a></p>
 
-<p><br><br><br><br><br><br><br></p>
+<p><br><br></p>
+
+<p><strong>Optional Sizes</strong></p>
+
+<p>Modals have three <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#optional-sizes" target="_blank">optional sizes</a>, available via modifier classes to be placed on a <code>.modal-dialog</code>. 
+These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.</p>
+
+<p><img src="images/bootstrap/modal-optional-sizes-sm.png" alt="Modal Optional Sizes Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(id = "modal-optional-sizes")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-optional-sizes"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ModalOptionalSizes</span> <span class="n">modalOptionalSizes</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = "button:nth-of-type(1)")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"button:nth-of-type(1)"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">xlButton</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = "button:nth-of-type(2)")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"button:nth-of-type(2)"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">lgButton</span><span class="o">;</span>
+
+<span class="c1">// @FindBy(css = "button:nth-of-type(3)")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"button:nth-of-type(3)"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">smButton</span><span class="o">;</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"modalCssData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">modalCssTest</span><span class="o">(</span><span class="n">Button</span> <span class="n">button</span><span class="o">,</span> <span class="n">Modal</span> <span class="n">modal</span><span class="o">,</span> <span class="n">String</span> <span class="n">modalCss</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">button</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+    <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+    <span class="n">modal</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">modalCss</span><span class="o">);</span>
+
+    <span class="n">modal</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"modalSizeData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">modalSizeTest</span><span class="o">(</span><span class="n">Button</span> <span class="n">button</span><span class="o">,</span>
+                          <span class="n">Modal</span> <span class="n">modal</span><span class="o">,</span>
+                          <span class="kt">int</span> <span class="n">modalWidth</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">button</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+    <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">modal</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">getRect</span><span class="o">().</span><span class="na">width</span><span class="o">,</span> <span class="n">equalTo</span><span class="o">(</span><span class="n">modalWidth</span><span class="o">));</span>
+
+    <span class="n">modal</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/modal-optional-sizes-html.png" alt="Modal Optional Sizes HTML Example" /></p>
+
+<p>Modal is represented by Section class in Java:</p>
+
+<ul>
+<li>Section #BS</li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Asserts element</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Asserts element is displayed</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>hidden()</strong></td>
+<td>Asserts element is hidden</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>hasClass()</strong></td>
+<td>Matches passed value with the element class</td>
+<td>IsAssert</td>
+</tr>
+<tr>
+<td><strong>close()</strong></td>
+<td>Close modal</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalOptionalSizesTests.java" target="_blank">Bootstrap Test Examples</a></p>
 <h3 id='popovers'>Popovers</h3>
 <p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/popovers/">Popovers</a></em></strong></p>
 <h4 id='example'>Example</h4>
