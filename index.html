@@ -16755,6 +16755,13 @@ using .form-control-range.</p>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleModalLive"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">ModalLiveDemo</span> <span class="n">modalLiveDemo</span><span class="o">;</span>
 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModalLiveDemo</span> <span class="kd">extends</span> <span class="n">Modal</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".modal-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">body</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='modal-footer']//button[1]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">closeButton</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='modal-footer']//button[2]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">saveButton</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".modal-header .close"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">closeX</span><span class="o">;</span>
+<span class="o">}</span>
+
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">modalContentTextTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">modalLiveDemoLaunchButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">launchButtonText</span><span class="o">));</span>
