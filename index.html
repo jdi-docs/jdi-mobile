@@ -11827,9 +11827,8 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 
 
 
-
+<span class="c1">// @FindBy(css = "#card-kitchen-sink") public static CardKitchenSink cardKitchenSink;</span>
    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-kitchen-sink"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardKitchenSink</span> <span class="n">cardKitchenSink</span><span class="o">;</span> 
-   <span class="c1">// @FindBy(css = "#card-kitchen-sink") public static CardKitchenSink cardKitchenSink; </span>
 
     <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardKitchenSink</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
         <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-img-top"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
@@ -11906,9 +11905,24 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 <td>UIAssert</td>
 </tr>
 <tr>
-<td><strong>shouldBe()</strong></td>
-<td>Applicable for performing assert actions for kitchen sink</td>
-<td>UIAssert</td>
+<td><strong>src()</strong></td>
+<td>Assert image src</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>alt()</strong></td>
+<td>Assert alt image attribute</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>width()</strong></td>
+<td>Assert image width</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>height()</strong></td>
+<td>Assert image height</td>
+<td>ImageAssert</td>
 </tr>
 </tbody></table>
 
@@ -11916,20 +11930,20 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 
 <p>Kitchen sink is represented by Section class in Java:</p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+<ul>
+<li>Section #BS</li>
+</ul>
 
 <p>Inner elements of kitchen sink can be represented by the following classes:</p>
 
 <ul>
-<li><p><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p></li>
-<li><p><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p></li>
-<li><p><a href="https://jdi-docs.github.io/jdi-light/#title">Title</a></p></li>
-<li><p><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></p></li>
+<li><p>Text #BS</p></li>
+<li><p>Image #BS</p></li>
+<li><p>Title #BS</p></li>
+<li><p>Link #BS</p></li>
 </ul>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardKitchenSinkTests.java">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardKitchenSinkTests.java" target="_blank">Bootstrap Test Examples</a></p>
 <h4 id='card-with-header-and-footer'>Card with Header and Footer</h4>
 <p>Add an optional<a href="https://getbootstrap.com/docs/4.3/components/card/#header-and-footer" target="a_blank"> header and/or footer </a>within a card.</p>
 <pre class="highlight java tab-java"><code>
