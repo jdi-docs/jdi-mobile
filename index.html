@@ -10099,16 +10099,16 @@ Navbar brand as heading <br>
 
     <span class="c1">//FindBy(css = ".navbar-brand")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">NavbarBrand</span><span class="o">&gt;</span> <span class="n">allNavbarBrands</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">UIElement</span><span class="o">&gt;</span> <span class="n">allNavbarBrands</span><span class="o">;</span>
 
     <span class="c1">//FindBy(css = "#brand-as-image,#brand-as-image-and-link")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#brand-as-image,#brand-as-image-and-link"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">NavbarBrand</span><span class="o">&gt;</span> <span class="n">navbarBrandWithImage</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">UIElement</span><span class="o">&gt;</span> <span class="n">navbarBrandWithImage</span><span class="o">;</span>
 
     <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarBrandData"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNavbarText</span><span class="o">(</span><span class="n">String</span> <span class="n">navbarId</span><span class="o">,</span> <span class="n">String</span> <span class="n">navbarText</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">navbarSection</span><span class="o">.</span><span class="na">allNavbarBrands</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">NavbarBrand</span> <span class="n">nbb</span> <span class="o">=</span> <span class="n">navbarSection</span><span class="o">.</span><span class="na">allNavbarBrands</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="n">UIElement</span> <span class="n">nbb</span> <span class="o">=</span> <span class="n">navbarSection</span><span class="o">.</span><span class="na">allNavbarBrands</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">nbb</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">navbarId</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">nbb</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
                 <span class="n">nbb</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">navbarText</span><span class="o">);</span>
@@ -10120,7 +10120,7 @@ Navbar brand as heading <br>
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNavbarClickImage</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">navbarSection</span><span class="o">.</span><span class="na">navbarBrandWithImage</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">nbb</span> <span class="o">-&gt;</span> <span class="n">nbb</span><span class="o">.</span><span class="na">isLink</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">nbb</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">nbb</span> <span class="o">-&gt;</span> <span class="n">nbb</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"href"</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">nbb</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">nbbWithIm</span> <span class="o">-&gt;</span> <span class="n">nbbWithIm</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
                 <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">imgFromNavbar</span> <span class="o">-&gt;</span> <span class="o">{</span>
                     <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">highlight</span><span class="o">(</span><span class="s">"blue"</span><span class="o">);</span>
@@ -10150,26 +10150,6 @@ Navbar brand as heading <br>
 <th>Return Type</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><strong>isNavbarBrand()</strong></td>
-<td>Check it is navbar-brand class</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>isLink()</strong></td>
-<td>Check it is link</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>getRef()</strong></td>
-<td>Get link</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
 <tr>
 <td><strong>is()</strong></td>
 <td>Assert action</td>
