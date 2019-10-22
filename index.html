@@ -14829,6 +14829,157 @@ using .form-control-range.</p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/mposite.section.form.RangeInputTests.java" target=a_blank> Bootstrap test examples </a></p>
+<h4 id='forms-select-menu'>Forms - Select menu</h4><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SelectMenu</span> <span class="kd">extends</span> <span class="n">Form</span> <span class="kd">implements</span> <span class="n">ISelector</span> <span class="o">{</span>
+    <span class="c1">//FindBy(css = "option")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"option"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">optionsSelectMenu</span><span class="o">;</span>
+    <span class="c1">//FindBy(css = "option[selected]")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"option[selected]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">selectedOptionsSelectMenu</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">WebList</span> <span class="nf">list</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">optionsSelectMenu</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">//FindBy(id = "forms-select-menu")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#forms-select-menu"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">SelectMenu</span> <span class="n">formsSelectMenu</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSelectedOptionFormsSelectMenuTest</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">formsSelectMenu</span><span class="o">.</span><span class="na">selectedOptionsSelectMenu</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Open this select menu"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">//FindBy(id = "forms-select-menu-large")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#forms-select-menu-large"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">SelectMenu</span> <span class="n">formsSelectMenuLarge</span><span class="o">;</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"optionFormSelectMenuTest"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextFormsSelectMenuTest</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">String</span> <span class="n">optionText</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">formsSelectMenuLarge</span><span class="o">.</span><span class="na">optionsSelectMenu</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">optionText</span><span class="o">);</span>
+  <span class="n">formsSelectMenuLarge</span><span class="o">.</span><span class="na">optionsSelectMenu</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">assertThat</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"value"</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+<span class="o">}</span>
+
+
+
+
+<span class="c1">//FindBy(id = "forms-select-menu-small")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#forms-select-menu-small"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">SelectMenu</span> <span class="n">formsSelectMenuSmall</span><span class="o">;</span>
+
+
+
+
+
+
+
+
+<span class="c1">//FindBy(id = "forms-select-menu-multiple")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#forms-select-menu-multiple"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">SelectMenu</span> <span class="n">formsSelectMenuMultiple</span><span class="o">;</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="c1">//FindBy(id = "forms-select-menu-size")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#forms-select-menu-size"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">SelectMenu</span> <span class="n">formsSelectMenuSize</span><span class="o">;</span>
+
+
+
+
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectOptionFormsSelectMenuTest</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">formsSelectMenuSize</span><span class="o">.</span><span class="na">optionsSelectMenu</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+  <span class="n">assertEquals</span><span class="o">(</span><span class="n">formsSelectMenuSize</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Three"</span><span class="o">);</span>
+<span class="o">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+<p>You can use custom <a href = "https://getbootstrap.com/docs/4.3/components/forms/#select-menu" target = "a_blank">select menus</a>.</p>
+
+<p>Select menu is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.SelectMenu*</em></li>
+</ul>
+
+<p><img src="images/bootstrap/form-select-menu.png" alt="Select menu" />
+Here is an example with provided Bootstrap v4.3 code:
+<img src="images/bootstrap/form-select-menu-html.png" alt="Select menu" /></p>
+
+<p><strong>Large select menu</strong>
+<img src="images/bootstrap/form-select-menu-large.png" alt="Select menu" />
+Here is an example with provided Bootstrap v4.3 code:
+<img src="images/bootstrap/form-select-menu-large-html.png" alt="Select menu" /></p>
+
+<p><strong>Small select menu</strong>
+<img src="images/bootstrap/form-select-menu-small.png" alt="Select menu" />
+Here is an example with provided Bootstrap v4.3 code:
+<img src="images/bootstrap/form-select-menu-small-html.png" alt="Select menu" /></p>
+
+<p><strong>Select menu multiple</strong>
+<img src="images/bootstrap/form-select-menu-multiple.png" alt="Select menu" />
+Here is an example with provided Bootstrap v4.3 code:
+<img src="images/bootstrap/form-select-menu-multiple-html.png" alt="Select menu" /></p>
+
+<p><strong>Select menu size</strong>
+<img src="images/bootstrap/form-select-menu-size.png" alt="Select menu" />
+Here is an example with provided Bootstrap v4.3 code:
+<img src="images/bootstrap/form-select-menu-size-html.png" alt="Select menu" /></p>
+
+<p>Available methods in Java JDI Light:
+<br></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormsSelectMenuTests.java" target=a_blank> Bootstrap test examples </a></p>
 <h3 id='scrollspy'>Scrollspy</h3>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar">Scrollspy</a></strong> – automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
 <br><br>
