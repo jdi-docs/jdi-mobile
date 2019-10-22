@@ -17060,16 +17060,18 @@ using .form-control-range.</p>
 <p><img src="images/bootstrap/modal-tooltips-and-popovers.png" alt="Modal - Tooltips and popovers" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
+<pre class="highlight java tab-java"><code><span class="c1">//@Findby(xpath="//h4[.='Modal - Tooltips and popovers']/../..")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"//h4[.='Modal - Tooltips and popovers']/../.."</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">ModalTooltipsAndPopovers</span> <span class="n">modalTooltipsAndPopovers</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModalTooltipsAndPopovers</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+<span class="c1">//@Findby(xpath="//button")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">demoModalButton</span><span class="o">;</span>
     <span class="kd">public</span> <span class="n">ModalTooltipsAndPopoversDialog</span> <span class="n">modalDlg</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModalTooltipsAndPopoversDialog</span> <span class="kd">extends</span> <span class="n">Modal</span> <span class="o">{</span>
+<span class="c1">//@Findby(css=".modal-body")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".modal-body"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="n">ModalTooltipsAndPopoversBody</span> <span class="n">body</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@class='modal-footer']//button[1]"</span><span class="o">)</span>
@@ -17079,6 +17081,7 @@ using .form-control-range.</p>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModalTooltipsAndPopoversBody</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+<span class="c1">//@Findby(css="h5:nth-child(1)")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"h5:nth-child(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title1</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"p:nth-child(2) &gt; a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">buttonTriggers</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"h5:nth-child(4)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title2</span><span class="o">;</span>
