@@ -13951,6 +13951,81 @@ Form can consists of:
 
 <p><br></p>
 
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#form-grid">Form grid</a></strong></p>
+
+<p><img src="images/bootstrap/form-grid.png" alt="Form grid Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>    <span class="c1">//FindBy(css = "#first_name")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#first_name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
+    <span class="c1">//FindBy(css = "#last_name")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#last_name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">lastName</span><span class="o">;</span>
+
+
+    <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"personalData"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fillTest</span><span class="o">(</span><span class="n">String</span> <span class="n">firstName</span><span class="o">,</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">FormContacts</span> <span class="n">formContacts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FormContacts</span><span class="o">();</span>
+        <span class="n">formGrid</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">formContacts</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">c</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">c</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">firstName</span><span class="o">;</span>
+            <span class="n">c</span><span class="o">.</span><span class="na">lastName</span> <span class="o">=</span> <span class="n">lastName</span><span class="o">;</span>
+        <span class="o">}));</span>
+        <span class="n">formGrid</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">formContacts</span><span class="o">);</span>
+        <span class="n">checkContactFormSubmitted</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkContactFormSubmitted</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">formGrid</span><span class="o">.</span><span class="na">submit</span><span class="o">();</span>
+        <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Form filled and submitted successfully"</span><span class="o">));</span>
+        <span class="n">formGrid</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="k">new</span> <span class="n">FormContacts</span><span class="o">().</span><span class="na">set</span><span class="o">(</span><span class="n">c</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">c</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+            <span class="n">c</span><span class="o">.</span><span class="na">lastName</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="o">}));</span>
+    <span class="o">}</span>
+</code></pre>
+<p><br></p>
+
+<p><img src="images/bootstrap/form-grid-html.png" alt="Form grid Example" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormGridTests.java">Java test examples</a></p>
+
+<p><br></p>
+
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#horizontal-form">Form horizontal</a></strong></p>
 
 <p><img src="images/bootstrap/form-horizontal.png" alt="Form horizontal Example" /></p>
