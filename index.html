@@ -19812,8 +19812,54 @@ Input group are represented by Section class in Java:</p>
 <li><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></li>
 </ul>
 
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Returns text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>src()</strong></td>
+<td>Assert image src</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>alt()</strong></td>
+<td>Assert alt image attribute</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>width()</strong></td>
+<td>Assert image width</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>height()</strong></td>
+<td>Assert image height</td>
+<td>ImageAssert</td>
+</tr>
+</tbody></table>
+
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardExampleTests.java">Bootstrap test examples</a>
-<br><br></p>
+<br></p>
 <h4 id='card-body'>Card Body</h4>
 <p>The building block of a card is the <em>.<a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/card/#body">card-body</a></em>. Use it whenever you need a padded section within a card.</p>
 
@@ -19836,6 +19882,32 @@ Input group are represented by Section class in Java:</p>
 
 <p>Inner elements of Card Body represented by the following classes:
 <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Returns text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardBodyTests.java">Bootstrap test examples</a>
  <br><br></p>
@@ -19883,9 +19955,43 @@ Input group are represented by Section class in Java:</p>
 <li><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></li>
 </ul>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithSubtitlesAndLinksTests.java">Bootstrap test examples</a></p>
+<p>Available methods in Java JDI Light:</p>
 
-<p><br><br><br><br><br><br><br><br></p>
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Returns text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>ref()</strong></td>
+<td>Returns the reference</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>url()</strong></td>
+<td>Returns the URL</td>
+<td>URL</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithSubtitlesAndLinksTests.java">Bootstrap test examples</a></p>
 <h4 id='card-images'>Card Images</h4><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-image"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-image")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardImage</span> <span class="n">cardImage</span><span class="o">;</span>
 
@@ -20001,7 +20107,6 @@ Input group are represented by Section class in Java:</p>
 
 
 
-
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardListGroups</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
 
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">cardHeader</span><span class="o">;</span> <span class="c1">//@FindBy(".card-header"))</span>
@@ -20066,6 +20171,8 @@ Input group are represented by Section class in Java:</p>
 <td>TextAssert</td>
 </tr>
 </tbody></table>
+
+<p><br><br></p>
 <h4 id='kitchen-sink'>Kitchen Sink</h4><pre class="highlight java tab-java"><code>
 
 
@@ -20277,6 +20384,37 @@ Input group are represented by Section class in Java:</p>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a></li>
 </ul></p>
 
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Assert text</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
+
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/Card/CardWithHeaderAndFooterTests.java" target=a_blank> Bootstrap test examples </a>
 <br></p>
 <h4 id='card-with-grid-markup'>Card with Grid Markup</h4>
@@ -20368,6 +20506,37 @@ Input group are represented by Section class in Java:</p>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a> </li>
 </ul></p>
 
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Assert text</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
+
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/Card/CardWithGridMarkupTests.java" target=a_blank> Bootstrap test examples </a>
  <br></p>
 <h4 id='card-utilities'>Card utilities</h4>
@@ -20422,37 +20591,6 @@ Input group are represented by Section class in Java:</p>
 </tr>
 </tbody></table>
 
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardUtilitiesTests.java"> Bootstrap test examples </a></p>
 <h4 id='card-using-custom-css'>Card using custom CSS</h4>
 <p>Use <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.0/components/card/#using-custom-css">custom CSS</a> custom CSS in your stylesheets or as inline styles to set a width.</p>
@@ -20489,7 +20627,49 @@ Input group are represented by Section class in Java:</p>
 <ul>
 <li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a><br></li>
 <li><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></li>
 </ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Assert text</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>ref()</strong></td>
+<td>Returns the reference</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>url()</strong></td>
+<td>Returns the URL</td>
+<td>URL</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithCustomCss13RemTests.java">Bootstrap test examples</a>
 <br><br></p>
@@ -20826,7 +21006,7 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
 <p><br></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageCapsTest.java" target="_blank">Bootstrap test example with card image caps</a>
-<br><br><br><br></p>
+<br><br><br><br><br></p>
 <h4 id='card-image-overlays'>Card Image Overlays</h4><pre class="highlight java tab-java"><code>
 
 
@@ -20941,7 +21121,8 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageOverlaysTest.java">Card Image Overlays test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageOverlaysTest.java">Card Image Overlays test examples</a>
+<br></p>
 <h4 id='card-horizontal'>Card Horizontal</h4>
 <p>Using a combination of grid and utility classes, cards can be made <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/card/#horizontal">horizontal</a> in a mobile-friendly and responsive way.</p>
 
@@ -20982,9 +21163,55 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
 <li><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></li>
 </ul>
 
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Returns text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>src()</strong></td>
+<td>Assert image src</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>alt()</strong></td>
+<td>Assert alt image attribute</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>width()</strong></td>
+<td>Assert image width</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>height()</strong></td>
+<td>Assert image height</td>
+<td>ImageAssert</td>
+</tr>
+</tbody></table>
+
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardHorizontalTests.java">Bootstrap test examples</a></p>
 
-<p><br><br><br></p>
+<p><br></p>
 <h4 id='card-background-and-color'>Card Background And Color</h4>
 <p><a href="https://getbootstrap.com/docs/4.3/components/card/#background-and-color" target="a_blank"> Card Background And Color</a> - use text and background utilities to change the appearance of a card.</p>
 
@@ -21070,8 +21297,39 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
 <li><a href="https://jdi-docs.github.io/jdi-light/#menu">Menu</a></li>
 </ul>
 
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>css()</strong></td>
+<td>Get element css value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
+
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardBackgroundAndColorTests.java" target="_blank">Bootstrap test examples</a>
- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h4 id='card-border'>Card Border</h4>
 <p>Use <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/card/#border">border</a> utilities to change just the border-color of a card. 
 Note that you can put .text-{color} classes on the parent .card or a subset of the card’s contents as shown below.</p>
@@ -21105,6 +21363,37 @@ Note that you can put .text-{color} classes on the parent .card or a subset of t
 
 <p>Inner elements of Card Border represented by the following classes:
 <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Assert text</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>css()</strong></td>
+<td>Get element css value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardBorderTests.java">Bootstrap test examples</a></p>
 <h4 id='card-mixins-utilities'>Card Mixins Utilities</h4>
@@ -21141,8 +21430,39 @@ with .bg-transparent.</p>
 <p>Inner elements of Card Mixing Utilities represented by the following classes:
 <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></p>
 
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Assert text</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>css()</strong></td>
+<td>Get element css value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+</tbody></table>
+
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardMixinsUtilitiesTests.java">Bootstrap test examples</a>
-<br><br><br><br><br><br><br><br></p>
+<br><br></p>
 <h4 id='card-groups'>Card groups</h4>
 <p>Use <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/card/#card-groups" target="_blank">card groups</a> to render cards as a single, attached element with equal width and height columns.</p>
 
@@ -21318,6 +21638,14 @@ with .bg-transparent.</p>
 <li><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></li>
 </ul>
 
+<p><strong>Card decks with footer</strong></p>
+
+<p><img src="images/bootstrap/card-decks-with-footer.png" alt="Card_groups example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/card-decks-with-footer-html.png" alt="Card_groups HTML example" /></p>
+
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -21370,54 +21698,7 @@ with .bg-transparent.</p>
 </tbody></table>
 
 <p><br>
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardDeckTests.java" target="_blank">Bootstrap test examples</a>
-<br><br></p>
-
-<p><strong>Card decks with footer</strong></p>
-
-<p><img src="images/bootstrap/card-decks-with-footer.png" alt="Card_groups example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/card-decks-with-footer-html.png" alt="Card_groups HTML example" /></p>
-
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>****</td>
-<td>TBD</td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>****</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><br></p>
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardDeckTests.java" target="_blank">Bootstrap test examples</a></p>
 <h4 id='card-columns'>Card Columns</h4>
 <p><a href="https://getbootstrap.com/docs/4.3/components/card/#card-columns" target="a_blank">Card columns </a>can also be extended and customized with some additional code. 
 For example .card-columns class to generate a set of responsive tiers for changing the number of columns.</p>
@@ -21458,6 +21739,52 @@ For example .card-columns class to generate a set of responsive tiers for changi
 <li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></li>
 <li><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></li>
 </ul></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Returns text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>src()</strong></td>
+<td>Assert image src</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>alt()</strong></td>
+<td>Assert alt image attribute</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>width()</strong></td>
+<td>Assert image width</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>height()</strong></td>
+<td>Assert image height</td>
+<td>ImageAssert</td>
+</tr>
+</tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardColumnsTests.java">Bootstrap test examples</a></p>
 <h3 id='jumbotron'>Jumbotron</h3><pre class="highlight java tab-java"><code>
