@@ -14184,8 +14184,12 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 <p><img src="images/bootstrap/dropdown-single-button.png" alt="Single button dropdown example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-toggle"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">dropdownToggle</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".dropdown-toggle")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-menu"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">dropdownMenu</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".dropdown-menu")</span>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dropdown</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">IsButton</span> <span class="o">{</span>
+    <span class="c1">//@FindBy(css = ".dropdown-toggle")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-toggle"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">dropdownToggle</span><span class="o">;</span>
+    <span class="c1">//@FindBy(css = ".dropdown-menu")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-menu"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">dropdownMenu</span><span class="o">;</span>
+<span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -14259,7 +14263,10 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 <p><img src="images/bootstrap/dropdown-split-button.png" alt="Split button dropdown example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-toggle"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">dropdownToggle</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".dropdown-toggle")</span>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dropdown</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">IsButton</span> <span class="o">{</span>
+    <span class="c1">//@FindBy(css = ".dropdown-toggle")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".dropdown-toggle"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">dropdownToggle</span><span class="o">;</span>
+<span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">splitDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
