@@ -15846,9 +15846,10 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModalTooltipsAndPopoversBody</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
 <span class="c1">//@Findby(css="h5:nth-child(1)")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"h5:nth-child(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title1</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p:nth-child(2) &gt; a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">buttonTriggers</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">Popover</span> <span class="n">popover</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"h5:nth-child(4)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title2</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"p:nth-child(5) &gt; a:nth-child(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">thisLink</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">Tooltip</span> <span class="n">tooltipOnLink</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"p:nth-child(5) &gt; a:nth-child(2)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">thatLink</span><span class="o">;</span>
 <span class="o">}</span>
 
