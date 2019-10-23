@@ -14966,7 +14966,7 @@ using .form-control-range.</p>
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/mposite.section.form.RangeInputTests.java" target=a_blank> Bootstrap test examples </a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/RangeInputTests.java" target=a_blank> Bootstrap test examples </a></p>
 <h4 id='forms-select-menu'>Forms - Select menu</h4><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SelectMenu</span> <span class="kd">extends</span> <span class="n">Form</span> <span class="kd">implements</span> <span class="n">ISelector</span> <span class="o">{</span>
     <span class="c1">//FindBy(css = "option")</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"option"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">optionsSelectMenu</span><span class="o">;</span>
@@ -15121,6 +15121,108 @@ Here is an example with provided Bootstrap v4.3 code:
 <p><br></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormsSelectMenuTests.java" target=a_blank> Bootstrap test examples </a></p>
+<h4 id='forms-range'>Forms - Range</h4>
+<p>Create custom <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#range">range</a>
+ controls (<code>&lt;input type=&quot;range&quot;&gt;</code>) with .custom-range. The track (the background) and thumb (the value) are both styled to appear the same across browsers. 
+Range inputs have implicit values for min and max: 0 and 100, respectively. You may specify new values for those using the min and max attributes.</p>
+
+<p><img src="images/bootstrap/range.png" alt="Range_example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#customRange3")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRange3"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Range</span> <span class="n">range</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span><span class="err">\</span>
+    <span class="n">range</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">labelText</span><span class="o">);</span>
+ <span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">validateThumbMinMaxAndStepValuesTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">range</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">thumbValue</span><span class="o">(</span><span class="mf">2.5</span><span class="o">);</span>
+    <span class="n">range</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">minValue</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">range</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">maxValue</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">range</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">step</span><span class="o">(</span><span class="mf">0.5</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setThumbValueTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">range3</span><span class="o">.</span><span class="na">setThumbValue</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">range3</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">thumbValue</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/range_html.png" alt="Range_example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Various assert actions for Progress</td>
+<td>RangeAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>label()</strong></td>
+<td>Get label associated with an item</td>
+<td>Label</td>
+</tr>
+<tr>
+<td><strong>labelText()</strong></td>
+<td>Get text of a label associated with an item</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>thumbValue()</strong></td>
+<td>Get thumb value</td>
+<td>double</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get thumb value as String</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>min()</strong></td>
+<td>Get minimal limit of range</td>
+<td>double</td>
+</tr>
+<tr>
+<td><strong>max()</strong></td>
+<td>Get maximal limit of range</td>
+<td>double</td>
+</tr>
+<tr>
+<td><strong>step()</strong></td>
+<td>Get incremental step of range</td>
+<td>double</td>
+</tr>
+<tr>
+<td><strong>setThumbValue()</strong></td>
+<td>Set thumb value with a &quot;double&quot; parameter</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue()</strong></td>
+<td>Set thumb value with a String parameter</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/RangeTests.java" target=a_blank> Bootstrap test examples </a></p>
+
+<p><br><br></p>
 <h3 id='scrollspy'>Scrollspy</h3>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar">Scrollspy</a></strong> – automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
 <br><br>
