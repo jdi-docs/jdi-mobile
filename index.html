@@ -13949,6 +13949,71 @@ Form can consists of:
     <li> <a href="https://jdi-docs.github.io/jdi-light/#button-2">Button</a> </li>
 </ul></p>
 
+<p><br>
+<br></p>
+<h5 id='form-row'>Form row</h5>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/forms/#form-row" target="_blank">Form row</a></p>
+
+<p><img src="images/bootstrap/form-row.png" alt="Form row Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code>    <span class="c1">//FindBy(css = ".form-row")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".form-row"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">row</span><span class="o">;</span>
+    <span class="c1">//FindBy(css = ".form-row &gt; .col")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".form-row &gt; .col"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">WebList</span> <span class="n">cols</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkStructureRow</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">row</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-row"</span><span class="o">);</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">row</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">row</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">foreach</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">enabled</span><span class="o">());</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">cols</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">foreach</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/form-row-html.png" alt="Form row Example" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormGridTests.java" target="_blank">Bootstrap test examples</a></p>
+
 <p><br></p>
 
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#form-grid">Form grid</a></strong></p>
@@ -14022,7 +14087,7 @@ Form can consists of:
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormGridTests.java">Java test examples</a></p>
 
-<p><br></p>
+<p><br><br></p>
 
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#horizontal-form">Form horizontal</a></strong></p>
 
