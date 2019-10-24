@@ -14030,12 +14030,9 @@ Form can consists of:
 <p><img src="images/bootstrap/form-row.png" alt="Form row Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>    <span class="c1">//FindBy(css = ".form-row")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".form-row"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">row</span><span class="o">;</span>
-    <span class="c1">//FindBy(css = ".form-row &gt; .col")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".form-row &gt; .col"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">WebList</span> <span class="n">cols</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code>    <span class="c1">//FindBy(css = "#form-row")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-row"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">FormRow</span> <span class="n">formRow</span><span class="o">;</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTextTest</span><span class="o">()</span> <span class="o">{</span>
