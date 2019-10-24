@@ -14038,6 +14038,14 @@ Form can consists of:
     <span class="kd">public</span> <span class="n">WebList</span> <span class="n">cols</span><span class="o">;</span>
 
     <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">firstName</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">textFirstName</span><span class="o">);</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">firstName</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">textFirstName</span><span class="o">));</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">lastName</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">textLastName</span><span class="o">);</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">lastName</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">textLastName</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkStructureRow</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">formRow</span><span class="o">.</span><span class="na">row</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-row"</span><span class="o">);</span>
         <span class="n">formRow</span><span class="o">.</span><span class="na">row</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
@@ -14087,7 +14095,7 @@ Form can consists of:
 
 <p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormGridTests.java" target="_blank">Bootstrap test examples</a></p>
 
-<p><br></p>
+<p><br><br><br><br></p>
 
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/forms/#form-grid">Form grid</a></strong></p>
 
