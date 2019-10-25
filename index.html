@@ -198,6 +198,22 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+    <style>
+        .content pre.html {
+            background-color: white;
+            float: none;
+            clear: none;
+            margin-left: 28px;
+            margin-right: 53%;
+            width: auto;
+            padding: 0.3em;
+            overflow: hidden;
+        }
+        .content .html code, .content pre.html{font-size: 10px; }
+        pre.html .s { color: #d44950; }
+        pre.html .na { color: #4f9fcf; }
+        pre.html .nt { color: #2f6f9f; }
+    </style>
       <script src="javascripts/all.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
@@ -14055,6 +14071,18 @@ Form can consists of:
     <span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/form-row-html.png" alt="Form row Example" /></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"form-row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"First name"</span><span class="nt">&gt;</span> hfjkwefjkewfwefhwejhfhjkwefwef
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"Last name"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre>
+<p><br /></p>
 
 <table><thead>
 <tr>
