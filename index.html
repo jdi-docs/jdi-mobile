@@ -11116,9 +11116,12 @@ Below are examples of different toggle styles.</p>
             <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"progressbar"</span><span class="o">);</span>
 <span class="o">}</span>
 
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress-bar"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">style=</span><span class="s">"width: 15%"</span> <span class="na">aria-valuenow=</span><span class="s">"15"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress-bar bg-success"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">style=</span><span class="s">"width: 30%"</span> <span class="na">aria-valuenow=</span><span class="s">"30"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress-bar bg-info"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">style=</span><span class="s">"width: 20%"</span> <span class="na">aria-valuenow=</span><span class="s">"20"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/progress-multiple-html.png" alt="Progress multiple HTML example" /></p>
-
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -14295,6 +14298,8 @@ Form can consists of:
 <p>Be sure to use <code>.col-form-label-sm</code> or <code>.col-form-label-lg</code> to your <code>&lt;label&gt;</code>s or <code>&lt;legend&gt;</code>s to correctly follow the size of <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
 
 <p><img src="images/bootstrap/form-horizontal-sizing.png" alt="Horizontal form label sizing" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code>
 <span class="c1">// @FindBy(id = "form-horizontal-label-size")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-horizontal-label-size"</span><span class="o">)</span>
@@ -14340,11 +14345,27 @@ Form can consists of:
                 <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"Email"</span><span class="o">);</span>
 <span class="o">}</span>
 
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"colFormLabelSm"</span> <span class="na">class=</span><span class="s">"col-sm-2 col-form-label col-form-label-sm"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">class=</span><span class="s">"form-control form-control-sm"</span> <span class="na">id=</span><span class="s">"colFormLabelSm"</span> <span class="na">placeholder=</span><span class="s">"col-form-label-sm"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"colFormLabel"</span> <span class="na">class=</span><span class="s">"col-sm-2 col-form-label"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"colFormLabel"</span> <span class="na">placeholder=</span><span class="s">"col-form-label"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"colFormLabelLg"</span> <span class="na">class=</span><span class="s">"col-sm-2 col-form-label col-form-label-lg"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">class=</span><span class="s">"form-control form-control-lg"</span> <span class="na">id=</span><span class="s">"colFormLabelLg"</span> <span class="na">placeholder=</span><span class="s">"col-form-label-lg"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
 </code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/form-horizontal-sizing-html.png" alt="Horizontal label sizing example" /></p>
-
 <p>Form is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -14370,6 +14391,8 @@ Form can consists of:
 <p>Bootstrap grid system allows you to place any number of <code>.cols</code> within a <code>.row</code> or <code>.form-row</code>. They’ll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining <code>.cols</code> equally split the rest, with specific column classes like <code>.col-7</code>.</p>
 
 <p><img src="images/bootstrap/form-column-sizing.png" alt="Column sizing" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code>
 <span class="c1">// @FindBy(id = "form-column-size")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-column-size"</span><span class="o">)</span>
@@ -14408,11 +14431,20 @@ Form can consists of:
             <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
 <span class="o">}</span>
 
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-7"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"City"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"State"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"Zip"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
 </code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/form-column-sizing-html.png" alt="Column sizing example" /></p>
-
 <p>Form is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -15804,6 +15836,8 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 <p>When modals become too long for the user’s viewport or device, they scroll independent of the page itself.</p>
 
 <p><img src="images/bootstrap/modal_scrollable1.png" alt="Modal long scrollable" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code>
 <span class="c1">// @FindBy(id = "modal-scroll-long")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-scroll-long"</span><span class="o">)</span>
@@ -15842,17 +15876,61 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
     <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">disappear</span><span class="o">();</span>
 <span class="o">}</span>
 
+</code></pre><pre class="highlight html tab-html"><code><span class="c">&lt;!-- Button trigger modal --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#exampleModalLong"</span><span class="nt">&gt;</span>
+  Launch demo modal
+<span class="nt">&lt;/button&gt;</span>
+
+<span class="c">&lt;!-- Modal --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span> <span class="na">id=</span><span class="s">"exampleModalLong"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"exampleModalLongTitle"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span> <span class="na">role=</span><span class="s">"document"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"exampleModalLongTitle"</span><span class="nt">&gt;</span>Modal title<span class="nt">&lt;/h5&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+        ...
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Save changes<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/modal_scrollable-html1.png" alt="Modal scrollable example" /></p>
-
 <p><img src="images/bootstrap/modal_scrollable2.png" alt="Modal scrollable" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight html tab-html"><code><span class="c">&lt;!-- Button trigger modal --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#exampleModalScrollable"</span><span class="nt">&gt;</span>
+  Launch demo modal
+<span class="nt">&lt;/button&gt;</span>
 
-<p><img src="images/bootstrap/modal_scrollable-html2.png" alt="Modal scrollable example" /></p>
-
+<span class="c">&lt;!-- Modal --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span> <span class="na">id=</span><span class="s">"exampleModalScrollable"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"exampleModalScrollableTitle"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog modal-dialog-scrollable"</span> <span class="na">role=</span><span class="s">"document"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"exampleModalScrollableTitle"</span><span class="nt">&gt;</span>Modal title<span class="nt">&lt;/h5&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+        ...
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Save changes<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
 <p>Modal is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
