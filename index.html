@@ -10183,10 +10183,24 @@ Navbar brand as heading <br>
 
         <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarBrands"</span><span class="o">)</span>
         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNavbarText</span><span class="o">(</span><span class="n">UIElement</span> <span class="n">uiBaseElement</span><span class="o">,</span> <span class="n">String</span> <span class="n">navbarText</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">uiBaseElement</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-                    <span class="n">uiBaseElement</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">navbarText</span><span class="o">);</span>
-                    <span class="n">uiBaseElement</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+             <span class="n">uiBaseElement</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+             <span class="n">uiBaseElement</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">navbarText</span><span class="o">);</span>
+             <span class="n">uiBaseElement</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
         <span class="o">}</span>
+
+        <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarBrandsWithImage"</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNavbarImage</span><span class="o">(</span><span class="n">UIElement</span> <span class="n">brandWithImage</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">UIElement</span> <span class="n">imgFromNavbar</span> <span class="o">=</span> <span class="n">brandWithImage</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+            <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">highlight</span><span class="o">(</span><span class="s">"blue"</span><span class="o">);</span>
+            <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">tag</span><span class="o">(</span><span class="s">"img"</span><span class="o">).</span><span class="na">attr</span><span class="o">(</span><span class="s">"src"</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="n">imgPath</span><span class="o">));</span>
+            <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+            <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">winNumber</span> <span class="o">=</span> <span class="n">WindowsManager</span><span class="o">.</span><span class="na">windowsCount</span><span class="o">();</span>
+            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span><span class="o">);</span>
+            <span class="n">assertThat</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">navbarUrl</span><span class="o">));</span>
+            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">closeWindow</span><span class="o">();</span>
+            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code>
 <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"navbar-base-for-brand"</span><span class="nt">&gt;</span>
      <span class="nt">&lt;p&gt;</span>Navbar - Brand as link<span class="nt">&lt;/p&gt;</span>
@@ -14208,9 +14222,19 @@ Form can consists of:
             <span class="n">c</span><span class="o">.</span><span class="na">lastName</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
         <span class="o">}));</span>
     <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"form-grid-base"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"first_name"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"First name"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"last_name"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"Last name"</span> <span class="na">onkeypress=</span><span class="s">"if (event.keyCode==13){
+                   document.getElementById('form-grid-base').submit();
+                   alert('Form filled and submitted successfully');}"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/form-grid-html.png" alt="Form grid Example" /></p>
-
 <table><thead>
 <tr>
 <th>Method</th>
