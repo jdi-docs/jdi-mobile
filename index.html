@@ -11081,8 +11081,7 @@ Below are examples of different toggle styles.</p>
 <p><img src="images/bootstrap/progress-multiple.png" alt="Progress multiple example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
-<span class="c1">// @FindBy(id = "progress-multiple-bars")</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(id = "progress-multiple-bars")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-bars"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">ProgressMultipleBars</span> <span class="n">progressMultipleBars</span><span class="o">;</span>
 
@@ -11115,7 +11114,6 @@ Below are examples of different toggle styles.</p>
             <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"progress-bar"</span><span class="o">)</span>
             <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"progressbar"</span><span class="o">);</span>
 <span class="o">}</span>
-
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress-bar"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">style=</span><span class="s">"width: 15%"</span> <span class="na">aria-valuenow=</span><span class="s">"15"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span><span class="nt">&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress-bar bg-success"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">style=</span><span class="s">"width: 30%"</span> <span class="na">aria-valuenow=</span><span class="s">"30"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span><span class="nt">&gt;&lt;/div&gt;</span>
@@ -14300,8 +14298,7 @@ Form can consists of:
 <p><img src="images/bootstrap/form-horizontal-sizing.png" alt="Horizontal form label sizing" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
-<span class="c1">// @FindBy(id = "form-horizontal-label-size")</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(id = "form-horizontal-label-size")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-horizontal-label-size"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">FormHorizontalLabelSizing</span> <span class="n">formHorizontalLabelSizing</span><span class="o">;</span>
 
@@ -14344,7 +14341,6 @@ Form can consists of:
                 <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">labelClass</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"Email"</span><span class="o">);</span>
 <span class="o">}</span>
-
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;form&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group row"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"colFormLabelSm"</span> <span class="na">class=</span><span class="s">"col-sm-2 col-form-label col-form-label-sm"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
@@ -14368,7 +14364,9 @@ Form can consists of:
 </code></pre>
 <p>Form is represented by Section class in Java:</p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+<ul>
+<li>Section #BS</li>
+</ul>
 
 <p>Available methods in Java JDI Light:</p>
 
@@ -14381,20 +14379,41 @@ Form can consists of:
 </thead><tbody>
 <tr>
 <td><strong>is()</strong></td>
-<td>Asserts element</td>
-<td>UIAssert</td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormHorizontalLabelSizingTests.java">Bootstrap test examples</a></p>
+
+<p><br><br></p>
 <h4 id='column-sizing'><a href="https://getbootstrap.com/docs/4.3/components/forms/#column-sizing">Column sizing</a></h4>
 <p>Bootstrap grid system allows you to place any number of <code>.cols</code> within a <code>.row</code> or <code>.form-row</code>. They’ll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining <code>.cols</code> equally split the rest, with specific column classes like <code>.col-7</code>.</p>
 
 <p><img src="images/bootstrap/form-column-sizing.png" alt="Column sizing" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
-<span class="c1">// @FindBy(id = "form-column-size")</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(id = "form-column-size")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#form-column-size"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">FormColumnSizing</span> <span class="n">formColumnSizing</span><span class="o">;</span>
 
@@ -14430,7 +14449,6 @@ Form can consists of:
             <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"placeholder"</span><span class="o">,</span> <span class="n">placeholder</span><span class="o">)</span>
             <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
 <span class="o">}</span>
-
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;form&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-row"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-7"</span><span class="nt">&gt;</span>
@@ -14447,7 +14465,9 @@ Form can consists of:
 </code></pre>
 <p>Form is represented by Section class in Java:</p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+<ul>
+<li>Section #BS</li>
+</ul>
 
 <p>Available methods in Java JDI Light:</p>
 
@@ -14460,12 +14480,34 @@ Form can consists of:
 </thead><tbody>
 <tr>
 <td><strong>is()</strong></td>
-<td>Asserts element</td>
-<td>UIAssert</td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
 </tr>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormColumnSizingTests.java">Bootstrap test examples</a></p>
+
+<p><br><br></p>
 <h4 id='form-disabled'><a href="https://getbootstrap.com/docs/4.3/components/forms/#disabled-forms">Form disabled</a></h4>
 <p>Add the <code>disabled</code> boolean attribute on an input to prevent user interactions and make it appear lighter.</p>
 
@@ -15791,7 +15833,9 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 
 <p>Modal is represented by Section class in Java:</p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+<ul>
+<li>Section #BS</li>
+</ul>
 
 <p>Inner elements of Modal - Live demo are represented by the following classes:</p>
 
@@ -15838,8 +15882,7 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 <p><img src="images/bootstrap/modal_scrollable1.png" alt="Modal long scrollable" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
-<span class="c1">// @FindBy(id = "modal-scroll-long")</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(id = "modal-scroll-long")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#modal-scroll-long"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">SectionModalLongScrolling</span> <span class="n">sectionModalLongScrolling</span><span class="o">;</span>
 
@@ -15875,7 +15918,6 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
     <span class="n">modal</span><span class="o">.</span><span class="na">bottomClose</span><span class="o">();</span>
     <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">disappear</span><span class="o">();</span>
 <span class="o">}</span>
-
 </code></pre><pre class="highlight html tab-html"><code><span class="c">&lt;!-- Button trigger modal --&gt;</span>
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#exampleModalLong"</span><span class="nt">&gt;</span>
   Launch demo modal
@@ -15933,7 +15975,9 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </code></pre>
 <p>Modal is represented by Section class in Java:</p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+<ul>
+<li>Section #BS</li>
+</ul>
 
 <p>Available methods in Java JDI Light:</p>
 
@@ -15948,6 +15992,21 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 <td><strong>is()</strong></td>
 <td>Asserts element</td>
 <td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Asserts element is displayed</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>hidden()</strong></td>
+<td>Asserts element is hidden</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>close()</strong></td>
+<td>Close modal</td>
+<td>void</td>
 </tr>
 </tbody></table>
 
