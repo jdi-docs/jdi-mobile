@@ -3696,7 +3696,10 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="p">}</span>
 </code></pre>
 <p><img src="images/html/numberSelector_html.png" alt="NumberSelector" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"height"</span><span class="nt">&gt;</span>Height (metres):<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"height"</span> <span class="na">min=</span><span class="s">"0.3"</span> <span class="na">max=</span><span class="s">"2.5"</span> <span class="na">step=</span><span class="s">"0.2"</span>
+ <span class="na">placeholder=</span><span class="s">"20 cm increments. Range [0.3,2.5]"</span><span class="nt">&gt;</span>
+</code></pre>
 <p>Here is the list of available methods in Java:</p>
 
 <table><thead>
@@ -3853,8 +3856,10 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </code></pre>
 <p>Here is an example with provided HTML code:</p>
 
-<p><img src="images/html/progressbar_html.png" alt="ProgressBar example" /></p>
-
+<!-- ![ProgressBar example](../images/html/progressbar_html.png) -->
+<pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"progress"</span><span class="nt">&gt;</span>File progress<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;progress</span> <span class="na">id=</span><span class="s">"progress"</span> <span class="na">max=</span><span class="s">"100"</span> <span class="na">value=</span><span class="s">"70"</span><span class="nt">&gt;&lt;/progress&gt;</span>
+</code></pre>
 <p>Available method in Java JDI Light:</p>
 
 <table><thead>
@@ -4013,7 +4018,31 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <p><strong>Range</strong> - A graphical control element that allows the user to set the value from the range.</br></p>
 
 <p><img src="images/html/range_html.png" alt="Range" /></br></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"volume"</span><span class="nt">&gt;</span>Volume<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">disabled=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"volume-value"</span><span class="nt">&gt;</span> <span class="nt">&lt;br&gt;</span>
+    <span class="nt">&lt;span&gt;</span>10<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"range"</span> <span class="na">id=</span><span class="s">"volume"</span> <span class="na">min=</span><span class="s">"10"</span> <span class="na">max=</span><span class="s">"100"</span> <span class="na">value=</span><span class="s">"90"</span> <span class="na">step=</span><span class="s">"5"</span>
+           <span class="na">class=</span><span class="s">"range"</span> <span class="na">list=</span><span class="s">"volume-list"</span>
+           <span class="na">oninput=</span><span class="s">"showVal(this.value)"</span> <span class="na">onchange=</span><span class="s">"showVal(this.value)"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span&gt;</span>100<span class="nt">&lt;/span&gt;</span>
 
+    <span class="nt">&lt;datalist</span> <span class="na">id=</span><span class="s">"volume-list"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"20"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"40"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"60"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"80"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"100"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/datalist&gt;</span> <span class="nt">&lt;br&gt;</span> <span class="nt">&lt;br&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"range"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>
+</code></pre>
 <p>Range is represented by the following class:</br></p>
 
 <ul>
@@ -4344,7 +4373,11 @@ C#: JDI.Light.Elements.Common.TextElement</p>
 <p><strong>TextField</strong> – Is a simple element type that allows users to fill in text fields.</p>
 
 <p><img src="images/html/textField_html.png" alt="InputTypeTextField" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"name"</span><span class="nt">&gt;</span>Your name:<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"name"</span> <span class="na">placeholder=</span><span class="s">"Input name"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"disabled-name"</span><span class="nt">&gt;</span>Surname:<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"disabled-name"</span> <span class="na">placeholder=</span><span class="s">"Iovlev"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>
+</code></pre>
 <p>Text fields are represented by the following classes in Java and C#:</p>
 
 <ul>
@@ -4520,7 +4553,14 @@ C#: JDI.Light.Elements.Common.TextElement</p>
 <p><strong>TextArea</strong> – Is a simple element type that allows users to fill in text areas (they may contain a few lines). </p>
 
 <p><img src="images/html/textArea_html.png" alt="InputTypeTextArea" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"text-area"</span><span class="nt">&gt;</span>Text example:<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"text-area"</span> <span class="na">rows=</span><span class="s">"3"</span> <span class="na">cols=</span><span class="s">"33"</span> <span class="na">maxlength=</span><span class="s">"200"</span> <span class="na">minlength=</span><span class="s">"10"</span>
+          <span class="na">required=</span><span class="s">""</span> <span class="na">wrap=</span><span class="s">"hard"</span> <span class="na">placeholder=</span><span class="s">"Input huge text"</span><span class="nt">&gt;</span>Textarea with sizing
+          and wrap attribute (try values of hard, soft, and off to see how it affects wrapping).
+          The maximum number of characters is constrained to 200 by the maxlength attribute.
+<span class="nt">&lt;/textarea&gt;</span> <span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;textarea</span> <span class="na">disabled=</span><span class="s">""</span> <span class="na">placeholder=</span><span class="s">"Disabled area"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+</code></pre>
 <p>Text areas are represented by the following classes in Java and C#:</p>
 
 <ul>
@@ -4713,7 +4753,8 @@ C#: JDI.Light.Elements.Common.TextElement</p>
 
 </code></pre>
 <p><img src="images/title.png" alt="Title" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;h1</span> <span class="na">ui=</span><span class="s">"jdi-title"</span> <span class="na">onclick=</span><span class="s">"alert('JDI Title');"</span><span class="nt">&gt;</span>JDI Testing platform<span class="nt">&lt;/h1&gt;</span>
+</code></pre>
 <p>Here is the list of methods available in C# JDI Light:</p>
 
 <table><thead>
@@ -4801,7 +4842,18 @@ C#: JDI.Light.Elements.Common.TextElement</p>
 <p>Consider an example where each radio button is a particular color, described with given HTML code:</p>
 
 <p><img src="images/html/radio_html.png" alt="RadioButton" /></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"red"</span> <span class="na">name=</span><span class="s">"colors"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"red"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
 
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"green"</span> <span class="na">name=</span><span class="s">"colors"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"green"</span><span class="nt">&gt;</span>Green<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"blue"</span> <span class="na">name=</span><span class="s">"colors"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"blue"</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"yellow"</span> <span class="na">name=</span><span class="s">"colors"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"yellow"</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/label&gt;</span>
+</code></pre>
 <p>Here is the list of some available methods:</p>
 
 <table><thead>
@@ -5082,7 +5134,35 @@ C#: JDI.Light.Elements.Common.TextElement</p>
 </ul>
 
 <p><img src="images/html/tableHtml.png" alt="Table" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"uui-table stripe tbl-without-header table-td-click"</span> <span class="na">ui=</span><span class="s">"table"</span> <span class="na">id=</span><span class="s">"users-table"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>Phone<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>Email<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>City<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Burke Tucker<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>076 1971 1687<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>et.euismod.et@ut.edu<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>GozŽe<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Grady Brock<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>(011307) 16843<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>cursus.et@commodo.org<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Alcobendas<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Harding Lloyd<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>0800 1111<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>neque.In.ornare@mauris.co.uk<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Beauvais<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre>
 <p>Here is a list of available methods in Java:</p>
 
 <table><thead>
@@ -5659,7 +5739,35 @@ able to perform a list of readonly interactions with this element in order to ge
 </ul>
 
 <p><img src="images/html/tableHtml.png" alt="DataTable" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"uui-table stripe tbl-without-header table-td-click"</span> <span class="na">ui=</span><span class="s">"table"</span> <span class="na">id=</span><span class="s">"users-table"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>Phone<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>Email<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th&gt;</span>City<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Burke Tucker<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>076 1971 1687<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>et.euismod.et@ut.edu<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>GozŽe<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Grady Brock<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>(011307) 16843<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>cursus.et@commodo.org<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Alcobendas<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Harding Lloyd<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>0800 1111<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>neque.In.ornare@mauris.co.uk<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>Beauvais<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre>
 <p>Here is a list of available methods in Java (<em>btw DataTable expand Table class - methods from previous table are available too</em>):</p>
 
 <p>In return types column <em>&quot;D&quot;</em> refers to the user data object and <em>&quot;L&quot;</em> refers to the table line object.</p>
@@ -5907,7 +6015,16 @@ able to perform a list of readonly interactions with this element in order to ge
 <p>Suppose we have &#39;Colors&#39; dropdown, which looks like this in HTML code:</p>
 
 <p><img src="images/html/dropdown_html.png" alt="Dropdown HTML" /> </p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group colors"</span> <span class="na">ui=</span><span class="s">"dropdown"</span> <span class="na">id=</span><span class="s">"colors"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"selectpicker uui-form-element"</span> <span class="na">style=</span><span class="s">"display: none;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Colors<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Red<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Green<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Blue<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Yellow<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/select&gt;&lt;div</span> <span class="na">class=</span><span class="s">"btn-group bootstrap-select uui-form-element"</span><span class="nt">&gt;&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn dropdown-toggle selectpicker btn-default"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">title=</span><span class="s">"Colors"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"filter-option pull-left"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu open"</span> <span class="na">style=</span><span class="s">"max-height: 933px; overflow: hidden; min-height: 90px;"</span><span class="nt">&gt;&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu inner selectpicker"</span> <span class="na">role=</span><span class="s">"menu"</span> <span class="na">style=</span><span class="s">"max-height: 921px; overflow-y: auto; min-height: 78px;"</span><span class="nt">&gt;&lt;li</span> <span class="na">rel=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"selected"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;li</span> <span class="na">rel=</span><span class="s">"1"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/span&gt;&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;li</span> <span class="na">rel=</span><span class="s">"2"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Green<span class="nt">&lt;/span&gt;&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;li</span> <span class="na">rel=</span><span class="s">"3"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/span&gt;&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;li</span> <span class="na">rel=</span><span class="s">"4"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/span&gt;&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
 <p><strong>Dropdown representation</strong></p>
 <pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="n">Droplist</span> <span class="n">colors</span><span class="o">;</span>
 <span class="nd">@CSS</span><span class="o">(</span><span class="s">"#colors"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Droplist</span> <span class="n">colors</span><span class="o">;</span>
@@ -5990,7 +6107,13 @@ This type can be used in cases when dropdown is represented with HTML <em>&lt;se
 
 </code></pre>
 <p><img src="images/html/dropdown_html5.png" alt="Dropdown HTML5" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"dress-code"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"fancy"</span><span class="nt">&gt;</span>Fancy<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"casual"</span> <span class="na">selected=</span><span class="s">""</span><span class="nt">&gt;</span>Casual<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"disabled"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"pirate"</span><span class="nt">&gt;</span>Pirate<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</code></pre>
 <p>Here is a list of some available methods:</p>
 
 <table><thead>
@@ -6203,7 +6326,35 @@ This type can be used in cases when dropdown is represented with HTML <em>&lt;se
 <p><strong>MultiDropDown</strong> – A graphical control element that allows user to choose several values from a list.</p>
 
 <p><img src="images/multidropdown.png" alt="DropDown" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"multiselect-native-select"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"multi-dropdown"</span> <span class="na">multiple=</span><span class="s">"multiple"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"electro"</span><span class="nt">&gt;</span>Electro<span class="nt">&lt;/option&gt;</span>
+         <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"steam"</span> <span class="na">selected=</span><span class="s">""</span><span class="nt">&gt;</span>Steam<span class="nt">&lt;/option&gt;</span>
+         <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"metalic"</span><span class="nt">&gt;</span>Metalic<span class="nt">&lt;/option&gt;</span>
+         <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"dis"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/option&gt;</span>
+         <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"wood"</span><span class="nt">&gt;</span>Wood<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"multiselect dropdown-toggle btn btn-default"</span>
+                <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">title=</span><span class="s">"Steam"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"multiselect-selected-text"</span><span class="nt">&gt;</span>Steam<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;b</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/b&gt;</span>
+        <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"multiselect-container dropdown-menu"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"checkbox"</span> <span class="na">title=</span><span class="s">"Electro"</span><span class="nt">&gt;&lt;input</span>
+                    <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"electro"</span><span class="nt">&gt;</span> Electro<span class="nt">&lt;/label&gt;&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"checkbox"</span> <span class="na">title=</span><span class="s">"Steam"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"steam"</span><span class="nt">&gt;</span> Steam<span class="nt">&lt;/label&gt;&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"checkbox"</span> <span class="na">title=</span><span class="s">"Metalic"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"metalic"</span><span class="nt">&gt;</span> Metalic<span class="nt">&lt;/label&gt;&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"disabled"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"-1"</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"checkbox"</span> <span class="na">title=</span><span class="s">"Disabled"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"dis"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span> Disabled<span class="nt">&lt;/label&gt;&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span><span class="nt">&gt;&lt;label</span> <span class="na">class=</span><span class="s">"checkbox"</span> <span class="na">title=</span><span class="s">"Wood"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"wood"</span><span class="nt">&gt;</span> Wood<span class="nt">&lt;/label&gt;&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/span&gt;</span>
+</code></pre>
 <p>MultiDropDown elements can be described by the following class:</p>
 
 <ul>
@@ -6440,7 +6591,17 @@ DataList element contains a set of options with values available as inputs.</p>
 <span class="o">}</span>
 </code></pre>
 <p><img src="images/html/datalist_html.png" alt="Datalist example" /></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"ice-cream"</span><span class="nt">&gt;</span>Choose your lovely icecream<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">list=</span><span class="s">"ice-cream-flavors"</span> <span class="na">id=</span><span class="s">"ice-cream"</span> <span class="na">placeholder=</span><span class="s">"Ice cream"</span><span class="nt">&gt;</span>
 
+<span class="nt">&lt;datalist</span> <span class="na">id=</span><span class="s">"ice-cream-flavors"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Chocolate"</span><span class="nt">&gt;&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Coconut"</span><span class="nt">&gt;&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Mint"</span><span class="nt">&gt;&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Strawberry"</span><span class="nt">&gt;&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Vanilla"</span><span class="nt">&gt;&lt;/option&gt;</span>
+<span class="nt">&lt;/datalist&gt;</span>
+</code></pre>
 <p>The list of methods available for Java in JDI Light:</p>
 
 <table><thead>
