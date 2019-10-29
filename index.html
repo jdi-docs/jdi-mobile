@@ -6777,7 +6777,21 @@ DataList element contains a set of options with values available as inputs.</p>
 <span class="p">}</span>
 </code></pre>
 <p><img src="images/html/checklist_html.png" alt="Checklist Example" /></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"hot"</span> <span class="na">name=</span><span class="s">"checks-group"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"hot"</span><span class="nt">&gt;</span>Hot option<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
 
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"cold"</span> <span class="na">name=</span><span class="s">"checks-group"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"cold"</span><span class="nt">&gt;</span>Cold<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"rainy"</span> <span class="na">name=</span><span class="s">"checks-group"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"rainy"</span><span class="nt">&gt;</span>Rainy day<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"sunny-day"</span> <span class="na">name=</span><span class="s">"checks-group"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"sunny-day"</span><span class="nt">&gt;</span>Sunny<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"disabled-ch"</span> <span class="na">name=</span><span class="s">"checks-group"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"disabled-ch"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/label&gt;</span>
+</code></pre>
 <p>List of available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -6979,7 +6993,14 @@ MultiSelector is represented by the following class:</p>
 <span class="p">}</span>
 </code></pre>
 <p><img src="images/html/multiSelectHtml.png" alt="MultiSelector" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"ages"</span> <span class="na">multiple=</span><span class="s">""</span> <span class="na">size=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"electro"</span><span class="nt">&gt;</span>Electro<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"steam"</span> <span class="na">selected=</span><span class="s">""</span><span class="nt">&gt;</span>Steam<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"metalic"</span><span class="nt">&gt;</span>Metalic<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"dis"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"wood"</span><span class="nt">&gt;</span>Wood<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</code></pre>
 <p>Here is a list of available methods and properties in C#:</p>
 
 <table><thead>
@@ -7152,8 +7173,17 @@ value from a list or enter it by himself (is inherited from the <a href="#datali
 </code></pre>
 <p>Have a look at the following example with HTML code provided:</p>
 
-<p><img src="images/html/datalist_html.png" alt="Combobox example" /></p>
+<!-- ![Combobox example](../images/html/datalist_html.png) -->
+<pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">list=</span><span class="s">"ice-cream-flavors"</span> <span class="na">id=</span><span class="s">"ice-cream"</span> <span class="na">placeholder=</span><span class="s">"Ice cream"</span><span class="nt">&gt;</span>
 
+<span class="nt">&lt;datalist</span> <span class="na">id=</span><span class="s">"ice-cream-flavors"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Chocolate"</span><span class="nt">&gt;&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Coconut"</span><span class="nt">&gt;&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Mint"</span><span class="nt">&gt;&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Strawberry"</span><span class="nt">&gt;&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"Vanilla"</span><span class="nt">&gt;&lt;/option&gt;</span>
+<span class="nt">&lt;/datalist&gt;</span>
+</code></pre>
 <p>The list of methods available for Java in JDI Light:</p>
 
 <table><thead>
@@ -7417,7 +7447,20 @@ Form consists of elements based on <em>SetValue</em> interface and buttons with 
 <p>Form provides the <em>fill, submit and verify/check</em> functionality.  </p>
 
 <p><img src="images/html/form_html.png" alt="Form" /></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-horizontal login"</span> <span class="na">id=</span><span class="s">"login-form"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-horizontal-pad"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;&lt;label</span> <span class="na">for=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"col-sm-3"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;&lt;input</span> <span class="na">id=</span><span class="s">"name"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;&lt;label</span> <span class="na">for=</span><span class="s">"password"</span> <span class="na">class=</span><span class="s">"col-sm-3"</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;&lt;input</span> <span class="na">id=</span><span class="s">"password"</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"login-txt hidden"</span><span class="nt">&gt;</span>* Login Faild<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"uui-button dark-blue btn-login"</span> <span class="na">id=</span><span class="s">"login-button"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-sign-in"</span><span class="nt">&gt;&lt;/i&gt;&lt;span&gt;</span>Enter<span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre>
 <p>Form is located in the following classes:</p>
 
 <ul>
