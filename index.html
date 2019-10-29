@@ -10173,12 +10173,12 @@ Navbar brand as heading <br>
             <span class="n">brandAsLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasAttr</span><span class="o">(</span><span class="s">"href"</span><span class="o">);</span>
             <span class="n">brandAsLink</span><span class="o">.</span><span class="na">highlight</span><span class="o">(</span><span class="s">"blue"</span><span class="o">);</span>
             <span class="n">brandAsLink</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
-            <span class="n">brandAsLink</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
             <span class="kt">int</span> <span class="n">winNumber</span> <span class="o">=</span> <span class="n">WindowsManager</span><span class="o">.</span><span class="na">windowsCount</span><span class="o">();</span>
-            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span><span class="o">);</span>
+            <span class="n">brandAsLink</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>           
+            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
             <span class="n">assertThat</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">navbarUrl</span><span class="o">));</span>
             <span class="n">WindowsManager</span><span class="o">.</span><span class="na">closeWindow</span><span class="o">();</span>
-            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span><span class="o">);</span>
          <span class="o">}</span>
 
         <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarBrands"</span><span class="o">)</span>
@@ -10194,12 +10194,12 @@ Navbar brand as heading <br>
             <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">highlight</span><span class="o">(</span><span class="s">"blue"</span><span class="o">);</span>
             <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">tag</span><span class="o">(</span><span class="s">"img"</span><span class="o">).</span><span class="na">attr</span><span class="o">(</span><span class="s">"src"</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="n">imgPath</span><span class="o">));</span>
             <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
-            <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
             <span class="kt">int</span> <span class="n">winNumber</span> <span class="o">=</span> <span class="n">WindowsManager</span><span class="o">.</span><span class="na">windowsCount</span><span class="o">();</span>
-            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span><span class="o">);</span>
+            <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>          
+            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
             <span class="n">assertThat</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">navbarUrl</span><span class="o">));</span>
             <span class="n">WindowsManager</span><span class="o">.</span><span class="na">closeWindow</span><span class="o">();</span>
-            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="n">WindowsManager</span><span class="o">.</span><span class="na">switchToWindow</span><span class="o">(</span><span class="n">winNumber</span><span class="o">);</span>
     <span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code>
 <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"navbar-base-for-brand"</span><span class="nt">&gt;</span>
