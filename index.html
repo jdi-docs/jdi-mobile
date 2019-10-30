@@ -2807,7 +2807,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </code></pre>
 <p><strong>Input Type Month</strong> – a graphical control element that allows user to set values for month and year.</p>
 
-<p><img src="images/html/inputTypeMonth_html.png" alt="InputTypeMonth" /></p>
+<p><img src="images/html/inputTypeMonth_html2.png" alt="InputTypeMonth" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"month-date"</span><span class="nt">&gt;</span>Month of Holidays<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"month"</span> <span class="na">id=</span><span class="s">"month-date"</span> <span class="na">min=</span><span class="s">"2015-03"</span>
  <span class="na">max=</span><span class="s">"2020-12"</span> <span class="na">value=</span><span class="s">"2018-05"</span><span class="nt">&gt;</span>
@@ -2876,7 +2876,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </code></pre>
 <p><strong>Input Type DateTime-Local</strong> – A graphical control element that allows user to set time and date.</p>
 
-<p><img src="images/html/inputDateTimeLocal_html.png" alt="InputTypeDateTime" /></p>
+<p><img src="images/html/inputDateTimeLocal_html2.png" alt="InputTypeDateTime" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"party-time"</span><span class="nt">&gt;</span>Date/time:<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"datetime-local"</span> <span class="na">id=</span><span class="s">"party-time"</span> <span class="na">value=</span><span class="s">"2018-06-12T19:30"</span> <span class="na">min=</span><span class="s">"2018-05-07T00:00"</span> <span class="na">max=</span><span class="s">"2018-06-14T00:00"</span><span class="nt">&gt;</span>
 </code></pre>
@@ -3466,6 +3466,8 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.Menu</em></li>
 </ul>
 
+<p><img src="images/html/menu2.png" alt="Menu example" /> </p>
+
 <p>Here is an example with provided HTML code:</p>
 
 <!-- ![Menu example](../images/html/menu.png) -->
@@ -3695,7 +3697,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
     <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">numberSelector</span><span class="p">.</span><span class="nf">Value</span><span class="p">());</span>
 <span class="p">}</span>
 </code></pre>
-<p><img src="images/html/numberSelector_html.png" alt="NumberSelector" /></p>
+<p><img src="images/html/numberSelector_html2.png" alt="NumberSelector" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"height"</span><span class="nt">&gt;</span>Height (metres):<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"height"</span> <span class="na">min=</span><span class="s">"0.3"</span> <span class="na">max=</span><span class="s">"2.5"</span> <span class="na">step=</span><span class="s">"0.2"</span>
  <span class="na">placeholder=</span><span class="s">"20 cm increments. Range [0.3,2.5]"</span><span class="nt">&gt;</span>
@@ -4017,7 +4019,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 </code></pre>
 <p><strong>Range</strong> - A graphical control element that allows the user to set the value from the range.</br></p>
 
-<p><img src="images/html/range_html.png" alt="Range" /></br></p>
+<p><img src="images/html/range_html2.png" alt="Range" /></br></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"volume"</span><span class="nt">&gt;</span>Volume<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">disabled=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"volume-value"</span><span class="nt">&gt;</span> <span class="nt">&lt;br&gt;</span>
     <span class="nt">&lt;span&gt;</span>10<span class="nt">&lt;/span&gt;</span>
@@ -4246,8 +4248,10 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
    <span class="p">}</span>
 
 </code></pre>
-<p><img src="images/html/text_html.png" alt="Text" /></p>
-
+<p><img src="images/html/text_html2.png" alt="Text" /></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">ui=</span><span class="s">"jdi-text"</span><span class="nt">&gt;</span>Powerful Framework for UI Tests Automation. Suitable for any UI project: 
+Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span class="nt">&lt;/p&gt;</span>
+</code></pre>
 <p>Text is represented by the following class:</p>
 
 <p>Java: com.epam.jdi.light.ui.html.common.Text<br>
@@ -4372,7 +4376,7 @@ C#: JDI.Light.Elements.Common.TextElement</p>
 </code></pre>
 <p><strong>TextField</strong> – Is a simple element type that allows users to fill in text fields.</p>
 
-<p><img src="images/html/textField_html.png" alt="InputTypeTextField" /></p>
+<p><img src="images/html/textField_html2.png" alt="InputTypeTextField" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"name"</span><span class="nt">&gt;</span>Your name:<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"name"</span> <span class="na">placeholder=</span><span class="s">"Input name"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"disabled-name"</span><span class="nt">&gt;</span>Surname:<span class="nt">&lt;/label&gt;</span>
@@ -4552,7 +4556,7 @@ C#: JDI.Light.Elements.Common.TextElement</p>
 </code></pre>
 <p><strong>TextArea</strong> – Is a simple element type that allows users to fill in text areas (they may contain a few lines). </p>
 
-<p><img src="images/html/textArea_html.png" alt="InputTypeTextArea" /></p>
+<p><img src="images/html/textArea_html2.png" alt="InputTypeTextArea" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"text-area"</span><span class="nt">&gt;</span>Text example:<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"text-area"</span> <span class="na">rows=</span><span class="s">"3"</span> <span class="na">cols=</span><span class="s">"33"</span> <span class="na">maxlength=</span><span class="s">"200"</span> <span class="na">minlength=</span><span class="s">"10"</span>
           <span class="na">required=</span><span class="s">""</span> <span class="na">wrap=</span><span class="s">"hard"</span> <span class="na">placeholder=</span><span class="s">"Input huge text"</span><span class="nt">&gt;</span>Textarea with sizing
@@ -4752,7 +4756,7 @@ C#: JDI.Light.Elements.Common.TextElement</p>
 <span class="p">}</span>   
 
 </code></pre>
-<p><img src="images/title.png" alt="Title" /></p>
+<p><img src="images/html/title2.png" alt="Title" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;h1</span> <span class="na">ui=</span><span class="s">"jdi-title"</span> <span class="na">onclick=</span><span class="s">"alert('JDI Title');"</span><span class="nt">&gt;</span>JDI Testing platform<span class="nt">&lt;/h1&gt;</span>
 </code></pre>
 <p>Here is the list of methods available in C# JDI Light:</p>
@@ -6776,7 +6780,7 @@ DataList element contains a set of options with values available as inputs.</p>
     <span class="n">_weather</span><span class="p">.</span><span class="n">Is</span><span class="p">.</span><span class="nf">Selected</span><span class="p">(</span><span class="nf">HasItems</span><span class="p">(</span><span class="k">new</span> <span class="p">[]</span> <span class="p">{</span> <span class="s">"Hot option"</span> <span class="p">}</span> <span class="p">));</span>
 <span class="p">}</span>
 </code></pre>
-<p><img src="images/html/checklist_html.png" alt="Checklist Example" /></p>
+<p><img src="images/html/checklist_html2.png" alt="Checklist Example" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"hot"</span> <span class="na">name=</span><span class="s">"checks-group"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
 <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"hot"</span><span class="nt">&gt;</span>Hot option<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
 
