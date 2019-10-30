@@ -8053,7 +8053,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p>Checkbox is located in the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.Checkbox</em></li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Checkbox</em></li>
 </ul>
 
 <p><img src="images/bootstrap/checkbox-default.png" alt="Checkbox default example" /></p>
@@ -8129,6 +8129,11 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <td>boolean</td>
 </tr>
 <tr>
+<td><strong>isEnabled()</strong></td>
+<td>Verify state</td>
+<td>boolean</td>
+</tr>
+<tr>
 <td><strong>assertThat()</strong></td>
 <td>Assert action checkbox</td>
 <td>CheckboxAssert</td>
@@ -8164,9 +8169,9 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesDefaultInline</span> <span class="n">checkboxesDefaultInline</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesDefaultInline</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineCheckbox1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxOne</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#inlineCheckbox1") public Checkbox checkboxOne;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineCheckbox2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxTwo</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#inlineCheckbox2") public Checkbox checkboxTwo;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineCheckbox3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxThree</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#inlineCheckbox3") public Checkbox checkboxThree;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inlineCheckbox1']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxOne</span><span class="o">;</span> <span class="c1">// @FindBy(xpath = "//input[@id='inlineCheckbox1']/..") public Checkbox checkboxOne;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inlineCheckbox2']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxTwo</span><span class="o">;</span> <span class="c1">// @FindBy(xpath = "//input[@id='inlineCheckbox2']/..") public Checkbox checkboxTwo;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inlineCheckbox3']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxThree</span><span class="o">;</span> <span class="c1">// @FindBy(xpath = "//input[@id='inlineCheckbox3']/..") public Checkbox checkboxThree;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -8176,8 +8181,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"checkbox"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-input"</span><span class="o">);</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check form-check-inline"</span><span class="o">);</span>
     <span class="n">checkboxesDefaultInline</span><span class="o">.</span><span class="na">checkboxOne</span><span class="o">.</span><span class="na">label</span><span class="o">()</span>
             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
@@ -8213,54 +8217,49 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the checkbox</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>check(String)</strong></td>
+<td>Set to checked on &quot;true&quot; (case insensitive) or unchecked otherwise</td>
 <td>void</td>
 </tr>
 <tr>
 <td><strong>check()</strong></td>
-<td>Select the button</td>
+<td>Set to checked</td>
 <td>void</td>
 </tr>
 <tr>
 <td><strong>uncheck()</strong></td>
-<td>Deselect the button</td>
+<td>Set to unchecked</td>
 <td>void</td>
 </tr>
 <tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
+<td><strong>isSelected()</strong></td>
+<td>Verify value</td>
+<td>boolean</td>
 </tr>
 <tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
+<td><strong>isEnabled()</strong></td>
+<td>Verify state</td>
+<td>boolean</td>
 </tr>
 <tr>
 <td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
+<td>Assert action checkbox</td>
+<td>CheckboxAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>action</td>
+<td><strong>is()</strong></td>
+<td>Assert action checkbox</td>
+<td>CheckboxAssert</td>
 </tr>
 </tbody></table>
 
 <p><br></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/CheckboxesDefaultInlineTests.java">Java test examples</a>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/CheckboxesDefaultInlineTests.java">Java test examples</a>
 <br></p>
 
 <p>Button group is represented by Section class in Java:</p>
@@ -8496,7 +8495,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesAndRadiosWithoutLabels</span> <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesAndRadiosWithoutLabels</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#blankCheckbox"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#blankCheckbox") public Checkbox checkbox;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='blankCheckbox']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(xpath = "//input[@id='blankCheckbox']/..") public Checkbox checkbox;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#blankRadio1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#blankRadio1") public RadioButton radioButton;</span>
 <span class="o">}</span>
 
@@ -8507,8 +8506,8 @@ It is customary to reassign these lambdas before all the tests are run, for exam
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"checkbox"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-label"</span><span class="o">,</span> <span class="s">"..."</span><span class="o">);</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">));</span>
     <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButton</span>
             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
@@ -8550,18 +8549,13 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the element</td>
 <td>void</td>
 </tr>
 <tr>
 <td><strong>check()</strong></td>
-<td>Click the button</td>
+<td>Click the element</td>
 <td>void</td>
-</tr>
-<tr>
-<td><strong>checked()</strong></td>
-<td>Click the button</td>
-<td>TextAssert</td>
 </tr>
 <tr>
 <td><strong>is()</strong></td>
@@ -8572,26 +8566,6 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <td><strong>assertThat()</strong></td>
 <td>Assert action</td>
 <td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>deselected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>action</td>
 </tr>
 </tbody></table>
 
@@ -8604,7 +8578,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
 
-<p><br></p>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h4 id='checkbox-custom'><a href="https://getbootstrap.com/docs/4.3/components/forms/#checkboxes">Checkbox custom</a></h4>
 <p>Checkbox is located in the following classes:</p>
 
@@ -8619,20 +8593,18 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesCustom</span> <span class="n">checkboxesCustom</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesCustom</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheck1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheck1-div") public Checkbox checkboxContainer;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheck1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheck1") public Checkbox checkbox;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheck1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheck1-div") public Checkbox checkbox;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span>
             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">disappear</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"checkbox"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control custom-checkbox"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">));</span>
     <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">label</span><span class="o">()</span>
             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
@@ -8645,9 +8617,9 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickableTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkboxContainer</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
     <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
-    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
     <span class="n">checkboxesCustom</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre>
@@ -8662,54 +8634,49 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the checkbox</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>check(String)</strong></td>
+<td>Set to checked on &quot;true&quot; (case insensitive) or unchecked otherwise</td>
 <td>void</td>
 </tr>
 <tr>
 <td><strong>check()</strong></td>
-<td>Select the button</td>
+<td>Set to checked</td>
 <td>void</td>
 </tr>
 <tr>
 <td><strong>uncheck()</strong></td>
-<td>Deselect the button</td>
+<td>Set to unchecked</td>
 <td>void</td>
 </tr>
 <tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
+<td><strong>isSelected()</strong></td>
+<td>Verify value</td>
+<td>boolean</td>
 </tr>
 <tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
+<td><strong>isEnabled()</strong></td>
+<td>Verify state</td>
+<td>boolean</td>
 </tr>
 <tr>
 <td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
+<td>Assert action checkbox</td>
+<td>CheckboxAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>action</td>
+<td><strong>is()</strong></td>
+<td>Assert action checkbox</td>
+<td>CheckboxAssert</td>
 </tr>
 </tbody></table>
 
 <p><br></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/CheckboxesCustomTests.java">Java test examples</a>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/CustomCheckboxTests.java">Java test examples</a>
 <br></p>
 
 <p>Button group is represented by Section class in Java:</p>
@@ -8958,8 +8925,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxAndRadioButtonCustomDisabled</span> <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxAndRadioButtonCustomDisabled</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheckDisabled1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheckDisabled1-div") public Checkbox checkboxContainer;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheckDisabled1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheckDisabled1") public Checkbox checkbox;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheckDisabled1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheckDisabled1-div") public Checkbox checkbox;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioDisabled2-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButtonContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioDisabled2-div") public RadioButton radioButtonContainer;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioDisabled2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioDisabled2") public RadioButton radioButton;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadioDisabled2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadioDisabled2']") public Label radio1Label;</span>
@@ -8998,23 +8964,13 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the element</td>
 <td>void</td>
 </tr>
 <tr>
 <td><strong>check()</strong></td>
-<td>Select the button</td>
+<td>Click the element</td>
 <td>void</td>
-</tr>
-<tr>
-<td><strong>uncheck()</strong></td>
-<td>Deselect the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
 </tr>
 <tr>
 <td><strong>is()</strong></td>
@@ -9025,21 +8981,6 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <td><strong>assertThat()</strong></td>
 <td>Assert action</td>
 <td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>action</td>
 </tr>
 </tbody></table>
 
@@ -9054,10 +8995,10 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <p><br></p>
 <h4 id='switches-custom'><a href="https://getbootstrap.com/docs/4.3/components/forms/#inline-1">Switches custom</a></h4>
-<p>Radio button is located in the following classes:</p>
+<p>Checkbox is located in the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton</em></li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Checkbox</em></li>
 </ul>
 
 <p><img src="images/bootstrap/switches.png" alt="Switches custom example" /></p>
@@ -9066,22 +9007,19 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Switches</span> <span class="n">switches</span><span class="o">;</span> <span class="c1">// @FindBy(css = "body") public static Switches switches;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Switches</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch1") public Checkbox checkbox;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch1-div") public Checkbox checkboxContainer;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxDisabled</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch2") public Checkbox checkboxDisabled;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch2-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxDisabledContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch2-div") public Checkbox checkboxDisabledContainer;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch1-div") public Checkbox checkbox;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch2-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxDisabled</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch2-div") public Checkbox checkboxDisabled;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span>
             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hidden</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"checkbox"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control custom-switch"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">));</span>
     <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">label</span><span class="o">()</span>
             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
@@ -9090,20 +9028,13 @@ It is customary to reassign these lambdas before all the tests are run, for exam
             <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-label"</span><span class="o">)</span>
             <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Toggle this switch element"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"label"</span><span class="o">));</span>
-    <span class="n">switches</span><span class="o">.</span><span class="na">checkboxContainer</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control custom-switch"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickableTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">switches</span><span class="o">.</span><span class="na">checkboxContainer</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
     <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
-    <span class="n">switches</span><span class="o">.</span><span class="na">checkboxContainer</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
     <span class="n">switches</span><span class="o">.</span><span class="na">checkbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre>
@@ -9118,48 +9049,43 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 </thead><tbody>
 <tr>
 <td><strong>click()</strong></td>
-<td>Click the button</td>
+<td>Click the checkbox</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>check(String)</strong></td>
+<td>Set to checked on &quot;true&quot; (case insensitive) or unchecked otherwise</td>
 <td>void</td>
 </tr>
 <tr>
 <td><strong>check()</strong></td>
-<td>Select the button</td>
+<td>Set to checked</td>
 <td>void</td>
 </tr>
 <tr>
 <td><strong>uncheck()</strong></td>
-<td>Deselect the button</td>
+<td>Set to unchecked</td>
 <td>void</td>
 </tr>
 <tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
+<td><strong>isSelected()</strong></td>
+<td>Verify value</td>
+<td>boolean</td>
 </tr>
 <tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
+<td><strong>isEnabled()</strong></td>
+<td>Verify state</td>
+<td>boolean</td>
 </tr>
 <tr>
 <td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
+<td>Assert action checkbox</td>
+<td>CheckboxAssert</td>
 </tr>
 <tr>
-<td><strong>select()</strong></td>
-<td>Select button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Radio button is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>action</td>
+<td><strong>is()</strong></td>
+<td>Assert action checkbox</td>
+<td>CheckboxAssert</td>
 </tr>
 </tbody></table>
 
