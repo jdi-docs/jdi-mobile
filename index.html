@@ -25827,9 +25827,12 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td>driver.remote.url=http://localhost:4444/wd/hub</td>
 </tr>
 </tbody></table>
-<h2 id='parallel-tests-run'>Parallel tests run</h2>
+<pre class="highlight java tab-java"><code>       <span class="n">useDriver</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">FF_INFO</span><span class="o">.</span><span class="na">getDriver</span><span class="o">()</span> <span class="o">);</span>
+
+</code></pre><h2 id='parallel-tests-run'>Parallel tests run</h2>
 <p>TBD</p>
-<h2 id='remote-test-runs'>Remote test runs</h2>
+<pre class="highlight java tab-java"><code>
+</code></pre><h2 id='remote-test-runs'>Remote test runs</h2>
 <p>TBD</p>
 
 <p>Add before suite</p>
@@ -25850,9 +25853,8 @@ Level <em>STEP</em> can show business-related information in the console output,
         <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">URI</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">hubUrl</span><span class="o">).</span><span class="na">toURL</span><span class="o">(),</span> <span class="n">capabilities</span><span class="o">);</span>
         <span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">window</span><span class="o">().</span><span class="na">maximize</span><span class="o">();</span>
 
-        <span class="n">WebSettings</span><span class="o">.</span><span class="na">initFromProperties</span><span class="o">();</span>
+        <span class="n">WebSettings</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
         <span class="n">WebSettings</span><span class="o">.</span><span class="na">useDriver</span><span class="o">(()-&gt;</span> <span class="n">driver</span><span class="o">);</span>
-        <span class="n">WebSite</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">SEDSite</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
