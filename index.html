@@ -25831,34 +25831,9 @@ Level <em>STEP</em> can show business-related information in the console output,
 
 </code></pre><h2 id='parallel-tests-run'>Parallel tests run</h2>
 <p>TBD</p>
-<pre class="highlight java tab-java"><code>
-</code></pre><h2 id='remote-test-runs'>Remote test runs</h2>
+<h2 id='remote-test-runs'>Remote test runs</h2>
 <p>TBD</p>
 
-<p>Add before suite</p>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestsInit</span> <span class="kd">extends</span> <span class="n">TestNGBase</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">hubUrl</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="n">RemoteWebDriver</span> <span class="n">driver</span><span class="o">;</span>
-
-    <span class="nd">@BeforeSuite</span> <span class="o">(</span><span class="n">alwaysRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUpSuite</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="n">hubUrl</span> <span class="o">=</span> <span class="s">"http://localhost:4444/wd/hub"</span><span class="o">;</span>
-
-        <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
-        <span class="n">capabilities</span><span class="o">.</span><span class="na">setBrowserName</span><span class="o">(</span><span class="s">"chrome"</span><span class="o">);</span>
-        <span class="n">capabilities</span><span class="o">.</span><span class="na">setVersion</span><span class="o">(</span><span class="s">"64.0"</span><span class="o">);</span>
-        <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"enableVNC"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
-        <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"enableVideo"</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-        <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">URI</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">hubUrl</span><span class="o">).</span><span class="na">toURL</span><span class="o">(),</span> <span class="n">capabilities</span><span class="o">);</span>
-        <span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">window</span><span class="o">().</span><span class="na">maximize</span><span class="o">();</span>
-
-        <span class="n">WebSettings</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
-        <span class="n">WebSettings</span><span class="o">.</span><span class="na">useDriver</span><span class="o">(()-&gt;</span> <span class="n">driver</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
