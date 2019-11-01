@@ -25827,7 +25827,9 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td>driver.remote.url=http://localhost:4444/wd/hub</td>
 </tr>
 </tbody></table>
-<pre class="highlight java tab-java"><code>       <span class="n">useDriver</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">FF_INFO</span><span class="o">.</span><span class="na">getDriver</span><span class="o">()</span> <span class="o">);</span>
+<pre class="highlight java tab-java"><code><span class="c1">//       useDriver(CHROME);</span>
+       <span class="n">useDriver</span><span class="o">(</span><span class="n">FIREFOX</span><span class="o">);</span>
+<span class="c1">//       useDriver(() -&gt; FF_INFO.getDriver() );</span>
 
 </code></pre><h2 id='parallel-tests-run'>Parallel tests run</h2>
 <p>TBD</p>
