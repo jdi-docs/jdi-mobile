@@ -10858,49 +10858,7 @@ Choose from <code>.navbar-light</code> for use with light background colors, or 
 <p><img src="images/bootstrap/navbar-containers.png" alt="Containers schemes example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarColorScheme</span> <span class="kd">extends</span> <span class="n">Navbar</span> <span class="o">{</span>
 
-    <span class="c1">//@FindBy(className = "navbar-brand")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>
-
-    <span class="c1">//@FindBy(linkText = "Home\n(current)")</span>
-    <span class="nd">@ByText</span><span class="o">(</span><span class="s">"Home"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Link</span> <span class="n">homeLink</span><span class="o">;</span>
-
-    <span class="c1">//@FindBy(linkText = "Contact form")</span>
-    <span class="nd">@ByText</span><span class="o">(</span><span class="s">"Contact form"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Link</span> <span class="n">contactFormLink</span><span class="o">;</span>
-
-    <span class="c1">//@FindBy(linkText = "Metals &amp; Colors")</span>
-    <span class="nd">@ByText</span><span class="o">(</span><span class="s">"Metals &amp; Colors"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Link</span> <span class="n">metalsAndColorsLink</span><span class="o">;</span>
-
-    <span class="c1">//@FindBy(xpath = "//form/button")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"form button"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Button</span> <span class="n">searchButton</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarColorSchemesWithColors"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">colorSchemeAccordanceTest</span><span class="o">(</span><span class="n">NavbarColorScheme</span> <span class="n">navbarColorScheme</span><span class="o">,</span> <span class="n">String</span> <span class="n">bgColor</span><span class="o">,</span> 
-<span class="n">String</span> <span class="n">navbarAndHomeColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">contactAndMetalsColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">searchColor</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">bgColor</span><span class="o">);</span>
-    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">navbarLink</span><span class="o">,</span> <span class="n">navbarAndHomeColor</span><span class="o">);</span>
-    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">homeLink</span><span class="o">,</span> <span class="n">navbarAndHomeColor</span><span class="o">);</span>
-    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">contactFormLink</span><span class="o">,</span> <span class="n">contactAndMetalsColor</span><span class="o">);</span>
-    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">metalsAndColorsLink</span><span class="o">,</span> <span class="n">contactAndMetalsColor</span><span class="o">);</span>
-    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">searchButton</span><span class="o">,</span> 
-<span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"rgba%s, 1)"</span><span class="o">,</span> <span class="n">searchColor</span><span class="o">));</span>
-    <span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">searchButton</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"rgb%s)"</span><span class="o">,</span> <span class="n">searchColor</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkColorOfElement</span><span class="o">(</span><span class="n">ICoreElement</span> <span class="n">elem</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">elem</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"color"</span><span class="o">,</span> <span class="n">color</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
 <p><img src="images/bootstrap/navbar-containers-html.png" alt="Containers HTML example" /></p>
 
 <p>When the container is within your navbar, its horizontal padding is removed at breakpoints lower than your specified <code>.navbar-expand{-sm|-md|-lg|-xl}</code> class.
