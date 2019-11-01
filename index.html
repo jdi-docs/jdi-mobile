@@ -10858,7 +10858,49 @@ Choose from <code>.navbar-light</code> for use with light background colors, or 
 <p><img src="images/bootstrap/navbar-containers.png" alt="Containers schemes example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarColorScheme</span> <span class="kd">extends</span> <span class="n">Navbar</span> <span class="o">{</span>
 
+    <span class="c1">//@FindBy(className = "navbar-brand")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>
+
+    <span class="c1">//@FindBy(linkText = "Home\n(current)")</span>
+    <span class="nd">@ByText</span><span class="o">(</span><span class="s">"Home"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Link</span> <span class="n">homeLink</span><span class="o">;</span>
+
+    <span class="c1">//@FindBy(linkText = "Contact form")</span>
+    <span class="nd">@ByText</span><span class="o">(</span><span class="s">"Contact form"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Link</span> <span class="n">contactFormLink</span><span class="o">;</span>
+
+    <span class="c1">//@FindBy(linkText = "Metals &amp; Colors")</span>
+    <span class="nd">@ByText</span><span class="o">(</span><span class="s">"Metals &amp; Colors"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Link</span> <span class="n">metalsAndColorsLink</span><span class="o">;</span>
+
+    <span class="c1">//@FindBy(xpath = "//form/button")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"form button"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">searchButton</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarColorSchemesWithColors"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">colorSchemeAccordanceTest</span><span class="o">(</span><span class="n">NavbarColorScheme</span> <span class="n">navbarColorScheme</span><span class="o">,</span> <span class="n">String</span> <span class="n">bgColor</span><span class="o">,</span> 
+<span class="n">String</span> <span class="n">navbarAndHomeColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">contactAndMetalsColor</span><span class="o">,</span> <span class="n">String</span> <span class="n">searchColor</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">bgColor</span><span class="o">);</span>
+    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">navbarLink</span><span class="o">,</span> <span class="n">navbarAndHomeColor</span><span class="o">);</span>
+    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">homeLink</span><span class="o">,</span> <span class="n">navbarAndHomeColor</span><span class="o">);</span>
+    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">contactFormLink</span><span class="o">,</span> <span class="n">contactAndMetalsColor</span><span class="o">);</span>
+    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">metalsAndColorsLink</span><span class="o">,</span> <span class="n">contactAndMetalsColor</span><span class="o">);</span>
+    <span class="n">checkColorOfElement</span><span class="o">(</span><span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">searchButton</span><span class="o">,</span> 
+<span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"rgba%s, 1)"</span><span class="o">,</span> <span class="n">searchColor</span><span class="o">));</span>
+    <span class="n">navbarColorScheme</span><span class="o">.</span><span class="na">searchButton</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"rgb%s)"</span><span class="o">,</span> <span class="n">searchColor</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkColorOfElement</span><span class="o">(</span><span class="n">ICoreElement</span> <span class="n">elem</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">elem</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"color"</span><span class="o">,</span> <span class="n">color</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/navbar-containers-html.png" alt="Containers HTML example" /></p>
 
 <p>When the container is within your navbar, its horizontal padding is removed at breakpoints lower than your specified <code>.navbar-expand{-sm|-md|-lg|-xl}</code> class.
@@ -10883,12 +10925,111 @@ This ensures we’re not doubling up on padding unnecessarily on lower viewports
 
 <p>Also note that <code>.sticky-top</code> uses position: sticky, which isn’t fully supported in every browser.</p>
 
-<p><img src="images/bootstrap/navbar-placement.png" alt="Containers schemes example" /></p>
+<p><img src="images/bootstrap/navbar-placement-sticky.png" alt="Containers schemes example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-sticky-top"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarPlacement</span> <span class="n">navbarPlacementStickyTop</span><span class="o">;</span>
 
-<p><img src="images/bootstrap/navbar-placement-html.png" alt="Containers HTML example" />
-<br></p>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarPlacement</span> <span class="kd">extends</span> <span class="n">Navbar</span> <span class="o">{</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Link</span> <span class="n">stickyTop</span><span class="o">;</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".sticky-top .nav-item"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">JList</span> <span class="n">navbarLinks</span><span class="o">;</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"./.."</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">parentContainer</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">navbarPositionTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"position"</span><span class="o">,</span> <span class="s">"sticky"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"top"</span><span class="o">,</span> <span class="s">"0px"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">navbarScrollTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+    <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">jsExecute</span><span class="o">(</span><span class="s">"scrollIntoView()"</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">heightOfContainer</span> <span class="o">=</span> <span class="n">getHeightOfContainer</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">top1</span> <span class="o">=</span> <span class="n">getTopValueOfNavbarPlacementStickyTop</span><span class="o">();</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">top1</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="n">bsPageScroll</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">heightOfContainer</span><span class="o">/</span><span class="mi">3</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">top2</span> <span class="o">=</span> <span class="n">getTopValueOfNavbarPlacementStickyTop</span><span class="o">();</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">top2</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="n">bsPageScroll</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">heightOfContainer</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">top3</span> <span class="o">=</span> <span class="n">getTopValueOfNavbarPlacementStickyTop</span><span class="o">();</span>
+    <span class="n">assertNotEquals</span><span class="o">(</span><span class="n">top3</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+
+
+<span class="kd">private</span> <span class="kt">int</span> <span class="nf">getHeightOfContainer</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">heightOfContainerWithPaddings</span> <span class="o">=</span> <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">parentContainer</span><span class="o">.</span><span class="na">getRect</span><span class="o">().</span><span class="na">getHeight</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">nonDigitsRegexp</span> <span class="o">=</span> <span class="s">"[^0-9.]"</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">contentPT</span> <span class="o">=</span> <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">parentContainer</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"padding-top"</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="n">nonDigitsRegexp</span><span class="o">,</span><span class="s">""</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">contentPB</span> <span class="o">=</span> <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">parentContainer</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"padding-bottom"</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="n">nonDigitsRegexp</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">heightOfContainerWithPaddings</span> <span class="o">-</span> <span class="n">parseInt</span><span class="o">(</span><span class="n">contentPT</span><span class="o">)</span> <span class="o">-</span> <span class="n">parseInt</span><span class="o">(</span><span class="n">contentPB</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">bsPageScroll</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">bsPage</span><span class="o">.</span><span class="na">js</span><span class="o">().</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"scrollBy("</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">","</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="s">")"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kt">int</span> <span class="nf">getTopValueOfNavbarPlacementStickyTop</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">topStr</span> <span class="o">=</span> <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">jsExecute</span><span class="o">(</span><span class="s">"getBoundingClientRect().top"</span><span class="o">);</span>
+    <span class="kt">double</span> <span class="n">topDouble</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">topStr</span><span class="o">);</span>
+    <span class="k">return</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">round</span><span class="o">(</span><span class="n">topDouble</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+<p><img src="images/bootstrap/navbar-placement-sticky-html.png" alt="Containers HTML example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click a link</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Check whether a text matches a pattern</td>
+<td>isAssert</td>
+</tr>
+<tr>
+<td><strong>css()</strong></td>
+<td>Match passed value with the element css</td>
+<td>isAssert</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assertelement</td>
+<td>isAssert</td>
+</tr>
+<tr>
+<td><strong>jsExecute()</strong></td>
+<td>Execute javascript</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getRect()</strong></td>
+<td>Get element rectangle</td>
+<td>Rectangle</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/NavbarPlacementTests.java">Bootstrap test examples</a></p>
+
+<p><br><br></p>
 <h4 id='responsive-behaviors'><a href="https://getbootstrap.com/docs/4.3/components/navbar/#responsive-behaviors">Responsive behaviors</a></h4>
 <p>Navbars can utilize <code>.navbar-toggler</code>, <code>.navbar-collapse</code>, and <code>.navbar-expand{-sm|-md|-lg|-xl}</code> classes to change when their content collapses behind a button. 
 In combination with other utilities, you can easily choose when to show or hide particular elements.</p>
