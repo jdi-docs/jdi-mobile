@@ -26102,11 +26102,11 @@ Level <em>STEP</em> can show business-related information in the console output,
 </tr>
 </tbody></table>
 <pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestsInit</span> <span class="o">{</span>
-<span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">pathToDriver</span> <span class="o">=</span> <span class="s">"src\\test\\resources\\Driver\\chromedriver.exe"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">pathToDriver</span> <span class="o">=</span> <span class="s">"src\\test\\resources\\Driver\\chromedriver.exe"</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="n">WebDriver</span> <span class="nf">getMyDriver</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"webdriver.chrome.driver"</span><span class="o">,</span><span class="n">pathToDriver</span><span class="o">);</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nf">ChromeDriver</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"webdriver.chrome.driver"</span><span class="o">,</span><span class="n">pathToDriver</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">ChromeDriver</span><span class="o">();</span>
     <span class="o">}</span>
 
     <span class="nd">@BeforeSuite</span><span class="o">(</span><span class="n">alwaysRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
