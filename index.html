@@ -10900,20 +10900,9 @@ This ensures we’re not doubling up on padding unnecessarily on lower viewports
 <p><img src="images/bootstrap/navbar-placement-sticky.png" alt="Containers schemes example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-sticky-top"</span><span class="o">)</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "navbar-sticky-top")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-sticky-top"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarPlacement</span> <span class="n">navbarPlacementStickyTop</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarPlacement</span> <span class="kd">extends</span> <span class="n">Navbar</span> <span class="o">{</span>
-
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Link</span> <span class="n">stickyTop</span><span class="o">;</span>
-
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".sticky-top .nav-item"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">JList</span> <span class="n">navbarLinks</span><span class="o">;</span>
-
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"./.."</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">UIElement</span> <span class="n">parentContainer</span><span class="o">;</span>
-<span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">navbarPositionTest</span><span class="o">()</span> <span class="o">{</span>
@@ -10924,37 +10913,9 @@ This ensures we’re not doubling up on padding unnecessarily on lower viewports
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"top"</span><span class="o">,</span> <span class="s">"0px"</span><span class="o">);</span>
 <span class="o">}</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">navbarScrollTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
-    <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">jsExecute</span><span class="o">(</span><span class="s">"scrollIntoView()"</span><span class="o">);</span>
-    <span class="kt">int</span> <span class="n">heightOfContainer</span> <span class="o">=</span> <span class="n">getHeightOfContainer</span><span class="o">();</span>
-    <span class="kt">int</span> <span class="n">top1</span> <span class="o">=</span> <span class="n">getTopValueOfNavbarPlacementStickyTop</span><span class="o">();</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">top1</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-    <span class="n">bsPageScroll</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">heightOfContainer</span><span class="o">/</span><span class="mi">3</span><span class="o">);</span>
-    <span class="kt">int</span> <span class="n">top2</span> <span class="o">=</span> <span class="n">getTopValueOfNavbarPlacementStickyTop</span><span class="o">();</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">top2</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-    <span class="n">bsPageScroll</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">heightOfContainer</span><span class="o">);</span>
-    <span class="kt">int</span> <span class="n">top3</span> <span class="o">=</span> <span class="n">getTopValueOfNavbarPlacementStickyTop</span><span class="o">();</span>
-    <span class="n">assertNotEquals</span><span class="o">(</span><span class="n">top3</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
 
 
-<span class="kd">private</span> <span class="kt">int</span> <span class="nf">getHeightOfContainer</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">heightOfContainerWithPaddings</span> <span class="o">=</span> <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">parentContainer</span><span class="o">.</span><span class="na">getRect</span><span class="o">().</span><span class="na">getHeight</span><span class="o">();</span>
-    <span class="n">String</span> <span class="n">nonDigitsRegexp</span> <span class="o">=</span> <span class="s">"[^0-9.]"</span><span class="o">;</span>
-    <span class="n">String</span> <span class="n">contentPT</span> <span class="o">=</span> <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">parentContainer</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"padding-top"</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="n">nonDigitsRegexp</span><span class="o">,</span><span class="s">""</span><span class="o">);</span>
-    <span class="n">String</span> <span class="n">contentPB</span> <span class="o">=</span> <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">parentContainer</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"padding-bottom"</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="n">nonDigitsRegexp</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
-    <span class="k">return</span> <span class="n">heightOfContainerWithPaddings</span> <span class="o">-</span> <span class="n">parseInt</span><span class="o">(</span><span class="n">contentPT</span><span class="o">)</span> <span class="o">-</span> <span class="n">parseInt</span><span class="o">(</span><span class="n">contentPB</span><span class="o">);</span>
-<span class="o">}</span>
 
-<span class="kd">private</span> <span class="kt">void</span> <span class="nf">bsPageScroll</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">bsPage</span><span class="o">.</span><span class="na">js</span><span class="o">().</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"scrollBy("</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">","</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="s">")"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="kd">private</span> <span class="kt">int</span> <span class="nf">getTopValueOfNavbarPlacementStickyTop</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">topStr</span> <span class="o">=</span> <span class="n">navbarPlacementStickyTop</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">jsExecute</span><span class="o">(</span><span class="s">"getBoundingClientRect().top"</span><span class="o">);</span>
-    <span class="kt">double</span> <span class="n">topDouble</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">topStr</span><span class="o">);</span>
-    <span class="k">return</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">round</span><span class="o">(</span><span class="n">topDouble</span><span class="o">);</span>
-<span class="o">}</span>
 </code></pre>
 <p><img src="images/bootstrap/navbar-placement-sticky-html.png" alt="Containers HTML example" /></p>
 
