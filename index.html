@@ -25340,7 +25340,8 @@ Scenario example for WebPage:
 <h2 id='non-static-site-initialization-example'>Non-Static Site initialization example</h2>
 <ol>
 <li>Simple non-static Page Object</li>
-<li>Automated test cases structure</li>
+<li>Parent class for test-cases with non-static initialization</li>
+<li>Simple non-static site initialization test example</li>
 </ol>
 <pre class="highlight java tab-java"><code><span class="nd">@JSite</span><span class="o">(</span><span class="s">"https://jdi-testing.github.io/jdi-light/"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSite</span> <span class="o">{</span>
@@ -25393,8 +25394,7 @@ Scenario example for WebPage:
 <span class="o">}</span>
 </code></pre>
 <p>This is the example of simple Page Object:</p>
-<pre class="highlight java tab-java"><code>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="kd">protected</span> <span class="n">NonStaticSite</span> <span class="n">nonStaticSite</span><span class="o">;</span>
 
@@ -25416,8 +25416,7 @@ Scenario example for WebPage:
 <span class="o">}</span>
 </code></pre>
 <p>This is the parent class for test-cases with non-static initialization:</p>
-<pre class="highlight java tab-java"><code>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSiteTests</span> <span class="kd">extends</span> <span class="n">NonStaticTestsInit</span> <span class="o">{</span>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSiteTests</span> <span class="kd">extends</span> <span class="n">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="nd">@BeforeMethod</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">()</span> <span class="o">{</span>
