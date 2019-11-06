@@ -25357,27 +25357,26 @@ Scenario example for WebPage:
 <p>&quot;https://github.com/jdi-testing/jdi-light/tree/1169-Add-non-static-site-initialisation-example/jdi-light-examples/src/main/java/io/github/com/NonStaticSite.java&quot;</p>
 <h3 id='parent-class-for-test-cases-with-non-static-initialization'>Parent class for test-cases with non-static initialization:</h3>
 <p>&quot;https://github.com/jdi-testing/jdi-light/tree/1169-Add-non-static-site-initialisation-example/jdi-light-examples/src/test/java/io/github/epam/NonStaticTestsInit.java&quot;</p>
-<h3 id='simple-non-static-site-initialization-example'>Simple non-static site initialization example:</h3>
-<p>public class NonStaticTestsInit {</p>
+<h3 id='simple-non-static-site-initialization-example'>Simple non-static site initialization example:</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
 
-<p>protected NonStaticSite nonStaticSite;</p>
+    <span class="kd">protected</span> <span class="n">NonStaticSite</span> <span class="n">nonStaticSite</span><span class="o">;</span>
 
-<p>@BeforeSuite(alwaysRun = true)
-    public void setUp() {</p>
+    <span class="nd">@BeforeSuite</span><span class="o">(</span><span class="n">alwaysRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
 
-<p>nonStaticSite = new NonStaticSite();
-        PageFactory.initElements(nonStaticSite);</p>
+        <span class="n">nonStaticSite</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NonStaticSite</span><span class="o">();</span>
+        <span class="n">PageFactory</span><span class="o">.</span><span class="na">initElements</span><span class="o">(</span><span class="n">nonStaticSite</span><span class="o">);</span>
 
-<p>nonStaticSite.getHomePage().open();
-        WebSettings.logger.toLog(&quot;Non Static site page opened&quot;);
-    }</p>
+        <span class="n">nonStaticSite</span><span class="o">.</span><span class="na">getHomePage</span><span class="o">().</span><span class="na">open</span><span class="o">();</span>
+        <span class="n">WebSettings</span><span class="o">.</span><span class="na">logger</span><span class="o">.</span><span class="na">toLog</span><span class="o">(</span><span class="s">"Non Static site page opened"</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@AfterSuite(alwaysRun = true)
-    public void cleanUp() {
-        WebDriverUtils.killAllSeleniumDrivers();
-    }
-}</p>
-<h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
+    <span class="nd">@AfterSuite</span><span class="o">(</span><span class="n">alwaysRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cleanUp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">WebDriverUtils</span><span class="o">.</span><span class="na">killAllSeleniumDrivers</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
 &lt;input type="text" id="last-name"&gt;
 &lt;button id="submit-button"&gt;
 </code></pre><pre class="highlight csharp tab-csharp"><code>
