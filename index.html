@@ -25403,7 +25403,10 @@ Scenario example for WebPage:
         <span class="k">return</span> <span class="n">loginForm</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h3 id='this-is-the-parent-class-for-test-cases-with-non-static-initialization'>This is the parent class for test-cases with non-static initialization:</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
+</code></pre>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h3 id='this-is-the-parent-class-for-test-cases-with-non-static-initialization'>This is the parent class for test-cases with non-static initialization:</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="kd">protected</span> <span class="n">NonStaticSite</span> <span class="n">nonStaticSite</span><span class="o">;</span>
 
@@ -25417,13 +25420,15 @@ Scenario example for WebPage:
         <span class="n">WebSettings</span><span class="o">.</span><span class="na">logger</span><span class="o">.</span><span class="na">toLog</span><span class="o">(</span><span class="s">"Non Static site page opened"</span><span class="o">);</span>
     <span class="o">}</span>
 
-
     <span class="nd">@AfterSuite</span><span class="o">(</span><span class="n">alwaysRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cleanUp</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">WebDriverUtils</span><span class="o">.</span><span class="na">killAllSeleniumDrivers</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h3 id='this-is-the-simple-non-static-site-initialization-test-example'>This is the simple non-static site initialization test example:</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSiteTests</span> <span class="kd">extends</span> <span class="n">NonStaticTestsInit</span> <span class="o">{</span>
+</code></pre>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h3 id='this-is-the-simple-non-static-site-initialization-test-example'>This is the simple non-static site initialization test example:</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSiteTests</span> <span class="kd">extends</span> <span class="n">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="nd">@BeforeMethod</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">()</span> <span class="o">{</span>
@@ -25436,7 +25441,9 @@ Scenario example for WebPage:
         <span class="n">nonStaticSite</span><span class="o">.</span><span class="na">getHomePage</span><span class="o">().</span><span class="na">isOpened</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
+</code></pre>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
 &lt;input type="text" id="last-name"&gt;
 &lt;button id="submit-button"&gt;
 </code></pre><pre class="highlight csharp tab-csharp"><code>
