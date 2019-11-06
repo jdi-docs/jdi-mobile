@@ -25353,7 +25353,8 @@ Scenario example for WebPage:
 <li>Simple non-static Page Object</li>
 <li>Automated test cases structure</li>
 </ol>
-<h3 id='simple-non-static-page-object-example'>Simple non-static Page Object example</h3><pre class="highlight java tab-java"><code><span class="nd">@JSite</span><span class="o">(</span><span class="s">"https://jdi-testing.github.io/jdi-light/"</span><span class="o">)</span>
+<h3 id='simple-non-static-page-object-example'>Simple non-static Page Object example</h3><pre class="highlight java tab-java"><code>
+<span class="nd">@JSite</span><span class="o">(</span><span class="s">"https://jdi-testing.github.io/jdi-light/"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSite</span> <span class="o">{</span>
 
     <span class="nd">@Url</span><span class="o">(</span><span class="s">"/index.html"</span><span class="o">)</span>
@@ -25406,9 +25407,11 @@ Scenario example for WebPage:
         <span class="k">return</span> <span class="n">loginForm</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
+
 </code></pre>
 <p>Here we can see a simple non-static Page Object example:</p>
-<h3 id='automated-test-cases-initialization-example'>Automated test cases initialization example</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
+<h3 id='automated-test-cases-initialization-example'>Automated test cases initialization example</h3><pre class="highlight java tab-java"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="kd">protected</span> <span class="n">NonStaticSite</span> <span class="n">nonStaticSite</span><span class="o">;</span>
 
@@ -25428,9 +25431,11 @@ Scenario example for WebPage:
         <span class="n">WebDriverUtils</span><span class="o">.</span><span class="na">killAllSeleniumDrivers</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
+
 </code></pre>
 <p>This is the parent class for test-cases with non-static initialization:</p>
-<h3 id='automated-test-case-example'>Automated test case example</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSiteTests</span> <span class="kd">extends</span> <span class="n">NonStaticTestsInit</span> <span class="o">{</span>
+<h3 id='automated-test-case-example'>Automated test case example</h3><pre class="highlight java tab-java"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSiteTests</span> <span class="kd">extends</span> <span class="n">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="nd">@BeforeMethod</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">()</span> <span class="o">{</span>
@@ -25443,6 +25448,7 @@ Scenario example for WebPage:
         <span class="n">nonStaticSite</span><span class="o">.</span><span class="na">getHomePage</span><span class="o">().</span><span class="na">isOpened</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
+
 </code></pre>
 <p>This is the simple non-static site initialization test example:</p>
 <h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
