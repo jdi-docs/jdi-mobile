@@ -750,9 +750,6 @@
 								<a href="#simple-non-static-page-object-example" class="toc-h2 h3 toc-link" data-title="Simple non-static Page Object example">Simple non-static Page Object example</a>
                             </li>
                             <li>
-								<a href="#automated-test-cases-initialization-example" class="toc-h2 h3 toc-link" data-title="Automated test cases initialization example">Automated test cases initialization example</a>
-                            </li>
-                            <li>
 								<a href="#automated-test-case-example" class="toc-h2 h3 toc-link" data-title="Automated test case example">Automated test case example</a>
                             </li>
                         </ul>
@@ -25353,88 +25350,92 @@ Scenario example for WebPage:
 <li>Simple non-static Page Object</li>
 <li>Automated test cases structure</li>
 </ol>
-<h3 id='simple-non-static-page-object-example'>Simple non-static Page Object example</h3><pre class="highlight java tab-java"><code>
-<span class="nd">@JSite</span><span class="o">(</span><span class="s">"https://jdi-testing.github.io/jdi-light/"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSite</span> <span class="o">{</span>
+<h3 id='simple-non-static-page-object-example'>Simple non-static Page Object example</h3>
+<p>Here we can see a simple non-static Page Object example:
+```java</p>
 
-    <span class="nd">@Url</span><span class="o">(</span><span class="s">"/index.html"</span><span class="o">)</span>
-    <span class="nd">@Title</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"Home"</span><span class="o">,</span> <span class="n">validate</span> <span class="o">=</span> <span class="n">CheckTypes</span><span class="o">.</span><span class="na">CONTAINS</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">HomePage</span> <span class="n">homePage</span><span class="o">;</span>
+<p>@JSite(&quot;https://jdi-testing.github.io/jdi-light/&quot;)
+public class NonStaticSite {</p>
 
-    <span class="nd">@XPath</span><span class="o">(</span><span class="s">"//*[@ui='label']"</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">UIElement</span> <span class="n">userName</span><span class="o">;</span>
+<p>@Url(&quot;/index.html&quot;)
+    @Title(value = &quot;Home&quot;, validate = CheckTypes.CONTAINS)
+    private HomePage homePage;</p>
 
-    <span class="kd">private</span> <span class="n">WebElement</span> <span class="n">userIcon</span><span class="o">;</span>
+<p>@XPath(&quot;//*[@ui=&#39;label&#39;]&quot;)
+    private UIElement userName;</p>
 
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"form"</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">LoginForm</span> <span class="n">loginForm</span><span class="o">;</span>
+<p>private WebElement userIcon;</p>
+
+<p>@Css(&quot;form&quot;)
+    private LoginForm loginForm;</p>
+
+<p>public static String getUrl() {</p>
+
+<p>return getDriver().getCurrentUrl();
+    }</p>
+
+<p>public void login() {</p>
+
+<p>if (!getUserName().isDisplayed()) {
+            getUserIcon().click();
+            getLoginForm().submit(DEFAULT_USER, &quot;enter&quot;);
+        }
+    }</p>
+
+<p>public void shouldBeLoggedIn() {</p>
+
+<p>if (!getUrl().contains(&quot;https://jdi-testing.github.io/jdi-light/&quot;))
+            getHomePage().open();</p>
+
+<p>login();
+    }</p>
+
+<p>public HomePage getHomePage() {
+        return homePage;
+    }</p>
+
+<p>public UIElement getUserName() {
+        return userName;
+    }</p>
+
+<p>public WebElement getUserIcon() {
+        return userIcon;
+    }</p>
+
+<p>public LoginForm getLoginForm() {
+        return loginForm;
+    }
+}</p>
+<pre class="highlight plaintext"><code>
+### Automated test cases initialization example
+
+This is the parent class for test-cases with non-static initialization:
+
+```java
+
+public class NonStaticTestsInit {
+
+    protected NonStaticSite nonStaticSite;
+
+    @BeforeSuite(alwaysRun = true)
+    public void setUp() {
+
+        nonStaticSite = new NonStaticSite();
+        PageFactory.initElements(nonStaticSite);
+
+        nonStaticSite.getHomePage().open();
+        WebSettings.logger.toLog("Non Static site page opened");
+    }
 
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getUrl</span><span class="o">()</span> <span class="o">{</span>
+    @AfterSuite(alwaysRun = true)
+    public void cleanUp() {
+        WebDriverUtils.killAllSeleniumDrivers();
+    }
+}
 
-        <span class="k">return</span> <span class="nf">getDriver</span><span class="o">().</span><span class="na">getCurrentUrl</span><span class="o">();</span>
-    <span class="o">}</span>
+</code></pre><h3 id='automated-test-case-example'>Automated test case example</h3><pre class="highlight java tab-java"><code><span class="n">This</span> <span class="n">is</span> <span class="n">the</span> <span class="n">simple</span> <span class="n">non</span><span class="o">-</span><span class="kd">static</span> <span class="n">site</span> <span class="n">initialization</span> <span class="n">test</span> <span class="nl">example:</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">login</span><span class="o">()</span> <span class="o">{</span>
-
-        <span class="k">if</span> <span class="o">(!</span><span class="n">getUserName</span><span class="o">().</span><span class="na">isDisplayed</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">getUserIcon</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
-            <span class="n">getLoginForm</span><span class="o">().</span><span class="na">submit</span><span class="o">(</span><span class="n">DEFAULT_USER</span><span class="o">,</span> <span class="s">"enter"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldBeLoggedIn</span><span class="o">()</span> <span class="o">{</span>
-
-        <span class="k">if</span> <span class="o">(!</span><span class="n">getUrl</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"https://jdi-testing.github.io/jdi-light/"</span><span class="o">))</span>
-            <span class="n">getHomePage</span><span class="o">().</span><span class="na">open</span><span class="o">();</span>
-
-        <span class="n">login</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">HomePage</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">homePage</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">UIElement</span> <span class="nf">getUserName</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">userName</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">WebElement</span> <span class="nf">getUserIcon</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">userIcon</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">LoginForm</span> <span class="nf">getLoginForm</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">loginForm</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre>
-<p>Here we can see a simple non-static Page Object example:</p>
-<h3 id='automated-test-cases-initialization-example'>Automated test cases initialization example</h3><pre class="highlight java tab-java"><code>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
-
-    <span class="kd">protected</span> <span class="n">NonStaticSite</span> <span class="n">nonStaticSite</span><span class="o">;</span>
-
-    <span class="nd">@BeforeSuite</span><span class="o">(</span><span class="n">alwaysRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
-
-        <span class="n">nonStaticSite</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NonStaticSite</span><span class="o">();</span>
-        <span class="n">PageFactory</span><span class="o">.</span><span class="na">initElements</span><span class="o">(</span><span class="n">nonStaticSite</span><span class="o">);</span>
-
-        <span class="n">nonStaticSite</span><span class="o">.</span><span class="na">getHomePage</span><span class="o">().</span><span class="na">open</span><span class="o">();</span>
-        <span class="n">WebSettings</span><span class="o">.</span><span class="na">logger</span><span class="o">.</span><span class="na">toLog</span><span class="o">(</span><span class="s">"Non Static site page opened"</span><span class="o">);</span>
-    <span class="o">}</span>
-
-
-    <span class="nd">@AfterSuite</span><span class="o">(</span><span class="n">alwaysRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cleanUp</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">WebDriverUtils</span><span class="o">.</span><span class="na">killAllSeleniumDrivers</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre>
-<p>This is the parent class for test-cases with non-static initialization:</p>
-<h3 id='automated-test-case-example'>Automated test case example</h3><pre class="highlight java tab-java"><code>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSiteTests</span> <span class="kd">extends</span> <span class="n">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="nd">@BeforeMethod</span>
@@ -25449,9 +25450,7 @@ Scenario example for WebPage:
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre>
-<p>This is the simple non-static site initialization test example:</p>
-<h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
+</code></pre><h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
 &lt;input type="text" id="last-name"&gt;
 &lt;button id="submit-button"&gt;
 </code></pre><pre class="highlight csharp tab-csharp"><code>
