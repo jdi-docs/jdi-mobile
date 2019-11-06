@@ -25342,9 +25342,7 @@ Scenario example for WebPage:
 <li>Simple non-static Page Object</li>
 <li>Automated test cases structure</li>
 </ol>
-<pre class="highlight java tab-java"><code><span class="o">*</span><span class="n">This</span> <span class="n">is</span> <span class="n">the</span> <span class="n">example</span> <span class="n">of</span> <span class="n">simple</span> <span class="n">Page</span> <span class="nl">Object:</span>
-
-<span class="nd">@JSite</span><span class="o">(</span><span class="s">"https://jdi-testing.github.io/jdi-light/"</span><span class="o">)</span>
+<pre class="highlight java tab-java"><code><span class="nd">@JSite</span><span class="o">(</span><span class="s">"https://jdi-testing.github.io/jdi-light/"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSite</span> <span class="o">{</span>
 
     <span class="nd">@Url</span><span class="o">(</span><span class="s">"/index.html"</span><span class="o">)</span>
@@ -25393,8 +25391,9 @@ Scenario example for WebPage:
         <span class="k">return</span> <span class="n">loginForm</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="o">*</span><span class="n">This</span> <span class="n">is</span> <span class="n">the</span> <span class="n">parent</span> <span class="kd">class</span> <span class="nc">for</span> <span class="n">test</span><span class="o">-</span><span class="n">cases</span> <span class="n">with</span> <span class="n">non</span><span class="o">-</span><span class="kd">static</span> <span class="nl">initialization:</span>
-
+</code></pre>
+<p>This is the example of simple Page Object:</p>
+<pre class="highlight java tab-java"><code>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="kd">protected</span> <span class="n">NonStaticSite</span> <span class="n">nonStaticSite</span><span class="o">;</span>
@@ -25415,8 +25414,9 @@ Scenario example for WebPage:
         <span class="n">WebDriverUtils</span><span class="o">.</span><span class="na">killAllSeleniumDrivers</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="o">*</span><span class="n">This</span> <span class="n">is</span> <span class="n">the</span> <span class="n">simple</span> <span class="n">non</span><span class="o">-</span><span class="kd">static</span> <span class="n">site</span> <span class="n">initialization</span> <span class="n">test</span> <span class="nl">example:</span>
-
+</code></pre>
+<p>This is the parent class for test-cases with non-static initialization:</p>
+<pre class="highlight java tab-java"><code>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticSiteTests</span> <span class="kd">extends</span> <span class="n">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="nd">@BeforeMethod</span>
@@ -25430,7 +25430,9 @@ Scenario example for WebPage:
         <span class="n">nonStaticSite</span><span class="o">.</span><span class="na">getHomePage</span><span class="o">().</span><span class="na">isOpened</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
+</code></pre>
+<p>*This is the simple non-static site initialization test example:</p>
+<h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
 &lt;input type="text" id="last-name"&gt;
 &lt;button id="submit-button"&gt;
 </code></pre><pre class="highlight csharp tab-csharp"><code>
