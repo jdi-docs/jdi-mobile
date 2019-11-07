@@ -25515,14 +25515,17 @@ Scenario example for WebPage:
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
 
         <span class="n">nonStaticSite</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NonStaticSite</span><span class="o">();</span>
+
         <span class="n">PageFactory</span><span class="o">.</span><span class="na">initElements</span><span class="o">(</span><span class="n">nonStaticSite</span><span class="o">);</span>
 
         <span class="n">nonStaticSite</span><span class="o">.</span><span class="na">getHomePage</span><span class="o">().</span><span class="na">open</span><span class="o">();</span>
+
         <span class="n">WebSettings</span><span class="o">.</span><span class="na">logger</span><span class="o">.</span><span class="na">toLog</span><span class="o">(</span><span class="s">"Non Static site page opened"</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@AfterSuite</span><span class="o">(</span><span class="n">alwaysRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cleanUp</span><span class="o">()</span> <span class="o">{</span>
+
         <span class="n">WebDriverUtils</span><span class="o">.</span><span class="na">killAllSeleniumDrivers</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
