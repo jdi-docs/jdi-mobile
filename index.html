@@ -16348,18 +16348,11 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code>    <span class="kd">let</span> <span class="nx">customValidationListener</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">valForm</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"validated-form"</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">valForm</span><span class="p">.</span><span class="nx">checkValidity</span><span class="p">()</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-            <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="nx">valForm</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'was-validated'</span><span class="p">);</span>
-    <span class="p">};</span>
+</code></pre>
+<p>Additional JavaScript code to use Bootstrap validation:</p>
 
-    <span class="kd">let</span> <span class="nx">valForm</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"validated-form"</span><span class="p">);</span>
-    <span class="nx">valForm</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span> <span class="nx">customValidationListener</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-</code></pre><h5 id='browser-default'>Browser default</h5>
+<p><img src="images/bootstrap/form-bootstrap-validation-js.png" alt="Browser default validation" /></p>
+<h5 id='browser-default'>Browser default</h5>
 <p>Also you can use <a href = "https://getbootstrap.com/docs/4.3/components/forms/#browser-defaults" target = "a_blank">browser default validation</a>.</p>
 
 <p><img src="images/bootstrap/form-browser-defaults.png" alt="Browser default validation" /></p>
