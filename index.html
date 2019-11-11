@@ -557,9 +557,6 @@
 								<a href="#progress" class="toc-h2 h3 toc-link" data-title="Progress">Progress</a>
                             </li>
                             <li>
-								<a href="#media-object" class="toc-h2 h3 toc-link" data-title="Media object">Media object</a>
-                            </li>
-                            <li>
 								<a href="#spinners" class="toc-h2 h3 toc-link" data-title="Spinners">Spinners</a>
                             </li>
                             <li>
@@ -607,6 +604,9 @@
                             </li>
                             <li>
 								<a href="#scrollspy" class="toc-h2 h3 toc-link" data-title="Scrollspy">Scrollspy</a>
+                            </li>
+                            <li>
+								<a href="#media-object" class="toc-h2 h3 toc-link" data-title="Media object">Media object</a>
                             </li>
                             <li>
 								<a href="#modal" class="toc-h2 h3 toc-link" data-title="Modal">Modal</a>
@@ -11655,149 +11655,6 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressAnimatedStripesTests.java">Bootstrap test examples</a>
 <br></p>
-<h3 id='media-object'>Media object</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MediaObject</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre>
-<p><a href="https://getbootstrap.com/docs/4.3/components/media-object" target=a_blank> Media object</a> helps build complex and repetitive components where some media is positioned alongside content that doesn’t wrap around said media.</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-sample"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MediaObjectSample</span> <span class="n">mediaObjectSample</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#media-object-sample")</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MediaObjectSample</span> <span class="kd">extends</span> <span class="n">MediaObject</span> <span class="o">{</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"img"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">imageOfMediaObject</span><span class="o">;</span>
-<span class="nd">@Title</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">headingOfMediaObject</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">".media-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">bodyOfMediaObject</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTestSample</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectSample</span><span class="o">));</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"American comic books"</span><span class="o">));</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
-          <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-          <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"media-body"</span><span class="o">);</span>
-<span class="o">}</span>
-
-
-
-
-
-
-
-
-
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-nesting"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MediaObjectNesting</span> <span class="n">mediaObjectNesting</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#media-object-nesting")</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MediaObjectNesting</span> <span class="kd">extends</span> <span class="n">MediaObject</span> <span class="o">{</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"img"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">imageOfMediaObject</span><span class="o">;</span>
-<span class="nd">@Title</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">headingOfMediaObject</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">".media-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">bodyOfMediaObject</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"div.media div.media"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">MediaObjectSample</span>  <span class="n">nestingMediaObject</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTestNesting</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectNesting</span><span class="o">));</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"vel eu leo"</span><span class="o">));</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
-     <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectNesting</span><span class="o">))</span>
-     <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-     <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"media-body"</span><span class="o">);</span>
-<span class="o">}</span>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-list"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">MediaObjectSample</span><span class="o">&gt;</span> <span class="n">mediaObjectList</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#media-object-list")</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTestListMediaObject</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">headingOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">listOfHeading</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)));</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Stark requires"</span><span class="o">));</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
-      <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-      <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
-    <span class="o">}</span>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</code></pre>
-<p><strong>Media object sample</strong></p>
-
-<p><img src="images/bootstrap/media-object-sample.png" alt="Media object sample" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/media-object-sample-html.png" alt="Media object example" /></p>
-
-<p><strong>Media object nesting</strong></p>
-
-<p><img src="images/bootstrap/media-object-nesting.png" alt="Media object nesting" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/media-object-nesting-html.png" alt="Media object nesting example" /></p>
-
-<p><strong>Media object list</strong></p>
-
-<p><img src="images/bootstrap/media-object-list.png" alt="Media object list" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/media-object-list-html.png" alt="Media object list example" /></p>
-
-<p>Media object is represented by MediaObject class: </p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/MediaObject.java">MediaObject</a>  </p>
-
-<p>MediaObject class is inherited from Section class:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
-
-<p>Inner elements of media object can be represented by the following classes:
-<ul>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#label">Label</a> </li>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#link">Link</a>  </li>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#image">Image</a>  </li>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a> </li>
-</ul></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/mediaObject/MediaObjectTests.java" target=a_blank> Bootstrap test examples </a></p>
 <h3 id='spinners'>Spinners</h3>
 <p>Bootstrap “spinners” can be used to show the loading state in your projects. 
 They’re built only with HTML and CSS, meaning you don’t need any JavaScript to create them. 
@@ -17036,6 +16893,149 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithListGroupTests.java">Scrollspy with list-group Tests Example</a></p>
 
 <p><br><br></p>
+<h3 id='media-object'>Media object</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MediaObject</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre>
+<p><a href="https://getbootstrap.com/docs/4.3/components/media-object" target=a_blank> Media object</a> helps build complex and repetitive components where some media is positioned alongside content that doesn’t wrap around said media.</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-sample"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MediaObjectSample</span> <span class="n">mediaObjectSample</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#media-object-sample")</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MediaObjectSample</span> <span class="kd">extends</span> <span class="n">MediaObject</span> <span class="o">{</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"img"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">imageOfMediaObject</span><span class="o">;</span>
+<span class="nd">@Title</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">headingOfMediaObject</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".media-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">bodyOfMediaObject</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTestSample</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectSample</span><span class="o">));</span>
+<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"American comic books"</span><span class="o">));</span>
+<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"media-body"</span><span class="o">);</span>
+<span class="o">}</span>
+
+
+
+
+
+
+
+
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-nesting"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MediaObjectNesting</span> <span class="n">mediaObjectNesting</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#media-object-nesting")</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MediaObjectNesting</span> <span class="kd">extends</span> <span class="n">MediaObject</span> <span class="o">{</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"img"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">imageOfMediaObject</span><span class="o">;</span>
+<span class="nd">@Title</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">headingOfMediaObject</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".media-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">bodyOfMediaObject</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"div.media div.media"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">MediaObjectSample</span>  <span class="n">nestingMediaObject</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTestNesting</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectNesting</span><span class="o">));</span>
+<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"vel eu leo"</span><span class="o">));</span>
+<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+     <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectNesting</span><span class="o">))</span>
+     <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+     <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"media-body"</span><span class="o">);</span>
+<span class="o">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-list"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">MediaObjectSample</span><span class="o">&gt;</span> <span class="n">mediaObjectList</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#media-object-list")</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTestListMediaObject</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">headingOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">listOfHeading</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)));</span>
+<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Stark requires"</span><span class="o">));</span>
+<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+<p><strong>Media object sample</strong></p>
+
+<p><img src="images/bootstrap/media-object-sample.png" alt="Media object sample" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/media-object-sample-html.png" alt="Media object example" /></p>
+
+<p><strong>Media object nesting</strong></p>
+
+<p><img src="images/bootstrap/media-object-nesting.png" alt="Media object nesting" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/media-object-nesting-html.png" alt="Media object nesting example" /></p>
+
+<p><strong>Media object list</strong></p>
+
+<p><img src="images/bootstrap/media-object-list.png" alt="Media object list" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+
+<p><img src="images/bootstrap/media-object-list-html.png" alt="Media object list example" /></p>
+
+<p>Media object is represented by MediaObject class: </p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/MediaObject.java">MediaObject</a>  </p>
+
+<p>MediaObject class is inherited from Section class:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+
+<p>Inner elements of media object can be represented by the following classes:
+<ul>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#label">Label</a> </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#link">Link</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#image">Image</a>  </li>
+    <li> <a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a> </li>
+</ul></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/mediaObject/MediaObjectTests.java" target=a_blank> Bootstrap test examples </a></p>
 <h3 id='modal'>Modal</h3>
 <p><strong>Modal</strong> is a dialog box/popup window that is displayed on page.</p>
 <h4 id='modal-live-demo'>Modal Live demo</h4>
