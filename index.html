@@ -13605,8 +13605,129 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use <a h
 <p><img src="images/bootstrap/dropdown-menu-content-form.png" alt="Form example" /></p>
 
 <p>Here is an example form code in the menu items:</p>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DropdownForm</span> <span class="kd">extends</span> <span class="n">Dropdown</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//form"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">FormDropdownLogin</span> <span class="n">form</span><span class="o">;</span>
+<span class="o">}</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">fillTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">USER</span><span class="o">);</span>
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">USER</span><span class="o">);</span>
+
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkboxTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">remember</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">remember</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">remember</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">remember</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testButton</span><span class="o">(){</span>
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">form</span><span class="o">.</span><span class="na">submit</span><span class="o">();</span>
+    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Sign in"</span><span class="o">));</span>
+
+    <span class="n">dropdownForm</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/dropdown-menu-content-form-html.png" alt="Form HTML example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>getAttribute()</strong></td>
+<td>Get attribute value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>Expand dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>collapse()</strong></td>
+<td>Collapse dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Assert that dropdown is expanded</td>
+<td>DropdownAssert</td>
+</tr>
+<tr>
+<td><strong>collapsed()</strong></td>
+<td>Assert that dropdown is collapsed</td>
+<td>DropdownAssert</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get button value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>check()</strong></td>
+<td>Check checkbox</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Check that checkbox is selected</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>deselected()</strong></td>
+<td>Check that checkbox is not selected</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
 
 <p><br></p>
 
