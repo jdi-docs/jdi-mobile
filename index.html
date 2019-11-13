@@ -641,7 +641,7 @@
 								<a href="#json-based-locators" class="toc-h2 h3 toc-link" data-title="Json-based locators">Json-based locators</a>
                             </li>
                             <li>
-								<a href="#bdd-smart-locators" class="toc-h2 h3 toc-link" data-title="BDD Smart locators">BDD Smart locators</a>
+								<a href="#using-element-names-defined-with-capital-letter-as-locator-ids" class="toc-h2 h3 toc-link" data-title="Using element names defined with capital letter as locator IDs">Using element names defined with capital letter as locator IDs</a>
                             </li>
                             <li>
 								<a href="#using-aliases-for-pages-urls-in-bdd-steps" class="toc-h2 h3 toc-link" data-title="Using aliases for pages URLs in BDD steps">Using aliases for pages URLs in BDD steps</a>
@@ -24175,24 +24175,23 @@ You may also create as many json files as you want in this package.<br>
 Byt keep in mind that all the elements are collected from these files and are kept in global hash map. <br>
 So you need to create only unique elements in all these files. <br>
 Example <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithProperties.feature">feature</a></p>
-<h3 id='bdd-smart-locators'>BDD Smart locators</h3><pre class="highlight plaintext"><code>
-html5page.json for smart locators:
+<h3 id='using-element-names-defined-with-capital-letter-as-locator-ids'>Using element names defined with capital letter as locator IDs</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="kn">Scenario</span><span class="p">:</span> isDisabled element
+       <span class="nf">Then</span> the <span class="s">"Disabled Name"</span> is disabled
 
-{
-  "Red Button": "[value*='Red Button']"
-}
+   <span class="kn">Scenario</span><span class="p">:</span> check element
+       <span class="nf">When</span> check <span class="s">"Accept Conditions"</span>
+       <span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> is selected
+</code></pre><pre class="highlight plaintext"><code>"Disabled Name" element is automatically searched by the smart locator #disabled-name. 
+"Accept Conditions" element is automatically searched by the smart locator #accept-conditions.
 </code></pre>
-<p>Features have locators taken from simple file-based PageObjects instead of an element name:</p>
+<p>Features have locators automatically generated if element name defined with capital letter.<br><br>
+<strong>When</strong> &lt;I&gt; click on &quot;Element name&quot; <br>
+Smart locator is generated like ID with lover case element name: <strong>#element-name</strong>.
+ <br><br><br></p>
 
-<p><strong>When</strong> I click on <strong>&quot;Red button&quot;</strong> element <br>
-<strong>When</strong> I send keys &quot;simple 1234&quot; to <strong>&quot;Name&quot;</strong> element <br>
-<strong>Then</strong> the <strong>&quot;Name&quot;</strong> element&#39;s text matches to &quot;\w{6} \d{4}&quot; <br>
-etc. <br></p>
-
-<p>Element <strong>Red button</strong> is described in <strong>html5page.json</strong>. <br>
-And <strong>Name</strong> element is automatically searched by the smart locator <strong>#name</strong>. <br>
-Example <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithName.feature">feature</a> <br>
-For this feature you should remove <strong>&quot;Name&quot;: &quot;#name&quot;</strong> from html5page.json to be sure how smart locator works.</p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithName.feature">BDD feature test examples</a> <br>
+For better understanding of this test example remove <strong>&quot;Name&quot;: &quot;#name&quot;</strong> from html5page.json to be sure how smart locator works.
+<br><br><br></p>
 <h3 id='using-aliases-for-pages-urls-in-bdd-steps'>Using aliases for pages URLs in BDD steps</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="c">#Instead of this:</span>
    <span class="kn">Scenario</span><span class="p">:</span> bootstrap page
        <span class="nf">Given</span> Page with url <span class="s">"\&lt;LINK TO HOME PAGE\&gt;"</span> opened
@@ -24210,7 +24209,7 @@ For this feature you should remove <strong>&quot;Name&quot;: &quot;#name&quot;</
        <span class="nf">Then</span> the <span class="s">"Contacts Page"</span> page is opened
 </code></pre>
 <p>Pages can be opened by alias name instead of URL. 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <pre class="highlight plaintext"><code>pages.json:
 </code></pre><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"Home Page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
