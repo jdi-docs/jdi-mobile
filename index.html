@@ -644,7 +644,7 @@
 								<a href="#bdd-smart-locators" class="toc-h2 h3 toc-link" data-title="BDD Smart locators">BDD Smart locators</a>
                             </li>
                             <li>
-								<a href="#json-based-pages" class="toc-h2 h3 toc-link" data-title="Json-based pages">Json-based pages</a>
+								<a href="#using-aliases-for-pages-urls-in-bdd-steps" class="toc-h2 h3 toc-link" data-title="Using aliases for pages URLs in BDD steps">Using aliases for pages URLs in BDD steps</a>
                             </li>
                             <li>
 								<a href="#non-page-object-implementation-for-basic-steps" class="toc-h2 h3 toc-link" data-title="Non page object implementation for basic steps">Non page object implementation for basic steps</a>
@@ -24193,26 +24193,34 @@ etc. <br></p>
 And <strong>Name</strong> element is automatically searched by the smart locator <strong>#name</strong>. <br>
 Example <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithName.feature">feature</a> <br>
 For this feature you should remove <strong>&quot;Name&quot;: &quot;#name&quot;</strong> from html5page.json to be sure how smart locator works.</p>
-<h3 id='json-based-pages'>Json-based pages</h3><pre class="highlight plaintext"><code>
-pages.json:
+<h3 id='using-aliases-for-pages-urls-in-bdd-steps'>Using aliases for pages URLs in BDD steps</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="c">#Instead of this:</span>
+   <span class="kn">Scenario</span><span class="p">:</span> bootstrap page
+       <span class="nf">Given</span> Page with url <span class="s">"\&lt;LINK TO HOME PAGE\&gt;"</span> opened
 
-{
-"Home Page": "/",
-"Bootstrap Page": "/bootstrap.html"
-}
+   <span class="kn">Scenario</span><span class="p">:</span> contacts page
+       <span class="nf">When</span> I open url <span class="s">"\&lt;LINK TO CONTACTS PAGE\&gt;"</span>
+       <span class="nf">Then</span> the url <span class="s">"\&lt;LINK TO CONTACTS PAGE\&gt;"</span> is opened
+</code></pre><pre class="highlight gherkin tab-gherkin"><code>   <span class="c">#Use this:</span>
+   <span class="kn">Scenario</span><span class="p">:</span> json based bootstrap page
+       <span class="nf">When</span> I open <span class="s">"Bootstrap Page"</span> page
+       <span class="nf">Then</span> the <span class="s">"Bootstrap Page"</span> page is opened
+
+   <span class="kn">Scenario</span><span class="p">:</span> json based contacts page
+       <span class="nf">When</span> I open <span class="s">"Contacts Page"</span> page
+       <span class="nf">Then</span> the <span class="s">"Contacts Page"</span> page is opened
 </code></pre>
-<p>Pages can be opened by name without page objects. <br>
-Instead of this: <br></p>
-
-<p><strong>And</strong> I open page by url &quot;https://jdi-testing.github.io/jdi-light/bootstrap.html&quot; <br></p>
-
-<p>Use this: <br></p>
-
-<p><strong>Given</strong> I open &quot;Bootstrap Page&quot; <br></p>
-
-<p>Pages are defined via <strong><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/json/page/objects/pages.json">pages.json</a></strong>. <br>
-Note: domain is read from test.properties automatically. <br>
-Example <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/features/JsonBasedPage.feature">feature</a></p>
+<p>Pages can be opened by alias name instead of URL. 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<pre class="highlight plaintext"><code>pages.json:
+</code></pre><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Home Page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Bootstrap Page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/bootstrap.html"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Alias for pages are defined via <strong><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/json/page/objects/pages.json">pages.json</a></strong>. <br>
+Note: domain is read from test.properties automatically. <br><br><br><br><br>
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/features/JsonBasedPage.feature">BDD feature test examples</a>
+<br><br></p>
 <h3 id='non-page-object-implementation-for-basic-steps'>Non page object implementation for basic steps</h3>
 <p>You are able to use parameter locator instead of an element name in you features: <br></p>
 
