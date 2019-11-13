@@ -635,19 +635,19 @@
                         </ul>
                   </li>
                   <li>
-                    <a href="#json-smart-locators-json-pages" class="toc-h2 toc-link" data-title="Json/smart locators, json pages">Json/smart locators, json pages</a>
+                    <a href="#jdi-features-for-parameters-in-bdd-steps" class="toc-h2 toc-link" data-title="JDI Features for parameters in BDD steps">JDI Features for parameters in BDD steps</a>
                         <ul class="toc-list-h2">
                             <li>
-								<a href="#using-file-based-pageobjects-for-locators" class="toc-h2 h3 toc-link" data-title="Using file-based PageObjects for locators">Using file-based PageObjects for locators</a>
+								<a href="#using-aliases-as-locators-parameters" class="toc-h2 h3 toc-link" data-title="Using aliases as locators parameters">Using aliases as locators parameters</a>
+                            </li>
+                            <li>
+								<a href="#using-locators-as-parameters" class="toc-h2 h3 toc-link" data-title="Using locators as parameters">Using locators as parameters</a>
                             </li>
                             <li>
 								<a href="#using-element-names-defined-with-capital-letter-as-locator-ids" class="toc-h2 h3 toc-link" data-title="Using element names defined with capital letter as locator IDs">Using element names defined with capital letter as locator IDs</a>
                             </li>
                             <li>
-								<a href="#using-aliases-for-pages-urls-in-bdd-steps" class="toc-h2 h3 toc-link" data-title="Using aliases for pages URLs in BDD steps">Using aliases for pages URLs in BDD steps</a>
-                            </li>
-                            <li>
-								<a href="#non-page-object-implementation-for-basic-steps" class="toc-h2 h3 toc-link" data-title="Non page object implementation for basic steps">Non page object implementation for basic steps</a>
+								<a href="#using-aliases-for-pages-urls" class="toc-h2 h3 toc-link" data-title="Using aliases for pages URLs">Using aliases for pages URLs</a>
                             </li>
                         </ul>
                   </li>
@@ -24152,7 +24152,7 @@ For example .card-columns class to generate a set of responsive tiers for changi
 <p><a href="https://jdi-docs.github.io/jdi-light/#html5-common-elements">See more elements</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/jumbotron">Bootstrap test examples</a></p>
-<h2 id='json-smart-locators-json-pages'>Json/smart locators, json pages</h2><h3 id='using-file-based-pageobjects-for-locators'>Using file-based PageObjects for locators</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="kn">Scenario</span><span class="p">:</span> input element
+<h2 id='jdi-features-for-parameters-in-bdd-steps'>JDI Features for parameters in BDD steps</h2><h3 id='using-aliases-as-locators-parameters'>Using aliases as locators parameters</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="kn">Scenario</span><span class="p">:</span> input element
        <span class="nf">When</span> I input <span class="s">"simple 1234"</span> in <span class="s">"Name"</span>
        <span class="nf">Then</span> the <span class="s">"Name"</span> text matches to <span class="s">"\w{6} \d{4}"</span>
        <span class="nf">Then</span> the <span class="s">"Logout"</span> is hidden
@@ -24177,8 +24177,22 @@ But these json file/files <strong>must be</strong> located in <strong>json.page.
 <p><strong>Keep in mind</strong>: All the elements are collected from these json file/files and are stored in global hash map.<br>
  Therefore it is <strong>essential</strong> that all the elements defined with <strong>unique names</strong>.<br></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithLocators.feature">BDD feature test examples</a><br>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithProperties.feature">BDD feature test examples</a><br>
 <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/json/page/objects/html5page.json">Json PageObject file example</a>
+<br><br><br></p>
+<h3 id='using-locators-as-parameters'>Using locators as parameters</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="kn">Scenario</span><span class="p">:</span> click element
+       <span class="nf">When</span> I click on <span class="s">"[value*='Red Button']"</span>
+       <span class="nf">Then</span> the Alert text equals to <span class="s">"Red button"</span>
+
+   <span class="kn">Scenario</span><span class="p">:</span> clear element
+       <span class="nf">When</span> I input <span class="s">"simple text"</span> in <span class="s">"#name"</span>
+       <span class="nf">Then</span> the <span class="s">"#name"</span> text equals to <span class="s">"simple text"</span>
+       <span class="nf">When</span> I clear <span class="s">"#name"</span>
+       <span class="nf">Then</span> the <span class="s">"#name"</span> text equals to <span class="s">""</span>
+</code></pre>
+<p>Feature allows to use locator as parameter instead of an element name.<br><br><br><br><br><br><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithLocators.feature">BDD feature test examples</a>
 <br><br><br></p>
 <h3 id='using-element-names-defined-with-capital-letter-as-locator-ids'>Using element names defined with capital letter as locator IDs</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="kn">Scenario</span><span class="p">:</span> isDisabled element
        <span class="nf">Then</span> the <span class="s">"Disabled Name"</span> is disabled
@@ -24198,7 +24212,7 @@ Smart locator is generated like ID with lover case element name: <strong>#elemen
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithName.feature">BDD feature test examples</a> <br>
 For better understanding of this test example remove <strong>&quot;Name&quot;: &quot;#name&quot;</strong> from html5page.json to be sure how smart locator works.
 <br><br><br></p>
-<h3 id='using-aliases-for-pages-urls-in-bdd-steps'>Using aliases for pages URLs in BDD steps</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="c">#Instead of this:</span>
+<h3 id='using-aliases-for-pages-urls'>Using aliases for pages URLs</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="c">#Instead of this:</span>
    <span class="kn">Scenario</span><span class="p">:</span> bootstrap page
        <span class="nf">Given</span> Page with url <span class="s">"\&lt;LINK TO HOME PAGE\&gt;"</span> opened
 
@@ -24225,15 +24239,7 @@ For better understanding of this test example remove <strong>&quot;Name&quot;: &
 <p>Alias for pages are defined via <strong><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/json/page/objects/pages.json">pages.json</a></strong>. <br>
 Note: domain is read from test.properties automatically. <br><br><br><br><br>
 <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/features/JsonBasedPage.feature">BDD feature test examples</a>
-<br><br></p>
-<h3 id='non-page-object-implementation-for-basic-steps'>Non page object implementation for basic steps</h3>
-<p>You are able to use parameter locator instead of an element name in you features: <br></p>
-
-<p><strong>When</strong> I click on <strong>&quot;[value*=&#39;Red Button&#39;]&quot;</strong> element <br>
-<strong>When</strong> I send keys &quot;simple 1234&quot; to <strong>&quot;#name&quot;</strong> element <br>
-<strong>Then</strong> the <strong>&quot;#name&quot;</strong> element&#39;s text matches to &quot;\w{6} \d{4}&quot; <br>
-etc. <br>
-Example <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-no-po-tests/src/test/resources/features/TestsWithLocators.feature">feature</a></p>
+<br><br><br></p>
 <h2 id='jdi-light-bdd-steps'>JDI Light BDD Steps</h2><h3 id='label-2'>Label</h3><pre class="highlight plaintext"><code>Label action examples:
 
 When I click on "JDI Title"
