@@ -8316,7 +8316,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p>Radio button is located in the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton</em></li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.RadioButtons</em></li>
 </ul>
 
 <p><img src="images/bootstrap/radio-button.png" alt="Radio button example" /></p>
@@ -8326,43 +8326,56 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#radio-buttons"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonGroup</span> <span class="n">radioButtonGroup</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonGroup</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#exampleRadios1") public RadioButton radio1;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios2"</span> <span class="o">)</span><span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#exampleRadios2" )public RadioButton radio2;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#exampleRadios3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio3</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#exampleRadios3") public RadioButton radio3;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[type='radio']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">//@FindBy(css = "input[type='radio']") public RadioButton radioButton;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='exampleRadios1']") public Label radio1Label;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='exampleRadios2']") public Label radio2Label;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='exampleRadios3']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio3Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='exampleRadios3']") public Label radio3Label;</span>
+<span class="c1">//@FindBy(css = "input[type='radio']")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"input[type='radio']"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">RadioButtons</span> <span class="n">radioButtons</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio2</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">disabled</span><span class="o">();</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByIndexTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">select</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByLabelTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio2Label</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">value2</span><span class="o">));</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">select</span><span class="o">();</span>
-    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">select</span><span class="o">(</span><span class="n">labelText1</span><span class="o">);;</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">labelText1</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">labelText1</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">value1</span><span class="o">));</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">label</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">labelText2</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">value2</span><span class="o">));</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">labelText1</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">labelText1</span><span class="o">);</span>
+    <span class="n">radioButtonGroup</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group-vertical mb-3"</span> <span class="na">id=</span><span class="s">"radio-buttons"</span> <span class="na">role=</span><span class="s">"group"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-check"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-check-input"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"exampleRadios"</span> <span class="na">id=</span><span class="s">"exampleRadios1"</span> <span class="na">value=</span><span class="s">"option1"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"form-check-label"</span> <span class="na">for=</span><span class="s">"exampleRadios1"</span><span class="nt">&gt;</span>Default radio<span class="nt">&lt;/label&gt;</span>
+     <span class="nt">&lt;/div&gt;</span>
+     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-check"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-check-input"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"exampleRadios"</span> <span class="na">id=</span><span class="s">"exampleRadios2"</span> <span class="na">value=</span><span class="s">"option2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"form-check-label"</span> <span class="na">for=</span><span class="s">"exampleRadios2"</span><span class="nt">&gt;</span>Second default radio<span class="nt">&lt;/label&gt;</span>
+     <span class="nt">&lt;/div&gt;</span>
+     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-check"</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-check-input"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"exampleRadios"</span> <span class="na">id=</span><span class="s">"exampleRadios3"</span> <span class="na">value=</span><span class="s">"option3"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"form-check-label"</span> <span class="na">for=</span><span class="s">"exampleRadios3"</span><span class="nt">&gt;</span>Disabled radio<span class="nt">&lt;/label&gt;</span>
+     <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/radio-button-html.png" alt="Radio button example html" /></p>
-
 <table><thead>
 <tr>
 <th>Method</th>
@@ -8421,7 +8434,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p>Radio button is located in the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton</em></li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.RadioButtons</em></li>
 </ul>
 
 <p><img src="images/bootstrap/radio-default-inline.png" alt="Radio button inline example" /></p>
@@ -8431,44 +8444,63 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonsDefaultInline</span> <span class="n">radioButtonsDefaultInline</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonsDefaultInline</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[name='inlineRadioOptions']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">//@FindBy(css = "input[name='inlineRadioOptions']") public RadioButton radioButton;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineRadio1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#inlineRadio1") public RadioButton radio1;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineRadio2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#inlineRadio2") public RadioButton radio2;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#inlineRadio3"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio3</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#inlineRadio3") public RadioButton radio3;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='inlineRadio1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='inlineRadio1']") public Label radio1Label;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='inlineRadio2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='inlineRadio2']") public Label radio2Label;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='inlineRadio3']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio3Label</span><span class="o">;</span> <span class="c1">//@FindBy(css = "label[for='inlineRadio3']") public Label radio3Label;</span>
+    <span class="c1">//@FindBy(css = "input[name='inlineRadioOptions']")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[name='inlineRadioOptions']"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">RadioButtons</span> <span class="n">radioButtons</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
-     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span>
-             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-             <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radio1Label</span>
-             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-             <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-label"</span><span class="o">)</span>
-             <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label1</span><span class="o">));</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">disabled</span><span class="o">();</span>
+
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">label</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-label"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label1</span><span class="o">));</span>
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">label</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-label"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label2</span><span class="o">));</span>
+     <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">label</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check-label"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label3</span><span class="o">));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByIndexTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
-    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
-    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
-    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radio1Label</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"2"</span><span class="o">);</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"1"</span><span class="o">);</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">select</span><span class="o">(</span><span class="s">"2"</span><span class="o">);</span>
+    <span class="n">radioButtonsDefaultInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-check form-check-inline"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-check-input"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"inlineRadioOptions"</span> <span class="na">id=</span><span class="s">"inlineRadio1"</span> <span class="na">value=</span><span class="s">"option1"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"form-check-label"</span> <span class="na">for=</span><span class="s">"inlineRadio1"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-check form-check-inline"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-check-input"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"inlineRadioOptions"</span> <span class="na">id=</span><span class="s">"inlineRadio2"</span> <span class="na">value=</span><span class="s">"option2"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"form-check-label"</span> <span class="na">for=</span><span class="s">"inlineRadio2"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-check form-check-inline"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-check-input"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"inlineRadioOptions"</span> <span class="na">id=</span><span class="s">"inlineRadio3"</span> <span class="na">value=</span><span class="s">"option3"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"form-check-label"</span> <span class="na">for=</span><span class="s">"inlineRadio3"</span><span class="nt">&gt;</span>3 (disabled)<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/radio-default-inline-html.png" alt="Radio button inline example html" /></p>
-
 <table><thead>
 <tr>
 <th>Method</th>
@@ -8522,24 +8554,30 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
 
-<p><br></p>
+<p><br>
+<br>
+<br></p>
 <h4 id='radio-button-and-checkbox-without-labels'><a href="https://getbootstrap.com/docs/4.3/components/forms/#without-labels" target="_blank">Radio button and checkbox without labels</a></h4>
 <p>Checkbox and Radio button are located in the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton</em></li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.RadioButtons</em></li>
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Checkbox</em></li>
 </ul>
 
 <p><img src="images/bootstrap/default-without-labels.png" alt="Radio button and checkbox without labels example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "body") public static CheckboxesAndRadiosWithoutLabels checkboxesAndRadiosWithoutLabels);</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesAndRadiosWithoutLabels</span> <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "body")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesAndRadiosWithoutLabels</span> <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesAndRadiosWithoutLabels</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='blankCheckbox']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(xpath = "//input[@id='blankCheckbox']/..") public Checkbox checkbox;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#blankRadio1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#blankRadio1") public RadioButton radioButton;</span>
+<span class="c1">//@FindBy(xpath = "//input[@id='blankCheckbox']/..")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='blankCheckbox']/.."</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span>
+<span class="c1">//@FindBy(css = "#blankRadio1")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#blankRadio1"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">RadioButtons</span> <span class="n">radioButtons</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -8551,7 +8589,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
             <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-check"</span><span class="o">)</span>
             <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">));</span>
-    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButton</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButtons</span>
             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
@@ -8575,14 +8613,21 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">select</span><span class="o">();</span>
-    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButton</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">selected</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">checkboxesAndRadiosWithoutLabels</span><span class="o">.</span><span class="na">radioButtons</span>
+             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+             <span class="o">.</span><span class="na">selected</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-check"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-check-input position-static"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"blankCheckbox"</span> <span class="na">value=</span><span class="s">"option1"</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-check"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-check-input position-static"</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"blankRadio"</span> <span class="na">id=</span><span class="s">"blankRadio1"</span> <span class="na">value=</span><span class="s">"option1"</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/default-without-labels-html.png" alt="Radio button and checkbox without labels example html" /></p>
-
 <table><thead>
 <tr>
 <th>Method</th>
@@ -8729,52 +8774,58 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p>Radio button is located in the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton</em></li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.RadioButtons</em></li>
 </ul>
 
 <p><img src="images/bootstrap/custom-radio.png" alt="Radio button custom example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#custom-radio-con") public static RadioButtonsCustom radioButtonCustom;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#custom-radio-con"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonsCustom</span> <span class="n">radioButtonCustom</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonsCustom</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadio1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadio1") public RadioButton radio1;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadio2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadio2") public RadioButton radio2;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".custom-radio"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = ".custom-radio") public RadioButton radioButton;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadio1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadio1']") public Label radio1Label;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadio2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadio2']") public Label radio2Label;</span>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonsCustom</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">//@FindBy(css = "[name='customRadio']")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"[name='customRadio']"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">RadioButtons</span> <span class="n">radioButtons</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
-    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
-    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio2</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
-    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio1Label</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label1</span><span class="o">));</span>
-    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio2Label</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label2</span><span class="o">));</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByIndexTests</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">select</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">waitFor</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">select</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">waitFor</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">select</span><span class="o">(</span><span class="n">label1</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">label1</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioOneIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radio1</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hidden</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"radio"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"customRadio"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByIndexInSelectTests</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">label1</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">label2</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">label1</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">label1</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">label2</span><span class="o">);</span>
+   <span class="n">radioButtonCustom</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"html-left"</span> <span class="na">id=</span><span class="s">"custom-radio-con"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"custom-control custom-radio"</span> <span class="na">id=</span><span class="s">"customRadio1-div"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"customRadio1"</span> <span class="na">name=</span><span class="s">"customRadio"</span> <span class="na">class=</span><span class="s">"custom-control-input"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"custom-control-label"</span> <span class="na">for=</span><span class="s">"customRadio1"</span><span class="nt">&gt;</span>Toggle this custom radio<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"custom-control custom-radio"</span> <span class="na">id=</span><span class="s">"customRadio2-div"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"customRadio2"</span> <span class="na">name=</span><span class="s">"customRadio"</span> <span class="na">class=</span><span class="s">"custom-control-input"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"custom-control-label"</span> <span class="na">for=</span><span class="s">"customRadio2"</span><span class="nt">&gt;</span>Or toggle this other custom radio<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/custom-radio-html.png" alt="Radio button custom example html" /></p>
-
 <table><thead>
 <tr>
 <th>Method</th>
@@ -8785,16 +8836,6 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <tr>
 <td><strong>click()</strong></td>
 <td>Click the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>check()</strong></td>
-<td>Select the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>uncheck()</strong></td>
-<td>Deselect the button</td>
 <td>void</td>
 </tr>
 <tr>
@@ -8842,7 +8883,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p>Radio button is located in the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton</em></li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.complex.RadioButtons</em></li>
 </ul>
 
 <p><img src="images/bootstrap/custom-radio-inline.png" alt="Radio button custom inline example" /></p>
@@ -8852,41 +8893,48 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtonsCustomInline</span> <span class="n">radioButtonsCustomInline</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">RadioButtonsCustomInline</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioInline1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio1</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioInline1") public RadioButton radio1;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioInline2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radio2</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioInline2") public RadioButton radio2;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".custom-control-inline"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = ".custom-control-inline") public RadioButton radioButton;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadioInline1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadioInline1']") public Label radio1Label;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadioInline2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio2Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadioInline2']") public Label radio2Label;</span>
+    <span class="c1">//@FindBy(css = ".custom-control-inline .custom-control-input")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".custom-control-inline .custom-control-input"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">RadioButtons</span> <span class="n">radioButtons</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByIndexTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
-    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio2</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
-    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
-    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">selected</span><span class="o">();</span>
-    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio2</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">select</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioOneIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radio1</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hidden</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"radio"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"customRadioInline1"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonByLabelTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">label</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">label</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">label</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">text1</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">text1</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">text2</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">text2</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text1</span><span class="o">);</span>
+    <span class="n">radioButtonsCustomInline</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text2</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"custom-control custom-radio custom-control-inline"</span> <span class="na">id=</span><span class="s">"customRadioInline1-div"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"customRadioInline1"</span> <span class="na">name=</span><span class="s">"customRadioInline1"</span> <span class="na">class=</span><span class="s">"custom-control-input"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"custom-control-label"</span> <span class="na">for=</span><span class="s">"customRadioInline1"</span><span class="nt">&gt;</span>Toggle this <span class="nt">&lt;br&gt;</span> custom
+                                    radio<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"custom-control custom-radio custom-control-inline"</span> <span class="na">id=</span><span class="s">"customRadioInline2-div"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"customRadioInline2"</span> <span class="na">name=</span><span class="s">"customRadioInline1"</span> <span class="na">class=</span><span class="s">"custom-control-input"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"custom-control-label"</span> <span class="na">for=</span><span class="s">"customRadioInline2"</span><span class="nt">&gt;</span>Or toggle this <span class="nt">&lt;br&gt;</span> custom
+                                    radio<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/custom-radio-inline-html.png" alt="Radio button custom inline example html" /></p>
-
 <table><thead>
 <tr>
 <th>Method</th>
@@ -8897,16 +8945,6 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <tr>
 <td><strong>click()</strong></td>
 <td>Click the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>check()</strong></td>
-<td>Select the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>uncheck()</strong></td>
-<td>Deselect the button</td>
 <td>void</td>
 </tr>
 <tr>
@@ -8954,7 +8992,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p>Checkbox and Radio button is located in the following classes:</p>
 
 <p><strong>Java</strong>:
-  - com.epam.jdi.light.ui.bootstrap.elements.common.RadioButton_
+  - com.epam.jdi.light.ui.bootstrap.elements.complex.RadioButtons_
   - com.epam.jdi.light.ui.bootstrap.elements.common.Checkbox_</p>
 
 <p><img src="images/bootstrap/custom-disabled.png" alt="Custom disabled example" /></p>
@@ -8963,16 +9001,18 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "body") public static CheckboxAndRadioButtonCustomDisabled checkboxAndRadioButtonCustomDisabled;</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxAndRadioButtonCustomDisabled</span> <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxAndRadioButtonCustomDisabled</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheckDisabled1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheckDisabled1-div") public Checkbox checkbox;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioDisabled2-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButtonContainer</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioDisabled2-div") public RadioButton radioButtonContainer;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioDisabled2"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">RadioButton</span> <span class="n">radioButton</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customRadioDisabled2") public RadioButton radioButton;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"label[for='customRadioDisabled2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">radio1Label</span><span class="o">;</span> <span class="c1">// @FindBy(css = "label[for='customRadioDisabled2']") public Label radio1Label;</span>
-<span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxAndRadioButtonCustomDisabled</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+        <span class="c1">//FindBy(css = "#customCheckDisabled1-div")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheckDisabled1-div"</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span>
+        <span class="c1">//FindBy(css = "#customRadioDisabled2")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customRadioDisabled2"</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="n">RadioButtons</span> <span class="n">radioButtons</span><span class="o">;</span>
+    <span class="o">}</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">radioButtonIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">hidden</span><span class="o">()</span>
             <span class="o">.</span><span class="na">disabled</span><span class="o">()</span>
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
@@ -8980,20 +9020,27 @@ It is customary to reassign these lambdas before all the tests are run, for exam
             <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"radioDisabled"</span><span class="o">)</span>
             <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"custom-control-input"</span><span class="o">)</span>
             <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">Matchers</span><span class="o">.</span><span class="na">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
-<span class="o">}</span>
+    <span class="o">}</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButtonContainer</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-    <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
-    <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radio1Label</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label1</span><span class="o">));</span>
-<span class="o">}</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseInitTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">deselected</span><span class="o">();</span>
+        <span class="n">checkboxAndRadioButtonCustomDisabled</span><span class="o">.</span><span class="na">radioButtons</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">label</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">label1</span><span class="o">));</span>
+    <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"custom-control custom-checkbox"</span> <span class="na">id=</span><span class="s">"customCheckDisabled1-div"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">class=</span><span class="s">"custom-control-input"</span> <span class="na">id=</span><span class="s">"customCheckDisabled1"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"custom-control-label"</span> <span class="na">for=</span><span class="s">"customCheckDisabled1"</span><span class="nt">&gt;</span>Check this custom checkbox<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"custom-control custom-radio"</span> <span class="na">id=</span><span class="s">"customRadioDisabled2-div"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"radioDisabled"</span> <span class="na">id=</span><span class="s">"customRadioDisabled2"</span> <span class="na">class=</span><span class="s">"custom-control-input"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"custom-control-label"</span> <span class="na">for=</span><span class="s">"customRadioDisabled2"</span><span class="nt">&gt;</span>Toggle this custom radio<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/custom-disabled-html.png" alt="Custom disabled example html" /></p>
-
 <table><thead>
 <tr>
 <th>Method</th>
