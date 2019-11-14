@@ -10524,8 +10524,6 @@ Navbar brand as heading <br>
     <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdown</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectMenu</span><span class="o">(</span><span class="n">String</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">dropdown</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
-        <span class="n">dropdown</span><span class="o">.</span><span class="na">toggle</span><span class="o">();</span>
         <span class="n">dropdown</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">select</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
@@ -10547,15 +10545,19 @@ Navbar brand as heading <br>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickNavbarNavWithDropdownLinksTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navbarNav</span><span class="o">.</span><span class="na">navbarComplexLinks</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
-             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-             <span class="o">.</span><span class="na">displayed</span><span class="o">();</span>
-    <span class="n">navbarNav</span><span class="o">.</span><span class="na">navbarComplexLinks</span><span class="o">.</span><span class="na">selectMenu</span><span class="o">(</span><span class="n">ITEM_BRAND</span><span class="o">);</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">NAVBAR_BOOTSTRAP</span><span class="o">);</span>
-    <span class="n">navbarNav</span><span class="o">.</span><span class="na">navbarComplexLinks</span><span class="o">.</span><span class="na">selectMenu</span><span class="o">(</span><span class="n">ITEM_NAV</span><span class="o">);</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">NAVBAR_BOOTSTRAP</span><span class="o">);</span>
-    <span class="n">navbarNav</span><span class="o">.</span><span class="na">navbarComplexLinks</span><span class="o">.</span><span class="na">selectMenu</span><span class="o">(</span><span class="n">ITEM_FORMS</span><span class="o">);</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">NAVBAR_BOOTSTRAP</span><span class="o">);</span>
+        <span class="n">navbarNav</span><span class="o">.</span><span class="na">navbarComplexLinks</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">UIElement</span> <span class="n">dropdown</span> <span class="o">=</span> <span class="n">navbarNav</span><span class="o">.</span><span class="na">navbarComplexLinks</span><span class="o">.</span><span class="na">listPages</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+        <span class="n">dropdown</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">navbarNav</span><span class="o">.</span><span class="na">navbarComplexLinks</span><span class="o">.</span><span class="na">selectMenu</span><span class="o">(</span><span class="n">ITEM_BRAND</span><span class="o">);</span>
+        <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">NAVBAR_BOOTSTRAP</span><span class="o">);</span>
+        <span class="n">dropdown</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">navbarNav</span><span class="o">.</span><span class="na">navbarComplexLinks</span><span class="o">.</span><span class="na">selectMenu</span><span class="o">(</span><span class="n">ITEM_NAV</span><span class="o">);</span>
+        <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">NAVBAR_BOOTSTRAP</span><span class="o">);</span>
+        <span class="n">dropdown</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">navbarNav</span><span class="o">.</span><span class="na">navbarComplexLinks</span><span class="o">.</span><span class="na">selectMenu</span><span class="o">(</span><span class="n">ITEM_FORMS</span><span class="o">);</span>
+        <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">NAVBAR_BOOTSTRAP</span><span class="o">);</span>
 <span class="o">}</span>
 
 
