@@ -609,7 +609,7 @@
 								<a href="#media-object" class="toc-h2 h3 toc-link" data-title="Media object">Media object</a>
                             </li>
                             <li>
-								<a href="#modal" class="toc-h2 h3 toc-link" data-title="Modal"><a href="https://getbootstrap.com/docs/4.3/components/modal/">Modal</a></a>
+								<a href="#modal" class="toc-h2 h3 toc-link" data-title="Modal">Modal</a>
                             </li>
                             <li>
 								<a href="#popovers" class="toc-h2 h3 toc-link" data-title="Popovers">Popovers</a>
@@ -627,10 +627,10 @@
 								<a href="#input-group" class="toc-h2 h3 toc-link" data-title="Input group">Input group</a>
                             </li>
                             <li>
-								<a href="#card" class="toc-h2 h3 toc-link" data-title="Card"><a href="https://getbootstrap.com/docs/4.3/components/card/">Card</a></a>
+								<a href="#card" class="toc-h2 h3 toc-link" data-title="Card">Card</a>
                             </li>
                             <li>
-								<a href="#jumbotron" class="toc-h2 h3 toc-link" data-title="Jumbotron"><a href="https://getbootstrap.com/docs/4.0/components/jumbotron">Jumbotron</a></a>
+								<a href="#jumbotron" class="toc-h2 h3 toc-link" data-title="Jumbotron">Jumbotron</a>
                             </li>
                             <li>
 								<a href="#dropdown-2" class="toc-h2 h3 toc-link" data-title="Dropdown">Dropdown</a>
@@ -15866,8 +15866,8 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </ul></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/mediaObject/MediaObjectTests.java" target=a_blank> Bootstrap test examples </a></p>
-<h3 id='modal'><a href="https://getbootstrap.com/docs/4.3/components/modal/">Modal</a></h3>
-<p>Modal is a dialog box/popup window that is displayed on page.</p>
+<h3 id='modal'>Modal</h3>
+<p><a href="https://getbootstrap.com/docs/4.3/components/modal/">Modal</a> is a dialog box/popup window that is displayed on page.</p>
 <h4 id='modal-live-demo'><a href="https://getbootstrap.com/docs/4.3/components/modal/#live-demo">Modal Live demo</a></h4>
 <p>Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.</p>
 
@@ -20700,10 +20700,12 @@ Input group are represented by Section class in Java:</p>
 <li><p>com.epam.jdi.light.elements.common;</p></li>
 <li><p>com.epam.jdi.light.ui.bootstrap.elements.common;</p></li>
 </ul>
-<h3 id='card'><a href="https://getbootstrap.com/docs/4.3/components/card/">Card</a></h3>
-<p>Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.</p>
+<h3 id='card'>Card</h3>
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/">Cards</a> in Bootstrap provide a flexible and extensible content container with multiple variants and options.</p>
 <h4 id='card-example'><a href="https://getbootstrap.com/docs/4.3/components/card/#example">Card Example</a></h4>
 <p><img src="images/bootstrap/simplecard.png" alt="Simple Card Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-example"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-example")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardExample</span> <span class="n">cardExample</span><span class="o">;</span>
 
@@ -20724,9 +20726,15 @@ Input group are represented by Section class in Java:</p>
     <span class="n">cardExample</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
     <span class="n">Alerts</span><span class="o">.</span><span class="na">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">alertText</span><span class="o">));</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Go somewhere<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
 <p><img src="images/bootstrap/simplecard-html.png" alt="Simple Card Example Code" /></p>
 
 <p>Card is represented by Section class in Java:</p>
@@ -20792,6 +20800,8 @@ Input group are represented by Section class in Java:</p>
 <p>The building block of a card is the <code>.card-body</code>. Use it whenever you need a padded section within a card.</p>
 
 <p><img src="images/bootstrap/cardbody.png" alt="Card Body Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-body"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-body")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardBody</span> <span class="n">cardBody</span><span class="o">;</span>
 
@@ -20803,9 +20813,12 @@ Input group are represented by Section class in Java:</p>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getBodyTextTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardBody</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    This is some text within a card body.
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
 <p><img src="images/bootstrap/cardbody-html.png" alt="Card Body Example Code" /></p>
 
 <p>Card is represented by Section class in Java:</p>
@@ -20877,6 +20890,15 @@ Input group are represented by Section class in Java:</p>
     <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
     <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;h6</span> <span class="na">class=</span><span class="s">"card-subtitle mb-2 text-muted"</span><span class="nt">&gt;</span>Card subtitle<span class="nt">&lt;/h6&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>Card link<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>Another link<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/cardsubslinks-html.png" alt="Card Titles_links Example Code" /></p>
 
@@ -20957,6 +20979,12 @@ Input group are represented by Section class in Java:</p>
      <span class="n">cardImage</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">IMAGE_TOP_CLASS</span><span class="o">);</span>
      <span class="n">cardImage</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">IMAGE_TOP_CLASS</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card-image-html.png" alt="Card Image Example Code" /></p>
 
@@ -21052,6 +21080,13 @@ Input group are represented by Section class in Java:</p>
     <span class="o">}</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardListGroupsValues</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">checkedValues</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group list-group-flush"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Cras justo odio<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card_list_groups_code.png" alt="Card list groups code" /></p>
 
@@ -21135,6 +21170,22 @@ Input group are represented by Section class in Java:</p>
     <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">cardText</span><span class="o">));</span>
     <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">cardText</span><span class="o">));</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group list-group-flush"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Cras justo odio<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>Card link<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>Another link<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card-kitchen-sink-html.png" alt="Kitchen Sink Example Code" /></p>
 
@@ -21233,6 +21284,19 @@ Input group are represented by Section class in Java:</p>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getHeaderTextCardWithHeaderAndFooterTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">cardWithHeaderAndFooter</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">textHeaderCardWithHeaderAndFooter</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-center"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
+    Featured
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Go somewhere<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer text-muted"</span><span class="nt">&gt;</span>
+    2 days ago
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/cardheaderfooter-html.png" alt="Card with Header and Footer Code" /></p>
 
@@ -21309,6 +21373,52 @@ Input group are represented by Section class in Java:</p>
             <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">();</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"card-with-grid-markup"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row mb-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h5&gt;</span>
+          <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>1st row 1st cell<span class="nt">&lt;/p&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click me
+          <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h5&gt;</span>
+          <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>1st row 2nd cell<span class="nt">&lt;/p&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click me
+          <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row mb-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h5&gt;</span>
+          <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>2nd row 1st cell<span class="nt">&lt;/p&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click me
+          <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h5&gt;</span>
+          <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>2nd row 2nd cell<span class="nt">&lt;/p&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click me
+          <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card_grid_html.png" alt="Card Grid Code" /></p>
 
@@ -21378,6 +21488,22 @@ Input group are represented by Section class in Java:</p>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"width"</span><span class="o">,</span> <span class="n">widthInPixels</span><span class="o">)</span>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">whiteColor</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card w-75"</span> <span class="na">style=</span><span class="s">"margin-bottom: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Spider man (w-75)<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Spider-Man is a fictional superhero created by writer-editor
+      Stan Lee and writer-artist Steve Ditko.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Spider-Man"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Read more<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card w-50"</span> <span class="na">style=</span><span class="s">"margin-bottom: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Hulk (w-50)<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>The Hulk is a fictional superhero appearing in publications by
+      the American publisher Marvel Comics.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Hulk_(film)"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Read more<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card_utilities_html.png" alt="Card utilities Example Code" /></p>
 
@@ -21440,6 +21566,23 @@ Input group are represented by Section class in Java:</p>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"width"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"208px"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"margin-bottom"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"10px"</span><span class="o">));</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">id=</span><span class="s">"card-custom-css-1"</span> <span class="na">style=</span><span class="s">"width: 13rem; margin-bottom: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Spider man (13rem)<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Spider-Man is a fictional superhero created by writer-editor
+      Stan Lee and writer-artist Steve Ditko.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Spider-Man"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Read more<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">id=</span><span class="s">"card-custom-css-2"</span> <span class="na">style=</span><span class="s">"width: 9rem; margin-bottom: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Hulk (9rem)<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>The Hulk is a fictional superhero appearing in publications by
+      the American publisher Marvel Comics.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Hulk_(film)"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Read more<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card_custom_CSS_html.png" alt="Card custom CSS Example Code" /></p>
 
@@ -21531,6 +21674,36 @@ Input group are represented by Section class in Java:</p>
     <span class="n">cardRightTextAlignment</span><span class="o">.</span><span class="na">cardButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
     <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">alertText</span><span class="o">));</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"card-text-left"</span> <span class="na">class=</span><span class="s">"card mb-2"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional
+      content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click
+      Me!
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"card-text-center"</span> <span class="na">class=</span><span class="s">"card mb-2 text-center"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional
+      content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-success"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click
+      Me!
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"card-text-right"</span> <span class="na">class=</span><span class="s">"card mb-3 text-right"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional
+      content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-warning"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click
+      Me!
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/cardtextalignment-html.png" alt="Card Text Alignment Example Code" /></p>
 
@@ -21662,6 +21835,31 @@ Input group are represented by Section class in Java:</p>
             <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"onclick"</span><span class="o">,</span> <span class="s">"alert('Button Clicked!');"</span><span class="o">)</span>
             <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"card-navigation"</span> <span class="na">class=</span><span class="s">"card text-center mb-3"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs card-header-tabs"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"activeLink"</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"javascript: void()"</span>
+          <span class="na">onclick=</span><span class="s">"alert('Active Tab Clicked!');"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"jdiLink"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing/jdi-light"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"disabledLink"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"javascript: void()"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+          <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional
+      content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click
+      Me!
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/cardnav-html.png" alt="Card Navigation Example Code" /></p>
 
@@ -21775,6 +21973,26 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOnTop</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">topCardData</span><span class="o">.</span><span class="na">getAltAttr</span><span class="o">());</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOnBottom</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">bottomCardData</span><span class="o">.</span><span class="na">getAltAttr</span><span class="o">());</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span> <span class="na">id=</span><span class="s">"card-image-caps-1"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">style=</span><span class="s">"width: 30%; margin: 0 auto;"</span> <span class="na">src=</span><span class="s">"images/captain-america.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span>
+    <span class="na">alt=</span><span class="s">"Captain America image"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>This is a wider card with supporting text below as a natural
+      lead-in to additional content. This content is a little bit longer.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span> <span class="na">id=</span><span class="s">"card-image-caps-2"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>This is a wider card with supporting text below as a natural
+      lead-in to additional content. This content is a little bit longer.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">style=</span><span class="s">"width: 30%; margin: 0 auto;"</span> <span class="na">src=</span><span class="s">"images/punisher.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/cardimagecaps-html.png" alt="Card Image Caps Example Code" /></p>
 
@@ -21870,6 +22088,15 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
      <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">vectorImage</span><span class="o">.</span><span class="na">getText</span><span class="o">(</span><span class="n">VECTOR_TEXT_TAG</span><span class="o">),</span> <span class="n">VECTOR_TEXT</span><span class="o">);</span>
      <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardImageOverlays</span><span class="o">.</span><span class="na">vectorImage</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="n">VECTOR_TEXT_TAG</span><span class="o">,</span> <span class="n">VECTOR_TEXT_ATTR</span><span class="o">),</span> <span class="n">VECTOR_TEXT_VALUE</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card bg-dark text-dark mb-3"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/captain-america.jpg"</span> <span class="na">class=</span><span class="s">"card-img"</span> <span class="na">alt=</span><span class="s">"Captain America image"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-img-overlay"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>This is a wider card with supporting text below as a natural
+      lead-in to additional content. This content is a little bit longer.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card-image-overlays-html.png" alt="Card Image Overlays Example" /></p>
 
@@ -21959,6 +22186,27 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"11.2px"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"small"</span><span class="o">));</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span> <span class="na">id=</span><span class="s">"card-horizontal"</span> <span class="na">style=</span><span class="s">"max-width: 540px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row no-gutters"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/wolverin.jpg"</span> <span class="na">class=</span><span class="s">"card-img"</span> <span class="na">id=</span><span class="s">"card-horizontal-img"</span> <span class="na">title=</span><span class="s">"Wolverine icon"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-8"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span> <span class="na">id=</span><span class="s">"card-horizontal-title"</span><span class="nt">&gt;</span>Wolverine<span class="nt">&lt;/h5&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Wolverine is a fictional character appearing in
+          American comic books published by Marvel Comics, mostly in association
+          with the X-Men. He is a mutant who possesses animal-keen senses,
+          enhanced physical capabilities, powerful regenerative ability known as a
+          healing factor, and three retractable claws in each hand. Wolverine has
+          been depicted variously as a member of the X-Men, Alpha Flight, and the
+          Avengers.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>The character appeared in
+            #180 (1974)<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 
@@ -22083,6 +22331,38 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
             <span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"rgba(0, 0, 0, 0)"</span><span class="o">));</span>
 
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-white bg-primary mb-3"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span> <span class="na">id=</span><span class="s">"card-bright-blue"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Header<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Primary card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-white bg-secondary mb-3"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span> <span class="na">id=</span><span class="s">"card-grey"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Header<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Secondary card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-white bg-success mb-3"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span> <span class="na">id=</span><span class="s">"card-green"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Header<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Success card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-white bg-danger mb-3"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span> <span class="na">id=</span><span class="s">"card-red"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Header<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Danger card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/cardbackgroundandcolor-html.png" alt="Card Background And Color Code" /></p>
 
@@ -22157,6 +22437,38 @@ Note that you can put <code>.text-{color}</code> classes on the parent .card or 
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getHeaderTextTest</span><span class="o">(</span><span class="n">CardBorder</span> <span class="n">cardBorder</span><span class="o">,</span> <span class="n">String</span> <span class="n">headerText</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardBorder</span><span class="o">.</span><span class="na">border</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">headerText</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card border-primary mb-3"</span> <span class="na">id=</span><span class="s">"card-border-primary"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Card with primary border<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body text-primary"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Primary card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card border-secondary mb-3"</span> <span class="na">id=</span><span class="s">"card-border-secondary"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Card with secondary border<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body text-secondary"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Secondary card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card border-success mb-3"</span> <span class="na">id=</span><span class="s">"card-border-success"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Card with success border<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body text-success"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Success card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card border-danger mb-3"</span> <span class="na">id=</span><span class="s">"card-border-danger"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Card with danger border<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body text-danger"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Danger card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/cardborders-html.png" alt="Card Borders Example Code" /></p>
 
@@ -22615,8 +22927,8 @@ For example <code>.card-columns</code> class to generate a set of responsive tie
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardColumnsTests.java">Bootstrap test examples</a></p>
-<h3 id='jumbotron'><a href="https://getbootstrap.com/docs/4.0/components/jumbotron">Jumbotron</a></h3>
-<p>Jumbotron – Lightweight, flexible component for showcasing hero</p>
+<h3 id='jumbotron'>Jumbotron</h3>
+<p><a href="https://getbootstrap.com/docs/4.3/components/jumbotron">Jumbotron</a> – Lightweight, flexible component for showcasing hero</p>
 
 <p><img src="images/bootstrap/jumbotron.png" alt="Jumbotron" /></p>
 
