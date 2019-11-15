@@ -212,7 +212,7 @@
             overflow: auto;
             color: #212529;
         }
-        .content .html code, .content pre.html{font-size: 14px; }
+        .content .html code, .content pre.html{font-size: 10px; }
         pre.html .s { color: #d44950; }
         pre.html .na { color: #4f9fcf; }
         pre.html .nt { color: #2f6f9f; }
@@ -20726,12 +20726,16 @@ Input group are represented by Section class in Java:</p>
     <span class="n">cardExample</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
     <span class="n">Alerts</span><span class="o">.</span><span class="na">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">alertText</span><span class="o">));</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span> <span class="na">id=</span><span class="s">"card-example"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">style=</span><span class="s">"width: 30%; margin: 0 auto;"</span> <span class="na">id=</span><span class="s">"bs-card-example-image"</span>
+    <span class="na">src=</span><span class="s">"https://jdi-testing.github.io/jdi-light/images/wolverin.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"image"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Go somewhere<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Card Button Clicked!')"</span><span class="nt">&gt;</span>
+      Click Me!
+    <span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
@@ -20813,7 +20817,7 @@ Input group are represented by Section class in Java:</p>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getBodyTextTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardBody</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">id=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
     This is some text within a card body.
   <span class="nt">&lt;/div&gt;</span>
@@ -20861,7 +20865,7 @@ Input group are represented by Section class in Java:</p>
 
 <p>Subtitles are used by adding a <code>.card-subtitle</code> to a <code>&lt;h*&gt;</code> tag. If the <code>.card-title</code> and the <code>.card-subtitle</code> items are placed in a <code>.card-body</code> item, the card title and subtitle are aligned nicely.</p>
 
-<p><img src="images/bootstrap/cardsubslinks.png" alt="Card Titles_links_Example" /></p>
+<p><img src="images/bootstrap/cardsubslinks.png" alt="Card Titles and Links Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-subtitle-link"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-subtitle-link")</span>
@@ -20890,17 +20894,20 @@ Input group are represented by Section class in Java:</p>
     <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
     <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">id=</span><span class="s">"card-subtitle-link"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
     <span class="nt">&lt;h6</span> <span class="na">class=</span><span class="s">"card-subtitle mb-2 text-muted"</span><span class="nt">&gt;</span>Card subtitle<span class="nt">&lt;/h6&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>Card link<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>Another link<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and
+      make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing/jdi-light"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">class=</span><span class="s">"card-link"</span> <span class="na">id=</span><span class="s">"bs-card-2-link1"</span><span class="nt">&gt;</span>JDI Light
+      Github<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">class=</span><span class="s">"card-link"</span>
+      <span class="na">id=</span><span class="s">"bs-card-2-link2"</span><span class="nt">&gt;</span>JDI Website<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/cardsubslinks-html.png" alt="Card Titles_links Example Code" /></p>
+<p><img src="images/bootstrap/cardsubslinks-html.png" alt="Card Titles and Links Example Code" /></p>
 
 <p>Card is represented by Section class in Java:</p>
 
@@ -20979,10 +20986,14 @@ Input group are represented by Section class in Java:</p>
      <span class="n">cardImage</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">IMAGE_TOP_CLASS</span><span class="o">);</span>
      <span class="n">cardImage</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">IMAGE_TOP_CLASS</span><span class="o">);</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span> <span class="na">id=</span><span class="s">"card-image-caps-1"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">style=</span><span class="s">"width: 30%; margin: 0 auto;"</span> <span class="na">src=</span><span class="s">"images/captain-america.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span>
+    <span class="na">alt=</span><span class="s">"Captain America image"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>This is a wider card with supporting text below as a natural
+      lead-in to additional content. This content is a little bit longer.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
@@ -21080,7 +21091,10 @@ Input group are represented by Section class in Java:</p>
     <span class="o">}</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardListGroupsValues</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">checkedValues</span><span class="o">);</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span> <span class="na">id=</span><span class="s">"card-list-groups"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
+    Featured
+  <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group list-group-flush"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Cras justo odio<span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
@@ -21170,11 +21184,12 @@ Input group are represented by Section class in Java:</p>
     <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">cardText</span><span class="o">));</span>
     <span class="n">cardKitchenSink</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">cardText</span><span class="o">));</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span> <span class="na">id=</span><span class="s">"card-kitchen-sink"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/spider-man.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"Spider Man"</span> <span class="na">style=</span><span class="s">"width: 30%; margin: 0 auto;"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
+      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group list-group-flush"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Cras justo odio<span class="nt">&lt;/li&gt;</span>
@@ -21182,8 +21197,8 @@ Input group are represented by Section class in Java:</p>
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>Card link<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>Another link<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing/jdi-light"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>JDI Light Github<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">class=</span><span class="s">"card-link"</span><span class="nt">&gt;</span>JDI Website<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
@@ -21284,14 +21299,17 @@ Input group are represented by Section class in Java:</p>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getHeaderTextCardWithHeaderAndFooterTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">cardWithHeaderAndFooter</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">textHeaderCardWithHeaderAndFooter</span><span class="o">);</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-center"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3 text-center"</span> <span class="na">id=</span><span class="s">"card-with-header-and-footer"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
     Featured
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional content.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Go somewhere<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional
+      content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click
+      Me!
+    <span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer text-muted"</span><span class="nt">&gt;</span>
     2 days ago
@@ -21346,7 +21364,7 @@ Input group are represented by Section class in Java:</p>
 <h4 id='card-with-grid-markup'><a href="https://getbootstrap.com/docs/4.3/components/card/#using-grid-markup">Card with Grid Markup</a></h4>
 <p>Using the grid, wrap cards in columns and rows as needed.</p>
 
-<p><img src="images/bootstrap/card_grid.png" alt="Card with Header and Footer Example" /></p>
+<p><img src="images/bootstrap/card_grid.png" alt="Card with Grid Markup Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-grid-markup"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-with-grid-markup")</span>
@@ -21496,14 +21514,6 @@ Input group are represented by Section class in Java:</p>
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Spider-Man"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Read more<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card w-50"</span> <span class="na">style=</span><span class="s">"margin-bottom: 10px;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Hulk (w-50)<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>The Hulk is a fictional superhero appearing in publications by
-      the American publisher Marvel Comics.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Hulk_(film)"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Read more<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card_utilities_html.png" alt="Card utilities Example Code" /></p>
 
@@ -21572,15 +21582,6 @@ Input group are represented by Section class in Java:</p>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Spider-Man is a fictional superhero created by writer-editor
       Stan Lee and writer-artist Steve Ditko.<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Spider-Man"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Read more<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">id=</span><span class="s">"card-custom-css-2"</span> <span class="na">style=</span><span class="s">"width: 9rem; margin-bottom: 10px;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Hulk (9rem)<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>The Hulk is a fictional superhero appearing in publications by
-      the American publisher Marvel Comics.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://en.wikipedia.org/wiki/Hulk_(film)"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Read more<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
@@ -21674,32 +21675,12 @@ Input group are represented by Section class in Java:</p>
     <span class="n">cardRightTextAlignment</span><span class="o">.</span><span class="na">cardButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
     <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">alertText</span><span class="o">));</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"card-text-left"</span> <span class="na">class=</span><span class="s">"card mb-2"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional
-      content.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click
-      Me!
-    <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"card-text-center"</span> <span class="na">class=</span><span class="s">"card mb-2 text-center"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"card-text-center"</span> <span class="na">class=</span><span class="s">"card mb-2 text-center"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h5&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional
       content.<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-success"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click
-      Me!
-    <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"card-text-right"</span> <span class="na">class=</span><span class="s">"card mb-3 text-right"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional
-      content.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-warning"</span> <span class="na">onclick=</span><span class="s">"alert('Button Clicked!');"</span><span class="nt">&gt;</span>Click
       Me!
     <span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
@@ -21982,16 +21963,6 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
       lead-in to additional content. This content is a little bit longer.<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span> <span class="na">id=</span><span class="s">"card-image-caps-2"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>This is a wider card with supporting text below as a natural
-      lead-in to additional content. This content is a little bit longer.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">style=</span><span class="s">"width: 30%; margin: 0 auto;"</span> <span class="na">src=</span><span class="s">"images/punisher.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/cardimagecaps-html.png" alt="Card Image Caps Example Code" /></p>
@@ -22277,42 +22248,12 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-bright-blue"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-bright-blue")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardBrightBlue</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-grey"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-grey")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardGrey</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-green"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-green")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardGreen</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-red"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-red")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardRed</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-yellow"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-yellow")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardYellow</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-blue"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-blue")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardBlue</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-light"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-light")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardLight</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-dark"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-dark")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardDark</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardStyled</span> <span class="n">cardBrightBlue</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithHeaderAndFooter</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardStyled</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">header</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">paragraph</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span><span class="kd">public</span> <span class="n">Text</span> <span class="n">header</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'footer')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footer</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@DataProvider</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"cardColors"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">cardColors</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
-            <span class="o">{</span><span class="n">cardBrightBlue</span><span class="o">,</span> <span class="s">"bg-primary"</span><span class="o">,</span> <span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">cardGrey</span><span class="o">,</span> <span class="s">"bg-secondary"</span><span class="o">,</span> <span class="s">"rgba(108, 117, 125, 1)"</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">cardGreen</span><span class="o">,</span> <span class="s">"bg-success"</span><span class="o">,</span> <span class="s">"rgba(40, 167, 69, 1)"</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">cardRed</span><span class="o">,</span> <span class="s">"bg-danger"</span><span class="o">,</span> <span class="s">"rgba(220, 53, 69, 1)"</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">cardYellow</span><span class="o">,</span> <span class="s">"bg-warning"</span><span class="o">,</span> <span class="s">"rgba(255, 193, 7, 1)"</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">cardBlue</span><span class="o">,</span> <span class="s">"bg-info"</span><span class="o">,</span> <span class="s">"rgba(23, 162, 184, 1)"</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">cardLight</span><span class="o">,</span> <span class="s">"bg-light"</span><span class="o">,</span> <span class="s">"rgba(248, 249, 250, 1)"</span><span class="o">},</span>
-            <span class="o">{</span><span class="n">cardDark</span><span class="o">,</span> <span class="s">"bg-dark"</span><span class="o">,</span> <span class="s">"rgba(52, 58, 64, 1)"</span><span class="o">},</span>
-    <span class="o">};</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">body</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"cardColors"</span><span class="o">)</span>
@@ -22335,30 +22276,6 @@ top and bottom “image caps” — images at the top or bottom of a card.</p>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Header<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Primary card title<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
-      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-white bg-secondary mb-3"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span> <span class="na">id=</span><span class="s">"card-grey"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Header<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Secondary card title<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
-      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-white bg-success mb-3"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span> <span class="na">id=</span><span class="s">"card-green"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Header<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Success card title<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
-      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-white bg-danger mb-3"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span> <span class="na">id=</span><span class="s">"card-red"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Header<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Danger card title<span class="nt">&lt;/h5&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
       the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
@@ -22417,10 +22334,10 @@ Note that you can put <code>.text-{color}</code> classes on the parent .card or 
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-border-primary"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-border-primatry")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardBorder</span> <span class="n">cardBorderPrimary</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardStyled</span> <span class="n">cardBorderPrimary</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardBorder</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">border</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardStyled</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">header</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">body</span><span class="o">;</span>
 <span class="o">}</span>
@@ -22441,30 +22358,6 @@ Note that you can put <code>.text-{color}</code> classes on the parent .card or 
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Card with primary border<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body text-primary"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Primary card title<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
-      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card border-secondary mb-3"</span> <span class="na">id=</span><span class="s">"card-border-secondary"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Card with secondary border<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body text-secondary"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Secondary card title<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
-      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card border-success mb-3"</span> <span class="na">id=</span><span class="s">"card-border-success"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Card with success border<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body text-success"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Success card title<span class="nt">&lt;/h5&gt;</span>
-    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
-      the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card border-danger mb-3"</span> <span class="na">id=</span><span class="s">"card-border-danger"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Card with danger border<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body text-danger"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Danger card title<span class="nt">&lt;/h5&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up
       the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
@@ -22539,6 +22432,19 @@ with <code>.bg-transparent</code>.</p>
     <span class="n">cardMixinsUtilities</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"border-color"</span><span class="o">,</span> <span class="s">"rgb(40, 167, 69)"</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card border-success mb-3"</span> <span class="na">id=</span><span class="s">"card-mixins-utilities"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header bg-transparent border-success"</span><span class="nt">&gt;</span>According To Samuel L. Jackson
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body text-success"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>The Secret To Marvel Studios’ Success<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Because while the Marvel Cinematic Universe always includes
+      plenty of spectacle and pulse pounding action, each blockbuster tells a very
+      human story. The heroes of the world are flawed and funny, allowing audiences to
+      connect with characters who are super powered and dealing with situations we
+      truly can't comprehend.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer bg-transparent border-success"</span><span class="nt">&gt;</span>For Cinema Blend<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card-mixins-utilities-html.png" alt="Card Mixins Utilities Example Code" /></p>
 
@@ -22604,10 +22510,13 @@ with <code>.bg-transparent</code>.</p>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-footer small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footerText</span><span class="o">;</span>
 <span class="o">}</span>
 
+<span class="kd">private</span> <span class="n">String</span> <span class="n">card1ImageSrc</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/images/spider-man.jpg"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">card2ImageSrc</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/images/hulk.jpg"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">card1ImageAlt</span> <span class="o">=</span> <span class="s">"spider-man"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">card2ImageAlt</span> <span class="o">=</span> <span class="s">"hulk"</span><span class="o">;</span>
+
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSrcTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card1ImageSrc</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card2ImageSrc</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card1ImageSrc</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card2ImageSrc</span><span class="o">);</span>
 <span class="o">}</span>
@@ -22616,9 +22525,30 @@ with <code>.bg-transparent</code>.</p>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getAltTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-group"</span> <span class="na">style=</span><span class="s">"margin-bottom: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/spider-man.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"spider-man"</span>
+        <span class="na">style=</span><span class="s">"width: 75px; height: 120px;"</span><span class="nt">&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Spider man<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Spider-Man is a fictional superhero created by
+        writer-editor Stan Lee and writer-artist Steve Ditko.<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Peter Parker<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/hulk.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"hulk"</span>
+        <span class="na">style=</span><span class="s">"width: 98px; height: 120px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Hulk<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>The Hulk is a fictional superhero appearing in publications
+        by the American publisher Marvel Comics.<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Bruce Banner<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card-groups-html.png" alt="Card_groups HTML example" /></p>
 <h5 id='card-groups-with-footer'>Card groups with footer</h5>
@@ -22641,21 +22571,49 @@ with <code>.bg-transparent</code>.</p>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-footer small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footerText</span><span class="o">;</span>
 <span class="o">}</span>
 
+<span class="kd">private</span> <span class="n">String</span> <span class="n">card1ImageSrc</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/images/spider-man.jpg"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">card2ImageSrc</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/images/hulk.jpg"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">card1ImageAlt</span> <span class="o">=</span> <span class="s">"spider-man"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">card2ImageAlt</span> <span class="o">=</span> <span class="s">"hulk"</span><span class="o">;</span>
+
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSrcTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card1ImageSrc</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card2ImageSrc</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card1ImageSrc</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">src</span><span class="o">(),</span> <span class="n">card2ImageSrc</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getAltTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card1ImageAlt</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardGroupWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">alt</span><span class="o">(),</span> <span class="n">card2ImageAlt</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-group"</span> <span class="na">style=</span><span class="s">"margin-bottom: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/spider-man.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"spider-man"</span>
+        <span class="na">style=</span><span class="s">"width: 75px; height: 120px;"</span><span class="nt">&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Spider man<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Spider-Man is a fictional superhero created by
+        writer-editor Stan Lee and writer-artist Steve Ditko.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Peter Parker<span class="nt">&lt;/small&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/hulk.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"hulk"</span>
+        <span class="na">style=</span><span class="s">"width: 98px; height: 120px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Hulk<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>The Hulk is a fictional superhero appearing in publications
+        by the American publisher Marvel Comics.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Bruce Banner<span class="nt">&lt;/small&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card-groups-with-footer-html.png" alt="Card_groups HTML example" /></p>
 
@@ -22677,10 +22635,10 @@ with <code>.bg-transparent</code>.</p>
 <p><img src="images/bootstrap/card-decks.png" alt="Card_decks example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(1)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-deck:nth-of-type(1)")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardGroupSection</span> <span class="n">cardGroupSectionWithoutFooter</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-deck:nth-of-type(1)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-deck:nth-of-type(1)")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardDeckSection</span> <span class="n">cardDeckSectionWithoutFooter</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardGroupSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardDeckSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardGrouped</span> <span class="n">card1</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(2)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardGrouped</span> <span class="n">card2</span><span class="o">;</span>
 <span class="o">}</span>
@@ -22693,39 +22651,56 @@ with <code>.bg-transparent</code>.</p>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-footer small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footerText</span><span class="o">;</span>
 <span class="o">}</span>
 
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1Title</span> <span class="o">=</span> <span class="s">"SPIDER MAN"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2Title</span> <span class="o">=</span> <span class="s">"HULK"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1ImageSrc</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/images/spider-man.jpg"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2ImageSrc</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/images/hulk.jpg"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1ImageAlt</span> <span class="o">=</span> <span class="s">"spider-man"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2ImageAlt</span> <span class="o">=</span> <span class="s">"hulk"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1MainText</span> <span class="o">=</span> <span class="s">"Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko."</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2MainText</span> <span class="o">=</span> <span class="s">"The Hulk is a fictional superhero appearing in publications by the American publisher Marvel Comics."</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1HeroName</span> <span class="o">=</span> <span class="s">"Peter Parker"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2HeroName</span> <span class="o">=</span> <span class="s">"Bruce Banner"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">card1Title</span> <span class="o">=</span> <span class="s">"SPIDER MAN"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">card2Title</span> <span class="o">=</span> <span class="s">"HULK"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">card1MainText</span> <span class="o">=</span> <span class="s">"Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko."</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">card2MainText</span> <span class="o">=</span> <span class="s">"The Hulk is a fictional superhero appearing in publications by the American publisher Marvel Comics."</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card1Title</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card2Title</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">card1ImageSrc</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">card2ImageSrc</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">card1ImageAlt</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">card2ImageAlt</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card1MainText</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card2MainText</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mutedText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card1HeroName</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mutedText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card2HeroName</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardDeckSectionWithoutFooter</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
 <span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getMainTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardDeckSectionWithoutFooter</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithoutFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithoutFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-deck"</span> <span class="na">style=</span><span class="s">"margin-bottom: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/spider-man.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"spider-man"</span>
+        <span class="na">style=</span><span class="s">"width: 75px; height: 120px;"</span><span class="nt">&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Spider man<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Spider-Man is a fictional superhero created by
+        writer-editor Stan Lee and writer-artist Steve Ditko.<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Peter Parker<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/hulk.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"hulk"</span>
+        <span class="na">style=</span><span class="s">"width: 98px; height: 120px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Hulk<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>The Hulk is a fictional superhero appearing in publications
+        by the American publisher Marvel Comics.<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Bruce Banner<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card-decks-html.png" alt="Card_decks HTML example" /></p>
 <h5 id='card-decks-with-footer'>Card decks with footer</h5>
-<p><img src="images/bootstrap/card-decks-with-footer.png" alt="Card_groups example" /></p>
+<p><img src="images/bootstrap/card-decks-with-footer.png" alt="Card_decks example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(2)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-deck:nth-of-type(2)")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardGroupSection</span> <span class="n">cardGroupSectionWithFooter</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-deck:nth-of-type(2)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-deck:nth-of-type(2)")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardDeckSection</span> <span class="n">cardDeckSectionWithFooter</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardGroupSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardGrouped</span> <span class="n">card1</span><span class="o">;</span>
@@ -22740,33 +22715,52 @@ with <code>.bg-transparent</code>.</p>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-footer small"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footerText</span><span class="o">;</span>
 <span class="o">}</span>
 
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1Title</span> <span class="o">=</span> <span class="s">"SPIDER MAN"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2Title</span> <span class="o">=</span> <span class="s">"HULK"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1ImageSrc</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/images/spider-man.jpg"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2ImageSrc</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/images/hulk.jpg"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1ImageAlt</span> <span class="o">=</span> <span class="s">"spider-man"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2ImageAlt</span> <span class="o">=</span> <span class="s">"hulk"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1MainText</span> <span class="o">=</span> <span class="s">"Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko."</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2MainText</span> <span class="o">=</span> <span class="s">"The Hulk is a fictional superhero appearing in publications by the American publisher Marvel Comics."</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card1HeroName</span> <span class="o">=</span> <span class="s">"Peter Parker"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">String</span> <span class="n">card2HeroName</span> <span class="o">=</span> <span class="s">"Bruce Banner"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">card1Title</span> <span class="o">=</span> <span class="s">"SPIDER MAN"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">card2Title</span> <span class="o">=</span> <span class="s">"HULK"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">card1MainText</span> <span class="o">=</span> <span class="s">"Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko."</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">card2MainText</span> <span class="o">=</span> <span class="s">"The Hulk is a fictional superhero appearing in publications by the American publisher Marvel Comics."</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card1Title</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card2Title</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">card1ImageSrc</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">card2ImageSrc</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">card1ImageAlt</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">card2ImageAlt</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card1MainText</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card2MainText</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">footerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card1HeroName</span><span class="o">);</span>
-    <span class="n">cardGroupSectionWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">footerText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">card2HeroName</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardDeckSectionWithFooter</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1Title</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2Title</span><span class="o">);</span>
 <span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getMainTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardDeckSectionWithFooter</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-deck"</span> <span class="na">style=</span><span class="s">"margin-bottom: 10px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/spider-man.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"spider-man"</span>
+        <span class="na">style=</span><span class="s">"width: 75px; height: 120px;"</span><span class="nt">&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Spider man<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Spider-Man is a fictional superhero created by
+        writer-editor Stan Lee and writer-artist Steve Ditko.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Peter Parker<span class="nt">&lt;/small&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/hulk.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"hulk"</span>
+        <span class="na">style=</span><span class="s">"width: 98px; height: 120px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Hulk<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>The Hulk is a fictional superhero appearing in publications
+        by the American publisher Marvel Comics.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Bruce Banner<span class="nt">&lt;/small&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card-decks-with-footer-html.png" alt="Card_groups HTML example" /></p>
+<p><img src="images/bootstrap/card-decks-with-footer-html.png" alt="Card_decks HTML example" /></p>
 
 <p>Card are represented by Section class in Java:</p>
 
@@ -22866,6 +22860,49 @@ For example <code>.card-columns</code> class to generate a set of responsive tie
     <span class="n">assertTrue</span><span class="o">(</span><span class="n">cardColumns</span><span class="o">.</span><span class="na">bottomLeftCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getreLocation</span><span class="o">().</span><span class="na">x</span> <span class="o">&lt;</span> <span class="n">cardColumns</span><span class="o">.</span><span class="na">bottomRightCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">x</span><span class="o">);</span>
     <span class="n">assertTrue</span><span class="o">(</span><span class="n">cardColumns</span><span class="o">.</span><span class="na">bottomLeftCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">x</span> <span class="o">&lt;</span> <span class="n">cardColumns</span><span class="o">.</span><span class="na">middleRightCard</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getLocation</span><span class="o">().</span><span class="na">x</span><span class="o">);</span>
 <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-columns"</span> <span class="na">style=</span><span class="s">"column-count: 2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card p-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"blockquote mb-0 card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>I don’t want to go.<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"blockquote-footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>
+          Peter Parker in <span class="nt">&lt;cite</span> <span class="na">title=</span><span class="s">"Source Title"</span><span class="nt">&gt;</span>Avengers<span class="nt">&lt;/cite&gt;</span>
+        <span class="nt">&lt;/small&gt;</span>
+      <span class="nt">&lt;/footer&gt;</span>
+    <span class="nt">&lt;/blockquote&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/hulk.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"hulk"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Who is Hulk?<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>..A monster man who took "Go Green" too seriously.<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;</span>
+      <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card bg-primary text-white text-center p-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"blockquote mb-0"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>If toast is cut diagonally, I can’t eat it.<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"blockquote-footer text-white"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;small&gt;</span>
+          Nick Fury in <span class="nt">&lt;cite</span> <span class="na">title=</span><span class="s">"Source Title"</span><span class="nt">&gt;</span>Captain Marvel<span class="nt">&lt;/cite&gt;</span>
+        <span class="nt">&lt;/small&gt;</span>
+      <span class="nt">&lt;/footer&gt;</span>
+    <span class="nt">&lt;/blockquote&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-center"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Iron Man<span class="nt">&lt;/h5&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>I do anything and everything that Mr. Stark requires —
+        including occasionally taking out the trash.<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;</span>
+      <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/punisher.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"punisher"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><img src="images/bootstrap/card-columns-html.png" alt="Card Columns Example Code" /></p>
 
