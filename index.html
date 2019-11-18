@@ -24548,28 +24548,28 @@ For better understanding of this test example remove <strong>&quot;Name&quot;: &
 Note: domain is read from test.properties automatically. <br><br><br><br><br>
 <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bdd-no-po-tests/src/test/resources/features/JsonBasedPage.feature">BDD feature test examples</a>
 <br><br><br></p>
-<h2 id='jdi-light-bdd-steps'>JDI Light BDD Steps</h2><h3 id='label-2'>Label</h3><pre class="highlight plaintext"><code>Label action examples:
+<h2 id='jdi-light-bdd-steps'>JDI Light BDD Steps</h2><h3 id='label-2'>Label</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Label action examples</span><span class="p">:</span>
 
-When I click on "JDI Title"
+<span class="nf">When</span> I click on <span class="s">"JDI Title"</span>
 
-Label validation examples:
+<span class="err">Label validation examples</span><span class="p">:</span>
 
-Then the "JDI Title" text equals to "JDI TESTING PLATFORM"
-Then the "JDI Title" text contains "JDI"
-Then the "JDI Title" text matches to ".* TESTING .*"
-Then the "JDI Title" is enabled 
-Then the "JDI Title" is disabled 
-Then the "JDI Title" is displayed 
-Then the "JDI Title" disappears 
-Then the "JDI Title" is hidden 
-Then the "JDI Title" does not appear 
-Then the "JDI Title" does not appear during "5" seconds 
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> text equals to <span class="s">"JDI TESTING PLATFORM"</span>
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> text contains <span class="s">"JDI"</span>
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> text matches to <span class="s">".* TESTING .*"</span>
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> is enabled 
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> is disabled 
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> is displayed 
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> disappears 
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> is hidden 
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> does not appear 
+<span class="nf">Then</span> the <span class="s">"JDI Title"</span> does not appear during <span class="s">"5"</span> seconds 
 
-Scenario example for Label:
+<span class="err">Scenario example for Label</span><span class="p">:</span>
 
- Scenario: Text equals
-    Given I open "Html5 Page"
-    Then the "Jdi Title" text equals to "JDI TESTING PLATFORM"
+ <span class="kn">Scenario</span><span class="p">:</span> Text equals
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">Then</span> the <span class="s">"Jdi Title"</span> text equals to <span class="s">"JDI TESTING PLATFORM"</span>
 </code></pre>
 <p>Actions: <br></p>
 
@@ -24591,31 +24591,31 @@ Validations: <br></p>
 <p>More information in the <a href="https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa"><strong>Tutorial</strong></a><br>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Label.feature" target="_blank">Cucumber tests</a> for Label<br>
 <br><br><br><br></p>
-<h3 id='colorpicker-2'>ColorPicker</h3><pre class="highlight plaintext"><code>ColorPicker action example:
+<h3 id='colorpicker-2'>ColorPicker</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">ColorPicker action example</span><span class="p">:</span>
 
-When I set "Color Picker" to "#00FF00" color
-
-
-ColorPicker validation examples:
-
-Then the "Color Picker" color equals to "#00FF00"
-Then the "Color Picker" label text equals to "Select a color"
-Then the "Color Picker" color is "#00FF00"
-Then the "Color Picker" is enabled 
-Then the "Color Picker" is disabled 
-Then the "Color Picker" is displayed 
-Then the "Color Picker" disappears 
-Then the "Color Picker" is hidden 
-Then the "Color Picker" does not appear 
-Then the "Color Picker" does not appear during "5" seconds 
+<span class="nf">When</span> I set <span class="s">"Color Picker"</span> to <span class="s">"#00FF00"</span> color
 
 
-Scenario example for ColorPicker:
+<span class="err">ColorPicker validation examples</span><span class="p">:</span>
 
-  Scenario: Color picker set color test
-    Given I open "Html5 Page"
-    When I set "Color Picker" to "#ffd7a6" color
-    Then the "Color Picker" color equals to "#ffd7a6"
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> color equals to <span class="s">"#00FF00"</span>
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> label text equals to <span class="s">"Select a color"</span>
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> color is <span class="s">"#00FF00"</span>
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> is enabled 
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> is disabled 
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> is displayed 
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> disappears 
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> is hidden 
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> does not appear 
+<span class="nf">Then</span> the <span class="s">"Color Picker"</span> does not appear during <span class="s">"5"</span> seconds 
+
+
+<span class="err">Scenario example for ColorPicker</span><span class="p">:</span>
+
+  <span class="kn">Scenario</span><span class="p">:</span> Color picker set color test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">When</span> I set <span class="s">"Color Picker"</span> to <span class="s">"#ffd7a6"</span> color
+    <span class="nf">Then</span> the <span class="s">"Color Picker"</span> color equals to <span class="s">"#ffd7a6"</span>
 
 </code></pre>
 <p>Actions: <br></p>
@@ -24639,29 +24639,29 @@ Validations: <br></p>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/ColorPicker.feature" target="_blank">Cucumber tests</a> for ColorPicker<br></p>
 
 <p><br><br><br><br><br><br></p>
-<h3 id='dropdown-3'>DropDown</h3><pre class="highlight plaintext"><code>DropDown action example:
+<h3 id='dropdown-3'>DropDown</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">DropDown action example</span><span class="p">:</span>
 
-When I Select "Pirate" field from "Drop Down"
-
-
-DropDown validation examples:
-
-Then the "Pirate" in "Drop Down" is selected
-Then the "Drop Down" is enabled 
-Then the "Drop Down" is disabled 
-Then the "Drop Down" is displayed 
-Then the "Drop Down" disappears 
-Then the "Drop Down" is hidden 
-Then the "Drop Down" does not appear 
-Then the "Drop Down" does not appear during "5" seconds 
+<span class="nf">When</span> I Select <span class="s">"Pirate"</span> field from <span class="s">"Drop Down"</span>
 
 
-Scenario example for DropDown:
+<span class="err">DropDown validation examples</span><span class="p">:</span>
 
-  Scenario: Selected Test
-    Given I open "Html5 Page"
-    When I Select "Pirate" field from "Dress Code"
-    Then the "Pirate" in "Dress Code" is selected
+<span class="nf">Then</span> the <span class="s">"Pirate"</span> in <span class="s">"Drop Down"</span> is selected
+<span class="nf">Then</span> the <span class="s">"Drop Down"</span> is enabled 
+<span class="nf">Then</span> the <span class="s">"Drop Down"</span> is disabled 
+<span class="nf">Then</span> the <span class="s">"Drop Down"</span> is displayed 
+<span class="nf">Then</span> the <span class="s">"Drop Down"</span> disappears 
+<span class="nf">Then</span> the <span class="s">"Drop Down"</span> is hidden 
+<span class="nf">Then</span> the <span class="s">"Drop Down"</span> does not appear 
+<span class="nf">Then</span> the <span class="s">"Drop Down"</span> does not appear during <span class="s">"5"</span> seconds 
+
+
+<span class="err">Scenario example for DropDown</span><span class="p">:</span>
+
+  <span class="kn">Scenario</span><span class="p">:</span> Selected Test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">When</span> I Select <span class="s">"Pirate"</span> field from <span class="s">"Dress Code"</span>
+    <span class="nf">Then</span> the <span class="s">"Pirate"</span> in <span class="s">"Dress Code"</span> is selected
 
 </code></pre>
 <p>Actions: <br></p>
@@ -24683,29 +24683,29 @@ Validations: <br></p>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/DropDown.feature" target="_blank">Cucumber tests</a> for DropDown<br></p>
 
 <p><br><br><br><br><br></p>
-<h3 id='image-2'>Image</h3><pre class="highlight plaintext"><code>Image validation examples:
+<h3 id='image-2'>Image</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Image validation examples</span><span class="p">:</span>
 
-  Then the "Jdi Logo" attribute "src" equals to "https://jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
-  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "height" contains "100"
-  Then the "Jdi Logo" attribute "width" contains "101"
-  Then the "Jdi Logo" is enabled 
-  Then the "Jdi Logo" is disabled 
-  Then the "Jdi Logo" is displayed 
-  Then the "Jdi Logo" disappears
-  Then the "Jdi Logo" is hidden 
-  Then the "Jdi Logo" does not appear 
-  Then the "Jdi Logo" does not appear during "5" seconds 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"src"</span> equals to <span class="s">"https;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"alt"</span> equals to <span class="s">"Jdi Logo 2"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"src"</span> contains <span class="s">"jdi-logo.jpg"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"height"</span> contains <span class="s">"100"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"width"</span> contains <span class="s">"101"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> is enabled 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> is disabled 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> is displayed 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> disappears
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> is hidden 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> does not appear 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> does not appear during <span class="s">"5"</span> seconds 
 
-Scenario example for Image:
+<span class="err">Scenario example for Image</span><span class="p">:</span>
 
-  Scenario: Image validation test
-    Given I open "Html5 Page"
-    And refresh webpage
-    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-    And the "Jdi Logo" attribute "height" contains "100"
-    And the "Jdi Logo" attribute "width" contains "101"
+  <span class="kn">Scenario</span><span class="p">:</span> Image validation test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">And</span> refresh webpage
+    <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"src"</span> contains <span class="s">"jdi-logo.jpg"</span>
+    <span class="nf">And</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"height"</span> contains <span class="s">"100"</span>
+    <span class="nf">And</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"width"</span> contains <span class="s">"101"</span>
 
 </code></pre>
 <p>Validations: <br>
@@ -24723,29 +24723,29 @@ Scenario example for Image:
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br></p>
 
 <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-<h3 id='icon-2'>Icon</h3><pre class="highlight plaintext"><code>Image validation examples:
+<h3 id='icon-2'>Icon</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Image validation examples</span><span class="p">:</span>
 
-  Then the "Jdi Logo" attribute "src" equals to "https://jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
-  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "height" contains "100"
-  Then the "Jdi Logo" attribute "width" contains "101"
-  Then the "Jdi Logo" is enabled 
-  Then the "Jdi Logo" is disabled 
-  Then the "Jdi Logo" is displayed 
-  Then the "Jdi Logo" disappears
-  Then the "Jdi Logo" is hidden 
-  Then the "Jdi Logo" does not appear 
-  Then the "Jdi Logo" does not appear during "5" seconds 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"src"</span> equals to <span class="s">"http;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"alt"</span> equals to <span class="s">"Jdi Logo 2"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"src"</span> contains <span class="s">"jdi-logo.jpg"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"height"</span> contains <span class="s">"100"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"width"</span> contains <span class="s">"101"</span>
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> is enabled 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> is disabled 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> is displayed 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> disappears
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> is hidden 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> does not appear 
+  <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> does not appear during <span class="s">"5"</span> seconds 
 
-Scenario example for Image:
+<span class="err">Scenario example for Image</span><span class="p">:</span>
 
-  Scenario: Image validation test
-    Given I open "Html5 Page"
-    And refresh webpage
-    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-    And the "Jdi Logo" attribute "height" contains "100"
-    And the "Jdi Logo" attribute "width" contains "101"
+  <span class="kn">Scenario</span><span class="p">:</span> Image validation test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">And</span> refresh webpage
+    <span class="nf">Then</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"src"</span> contains <span class="s">"jdi-logo.jpg"</span>
+    <span class="nf">And</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"height"</span> contains <span class="s">"100"</span>
+    <span class="nf">And</span> the <span class="s">"Jdi Logo"</span> attribute <span class="s">"width"</span> contains <span class="s">"101"</span>
 
 </code></pre>
 <p>Note: this element is an alias for Image<br>
@@ -24765,24 +24765,24 @@ Validations: <br>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br></p>
 
 <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-<h3 id='alert-2'>Alert</h3><pre class="highlight plaintext"><code>Alert action examples:
+<h3 id='alert-2'>Alert</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Alert action examples</span><span class="p">:</span>
 
-  When I accept alert
-  When dismiss alert
+  <span class="nf">When</span> I accept alert
+  <span class="nf">When</span> dismiss alert
 
 
-Alert validation examples:
+<span class="err">Alert validation examples</span><span class="p">:</span>
 
-  Then the Alert text equals to "Red Button"
-  Then the Alert text contains "Red B"
-  Then the Alert text matches to "\w{3} \d{6}"
+  <span class="nf">Then</span> the Alert text equals to <span class="s">"Red Button"</span>
+  <span class="nf">Then</span> the Alert text contains <span class="s">"Red B"</span>
+  <span class="nf">Then</span> the Alert text matches to <span class="s">"\w{3} \d{6}"</span>
 
-Scenario example for Alert:
+<span class="err">Scenario example for Alert</span><span class="p">:</span>
 
-  Scenario: Alert text contains
-    Given open "Html5 page"
-    When click on "Red Button"
-    Then the Alert text contains "Red B"   
+  <span class="kn">Scenario</span><span class="p">:</span> Alert text contains
+    <span class="nf">Given</span> open <span class="s">"Html5 page"</span>
+    <span class="nf">When</span> click on <span class="s">"Red Button"</span>
+    <span class="nf">Then</span> the Alert text contains <span class="s">"Red B"</span>   
 
 </code></pre>
 <p><br>
@@ -24810,39 +24810,39 @@ Validations: <br></p>
 <br>
 <br>
 <br></p>
-<h3 id='fileinput-2'>FileInput</h3><pre class="highlight plaintext"><code>FileInput action examples:
+<h3 id='fileinput-2'>FileInput</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">FileInput action examples</span><span class="p">:</span>
 
-When I upload file "/res/general.xml" by "Avatar" file input element
-When try to upload file "/res/general.xml" by "File Input" file input element
-
-
-FileInput validation examples:
-
-Then the "Avatar" file input element label equals to "Profile picture:"
-Then the "Avatar" file input element label contains "picture"
-Then the "Avatar" file input element text equals to "C:\fakepath\general.xml"
-Then the "Avatar" file input element text contains "general.xml"
-Then the "Avatar" attribute "id" equals to "avatar"
-Then "File Input" is enabled
-Then "File Input" is disabled
-Then "File Input" is displayed
-Then "File Input" disapears
-Then "File Input" is hidden
-Then "File Input" does not appear
-Then "File Input" is does not appear during "5" seconds 
+<span class="nf">When</span> I upload file <span class="s">"/res/general.xml"</span> by <span class="s">"Avatar"</span> file input element
+<span class="nf">When</span> try to upload file <span class="s">"/res/general.xml"</span> by <span class="s">"File Input"</span> file input element
 
 
+<span class="err">FileInput validation examples</span><span class="p">:</span>
+
+<span class="nf">Then</span> the <span class="s">"Avatar"</span> file input element label equals to <span class="s">"Profile picture"</span>
+<span class="nf">Then</span> the <span class="s">"Avatar"</span> file input element label contains <span class="s">"picture"</span>
+<span class="nf">Then</span> the <span class="s">"Avatar"</span> file input element text equals to <span class="s">"fakepath\general.xml"</span>
+<span class="nf">Then</span> the <span class="s">"Avatar"</span> file input element text contains <span class="s">"general.xml"</span>
+<span class="nf">Then</span> the <span class="s">"Avatar"</span> attribute <span class="s">"id"</span> equals to <span class="s">"avatar"</span>
+<span class="nf">Then</span> <span class="s">"File Input"</span> is enabled
+<span class="nf">Then</span> <span class="s">"File Input"</span> is disabled
+<span class="nf">Then</span> <span class="s">"File Input"</span> is displayed
+<span class="nf">Then</span> <span class="s">"File Input"</span> disapears
+<span class="nf">Then</span> <span class="s">"File Input"</span> is hidden
+<span class="nf">Then</span> <span class="s">"File Input"</span> does not appear
+<span class="nf">Then</span> <span class="s">"File Input"</span> is does not appear during <span class="s">"5"</span> seconds 
 
 
 
 
 
-Scenario example for FileInput:
 
-  Scenario: Upload file by enabled file input element
-    Given I open "Html5 Page"
-    When I upload file "/res/general.xml" by "Avatar" file input element
-    Then the "Avatar" text contains "general.xml"
+
+<span class="err">Scenario example for FileInput</span><span class="p">:</span>
+
+  <span class="kn">Scenario</span><span class="p">:</span> Upload file by enabled file input element
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">When</span> I upload file <span class="s">"/res/general.xml"</span> by <span class="s">"Avatar"</span> file input element
+    <span class="nf">Then</span> the <span class="s">"Avatar"</span> text contains <span class="s">"general.xml"</span>
 </code></pre>
 <p>Actions:<br>
 <strong>When</strong> &lt;I&gt; upload file &quot;&lt;PATH TO FILE&gt;&quot; by &quot;&lt;ELEMENT NAME&gt;&quot; file input element<br>
@@ -24866,12 +24866,12 @@ Scenario example for FileInput:
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/FileInput.feature" target="_blank">Cucumber tests</a> for FileInput<br></p>
 
 <p><br><br><br><br><br><br></p>
-<h3 id='link-2'>Link</h3><pre class="highlight plaintext"><code>Link action examples:
+<h3 id='link-2'>Link</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Link action examples</span><span class="p">:</span>
 
-When I click on "Github Link"
-When I higlight "Github Link"
-When I show "Github Link"
-When I set "Github Link" attribute "alt" with value "Github JDI Link EDITED"
+<span class="nf">When</span> I click on <span class="s">"Github Link"</span>
+<span class="nf">When</span> I higlight <span class="s">"Github Link"</span>
+<span class="nf">When</span> I show <span class="s">"Github Link"</span>
+<span class="nf">When</span> I set <span class="s">"Github Link"</span> attribute <span class="s">"alt"</span> with value <span class="s">"Github JDI Link EDITED"</span>
 
 </code></pre>
 <p>Actions: <br></p>
@@ -24880,38 +24880,38 @@ When I set "Github Link" attribute "alt" with value "Github JDI Link EDITED"
 <strong>When</strong> &lt;I&gt; highlight &quot;&lt;ELEMENT NAME&gt;&quot; <br>
 <strong>When</strong> &lt;I&gt; show &quot;&lt;ELEMENT NAME&gt;&quot; <br>
 <strong>When</strong> &lt;I&gt; set &quot;&lt;ELEMENT NAME&gt;&quot; attribute &quot;&lt;ATTRIBUTE NAME&gt;&quot; with value &quot;&lt;ATTRIBUTE NAME&gt;&quot; <br><br><br><br></p>
-<pre class="highlight plaintext"><code>Link validation examples:
+<pre class="highlight gherkin tab-gherkin"><code><span class="err">Link validation examples</span><span class="p">:</span>
 
-Then the "Github Link" is enabled
-Then the "Github Link" is disabled
-Then the "Github Link" is displayed
-Then the "Github Link" is hidden
-Then the "Github Link" URL path equals to "/jdi-testing"
-Then the "Github Link" text equals to "Github JDI"
-Then the "Github Link" text contains "JDI"
-Then the "Github Link" text matches to "[a-zA-Z]{6} JE*DI"
-Then the "Github Link" reference equals to "https://github.com/jdi-testing"
-Then the "Github Link" reference contains "github"
-Then the "Github Link" reference matches to "https://github.com/.*"
-Then the "Github Link" alternative text equals to "Github JDI Link"
-Then the "Github Link" alternative text contains "JDI"
-Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
-Then the "Github Link" attribute "alt" equals to "Github JDI Link"
-Then the "Github Link" attribute "href" contains "https://github.com"
-Then the "Github Link" attribute "ui" matches to "github.link"
-Then the "Github Link" does not appear
-Then the "Github Link" does not appear during "5" seconds
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> is hidden
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> URL path equals to <span class="s">"/jdi-testing"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> text equals to <span class="s">"Github JDI"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> text contains <span class="s">"JDI"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> text matches to <span class="s">"[a-zA-Z]{6} JE*DI"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> reference equals to <span class="s">"https//github.com/jdi-testing"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> reference contains <span class="s">"github"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> reference matches to <span class="s">"https//github.com/.*"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> alternative text equals to <span class="s">"Github JDI Link"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> alternative text contains <span class="s">"JDI"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> alternative text matches to <span class="s">"Git.* JE*DI Link"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> attribute <span class="s">"alt"</span> equals to <span class="s">"Github JDI Link"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> attribute <span class="s">"href"</span> contains <span class="s">"https//github.com"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> attribute <span class="s">"ui"</span> matches to <span class="s">"github.link"</span>
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Github Link"</span> does not appear during <span class="s">"5"</span> seconds
 
-Scenario examples for Link:
+<span class="err">Scenario examples for Link</span><span class="p">:</span>
 
-  Scenario: Click link test
-     Given I open "Html5 Page"
-     When click on "Github Link"
-     Then the current URL is "https://github.com/jdi-testing"
+  <span class="kn">Scenario</span><span class="p">:</span> Click link test
+     <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+     <span class="nf">When</span> click on <span class="s">"Github Link"</span>
+     <span class="nf">Then</span> the current URL is <span class="s">"https//github.com/jdi-testing"</span>
 
-  Scenario: Link alternative text matching to RegExp
-     Given I open "Html5 Page"
-     Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
+  <span class="kn">Scenario</span><span class="p">:</span> Link alternative text matching to RegExp
+     <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+     <span class="nf">Then</span> the <span class="s">"Github Link"</span> alternative text matches to <span class="s">"Git.* JE*DI Link"</span>
 
 
 </code></pre>
@@ -24941,47 +24941,47 @@ Scenario examples for Link:
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Link.feature" target="_blank">Cucumber tests</a> for Link<br></p>
 
 <p><br><br><br></p>
-<h3 id='button-3'>Button</h3><pre class="highlight plaintext"><code>Button action examples:
+<h3 id='button-3'>Button</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Button action examples</span><span class="p">:</span>
 
-When I click on "Red Button" 
-When I click with JS on "Red Button"     
-When I focus on "Blue Button"   
-When I right click on "Red Button"  
-When I highlight "Blue Button"  
-When I show "Red Button"    
-When I set "Red Button" attribute "test-jdi" with vlaue "test-value"
+<span class="nf">When</span> I click on <span class="s">"Red Button"</span> 
+<span class="nf">When</span> I click with JS on <span class="s">"Red Button"</span>     
+<span class="nf">When</span> I focus on <span class="s">"Blue Button"</span>   
+<span class="nf">When</span> I right click on <span class="s">"Red Button"</span>  
+<span class="nf">When</span> I highlight <span class="s">"Blue Button"</span>  
+<span class="nf">When</span> I show <span class="s">"Red Button"</span>    
+<span class="nf">When</span> I set <span class="s">"Red Button"</span> attribute <span class="s">"test-jdi"</span> with vlaue <span class="s">"test-value"</span>
 
-Button validation examples:
+<span class="err">Button validation examples</span><span class="p">:</span>
 
-Then the "Red Button" text equals to "Big Red Button-Input" 
-Then the "Red Button" text contains "Red Button"    
-Then the "Red Button" text matches to ".+"
-Then the "Red Button" attribute "test-jdi" equals to "test-value"
-Then the "Red Button" attribute "test-jdi" contains "test"
-Then the "Red Button" attribute "test-jdi" matches to ".{10}"   
-Then the "Red Button" is enabled
-Then the "Disabled Button" is disabled
-Then the "Disabled Button" is displayed
-Then the "Ghost Button" is hidden   
-Then the "Ghost Button" disappears
-Then the "Ghost Button" does not appear 
-Then the "Suspend Button" does not appear during "5" seconds
-Then the "Red Button" css "font-size" equals to "14px"
-Then the "Red Button" attribute "type" equals to "button"
+<span class="nf">Then</span> the <span class="s">"Red Button"</span> text equals to <span class="s">"Big Red Button-Input"</span> 
+<span class="nf">Then</span> the <span class="s">"Red Button"</span> text contains <span class="s">"Red Button"</span>    
+<span class="nf">Then</span> the <span class="s">"Red Button"</span> text matches to <span class="s">".+"</span>
+<span class="nf">Then</span> the <span class="s">"Red Button"</span> attribute <span class="s">"test-jdi"</span> equals to <span class="s">"test-value"</span>
+<span class="nf">Then</span> the <span class="s">"Red Button"</span> attribute <span class="s">"test-jdi"</span> contains <span class="s">"test"</span>
+<span class="nf">Then</span> the <span class="s">"Red Button"</span> attribute <span class="s">"test-jdi"</span> matches to <span class="s">".{10}"</span>   
+<span class="nf">Then</span> the <span class="s">"Red Button"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Disabled Button"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Disabled Button"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Ghost Button"</span> is hidden   
+<span class="nf">Then</span> the <span class="s">"Ghost Button"</span> disappears
+<span class="nf">Then</span> the <span class="s">"Ghost Button"</span> does not appear 
+<span class="nf">Then</span> the <span class="s">"Suspend Button"</span> does not appear during <span class="s">"5"</span> seconds
+<span class="nf">Then</span> the <span class="s">"Red Button"</span> css <span class="s">"font-size"</span> equals to <span class="s">"14px"</span>
+<span class="nf">Then</span> the <span class="s">"Red Button"</span> attribute <span class="s">"type"</span> equals to <span class="s">"button"</span>
 
 
-Scenario example for Button:
+<span class="err">Scenario example for Button</span><span class="p">:</span>
 
-  Given I open "Home Page" page
-   Then the "Red Button" is displayed
-    And the "Red Button" is enabled
-    And the "Red Button" text equals to "Big Red Button-Input"
-    And the "Red Button" text contains "Red Button"
-    And the "Red Button" css "font-size" equals to "14px"
-    And the "Red Button" attribute "type" equals to "button"
-    And the "Disabled Button" is disabled
-   When click on "Blue Button"
-   Then the alert text equals to "Blue button"
+  <span class="nf">Given</span> I open <span class="s">"Home Page"</span> page
+  <span class="nf">Then</span> the <span class="s">"Red Button"</span> is displayed
+  <span class="nf">And</span> the <span class="s">"Red Button"</span> is enabled
+  <span class="nf">And</span> the <span class="s">"Red Button"</span> text equals to <span class="s">"Big Red Button-Input"</span>
+  <span class="nf">And</span> the <span class="s">"Red Button"</span> text contains <span class="s">"Red Button"</span>
+  <span class="nf">And</span> the <span class="s">"Red Button"</span> css <span class="s">"font-size"</span> equals to <span class="s">"14px"</span>
+  <span class="nf">And</span> the <span class="s">"Red Button"</span> attribute <span class="s">"type"</span> equals to <span class="s">"button"</span>
+  <span class="nf">And</span> the <span class="s">"Disabled Button"</span> is disabled
+  <span class="nf">When</span> click on <span class="s">"Blue Button"</span>
+  <span class="nf">Then</span> the alert text equals to <span class="s">"Blue button"</span>
 
 </code></pre>
 <p>Actions: <br></p>
@@ -25016,27 +25016,27 @@ Scenario example for Button:
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Button.feature" target="_blank">Cucumber tests</a>) for Button<br></p>
 
 <p><br></p>
-<h3 id='datetimeselector-2'>DateTimeSelector</h3><pre class="highlight plaintext"><code>DateTimeSelector action example:
+<h3 id='datetimeselector-2'>DateTimeSelector</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">DateTimeSelector action example</span><span class="p">:</span>
 
-When I set date "2018-11-13" in "Birth Date"
+<span class="nf">When</span> I set date <span class="s">"2018-11-13"</span> in <span class="s">"Birth Date"</span>
 
-DateTimeSelector validation example:
+<span class="err">DateTimeSelector validation example</span><span class="p">:</span>
 
-Then the "Birth Date" text equals to "1985-06-18"
-Then the "Birth Date" text contains "1985"
-Then the "Birth Date" is enabled
-Then the "Birth Date" label text equals to "Birth date"
-Then the "Birth Date" label text contains "Birth"
-Then the "Birth Date" attribute min equals to "1970-01-01"
-Then the "Birth Date" attribute max equals to "2030-12-31"
+<span class="nf">Then</span> the <span class="s">"Birth Date"</span> text equals to <span class="s">"1985-06-18"</span>
+<span class="nf">Then</span> the <span class="s">"Birth Date"</span> text contains <span class="s">"1985"</span>
+<span class="nf">Then</span> the <span class="s">"Birth Date"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Birth Date"</span> label text equals to <span class="s">"Birth date"</span>
+<span class="nf">Then</span> the <span class="s">"Birth Date"</span> label text contains <span class="s">"Birth"</span>
+<span class="nf">Then</span> the <span class="s">"Birth Date"</span> attribute min equals to <span class="s">"1970-01-01"</span>
+<span class="nf">Then</span> the <span class="s">"Birth Date"</span> attribute max equals to <span class="s">"2030-12-31"</span>
 
-Scenario example for DateTimeSelector:
+<span class="err">Scenario example for DateTimeSelector</span><span class="p">:</span>
 
-  Scenario: Set date
-    Given I open "Html5 Page"
-    Then the "Birth Date" text equals to "1985-06-18"
-    When Set date "2018-11-13" in "Birth Date"
-    Then the "Birth Date" text equals to "2018-11-13"
+  <span class="kn">Scenario</span><span class="p">:</span> Set date
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">Then</span> the <span class="s">"Birth Date"</span> text equals to <span class="s">"1985-06-18"</span>
+    <span class="nf">When</span> Set date <span class="s">"2018-11-13"</span> in <span class="s">"Birth Date"</span>
+    <span class="nf">Then</span> the <span class="s">"Birth Date"</span> text equals to <span class="s">"2018-11-13"</span>
 
 </code></pre>
 <p>Actions:<br></p>
@@ -25061,38 +25061,38 @@ Scenario example for DateTimeSelector:
 <a href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Month.feature">Input Type Month</a>,<br>
 <a href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Time.feature">Input Type Time</a>,
 <a href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/DateTime.feature">DateTime-Local</a><br><br></p>
-<h3 id='checkbox-2'>Checkbox</h3><pre class="highlight plaintext"><code>Checkbox action examples:
+<h3 id='checkbox-2'>Checkbox</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Checkbox action examples</span><span class="p">:</span>
 
-When check "Accept Conditions"
-When uncheck "Accept Conditions"
-When click on "Accept Conditions"
+<span class="nf">When</span> check <span class="s">"Accept Conditions"</span>
+<span class="nf">When</span> uncheck <span class="s">"Accept Conditions"</span>
+<span class="nf">When</span> click on <span class="s">"Accept Conditions"</span>
 
-Checkbox validation examples:
+<span class="err">Checkbox validation examples</span><span class="p">:</span>
 
-Then the "Accept Conditions" is enabled
-Then the "Accept Conditions" is disabled
-Then the "Accept Conditions" is displayed
-Then the "Accept Conditions" is hidden
-Then the "Accept Conditions" label text equals to "Accept terms and conditions"
-Then the "Accept Conditions" label text contains "terms and conditions"
-Then the "Accept Conditions" label text matches to "[a-zA-Z]{6} JE*DI"
-Then the "Accept Conditions" does not appear
-Then the "Accept Conditions" does not appear during "5" seconds
+<span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> is hidden
+<span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> label text equals to <span class="s">"Accept terms and conditions"</span>
+<span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> label text contains <span class="s">"terms and conditions"</span>
+<span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> label text matches to <span class="s">"[a-zA-Z]{6} JE*DI"</span>
+<span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> does not appear during <span class="s">"5"</span> seconds
 
 
-Scenario examples for Checkbox:
+<span class="err">Scenario examples for Checkbox</span><span class="p">:</span>
 
-  Scenario: Get label text test
-    Given I open "Html5 Page"
-    When I check "Accept Conditions"
-    Then the "Accept Conditions" label text equals to "Accept terms and conditions"
+  <span class="kn">Scenario</span><span class="p">:</span> Get label text test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">When</span> I check <span class="s">"Accept Conditions"</span>
+    <span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> label text equals to <span class="s">"Accept terms and conditions"</span>
 
-  Scenario: Click test
-    Given I open "Html5 Page"
-    When I check "Accept Conditions"
-    Then "Accept Conditions" is selected
-    When I click on "Accept Conditions"
-    Then the "Accept Conditions" is deselected
+  <span class="kn">Scenario</span><span class="p">:</span> Click test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">When</span> I check <span class="s">"Accept Conditions"</span>
+    <span class="nf">Then</span> <span class="s">"Accept Conditions"</span> is selected
+    <span class="nf">When</span> I click on <span class="s">"Accept Conditions"</span>
+    <span class="nf">Then</span> the <span class="s">"Accept Conditions"</span> is deselected
 
 </code></pre>
 <p>Actions: <br></p>
@@ -25117,29 +25117,29 @@ Scenario examples for Checkbox:
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Checkbox.feature" target="_blank">Cucumber tests</a> for Checkbox<br></p>
 
 <p><br><br><br><br><br><br><br><br></p>
-<h3 id='progress-bar'>Progress Bar</h3><pre class="highlight plaintext"><code>Progress Bar validation examples:
+<h3 id='progress-bar'>Progress Bar</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Progress Bar validation examples</span><span class="p">:</span>
 
-Then the "Progress" attribute "max" equals to "110"
-Then the "Progress" progress volume greater or equal to 10
-Then the "Progress" progress volume less or equal to 110
-Then the "Progress" label text equals to "Progress"
-Then the "Progress" label text contains "ress"
-Then the "Progress" is enabled
-Then the "Progress" is disabled
-Then the "Progress" is displayed
-Then the "Progress" is hidden
-Then the "Progress" does not appear
-Then the "Progress" does not appear during "5" seconds &lt;br&gt;
+<span class="nf">Then</span> the <span class="s">"Progress"</span> attribute <span class="s">"max"</span> equals to <span class="s">"110"</span>
+<span class="nf">Then</span> the <span class="s">"Progress"</span> progress volume greater or equal to 10
+<span class="nf">Then</span> the <span class="s">"Progress"</span> progress volume less or equal to 110
+<span class="nf">Then</span> the <span class="s">"Progress"</span> label text equals to <span class="s">"Progress"</span>
+<span class="nf">Then</span> the <span class="s">"Progress"</span> label text contains <span class="s">"ress"</span>
+<span class="nf">Then</span> the <span class="s">"Progress"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Progress"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Progress"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Progress"</span> is hidden
+<span class="nf">Then</span> the <span class="s">"Progress"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Progress"</span> does not appear during <span class="s">"5"</span> seconds <span class="nv">&lt;br&gt;</span>
 
-Scenario example for Progress Bar:
+<span class="err">Scenario example for Progress Bar</span><span class="p">:</span>
 
-  Scenario: progress bar validation
-    Given I open "Html5 Page" page
-    Then the "Progress" attribute "max" equals to "100"
-    And the "Progress" progress volume greater or equal to 10
-    And the "Progress" progress volume less or equal to 100
-    And the "Progress" attribute "value" equals to "70"
-    And the "Progress" is enabled
+  <span class="kn">Scenario</span><span class="p">:</span> progress bar validation
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span> page
+    <span class="nf">Then</span> the <span class="s">"Progress"</span> attribute <span class="s">"max"</span> equals to <span class="s">"100"</span>
+    <span class="nf">And</span> the <span class="s">"Progress"</span> progress volume greater or equal to 10
+    <span class="nf">And</span> the <span class="s">"Progress"</span> progress volume less or equal to 100
+    <span class="nf">And</span> the <span class="s">"Progress"</span> attribute <span class="s">"value"</span> equals to <span class="s">"70"</span>
+    <span class="nf">And</span> the <span class="s">"Progress"</span> is enabled
 
 </code></pre>
 <p>Validations: <br></p>
@@ -25159,31 +25159,31 @@ Scenario example for Progress Bar:
 <p>More information in the <a href="https://jdi-docs.github.io/jdi-light/?java#tutorial"><strong>Tutorial</strong></a> <br>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/ProgressBar.feature" target="_blank">Cucumber tests</a> for Progress Bar<br>
 <br><br><br><br><br><br><br><br></p>
-<h3 id='text-3'>Text</h3><pre class="highlight plaintext"><code>Text validation examples:
+<h3 id='text-3'>Text</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Text validation examples</span><span class="p">:</span>
 
-Then the "Jdi Text" text equals to "Powerful Framework for UI Tests Automation. Suitable for any UI project: Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc."
-Then the "Jdi Text" text contains "Powerful Framework for UI"
-Then the "Jdi Text" is enabled
-Then the "Jdi Text" text matches to ".+"
-Then the "Jdi Text" css "font-size" equals to "14px"
-Then the "Jdi Text" css "font-family" contains "Source Sans Pro"
-Then the "Jdi Text" css "font-family" matches to "(.*)sans-serif"
-Then the "Jdi Text" is enabled
-Then the "Jdi Text" is disabled
-Then the "Jdi Text" is displayed
-Then the "Jdi Text" disappears
-Then the "Jdi Text" is hidden
-Then the "Jdi Text" does not appear
-Then the "Jdi Text" does not appear during "5" seconds
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> text equals to <span class="s">"Powerful Framework for UI Tests Automation. Suitable for any UI project such as Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc."</span>
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> text contains <span class="s">"Powerful Framework for UI"</span>
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> text matches to <span class="s">".+"</span>
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> css <span class="s">"font-size"</span> equals to <span class="s">"14px"</span>
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> css <span class="s">"font-family"</span> contains <span class="s">"Source Sans Pro"</span>
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> css <span class="s">"font-family"</span> matches to <span class="s">"(.*)sans-serif"</span>
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> disappears
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> is hidden
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Jdi Text"</span> does not appear during <span class="s">"5"</span> seconds
 
 
 
-Scenario example for Text:
+<span class="err">Scenario example for Text</span><span class="p">:</span>
 
-    Scenario: Text validation test
-        Given I open "Html5 Page"
-        Then the "Jdi Text" is enabled
-        Then the "Jdi Text" text contains "Powerful Framework for UI"
+    <span class="kn">Scenario</span><span class="p">:</span> Text validation test
+        <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+        <span class="nf">Then</span> the <span class="s">"Jdi Text"</span> is enabled
+        <span class="nf">Then</span> the <span class="s">"Jdi Text"</span> text contains <span class="s">"Powerful Framework for UI"</span>
 
 </code></pre>
 <p>Validations:<br></p>
@@ -25205,46 +25205,46 @@ Scenario example for Text:
 <p>More information in the <a href="https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa"><strong>Tutorial</strong></a><br>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Text.feature" target="_blank">Cucumber tests</a> for Text<br><br>
 <br><br><br><br><br><br><br><br></p>
-<h3 id='combobox-2'>ComboBox</h3><pre class="highlight plaintext"><code>ComboBox action examples:
+<h3 id='combobox-2'>ComboBox</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">ComboBox action examples</span><span class="p">:</span>
 
-When select "Coconut" field from "Ice Cream"
-When select index 5 in "Ice Cream"
-When I clear "Ice Cream"
-When I input "New text" in "Ice Cream"
-When send keys "Test" to "Ice Cream"
-When focus on "Ice Cream"
-
-
-ComboBox validation examples:
-
-Then the "Ice Cream" is enabled
-Then the "Ice Cream" combobox selected value is "Coconut"
-Then the "Ice Cream" text equals to "Coconut"
-Then the "Ice Cream" text contains "Van"
-Then the "Ice Cream" text matches to "(.*)nut"
-Then the "Ice Cream" label text equals to "Choose your lovely icecream"
-Then the "Ice Cream" label text contains "lovely icecream"
-Then the "Ice Cream" label text matches to "(.*)icecream"
-Then the "Ice Cream" placeholder equals to "Ice cream"
-Then the "Ice Cream" placeholder contains "cream"
-Then the "Ice Cream" placeholder matches to "(.*)cream"
-Then the "Ice Cream" is disabled
-Then the "Ice Cream" is displayed
-Then the "Ice Cream" disappears
-Then the "Ice Cream" is hidden
-Then the "Ice Cream" does not appear
-Then the "Ice Cream" does not appear during "5" seconds
+<span class="nf">When</span> select <span class="s">"Coconut"</span> field from <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> select index 5 in <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> I clear <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> I input <span class="s">"New text"</span> in <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> send keys <span class="s">"Test"</span> to <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> focus on <span class="s">"Ice Cream"</span>
 
 
+<span class="err">ComboBox validation examples</span><span class="p">:</span>
+
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> combobox selected value is <span class="s">"Coconut"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> text equals to <span class="s">"Coconut"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> text contains <span class="s">"Van"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> text matches to <span class="s">"(.*)nut"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> label text equals to <span class="s">"Choose your lovely icecream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> label text contains <span class="s">"lovely icecream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> label text matches to <span class="s">"(.*)icecream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> placeholder equals to <span class="s">"Ice cream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> placeholder contains <span class="s">"cream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> placeholder matches to <span class="s">"(.*)cream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> disappears
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> is hidden
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> does not appear during <span class="s">"5"</span> seconds
 
 
 
-Scenario example:
 
-    Scenario: Select combobox value test
-        Given I open "Html5 Page"
-        When select "Chocolate" field from "Ice Cream"
-        Then the "Ice Cream" combobox selected value is "Chocolate"
+
+<span class="err">Scenario example</span><span class="p">:</span>
+
+    <span class="kn">Scenario</span><span class="p">:</span> Select combobox value test
+        <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+        <span class="nf">When</span> select <span class="s">"Chocolate"</span> field from <span class="s">"Ice Cream"</span>
+        <span class="nf">Then</span> the <span class="s">"Ice Cream"</span> combobox selected value is <span class="s">"Chocolate"</span>
 </code></pre>
 <p>Actions:<br>
 <br>
@@ -25280,35 +25280,35 @@ Validations:<br>
 <br><br><br><br><br><br><br><br></p>
 <h3 id='datalist-2'>DataList</h3>
 <p style="color:#FFA500">Note: this element is an alias for ComboBox</p>
-<pre class="highlight plaintext"><code>Datalist action examples:
+<pre class="highlight gherkin tab-gherkin"><code><span class="err">Datalist action examples</span><span class="p">:</span>
 
-When select "Coconut" field from "Ice Cream"
-When select index 5 in "Ice Cream"
-When I clear "Ice Cream"
-When I input "New text" in "Ice Cream"
-When send keys "Test" to "Ice Cream"
-When focus on "Ice Cream"
+<span class="nf">When</span> select <span class="s">"Coconut"</span> field from <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> select index 5 in <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> I clear <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> I input <span class="s">"New text"</span> in <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> send keys <span class="s">"Test"</span> to <span class="s">"Ice Cream"</span>
+<span class="nf">When</span> focus on <span class="s">"Ice Cream"</span>
 
 
-Datalist validation examples:
+<span class="err">Datalist validation examples</span><span class="p">:</span>
 
-Then the "Ice Cream" is enabled
-Then the "Ice Cream" datalist selected value is "Coconut"
-Then the "Ice Cream" text equals to "Coconut"
-Then the "Ice Cream" text contains "Van"
-Then the "Ice Cream" text matches to "(.*)nut"
-Then the "Ice Cream" label text equals to "Choose your lovely icecream"
-Then the "Ice Cream" label text contains "lovely icecream"
-Then the "Ice Cream" label text matches to "(.*)icecream"
-Then the "Ice Cream" placeholder equals to "Ice cream"
-Then the "Ice Cream" placeholder contains "cream"
-Then the "Ice Cream" placeholder matches to "(.*)cream"
-Then the "Ice Cream" is disabled
-Then the "Ice Cream" is displayed
-Then the "Ice Cream" disappears
-Then the "Ice Cream" is hidden
-Then the "Ice Cream" does not appear
-Then the "Ice Cream" does not appear during "5" seconds
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> datalist selected value is <span class="s">"Coconut"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> text equals to <span class="s">"Coconut"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> text contains <span class="s">"Van"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> text matches to <span class="s">"(.*)nut"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> label text equals to <span class="s">"Choose your lovely icecream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> label text contains <span class="s">"lovely icecream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> label text matches to <span class="s">"(.*)icecream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> placeholder equals to <span class="s">"Ice cream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> placeholder contains <span class="s">"cream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> placeholder matches to <span class="s">"(.*)cream"</span>
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> disappears
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> is hidden
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Ice Cream"</span> does not appear during <span class="s">"5"</span> seconds
 
 
 
@@ -25348,44 +25348,42 @@ Validations:<br>
 <p>More information in the <a href="https://jdi-docs.github.io/jdi-light/?java#tutorial"><strong>Tutorial</strong></a><br>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/DataList.feature" target="_blank">Cucumber tests</a> for DataList<br><br>
 <br><br><br><br><br><br><br><br></p>
-<h3 id='numberselector-2'>NumberSelector</h3><pre class="highlight plaintext"><code>
-NumberSelector action examples:
+<h3 id='numberselector-2'>NumberSelector</h3><pre class="highlight gherkin tab-gherkin"><code>
+<span class="err">NumberSelector action examples</span><span class="p">:</span>
 
-  When I set text "2.1" in "Height" 
-  When I focus on "Height"  
-  When I input "2.1" in "Height"
-  When highlight "Height"
-  When show "Height"    
-  When set "Height" attribute "test-jdi" with vlaue "test"
-
-
+  <span class="nf">When</span> I set text <span class="s">"2.1"</span> in <span class="s">"Height"</span> 
+  <span class="nf">When</span> I focus on <span class="s">"Height"</span>  
+  <span class="nf">When</span> I input <span class="s">"2.1"</span> in <span class="s">"Height"</span>
+  <span class="nf">When</span> highlight <span class="s">"Height"</span>
+  <span class="nf">When</span> show <span class="s">"Height"</span>    
+  <span class="nf">When</span> set <span class="s">"Height"</span> attribute <span class="s">"test-jdi"</span> with vlaue <span class="s">"test"</span>
 
 
-NumberSelector validation examples:
-
-  Then the "Height" label text equals to "Height (metres):"
-  Then the "Height" label text contains "(metres):"
-  Then the "Height" label text label text matches to "\w{15}"
-  Then the "Height" placeholder equals to "20 cm increments. Range [0.3,2.5]"
-  Then the "Height" placeholder contains "20 cm"
-  Then the "Height" placeholder  matches to "\d{2}"
-  Then the "Height" text equals to "2.1"
-  Then the "Height" text contains "2.1" 
-  Then the "Height" text matches to "\d{5}\w{4}"
-  Then the "Height" attribute "jdi-test" equals to "jdi test"
-  Then the "Height" attribute "jdi-test" contains "jdi"
-  Then the "Height" attribute "jdi-test" matches to "\w{3} \w{4}"
-  Then the "Height" number selector min is "0.3"
-  Then the "Height" number selector max is "2.5"
-  Then the "Height" number selector step is "0.2"
-  Then the "Height" number selector value is greater or equal to "0.3"
-  Then the "Height" number selector value less or equal to "2.5"
-  Then the "Height" number selector value is greater than "0.0"
-  Then the "Height" number selector value less than "3.0"
-  Then the "Height" does not appear
-  Then the "Height" does not appear during "5" seconds
 
 
+<span class="err">NumberSelector validation examples</span><span class="p">:</span>
+
+  <span class="nf">Then</span> the <span class="s">"Height"</span> label text equals to <span class="s">"Height (metres)"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> label text contains <span class="s">"(metres)"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> label text label text matches to <span class="s">"\w{15}"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> placeholder equals to <span class="s">"20 cm increments. Range [0.3,2.5]"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> placeholder contains <span class="s">"20 cm"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> placeholder  matches to <span class="s">"\d{2}"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> text equals to <span class="s">"2.1"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> text contains <span class="s">"2.1"</span> 
+  <span class="nf">Then</span> the <span class="s">"Height"</span> text matches to <span class="s">"\d{5}\w{4}"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> attribute <span class="s">"jdi-test"</span> equals to <span class="s">"jdi test"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> attribute <span class="s">"jdi-test"</span> contains <span class="s">"jdi"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> attribute <span class="s">"jdi-test"</span> matches to <span class="s">"\w{3} \w{4}"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> number selector min is <span class="s">"0.3"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> number selector max is <span class="s">"2.5"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> number selector step is <span class="s">"0.2"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> number selector value is greater or equal to <span class="s">"0.3"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> number selector value less or equal to <span class="s">"2.5"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> number selector value is greater than <span class="s">"0.0"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> number selector value less than <span class="s">"3.0"</span>
+  <span class="nf">Then</span> the <span class="s">"Height"</span> does not appear
+  <span class="nf">Then</span> the <span class="s">"Height"</span> does not appear during <span class="s">"5"</span> seconds
 
 
 
@@ -25393,17 +25391,19 @@ NumberSelector validation examples:
 
 
 
-Scenario example for NumberSelector:
 
-    Scenario: Validation 
-        Given I open "Html5 Page"
-        Then the "Height" number selector min is "0.3"
-        And the "Height" number selector max is "2.5"
-        And the "Height" number selector step is "0.2"
-        And the "Height" placeholder contains "20 cm increments"
-        And the "Height" number selector value is greater or equal to "0.3"
-        And the "Height" number selector value less or equal to "2.5"
-        And the "Height" text equals to "2.1"  
+
+<span class="err">Scenario example for NumberSelector</span><span class="p">:</span>
+
+    <span class="kn">Scenario</span><span class="p">:</span> Validation 
+        <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+        <span class="nf">Then</span> the <span class="s">"Height"</span> number selector min is <span class="s">"0.3"</span>
+        <span class="nf">And</span> the <span class="s">"Height"</span> number selector max is <span class="s">"2.5"</span>
+        <span class="nf">And</span> the <span class="s">"Height"</span> number selector step is <span class="s">"0.2"</span>
+        <span class="nf">And</span> the <span class="s">"Height"</span> placeholder contains <span class="s">"20 cm increments"</span>
+        <span class="nf">And</span> the <span class="s">"Height"</span> number selector value is greater or equal to <span class="s">"0.3"</span>
+        <span class="nf">And</span> the <span class="s">"Height"</span> number selector value less or equal to <span class="s">"2.5"</span>
+        <span class="nf">And</span> the <span class="s">"Height"</span> text equals to <span class="s">"2.1"</span>  
 
 </code></pre>
 <p>Actions: <br>
@@ -25449,36 +25449,36 @@ Validations: <br>
 <br>
 <br>
 <br></p>
-<h3 id='range-3'>Range</h3><pre class="highlight plaintext"><code>Range action examples:
+<h3 id='range-3'>Range</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Range action examples</span><span class="p">:</span>
 
-  When I install "Volume" value to 5
-
-
-Range validation examples:
-
-  Then the "Volume" attribute "min" equals to "10"
-  Then the "Volume" range volume greater or equal to 10
-  Then the "Volume" range volume less or equal to 100
-  Then the "Volume" label text equals to "Volume"
-  Then the "Volume" label text contains "lume"
-  Then the "Volume" is enabled
-  Then the "Volume" is disabled
-  Then the "Volume" is displayed
-  Then the "Volume" is hidden
-  Then the "Volume" does not appear
-  Then the "Volume" does not appear during "5" second
+  <span class="nf">When</span> I install <span class="s">"Volume"</span> value to 5
 
 
-Scenario example for Range:
+<span class="err">Range validation examples</span><span class="p">:</span>
 
-    Scenario: Validation Volume element test
-        Then the "Volume" is enabled
-        And the "Volume" attribute "min" equals to "10"
-        And the "Volume" attribute "max" equals to "100"
-        And the "Volume" attribute "step" equals to "5"
-        And the "Volume" range volume greater or equal to 10
-        And the "Volume" range volume less or equal to 100
-        And the "Volume" attribute "value" equals to "90" 
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> attribute <span class="s">"min"</span> equals to <span class="s">"10"</span>
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> range volume greater or equal to 10
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> range volume less or equal to 100
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> label text equals to <span class="s">"Volume"</span>
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> label text contains <span class="s">"lume"</span>
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> is enabled
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> is disabled
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> is displayed
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> is hidden
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> does not appear
+  <span class="nf">Then</span> the <span class="s">"Volume"</span> does not appear during <span class="s">"5"</span> second
+
+
+<span class="err">Scenario example for Range</span><span class="p">:</span>
+
+    <span class="kn">Scenario</span><span class="p">:</span> Validation Volume element test
+        <span class="nf">Then</span> the <span class="s">"Volume"</span> is enabled
+        <span class="nf">And</span> the <span class="s">"Volume"</span> attribute <span class="s">"min"</span> equals to <span class="s">"10"</span>
+        <span class="nf">And</span> the <span class="s">"Volume"</span> attribute <span class="s">"max"</span> equals to <span class="s">"100"</span>
+        <span class="nf">And</span> the <span class="s">"Volume"</span> attribute <span class="s">"step"</span> equals to <span class="s">"5"</span>
+        <span class="nf">And</span> the <span class="s">"Volume"</span> range volume greater or equal to 10
+        <span class="nf">And</span> the <span class="s">"Volume"</span> range volume less or equal to 100
+        <span class="nf">And</span> the <span class="s">"Volume"</span> attribute <span class="s">"value"</span> equals to <span class="s">"90"</span> 
 
 
 </code></pre>
@@ -25509,60 +25509,60 @@ More information in the <a href="https://jdi-docs.github.io/jdi-light/?java#tuto
 <br>
 <br>
 <br></p>
-<h3 id='textarea-2'>TextArea</h3><pre class="highlight plaintext"><code>TextArea actions examples:
+<h3 id='textarea-2'>TextArea</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">TextArea actions examples</span><span class="p">:</span>
 
-When I send keys "sent keys" to "Text Area"
-When clear "Text Area"
-When I input "text to input" in "Text Area"
-When focus on "Text Area"
-When I set text "text to set" in "Text Area"
-When highlight "Text Area"
-When show "Text Area"
-When set "Text Area" attribute "minlength" with value "1" element
-When I input in the "Text Area" line "only one line of text"
-When I input in the "Text Area" lines
-| line1 |
-| line 2 |
+<span class="nf">When</span> I send keys <span class="s">"sent keys"</span> to <span class="s">"Text Area"</span>
+<span class="nf">When</span> clear <span class="s">"Text Area"</span>
+<span class="nf">When</span> I input <span class="s">"text to input"</span> in <span class="s">"Text Area"</span>
+<span class="nf">When</span> focus on <span class="s">"Text Area"</span>
+<span class="nf">When</span> I set text <span class="s">"text to set"</span> in <span class="s">"Text Area"</span>
+<span class="nf">When</span> highlight <span class="s">"Text Area"</span>
+<span class="nf">When</span> show <span class="s">"Text Area"</span>
+<span class="nf">When</span> set <span class="s">"Text Area"</span> attribute <span class="s">"minlength"</span> with value <span class="s">"1"</span> element
+<span class="nf">When</span> I input in the <span class="s">"Text Area"</span> line <span class="s">"only one line of text"</span>
+<span class="nf">When</span> I input in the <span class="s">"Text Area"</span> lines
+<span class="p">|</span> <span class="nv">line1</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">line</span> <span class="n">2</span> <span class="p">|</span>
 
-TextArea validations examples:
+<span class="err">TextArea validations examples</span><span class="p">:</span>
 
-Then the "Text Area" label text equals to "Text example:"
-Then the "Text Area" label text contains "Text"
-Then the "Text Area" label text matches to "Text example."
-Then the "Text Area" placeholder equals to "Input huge text"
-Then the "Text Area" placeholder contains "huge text"
-Then the "Text Area" placeholder matches to "I.*"
-Then the "Text Area" text equals to "some text"
-Then the "Text Area" text contains "some"
-Then the "Text Area" text matches to ".*"
-Then the "Text Area" attribute "id" equals to "text-area"
-Then the "Text Area" attribute "id" contains "area"
-Then the "Text Area" attribute "id" matches to "text-?area"
-Then the "Text Area" is enabled
-Then the "Text Area" is disabled
-Then the "Text Area" is displayed
-Then the "Text Area" is hidden
-Then the "Text Area" does not appear
-Then the "Text Area" does not appear during "5" seconds
-Then the "Text Area" rows count equals 3
-Then the "Text Area" columns count equals 33
-Then the "Text Area" minimal length equals 10
-Then the "Text Area" maximal length equals 200
-Then the lines in the "Text Area" are equal
-| line1 |
-| line2 |
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> label text equals to <span class="s">"Text example"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> label text contains <span class="s">"Text"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> label text matches to <span class="s">"Text example."</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> placeholder equals to <span class="s">"Input huge text"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> placeholder contains <span class="s">"huge text"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> placeholder matches to <span class="s">"I.*"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> text equals to <span class="s">"some text"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> text contains <span class="s">"some"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> text matches to <span class="s">".*"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> attribute <span class="s">"id"</span> equals to <span class="s">"text-area"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> attribute <span class="s">"id"</span> contains <span class="s">"area"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> attribute <span class="s">"id"</span> matches to <span class="s">"text-?area"</span>
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> is hidden
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> does not appear during <span class="s">"5"</span> seconds
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> rows count equals 3
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> columns count equals 33
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> minimal length equals 10
+<span class="nf">Then</span> the <span class="s">"Text Area"</span> maximal length equals 200
+<span class="nf">Then</span> the lines in the <span class="s">"Text Area"</span> are equal
+<span class="p">|</span> <span class="nv">line1</span> <span class="p">|</span>
+<span class="p">|</span> <span class="n">line2</span> <span class="p">|</span>
 
-Scenario example for TextArea:
+<span class="err">Scenario example for TextArea</span><span class="p">:</span>
 
-  Scenario: Add new line test
-    Given I open "Html5 Page"
-    When I clear "Text Area"
-    When I input in the "Text Area" line "line1"
-    And I input in the "Text Area" line "line2"
-    Then the lines in the "Text Area" are equal
-      |       |
-      | line1 |
-      | line2 |
+  <span class="kn">Scenario</span><span class="p">:</span> Add new line test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">When</span> I clear <span class="s">"Text Area"</span>
+    <span class="nf">When</span> I input in the <span class="s">"Text Area"</span> line <span class="s">"line1"</span>
+    <span class="nf">And</span> I input in the <span class="s">"Text Area"</span> line <span class="s">"line2"</span>
+    <span class="nf">Then</span> the lines in the <span class="s">"Text Area"</span> are equal
+      <span class="p">|</span>       <span class="p">|</span>
+      <span class="p">|</span> <span class="n">line1</span> <span class="p">|</span>
+      <span class="p">|</span> <span class="n">line2</span> <span class="p">|</span>
 
 
 
@@ -25621,37 +25621,37 @@ Scenario example for TextArea:
 <br>
 <br>
 <br></p>
-<h3 id='menu-2'>Menu</h3><pre class="highlight plaintext"><code>Menu actions examples:
+<h3 id='menu-2'>Menu</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Menu actions examples</span><span class="p">:</span>
 
-When I select "Contact form" in "Left Menu" menu
-When I select "Service;Dates" items in "Left Menu" menu
-When I show "Contact form" in "Left Menu" menu
+<span class="nf">When</span> I select <span class="s">"Contact form"</span> in <span class="s">"Left Menu"</span> menu
+<span class="nf">When</span> I select <span class="s">"Service;Dates"</span> items in <span class="s">"Left Menu"</span> menu
+<span class="nf">When</span> I show <span class="s">"Contact form"</span> in <span class="s">"Left Menu"</span> menu
 
-Menu validations examples:
+<span class="err">Menu validations examples</span><span class="p">:</span>
 
-Then the "Left Menu" is enabled
-Then the "Left Menu" is disabled
-Then the "Left Menu" is displayed
-Then the "Left Menu" is hidden
-Then the "Left Menu" does not appear
-Then the "Left Menu" does not appear during "5" seconds
-Then the "Contact form" in "Left Menu" menu is selected
-Then the "Contact form" in "Left Menu" menu is deselected
+<span class="nf">Then</span> the <span class="s">"Left Menu"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Left Menu"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Left Menu"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Left Menu"</span> is hidden
+<span class="nf">Then</span> the <span class="s">"Left Menu"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Left Menu"</span> does not appear during <span class="s">"5"</span> seconds
+<span class="nf">Then</span> the <span class="s">"Contact form"</span> in <span class="s">"Left Menu"</span> menu is selected
+<span class="nf">Then</span> the <span class="s">"Contact form"</span> in <span class="s">"Left Menu"</span> menu is deselected
 
-Scenario examples for Menu:
+<span class="err">Scenario examples for Menu</span><span class="p">:</span>
 
-  Scenario: Select items test
-    Given I open "Html5 Page"
-    When I check "Accept Conditions"
-    When select items in "Left Menu" menu:
-     | Service |
-     | Dates   |
-    Then the "Dates Page" page is opened
+  <span class="kn">Scenario</span><span class="p">:</span> Select items test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">When</span> I check <span class="s">"Accept Conditions"</span>
+    <span class="nf">When</span> select items in <span class="s">"Left Menu"</span> menu
+     <span class="p">|</span> <span class="nv">Service</span> <span class="p">|</span>
+     <span class="p">|</span> <span class="n">Dates</span>   <span class="p">|</span>
+    <span class="nf">Then</span> the <span class="s">"Dates Page"</span> page is opened
 
-  Scenario: Is validation test
-    Given I open "Html5 Page"
-    When I check "Accept Conditions"
-    Then the "HTML 5" in "Left Menu" menu is selected
+  <span class="kn">Scenario</span><span class="p">:</span> Is validation test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">When</span> I check <span class="s">"Accept Conditions"</span>
+    <span class="nf">Then</span> the <span class="s">"HTML 5"</span> in <span class="s">"Left Menu"</span> menu is selected
 
 </code></pre>
 <p>Actions: <br></p>
@@ -25685,31 +25685,31 @@ Scenario examples for Menu:
 <br>
 <br>
 <br></p>
-<h3 id='textfield-2'>TextField</h3><pre class="highlight plaintext"><code>TextField action example:
+<h3 id='textfield-2'>TextField</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">TextField action example</span><span class="p">:</span>
 
-When I send keys "Lorem" to "Name"
-When I set text "Lorem" in "Name"
-When I clear "Name"
-When I input "Lorem" in "Name"
+<span class="nf">When</span> I send keys <span class="s">"Lorem"</span> to <span class="s">"Name"</span>
+<span class="nf">When</span> I set text <span class="s">"Lorem"</span> in <span class="s">"Name"</span>
+<span class="nf">When</span> I clear <span class="s">"Name"</span>
+<span class="nf">When</span> I input <span class="s">"Lorem"</span> in <span class="s">"Name"</span>
 
-TextField validation examples:
+<span class="err">TextField validation examples</span><span class="p">:</span>
 
-Then the "Name" placeholder equals to "Input name"
-Then the "Name" text equals to "Lorem"
-Then the "Name" text is "Lorem"
-Then the "Name" is enabled
-Then the "Name" is disabled
-Then the "Name" is displayed 
-Then the "Name" is hidden 
-Then the "Name" text does not appear 
-Then the "Name" text does not appear during 5 seconds
+<span class="nf">Then</span> the <span class="s">"Name"</span> placeholder equals to <span class="s">"Input name"</span>
+<span class="nf">Then</span> the <span class="s">"Name"</span> text equals to <span class="s">"Lorem"</span>
+<span class="nf">Then</span> the <span class="s">"Name"</span> text is <span class="s">"Lorem"</span>
+<span class="nf">Then</span> the <span class="s">"Name"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Name"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Name"</span> is displayed 
+<span class="nf">Then</span> the <span class="s">"Name"</span> is hidden 
+<span class="nf">Then</span> the <span class="s">"Name"</span> text does not appear 
+<span class="nf">Then</span> the <span class="s">"Name"</span> text does not appear during 5 seconds
 
-Scenario example for TextField:
+<span class="err">Scenario example for TextField</span><span class="p">:</span>
 
-  Scenario: sendKeys test
-    Given I open "Html5 Page"
-    When I send keys "Lorem" to "Name"
-    Then the "Name" text equals to "Lorem"
+  <span class="kn">Scenario</span><span class="p">:</span> sendKeys test
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">When</span> I send keys <span class="s">"Lorem"</span> to <span class="s">"Name"</span>
+    <span class="nf">Then</span> the <span class="s">"Name"</span> text equals to <span class="s">"Lorem"</span>
 
 </code></pre>
 <p>Actions: <br></p>
@@ -25736,13 +25736,13 @@ Scenario example for TextField:
 <br>
 <br>
 <br></p>
-<h3 id='multiselector-2'>MultiSelector</h3><pre class="highlight plaintext"><code>MultiSelector actions examples:
+<h3 id='multiselector-2'>MultiSelector</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">MultiSelector actions examples</span><span class="p">:</span>
 
- When I check in the "Multi Dropdown" values:
-      | Electro | Metalic |
- When I check in the "Multi Dropdown" values by number:
-      | 1 | 5 |
- When I check value "Steam" in the "Multi Dropdown"
+ <span class="nf">When</span> I check in the <span class="s">"Multi Dropdown"</span> values
+      <span class="p">|</span> <span class="nv">Electro</span> <span class="p">|</span> <span class="nv">Metalic</span> <span class="p">|</span>
+ <span class="n">When</span> <span class="n">I</span> <span class="n">check</span> <span class="n">in</span> <span class="n">the</span> <span class="n">"Multi</span> <span class="n">Dropdown"</span> <span class="n">values</span> <span class="n">by</span> <span class="n">number</span>
+      <span class="p">|</span> <span class="n">1</span> <span class="p">|</span> <span class="n">5</span> <span class="p">|</span>
+ <span class="nf">When</span> I check value <span class="s">"Steam"</span> in the <span class="s">"Multi Dropdown"</span>
 
 </code></pre>
 <p>Actions: <br></p>
@@ -25752,27 +25752,27 @@ Scenario example for TextField:
  <strong>When</strong> &lt;I&gt; check in the  &lt;ELEMENT NAME&gt;  values by number:<br>
   &nbsp;&nbsp;&nbsp;&nbsp;|&lt;GHERKIN DATA TABLE&gt;|<br>
  <strong>When</strong> &lt;I&gt; check value  &lt;ELEMENT NAME&gt;  in the  &lt;ELEMENT NAME&gt; <br></p>
-<pre class="highlight plaintext"><code>MultiSelector validation examples:
+<pre class="highlight gherkin tab-gherkin"><code><span class="err">MultiSelector validation examples</span><span class="p">:</span>
 
- Then the "Multi Dropdown" selected values:
-      | Electro | Wood |
- Then the "Multi Dropdown" selected value is "Steam"
- Then the "Multi Dropdown" values has item "Wood"
- Then the "Multi Dropdown" has disabled item "Disabled"
- Then the "Multi Dropdown" has no enabled item "Disabled"
- Then the "Multi Dropdown" has enabled items:
-      | Electro | Metalic |
- Then the "Multi Dropdown" contains items:
-      | Disabled | Wood | Steam | Electro | Metalic |
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> selected values
+      <span class="p">|</span> <span class="nv">Electro</span> <span class="p">|</span> <span class="nv">Wood</span> <span class="p">|</span>
+ <span class="n">Then</span> <span class="n">the</span> <span class="n">"Multi</span> <span class="n">Dropdown"</span> <span class="n">selected</span> <span class="n">value</span> <span class="n">is</span> <span class="n">"Steam"</span>
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> values has item <span class="s">"Wood"</span>
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> has disabled item <span class="s">"Disabled"</span>
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> has no enabled item <span class="s">"Disabled"</span>
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> has enabled items
+      <span class="p">|</span> <span class="nv">Electro</span> <span class="p">|</span> <span class="nv">Metalic</span> <span class="p">|</span>
+ <span class="n">Then</span> <span class="n">the</span> <span class="n">"Multi</span> <span class="n">Dropdown"</span> <span class="n">contains</span> <span class="n">items</span>
+      <span class="p">|</span> <span class="n">Disabled</span> <span class="p">|</span> <span class="n">Wood</span> <span class="p">|</span> <span class="n">Steam</span> <span class="p">|</span> <span class="n">Electro</span> <span class="p">|</span> <span class="n">Metalic</span> <span class="p">|</span>
 
-Scenario: MultiSelector validation
-    Given I open "Html5 Page"
-    Then the "Ages" selected value is "Steam"
-    And the "Ages" values has item "Wood"
-    And  the "Ages" has disabled item "Disabled"
-    And the "Ages" has no enabled item "Disabled"
-    And the "Ages" has enabled items:
-      | Electro | Metalic |
+<span class="kn">Scenario</span><span class="p">:</span> MultiSelector validation
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">Then</span> the <span class="s">"Ages"</span> selected value is <span class="s">"Steam"</span>
+    <span class="nf">And</span> the <span class="s">"Ages"</span> values has item <span class="s">"Wood"</span>
+    <span class="nf">And</span>  the <span class="s">"Ages"</span> has disabled item <span class="s">"Disabled"</span>
+    <span class="nf">And</span> the <span class="s">"Ages"</span> has no enabled item <span class="s">"Disabled"</span>
+    <span class="nf">And</span> the <span class="s">"Ages"</span> has enabled items
+      <span class="p">|</span> <span class="nv">Electro</span> <span class="p">|</span> <span class="nv">Metalic</span> <span class="p">|</span>
 
 </code></pre>
 <p>Validations: <br></p>
@@ -25798,13 +25798,13 @@ Scenario: MultiSelector validation
 <br></p>
 <h3 id='multidropdown-2'>MultiDropDown</h3>
 <p style="color:#FFA500">Note: this element is an alias for MultiSelector</p>
-<pre class="highlight plaintext"><code>MultiDropDown actions examples:
+<pre class="highlight gherkin tab-gherkin"><code><span class="err">MultiDropDown actions examples</span><span class="p">:</span>
 
- When I check in the "Multi Dropdown" values:
-      | Electro | Metalic |
- When I check in the "Multi Dropdown" values by number:
-      | 1 | 5 |
- When I check value "Steam" in the "Multi Dropdown"
+ <span class="nf">When</span> I check in the <span class="s">"Multi Dropdown"</span> values
+      <span class="p">|</span> <span class="nv">Electro</span> <span class="p">|</span> <span class="nv">Metalic</span> <span class="p">|</span>
+ <span class="n">When</span> <span class="n">I</span> <span class="n">check</span> <span class="n">in</span> <span class="n">the</span> <span class="n">"Multi</span> <span class="n">Dropdown"</span> <span class="n">values</span> <span class="n">by</span> <span class="n">number</span>
+      <span class="p">|</span> <span class="n">1</span> <span class="p">|</span> <span class="n">5</span> <span class="p">|</span>
+ <span class="nf">When</span> I check value <span class="s">"Steam"</span> in the <span class="s">"Multi Dropdown"</span>
 
 </code></pre>
 <p>Actions: <br></p>
@@ -25814,27 +25814,27 @@ Scenario: MultiSelector validation
  <strong>When</strong> &lt;I&gt; check in the  &lt;ELEMENT NAME&gt;  values by number:<br>
   &nbsp;&nbsp;&nbsp;&nbsp;|&lt;GHERKIN DATA TABLE&gt;|<br>
  <strong>When</strong> &lt;I&gt; check value  &lt;ELEMENT NAME&gt;  in the  &lt;ELEMENT NAME&gt; <br></p>
-<pre class="highlight plaintext"><code>MultiDropDown validation examples:
+<pre class="highlight gherkin tab-gherkin"><code><span class="err">MultiDropDown validation examples</span><span class="p">:</span>
 
- Then the "Multi Dropdown" selected values:
-      | Electro | Wood |
- Then the "Multi Dropdown" selected value is "Steam"
- Then the "Multi Dropdown" values has item "Wood"
- Then the "Multi Dropdown" has disabled item "Disabled"
- Then the "Multi Dropdown" has no enabled item "Disabled"
- Then the "Multi Dropdown" has enabled items:
-      | Electro | Metalic |
- Then the "Multi Dropdown" contains items:
-      | Disabled | Wood | Steam | Electro | Metalic |
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> selected values
+      <span class="p">|</span> <span class="nv">Electro</span> <span class="p">|</span> <span class="nv">Wood</span> <span class="p">|</span>
+ <span class="n">Then</span> <span class="n">the</span> <span class="n">"Multi</span> <span class="n">Dropdown"</span> <span class="n">selected</span> <span class="n">value</span> <span class="n">is</span> <span class="n">"Steam"</span>
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> values has item <span class="s">"Wood"</span>
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> has disabled item <span class="s">"Disabled"</span>
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> has no enabled item <span class="s">"Disabled"</span>
+ <span class="nf">Then</span> the <span class="s">"Multi Dropdown"</span> has enabled items
+      <span class="p">|</span> <span class="nv">Electro</span> <span class="p">|</span> <span class="nv">Metalic</span> <span class="p">|</span>
+ <span class="n">Then</span> <span class="n">the</span> <span class="n">"Multi</span> <span class="n">Dropdown"</span> <span class="n">contains</span> <span class="n">items</span>
+      <span class="p">|</span> <span class="n">Disabled</span> <span class="p">|</span> <span class="n">Wood</span> <span class="p">|</span> <span class="n">Steam</span> <span class="p">|</span> <span class="n">Electro</span> <span class="p">|</span> <span class="n">Metalic</span> <span class="p">|</span>
 
-Scenario: MultiDropDown validation
-    Given I open "Html5 Page"
-    Then the "Ages" selected value is "Steam"
-    And the "Ages" values has item "Wood"
-    And  the "Ages" has disabled item "Disabled"
-    And the "Ages" has no enabled item "Disabled"
-    And the "Ages" has enabled items:
-      | Electro | Metalic |
+<span class="kn">Scenario</span><span class="p">:</span> MultiDropDown validation
+    <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span>
+    <span class="nf">Then</span> the <span class="s">"Ages"</span> selected value is <span class="s">"Steam"</span>
+    <span class="nf">And</span> the <span class="s">"Ages"</span> values has item <span class="s">"Wood"</span>
+    <span class="nf">And</span>  the <span class="s">"Ages"</span> has disabled item <span class="s">"Disabled"</span>
+    <span class="nf">And</span> the <span class="s">"Ages"</span> has no enabled item <span class="s">"Disabled"</span>
+    <span class="nf">And</span> the <span class="s">"Ages"</span> has enabled items
+      <span class="p">|</span> <span class="nv">Electro</span> <span class="p">|</span> <span class="nv">Metalic</span> <span class="p">|</span>
 
 </code></pre>
 <p>Validations: <br></p>
@@ -25857,42 +25857,42 @@ Scenario: MultiDropDown validation
 <br>
 <br>
 <br></p>
-<h3 id='checklist-2'>CheckList</h3><pre class="highlight plaintext"><code>CheckList actions examples:
+<h3 id='checklist-2'>CheckList</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">CheckList actions examples</span><span class="p">:</span>
 
-When I check element "Hot option" in "Weather" checklist
-When I select fields from "Weather" checklist:
-     | Cold       | 
-     | Hot option |
-When I check elements in "Weather" checklist:
-     | Hot option |
-When I select in "Weather" checklist elements by numbers:
-     | 1 |
-     | 2 |
-When I check all elements in "Weather" checklist
-When I uncheck all elements in "Weather" checklist
-When I check elements in "Weather" checklist:
-     | Rainy day |
-     | Sunny     |
+<span class="nf">When</span> I check element <span class="s">"Hot option"</span> in <span class="s">"Weather"</span> checklist
+<span class="nf">When</span> I select fields from <span class="s">"Weather"</span> checklist
+     <span class="p">|</span> <span class="nv">Cold</span>       <span class="p">|</span> 
+     <span class="p">|</span> <span class="n">Hot</span> <span class="n">option</span> <span class="p">|</span>
+<span class="nf">When</span> I check elements in <span class="s">"Weather"</span> checklist
+     <span class="p">|</span> <span class="nv">Hot</span> <span class="nv">option</span> <span class="p">|</span>
+<span class="n">When</span> <span class="n">I</span> <span class="n">select</span> <span class="n">in</span> <span class="n">"Weather"</span> <span class="n">checklist</span> <span class="n">elements</span> <span class="n">by</span> <span class="n">numbers</span>
+     <span class="p">|</span> <span class="n">1</span> <span class="p">|</span>
+     <span class="p">|</span> <span class="n">2</span> <span class="p">|</span>
+<span class="nf">When</span> I check all elements in <span class="s">"Weather"</span> checklist
+<span class="nf">When</span> I uncheck all elements in <span class="s">"Weather"</span> checklist
+<span class="nf">When</span> I check elements in <span class="s">"Weather"</span> checklist
+     <span class="p">|</span> <span class="nv">Rainy</span> <span class="nv">day</span> <span class="p">|</span>
+     <span class="p">|</span> <span class="n">Sunny</span>     <span class="p">|</span>
 
 
-CheckList validation examples:
+<span class="err">CheckList validation examples</span><span class="p">:</span>
 
-Then in the "Weather" checklist checked element is "Cold"
-Then the "Weather" checklist text is "Hot option"
-Then count of selected elements in "Weather" checklist is "2"
-Then in the "Weather" checklist checked elements are:
-     | Hot option |
-     | Sunny      |
+<span class="nf">Then</span> in the <span class="s">"Weather"</span> checklist checked element is <span class="s">"Cold"</span>
+<span class="nf">Then</span> the <span class="s">"Weather"</span> checklist text is <span class="s">"Hot option"</span>
+<span class="nf">Then</span> count of selected elements in <span class="s">"Weather"</span> checklist is <span class="s">"2"</span>
+<span class="nf">Then</span> in the <span class="s">"Weather"</span> checklist checked elements are
+     <span class="p">|</span> <span class="nv">Hot</span> <span class="nv">option</span> <span class="p">|</span>
+     <span class="p">|</span> <span class="n">Sunny</span>      <span class="p">|</span>
 
-Scenario example for CheckList:
+<span class="err">Scenario example for CheckList</span><span class="p">:</span>
 
-Scenario: Check element via numbers test
-  When I check in "Weather" checklist elements by numbers:
-      | 1 |
-      | 4 |
-  Then in the "Weather" checklist checked elements are:
-      | Hot option |
-      | Sunny      |
+<span class="kn">Scenario</span><span class="p">:</span> Check element via numbers test
+  <span class="nf">When</span> I check in <span class="s">"Weather"</span> checklist elements by numbers
+      <span class="p">|</span> <span class="nv">1</span> <span class="p">|</span>
+      <span class="p">|</span> <span class="n">4</span> <span class="p">|</span>
+  <span class="nf">Then</span> in the <span class="s">"Weather"</span> checklist checked elements are
+      <span class="p">|</span> <span class="nv">Hot</span> <span class="nv">option</span> <span class="p">|</span>
+      <span class="p">|</span> <span class="n">Sunny</span>      <span class="p">|</span>
 
 </code></pre>
 <p>Actions: <br></p>
@@ -25935,53 +25935,53 @@ Scenario: Check element via numbers test
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/CheckList.feature" target="_blank">Cucumber tests</a> for CheckList<br></p>
 
 <p><br><br><br><br><br><br><br><br><br><br><br></p>
-<h3 id='table-2'>Table</h3><pre class="highlight plaintext"><code>Table actions examples:
+<h3 id='table-2'>Table</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Table actions examples</span><span class="p">:</span>
 
-When I click the cell in row "2" in column "2" of the table "Simple Table"
+<span class="nf">When</span> I click the cell in row <span class="s">"2"</span> in column <span class="s">"2"</span> of the table <span class="s">"Simple Table"</span>
 
-Table validation examples:
+<span class="err">Table validation examples</span><span class="p">:</span>
 
-Then the "Users Table" is enabled
-Then the "Users Table" is disabled
-Then the "Users Table" is displayed
-Then the "Users Table" is hidden
-Then the cell in row "1" in column "3" of the table "Simple Table" is selected
-Then the cell in row "1" in column "3" of the table "Simple Table" is deselected
-Then the "Users Table" does not appear
-Then the "Users Table" does not appear during "5" seconds
-Then the "Users Table" table columns count equals "4"
-Then the "Users Table" table rows count equals "6"
-Then the "Users Table" table header has items:
-Then the "Users Table" table preview equals values:
-Then the "Users Table" table has size "6"
-Then the "Users Table" table has size greater than "3"
-Then the "Users Table" table has size less or equal to "6"
-Then the "Users Table" table is not empty
-Then the "Users Table" table has row that contains value "Ivan" in column "User"
-Then the "Users Table" table all rows contain value "Vip" in column "Description"
-Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
-Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
-Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
-Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> is hidden
+<span class="nf">Then</span> the cell in row <span class="s">"1"</span> in column <span class="s">"3"</span> of the table <span class="s">"Simple Table"</span> is selected
+<span class="nf">Then</span> the cell in row <span class="s">"1"</span> in column <span class="s">"3"</span> of the table <span class="s">"Simple Table"</span> is deselected
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> does not appear during <span class="s">"5"</span> seconds
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table columns count equals <span class="s">"4"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table rows count equals <span class="s">"6"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table header has items
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table preview equals values
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has size <span class="s">"6"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has size greater than <span class="s">"3"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has size less or equal to <span class="s">"6"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table is not empty
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has row that contains value <span class="s">"Ivan"</span> in column <span class="s">"User"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table all rows contain value <span class="s">"Vip"</span> in column <span class="s">"Description"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has no rows which contain value <span class="s">"Vip"</span> in column <span class="s">"Description"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has at least <span class="s">"3"</span> rows which contain value <span class="s">" "</span> in column <span class="s">"User"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has exact <span class="s">"2"</span> rows which contain value <span class="s">"R"</span> in column <span class="s">"User"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has exact <span class="s">"1"</span> rows which have value <span class="s">"Roman"</span> in column <span class="s">"User"</span>
 
-Scenario examples for Table:
+<span class="err">Scenario examples for Table</span><span class="p">:</span>
 
-  Scenario: Get label text test
-    Given I open "Users Page"
-    Then the "Users Table" table columns count equals "4"
-    And the "Users Table" table rows count equals "6"
-    And the "Users Table" table header has items:
-      | Number      |
-      | Type        |
-      | User        |
-      | Description |
+  <span class="kn">Scenario</span><span class="p">:</span> Get label text test
+    <span class="nf">Given</span> I open <span class="s">"Users Page"</span>
+    <span class="nf">Then</span> the <span class="s">"Users Table"</span> table columns count equals <span class="s">"4"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table rows count equals <span class="s">"6"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table header has items
+      <span class="p">|</span> <span class="nv">Number</span>      <span class="p">|</span>
+      <span class="p">|</span> <span class="n">Type</span>        <span class="p">|</span>
+      <span class="p">|</span> <span class="n">User</span>        <span class="p">|</span>
+      <span class="p">|</span> <span class="n">Description</span> <span class="p">|</span>
 
-  Scenario: Common matchers test
-    Given I open "Users Page"
-    Then the "Users Table" table has size "6"
-    And the "Users Table" table has size greater than "3"
-    And the "Users Table" table has size less or equal to "6"
-    And the "Users Table" table is not empty
+  <span class="kn">Scenario</span><span class="p">:</span> Common matchers test
+    <span class="nf">Given</span> I open <span class="s">"Users Page"</span>
+    <span class="nf">Then</span> the <span class="s">"Users Table"</span> table has size <span class="s">"6"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table has size greater than <span class="s">"3"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table has size less or equal to <span class="s">"6"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table is not empty
 
 </code></pre>
 <p>Actions: <br></p>
@@ -26020,47 +26020,47 @@ Scenario examples for Table:
 <br><br><br><br><br><br><br><br><br><br><br></p>
 <h3 id='datatable-2'>DataTable</h3>
 <p>Note: this element is an alias for Table</p>
-<pre class="highlight plaintext"><code>Table validation examples:
+<pre class="highlight gherkin tab-gherkin"><code><span class="err">Table validation examples</span><span class="p">:</span>
 
-Then the "Users Table" is enabled
-Then the "Users Table" is disabled
-Then the "Users Table" is displayed
-Then the "Users Table" is hidden
-Then the "Users Table" does not appear
-Then the "Users Table" does not appear during "5" seconds
-Then the "Users Table" table columns count equals "4"
-Then the "Users Table" table rows count equals "6"
-Then the "Users Table" table header has items:
-Then the "Users Table" table preview equals values:
-Then the "Users Table" table has size "6"
-Then the "Users Table" table has size greater than "3"
-Then the "Users Table" table has size less or equal to "6"
-Then the "Users Table" table is not empty
-Then the "Users Table" table has row that contains value "Ivan" in column "User"
-Then the "Users Table" table all rows contain value "Vip" in column "Description"
-Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
-Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
-Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
-Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> is enabled
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> is disabled
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> is displayed
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> is hidden
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> does not appear
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> does not appear during <span class="s">"5"</span> seconds
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table columns count equals <span class="s">"4"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table rows count equals <span class="s">"6"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table header has items
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table preview equals values
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has size <span class="s">"6"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has size greater than <span class="s">"3"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has size less or equal to <span class="s">"6"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table is not empty
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has row that contains value <span class="s">"Ivan"</span> in column <span class="s">"User"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table all rows contain value <span class="s">"Vip"</span> in column <span class="s">"Description"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has no rows which contain value <span class="s">"Vip"</span> in column <span class="s">"Description"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has at least <span class="s">"3"</span> rows which contain value <span class="s">" "</span> in column <span class="s">"User"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has exact <span class="s">"2"</span> rows which contain value <span class="s">"R"</span> in column <span class="s">"User"</span>
+<span class="nf">Then</span> the <span class="s">"Users Table"</span> table has exact <span class="s">"1"</span> rows which have value <span class="s">"Roman"</span> in column <span class="s">"User"</span>
 
-Scenario examples for Table:
+<span class="err">Scenario examples for Table</span><span class="p">:</span>
 
-  Scenario: Get label text test
-    Given I open "Users Page"
-    Then the "Users Table" table columns count equals "4"
-    And the "Users Table" table rows count equals "6"
-    And the "Users Table" table header has items:
-      | Number      |
-      | Type        |
-      | User        |
-      | Description |
+  <span class="kn">Scenario</span><span class="p">:</span> Get label text test
+    <span class="nf">Given</span> I open <span class="s">"Users Page"</span>
+    <span class="nf">Then</span> the <span class="s">"Users Table"</span> table columns count equals <span class="s">"4"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table rows count equals <span class="s">"6"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table header has items
+      <span class="p">|</span> <span class="nv">Number</span>      <span class="p">|</span>
+      <span class="p">|</span> <span class="n">Type</span>        <span class="p">|</span>
+      <span class="p">|</span> <span class="n">User</span>        <span class="p">|</span>
+      <span class="p">|</span> <span class="n">Description</span> <span class="p">|</span>
 
-  Scenario: Common matchers test
-    Given I open "Users Page"
-    Then the "Users Table" table has size "6"
-    And the "Users Table" table has size greater than "3"
-    And the "Users Table" table has size less or equal to "6"
-    And the "Users Table" table is not empty
+  <span class="kn">Scenario</span><span class="p">:</span> Common matchers test
+    <span class="nf">Given</span> I open <span class="s">"Users Page"</span>
+    <span class="nf">Then</span> the <span class="s">"Users Table"</span> table has size <span class="s">"6"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table has size greater than <span class="s">"3"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table has size less or equal to <span class="s">"6"</span>
+    <span class="nf">And</span> the <span class="s">"Users Table"</span> table is not empty
 
 </code></pre>
 <p>Validations: <br></p>
@@ -26091,71 +26091,71 @@ Scenario examples for Table:
 <p>More information in the <a href="https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa"><strong>Tutorial</strong></a><br>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Table.feature" target="_blank">Cucumber tests</a> for Table<br>
 <br><br><br><br><br><br><br><br><br><br><br></p>
-<h3 id='form-2'>Form</h3><pre class="highlight plaintext"><code>Form actions examples:
+<h3 id='form-2'>Form</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Form actions examples</span><span class="p">:</span>
 
-When fill form "Contact Form" with data:
-    |name|Roman|
-    |lastName|Iovlev|
-    |position|ChiefQA|
-    |passportNumber|654321|
-    |passportSeria|1234|
-    |description|JDI - awesome UI automation tool|
-    |acceptConditions|true|
-    |gender|Female|
-    |religion|Other|
-When I submit form "Contact Form"
-When I save form
+<span class="nf">When</span> fill form <span class="s">"Contact Form"</span> with data
+    <span class="p">|</span> <span class="nv">name</span> <span class="p">|</span> <span class="nv">Roman</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">lastName</span><span class="p">|</span> <span class="n">Iovlev</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">position</span><span class="p">|</span> <span class="n">ChiefQA</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">passportNumber</span><span class="p">|</span> <span class="n">654321</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">passportSeria</span><span class="p">|</span> <span class="n">1234</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">description</span><span class="p">|</span> <span class="n">JDI</span> <span class="n">-</span> <span class="n">awesome</span> <span class="n">UI</span> <span class="n">automation</span> <span class="n">tool</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">acceptConditions</span><span class="p">|</span> <span class="n">true</span> <span class="p">|</span> 
+    <span class="p">|</span> <span class="n">gender</span><span class="p">|</span> <span class="n">Female</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">religion</span><span class="p">|</span> <span class="n">Other</span> <span class="p">|</span>
+<span class="nf">When</span> I submit form <span class="s">"Contact Form"</span>
+<span class="nf">When</span> I save form
 
-JSON data file examples:
-When fill form "Contact Form" with "Roman Contacts"
-When send form "Contact Form" with "Roman Contacts"
+<span class="err">JSON data file examples</span><span class="p">:</span>
+<span class="nf">When</span> fill form <span class="s">"Contact Form"</span> with <span class="s">"Roman Contacts"</span>
+<span class="nf">When</span> send form <span class="s">"Contact Form"</span> with <span class="s">"Roman Contacts"</span>
 
-Form validation examples:
+<span class="err">Form validation examples</span><span class="p">:</span>
 
-Then the form "Contact Form" data equals to:
-    |name|Roman|
-    |lastName|Iovlev|
-    |position|ChiefQA|
-    |passportNumber|654321|
-    |passportSeria|1234|
-    |description|JDI - awesome UI automation tool|
-    |acceptConditions|true|
-    |gender|Female|
-    |religion|Other|
-Then the form "Contact Form" is displayed
-Then the form "Contact Form" is hidden
-Then the form "Contact Form" does not appear
-Then the form "Contact Form" does not appear during 7
-Then the form "Contact Form" disappear
+<span class="nf">Then</span> the form <span class="s">"Contact Form"</span> data equals to
+    <span class="p">|</span> <span class="nv">name</span><span class="p">|</span> <span class="nv">Roman</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">lastName</span> <span class="p">|</span> <span class="n">Iovlev</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">position</span> <span class="p">|</span> <span class="n">ChiefQA</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">passportNumber</span> <span class="p">|</span> <span class="n">654321</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">passportSeria</span> <span class="p">|</span> <span class="n">1234</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">description</span> <span class="p">|</span> <span class="n">JDI</span> <span class="n">-</span> <span class="n">awesome</span> <span class="n">UI</span> <span class="n">automation</span> <span class="n">tool</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">acceptConditions</span> <span class="p">|</span> <span class="n">true</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">gender</span><span class="p">|</span> <span class="n">Female</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">religion</span><span class="p">|</span> <span class="n">Other</span> <span class="p">|</span>
+<span class="nf">Then</span> the form <span class="s">"Contact Form"</span> is displayed
+<span class="nf">Then</span> the form <span class="s">"Contact Form"</span> is hidden
+<span class="nf">Then</span> the form <span class="s">"Contact Form"</span> does not appear
+<span class="nf">Then</span> the form <span class="s">"Contact Form"</span> does not appear during 7
+<span class="nf">Then</span> the form <span class="s">"Contact Form"</span> disappear
 
-JSON data file examples:
-Then the form "Contact Form" data equals to "Roman Contacts"
+<span class="err">JSON data file examples</span><span class="p">:</span>
+<span class="nf">Then</span> the form <span class="s">"Contact Form"</span> data equals to <span class="s">"Roman Contacts"</span>
 
-Form scenario example:
+<span class="err">Form scenario example</span><span class="p">:</span>
 
-  Scenario: fillContactForm
-    Given I open "Contact Form Page"
-    When fill form "Contact Form" with data:
-    |name|Roman|
-    |lastName|Iovlev|
-    |position|ChiefQA|
-    |passportNumber|654321|
-    |passportSeria|1234|
-    |description|JDI - awesome UI automation tool|
-    |acceptConditions|true|
-    |gender|Female|
-    |religion|Other|
-    And I submit form "Contact Form"
-    Then the form "Contact Form" data equals to:
-    |name|Roman|
-    |lastName|Iovlev|
-    |position|ChiefQA|
-    |passportNumber|654321|
-    |passportSeria|1234|
-    |description|JDI - awesome UI automation tool|
-    |acceptConditions|true|
-    |gender|Female|
-    |religion|Other|
+  <span class="kn">Scenario</span><span class="p">:</span> fillContactForm
+    <span class="nf">Given</span> I open <span class="s">"Contact Form Page"</span>
+    <span class="nf">When</span> fill form <span class="s">"Contact Form"</span> with data
+    <span class="p">|</span> <span class="nv">name</span><span class="p">|</span> <span class="nv">Roman</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">lastName</span> <span class="p">|</span> <span class="n">Iovlev</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">position</span> <span class="p">|</span> <span class="n">ChiefQA</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">passportNumber</span> <span class="p">|</span> <span class="n">654321</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">passportSeria</span> <span class="p">|</span> <span class="n">1234</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">description</span> <span class="p">|</span> <span class="n">JDI</span> <span class="n">-</span> <span class="n">awesome</span> <span class="n">UI</span> <span class="n">automation</span> <span class="n">tool</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">acceptConditions</span> <span class="p">|</span> <span class="n">true</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">gender</span> <span class="p">|</span> <span class="n">Female</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">religion</span> <span class="p">|</span> <span class="n">Other</span> <span class="p">|</span>
+    <span class="nf">And</span> I submit form <span class="s">"Contact Form"</span>
+    <span class="nf">Then</span> the form <span class="s">"Contact Form"</span> data equals to
+    <span class="p">|</span> <span class="nv">name</span> <span class="p">|</span> <span class="nv">Roman</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">lastName</span> <span class="p">|</span> <span class="n">Iovlev</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">position</span> <span class="p">|</span> <span class="n">ChiefQA</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">passportNumber</span> <span class="p">|</span> <span class="n">654321</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">passportSeria</span> <span class="p">|</span> <span class="n">1234</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">description</span> <span class="p">|</span> <span class="n">JDI</span> <span class="n">-</span> <span class="n">awesome</span> <span class="n">UI</span> <span class="n">automation</span> <span class="n">tool</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">acceptConditions</span> <span class="p">|</span> <span class="n">true</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">gender</span> <span class="p">|</span> <span class="n">Female</span> <span class="p">|</span>
+    <span class="p">|</span> <span class="n">religion</span> <span class="p">|</span> <span class="n">Other</span> <span class="p">|</span>
 
 </code></pre>
 <p>Actions: <br></p>
@@ -26191,40 +26191,41 @@ Form scenario example:
 <br><br><br><br><br><br><br><br><br><br><br><br></p>
 
 <p><br></p>
-<h3 id='radiobuttons-2'>Radiobuttons</h3><pre class="highlight plaintext"><code>Radiobuttons actions examples:
+<h3 id='radiobuttons-2'>Radiobuttons</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Radiobuttons actions examples</span><span class="p">:</span>
 
-When I select "Blue" field from "Colors"
-When select the radio button with "1" index from "Colors" 
-When I highlight "Colors"   
-When set "Colors" attribute "test-jdi" with value "test-value" 
+<span class="nf">When</span> I select <span class="s">"Blue"</span> field from <span class="s">"Colors"</span>
+<span class="nf">When</span> select the radio button with <span class="s">"1"</span> index from <span class="s">"Colors"</span> 
+<span class="nf">When</span> I highlight <span class="s">"Colors"</span>   
+<span class="nf">When</span> set <span class="s">"Colors"</span> attribute <span class="s">"test-jdi"</span> with value <span class="s">"test-value"</span> 
 
-Radiobuttons validation examples:
+<span class="err">Radiobuttons validation examples</span><span class="p">:</span>
 
-Then the "Colors" text equals to "Blue" 
-Then the "Colors" text contains "Blue"  
-Then the "Colors" text matches to "\w{15}" 
-Then the "Colors" is enabled 
-Then the "Colors" is disabled 
-Then the "Colors" is displayed 
-Then the "Colors" is hidden 
-Then the "Colors" disappears 
-Then the "Colors" does not appear 
-Then the "Colors" does not appear during "2" seconds 
-Then the "Colors" css "type" equals to "radio" 
-Then the "Colors" consists of next values 
-Then the "Colors" contains "Blue" radio button 
-Then the "Colors" contains "Yellow" disabled radio button 
-Then the "Colors" does not contain "Yellow" enabled radio button 
-Then the "Colors" contains next enabled values: 
-    | Red | Green | Blue | Yellow |
+<span class="nf">Then</span> the <span class="s">"Colors"</span> text equals to <span class="s">"Blue"</span> 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> text contains <span class="s">"Blue"</span>  
+<span class="nf">Then</span> the <span class="s">"Colors"</span> text matches to <span class="s">"\w{15}"</span> 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> is enabled 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> is disabled 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> is displayed 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> is hidden 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> disappears 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> does not appear 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> does not appear during <span class="s">"2"</span> seconds 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> css <span class="s">"type"</span> equals to <span class="s">"radio"</span> 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> consists of next values 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> contains <span class="s">"Blue"</span> radio button 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> contains <span class="s">"Yellow"</span> disabled radio button 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> does not contain <span class="s">"Yellow"</span> enabled radio button 
+<span class="nf">Then</span> the <span class="s">"Colors"</span> contains next enabled values
+    <span class="p">|</span> <span class="nv">Red</span> <span class="p">|</span> <span class="nv">Green</span> <span class="p">|</span> <span class="nv">Blue</span> <span class="p">|</span> <span class="nv">Yellow</span> <span class="p">|</span>
 
-Scenario example for Radiobuttons:
+<span class="err">Scenario example for Radiobuttons</span><span class="p">:</span>
 
- Given I open "Html5 Page" page
- Then the "Html5 Page.Colors" consists of next values:
-      | Red | Green | Blue | Yellow |
- When I Select "Blue" field from "Html5 Page.Colors"
- Then the "Html5 Page.Colors" text equals to "Blue"
+ <span class="nf">Given</span> I open <span class="s">"Html5 Page"</span> page
+ <span class="nf">Then</span> the <span class="s">"Html5 Page.Colors"</span> consists of next values
+      <span class="p">|</span> <span class="nv">Red</span> <span class="p">|</span> <span class="nv">Green</span> <span class="p">|</span> <span class="nv">Blue</span> <span class="p">|</span> <span class="nv">Yellow</span> <span class="p">|</span>
+ <span class="n">When</span> <span class="n">I</span> <span class="n">highlight</span> <span class="n">"Colors"</span>  
+ <span class="nf">When</span> I Select <span class="s">"Blue"</span> field from <span class="s">"Html5 Page.Colors"</span>
+ <span class="nf">Then</span> the <span class="s">"Html5 Page.Colors"</span> text equals to <span class="s">"Blue"</span>
 
 
 
@@ -26259,38 +26260,38 @@ Scenario example for Radiobuttons:
 <p>More information in the <a href="https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa"><strong>Tutorial</strong></a><br>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Radio.feature" target="_blank">Cucumber tests</a> for Radiobuttons<br>
 <br><br><br><br><br><br><br><br><br><br><br><br></p>
-<h3 id='webpage-2'>WebPage</h3><pre class="highlight plaintext"><code>WebPage action examples:
+<h3 id='webpage-2'>WebPage</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">WebPage action examples</span><span class="p">:</span>
 
-When I scroll to the bottom of the page
-When I scroll to the top of the page
-When I scroll "30" px down
-When I scroll "20" px up
-When I scroll "10" px right
-When I scroll "5" px left
-When I zoom in
-When I go back
-When I go forward
-When I refresh webpage
+<span class="nf">When</span> I scroll to the bottom of the page
+<span class="nf">When</span> I scroll to the top of the page
+<span class="nf">When</span> I scroll <span class="s">"30"</span> px down
+<span class="nf">When</span> I scroll <span class="s">"20"</span> px up
+<span class="nf">When</span> I scroll <span class="s">"10"</span> px right
+<span class="nf">When</span> I scroll <span class="s">"5"</span> px left
+<span class="nf">When</span> I zoom in
+<span class="nf">When</span> I go back
+<span class="nf">When</span> I go forward
+<span class="nf">When</span> I refresh webpage
 
-WebPage validation examples:
+<span class="err">WebPage validation examples</span><span class="p">:</span>
 
-Then the current page title is "Home Page"
-Then current page url is "https://jdi-testing.github.io/jdi-light/contacts.html"
-Then the bottom of the page is reached
-Then the top of the page is reached
-Then the page is scrolled "30" px down
-Then the page is scrolled "20" px up
-Then the page is scrolled "10" px right
-Then the page is scrolled "5" px left
-Then the page is zoomed
+<span class="nf">Then</span> the current page title is <span class="s">"Home Page"</span>
+<span class="nf">Then</span> current page url is <span class="s">"https//jdi-testing.github.io/jdi-light/contacts.html"</span>
+<span class="nf">Then</span> the bottom of the page is reached
+<span class="nf">Then</span> the top of the page is reached
+<span class="nf">Then</span> the page is scrolled <span class="s">"30"</span> px down
+<span class="nf">Then</span> the page is scrolled <span class="s">"20"</span> px up
+<span class="nf">Then</span> the page is scrolled <span class="s">"10"</span> px right
+<span class="nf">Then</span> the page is scrolled <span class="s">"5"</span> px left
+<span class="nf">Then</span> the page is zoomed
 
-Scenario example for WebPage:
+<span class="err">Scenario example for WebPage</span><span class="p">:</span>
 
-  Scenario: scroll to bottom test
-    Given I should be logged in
-    When I open "Contact Form Page"
-    And I scroll to the bottom of the page
-    Then the bottom of the page is reached
+  <span class="kn">Scenario</span><span class="p">:</span> scroll to bottom test
+    <span class="nf">Given</span> I should be logged in
+    <span class="nf">When</span> I open <span class="s">"Contact Form Page"</span>
+    <span class="nf">And</span> I scroll to the bottom of the page
+    <span class="nf">Then</span> the bottom of the page is reached
 
 </code></pre>
 <p>Actions: <br></p>
