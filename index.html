@@ -26359,8 +26359,7 @@ Simple non-static site initialization example ------&gt;</p>
     <span class="n">Button</span> <span class="n">SubmitButton</span><span class="p">;</span>
 <span class="p">}</span>
 
-</code></pre><pre class="highlight java tab-java"><code>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserCard</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserCard</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
     <span class="nd">@Css</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
 
     <span class="nd">@Css</span><span class="o">(</span><span class="s">"#last-name"</span><span class="o">)</span> <span class="n">TextField</span> <span class="n">lastName</span><span class="o">;</span> 
@@ -26381,7 +26380,6 @@ Simple non-static site initialization example ------&gt;</p>
     <span class="n">TextField</span> <span class="n">lastName</span><span class="o">;</span>
     <span class="n">Button</span> <span class="n">submitButton</span><span class="o">;</span> 
 <span class="o">}</span>
-
 </code></pre>
 <p>If your developers are following some standard way of marking UI elements or you have an agreement to add special attributes, you can even avoid writing locators for elements and make your page objects much more compact.</p>
 
@@ -26698,7 +26696,6 @@ Note that you can make a static import (Alerts.acceptAlert() > acceptAlert()) in
 <span class="o">[</span><span class="mi">22</span><span class="o">:</span><span class="mf">23.617</span>  <span class="n">STEP</span><span class="o">]</span> <span class="o">:</span> <span class="n">Click</span> <span class="n">on</span> <span class="err">'</span><span class="n">User</span> <span class="n">Icon</span><span class="err">'</span>
 <span class="o">[</span><span class="mi">22</span><span class="o">:</span><span class="mf">23.727</span>  <span class="n">STEP</span><span class="o">]</span> <span class="o">:</span> <span class="n">Login</span> <span class="n">as</span> <span class="nf">User</span><span class="o">(</span><span class="nl">userName:</span><span class="n">epam</span><span class="o">;</span> <span class="nl">password:</span><span class="mi">1234</span><span class="o">)</span>
 <span class="o">[</span><span class="mi">22</span><span class="o">:</span><span class="mf">24.516</span>  <span class="n">STEP</span><span class="o">]</span> <span class="o">:</span> <span class="n">Check</span> <span class="n">that</span> <span class="err">'</span><span class="n">Home</span> <span class="n">Page</span><span class="err">'</span> <span class="n">is</span> <span class="nf">opened</span> <span class="o">(</span><span class="n">url</span> <span class="n">CONTAINS</span> <span class="err">'</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="na">html</span><span class="err">'</span><span class="o">;</span> <span class="n">title</span> <span class="n">EQUALS</span> <span class="err">'</span><span class="n">Home</span> <span class="n">Page</span><span class="err">'</span><span class="o">)</span>
-
 </code></pre>
 <p>JDI uses the <em>log4j library</em>, but provides more levels of logging. (require log4j.xml / log2j2.xml)
 <strong>logger.setLogLevel(STEP);</strong>
@@ -26970,7 +26967,8 @@ Level <em>STEP</em> can show business-related information in the console output,
 <h2 id='review-guide'>Review Guide</h2><h3 id='easy-way-to-pass-review'>Easy way to pass review</h3>
 <ul>
 <li>Good code style</li>
-<li>No Wlidcards imports (with asterisk *)</li>
+<li>No Wildcards imports (with asterisk *). You can use settings from the picture below
+<img src="images/review-wildcard-imports.png" alt="Wildcard Imports" /></li>
 <li><code>Ctrl+Alt+O</code> &amp; <code>Ctrl+Alt+L</code> in IDEA IDE before any commit</li>
 <li>Right branch and label in PR</li>
 </ul>
@@ -27053,21 +27051,21 @@ Level <em>STEP</em> can show business-related information in the console output,
 <li>Use spaces, 1 tab size equals to 4</li>
 <li>Don&#39;t use wildcard imports</li>
 <li>Use Intellij&#39;s autoreformatting, imports optimization and rearrange option</li>
-<li>Fix all codacy issues</li>
-<li>If codacy issue shouldn&#39;t be resolved use warnings supressions</li>
+<li>Fix all Codacy issues</li>
+<li>If Codacy issue shouldn&#39;t be resolved use warnings suppressions</li>
 <li>Use semantic-value names for classes , variables, methods and so on. Use full version of words (human instead of h and so on). Common abbreviations (as id, uid and so on are applied). Use valuable names, for example instead of accountList use accounts and so on</li>
 <li>Remove double empty lines, use empty lines only when it make sense (additionally to autoreformatting)</li>
 <li>Use correct line breaks: (PROVIDE_SAMPLES)</li>
 <li>Try to use lines with no more 100-120 symbols (including indents) </li>
 <li>Use chaining style, recommended sample:
-<code>java
+<code>java 
 object
-    .method(1)
-    .otherMethod();
+.method(1)
+.otherMethod();
 </code></li>
 <li>Always use <code>{}</code> braces for even empty if, for, etc.</li>
 <li>Follow to the sequence of keywords: public protected private abstract default static final transient volatile synchronized native strictfp</li>
-<li>Don&#39;t use such convinences as: <code>mValue</code>, <code>_value</code>, and so on. Acceptable <code>__</code> as unused argument of dataprovider in test methods</li>
+<li>Don&#39;t use such conveniences as: <code>mValue</code>, <code>_value</code>, and so on. Acceptable <code>__</code> as unused argument of data provider in test methods</li>
 <li>Feel free to smart refactoring</li>
 <li>Feel free to use smart ?:</li>
 <li>Use <code>UpperCamelCase</code> naming style for classes, <code>lowerCamelCase</code> for fields and methods, <code>UPPERCASE</code> for enums, <code>lowercase</code> for packages</li>
