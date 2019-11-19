@@ -24194,8 +24194,79 @@ Add a header to label sections of actions in any dropdown menu.</p>
 <p><img src="images/bootstrap/dropdown-menu-content-headers.png" alt="Headers example" /></p>
 
 <p>Here is an example headers code in the menu items:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "dropdown-content-header")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropdown-content-header"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenuContent</span> <span class="n">dropdownMenuContentHeader</span><span class="o">;</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkHeaderTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">dropdownMenuContentHeader</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">dropdownMenuContentHeader</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">dropdownMenuContentHeader</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">dropdownMenuContentHeader</span><span class="o">.</span><span class="na">menu</span><span class="o">().</span><span class="na">children</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">dropdownMenuContentHeader</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"h6"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"dropdown-header"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="s">"DROPDOWN HEADER"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/dropdown-menu-content-headers-html.png" alt="Headers HTML example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>expand()</strong></td>
+<td>Expand dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>collapse()</strong></td>
+<td>Collapse dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>menu()</strong></td>
+<td>Get dropdown menu</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>list()</strong></td>
+<td>Get dropdown items</td>
+<td>WebList</td>
+</tr>
+<tr>
+<td><strong>tag()</strong></td>
+<td>Assert element tag</td>
+<td>IsAssert</td>
+</tr>
+<tr>
+<td><strong>hasClass()</strong></td>
+<td>Match passed value with element class</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Assert text</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownMenuContentTests.java">Bootstrap test examples</a></p>
+
+<p><br></p>
 
 <p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#dividers"><strong>Dividers</strong></a><br>
 Separate groups of related menu items with a divider.</p>
@@ -24203,8 +24274,73 @@ Separate groups of related menu items with a divider.</p>
 <p><img src="images/bootstrap/dropdown-menu-content-dividers.png" alt="Dividers example" /></p>
 
 <p>Here is an example dividers code in the menu items:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "dropdown-content-divider")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropdown-content-divider"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenuContent</span> <span class="n">dropdownMenuContentDivider</span><span class="o">;</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkDividerTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">dropdownMenuContentDivider</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">dropdownMenuContentDivider</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">dropdownMenuContentDivider</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">dropdownMenuContentDivider</span><span class="o">.</span><span class="na">menu</span><span class="o">().</span><span class="na">children</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">dropdownMenuContentDivider</span><span class="o">.</span><span class="na">divider</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"div"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"dropdown-divider"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/dropdown-menu-content-dividers-html.png" alt="Dividers HTML example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>expand()</strong></td>
+<td>Expand dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>collapse()</strong></td>
+<td>Collapse dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>menu()</strong></td>
+<td>Get dropdown menu</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>list()</strong></td>
+<td>Get dropdown items</td>
+<td>WebList</td>
+</tr>
+<tr>
+<td><strong>tag()</strong></td>
+<td>Assert element tag</td>
+<td>IsAssert</td>
+</tr>
+<tr>
+<td><strong>hasClass()</strong></td>
+<td>Match passed value with element class</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownMenuContentTests.java">Bootstrap test examples</a></p>
+
+<p><br></p>
 
 <p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#text"><strong>Text</strong></a><br>
 Place any freeform text within a dropdown menu with text and use <a href="https://getbootstrap.com/docs/4.3/utilities/spacing/">spacing utilities</a>. Note that you’ll likely need additional sizing styles to constrain the menu width.</p>
@@ -24212,8 +24348,68 @@ Place any freeform text within a dropdown menu with text and use <a href="https:
 <p><img src="images/bootstrap/dropdown-menu-content-text.png" alt="Text example" /></p>
 
 <p>Here is an example text code in the menu items:</p>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "dropdown-content-text")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropdown-content-text"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenuContent</span> <span class="n">dropdownMenuContentText</span><span class="o">;</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">dropdownMenuContentText</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">dropdownMenuContentText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">dropdownMenuContentText</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">dropdownMenuContentText</span><span class="o">.</span><span class="na">menu</span><span class="o">().</span><span class="na">children</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+    <span class="n">dropdownMenuContentText</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+           <span class="o">.</span><span class="na">values</span><span class="o">(</span><span class="n">TextTypes</span><span class="o">.</span><span class="na">TEXT</span><span class="o">,</span> <span class="n">hasItems</span><span class="o">(</span><span class="s">"Some example text that's free-flowing within the dropdown menu."</span><span class="o">));</span>
+    <span class="n">dropdownMenuContentText</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+           <span class="o">.</span><span class="na">values</span><span class="o">(</span><span class="n">TextTypes</span><span class="o">.</span><span class="na">TEXT</span><span class="o">,</span> <span class="n">hasItems</span><span class="o">(</span><span class="s">"And this is more example text."</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
 <p><img src="images/bootstrap/dropdown-menu-content-text-html.png" alt="Text HTML example" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>expand()</strong></td>
+<td>Expand dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>collapse()</strong></td>
+<td>Collapse dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>menu()</strong></td>
+<td>Get dropdown menu</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>list()</strong></td>
+<td>Get dropdown items</td>
+<td>WebList</td>
+</tr>
+<tr>
+<td><strong>values()</strong></td>
+<td>Match passed values with element&#39;s values</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownMenuContentTests.java">Bootstrap test examples</a></p>
+
+<p><br></p>
 
 <p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#forms"><strong>Forms</strong></a><br>
 Put a form within a dropdown menu, or make it into a dropdown menu, and use <a href="https://getbootstrap.com/docs/4.3/utilities/spacing/">margin or padding utilities</a> to give it the negative space you require.</p>
