@@ -20817,7 +20817,7 @@ content container with multiple variants and options.</p>
 fixed width. Cards have no fixed width to start, so they’ll naturally fill the full width of its parent element.
 This is easily customized with our various sizing options.</p>
 
-<p><img src="images/bootstrap/simplecard.png" alt="Simple Card Example" /></p>
+<p><img src="images/bootstrap/simplecard.png" alt="Card Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-example"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-example")</span>
@@ -20853,8 +20853,6 @@ This is easily customized with our various sizing options.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/simplecard-html.png" alt="Simple Card Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -20915,7 +20913,7 @@ This is easily customized with our various sizing options.</p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardExampleTests.java">Bootstrap test examples</a></p>
 <h4 id='card-body'>Card Body</h4>
-<p><a href="https://getbootstrap.com/docs/4.3/components/card/#body">Card Body</a> - The building block of a card is the <code>.card-body</code>.
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/#body">Card Body</a> - the building block of a card is the <code>.card-body</code>.
 Use it whenever you need a padded section within a card.</p>
 
 <p><img src="images/bootstrap/cardbody.png" alt="Card Body Example" /></p>
@@ -20938,8 +20936,6 @@ Use it whenever you need a padded section within a card.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/cardbody-html.png" alt="Card Body Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -20975,14 +20971,15 @@ Use it whenever you need a padded section within a card.</p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardBodyTests.java">Bootstrap test examples</a></p>
-<h4 id='card-with-titles-and-links'>Card with Titles and Links</h4>
-<p><a href="https://getbootstrap.com/docs/4.3/components/card/#titles-text-and-links">Card titles</a> are used by adding <code>.card-title</code>
-to a <code>&lt;h*&gt;</code> tag. In the same way, links are added and placed next to each other by adding <code>.card-link</code> to an <code>&lt;a&gt;</code> tag.</p>
+<h4 id='card-titles-text-and-links'>Card Titles, Text and Links</h4>
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/#titles-text-and-links">Card Titles, Text and Links</a> - card titles
+are used by adding <code>.card-title</code> to a <code>&lt;h*&gt;</code> tag. In the same way, links are added and placed next to each other
+by adding <code>.card-link</code> to an <code>&lt;a&gt;</code> tag.</p>
 
 <p>Subtitles are used by adding a <code>.card-subtitle</code> to a <code>&lt;h*&gt;</code> tag. If the <code>.card-title</code> and the <code>.card-subtitle</code> items
 are placed in a <code>.card-body</code> item, the card title and subtitle are aligned nicely.</p>
 
-<p><img src="images/bootstrap/cardsubslinks.png" alt="Card Titles and Links Example" /></p>
+<p><img src="images/bootstrap/cardsubslinks.png" alt="Card Titles, Text and Links Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-subtitle-link"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-subtitle-link")</span>
@@ -21007,7 +21004,7 @@ are placed in a <code>.card-body</code> item, the card title and subtitle are al
     <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">().</span><span class="na">getWindowHandles</span><span class="o">());</span>
     <span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">WebDriverFactory</span><span class="o">.</span><span class="na">getDriver</span><span class="o">();</span>
     <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getUrl</span><span class="o">()</span> <span class="o">,</span> <span class="n">link1Ref</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getUrl</span><span class="o">(),</span> <span class="n">link1Ref</span><span class="o">);</span>
     <span class="n">driver</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
     <span class="n">driver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">tabs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
 <span class="o">}</span>
@@ -21024,8 +21021,6 @@ are placed in a <code>.card-body</code> item, the card title and subtitle are al
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/cardsubslinks-html.png" alt="Card Titles and Links Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -21079,7 +21074,7 @@ are placed in a <code>.card-body</code> item, the card title and subtitle are al
 to the top of the card. With <code>.card-text</code>, text can be added to the card. Text within <code>.card-text</code> can also be styled
 with the standard HTML tags.</p>
 
-<p><img src="images/bootstrap/card-image.png" alt="Card Image Example" /></p>
+<p><img src="images/bootstrap/card-image.png" alt="Card Images Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-image"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-image")</span>
@@ -21116,8 +21111,6 @@ with the standard HTML tags.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card-image-html.png" alt="Card Image Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -21176,8 +21169,8 @@ with the standard HTML tags.</p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageTests.java">Bootstrap test examples</a></p>
-<h4 id='card-list-groups'>Card list groups</h4>
-<p><a href="https://getbootstrap.com/docs/4.3/components/card/#list-groups">Card list groups</a> – create lists of content in a card
+<h4 id='card-list-groups'>Card List Groups</h4>
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/#list-groups">Card List Groups Example</a> – create lists of content in a card
 with a flush list group.</p>
 
 <p><img src="images/bootstrap/card_list_groups.png" alt="Card list groups" /></p>
@@ -21222,8 +21215,6 @@ with a flush list group.</p>
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card_list_groups_code.png" alt="Card list groups code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -21263,13 +21254,13 @@ with a flush list group.</p>
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardListGroupsTests.java">Bootstrap test examples</a></p>
 <h4 id='card-kitchen-sink'>Card Kitchen Sink</h4>
 <p><a href="https://getbootstrap.com/docs/4.3/components/card/#kitchen-sink">Card Kitchen Sink</a> – Mix and match multiple content
 types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and
 a list group—all wrapped in a fixed-width card.</p>
 
-<p><img src="images/bootstrap/card-kitchen-sink.png" alt="Kitchen Sink Example" /></p>
+<p><img src="images/bootstrap/card-kitchen-sink.png" alt="Card Kitchen Sink Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-kitchen-sink"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-kitchen-sink")</span>
@@ -21324,7 +21315,17 @@ a list group—all wrapped in a fixed-width card.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card-kitchen-sink-html.png" alt="Kitchen Sink Example Code" /></p>
+<p>Card is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
+
+<p>Inner elements of Card Kitchen Sink represented by the following classes:</p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></li>
+<li><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></li>
+</ul>
 
 <p>Available methods in Java JDI Light:</p>
 
@@ -21382,18 +21383,6 @@ a list group—all wrapped in a fixed-width card.</p>
 </tr>
 </tbody></table>
 
-<p>Card is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
-
-<p>Inner elements of Card Kitchen Sink represented by the following classes:</p>
-
-<ul>
-<li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></li>
-<li><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></li>
-<li><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></li>
-</ul>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardKitchenSinkTests.java">Bootstrap test examples</a></p>
 <h4 id='card-with-header-and-footer'>Card with Header and Footer</h4>
 <p><a href="https://getbootstrap.com/docs/4.3/components/card/#header-and-footer">Card with Header and Footer</a> - add an optional
@@ -21439,8 +21428,6 @@ header and/or footer within a card.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/cardheaderfooter-html.png" alt="Card with Header and Footer Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -21483,7 +21470,7 @@ header and/or footer within a card.</p>
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/Card/CardWithHeaderAndFooterTests.java">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithHeaderAndFooterTests.java">Bootstrap test examples</a></p>
 <h4 id='card-with-grid-markup'>Card with Grid Markup</h4>
 <p><a href="https://getbootstrap.com/docs/4.3/components/card/#using-grid-markup">Card with Grid Markup</a> - using the grid,
 wrap cards in columns and rows as needed.</p>
@@ -21562,8 +21549,6 @@ wrap cards in columns and rows as needed.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card_grid_html.png" alt="Card Grid Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -21606,12 +21591,12 @@ wrap cards in columns and rows as needed.</p>
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/Card/CardWithGridMarkupTests.java">Bootstrap test examples</a></p>
-<h4 id='card-utilities'>Card utilities</h4>
-<p><a href="https://getbootstrap.com/docs/4.3/components/card/#using-utilities">Card utilities</a> - use handful of available
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardWithGridMarkupTests.java">Bootstrap test examples</a></p>
+<h4 id='card-utilities'>Card Utilities</h4>
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/#using-utilities">Card Utilities</a> - use handful of available
 sizing utilities to quickly set a card’s width.</p>
 
-<p><img src="images/bootstrap/card_utilities.png" alt="Card utilities Example" /></p>
+<p><img src="images/bootstrap/card_utilities.png" alt="Card Utilities Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".w-75"</span><span class="o">)</span> <span class="c1">// @FindBy(className = ".w-75")</span>
@@ -21640,8 +21625,6 @@ sizing utilities to quickly set a card’s width.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card_utilities_html.png" alt="Card utilities Example Code" /></p>
-
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -21674,11 +21657,11 @@ sizing utilities to quickly set a card’s width.</p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardUtilitiesTests.java">Bootstrap test examples</a></p>
-<h4 id='card-using-custom-css'>Card using custom CSS</h4>
-<p><a href="https://getbootstrap.com/docs/4.3/components/card/#using-custom-css">Card using custom CSS</a> - use custom CSS in your
+<h4 id='card-using-custom-css'>Card Using Custom CSS</h4>
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/#using-custom-css">Card Using Custom CSS</a> - use custom CSS in your
 stylesheets or as inline styles to set a width.</p>
 
-<p><img src="images/bootstrap/card_custom_CSS.png" alt="Card custom CSS Example" /></p>
+<p><img src="images/bootstrap/card_custom_CSS.png" alt="Card Using Custom CSS Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-custom-css-1"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-custom-css-1")</span>
@@ -21711,8 +21694,6 @@ stylesheets or as inline styles to set a width.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card_custom_CSS_html.png" alt="Card custom CSS Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -21813,8 +21794,6 @@ the text alignment of any card — in it&#39;s entirety or specific parts — wi
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/cardtextalignment-html.png" alt="Card Text Alignment Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -21970,8 +21949,6 @@ the text alignment of any card — in it&#39;s entirety or specific parts — wi
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/cardnav-html.png" alt="Card Navigation Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -22093,8 +22070,6 @@ can include top and bottom “image caps” — images at the top or bottom of a
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/cardimagecaps-html.png" alt="Card Image Caps Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -22142,7 +22117,7 @@ can include top and bottom “image caps” — images at the top or bottom of a
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageCapsTest.java">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageCapsTests.java">Bootstrap test examples</a></p>
 <h4 id='card-image-overlays'>Card Image Overlays</h4>
 <p><a href="https://getbootstrap.com/docs/4.3/components/card/#image-overlays">Card Image Overlays</a> turn an image into a card
 background and overlay your card’s text. Depending on the image, you may or may not need additional styles or utilities.</p>
@@ -22198,8 +22173,6 @@ background and overlay your card’s text. Depending on the image, you may or ma
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card-image-overlays-html.png" alt="Card Image Overlays Example" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -22257,12 +22230,14 @@ background and overlay your card’s text. Depending on the image, you may or ma
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageOverlaysTest.java">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardImageOverlaysTests.java">Bootstrap test examples</a></p>
 <h4 id='card-horizontal'>Card Horizontal</h4>
 <p><a href="https://getbootstrap.com/docs/4.3/components/card/#horizontal">Card Horizontal</a> - using a combination of grid and
 utility classes, cards can be made horizontal in a mobile-friendly and responsive way.</p>
 
-<p><img src="images/bootstrap/card_horizontal.png" alt="Card horizontal example" /></p>
+<p><img src="images/bootstrap/card_horizontal.png" alt="Card Horizontal Example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-horizontal"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-horizontal")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardHorizontal</span> <span class="n">cardHorizontal</span><span class="o">;</span>
 
@@ -22309,10 +22284,6 @@ utility classes, cards can be made horizontal in a mobile-friendly and responsiv
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-
-<p><img src="images/bootstrap/card_horizontal-html.png" alt="Card horizontal example" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -22412,8 +22383,6 @@ background utilities to change the appearance of a card.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/cardbackgroundandcolor-html.png" alt="Card Background And Color Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -22462,7 +22431,7 @@ background utilities to change the appearance of a card.</p>
 border-color of a card. Note that you can put <code>.text-{color}</code> classes on the parent <code>.card</code> or a subset of the card’s
 contents as shown below.</p>
 
-<p><img src="images/bootstrap/cardborders.png" alt="Card Borders Example" /></p>
+<p><img src="images/bootstrap/cardborders.png" alt="Card Border Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-border-primary"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-border-primatry")</span>
@@ -22495,8 +22464,6 @@ contents as shown below.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/cardborders-html.png" alt="Card Borders Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -22578,8 +22545,6 @@ the borders on the card header and footer as needed, and even remove their backg
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer bg-transparent border-success"</span><span class="nt">&gt;</span>For Cinema Blend<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card-mixins-utilities-html.png" alt="Card Mixins Utilities Example Code" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -22620,11 +22585,11 @@ the borders on the card header and footer as needed, and even remove their backg
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardMixinsUtilitiesTests.java">Bootstrap test examples</a></p>
-<h4 id='card-groups'>Card groups</h4>
-<p><a href="https://getbootstrap.com/docs/4.3/components/card/#card-groups">Card groups</a> - use card groups to render cards as
+<h4 id='card-groups'>Card Groups</h4>
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/#card-groups">Card Groups</a> - use card groups to render cards as
 a single, attached element with equal width and height columns.</p>
 
-<p><img src="images/bootstrap/card-groups.png" alt="Card_groups example" /></p>
+<p><img src="images/bootstrap/card-groups.png" alt="Card_Groups Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(1)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-group:nth-of-type(1)")</span>
@@ -22682,10 +22647,8 @@ a single, attached element with equal width and height columns.</p>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre>
-<p><img src="images/bootstrap/card-groups-html.png" alt="Card_groups HTML example" /></p>
-<h5 id='card-groups-with-footer'>Card groups with footer</h5>
-<p><img src="images/bootstrap/card-groups-with-footer.png" alt="Card_groups example" /></p>
+</code></pre><h5 id='card-groups-with-footer'>Card Groups with Footer</h5>
+<p><img src="images/bootstrap/card-groups-with-footer.png" alt="Card Groups with Footer Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(2)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-group:nth-of-type(2)")</span>
@@ -22748,8 +22711,6 @@ a single, attached element with equal width and height columns.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card-groups-with-footer-html.png" alt="Card_groups HTML example" /></p>
-
 <p>Card is represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -22762,11 +22723,11 @@ a single, attached element with equal width and height columns.</p>
 </ul>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardGroupsTests.java">Bootstrap test examples</a></p>
-<h4 id='card-decks'>Card decks</h4>
-<p><a href="https://getbootstrap.com/docs/4.3/components/card/#card-decks">Card decks</a> - use card decks for a set of equal width
+<h4 id='card-decks'>Card Decks</h4>
+<p><a href="https://getbootstrap.com/docs/4.3/components/card/#card-decks">Card Decks</a> - use card decks for a set of equal width
 and height cards that aren&#39;t attached to one another.</p>
 
-<p><img src="images/bootstrap/card-decks.png" alt="Card_decks example" /></p>
+<p><img src="images/bootstrap/card-decks.png" alt="Card_Decks Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-deck:nth-of-type(1)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-deck:nth-of-type(1)")</span>
@@ -22826,10 +22787,8 @@ and height cards that aren&#39;t attached to one another.</p>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre>
-<p><img src="images/bootstrap/card-decks-html.png" alt="Card_decks HTML example" /></p>
-<h5 id='card-decks-with-footer'>Card decks with footer</h5>
-<p><img src="images/bootstrap/card-decks-with-footer.png" alt="Card_decks example" /></p>
+</code></pre><h5 id='card-decks-with-footer'>Card Decks with Footer</h5>
+<p><img src="images/bootstrap/card-decks-with-footer.png" alt="Card Decks with Footer Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code>
@@ -22894,8 +22853,6 @@ and height cards that aren&#39;t attached to one another.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card-decks-with-footer-html.png" alt="Card_decks HTML example" /></p>
-
 <p>Card are represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
@@ -22968,7 +22925,7 @@ the number of columns.</p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-columns"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardColumns</span> <span class="n">cardColumns</span><span class="o">;</span> <span class="c1">//@FindBy(css='.card-columns')</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardColumns</span> <span class="n">cardColumns</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".card-columns")</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardColumnsSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardWithinCardColumns</span> <span class="n">topLeftCard</span><span class="o">;</span>
@@ -23045,8 +23002,6 @@ the number of columns.</p>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><img src="images/bootstrap/card-columns-html.png" alt="Card Columns Example Code" /></p>
-
 <p>Card are represented by Section class in Java:</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
