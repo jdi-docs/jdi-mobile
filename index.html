@@ -2923,10 +2923,9 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">uploadTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">avatar</span><span class="o">.</span><span class="na">uploadFile</span><span class="o">(</span><span class="n">mergePath</span><span class="o">(</span><span class="n">PROJECT_PATH</span><span class="o">,</span><span class="s">"/src/test/resources/general.xml"</span><span class="o">));</span>
-    <span class="n">avatar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">));</span>
-    <span class="n">assertTrue</span><span class="o">(</span><span class="n">avatar</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">));</span>
-    <span class="n">assertTrue</span><span class="o">(</span><span class="n">avatar</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">));</span>
+        <span class="n">avatar</span><span class="o">.</span><span class="na">uploadFile</span><span class="o">(</span><span class="n">mergePath</span><span class="o">(</span><span class="n">PROJECT_PATH</span><span class="o">,</span> <span class="s">"/src/test/resources/general.xml"</span><span class="o">));</span>
+        <span class="n">avatar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">));</span>
+        <span class="n">avatar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">));</span>
 <span class="o">}</span>
 
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[Test]</span>
