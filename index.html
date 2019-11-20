@@ -10673,7 +10673,7 @@ Navbar brand as heading <br>
 
         <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"navbarBrandsWithImage"</span><span class="o">)</span>
         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNavbarImage</span><span class="o">(</span><span class="n">UIElement</span> <span class="n">brandWithImage</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">UIElement</span> <span class="n">imgFromNavbar</span> <span class="o">=</span> <span class="n">brandWithImage</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+            <span class="n">UIElement</span> <span class="n">imgFromNavbar</span> <span class="o">=</span> <span class="n">brandWithImage</span><span class="o">.</span><span class="na">children</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
             <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">highlight</span><span class="o">(</span><span class="s">"blue"</span><span class="o">);</span>
             <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">tag</span><span class="o">(</span><span class="s">"img"</span><span class="o">).</span><span class="na">attr</span><span class="o">(</span><span class="s">"src"</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="n">imgPath</span><span class="o">));</span>
             <span class="n">imgFromNavbar</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
@@ -11613,10 +11613,10 @@ Below are examples of different toggle styles.</p>
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
-    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">children</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
-    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+    <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">children</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">mutedText</span><span class="o">);</span>
     <span class="n">navbarExternalContent</span><span class="o">.</span><span class="na">toggler</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
@@ -12428,7 +12428,7 @@ This means they can easily be resized, recolored, and <a style="font-weight: bol
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerData"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">spinner</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">spinner</span><span class="o">.</span><span class="na">children</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
     <span class="n">spinner</span>
             <span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
@@ -15325,10 +15325,10 @@ Form can consists of:
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkStructureRow</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">formRow</span><span class="o">.</span><span class="na">row</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"form-row"</span><span class="o">);</span>
         <span class="n">formRow</span><span class="o">.</span><span class="na">row</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">formRow</span><span class="o">.</span><span class="na">row</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">foreach</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">row</span><span class="o">.</span><span class="na">children</span><span class="o">().</span><span class="na">foreach</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
                 <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
                 <span class="o">.</span><span class="na">enabled</span><span class="o">());</span>
-        <span class="n">formRow</span><span class="o">.</span><span class="na">cols</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">foreach</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="n">formRow</span><span class="o">.</span><span class="na">cols</span><span class="o">.</span><span class="na">children</span><span class="o">().</span><span class="na">foreach</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
                 <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span>
         <span class="o">);</span>
     <span class="o">}</span>
@@ -18593,7 +18593,7 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
 
     <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
 
-    <span class="n">modal</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">modalCss</span><span class="o">);</span>
+    <span class="n">modal</span><span class="o">.</span><span class="na">children</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">modalCss</span><span class="o">);</span>
 
     <span class="n">modal</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
 <span class="o">}</span>
@@ -18607,7 +18607,7 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
 
     <span class="n">modal</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
 
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">modal</span><span class="o">.</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">getRect</span><span class="o">().</span><span class="na">width</span><span class="o">,</span> <span class="n">equalTo</span><span class="o">(</span><span class="n">modalWidth</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">modal</span><span class="o">.</span><span class="na">children</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">getRect</span><span class="o">().</span><span class="na">width</span><span class="o">,</span> <span class="n">equalTo</span><span class="o">(</span><span class="n">modalWidth</span><span class="o">));</span>
 
     <span class="n">modal</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
 <span class="o">}</span>
@@ -26772,11 +26772,11 @@ You can also create non-interactive dropdown items with <code>.dropdown-item-tex
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">optionsCssTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">offsetDropdown</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">offsetDropdown</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">getAttribute</span><span class="o">(</span><span class="n">DATA_OFFSET</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="n">DATA_OFFSET_VALUE</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">offsetDropdown</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">children</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">getAttribute</span><span class="o">(</span><span class="n">DATA_OFFSET</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="n">DATA_OFFSET_VALUE</span><span class="o">));</span>
     <span class="n">offsetDropdown</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
 
     <span class="n">referenceDropdown</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">referenceDropdown</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">childs</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">getAttribute</span><span class="o">(</span><span class="n">DATA_REFERENCE</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="n">DATA_REFERENCE_VALUE</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">referenceDropdown</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">children</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">getAttribute</span><span class="o">(</span><span class="n">DATA_REFERENCE</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="n">DATA_REFERENCE_VALUE</span><span class="o">));</span>
     <span class="n">referenceDropdown</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre>
