@@ -635,14 +635,6 @@
                             <li>
 								<a href="#dropdown-2" class="toc-h2 h3 toc-link" data-title="Dropdown">Dropdown</a>
                             </li>
-                        </ul>
-                  </li>
-                  <li>
-                    <a href="#jdi-features-for-parameters-in-bdd-steps" class="toc-h2 toc-link" data-title="JDI Features for parameters in BDD steps">JDI Features for parameters in BDD steps</a>
-                        <ul class="toc-list-h2">
-                            <li>
-								<a href="#using-aliases-as-locators-parameters" class="toc-h2 h3 toc-link" data-title="Using aliases as locators parameters">Using aliases as locators parameters</a>
-                            </li>
                             <li>
 								<a href="#using-locators-as-parameters" class="toc-h2 h3 toc-link" data-title="Using locators as parameters">Using locators as parameters</a>
                             </li>
@@ -25689,14 +25681,19 @@ the number of columns.</p>
 <h3 id='dropdown-2'>Dropdown</h3>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/dropdowns/" target="_blank">Dropdowns</a> are toggleable, contextual overlays for displaying lists of links and more. </p>
 
-<p>Dropdown is located in the following classes:</p>
+<p>For working with Dropdown there are two classes available in JDI:</p>
 
 <ul>
-<li><strong>Java</strong>: <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/BootstrapDropdown.java">BootstrapDropdown</a></li>
+<li><strong>Java</strong>: <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/BootstrapDropdown.java">BootstrapDropdown</a>,
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/DropdownMenu.java">DropdownMenu</a></li>
 <li><strong>C#</strong>: TBD</li>
 </ul>
 
-<p>Available methods in Java JDI Light:</p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/BootstrapDropdown.java">BootstrapDropdown</a> class is designed to work with Dropdown element.
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/DropdownMenu.java">DropdownMenu</a> class 
+extends <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/BootstrapDropdown.java">BootstrapDropdown</a> class providing additional methods for working with the Dropdown menu items elements</p>
+
+<p>Methods available for BootstrapDropdown class in Java JDI Light:</p>
 
 <table><thead>
 <tr>
@@ -25724,6 +25721,16 @@ the number of columns.</p>
 <td><strong>isCollapsed()</strong></td>
 <td>Return if dropdown expanded</td>
 <td>boolean</td>
+</tr>
+<tr>
+<td><strong>expander()</strong></td>
+<td>Get dropdown expander</td>
+<td>Button</td>
+</tr>
+<tr>
+<td><strong>menu()</strong></td>
+<td>Get dropdown menu</td>
+<td>UIElement</td>
 </tr>
 <tr>
 <td><strong>is()</strong></td>
@@ -25755,16 +25762,108 @@ the number of columns.</p>
 <td>Soft assert action</td>
 <td>BootstrapDropdownAssert</td>
 </tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Assert that dropdown is expanded</td>
+<td>BootstrapDropdownAssert</td>
+</tr>
+<tr>
+<td><strong>collapsed()</strong></td>
+<td>Assert that dropdown is collapsed</td>
+<td>BootstrapDropdownAssert</td>
+</tr>
+</tbody></table>
+
+<p><br>
+Additional methods available for DropdownMenu class in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>select(int index)</strong></td>
+<td>Click at dropdown item</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>select(String item)</strong></td>
+<td>Click at dropdown item</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>itemValues()</strong></td>
+<td>Get items text values</td>
+<td>List<String></td>
+</tr>
+<tr>
+<td><strong>hasItems(String... item)</strong></td>
+<td>Return if dropdown contains all items</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>list()</strong></td>
+<td>Get dropdown items</td>
+<td>WebList</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>has()</strong></td>
+<td>Assert action</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>waitFor()</strong></td>
+<td>Assert action</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>shouldBe()</strong></td>
+<td>Assert action</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>verify()</strong></td>
+<td>Soft assert action</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>active(int itemIndex)</strong></td>
+<td>Check if item in dropdown menu is active</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>itemValues(String... values)</strong></td>
+<td>Asserts whether dropdown are exactly match arguments</td>
+<td>DropdownMenuAssert</td>
+</tr>
+<tr>
+<td><strong>hasItems(String... values)</strong></td>
+<td>Asserts whether dropdown has all items from arguments</td>
+<td>DropdownMenuAssert</td>
+</tr>
 </tbody></table>
 <h4 id='single-button'><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#single-button">Single button</a></h4>
 <p>Any single <code>.btn</code> can be turned into a dropdown toggle with some markup changes. Here’s how you can put them to work with either <code>&lt;button&gt;</code> elements:</p>
 
 <p><img src="images/bootstrap/dropdown.png" alt="Dropdown example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<p>Here is an example with provided Bootstrap v4.3 code for <code>&lt;button&gt;</code> elements:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "simpleDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#simpleDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">simpleDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">simpleDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">textTest</span><span class="o">()</span> <span class="o">{</span>
@@ -25796,30 +25895,28 @@ the number of columns.</p>
         <span class="o">.</span><span class="na">collapsed</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"simpleDropdown"</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"dropdownMenuButton"</span>
-            <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span>
-            <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle"</span> <span class="na">type=</span><span class="s">"button"</span> 
+    <span class="na">id=</span><span class="s">"dropdownMenuButton"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span>
+     <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
         Dropdown
     <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">aria-labelledby=</span><span class="s">"dropdownMenuButton"</span>
-         <span class="na">x-placement=</span><span class="s">"bottom-start"</span>
-         <span class="na">style=</span><span class="s">"position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">aria-labelledby=</span><span class="s">"dropdownMenuButton"</span> <span class="na">x-placement=</span><span class="err">
+    </span><span class="s">"bottom-start"</span> <span class="na">style=</span><span class="s">"position: absolute; transform: translate3d(0px, 38px, 0px);
+     top: 0px; left: 0px; will-change: transform;"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
             action<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started/introduction/"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Separated link<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting
+        -started/introduction/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Separated link<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><br><br><br><br><br><br><br><br><br></p>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 
 <p>And with <code>&lt;a&gt;</code> elements:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "linkDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#linkDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">linkDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">linkDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -25828,75 +25925,22 @@ the number of columns.</p>
         <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"a"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"linkDropdown"</span> <span class="na">class=</span><span class="s">"dropdown show"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/"</span>
-       <span class="na">role=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"dropdownMenuLink"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span>
-       <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle"</span> <span class="na">href=</span><span class="s">"https://
+      getbootstrap.com/"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"dropdownMenuLink"</span> <span class="na">data-toggle=</span><span class="err">
+      </span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
         Dropdown link
     <span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">aria-labelledby=</span><span class="s">"dropdownMenuLink"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
-            action<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started/introduction/"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/
+        components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/
+        components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
+        action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/
+        getting-started/introduction/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>cssClass()</strong></td>
-<td>Assert element css class</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>tag()</strong></td>
-<td>Assert element tag</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>attr()</strong></td>
-<td>Assert element&#39;s attribute</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>getValue()</strong></td>
-<td>Get dropdown value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get dropdown text</td>
-<td>String</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownTests.java">Bootstrap test examples</a></p>
 <h4 id='split-button'><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#split-button">Split button</a></h4>
 <p>Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of <code>.dropdown-toggle-split</code> for proper spacing around the dropdown caret.</p>
@@ -25906,7 +25950,7 @@ the number of columns.</p>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "splitDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#splitDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">splitDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">splitDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">splitDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -25934,58 +25978,22 @@ the number of columns.</p>
            <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"splitDropdown"</span> <span class="na">class=</span><span class="s">"btn-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>Action
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle dropdown-toggle-split"</span> 
+    <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span>
+    <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Toggle Dropdown<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
+            action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started/introduction/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>cssClass()</strong></td>
-<td>Assert element css class</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>tag()</strong></td>
-<td>Assert element tag</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>attr()</strong></td>
-<td>Assert element&#39;s attribute</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>getValue()</strong></td>
-<td>Get dropdown value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get dropdown text</td>
-<td>String</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownTests.java">Bootstrap test examples</a></p>
 
 <p><br></p>
@@ -25996,8 +26004,8 @@ the number of columns.</p>
 
 <p>Here is an example of Large button code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "largeDropdown")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#largeDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">largeDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">largeDropdown</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#largeSplitDropdown"</span><span class="o">)</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">largeDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26009,30 +26017,26 @@ the number of columns.</p>
         <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="n">LINEHEIGHT</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"30px"</span><span class="o">))</span>
         <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="n">BORDERRADIUS</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"4.8px"</span><span class="o">));</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"largeDropdown"</span> <span class="na">class=</span><span class="s">"btn-group"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg dropdown-toggle"</span> <span class="na">type=</span><span class="s">"button"</span>
-            <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span>
-            <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"largeDropdown"</span> <span class="na">class=</span><span class="s">"btn-group show"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg dropdown-toggle"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-</span>
+    <span class="na">toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span> <span class="na">style=</span><span class="s">"margin-
+    bottom: 5px;"</span><span class="nt">&gt;</span>
         Large button
     <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">x-placement=</span><span class="s">"bottom-start"</span>
-         <span class="na">style=</span><span class="s">"position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-change: transform;"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu show"</span> <span class="na">x-placement=</span><span class="s">"bottom-start"</span> <span class="na">style=</span><span class="s">"position:
+    absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-
+    change: transform;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
             action<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started/introduction/"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started/introduction/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p>Here is an example of Large split button code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "largeSplitDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#largeSplitDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">largeSplitDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">largeSplitDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">largeSplitDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26049,76 +26053,18 @@ the number of columns.</p>
     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
         Large split button
     <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span>
-            <span class="na">class=</span><span class="s">"btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split"</span>
-            <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span>
-            <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Toggle Dropdown<span class="nt">&lt;/span&gt;</span>
     <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">x-placement=</span><span class="s">"bottom-start"</span> <span class="na">style=</span><span class="s">"position: absolute; transform: translate3d(180px, 48px, 0px); top: 0px; left: 0px; will-change: transform;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
             action<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-           <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started/introduction/"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started
+        /introduction/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>cssClass()</strong></td>
-<td>Assert element css class</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>tag()</strong></td>
-<td>Assert element tag</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>attr()</strong></td>
-<td>Assert element&#39;s attribute</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>getValue()</strong></td>
-<td>Get dropdown value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get dropdown text</td>
-<td>String</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownTests.java">Bootstrap test examples</a></p>
 
 <p><br></p>
@@ -26132,7 +26078,7 @@ Trigger dropdown menus <a href="https://getbootstrap.com/docs/4.3/components/dro
 <p>Here is an example of Dropup code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "dropUpDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropUpDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropUpDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropUpDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropUpDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26161,13 +26107,27 @@ Trigger dropdown menus <a href="https://getbootstrap.com/docs/4.3/components/dro
            <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"dropUpDropdown"</span> <span class="na">class=</span><span class="s">"btn-group dropup"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span>
+     <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
+        Dropup
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/
+        dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another
+            action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started/
+        introduction/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><br></p>
 
 <p>Here is an example of Dropup split code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "dropUpSplitDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropUpSplitDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropUpSplitDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropUpSplitDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropUpSplitDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26206,7 +26166,7 @@ Trigger dropdown menus <a href="https://getbootstrap.com/docs/4.3/components/dro
 <p>Here is an example of Dropright code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "dropRightDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropRightDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropRightDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropRightDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropRightDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26236,12 +26196,12 @@ Trigger dropdown menus <a href="https://getbootstrap.com/docs/4.3/components/dro
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><br></p>
+<p><br><br></p>
 
 <p>Here is an example of Dropright split code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "dropRightSplitDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropRightSplitDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropRightSplitDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropRightSplitDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropRightSplitDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26280,7 +26240,7 @@ Trigger dropdown menus <a href="https://getbootstrap.com/docs/4.3/components/dro
 <p>Here is an example of Dropleft code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "dropLeftDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropLeftDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropLeftDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropLeftDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropLeftDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26315,7 +26275,7 @@ Trigger dropdown menus <a href="https://getbootstrap.com/docs/4.3/components/dro
 <p>Here is an example of Dropleft split code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "dropLeftSplitDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropLeftSplitDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropLeftSplitDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropLeftSplitDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropLeftSplitDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26326,21 +26286,13 @@ Trigger dropdown menus <a href="https://getbootstrap.com/docs/4.3/components/dro
 <span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"dropLeftSplitDropdown"</span> <span class="na">class=</span><span class="s">"btn-group"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group dropleft"</span> <span class="na">role=</span><span class="s">"group"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle dropdown-toggle-split"</span>
-                <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span>
-                <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle dropdown-toggle-split"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Toggle Dropleft<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-               <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span>
-               <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-               <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span>
-               <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-               <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started/introduction/"</span>
-               <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">x-placement=</span><span class="s">"left-start"</span> <span class="na">style=</span><span class="s">"position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.0/components/dropdowns/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com/docs/4.3/getting-started/introduction/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
@@ -26348,57 +26300,6 @@ Trigger dropdown menus <a href="https://getbootstrap.com/docs/4.3/components/dro
     <span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>cssClass()</strong></td>
-<td>Assert element css class</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>tag()</strong></td>
-<td>Assert element tag</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>attr()</strong></td>
-<td>Assert element&#39;s attribute</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>getValue()</strong></td>
-<td>Get dropdown value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get dropdown text</td>
-<td>String</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownTests.java">Bootstrap test examples</a></p>
 
 <p><br></p>
@@ -26406,18 +26307,12 @@ Trigger dropdown menus <a href="https://getbootstrap.com/docs/4.3/components/dro
 <p>Historically dropdown menu contents had to be links, but that’s no longer the case with v4. 
 Now you can optionally use <code>&lt;button&gt;</code> elements in your dropdowns instead of just <code>&lt;a&gt;</code>s.</p>
 
-<p>Dropdown menu items is located in the following classes:</p>
-
-<ul>
-<li><strong>Java</strong>: <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/DropdownMenu.java">DropdownMenu</a></li>
-</ul>
-
 <p><img src="images/bootstrap/dropdown-menu-items.png" alt="Menu items example" /></p>
 
 <p>Here is an example of Menu items code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#dropdown-menu-items")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropdown-menu-items"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropdownMenuItems</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropdownMenuItems</span><span class="o">;</span>
 
 <span class="nd">@DataProvider</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"actionsDataProvider"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">actionsDataProvider</span><span class="o">()</span> <span class="o">{</span>
@@ -26452,90 +26347,15 @@ Now you can optionally use <code>&lt;button&gt;</code> elements in your dropdown
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>select(int index)</strong></td>
-<td>Click at dropdown item</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>select(String item)</strong></td>
-<td>Click at dropdown item</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>itemValues()</strong></td>
-<td>Get items text values</td>
-<td>List<String></td>
-</tr>
-<tr>
-<td><strong>hasItems(String... item)</strong></td>
-<td>Return if dropdown contains all items</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>list()</strong></td>
-<td>Get dropdown items</td>
-<td>WebList</td>
-</tr>
-<tr>
-<td><strong>expander()</strong></td>
-<td>Get dropdown expander</td>
-<td>Button</td>
-</tr>
-<tr>
-<td><strong>menu()</strong></td>
-<td>Get dropdown menu</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>DropdownMenuAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>DropdownMenuAssert</td>
-</tr>
-<tr>
-<td><strong>has()</strong></td>
-<td>Assert action</td>
-<td>DropdownMenuAssert</td>
-</tr>
-<tr>
-<td><strong>waitFor()</strong></td>
-<td>Assert action</td>
-<td>DropdownMenuAssert</td>
-</tr>
-<tr>
-<td><strong>shouldBe()</strong></td>
-<td>Assert action</td>
-<td>DropdownMenuAssert</td>
-</tr>
-<tr>
-<td><strong>verify()</strong></td>
-<td>Soft assert action</td>
-<td>DropdownMenuAssert</td>
-</tr>
-</tbody></table>
-
-<p>You can also create non-interactive dropdown items with <code>.dropdown-item-text</code>. Feel free to style further with custom CSS or text utilities.</p>
+<p><br><br><br>
+You can also create non-interactive dropdown items with <code>.dropdown-item-text</code>. Feel free to style further with custom CSS or text utilities.</p>
 
 <p><img src="images/bootstrap/dropdown-non-interactive-items.png" alt="Non-interactive items example" /></p>
 
 <p>Here is an example of non-interactive dropdown items code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "dropdown-menu-text-item")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropdown-menu-text-item"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropdownMenuTextItem</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropdownMenuTextItem</span><span class="o">;</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">expectedExceptions</span> <span class="o">=</span> <span class="n">RuntimeException</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
         <span class="n">expectedExceptionsMessageRegExp</span> <span class="o">=</span> <span class="s">".*Expected: an array containing \"href\".*"</span><span class="o">)</span>
@@ -26561,124 +26381,19 @@ Now you can optionally use <code>&lt;button&gt;</code> elements in your dropdown
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Expand dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>select(String item)</strong></td>
-<td>Click at dropdown item</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>isExpanded()</strong></td>
-<td>Return if dropdown expanded</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>isCollapsed()</strong></td>
-<td>Return if dropdown expanded</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>itemValues()</strong></td>
-<td>Get items text values</td>
-<td>List<String></td>
-</tr>
-<tr>
-<td><strong>hasItems(String... item)</strong></td>
-<td>Return if dropdown contains all items</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>expander()</strong></td>
-<td>Get dropdown expander</td>
-<td>Button</td>
-</tr>
-<tr>
-<td><strong>menu()</strong></td>
-<td>Get dropdown menu</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>list()</strong></td>
-<td>Get dropdown items</td>
-<td>WebList</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Get dropdown assert</td>
-<td>DropdownAssert</td>
-</tr>
-</tbody></table>
-
-<p>Available asserts in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>expanded()</strong></td>
-<td>Check if expanded</td>
-<td>DropdownAssert</td>
-</tr>
-<tr>
-<td><strong>collapsed()</strong></td>
-<td>Check if collapsed</td>
-<td>DropdownAssert</td>
-</tr>
-<tr>
-<td><strong>itemValues(Matcher<Iterable<String>&gt; condition)</strong></td>
-<td>Asserts whether items match condition</td>
-<td>DropdownAssert</td>
-</tr>
-<tr>
-<td><strong>itemValues(String... values)</strong></td>
-<td>Asserts whether dropdown are exactly match arguments</td>
-<td>DropdownAssert</td>
-</tr>
-<tr>
-<td><strong>hasItems(String... values)</strong></td>
-<td>Asserts whether dropdown has all items from arguments</td>
-<td>DropdownAssert</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownMenuItemsTest.java">Bootstrap test examples</a></p>
 
-<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#active"><strong>Active</strong></a><br>
-Add <code>.active</code> to items in the dropdown to style them as active.</p>
+<p><br><br><br><br><br>
+<a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#active"><strong>Active</strong></a><br></p>
+
+<p>Add <code>.active</code> to items in the dropdown to style them as active.</p>
 
 <p><img src="images/bootstrap/dropdown-menu-items-active.png" alt="Active example" /></p>
 
 <p>Here is a code example of items in the dropdown which are styled as active:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#dropdown-menu-items-active")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropdown-menu-items-active"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropdownMenuItemsActive</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropdownMenuItemsActive</span><span class="o">;</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"dropdownMenu"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownMenuTest</span><span class="o">(</span><span class="n">String</span> <span class="n">itemText</span><span class="o">,</span> <span class="n">String</span> <span class="n">itemHref</span><span class="o">)</span> <span class="o">{</span>
@@ -26710,89 +26425,18 @@ Add <code>.active</code> to items in the dropdown to style them as active.</p>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownActiveTests.java">Bootstrap test examples</a>
+<br><br><br><br><br><br><br><br><br><br><br>
+<a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#disabled"><strong>Disabled</strong></a><br></p>
 
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Expand dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>select(String item)</strong></td>
-<td>Click at dropdown item</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>isExpanded()</strong></td>
-<td>Return if dropdown expanded</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>isCollapsed()</strong></td>
-<td>Return if dropdown expanded</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>expander()</strong></td>
-<td>Get dropdown expander</td>
-<td>Button</td>
-</tr>
-</tbody></table>
-
-<p>Available asserts in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>expanded()</strong></td>
-<td>Check if expanded</td>
-<td>DropdownAssert</td>
-</tr>
-<tr>
-<td><strong>collapsed()</strong></td>
-<td>Check if collapsed</td>
-<td>DropdownAssert</td>
-</tr>
-<tr>
-<td><strong>active(int itemIndex)</strong></td>
-<td>Check if item in dropdown menu is active</td>
-<td>DropdownAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownActiveTests.java">Bootstrap test examples</a></p>
-
-<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#disabled"><strong>Disabled</strong></a><br>
-Add <code>.disabled</code> to items in the dropdown to style them as disabled.</p>
+<p>Add <code>.disabled</code> to items in the dropdown to style them as disabled.</p>
 
 <p><img src="images/bootstrap/dropdown-menu-items-disabled.png" alt="Disabled example" /></p>
 
 <p>Here is a code example of items in the dropdown which are styled as disabled:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#dropdown-menu-disabled-item")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#dropdown-menu-disabled-item"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">dropdownMenuDisabledItem</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">dropdownMenuDisabledItem</span><span class="o">;</span>
 
 <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DISABLED_ITEM_TEXT</span> <span class="o">=</span> <span class="s">"Disabled link"</span><span class="o">;</span>
 <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DISABLED_ITEM_HREF</span> <span class="o">=</span> <span class="s">"https://getbootstrap.com/docs/4.3/components/dropdowns/"</span><span class="o">;</span>
@@ -26820,35 +26464,9 @@ Add <code>.disabled</code> to items in the dropdown to style them as disabled.</
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Expand dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>list()</strong></td>
-<td>Get dropdown items</td>
-<td>WebList</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DisabledMenuItemTest.java">Bootstrap test examples</a></p>
 
-<p><br></p>
+<p><br><br><br></p>
 <h4 id='menu-alignment'><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#menu-alignment">Menu alignment</a></h4>
 <p>By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add <code>.dropdown-menu-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
 
@@ -26859,7 +26477,7 @@ Add <code>.disabled</code> to items in the dropdown to style them as disabled.</
 <p>Here is an example of right-aligned menu code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "rightAllignedDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#rightAllignedDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">rightAllignedDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">rightAllignedDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">rightAllignedDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26884,8 +26502,9 @@ Add <code>.disabled</code> to items in the dropdown to style them as disabled.</
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#responsive-alignment"><strong>Responsive alignment</strong></a><br>
-If you want to use responsive alignment, disable dynamic positioning by adding the<br> <code>data-display=&quot;static&quot;</code> attribute and use the responsive variation classes.</p>
+<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#responsive-alignment"><strong>Responsive alignment</strong></a><br></p>
+
+<p>If you want to use responsive alignment, disable dynamic positioning by adding the<br> <code>data-display=&quot;static&quot;</code> attribute and use the responsive variation classes.</p>
 
 <p>To align <strong>right</strong> the dropdown menu with the given breakpoint or larger, add<br> <code>.dropdown-menu{-sm|-md|-lg|-xl}-right</code>.</p>
 
@@ -26895,9 +26514,8 @@ If you want to use responsive alignment, disable dynamic positioning by adding t
 
 <p>Here is an example of left-aligned but right aligned when large screen code:</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span>
-            <span class="na">data-display=</span><span class="s">"static"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span>
-            <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle"</span> 
+    <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">data-display=</span><span class="s">"static"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
         Right aligned when large screen
     <span class="nt">&lt;/button&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu dropdown-menu-lg-right"</span><span class="nt">&gt;</span>
@@ -26917,7 +26535,7 @@ If you want to use responsive alignment, disable dynamic positioning by adding t
 <p>Here is an example of right-aligned but left aligned when large screen code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "leftAllignedDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#leftAllignedDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">leftAllignedDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">leftAllignedDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">leftAllignedDropdownIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -26928,9 +26546,7 @@ If you want to use responsive alignment, disable dynamic positioning by adding t
         <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="n">LEFT</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"0px"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"leftAllignedDropdown"</span> <span class="na">class=</span><span class="s">"btn-group"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span>
-            <span class="na">data-display=</span><span class="s">"static"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span>
-            <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">data-display=</span><span class="s">"static"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">style=</span><span class="s">"margin-bottom: 5px;"</span><span class="nt">&gt;</span>
         Left aligned when large screen
     <span class="nt">&lt;/button&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu dropdown-menu-right dropdown-menu-lg-left"</span><span class="nt">&gt;</span>
@@ -26945,63 +26561,13 @@ If you want to use responsive alignment, disable dynamic positioning by adding t
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>cssClass()</strong></td>
-<td>Assert element css class</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>tag()</strong></td>
-<td>Assert element tag</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>attr()</strong></td>
-<td>Assert element&#39;s attribute</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>getValue()</strong></td>
-<td>Get dropdown value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get dropdown text</td>
-<td>String</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownTests.java">Bootstrap test examples</a></p>
 
 <p><br></p>
 <h4 id='menu-content'><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#menu-content">Menu content</a></h4>
-<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#headers"><strong>Headers</strong></a><br>
-Add a header to label sections of actions in any dropdown menu.</p>
+<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#headers"><strong>Headers</strong></a><br></p>
+
+<p>Add a header to label sections of actions in any dropdown menu.</p>
 
 <p><img src="images/bootstrap/dropdown-menu-content-headers.png" alt="Headers example" /></p>
 
@@ -27029,63 +26595,13 @@ Add a header to label sections of actions in any dropdown menu.</p>
        <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Expand dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>DropdownMenuAssert</td>
-</tr>
-<tr>
-<td><strong>menu()</strong></td>
-<td>Get dropdown menu</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>list()</strong></td>
-<td>Get dropdown items</td>
-<td>WebList</td>
-</tr>
-<tr>
-<td><strong>tag()</strong></td>
-<td>Assert element tag</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>boolean</td>
-</tr>
-<tr>
-<td><strong>text()</strong></td>
-<td>Assert text</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownMenuContentTests.java">Bootstrap test examples</a></p>
 
 <p><br></p>
 
-<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#dividers"><strong>Dividers</strong></a><br>
-Separate groups of related menu items with a divider.</p>
+<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#dividers"><strong>Dividers</strong></a><br></p>
+
+<p>Separate groups of related menu items with a divider.</p>
 
 <p><img src="images/bootstrap/dropdown-menu-content-dividers.png" alt="Dividers example" /></p>
 
@@ -27115,58 +26631,11 @@ Separate groups of related menu items with a divider.</p>
        <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Separated link<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Expand dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>DropdownMenuAssert</td>
-</tr>
-<tr>
-<td><strong>menu()</strong></td>
-<td>Get dropdown menu</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>list()</strong></td>
-<td>Get dropdown items</td>
-<td>WebList</td>
-</tr>
-<tr>
-<td><strong>tag()</strong></td>
-<td>Assert element tag</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>boolean</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownMenuContentTests.java">Bootstrap test examples</a></p>
 
-<p><br></p>
+<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#text"><strong>Text</strong></a><br></p>
 
-<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#text"><strong>Text</strong></a><br>
-Place any freeform text within a dropdown menu with text and use <a href="https://getbootstrap.com/docs/4.3/utilities/spacing/">spacing utilities</a>. Note that you’ll likely need additional sizing styles to constrain the menu width.</p>
+<p>Place any freeform text within a dropdown menu with text and use <a href="https://getbootstrap.com/docs/4.3/utilities/spacing/">spacing utilities</a>. Note that you’ll likely need additional sizing styles to constrain the menu width.</p>
 
 <p><img src="images/bootstrap/dropdown-menu-content-text.png" alt="Text example" /></p>
 
@@ -27195,58 +26664,14 @@ Place any freeform text within a dropdown menu with text and use <a href="https:
     <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
+<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#forms"><strong>Forms</strong></a><br></p>
 
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Expand dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>DropdownMenuAssert</td>
-</tr>
-<tr>
-<td><strong>menu()</strong></td>
-<td>Get dropdown menu</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>list()</strong></td>
-<td>Get dropdown items</td>
-<td>WebList</td>
-</tr>
-<tr>
-<td><strong>values()</strong></td>
-<td>Match passed values with element&#39;s values</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownMenuContentTests.java">Bootstrap test examples</a></p>
-
-<p><br></p>
-
-<p><a href="https://getbootstrap.com/docs/4.3/components/dropdowns/#forms"><strong>Forms</strong></a><br>
-Put a form within a dropdown menu, or make it into a dropdown menu, and use <a href="https://getbootstrap.com/docs/4.3/utilities/spacing/">margin or padding utilities</a> to give it the negative space you require.</p>
+<p>Put a form within a dropdown menu, or make it into a dropdown menu, and use <a href="https://getbootstrap.com/docs/4.3/utilities/spacing/">margin or padding utilities</a> to give it the negative space you require.</p>
 
 <p><img src="images/bootstrap/dropdown-menu-content-form.png" alt="Form example" /></p>
 
 <p>Here is an example form code in the menu items:</p>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DropdownForm</span> <span class="kd">extends</span> <span class="n">Dropdown</span> <span class="o">{</span>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DropdownForm</span> <span class="kd">extends</span> <span class="n">DropdownMenu</span> <span class="o">{</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//form"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">FormDropdownLogin</span> <span class="n">form</span><span class="o">;</span>
 <span class="o">}</span>
 
@@ -27310,111 +26735,52 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use <a h
     <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
        <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Forgot password?<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu show"</span> <span class="na">x-placement=</span><span class="s">"top-start"</span> <span class="na">style=</span><span class="s">"position: absolute; transform: translate3d(0px, -366px, 0px); top: 0px; left: 0px; will-change: transform;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"px-4 py-3"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleDropdownFormEmail1"</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleDropdownFormEmail1"</span> <span class="na">placeholder=</span><span class="s">"email@example.com"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleDropdownFormPassword1"</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleDropdownFormPassword1"</span> <span class="na">placeholder=</span><span class="s">"Password"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-check"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">class=</span><span class="s">"form-check-input"</span> <span class="na">id=</span><span class="s">"dropdownCheck"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"form-check-label"</span> <span class="na">for=</span><span class="s">"dropdownCheck"</span><span class="nt">&gt;</span>
+                    Remember me
+                <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"alert('Sign in');"</span><span class="nt">&gt;</span>Sign in
+        <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>New around here? Sign up<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+     <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Forgot password?<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>getAttribute()</strong></td>
-<td>Get attribute value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Expand dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expanded()</strong></td>
-<td>Assert that dropdown is expanded</td>
-<td>DropdownAssert</td>
-</tr>
-<tr>
-<td><strong>collapsed()</strong></td>
-<td>Assert that dropdown is collapsed</td>
-<td>DropdownAssert</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>getValue()</strong></td>
-<td>Get button value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>displayed()</strong></td>
-<td>Check that element is displayed</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>enabled()</strong></td>
-<td>Check that element is enabled</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>check()</strong></td>
-<td>Check checkbox</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Check that checkbox is selected</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>deselected()</strong></td>
-<td>Check that checkbox is not selected</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownFormTest.java" target="_blank">Bootstrap Test Examples</a></p>
 
-<p><br></p>
+<p><br><br><br><br></p>
 
-<p><a target="_blank" href="https://getbootstrap.com/docs/4.3/components/dropdowns/#dropdown-options"><strong>Dropdown Options</strong></a><br>
-Use <code>data-offset</code> or <code>data-reference</code> to change the location of the dropdown.</p>
+<p><a target="_blank" href="https://getbootstrap.com/docs/4.3/components/dropdowns/#dropdown-options"><strong>Dropdown Options</strong></a><br></p>
+
+<p>Use <code>data-offset</code> or <code>data-reference</code> to change the location of the dropdown.</p>
 
 <p><img src="images/bootstrap/dropdown-options.png" alt="Dropdown Options Example" /></p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "offsetDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#offsetDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">offsetDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">offsetDropdown</span><span class="o">;</span>
 
 <span class="c1">//@FindBy(id = "referenceDropdown")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#referenceDropdown"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">referenceDropdown</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DropdownMenu</span> <span class="n">referenceDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"dropdownData"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">expandCollapseTest</span><span class="o">(</span><span class="n">Dropdown</span> <span class="n">dropdown</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">expandCollapseTest</span><span class="o">(</span><span class="n">BootstrapDropdown</span> <span class="n">dropdown</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">dropdown</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
     <span class="n">dropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
     <span class="n">dropdown</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span>
@@ -27446,63 +26812,36 @@ Use <code>data-offset</code> or <code>data-reference</code> to change the locati
         <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"javascript: void();"</span> <span class="na">onclick=</span><span class="s">"alert('Separated link clicked!');"</span><span class="nt">&gt;</span>Separated link<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>getAttribute()</strong></td>
-<td>Get attribute value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Expand dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>collapse()</strong></td>
-<td>Collapse dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expanded()</strong></td>
-<td>Assert that dropdown is expanded</td>
-<td>DropdownAssert</td>
-</tr>
-<tr>
-<td><strong>collapsed()</strong></td>
-<td>Assert that dropdown is collapsed</td>
-<td>DropdownAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownOptionsTests.java" target="_blank">Bootstrap Test Examples</a></p>
-<h2 id='jdi-features-for-parameters-in-bdd-steps'>JDI Features for parameters in BDD steps</h2><h3 id='using-aliases-as-locators-parameters'>Using aliases as locators parameters</h3><pre class="highlight gherkin tab-gherkin"><code>   <span class="kn">Scenario</span><span class="p">:</span> input element
-       <span class="nf">When</span> I input <span class="s">"simple 1234"</span> in <span class="s">"Name"</span>
-       <span class="nf">Then</span> the <span class="s">"Name"</span> text matches to <span class="s">"\w{6} \d{4}"</span>
-       <span class="nf">Then</span> the <span class="s">"Logout"</span> is hidden
+```html 
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"referenceDropdown"</span> <span class="na">class=</span><span class="s">"btn-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span><span class="nt">&gt;</span>Reference<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary dropdown-toggle dropdown-toggle-split"</span> <span class="na">id=</span><span class="s">"dropdownMenuReference"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">data-reference=</span><span class="s">"parent"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Toggle Dropdown<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">aria-labelledby=</span><span class="s">"dropdownMenuReference"</span> <span class="na">x-placement=</span><span class="s">"top-start"</span> <span class="na">style=</span><span class="s">"position: absolute; transform: translate3d(0px, -151px, 0px); top: 0px; left: 0px; will-change: transform;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"javascript: void();"</span> <span class="na">onclick=</span><span class="s">"alert('Action clicked!');"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"javascript: void();"</span> <span class="na">onclick=</span><span class="s">"alert('Another action clicked!');"</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"javascript: void();"</span> <span class="na">onclick=</span><span class="s">"alert('Something else here clicked!');"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"javascript: void();"</span> <span class="na">onclick=</span><span class="s">"alert('Separated link clicked!');"</span><span class="nt">&gt;</span>Separated link<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre><pre class="highlight plaintext"><code>&lt;a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownOptionsTests.java" target="_blank"&gt;Bootstrap Test Examples&lt;/a&gt;
 
 
-    <span class="kn">Scenario</span><span class="p">:</span> click element
-       <span class="nf">When</span> I click on <span class="s">"Red Button"</span>
-       <span class="nf">Then</span> the Alert text equals to <span class="s">"Red button"</span>
+## JDI Features for parameters in BDD steps 
+
+### Using aliases as locators parameters 
+```gherkin
+   Scenario: input element
+       When I input "simple 1234" in "Name"
+       Then the "Name" text matches to "\w{6} \d{4}"
+       Then the "Logout" is hidden
+
+
+    Scenario: click element
+       When I click on "Red Button"
+       Then the Alert text equals to "Red button"
 </code></pre>
 <p>Features have locators taken from file-based PageObjects instead of an element name.
 <br><br><br><br><br><br><br><br></p>
