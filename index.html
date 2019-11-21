@@ -527,9 +527,6 @@
                     <a href="#bootstrap-common-elements" class="toc-h2 toc-link" data-title="Bootstrap Common elements">Bootstrap Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
-								<a href="#button-2" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
-                            </li>
-                            <li>
 								<a href="#checkboxes-and-radios" class="toc-h2 h3 toc-link" data-title="Checkboxes and radios">Checkboxes and radios</a>
                             </li>
                             <li>
@@ -682,7 +679,7 @@
 								<a href="#link-2" class="toc-h2 h3 toc-link" data-title="Link">Link</a>
                             </li>
                             <li>
-								<a href="#button-3" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
+								<a href="#button-2" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
                             </li>
                             <li>
 								<a href="#datetimeselector-2" class="toc-h2 h3 toc-link" data-title="DateTimeSelector">DateTimeSelector</a>
@@ -8018,137 +8015,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/composite/webpage/ActionsWebPageTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#webpage-2">BDD Steps example</a></p>
-<h2 id='bootstrap-common-elements'>Bootstrap Common elements</h2><h3 id='button-2'>Button</h3>
-<p>Bootstrap includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.</p>
-
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/buttons/" target="_blank">Button</a></strong> – Element that represents a clickable button.</p>
-
-<p><img src="images/bootstrap/button.png" alt="Button" /></p>
-
-<p>Button is located in the following classes:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.common.Button</em></li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[text()='Red button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "//*[text()='Red button']")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">redButton</span><span class="o">;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">redButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getAlertText</span><span class="o">(),</span> <span class="s">"Red button"</span><span class="o">);</span>
-    <span class="n">acceptAlert</span><span class="o">();</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">redButton</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Red button"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
-<p>Here is an example with provided HTML code:</p>
-
-<!-- ![Button example](../images/bootstrap/button-html.png) -->
-<pre class="highlight html tab-html"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"red-button"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span> 
-<span class="na">onclick=</span><span class="s">"alert('Red button');"</span> <span class="na">ondblclick=</span><span class="s">"alert('Double Click');"</span> 
-<span class="na">oncontextmenu=</span><span class="s">"alert('Right Click');"</span><span class="nt">&gt;</span>Red button<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/buttons/" target="_blank">Disabled Button</a></strong> – Element that represents a Not clickable button.</p>
-
-<p><img src="images/bootstrap/disabled_button.png" alt="Disabled button" /></p>
-
-<p>Button is located in the following classes:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.common.Button</em></li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[text()='Disabled button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "//*[text()='Disabled button']")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">disabledButton</span><span class="o">;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">disableButtonTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">try</span> <span class="o">{</span> <span class="n">disabledButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-          <span class="n">fail</span><span class="o">(</span><span class="s">"Disabled button should not work, but work"</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">assertThat</span><span class="o">(</span><span class="n">safeException</span><span class="o">(</span><span class="n">ex</span><span class="o">),</span>
-                <span class="n">containsString</span><span class="o">(</span><span class="s">"Can't perform click. Element is disabled"</span><span class="o">));</span>
-        <span class="o">}</span>
-     <span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">disabledButton</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Disabled button"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
-<p>Here is an example with provided HTML code:</p>
-
-<!-- ![Disabled button example](../images/bootstrap/disabled_button_code.png) -->
-<pre class="highlight html tab-html"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"double-button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> 
-<span class="na">ondblclick=</span><span class="s">"alert('Double Click');"</span><span class="nt">&gt;</span>Double button <span class="nt">&lt;/button&gt;</span>
-</code></pre>
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
-
-<p><br><br></p>
-<h3 id='checkboxes-and-radios'>Checkboxes and radios</h3><h4 id='checkbox-default'><a href="https://getbootstrap.com/docs/4.3/components/buttons/" target="_blank">Checkbox default</a></h4>
+<h2 id='bootstrap-common-elements'>Bootstrap Common elements</h2><h3 id='checkboxes-and-radios'>Checkboxes and radios</h3><h4 id='checkbox-default'><a href="https://getbootstrap.com/docs/4.3/components/buttons/" target="_blank">Checkbox default</a></h4>
 <p>Checkbox is located in the following classes:</p>
 
 <ul>
@@ -10166,63 +10033,6 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 
 
 
-
-  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#btn-primary"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#btn-primary")</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">badgeTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertTrue</span><span class="o">(</span><span class="n">buttonPrimary</span><span class="o">.</span><span class="na">badge</span><span class="o">().</span><span class="na">isDisplayed</span><span class="o">());</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">buttonPrimary</span><span class="o">.</span><span class="na">badgeText</span><span class="o">(),</span> <span class="s">"9"</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">buttonPrimary</span><span class="o">.</span><span class="na">badgeValue</span><span class="o">(),</span> <span class="s">"9"</span><span class="o">);</span>
-    <span class="o">}</span>
-</code></pre>
-<p><strong>2) <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/badge/" target="_blank">Badge</a></strong> - Element which used as part of buttons to provide a counter. Unless the context is clear (as with the “Notifications” example, where it is understood that the “4” is the number of notifications), consider including additional context with a visually hidden piece of additional text.<br></p>
-
-<p><img src="images/bootstrap/badge_button.png" alt="Badge" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">id=</span><span class="s">"btn-primary"</span>
-        <span class="na">onclick=</span><span class="s">"alert('Button with badge');"</span><span class="nt">&gt;</span>
-    Profile <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"badge badge-light"</span><span class="nt">&gt;</span>9<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span>
-        <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>unread messages<span class="nt">&lt;/span&gt;</span>
-<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>displayed()</strong></td>
-<td>Check that element is displayed</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
-<pre class="highlight java tab-java"><code>
-
-
-
-
-
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#badge-success"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#badge-success")</span>
 
         <span class="nd">@Test</span>
@@ -10236,7 +10046,7 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
             <span class="n">assertTrue</span><span class="o">(</span><span class="n">badgeSuccess</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">());</span>
         <span class="o">}</span>
 </code></pre>
-<p><strong>3) <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/badge/#links" target="_blank">Badge</a></strong> - .badge-* classes on an link element quickly provide actionable badges with hover and focus states.<br></p>
+<p><strong>2) <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/badge/#links" target="_blank">Badge</a></strong> - .badge-* classes on an link element quickly provide actionable badges with hover and focus states.<br></p>
 
 <p><img src="images/bootstrap/badge_link.png" alt="Badge" /></p>
 
@@ -27277,7 +27087,7 @@ Validations: <br></p>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Link.feature" target="_blank">Cucumber tests</a> for Link<br></p>
 
 <p><br><br><br></p>
-<h3 id='button-3'>Button</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Button action examples</span><span class="p">:</span>
+<h3 id='button-2'>Button</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Button action examples</span><span class="p">:</span>
 
 <span class="nf">When</span> I click on <span class="s">"Red Button"</span> 
 <span class="nf">When</span> I click with JS on <span class="s">"Red Button"</span>     
