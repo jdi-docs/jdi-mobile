@@ -7771,27 +7771,7 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/FormTests.cs" target="_blank">Test examples in C#</a></p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#form-2">BDD Steps example</a></p>
-<h3 id='webpage'>WebPage</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainPage</span> <span class="kd">extends</span> <span class="n">WebPage</span><span class="o">{}</span>
-<span class="n">MainPage</span> <span class="n">mainPage</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MainPage</span><span class="o">;</span>
-<span class="n">mainPage</span><span class="o">.</span><span class="na">setCurrentPage</span><span class="o">(</span><span class="n">WebPage</span> <span class="n">page</span><span class="o">);</span>
-<span class="n">mainPage</span><span class="o">.</span><span class="na">getCurrentPage</span><span class="o">();</span>
-<span class="n">mainPage</span><span class="o">.</span><span class="na">getUrl</span><span class="o">()</span>
-<span class="n">mainPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span>
-<span class="n">mainPage</span><span class="o">.</span><span class="na">checkOpened</span><span class="o">()</span>
-<span class="n">mainPage</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
-<span class="n">mainPage</span><span class="o">.</span><span class="na">StringCheckType</span><span class="o">().</span><span class="na">check</span><span class="o">()</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">verifyURL</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">mainPage</span><span class="o">.</span><span class="na">setCurrentPage</span><span class="o">(</span><span class="n">mainPage</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">mainPage</span><span class="o">.</span><span class="na">getUrl</span><span class="o">(),</span> <span class="s">"www.mainpage.ru"</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">verifyTitle</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">mainPage</span><span class="o">.</span><span class="na">setCurrentPage</span><span class="o">(</span><span class="n">mainPage</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">mainPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">(),</span> <span class="s">"Main page"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
+<h3 id='webpage'>WebPage</h3>
 <p><strong>WebPage</strong> is provided by JDI Light in:</p>
 
 <ul>
@@ -7802,6 +7782,47 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <p><strong>WebPage</strong> - A parent Java class for all JDI Page Object classes. WebPage class extends <em>DriverBase</em> class, implements PageObject interface and contains a number of commonly used methods:</p>
 
+<p>Methods available for Java in JDI Light:</p>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActionsWebPageTests</span> <span class="kd">extends</span> <span class="n">TestsInit</span> <span class="o">{</span>
+
+    <span class="nd">@BeforeMethod</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+        <span class="n">contactFormPage</span><span class="o">.</span><span class="na">shouldBeOpened</span><span class="o">();</span>
+        <span class="n">leftMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Contact form"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getUrlTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">WebPage</span><span class="o">.</span><span class="na">getUrl</span><span class="o">(),</span> <span class="s">"https://jdi-testing.github.io/jdi-light/contacts.html"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">WebPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">(),</span> <span class="s">"Contact Form"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkOpenedTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">contactFormPage</span><span class="o">.</span><span class="na">checkOpened</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isOpenedTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">contactFormPage</span><span class="o">.</span><span class="na">isOpened</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollToBottomTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">WebPage</span><span class="o">.</span><span class="na">scrollToBottom</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toStringTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">contactFormPage</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="s">"StaticSite.contactFormPage (url=https://jdi-testing.github.io/jdi-light/contacts.html; title=Contact Form)"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
 <table><thead>
 <tr>
 <th>Method</th>
