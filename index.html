@@ -21625,7 +21625,8 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
 <p><strong><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#basic-example" target="_blank">Input group</a></strong> – Place one add-on or button on either side of an input. You may also place one on both sides of an input.
 <br /></p>
 <pre class="highlight java tab-java"><code>
-   <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-basic-example1"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithText</span> <span class="n">inputGroupBasicExample1</span><span class="o">;</span><span class="c1">//@FindBy(css = "#input-group-basic-example1")</span>
+    <span class="c1">//@FindBy(css = "#input-group-basic-example1")</span>
+   <span class="nd">@UI</span><span class="o">(</span><span class="s">"#input-group-basic-example1"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupInputWithText</span> <span class="n">inputGroupBasicExample1</span><span class="o">;</span>
 
    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputGroupInputWithText</span> <span class="kd">extends</span> <span class="n">Section</span><span class="o">{</span>
        <span class="nd">@UI</span><span class="o">(</span><span class="s">".input-group-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
