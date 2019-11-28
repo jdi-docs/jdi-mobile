@@ -13141,9 +13141,11 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prevTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">prev</span><span class="o">();</span>    
     <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">firstSlideText</span><span class="o">);</span>
+    <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">prevControl</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">prevText</span><span class="o">);</span>
 
     <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>    
     <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">secondSlideText</span><span class="o">);</span>
+    <span class="n">carouselWithControls</span><span class="o">.</span><span class="na">nextControl</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">prevText</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -13151,9 +13153,22 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">carouselWithControls</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">thirdSlideText</span><span class="o">);</span>
 <span class="o">}</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">carouselWithIndicators</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">carouselWithIndicators</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">firstSlideFullText</span><span class="o">);</span>
+    <span class="n">carouselWithIndicators</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+    <span class="n">carouselWithIndicators</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+<span class="o">}</span>
 
-
-
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">intervalTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">customInterval</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="n">WebPage</span><span class="o">.</span><span class="na">reload</span><span class="o">();</span>
+    <span class="n">durationMoreThan</span><span class="o">(</span><span class="n">interval</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">carouselWithCustomInterval</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">secondSlideFullText</span><span class="o">));</span>
+    <span class="n">customInterval</span> <span class="o">=</span> <span class="n">carouselWithCustomInterval</span><span class="o">.</span><span class="na">interval</span><span class="o">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="o">;</span>
+    <span class="n">durationMoreThan</span><span class="o">(</span><span class="n">customInterval</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">carouselWithCustomInterval</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">thirdSlideFullText</span><span class="o">));</span>
+<span class="o">}</span>
 
 
 
@@ -13178,6 +13193,11 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 <td>void</td>
 </tr>
 <tr>
+<td>get(int i)</td>
+<td>Return slide by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
 <td>assertThat()</td>
 <td>Assert action</td>
 <td>TextAssert</td>
@@ -13195,6 +13215,16 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 <tr>
 <td>currentSlide()</td>
 <td>Return current slide</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td>nextControl()</td>
+<td>Return &#39;next&#39; control</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td>prevControl()</td>
+<td>Return &#39;previous&#39; control</td>
 <td>UIElement</td>
 </tr>
 <tr>
@@ -13226,7 +13256,9 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/CarouselTests.java" target="_blank">Bootstrap test examples</a></p>
 
-<p><br></p>
+<p><br>
+<br>
+<br></p>
 <h3 id='multiplebarsprogress'>MultiplebarsProgress</h3>
 <p>Include <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#multiple-bars">multiple progress bars</a>  in a progress component if you need.</p>
 
