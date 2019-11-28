@@ -17324,19 +17324,21 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 
 
 
-
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-list"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">MediaObjectSample</span><span class="o">&gt;</span> <span class="n">mediaObjectList</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#media-object-list")</span>
+<span class="c1">// @FindBy(css = "#media-object-list")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-list"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">MediaObjectSample</span><span class="o">&gt;</span> <span class="n">mediaObjectList</span><span class="o">;</span> 
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTestListMediaObject</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">headingOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">listOfHeading</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)));</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Stark requires"</span><span class="o">));</span>
-<span class="n">mediaObjectList</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
-      <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-      <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
-    <span class="o">}</span>
+    <span class="n">mediaObjectList</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">mediaObjectList</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">headingOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">listOfHeading</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)));</span>
+    <span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Stark requires"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">headingOfMediaObject</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">mediaObjectList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
+    <span class="n">mediaObjectList</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
+<span class="o">}</span>
 
 
 
