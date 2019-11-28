@@ -17238,24 +17238,32 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 <span class="o">}</span>
 </code></pre>
 <p><a href="https://getbootstrap.com/docs/4.3/components/media-object" target=a_blank> Media object</a> helps build complex and repetitive components where some media is positioned alongside content that doesn’t wrap around said media.</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-sample"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MediaObjectSample</span> <span class="n">mediaObjectSample</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#media-object-sample")</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#media-object-sample")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-sample"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MediaObjectSample</span> <span class="n">mediaObjectSample</span><span class="o">;</span> 
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MediaObjectSample</span> <span class="kd">extends</span> <span class="n">MediaObject</span> <span class="o">{</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"img"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">imageOfMediaObject</span><span class="o">;</span>
+
 <span class="nd">@Title</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">headingOfMediaObject</span><span class="o">;</span>
+
 <span class="nd">@UI</span><span class="o">(</span><span class="s">".media-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">bodyOfMediaObject</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTestSample</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectSample</span><span class="o">));</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"American comic books"</span><span class="o">));</span>
-<span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
-          <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-          <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"media-body"</span><span class="o">);</span>
+    <span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectSample</span><span class="o">));</span>
+    <span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"American comic books"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">headingOfMediaObject</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
+    <span class="n">mediaObjectSample</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectSample</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"media-body"</span><span class="o">)</span>
+    <span class="o">;</span>
 <span class="o">}</span>
 
 
@@ -17265,27 +17273,35 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 
 
 
-
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-nesting"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MediaObjectNesting</span> <span class="n">mediaObjectNesting</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#media-object-nesting")</span>
+<span class="c1">// @FindBy(css = "#media-object-nesting")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#media-object-nesting"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">MediaObjectNesting</span> <span class="n">mediaObjectNesting</span><span class="o">;</span> 
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MediaObjectNesting</span> <span class="kd">extends</span> <span class="n">MediaObject</span> <span class="o">{</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"img"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">imageOfMediaObject</span><span class="o">;</span>
+
 <span class="nd">@Title</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">headingOfMediaObject</span><span class="o">;</span>
+
 <span class="nd">@UI</span><span class="o">(</span><span class="s">".media-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">bodyOfMediaObject</span><span class="o">;</span>
+
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"div.media div.media"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">MediaObjectSample</span>  <span class="n">nestingMediaObject</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTestNesting</span><span class="o">()</span> <span class="o">{</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectNesting</span><span class="o">));</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"vel eu leo"</span><span class="o">));</span>
-<span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
-     <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectNesting</span><span class="o">))</span>
-     <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-     <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"media-body"</span><span class="o">);</span>
+    <span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectNesting</span><span class="o">));</span>
+    <span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"vel eu leo"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">headingOfMediaObject</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">));</span>
+    <span class="n">mediaObjectNesting</span><span class="o">.</span><span class="na">nestingMediaObject</span><span class="o">.</span><span class="na">bodyOfMediaObject</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">bodyTextOfMediaObjectNesting</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"media-body"</span><span class="o">)</span>
+    <span class="o">;</span>
+
 <span class="o">}</span>
 
 
