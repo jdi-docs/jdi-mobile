@@ -2176,19 +2176,25 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <p><strong>Button</strong> – Element that represents a clickable button.</p>
 
 <p><img src="images/button.png" alt="Button" /></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"red-button"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span> <span class="na">onclick=</span><span class="s">"alert('Red button');"</span> <span class="na">ondblclick=</span><span class="s">"alert('Double Click');"</span> <span class="na">oncontextmenu=</span><span class="s">"alert('Right Click');"</span><span class="nt">&gt;</span>Red button
+                             <span class="nt">&lt;/button&gt;</span>
+</code></pre><pre class="highlight plaintext"><code>&lt;button type="button" id="red-button" class="btn btn-danger" onclick="alert('Red button');" ondblclick="alert('Double Click');" oncontextmenu="alert('Right Click');"&gt;Red button
+                             &lt;/button&gt;
 
-<p>Button is located in the following classes:</p>
 
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Button</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Button</em></li>
-</ul>
+Button is located in the following classes:
 
-<p>Here is an example with provided HTML code:</p>
+  - __Java__: _com.epam.jdi.light.ui.html.common.Button_
+  - __C#__: _JDI.Light.Elements.Common.Button_
 
-<!-- ![Button example](../images/html/button_html.png) -->
-<pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"Big Red Button-Input"</span> 
-<span class="na">class=</span><span class="s">"uui-button red"</span> <span class="na">onclick=</span><span class="s">"alert('Red button');"</span><span class="nt">&gt;</span>
+
+Here is an example with provided HTML code:
+
+&lt;!-- ![Button example](../images/html/button_html.png) --&gt;
+
+```html
+&lt;input type="button" value="Big Red Button-Input" 
+class="uui-button red" onclick="alert('Red button');"&gt;
 </code></pre>
 <p>Available methods in Java JDI Light:</p>
 
@@ -10109,42 +10115,34 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/BadgeTests.java" target="_blank">Bootstrap badge test examples</a><br>
 <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ButtonTests.java" target="_blank">Bootstrap badge in button tests examples</a>
 <br><br></p>
-<h3 id='breadcrumb'>Breadcrumb</h3><pre class="highlight java tab-java"><code>
-
-
-
-
-
-
-
-
-
-<span class="c1">// @FindBy(css = "#breadcrumb")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#breadcrumb"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Breadcrumb</span> <span class="n">breadcrumb</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Breadcrumb</span> <span class="kd">extends</span> <span class="n">UIBaseElement</span><span class="o">&lt;</span><span class="n">UIAssert</span><span class="o">&gt;{</span>
-    <span class="c1">// @FindBy(css = ".breadcrumb-item")</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">".breadcrumb-item"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">itemns</span><span class="o">;</span>
-<span class="o">}</span>
-
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">TEXT</span><span class="o">,</span> <span class="n">hasItems</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"Home"</span><span class="o">,</span> <span class="s">"HTML 5"</span><span class="o">,</span> <span class="s">"Bootstrap"</span><span class="o">}));</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getCurrectItemTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">last</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Bootstrap"</span><span class="o">);</span>
-    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">itemns</span><span class="o">.</span><span class="na">last</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Bootstrap"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
-<p><a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/" target="_blank">breadcrumb</a>
-A <a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/" target="_blank">breadcrumb</a> is a control element  used for navigational on web pages</p>
+<h3 id='breadcrumb'>Breadcrumb</h3>
+<p><a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/" target="_blank">Breadcrumb</a> is a control element  used for navigational on web pages</p>
 
 <p><img src="images/bootstrap/breadcrumb.png" alt="Breadcrumb example" /></p>
 
+<p>Breadcrumb is located in the following class: <br>
+- <strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Breadcrumb</em></p>
+
+<p>Inner elements are represented  by the following class: <br>
+- <strong>Java</strong>: <em>com.epam.jdi.light.elements.complex.WebList</em></p>
+<pre class="highlight java tab-java"><code>
+<span class="c1">// @FindBy(css = "#breadcrumb")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#breadcrumb"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Breadcrumb</span> <span class="n">breadcrumb</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">items</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">items</span>
+              <span class="o">.</span><span class="na">assertThat</span><span class="o">()</span>
+              <span class="o">.</span><span class="na">values</span><span class="o">(</span><span class="n">TEXT</span><span class="o">,</span> <span class="n">hasItems</span><span class="o">(</span><span class="n">ITEMS_VALUES</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getCurrectItemTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">items</span><span class="o">.</span><span class="na">last</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">BOOTSTRAP</span><span class="o">);</span>
+    <span class="n">breadcrumb</span><span class="o">.</span><span class="na">items</span><span class="o">.</span><span class="na">last</span><span class="o">().</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">BOOTSTRAP</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span> <span class="na">id=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
@@ -10194,7 +10192,7 @@ A <a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/" target="_bl
 </tr>
 <tr>
 <td><strong>last()</strong></td>
-<td>Get last (current) item</td>
+<td>Get last item</td>
 <td>UIElement</td>
 </tr>
 <tr>
@@ -10212,13 +10210,12 @@ A <a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/" target="_bl
 <td>Assert action</td>
 <td>UIAssert</td>
 </tr>
+<tr>
+<td><strong>shouldBe()</strong></td>
+<td>Assert action</td>
+<td>UIAssert</td>
+</tr>
 </tbody></table>
-
-<p>In this java test case example Breadcrumb has been implemented as WebList.</p>
-
-<p>WebList is located in the following classes:</p>
-
-<p>Java: com.epam.jdi.light.elements.complex.WebList</p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/BreadcrumbTests.java" target="_blank">Breadcrumb Tests Example</a></p>
 
@@ -27119,7 +27116,9 @@ Validations: <br></p>
 <strong>Then</strong> the &quot;&lt;ELEMENT NAME&gt;&quot; does not appear during &quot;&lt;TIME&gt;&quot; seconds <br>
 <strong>Then</strong> the &quot;&lt;ELEMENT NAME&gt;&quot; css &quot;&lt;ATTRIBUTE NAME&gt;&quot; equals to &quot;&lt;TEXT&gt;&quot; <br>
 <strong>Then</strong> the &quot;&lt;ELEMENT NAME&gt;&quot; attribute &quot;&lt;ATTRIBUTE NAME&gt;&quot; equals to &quot;&lt;TEXT&gt;&quot; <br></p>
-
+<pre class="highlight html tab-html"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"red-button"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span> <span class="na">onclick=</span><span class="s">"alert('Red button');"</span> <span class="na">ondblclick=</span><span class="s">"alert('Double Click');"</span> <span class="na">oncontextmenu=</span><span class="s">"alert('Right Click');"</span><span class="nt">&gt;</span>Red button
+                             <span class="nt">&lt;/button&gt;</span>
+</code></pre>
 <p>More information in the <a href="https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa"><strong>Tutorial</strong></a><br>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/bdd/jdi-light-bdd-tests/src/test/resources/features/Button.feature" target="_blank">Cucumber tests</a>) for Button<br></p>
 
