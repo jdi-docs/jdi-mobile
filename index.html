@@ -583,7 +583,7 @@
 								<a href="#carousel" class="toc-h2 h3 toc-link" data-title="Carousel">Carousel</a>
                             </li>
                             <li>
-								<a href="#multiplebarsprogress" class="toc-h2 h3 toc-link" data-title="MultiplebarsProgress">MultiplebarsProgress</a>
+								<a href="#multiple-progress-bars" class="toc-h2 h3 toc-link" data-title="Multiple progress bars">Multiple progress bars</a>
                             </li>
                             <li>
 								<a href="#radiobuttons-2" class="toc-h2 h3 toc-link" data-title="RadioButtons">RadioButtons</a>
@@ -13256,7 +13256,7 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 <p><br>
 <br>
 <br></p>
-<h3 id='multiplebarsprogress'>MultiplebarsProgress</h3>
+<h3 id='multiple-progress-bars'>Multiple progress bars</h3>
 <p>Include <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#multiple-bars">multiple progress bars</a>  in a progress component if you need.</p>
 
 <p>There is a common element <a style="font-weight: bold;" target="_blank" href="https://jdi-docs.github.io/jdi-light/#progress">Progress</a> which includes only one progress bar.</p>
@@ -13265,9 +13265,9 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-multiple-bars"</span><span class="o">)</span>  <span class="c1">//FindBy(css = "#progress-multiple-bars")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">ProgressMultipleBars</span> <span class="n">progressMultipleBars</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">MultipleProgressBars</span> <span class="n">multipleProgressBars</span><span class="o">;</span>
 
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressMultipleBarsData"</span><span class="o">)</span>
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"multipleProgressBarsData"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">separateBarTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">,</span> <span class="n">String</span> <span class="n">minValue</span><span class="o">,</span> <span class="n">String</span> <span class="n">maxValue</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
@@ -13279,19 +13279,19 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">entireMultiplebarsProgressTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">getProgresses</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-    <span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">entireMultipleProgressBarsTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">multipleProgressBars</span><span class="o">.</span><span class="na">getProgresses</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">multipleProgressBars</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"rgba(233, 236, 239, 1)"</span><span class="o">));</span>
-    <span class="n">baseValidation</span><span class="o">(</span><span class="n">multiplebarsProgress</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">multipleProgressBars</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"rgba(233, 236, 239, 1)"</span><span class="o">));</span>
+    <span class="n">baseValidation</span><span class="o">(</span><span class="n">multipleProgressBars</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValuesTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">getValues</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">multipleprogressValues</span><span class="o">));</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">getValues</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"30"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">multipleProgressBars</span><span class="o">.</span><span class="na">getValues</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">multipleprogressValues</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">multipleProgressBars</span><span class="o">.</span><span class="na">getValues</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"30"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"progress-multiple-bars"</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"progress-multiple-ordinary"</span> <span class="na">class=</span><span class="s">"progress-bar"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">style=</span><span class="s">"width: 15%"</span> <span class="na">aria-valuenow=</span><span class="s">"15"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span><span class="nt">&gt;&lt;/div&gt;</span>
@@ -13335,7 +13335,7 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/MultiplebarsProgressTests.java">Bootstrap test examples</a>
+<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/MultipleProgressBarsTests.java">Bootstrap test examples</a>
 <br><br><br></p>
 <h3 id='radiobuttons-2'>RadioButtons</h3>
 <p><strong>RadioButtons</strong> – extends from <a href="https://jdi-docs.github.io/jdi-light/#radiobuttons">HTML 5 RadioButtons</a> class.</p>
