@@ -13250,6 +13250,16 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">entireMultiplebarsProgressTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">getProgresses</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"rgba(233, 236, 239, 1)"</span><span class="o">));</span>
+    <span class="n">baseValidation</span><span class="o">(</span><span class="n">multiplebarsProgress</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValuesTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">assertThat</span><span class="o">(</span><span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">getValues</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">multipleprogressValues</span><span class="o">));</span>
     <span class="n">assertThat</span><span class="o">(</span><span class="n">multiplebarsProgress</span><span class="o">.</span><span class="na">getValues</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"30"</span><span class="o">));</span>
