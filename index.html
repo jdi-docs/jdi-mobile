@@ -9893,10 +9893,11 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <p><img src="images/bootstrap/alert-dismissible.png" alt="Alert" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#simple-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">simpleAlert</span><span class="o">;</span>
-<span class="nd">@Css</span><span class="o">(</span><span class="s">"#dismissible-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">dismissibleAlert</span><span class="o">;</span>
-<span class="c1">// @FindBy(css = "#simple-alert") public static Alert simpleAlert;</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#simple-alert") public static Alert simpleAlert; </span>
+<span class="nd">@Css</span><span class="o">(</span><span class="s">"#simple-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">simpleAlert</span><span class="o">;</span>
+
 <span class="c1">// @FindBy(css = "#dismissible-alert") public static Alert dismissibleAlert;</span>
+<span class="nd">@Css</span><span class="o">(</span><span class="s">"#dismissible-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">dismissibleAlert</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleAlertExistingTest</span><span class="o">()</span> <span class="o">{</span>
@@ -9917,12 +9918,18 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dismissibleAlertButtonIsValidationTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">dismissButton</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-dismiss"</span><span class="o">,</span> <span class="s">"alert"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-label"</span><span class="o">,</span> <span class="s">"Close"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span> <span class="o">(</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dismissibleAlertButtonClickTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">dismissButton</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">base</span><span class="o">().</span><span class="na">waitSec</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
     <span class="n">dismissibleAlert</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre>
@@ -9951,11 +9958,6 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>getText()</strong></td>
-<td>Get alert text</td>
-<td>String</td>
-</tr>
-<tr>
 <td><strong>is()</strong></td>
 <td>Assert action</td>
 <td>TextAssert</td>
@@ -9983,11 +9985,6 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 </tbody></table>
 
 <p><br></p>
-
-<p>Inner elements represented by the following classes:
-<ul>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
-</ul></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/AlertTests.java" target="_blank">Alert test examples</a></p>
 <h3 id='badge'>Badge</h3>
