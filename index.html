@@ -419,6 +419,17 @@
             <a href="#documentation" class="toc-h1 toc-link" data-title="Documentation">Documentation</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#base-elements" class="toc-h2 toc-link" data-title="Base Elements">Base Elements</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#uibaseelement" class="toc-h2 h3 toc-link" data-title="UIBaseElement">UIBaseElement</a>
+                            </li>
+                            <li>
+								<a href="#weblist" class="toc-h2 h3 toc-link" data-title="WebList">WebList</a>
+                            </li>
+                        </ul>
+                  </li>
+                  <li>
                     <a href="#extended-selenium-features" class="toc-h2 toc-link" data-title="Extended Selenium features">Extended Selenium features</a>
                   </li>
                   <li>
@@ -742,6 +753,11 @@
                   </li>
                   <li>
                     <a href="#ui-objects" class="toc-h2 toc-link" data-title="UI Objects">UI Objects</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#web" class="toc-h2 h3 toc-link" data-title="Web">Web</a>
+                            </li>
+                        </ul>
                   </li>
                   <li>
                     <a href="#non-static-site-initialization" class="toc-h2 toc-link" data-title="Non-Static Site initialization">Non-Static Site initialization</a>
@@ -2053,7 +2069,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <p>TBD</p>
 <h1 id='faq'>FAQ</h1>
 <p>TBD</p>
-<h1 id='documentation'>Documentation</h1><h2 id='extended-selenium-features'>Extended Selenium features</h2>
+<h1 id='documentation'>Documentation</h1><h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
@@ -10125,12 +10141,6 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <p><a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/" target="_blank">Breadcrumb</a> is a control element  used for navigational on web pages</p>
 
 <p><img src="images/bootstrap/breadcrumb.png" alt="Breadcrumb example" /></p>
-
-<p>Breadcrumb is located in the following class: <br>
-- <strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Breadcrumb</em></p>
-
-<p>Inner elements are represented  by the following class: <br>
-- <strong>Java</strong>: <em>com.epam.jdi.light.elements.complex.WebList</em></p>
 <pre class="highlight java tab-java"><code>
 <span class="c1">// @FindBy(css = "#breadcrumb")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#breadcrumb"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Breadcrumb</span> <span class="n">breadcrumb</span><span class="o">;</span>
@@ -10162,6 +10172,12 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
     <span class="nt">&lt;/ol&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 </code></pre>
+<p>Breadcrumb is located in the following class: <br>
+- <a href="https://jdi-docs.github.io/jdi-light/#uibaseelement">UIBaseElement</a> </p>
+
+<p>Inner elements are represented  by the following class: <br>
+- <a href="https://jdi-docs.github.io/jdi-light/#weblist">Weblist</a> </p>
+
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -28382,7 +28398,7 @@ More information in the <a href="https://jdi-docs.github.io/jdi-light/?java#tuto
 <br></p>
 <h2 id='ui-objects'>UI Objects</h2>
 <p>TBD</p>
-<h2 id='non-static-site-initialization'>Non-Static Site initialization</h2><pre class="highlight java tab-java"><code>
+<h3 id='web'>Web</h3><h2 id='non-static-site-initialization'>Non-Static Site initialization</h2><pre class="highlight java tab-java"><code>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticTestsInit</span> <span class="o">{</span>
 
     <span class="kd">protected</span> <span class="n">NonStaticSite</span> <span class="n">nonStaticSite</span><span class="o">;</span>
