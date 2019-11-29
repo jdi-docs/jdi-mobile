@@ -28978,6 +28978,21 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td><a href="https://jdi-docs.github.io/jdi-light/?java#remote-test-runs">Tests can run on remote web servers<a></td>
 <td>driver.remote.url=http://localhost:4444/wd/hub</td>
 </tr>
+<tr>
+<td><strong>chrome.capabilities.path</strong></td>
+<td>Path to the Chrome properties file. File should be located in (src/test/resources).</td>
+<td>chrome.capabilities.path=chrome.properties</td>
+</tr>
+<tr>
+<td><strong>ff.capabilities.path</strong></td>
+<td>Path to the Firefox properties file. File should be located in (src/test/resources).</td>
+<td>ff.capabilities.path=ff.properties</td>
+</tr>
+<tr>
+<td><strong>ie.capabilities.path</strong></td>
+<td>Path to the Internet Explorer properties file. File should be located in (src/test/resources).</td>
+<td>ie.capabilities.path=ie.properties</td>
+</tr>
 </tbody></table>
 <pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestsInit</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">pathToDriver</span> <span class="o">=</span> <span class="s">"src\\test\\resources\\Driver\\chromedriver.exe"</span><span class="o">;</span>
@@ -29049,6 +29064,11 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td><strong>html.code.logging</strong></td>
 <td>Defines a strategy for writting html-code of the web element last processed before test failure to log. If it set to &quot;on fail&quot; value, then web element&#39;s html-code will be logged (and added to Allure report as well) when test fails, if possible. Options: <em>on fail, off</em></td>
 <td>html.code.logging = off</td>
+</tr>
+<tr>
+<td><strong>smart.locators</strong></td>
+<td>A list of templates for <a href="https://jdi-docs.github.io/jdi-light/#smart-locators">Smart locators</a>. Should be separated by ; symbol</td>
+<td>smart.locators=#%s;[ui=%s]</td>
 </tr>
 </tbody></table>
 <h2 id='parallel-tests-run'>Parallel tests run</h2>
