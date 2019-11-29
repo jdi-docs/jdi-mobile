@@ -23123,19 +23123,36 @@ This is easily customized with our various sizing options.</p>
 <p><img src="images/bootstrap/simplecard.png" alt="Card Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-example"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-example")</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#card-example") </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-example"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardExample</span> <span class="n">cardExample</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardExample</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".btn"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-img-top"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
-<span class="o">}</span>    
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".btn"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#bs-card-example-image"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Image</span> <span class="n">image</span><span class="o">;</span>
+<span class="o">}</span>   
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTextTest</span><span class="o">()</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardExample</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">imageSrc</span><span class="o">));</span>
+    <span class="n">cardExample</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">imageAlt</span><span class="o">));</span>
+    <span class="n">cardExample</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+    <span class="n">cardExample</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">86</span><span class="o">));</span>
+    <span class="n">cardExample</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">137</span><span class="o">));</span>
     <span class="n">cardExample</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">titleText</span><span class="o">));</span>
+    <span class="n">cardExample</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">mainText</span><span class="o">));</span>
+    <span class="n">cardExample</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonText</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"submit"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
+    <span class="n">cardExample</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -23222,11 +23239,13 @@ Use it whenever you need a padded section within a card.</p>
 <p><img src="images/bootstrap/cardbody.png" alt="Card Body Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-body"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-body")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = ".card-body")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardBody</span> <span class="n">cardBody</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardBody</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Text</span> <span class="n">text</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -23285,7 +23304,8 @@ are placed in a <code>.card-body</code> item, the card title and subtitle are al
 <p><img src="images/bootstrap/cardsubslinks.png" alt="Card Titles, Text and Links Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-subtitle-link"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-subtitle-link")</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#card-subtitle-link") </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-subtitle-link"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithSubtitlesAndLinks</span> <span class="n">cardWithSubtitlesAndLinks</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithSubtitlesAndLinks</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -23380,7 +23400,8 @@ with the standard HTML tags.</p>
 <p><img src="images/bootstrap/card-image.png" alt="Card Images Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-image"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-image")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-image")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-image"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardImage</span> <span class="n">cardImage</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardImage</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -23479,7 +23500,8 @@ with a flush list group.</p>
 <p><img src="images/bootstrap/card_list_groups.png" alt="Card list groups" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-list-groups"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-list-groups")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-list-groups")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-list-groups"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardListGroups</span> <span class="n">cardListGroups</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardListGroups</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -23566,7 +23588,8 @@ a list group—all wrapped in a fixed-width card.</p>
 <p><img src="images/bootstrap/card-kitchen-sink.png" alt="Card Kitchen Sink Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-kitchen-sink"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-kitchen-sink")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-kitchen-sink")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-kitchen-sink"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardKitchenSink</span> <span class="n">cardKitchenSink</span><span class="o">;</span> 
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardKitchenSink</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -23694,14 +23717,15 @@ header and/or footer within a card.</p>
 <p><img src="images/bootstrap/cardheaderfooter.png" alt="Card with Header and Footer Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-header-and-footer"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-with-header-and-footer")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-with-header-and-footer") </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-header-and-footer"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithHeaderAndFooter</span> <span class="n">cardWithHeaderAndFooter</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithHeaderAndFooter</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-title"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-body p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">paragraph</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span><span class="kd">public</span> <span class="n">Text</span> <span class="n">header</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-header"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">header</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[contains(@class, 'footer')]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">footer</span><span class="o">;</span>
 <span class="o">}</span>
 
@@ -23781,7 +23805,8 @@ wrap cards in columns and rows as needed.</p>
 <p><img src="images/bootstrap/card_grid.png" alt="Card with Grid Markup Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-grid-markup"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-with-grid-markup")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-with-grid-markup")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-with-grid-markup"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithGridMarkup</span> <span class="n">cardWithGridMarkup</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithGridMarkup</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -23902,7 +23927,8 @@ sizing utilities to quickly set a card’s width.</p>
 <p><img src="images/bootstrap/card_utilities.png" alt="Card Utilities Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".w-75"</span><span class="o">)</span> <span class="c1">// @FindBy(className = ".w-75")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(className = ".w-75") </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".w-75"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardUtilities</span> <span class="n">cardWidth75</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardUtilities</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -23967,7 +23993,8 @@ stylesheets or as inline styles to set a width.</p>
 <p><img src="images/bootstrap/card_custom_CSS.png" alt="Card Using Custom CSS Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-custom-css-1"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-custom-css-1")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-custom-css-1")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-custom-css-1"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardWithCustomCss</span> <span class="n">cardWithCustomCss13Rem</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardWithCustomCss</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -23983,6 +24010,16 @@ stylesheets or as inline styles to set a width.</p>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardWithCustomCss13Rem</span><span class="o">.</span><span class="na">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">title</span><span class="o">));</span>
+    <span class="n">cardWithCustomCss13Rem</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
+    <span class="n">cardWithCustomCss13Rem</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonText</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"16px"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"btn btn-primary"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"a"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"href"</span><span class="o">,</span> <span class="n">link</span><span class="o">);</span>
+    <span class="n">cardWithCustomCss13Rem</span><span class="o">.</span><span class="na">button</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
     <span class="n">cardWithCustomCss13Rem</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"width"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"208px"</span><span class="o">))</span>
@@ -24033,16 +24070,6 @@ stylesheets or as inline styles to set a width.</p>
 <td>TextAssert</td>
 </tr>
 <tr>
-<td><strong>ref()</strong></td>
-<td>Returns the reference</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>url()</strong></td>
-<td>Returns the URL</td>
-<td>URL</td>
-</tr>
-<tr>
 <td><strong>assertThat()</strong></td>
 <td>Assert action</td>
 <td>UIAssert</td>
@@ -24057,11 +24084,14 @@ the text alignment of any card — in it&#39;s entirety or specific parts — wi
 <p><img src="images/bootstrap/cardtextalignment.png" alt="Card Text Alignment Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-text-left"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-text-left")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-text-left")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-text-left"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardTextAlignment</span> <span class="n">cardLeftTextAlignment</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-text-center"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-text-center")</span>
+<span class="c1">//@FindBy(css = "#card-text-center")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-text-center"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardTextAlignment</span> <span class="n">cardCenterTextAlignment</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-text-right"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-text-right")</span>
+<span class="c1">//@FindBy(css = "#card-text-right")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-text-right"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardTextAlignment</span> <span class="n">cardRightTextAlignment</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardTextAlignment</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -24181,12 +24211,21 @@ the text alignment of any card — in it&#39;s entirety or specific parts — wi
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardNavigation</span> <span class="n">cardNavigation</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardNavigation</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".nav"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Menu</span> <span class="n">nav</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#activeLink"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">activeLink</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdiLink"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">jdiLink</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabledLink"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">disabledLink</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">title</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">subtitle</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">button</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLinkTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cardNavigation</span><span class="o">.</span><span class="na">nav</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardNavigation</span><span class="o">.</span><span class="na">activeLink</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">activeLinkText</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardNavigation</span><span class="o">.</span><span class="na">jdiLink</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">jdiLinkText</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardNavigation</span><span class="o">.</span><span class="na">disabledLink</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">disabledLinkText</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -24259,6 +24298,7 @@ the text alignment of any card — in it&#39;s entirety or specific parts — wi
 <p>Inner elements of Card Navigation represented by the following classes:</p>
 
 <ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/#menu">Menu</a></li>
 <li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></li>
 <li><a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></li>
 <li><a href="https://jdi-docs.github.io/jdi-light/#link">Link</a></li>
@@ -24343,7 +24383,8 @@ can include top and bottom “image caps” — images at the top or bottom of a
 <p><img src="images/bootstrap/cardimagecaps.png" alt="Card Image Caps Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-image-caps-1"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "card-image-caps-1")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "card-image-caps-1")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-image-caps-1"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardImageCaps</span> <span class="n">cardImageOnTop</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardImageCaps</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -24428,7 +24469,8 @@ background and overlay your card’s text. Depending on the image, you may or ma
 <p><img src="images/bootstrap/card-image-overlays.png" alt="Card Image Overlays Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-image-overlay"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-image-overlay")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-image-overlay") </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-image-overlay"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardImageOverlays</span> <span class="n">cardImageOverlays</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardImageOverlays</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -24541,7 +24583,8 @@ utility classes, cards can be made horizontal in a mobile-friendly and responsiv
 <p><img src="images/bootstrap/card_horizontal.png" alt="Card Horizontal Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-horizontal"</span><span class="o">)</span> <span class="c1">//FindBy(css = "#card-horizontal")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//FindBy(css = "#card-horizontal")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-horizontal"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardHorizontal</span> <span class="n">cardHorizontal</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardHorizontal</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -24565,6 +24608,14 @@ utility classes, cards can be made horizontal in a mobile-friendly and responsiv
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"11.2px"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"small"</span><span class="o">));</span>
+    <span class="n">cardHorizontal</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">imageSrc</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"title"</span><span class="o">,</span> <span class="n">imageTitle</span><span class="o">);</span>
+    <span class="n">cardHorizontal</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">unhighlight</span><span class="o">();</span>
+    <span class="n">cardHorizontal</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">anyOf</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">91</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="mi">94</span><span class="o">)));</span>
+    <span class="n">cardHorizontal</span><span class="o">.</span><span class="na">image</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">anyOf</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">146</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="mi">150</span><span class="o">)));</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span> <span class="na">id=</span><span class="s">"card-horizontal"</span> <span class="na">style=</span><span class="s">"max-width: 540px;"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row no-gutters"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>
@@ -24652,7 +24703,8 @@ background utilities to change the appearance of a card.</p>
 <p><img src="images/bootstrap/cardbackgroundandcolor.png" alt="Card Background And Color Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-bright-blue"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-bright-blue")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-bright-blue")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-bright-blue"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardStyled</span> <span class="n">cardBrightBlue</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardStyled</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -24737,7 +24789,8 @@ contents as shown below.</p>
 <p><img src="images/bootstrap/cardborders.png" alt="Card Border Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-border-primary"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#card-border-primatry")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-border-primatry")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-border-primary"</span><span class="o">)</span><span class="c1">//@FindBy(css = "#card-border-primatry")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardStyled</span> <span class="n">cardBorderPrimary</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardStyled</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -24814,7 +24867,8 @@ the borders on the card header and footer as needed, and even remove their backg
 <p><img src="images/bootstrap/card-mixins-utilities.png" alt="Card Mixins Utilities Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-mixins-utilities"</span><span class="o">)</span>  <span class="c1">// @FindBy(css = "#card-mixins-utilities")         </span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#card-mixins-utilities")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#card-mixins-utilities"</span><span class="o">)</span>         
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardMixinsUtilities</span> <span class="n">cardMixinsUtilities</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardMixinsUtilities</span> <span class="kd">extends</span> <span class="n">Card</span> <span class="o">{</span>
@@ -24895,7 +24949,8 @@ a single, attached element with equal width and height columns.</p>
 <p><img src="images/bootstrap/card-groups.png" alt="Card_Groups Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(1)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-group:nth-of-type(1)")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = ".card-group:nth-of-type(1)") </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(1)"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardGroupedSection</span> <span class="n">cardGroupSectionWithoutFooter</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardGroupSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
@@ -24954,7 +25009,8 @@ a single, attached element with equal width and height columns.</p>
 <p><img src="images/bootstrap/card-groups-with-footer.png" alt="Card Groups with Footer Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(2)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-group:nth-of-type(2)")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = ".card-group:nth-of-type(2)")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-group:nth-of-type(2)"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardGroupedSection</span> <span class="n">cardGroupWithFooter</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardGroupSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
@@ -25033,7 +25089,8 @@ and height cards that aren&#39;t attached to one another.</p>
 <p><img src="images/bootstrap/card-decks.png" alt="Card_Decks Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-deck:nth-of-type(1)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-deck:nth-of-type(1)")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = ".card-deck:nth-of-type(1)")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-deck:nth-of-type(1)"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardDeckSection</span> <span class="n">cardDeckSectionWithoutFooter</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardDeckSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
@@ -25094,8 +25151,8 @@ and height cards that aren&#39;t attached to one another.</p>
 <p><img src="images/bootstrap/card-decks-with-footer.png" alt="Card Decks with Footer Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-deck:nth-of-type(2)"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".card-deck:nth-of-type(2)")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = ".card-deck:nth-of-type(2)")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-deck:nth-of-type(2)"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">CardDeckSection</span> <span class="n">cardDeckSectionWithFooter</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardGroupSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
@@ -25128,6 +25185,7 @@ and height cards that aren&#39;t attached to one another.</p>
     <span class="n">cardDeckSectionWithFooter</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithFooter</span><span class="o">.</span><span class="na">card1</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card1MainText</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">cardDeckSectionWithFooter</span><span class="o">.</span><span class="na">card2</span><span class="o">.</span><span class="na">mainText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">card2MainText</span><span class="o">);</span>
+<span class="o">}</span>    
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-deck"</span> <span class="na">style=</span><span class="s">"margin-bottom: 10px;"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/spider-man.jpg"</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"spider-man"</span>
@@ -25227,8 +25285,9 @@ the number of columns.</p>
 <p><img src="images/bootstrap/card-columns.png" alt="Card Columns Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".card-columns"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardColumns</span> <span class="n">cardColumns</span><span class="o">;</span> <span class="c1">//@FindBy(css = ".card-columns")</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = ".card-columns") </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".card-columns"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">CardColumns</span> <span class="n">cardColumns</span><span class="o">;</span> 
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CardColumnsSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".card:nth-of-type(1)"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">CardWithinCardColumns</span> <span class="n">topLeftCard</span><span class="o">;</span>
@@ -25369,7 +25428,8 @@ the number of columns.</p>
 <p><img src="images/bootstrap/jumbotron.png" alt="Jumbotron" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@Css</span><span class="o">(</span><span class="s">"#jumbotron"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#jumbotron")</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#jumbotron")</span>
+<span class="nd">@Css</span><span class="o">(</span><span class="s">"#jumbotron"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Jumbotron</span> <span class="n">jumbotron</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Jumbotron</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="kd">implements</span> <span class="n">IsJumbotron</span> <span class="o">{</span>
