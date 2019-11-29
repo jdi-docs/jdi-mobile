@@ -16774,32 +16774,60 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 <pre class="highlight java tab-java"><code>    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example2"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavbarWithDropdown</span> <span class="n">navbarWithDropdown</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example2~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollSpyNav</span> <span class="n">scrollSpyInNavbar</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"ul&gt;li"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "ul&gt;li")</span>
-    <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navGroup</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"ul&gt;li&gt;a"</span><span class="o">)</span> <span class="c1">// @FindBy(css ="ul&gt;li&gt;a")</span>
-    <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
-            <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".navbar-brand")</span>
-    <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>
-<span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavbarWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+        <span class="c1">// @FindBy(css = "ul&gt;li")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">"ul&gt;li"</span><span class="o">)</span> 
+        <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navGroup</span><span class="o">;</span>
+        <span class="c1">// @FindBy(css ="ul&gt;li&gt;a")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">"ul&gt;li&gt;a"</span><span class="o">)</span> 
+        <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
+        <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+                <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
+        <span class="c1">// @FindBy(css = ".navbar-brand")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> 
+        <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>
+    <span class="o">}</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollSpyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollSpyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+        <span class="c1">// @FindBy(xpath = ".//h4 | .//h5")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span>
+        <span class="c1">// @FindBy(css = "p")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollParagraph</span><span class="o">(</span><span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">){</span>
-        <span class="n">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollParagraph</span><span class="o">(</span><span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">){</span>
+            <span class="n">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
 
-        <span class="k">if</span> <span class="o">(!</span><span class="n">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">className</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
-                <span class="n">index</span> <span class="o">&lt;</span> <span class="n">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">className</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">index</span> <span class="o">&lt;</span> <span class="n">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">itemLink</span> <span class="o">=</span> <span class="s">"https://jdi-testing.github.io/jdi-light/bootstrap.html#"</span><span class="o">;</span>
+
+    <span class="nd">@DataProvider</span>
+    <span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">dropdownCheck</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+                <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="n">itemLink</span> <span class="o">+</span> <span class="s">"one"</span><span class="o">,</span> <span class="s">"one"</span><span class="o">},</span>
+                <span class="o">{</span><span class="mi">4</span><span class="o">,</span> <span class="n">itemLink</span> <span class="o">+</span> <span class="s">"two"</span><span class="o">,</span> <span class="s">"two"</span><span class="o">},</span>
+                <span class="o">{</span><span class="mi">5</span><span class="o">,</span> <span class="n">itemLink</span> <span class="o">+</span> <span class="s">"three"</span><span class="o">,</span> <span class="s">"three"</span><span class="o">}</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"dropdownCheck"</span><span class="o">,</span> <span class="n">priority</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownCheckTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">_index</span><span class="o">,</span> <span class="n">String</span> <span class="n">link</span><span class="o">,</span> <span class="n">String</span> <span class="n">header</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+        <span class="n">navbarWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">list</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="n">header</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">header</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">header</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="n">ATTR_NAME_HREF</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">link</span><span class="o">));</span>
+    <span class="o">}</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">navbarLinkClickableTests</span><span class="o">()</span> <span class="o">{</span>
@@ -16834,40 +16862,40 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example3"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NestedNav</span> <span class="n">nestedNav</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#navbar-example3~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollSpyNav</span> <span class="n">scrollSpyWithNestedNav</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NestedNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navGroup</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "nav")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav nav a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> <span class="c1">// @FindBy(css = "nav nav a")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>   <span class="c1">// @FindBy(css = ".navbar-brand")</span>
-<span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NestedNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+        <span class="c1">// @FindBy(css = "nav")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navGroup</span><span class="o">;</span>          
+        <span class="c1">// @FindBy(css = "nav nav a")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">"nav nav a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span> 
+        <span class="c1">// @FindBy(css = ".navbar-brand")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".navbar-brand"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Link</span> <span class="n">navbarLink</span><span class="o">;</span>   
+    <span class="o">}</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollSpyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollSpyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+        <span class="c1">// @FindBy(xpath = ".//h4 | .//h5")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span>
+        <span class="c1">// @FindBy(css = "p")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollParagraph</span><span class="o">(</span><span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">){</span>
-        <span class="n">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollParagraph</span><span class="o">(</span><span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">){</span>
+            <span class="n">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
 
-        <span class="k">if</span> <span class="o">(!</span><span class="n">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">className</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
-                <span class="n">index</span> <span class="o">&lt;</span> <span class="n">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">className</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">index</span> <span class="o">&lt;</span> <span class="n">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
+
+    <span class="nd">@DataProvider</span>
+    <span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">itemsCheck</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+                <span class="o">{</span><span class="mi">1</span><span class="o">},</span> <span class="o">{</span><span class="mi">2</span><span class="o">},</span> <span class="o">{</span><span class="mi">3</span><span class="o">},</span> <span class="o">{</span><span class="mi">4</span><span class="o">},</span> <span class="o">{</span><span class="mi">5</span><span class="o">},</span> <span class="o">{</span><span class="mi">6</span><span class="o">},</span> <span class="o">{</span><span class="mi">7</span><span class="o">}</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
 
     <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"itemsCheck"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paragraphClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
@@ -16903,19 +16931,28 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-example&gt;a"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ListGroup</span> <span class="n">listGroupForScrollSpy</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#list-example~div"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ScrollSpyNav</span> <span class="n">scrollSpyWithListGroup</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollSpyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span><span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          <span class="c1">// @FindBy(css = "p")</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScrollSpyNav</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+        <span class="c1">//@FindBy(xpath = ".//h4 | .//h5")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">".//h4 | .//h5"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">header</span><span class="o">;</span>
+        <span class="c1">// @FindBy(css = "p")</span>
+        <span class="nd">@UI</span><span class="o">(</span><span class="s">"p"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">mainText</span><span class="o">;</span>          
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollParagraph</span><span class="o">(</span><span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">){</span>
-        <span class="n">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">scrollParagraph</span><span class="o">(</span><span class="n">ListGroup</span> <span class="n">listGroup</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">){</span>
+            <span class="n">mainText</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
 
-        <span class="k">if</span> <span class="o">(!</span><span class="n">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">className</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
-                <span class="n">index</span> <span class="o">&lt;</span> <span class="n">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">listGroup</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">className</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">index</span> <span class="o">&lt;</span> <span class="n">header</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">header</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span>
+
+    <span class="nd">@DataProvider</span>
+    <span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">itemsCheck</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+                <span class="o">{</span><span class="mi">1</span><span class="o">},</span> <span class="o">{</span><span class="mi">2</span><span class="o">},</span> <span class="o">{</span><span class="mi">3</span><span class="o">},</span> <span class="o">{</span><span class="mi">4</span><span class="o">}</span>
+        <span class="o">};</span>
+    <span class="o">}</span>   
 
     <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"itemsCheck"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paragraphClickableTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
