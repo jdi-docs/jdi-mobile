@@ -8078,8 +8078,10 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesDefault</span> <span class="n">checkboxesDefault</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesDefault</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#check1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxOne</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#check1") public Checkbox checkboxOne;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#check1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxTwo</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#check2") public Checkbox checkboxTwo;</span>
+    <span class="c1">// @FindBy(css = "#check1") public Checkbox checkboxOne;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#check1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxOne</span><span class="o">;</span> 
+    <span class="c1">// @FindBy(css = "#check2") public Checkbox checkboxTwo;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#check1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxTwo</span><span class="o">;</span> 
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -8193,9 +8195,12 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesDefaultInline</span> <span class="n">checkboxesDefaultInline</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesDefaultInline</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inlineCheckbox1']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxOne</span><span class="o">;</span> <span class="c1">// @FindBy(xpath = "//input[@id='inlineCheckbox1']/..") public Checkbox checkboxOne;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inlineCheckbox2']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxTwo</span><span class="o">;</span> <span class="c1">// @FindBy(xpath = "//input[@id='inlineCheckbox2']/..") public Checkbox checkboxTwo;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inlineCheckbox3']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxThree</span><span class="o">;</span> <span class="c1">// @FindBy(xpath = "//input[@id='inlineCheckbox3']/..") public Checkbox checkboxThree;</span>
+    <span class="c1">// @FindBy(xpath = "//input[@id='inlineCheckbox1']/..") public Checkbox checkboxOne;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inlineCheckbox1']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxOne</span><span class="o">;</span> 
+    <span class="c1">// @FindBy(xpath = "//input[@id='inlineCheckbox2']/..") public Checkbox checkboxTwo;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inlineCheckbox2']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxTwo</span><span class="o">;</span> 
+    <span class="c1">// @FindBy(xpath = "//input[@id='inlineCheckbox3']/..") public Checkbox checkboxThree;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//input[@id='inlineCheckbox3']/.."</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxThree</span><span class="o">;</span> 
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -8672,7 +8677,8 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">CheckboxesCustom</span> <span class="n">checkboxesCustom</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckboxesCustom</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheck1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customCheck1-div") public Checkbox checkbox;</span>
+    <span class="c1">// @FindBy(css = "#customCheck1-div") public Checkbox checkbox;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customCheck1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> 
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -9083,11 +9089,14 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <p><img src="images/bootstrap/switches.png" alt="Switches custom example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Switches</span> <span class="n">switches</span><span class="o">;</span> <span class="c1">// @FindBy(css = "body") public static Switches switches;</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "body") public static Switches switches;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"body"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Switches</span> <span class="n">switches</span><span class="o">;</span> 
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Switches</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch1-div") public Checkbox checkbox;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch2-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxDisabled</span><span class="o">;</span> <span class="c1">// @FindBy(css = "#customSwitch2-div") public Checkbox checkboxDisabled;</span>
+    <span class="c1">// @FindBy(css = "#customSwitch1-div") public Checkbox checkbox;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch1-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkbox</span><span class="o">;</span> 
+    <span class="c1">// @FindBy(css = "#customSwitch2-div") public Checkbox checkboxDisabled;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#customSwitch2-div"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">checkboxDisabled</span><span class="o">;</span> 
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
