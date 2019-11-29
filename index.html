@@ -12696,47 +12696,7 @@ You may also swap the text out of the spinner element and utilize button text as
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/TooltipTests.java" target="_blank">Bootstrap test example with tooltips</a></p>
 
 <p><br></p>
-<h2 id='bootstrap-complex-elements'>Bootstrap Complex elements</h2><h3 id='collapse'>Collapse</h3><pre class="highlight java tab-java"><code>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">"#bs-group-toggle-one"</span><span class="o">,</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="s">"#bs-group-one"</span><span class="o">,</span>
-                <span class="n">list</span> <span class="o">=</span> <span class="s">"#bs-group-one-body"</span><span class="o">)</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="n">Collapse</span> <span class="n">collapseGroupOne</span><span class="o">;</span>
-
-    <span class="n">String</span> <span class="n">groupOneText</span> <span class="o">=</span> <span class="s">"You probably haven't heard of them accusamus labore sustainable VHS."</span><span class="o">;</span>
-
-    <span class="nd">@Test</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">collapseGroupOneTest</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
-
-            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
-            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">groupOneText</span><span class="o">);</span>
-
-            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span><span class="n">alert</span>
-            <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">collapsed</span><span class="o">();</span>
-        <span class="o">}</span>
-</code></pre>
+<h2 id='bootstrap-complex-elements'>Bootstrap Complex elements</h2><h3 id='collapse'>Collapse</h3>
 <p>The <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/collapse/" target="_blank">collapse</a> is used to show and hide content. 
 Buttons or anchors are used as triggers that are mapped to specific elements you toggle.</p>
 
@@ -12746,7 +12706,25 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 <p><img src="images/bootstrap/collapse.png" alt="Collapse example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"accordion mb-3"</span> <span class="na">id=</span><span class="s">"accordionExample"</span><span class="nt">&gt;</span>
+<pre class="highlight java tab-java"><code>    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">"#bs-group-toggle-one"</span><span class="o">,</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="s">"#bs-group-one"</span><span class="o">,</span>
+                <span class="n">list</span> <span class="o">=</span> <span class="s">"#bs-group-one-body"</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="n">Collapse</span> <span class="n">collapseGroupOne</span><span class="o">;</span>
+
+    <span class="n">String</span> <span class="n">groupOneText</span> <span class="o">=</span> <span class="s">"You probably haven't heard of them accusamus labore sustainable VHS."</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">collapseGroupOneTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+        <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+
+        <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
+        <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">groupOneText</span><span class="o">);</span>
+
+        <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">collapse</span><span class="o">();</span><span class="n">alert</span>
+        <span class="n">collapseGroupOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">collapsed</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"accordion mb-3"</span> <span class="na">id=</span><span class="s">"accordionExample"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span> <span class="na">id=</span><span class="s">"headingOne"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"mb-0"</span><span class="nt">&gt;</span>
@@ -12787,16 +12765,6 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 <td>void</td>
 </tr>
 <tr>
-<td><strong>expanded()</strong></td>
-<td>Checks whether collapse is expanded</td>
-<td>UISelectAssert</td>
-</tr>
-<tr>
-<td><strong>collapsed()</strong></td>
-<td>Checks whether collapse is collapsed</td>
-<td>UISelectAssert</td>
-</tr>
-<tr>
 <td><strong>value()</strong></td>
 <td>Returns collapse <code>value()</code> property</td>
 <td>UIElement</td>
@@ -12804,7 +12772,17 @@ You can use a <code>@JDropdown</code> annotation to declare a Collapse within yo
 <tr>
 <td><strong>list()</strong></td>
 <td>Returns collapse <code>list()</code> property</td>
-<td>UIElement</td>
+<td>WebList</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Various assert actions</td>
+<td>UISelectAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>UISelectAssert</td>
 </tr>
 </tbody></table>
 
