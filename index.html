@@ -4076,7 +4076,8 @@ class="uui-button red" onclick="alert('Red button');"&gt;
   public void labelTest() {
       assertEquals(volume.label().getText(), &quot;Volume&quot;);
       volume.label().is().text(containsString(&quot;lume&quot;));
-      volume.label().assertThat().text(equalToIgnoringCase(&quot;volume&quot;));
+      volume.label().assertThat().
+        text(equalToIgnoringCase(&quot;volume&quot;));
   }
   @Test
   public void assertValidationTest() {
