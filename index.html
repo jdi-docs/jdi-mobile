@@ -9250,120 +9250,41 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <li><strong>C#</strong>:</li>
 </ul>
 
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>doubleClick()</strong></td>
-<td>Double Click on button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>rightClick()</strong></td>
-<td>Right Click the button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>select(String option)</strong></td>
-<td>Select option by text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>select(int option)</strong></td>
-<td>Select option by index</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>values()</strong></td>
-<td>Get list of all available values</td>
-<td>List<String></td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/ButtonTests.java" target="_blank">Test examples in Java</a></p>
-
-<p>Available methods and properties in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
 <p><br></p>
-<h4 id='button-group-basic-example'><a href="https://getbootstrap.com/docs/4.3/components/button-group/#basic-example" target="_blank">Button Group Basic Example</a></h4>
+
+<p>Button group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+<h4 id='button-group-basic'><a href="https://getbootstrap.com/docs/4.3/components/button-group/#basic-example" target="_blank">Button Group Basic</a></h4>
 <p>Wrap a series of buttons with .btn in .btn-group.</p>
 
 <p><img src="images/bootstrap/bgroup-basic-example-screen.png" alt="Button Group Basic Example HTML" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#basic-example"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupBasicExample</span> <span class="n">buttonGroupBasicExample</span><span class="o">;</span>
-<span class="c1">// @FindBy(css = "#basic-example") public static ButtonGroupBasicExample buttonGroupBasicExample;</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#basic-example") public static ButtonGroupBasic buttonGroupBasic;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#basic-example"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupBasic</span> <span class="n">buttonGroupBasic</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonGroupBasicExample</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Left']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">leftButton</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Middle']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">middleButton</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Right']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">rightButton</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonGroupBasic</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Left']"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">leftButton</span><span class="o">;</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Middle']"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">middleButton</span><span class="o">;</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Right']"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">rightButton</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">leftButtonTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">buttonGroupBasicExample</span><span class="o">.</span><span class="na">leftButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+    <span class="n">buttonGroupBasic</span><span class="o">.</span><span class="na">leftButton</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
             <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
             <span class="o">.</span><span class="na">core</span><span class="o">()</span>
             <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"btn btn-secondary"</span><span class="o">)</span>
             <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="s">"16px"</span><span class="o">);</span>
-    <span class="n">buttonGroupBasicExample</span><span class="o">.</span><span class="na">leftButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">buttonGroupBasic</span><span class="o">.</span><span class="na">leftButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
     <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">leftButtonClickAlert</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
@@ -9383,6 +9304,8 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><br></p>
+
+<p>Available methods in Java JDI Light:</p>
 
 <table><thead>
 <tr>
@@ -9425,31 +9348,23 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 
 <p><br></p>
 
-<p>Button group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-
-<p>Inner elements represented by the following classes:
-<ul>
-    <li> <a href="https://jdi-docs.github.io/jdi-light/#button">Button</a></li>
-</ul>
-<br></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/BasicExampleTests.java" target="_blank">Button Group Basic Example Tests Example</a></p>
-
-<p><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/BasicTests.java" target="_blank">Button Group Basic Tests Example</a></p>
 <h4 id='button-toolbar'><a href="https://getbootstrap.com/docs/4.0/components/button-group/#button-toolbar" target="_blank">Button toolbar</a></h4>
 <p>Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.</p>
 
 <p><img src="images/bootstrap/button_toolbar.png" alt="Button toolbar" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".btn-toolbar"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonToolbar</span> <span class="n">buttonToolbar</span><span class="o">;</span>
-<span class="c1">// @FindBy(css = ".btn-toolbar") public static ButtonToolbar buttonToolbar;</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = ".btn-toolbar") public static ButtonToolbar buttonToolbar;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">".btn-toolbar"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonToolbar</span> <span class="n">buttonToolbar</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonToolbar</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">WebList</span> <span class="n">buttonsInToolbar</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">inputAreaInToolbar</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonGroupToolbar</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">WebList</span> <span class="n">buttonsInToolbar</span><span class="o">;</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">inputAreaInToolbar</span><span class="o">;</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonsInButtonToolbarTest</span><span class="o">()</span> <span class="o">{</span>
@@ -9524,9 +9439,50 @@ It is customary to reassign these lambdas before all the tests are run, for exam
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
 <p><br></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/ButtonToolbarTests.java" target="_blank">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/ToolbarTests.java" target="_blank">Bootstrap test examples</a></p>
 <h4 id='button-group-sizing'><a href="https://getbootstrap.com/docs/4.0/components/button-group/#sizing" target="_blank">Button Group Sizing</a></h4>
 <p>Instead of applying button sizing classes to every button in a group, 
 just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including each one when nesting multiple groups.</p>
@@ -9535,30 +9491,34 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#btn-lg-group"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "btn-lg-group")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupSizing</span> <span class="n">largeBtnGroup</span><span class="o">;</span>
 
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Left')]"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Button</span> <span class="n">leftBtn</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Middle')]"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Button</span> <span class="n">midBtn</span><span class="o">;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Right')]"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Button</span> <span class="n">rightBtn</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonGroupSizing</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span> 
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Left')]"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">leftBtn</span><span class="o">;</span>
 
-<span class="n">String</span> <span class="n">leftBtnText</span> <span class="o">=</span> <span class="s">"Left"</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Middle')]"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">midBtn</span><span class="o">;</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">leftBtnText</span><span class="o">));</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Le"</span><span class="o">));</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">));</span>
-    <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">leftBtnText</span><span class="o">))</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">))</span>
-            <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"btn btn-secondary"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[contains(text(), 'Right')]"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">rightBtn</span><span class="o">;</span>
+
+    <span class="n">String</span> <span class="n">leftBtnText</span> <span class="o">=</span> <span class="s">"Left"</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">highlight</span><span class="o">();</span>
+        <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+        <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">leftBtnText</span><span class="o">));</span>
+        <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Le"</span><span class="o">));</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">),</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">));</span>
+        <span class="n">largeBtnGroup</span><span class="o">.</span><span class="na">leftBtn</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">leftBtnText</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"20px"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"btn btn-secondary"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
@@ -9581,8 +9541,6 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
     <span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/SizingTests.java" target="_blank">Bootstrap test examples</a></p>
-
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -9593,54 +9551,14 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 </tr>
 </thead><tbody>
 <tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
 <td><strong>getText()</strong></td>
 <td>Get button text</td>
 <td>String</td>
-</tr>
-<tr>
-<td><strong>getValue()</strong></td>
-<td>Get button value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Click button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>doubleClick()</strong></td>
-<td>Double-click button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>rightClick()</strong></td>
-<td>Right-click button</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>displayed()</strong></td>
-<td>Check that element is displayed</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>css()</strong></td>
-<td>Get button css value</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>cssClass()</strong></td>
-<td>Assert button css class</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>attr()</strong></td>
-<td>Assert button attribute</td>
-<td>IsAssert</td>
-</tr>
-<tr>
-<td><strong>tag()</strong></td>
-<td>Assert button tag</td>
-<td>IsAssert</td>
 </tr>
 <tr>
 <td><strong>is()</strong></td>
@@ -9652,21 +9570,38 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <td>Assert action</td>
 <td>TextAssert</td>
 </tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Check that element is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Check that element is enabled</td>
+<td>TextAssert</td>
+</tr>
 </tbody></table>
 
 <p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/SizingTests.java" target="_blank">Bootstrap test examples</a></p>
 <h4 id='button-group-nesting'><a href="https://getbootstrap.com/docs/4.3/components/button-group/#nesting" target="_blank">Button Group Nesting</a></h4>
 <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
 
 <p><img src="images/bootstrap/bgroup-nesting.png" alt="Button Group Nesting Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#button-group-nesting"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupNesting</span> <span class="n">buttonGroupNesting</span><span class="o">;</span>
-<span class="c1">// @FindBy(css = "#button-group-nesting") public static ButtonGroupNesting buttonGroupNesting;</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#button-group-nesting") public static ButtonGroupNesting buttonGroupNesting;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#button-group-nesting"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonGroupNesting</span> <span class="n">buttonGroupNesting</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonGroupNesting</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='1']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">one</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='2']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">two</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button[onclick*='Button 1']"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">one</span><span class="o">;</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button[onclick*='Button 2']"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">two</span><span class="o">;</span>
+
     <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".btn-group"</span><span class="o">,</span>
             <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-menu"</span><span class="o">,</span>
             <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
@@ -9765,6 +9700,16 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <td>TextAssert</td>
 </tr>
 <tr>
+<td><strong>select(String option)</strong></td>
+<td>Select option by text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>select(int option)</strong></td>
+<td>Select option by index</td>
+<td>void</td>
+</tr>
+<tr>
 <td><strong>expand()</strong></td>
 <td>Dropdown expand</td>
 <td>void</td>
@@ -9783,10 +9728,6 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 
 <p><br></p>
 
-<p>Button group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-
 <p>Inner elements represented by the following classes:
 <ul>
     <li> <a href="https://jdi-docs.github.io/jdi-light/#text">Text</a> </li>
@@ -9796,19 +9737,24 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/NestingTests.java" target="_blank">Button Group Nesting Tests Example</a></p>
 
-<p><br><br></p>
+<p><br></p>
 <h4 id='button-group-vertical-variation'><a href="https://getbootstrap.com/docs/4.3/components/button-group/#vertical-variation" target="_blank">Button Group Vertical Variation</a></h4>
 <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
 
 <p><img src="images/bootstrap/bgroup-vertical-variation.png" alt="Button Group Nesting Example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#vertical-variation"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span>  <span class="n">ButtonGroupVerticalVariation</span> <span class="n">buttonGroupVerticalVariation</span><span class="o">;</span>
-<span class="c1">// @FindBy(css = "#vertical-variation") public static  ButtonGroupVerticalVariation buttonGroupVerticalVariation;</span>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#vertical-variation") public static  ButtonGroupVerticalVariation buttonGroupVerticalVariation;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#vertical-variation"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span>  <span class="n">ButtonGroupVerticalVariation</span> <span class="n">buttonGroupVerticalVariation</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonGroupVerticalVariation</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Button one']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">buttonOne</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='Button two']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">buttonTwo</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button[onclick*='Button One']"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">buttonOne</span><span class="o">;</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"button[onclick*='Button Two']"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="n">Button</span> <span class="n">buttonTwo</span><span class="o">;</span>
+
     <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".btn-group"</span><span class="o">,</span>
             <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-menu"</span><span class="o">,</span>
             <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
@@ -9908,6 +9854,16 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 <td>TextAssert</td>
 </tr>
 <tr>
+<td><strong>select(String option)</strong></td>
+<td>Select option by text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>select(int option)</strong></td>
+<td>Select option by index</td>
+<td>void</td>
+</tr>
+<tr>
 <td><strong>expand()</strong></td>
 <td>Dropdown expand</td>
 <td>void</td>
@@ -9925,10 +9881,6 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 </tbody></table>
 
 <p><br></p>
-
-<p>Button group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
 
 <p>Inner elements represented by the following classes:
 <ul>
@@ -9950,10 +9902,12 @@ just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including ea
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#simple-alert") public static Alert simpleAlert; </span>
-<span class="nd">@Css</span><span class="o">(</span><span class="s">"#simple-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">simpleAlert</span><span class="o">;</span>
+<span class="nd">@Css</span><span class="o">(</span><span class="s">"#simple-alert"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">simpleAlert</span><span class="o">;</span>
 
 <span class="c1">// @FindBy(css = "#dismissible-alert") public static Alert dismissibleAlert;</span>
-<span class="nd">@Css</span><span class="o">(</span><span class="s">"#dismissible-alert"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">dismissibleAlert</span><span class="o">;</span>
+<span class="nd">@Css</span><span class="o">(</span><span class="s">"#dismissible-alert"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Alert</span> <span class="n">dismissibleAlert</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">simpleAlertExistingTest</span><span class="o">()</span> <span class="o">{</span>
