@@ -425,6 +425,9 @@
 								<a href="#uibaseelement" class="toc-h2 h3 toc-link" data-title="UIBaseElement">UIBaseElement</a>
                             </li>
                             <li>
+								<a href="#uielement" class="toc-h2 h3 toc-link" data-title="UIElement">UIElement</a>
+                            </li>
+                            <li>
 								<a href="#weblist" class="toc-h2 h3 toc-link" data-title="WebList">WebList</a>
                             </li>
                         </ul>
@@ -2069,7 +2072,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <p>TBD</p>
 <h1 id='faq'>FAQ</h1>
 <p>TBD</p>
-<h1 id='documentation'>Documentation</h1><h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
+<h1 id='documentation'>Documentation</h1><h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='uielement'>UIElement</h3><h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
@@ -19094,49 +19097,19 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
        <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 </code></pre>
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
+<p>Available methods in Java JDI Light:
+All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#UIElement">UIElement</a></p>
+
+<p>Most applicable methods:
+|Method | Description | Return Type
+--- | --- | ---
+<strong>getText()</strong> | Get button text | String
+<strong>is()</strong> | Assert action | TextAssert 
+<strong>assertThat()</strong> | Assert action | TextAssert
+<strong>get()</strong> | Select button by index | UIElement
+<strong>click()</strong> | Get button text | void
+<strong>highlight()</strong> | Get button text | void
+<strong>unhighlight()</strong> | Get button text | void</p>
 
 <p><br></p>
 
@@ -19231,49 +19204,19 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 </code></pre>
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
+<p>Available methods in Java JDI Light:
+All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#UIElement">UIElement</a></p>
+
+<p>Most applicable methods:
+|Method | Description | Return Type
+--- | --- | ---
+<strong>getText()</strong> | Get button text | String
+<strong>is()</strong> | Assert action | TextAssert 
+<strong>assertThat()</strong> | Assert action | TextAssert
+<strong>get()</strong> | Select button by index | UIElement
+<strong>click()</strong> | Get button text | void
+<strong>highlight()</strong> | Get button text | void
+<strong>unhighlight()</strong> | Get button text | void</p>
 
 <p><br></p>
 
@@ -19353,49 +19296,19 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
        <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 </code></pre>
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
+<p>Available methods in Java JDI Light:
+All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#UIElement">UIElement</a></p>
+
+<p>Most applicable methods:
+|Method | Description | Return Type
+--- | --- | ---
+<strong>getText()</strong> | Get button text | String
+<strong>is()</strong> | Assert action | TextAssert 
+<strong>assertThat()</strong> | Assert action | TextAssert
+<strong>get()</strong> | Select button by index | UIElement
+<strong>click()</strong> | Get button text | void
+<strong>highlight()</strong> | Get button text | void
+<strong>unhighlight()</strong> | Get button text | void</p>
 
 <p><br></p>
 
@@ -19466,49 +19379,19 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 </code></pre>
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
+<p>Available methods in Java JDI Light:
+All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#UIElement">UIElement</a></p>
+
+<p>Most applicable methods:
+|Method | Description | Return Type
+--- | --- | ---
+<strong>getText()</strong> | Get button text | String
+<strong>is()</strong> | Assert action | TextAssert 
+<strong>assertThat()</strong> | Assert action | TextAssert
+<strong>get()</strong> | Select button by index | UIElement
+<strong>click()</strong> | Get button text | void
+<strong>highlight()</strong> | Get button text | void
+<strong>unhighlight()</strong> | Get button text | void</p>
 
 <p><br></p>
 
@@ -19574,49 +19457,19 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 </code></pre>
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
+<p>Available methods in Java JDI Light:
+All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#UIElement">UIElement</a></p>
+
+<p>Most applicable methods:
+|Method | Description | Return Type
+--- | --- | ---
+<strong>getText()</strong> | Get button text | String
+<strong>is()</strong> | Assert action | TextAssert 
+<strong>assertThat()</strong> | Assert action | TextAssert
+<strong>get()</strong> | Select button by index | UIElement
+<strong>click()</strong> | Get button text | void
+<strong>highlight()</strong> | Get button text | void
+<strong>unhighlight()</strong> | Get button text | void</p>
 
 <p><br></p>
 
@@ -19682,49 +19535,19 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 </code></pre>
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
+<p>Available methods in Java JDI Light:
+All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#UIElement">UIElement</a></p>
+
+<p>Most applicable methods:
+|Method | Description | Return Type
+--- | --- | ---
+<strong>getText()</strong> | Get button text | String
+<strong>is()</strong> | Assert action | TextAssert 
+<strong>assertThat()</strong> | Assert action | TextAssert
+<strong>get()</strong> | Select button by index | UIElement
+<strong>click()</strong> | Get button text | void
+<strong>highlight()</strong> | Get button text | void
+<strong>unhighlight()</strong> | Get button text | void</p>
 
 <p><br></p>
 
@@ -19822,59 +19645,21 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 </code></pre>
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expanded()</strong></td>
-<td>Get button text</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
+<p>Available methods in Java JDI Light:
+All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#UIElement">UIElement</a></p>
+
+<p>Most applicable methods:
+|Method | Description | Return Type
+--- | --- | ---
+<strong>getText()</strong> | Get button text | String
+<strong>is()</strong> | Assert action | TextAssert 
+<strong>assertThat()</strong> | Assert action | TextAssert
+<strong>get()</strong> | Select button by index | UIElement
+<strong>click()</strong> | Get button text | void
+<strong>highlight()</strong> | Get button text | void
+<strong>unhighlight()</strong> | Get button text | void
+<strong>expand()</strong> | Get button text | void
+<strong>expanded()</strong> | Get button text | TextAssert</p>
 
 <p><br></p>
 
@@ -19960,59 +19745,21 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 </code></pre>
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expanded()</strong></td>
-<td>Get button text</td>
-<td>TextAssertn</td>
-</tr>
-</tbody></table>
+<p>Available methods in Java JDI Light:
+All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#UIElement">UIElement</a></p>
+
+<p>Most applicable methods:
+|Method | Description | Return Type
+--- | --- | ---
+<strong>getText()</strong> | Get button text | String
+<strong>is()</strong> | Assert action | TextAssert 
+<strong>assertThat()</strong> | Assert action | TextAssert
+<strong>get()</strong> | Select button by index | UIElement
+<strong>click()</strong> | Get button text | void
+<strong>highlight()</strong> | Get button text | void
+<strong>unhighlight()</strong> | Get button text | void
+<strong>expand()</strong> | Get button text | void
+<strong>expanded()</strong> | Get button text | TextAssertn</p>
 
 <p><br></p>
 
