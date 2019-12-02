@@ -27021,34 +27021,9 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td>drivers.version = LATEST<br>drivers.version = PRELATEST<br> driver.version = 2.23.0 <br> driver.version=3.0.0-beta4</td>
 </tr>
 <tr>
-<td><strong>timeout.wait.element</strong></td>
-<td>Wait for an element on the opened page, by default = 10 seconds. Valid values are integers from 0 to 999.</td>
-<td>timeout.wait.element = 20</td>
-</tr>
-<tr>
-<td><strong>timeout.wait.page</strong></td>
-<td>JDI Light automatically defines that new page is opened and in this case will use this timeout (usually it is more than enough for an element). By default, it&#39;s 30 seconds</td>
-<td>timeout.wait.page = 40</td>
-</tr>
-<tr>
-<td><strong>domain</strong></td>
-<td>Web application root URL (used if we&#39;re working with one application in tests). Can be also read from the command line, e.g. <em>${domain}</em></td>
-<td>domain = https://jdi-testing.github.io/jdi-light/</td>
-</tr>
-<tr>
 <td><strong>drivers.folder</strong></td>
 <td>Set up the driver folder. Use only absolute path. If no parameter specified default value is &quot;resources\drivers&quot;. Note there is no filename specifying  required, use &#39;driver&#39; property instead</td>
 <td>drivers.folder = C:\Selenium</td>
-</tr>
-<tr>
-<td><strong>screens.folder</strong></td>
-<td>Set up the screenshot folder</td>
-<td>screens.folder = C:\Test-screenshot</td>
-</tr>
-<tr>
-<td><strong>element.search.strategy</strong></td>
-<td>Can find only one element on a page (<em>single</em>), many elements on a page (<em>multiple</em>). Also, we can define whether we want to search through visible elements only or not. Consists of 2 params: visibility (<em>visible</em> can use <em>displayed</em>, <em>inview</em>, <em>enabled</em> or <em>any</em>), and the type of search. Options: <em>soft (=any, multiple)</em>; <em>strict(=visible, single)</em>; or <em>combined from visible/displayed/inview/enabled/any/all and single/multiple</em>. Note: <em>visible=displayed</em>, <em>any=all</em></td>
-<td>element.search.strategy = visible, multiple<br>element.search.strategy = inview, strict</td>
 </tr>
 <tr>
 <td><strong>browser.size</strong></td>
@@ -27061,24 +27036,14 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td>browser.kill=afterAndBefore<br>browser.kill=after<br>browser.kill=before</td>
 </tr>
 <tr>
-<td><strong>page.load.strategy</strong></td>
-<td>Selenium-like strategies to load the page. Options: <em>normal, eager, none</em></td>
-<td>page.load.strategy = normal</td>
-</tr>
-<tr>
-<td><strong>page.check.after.open</strong></td>
-<td>Check the page has been opened. Available options: <em>NONE, NEW_PAGE, EVERY_PAGE</em></td>
-<td>page.check.after.open = NONE</td>
-</tr>
-<tr>
-<td><strong>assert.type</strong></td>
-<td><a href="https://jdi-docs.github.io/jdi-light/?java#softasserts">Assert type</a>: soft or strict</td>
-<td>assert.type = soft</td>
-</tr>
-<tr>
 <td><strong>driver.remote.url</strong></td>
 <td><a href="https://jdi-docs.github.io/jdi-light/?java#remote-test-runs">Tests can run on remote web servers<a></td>
 <td>driver.remote.url=http://localhost:4444/wd/hub</td>
+</tr>
+<tr>
+<td><strong>timeout.wait.element</strong></td>
+<td>Wait for an element on the opened page, by default = 10 seconds. Valid values are integers from 0 to 999.</td>
+<td>timeout.wait.element = 20</td>
 </tr>
 <tr>
 <td><strong>chrome.capabilities.path</strong></td>
@@ -27123,21 +27088,6 @@ Level <em>STEP</em> can show business-related information in the console output,
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>driver</strong></td>
-<td>Describe what kind of driver we want to use: chrome, firefox, ie… or we can just replace it with ${driver} and read the exact driver name from command line or pom file</td>
-<td>driver = ${driver}</td>
-</tr>
-<tr>
-<td><strong>drivers.version</strong></td>
-<td>By default, JDI Light will download the latest version of the driver for us, but if we need a specific version we can put it here (in this case the framework will find and download exactly the version specified)</td>
-<td>drivers.version = LATEST<br>drivers.version = PRELATEST<br> driver.version = 2.23</td>
-</tr>
-<tr>
-<td><strong>timeout.wait.element</strong></td>
-<td>Wait for an element on the opened page, by default = 10 seconds. Valid values are integers from 0 to 999.</td>
-<td>timeout.wait.element = 20</td>
-</tr>
-<tr>
 <td><strong>timeout.wait.page</strong></td>
 <td>JDI Light automatically defines that new page is opened and in this case will use this timeout (usually it is more than enough for an element). By default, it&#39;s 30 seconds</td>
 <td>timeout.wait.page = 40</td>
@@ -27148,19 +27098,34 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td>domain = https://jdi-testing.github.io/jdi-light/</td>
 </tr>
 <tr>
-<td><strong>browser.size</strong></td>
-<td>The size of the tested browser. By default, JDI Light will maximize the browser, but we can set exact values</td>
-<td>browser.size = MAXIMIZE<br>browser.size = 1024x762</td>
-</tr>
-<tr>
 <td><strong>page.load.strategy</strong></td>
 <td>Like in <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/capabilities_exports_PageLoadStrategy.html" target="_blank">Selenium strategies</a> to load the page. Options: <em>normal, eager, none</em></td>
 <td>page.load.strategy = normal</td>
 </tr>
 <tr>
+<td><strong>page.check.after.open</strong></td>
+<td>Check the page has been opened. Available options: <em>NONE, NEW_PAGE, EVERY_PAGE</em></td>
+<td>page.check.after.open = NONE</td>
+</tr>
+<tr>
+<td><strong>element.search.strategy</strong></td>
+<td>Can find only one element on a page (<em>single</em>), many elements on a page (<em>multiple</em>). Also, we can define whether we want to search through visible elements only or not. Consists of 2 params: visibility (<em>visible</em> can use <em>displayed</em>, <em>inview</em>, <em>enabled</em> or <em>any</em>), and the type of search. Options: <em>soft (=any, multiple)</em>; <em>strict(=visible, single)</em>; or <em>combined from visible/displayed/inview/enabled/any/all and single/multiple</em>. Note: <em>visible=displayed</em>, <em>any=all</em></td>
+<td>element.search.strategy = visible, multiple<br>element.search.strategy = inview, strict</td>
+</tr>
+<tr>
 <td><strong>screenshot.strategy</strong></td>
 <td>Defines screenshoting strategy. If it set to &quot;on fail&quot; value, then when test fails, web element last processed will be highlighted and page screenshot will be taken, saved and added to Allure report as well, if possible. Options: <em>on fail, off</em></td>
 <td>screenshot.strategy = off</td>
+</tr>
+<tr>
+<td><strong>screens.folder</strong></td>
+<td>Set up the screenshot folder</td>
+<td>screens.folder = C:\Test-screenshot</td>
+</tr>
+<tr>
+<td><strong>assert.type</strong></td>
+<td><a href="https://jdi-docs.github.io/jdi-light/?java#softasserts">Assert type</a>: soft or strict</td>
+<td>assert.type = soft</td>
 </tr>
 <tr>
 <td><strong>html.code.logging</strong></td>
