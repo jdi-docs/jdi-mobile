@@ -4036,34 +4036,34 @@ class="uui-button red" onclick="alert('Red button');"&gt;
   <span class="o">}</span>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValueTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">disabledRange</span><span class="o">.</span><span class="na">volume</span><span class="o">(),</span> <span class="mi">50</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">disabledRange</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="mi">50</span><span class="o">);</span>
   <span class="o">}</span>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">minTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">min</span><span class="o">(),</span> <span class="s">"10"</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">min</span><span class="o">(),</span> <span class="mf">10.0</span><span class="o">);</span>
   <span class="o">}</span>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">maxTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">max</span><span class="o">(),</span> <span class="s">"100"</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">max</span><span class="o">(),</span> <span class="mf">100.0</span><span class="o">);</span>
   <span class="o">}</span>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stepTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">step</span><span class="o">(),</span> <span class="s">"5"</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">step</span><span class="o">(),</span> <span class="mf">5.0</span><span class="o">);</span>
   <span class="o">}</span>
   <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setVolumeTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">setVolume</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">volume</span><span class="o">(),</span> <span class="mi">10</span><span class="o">);</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setValue</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">volume</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="mi">10</span><span class="o">);</span>
   <span class="o">}</span>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
       <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">minVolume</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">10</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">maxVolume</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">step</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">volume</span><span class="o">(</span><span class="n">greaterThanOrEqualTo</span><span class="o">(</span><span class="mi">10</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">volume</span><span class="o">(</span><span class="n">lessThanOrEqualTo</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">volume</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">90</span><span class="o">));</span>
+      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">minValue</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">10.0</span><span class="o">));</span>
+      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">maxValue</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">100.0</span><span class="o">));</span>
+      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">step</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">5.0</span><span class="o">));</span>
+      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">greaterThanOrEqualTo</span><span class="o">(</span><span class="mf">10.0</span><span class="o">));</span>
+      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">lessThanOrEqualTo</span><span class="o">(</span><span class="mf">100.0</span><span class="o">));</span>
+      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">90.0</span><span class="o">));</span>
   <span class="o">}</span>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
@@ -4073,9 +4073,9 @@ class="uui-button red" onclick="alert('Red button');"&gt;
   <span class="o">}</span>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertValidationTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">volume</span><span class="o">(</span><span class="n">greaterThan</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">volume</span><span class="o">(</span><span class="n">lessThan</span><span class="o">(</span><span class="mi">200</span><span class="o">));</span>
-      <span class="n">disabledRange</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">volume</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">50</span><span class="o">));</span>
+      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">greaterThan</span><span class="o">(</span><span class="mf">0.0</span><span class="o">));</span>
+      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">lessThan</span><span class="o">(</span><span class="mf">200.0</span><span class="o">));</span>
+      <span class="n">disabledRange</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">50.0</span><span class="o">));</span>
   <span class="o">}</span>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseValidationTest</span><span class="o">()</span> <span class="o">{</span>
@@ -4220,29 +4220,39 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>setVolume(int volume)</strong></td>
+<td><strong>setValue(double volume)</strong></td>
 <td>Sets the value</td>
 <td>void</td>
 </tr>
 <tr>
-<td><strong>volume()</strong></td>
+<td><strong>setValue(String volume)</strong></td>
+<td>Sets the value</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Gets the value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>value()</strong></td>
 <td>Returns the value</td>
-<td>int</td>
+<td>double</td>
 </tr>
 <tr>
 <td><strong>max()</strong></td>
 <td>Returns the max value</td>
-<td>String</td>
+<td>double</td>
 </tr>
 <tr>
 <td><strong>min()</strong></td>
 <td>Returns the min value</td>
-<td>String</td>
+<td>double</td>
 </tr>
 <tr>
 <td><strong>step()</strong></td>
 <td>Returns the step value</td>
-<td>String</td>
+<td>double</td>
 </tr>
 <tr>
 <td><strong>is()</strong></td>
