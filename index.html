@@ -26992,12 +26992,12 @@ Level <em>STEP</em> can show business-related information in the console output,
 <tr>
 <td><strong>driver</strong></td>
 <td>Describe what kind of driver we want to use: chrome, firefox, ie… or we can just replace it with ${driver} and read the exact driver name from command line or pom file</td>
-<td>driver = ${driver}</td>
+<td>driver = ${driver} <br> driver=chrome</td>
 </tr>
 <tr>
 <td><strong>drivers.version</strong></td>
 <td>By default, JDI Light will download the latest version of the driver for us, but if we need a specific version we can put it here (in this case the framework will find and download exactly the version specified)</td>
-<td>drivers.version = LATEST<br>drivers.version = PRELATEST<br> driver.version = 2.23</td>
+<td>drivers.version = LATEST<br>drivers.version = PRELATEST<br> driver.version = 2.23.0 <br> driver.version=3.0.0-beta4</td>
 </tr>
 <tr>
 <td><strong>timeout.wait.element</strong></td>
@@ -27016,7 +27016,7 @@ Level <em>STEP</em> can show business-related information in the console output,
 </tr>
 <tr>
 <td><strong>drivers.folder</strong></td>
-<td>Set up the driver folder</td>
+<td>Set up the driver folder. Use only absolute path. If no parameter specified default value is &quot;resources\drivers&quot;. Note there is no filename specifying  required, use &#39;driver&#39; property instead</td>
 <td>drivers.folder = C:\Selenium</td>
 </tr>
 <tr>
