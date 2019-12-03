@@ -2302,7 +2302,23 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ButtonTests.cs" target="_blank">C# test examples</a>
 <br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#button-3">BDD Steps example</a></p>
-<h3 id='checkbox'>Checkbox</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#accept-conditions"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "accept-conditions")</span>
+<h3 id='checkbox'>Checkbox</h3>
+<p><strong>Checkbox</strong> – Element allows you to select single value for submission.</p>
+
+<p><img src="images/checkbox.png" alt="Checkbox" /></p>
+
+<p>Checkbox is located in the following classes:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Checkbox*</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.CheckBox*</em></li>
+</ul>
+
+<p>Here is an example with provided HTML code:</p>
+
+<!-- ![Checkbox example](../images/html/checkbox_html.png) -->
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "accept-conditions") </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#accept-conditions"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Checkbox</span> <span class="n">acceptConditions</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -2410,24 +2426,11 @@ class="uui-button red" onclick="alert('Red button');"&gt;
     <span class="nf">BaseElementValidation</span><span class="p">(</span><span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">AcceptConditions</span><span class="p">);</span>
 <span class="p">}</span>
 
-</code></pre>
-<p><strong>Checkbox</strong> – Element allows you to select single value for submission.</p>
-
-<p><img src="images/checkbox.png" alt="Checkbox" /></p>
-
-<p>Checkbox is located in the following classes:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Checkbox*</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.CheckBox*</em></li>
-</ul>
-
-<p>Here is an example with provided HTML code:</p>
-
-<!-- ![Checkbox example](../images/html/checkbox_html.png) -->
-<pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"accept-conditions"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"accept-conditions"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
 <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"accept-conditions"</span><span class="nt">&gt;</span>Accept terms and conditions<span class="nt">&lt;/label&gt;</span>
 </code></pre>
+<p><br><br><br><br><br><br><br><br><br><br><br></p>
+
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -2498,17 +2501,6 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <td>Determines whether a checkbox is checked</td>
 <td>bool</td>
 </tr>
-</tbody></table>
-
-<p>Available assert methods in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
 <tr>
 <td><strong>Selected()</strong></td>
 <td>Checks whether a checkbox is selected</td>
@@ -2958,7 +2950,23 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/DateTimeTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/DateTimeTests.cs" target="_blank">Test examples in C#</a></p>
-<h3 id='fileinput'>FileInput</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#avatar"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "avatar")</span>
+<h3 id='fileinput'>FileInput</h3>
+<p><strong>FileInput</strong> - A graphical control element that allows user to upload documents to web site.</p>
+
+<p><img src="images/fileinput.png" alt="FileInput" /></p>
+
+<p>FileInput element is located in JDI Light in:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.FileInput</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.FileInput</em></li>
+</ul>
+
+<p>Here is an example with HTML code provided:</p>
+
+<!-- ![FileInput example](../images/html/fileinput_html.png) -->
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(id = "avatar")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#avatar"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">FileInput</span> <span class="n">avatar</span><span class="o">;</span> 
 
 <span class="nd">@Test</span>
@@ -3003,23 +3011,10 @@ class="uui-button red" onclick="alert('Red button');"&gt;
     <span class="nf">BaseElementValidation</span><span class="p">(</span><span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">FileInput</span><span class="p">);</span>
 <span class="p">}</span>
 
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"avatar"</span> <span class="na">accept=</span><span class="s">"image/png, image/jpeg"</span><span class="nt">&gt;</span>
 </code></pre>
-<p><strong>FileInput</strong> - A graphical control element that allows user to upload documents to web site.</p>
+<p><br><br><br><br><br><br><br><br><br></p>
 
-<p><img src="images/fileinput.png" alt="FileInput" /></p>
-
-<p>FileInput element is located in JDI Light in:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.FileInput</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.FileInput</em></li>
-</ul>
-
-<p>Here is an example with HTML code provided:</p>
-
-<!-- ![FileInput example](../images/html/fileinput_html.png) -->
-<pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"avatar"</span> <span class="na">accept=</span><span class="s">"image/png, image/jpeg"</span><span class="nt">&gt;</span>
-</code></pre>
 <p>Available method in Java JDI Light:</p>
 
 <table><thead>
@@ -3032,12 +3027,12 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <tr>
 <td><strong>is()</strong></td>
 <td>property that returns object for work with assertions</td>
-<td>UIAssert</td>
+<td>TextAssert</td>
 </tr>
 <tr>
 <td><strong>assertThat()</strong></td>
 <td>property that returns object for work with assertions</td>
-<td>UIAssert</td>
+<td>TextAssert</td>
 </tr>
 <tr>
 <td><strong>click()</strong></td>
@@ -3095,17 +3090,6 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <td>Select file to upload</td>
 <td>void</td>
 </tr>
-</tbody></table>
-
-<p>Available assert methods in C# JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
 <tr>
 <td><strong>IsDownloaded()</strong></td>
 <td>Checks whether a file is downloaded</td>
@@ -3133,7 +3117,11 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/FileInputTests.cs">Test examples in C#</a></p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#fileinput-2">BDD Steps example</a></p>
-<h3 id='icon'>Icon</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdi-logo"</span><span class="o">)</span> 
+<h3 id='icon'>Icon</h3>
+<p><strong>Icon</strong> – Is a simple element type that represents icons and graphic images.</p>
+
+<p><img src="images/html/image_html2.png" alt="Icon" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdi-logo"</span><span class="o">)</span> 
 <span class="c1">// same as FindBy(css = "#jdi-logo")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Icon</span> <span class="n">jdiLogo</span><span class="o">;</span>
 
@@ -3160,19 +3148,14 @@ class="uui-button red" onclick="alert('Red button');"&gt;
    <span class="p">{</span>
      <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">LogoImage</span><span class="p">.</span><span class="nf">GetAlt</span><span class="p">(),</span> <span class="n">Alt</span><span class="p">);</span>
    <span class="p">}</span>
-</code></pre>
-<p><strong>Icon</strong> – Is a simple element type that represents icons and graphic images.</p>
-
-<p><img src="images/html/image_html2.png" alt="Icon" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"jdi-logo"</span><span class="nt">&gt;</span>JDI Logo:<span class="nt">&lt;/label&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"jdi-logo"</span><span class="nt">&gt;</span>JDI Logo:<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/jdi-light/images/jdi-logo.jpg"</span> <span class="na">id=</span><span class="s">"jdi-logo"</span> <span class="na">alt=</span><span class="s">"Jdi Logo 2"</span> <span class="na">width=</span><span class="s">"101"</span> <span class="na">height=</span><span class="s">"100"</span> <span class="na">onclick=</span><span class="s">"alert('JDI Logo');"</span><span class="nt">&gt;</span>
 </code></pre>
-<p>Icons are represented by the following classes:</p>
+<p><br><br><br><br><br><br><br><br><br></p>
 
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Icon , com.epam.jdi.light.ui.html.common.Image</em></li>
-<li><strong>C#</strong>: JDI.Light.Interfaces.Common.IIcon, _JDI.Light.Elements.Common.Image</li>
-</ul>
+<p>Icon is represented by Image class:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#image">Image</a></p>
 
 <p>Icon in JDI is a descendant of Image. It inherits all Image&#39;s methods and serves as its wrapper. Here are Java methods for Icon, inherited from Image interface:</p>
 
