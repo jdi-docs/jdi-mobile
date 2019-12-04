@@ -2216,10 +2216,10 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <p><strong>Button</strong> – Element that represents a clickable button.</p>
 
 <p><img src="images/button.png" alt="Button" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"red-button"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span> <span class="na">onclick=</span><span class="s">"alert('Red button');"</span> <span class="na">ondblclick=</span><span class="s">"alert('Double Click');"</span> 
-<span class="na">oncontextmenu=</span><span class="s">"alert('Right Click');"</span><span class="nt">&gt;</span>Red button<span class="nt">&lt;/button&gt;</span>
-</code></pre><pre class="highlight plaintext"><code>&lt;button type="button" id="red-button" class="btn btn-danger" onclick="alert('Red button');" ondblclick="alert('Double Click');"
- oncontextmenu="alert('Right Click');"&gt;Red button&lt;/button&gt;
+<pre class="highlight html tab-html"><code><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"red-button"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span> <span class="na">onclick=</span><span class="s">"alert('Red button');"</span> 
+<span class="na">ondblclick=</span><span class="s">"alert('Double Click');"</span> <span class="na">oncontextmenu=</span><span class="s">"alert('Right Click');"</span><span class="nt">&gt;</span>Red button<span class="nt">&lt;/button&gt;</span>
+</code></pre><pre class="highlight plaintext"><code>&lt;button type="button" id="red-button" class="btn btn-danger" onclick="alert('Red button');" 
+ondblclick="alert('Double Click');" oncontextmenu="alert('Right Click');"&gt;Red button&lt;/button&gt;
 
 
 Button is located in the following classes:
@@ -3527,9 +3527,25 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/LinkTests.cs" target="_blank">Test examples in C#</a>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
 <a href="https://jdi-docs.github.io/jdi-light/#link-2">BDD Steps example</a></p>
-<h3 id='menu'>Menu</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".sidebar-menu span&lt;[*'%s']&lt;&lt;"</span><span class="o">)</span> 
+<h3 id='menu'>Menu</h3>
+<p><strong>Menu</strong> - A list of links, which leads to different pages or sections of website.</p>
+
+<p>Menu element is located in JDI Light in:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html. element
+.Menu</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.Menu</em></li>
+</ul>
+
+<p><img src="images/html/menu2.png" alt="Menu example" /> </p>
+
+<p>Here is an example with provided HTML code:</p>
+
+<!-- ![Menu example](../images/html/menu.png) -->
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".sidebar-menu span&lt;[*'%s']&lt;&lt;"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Menu</span> <span class="n">leftMenu</span><span class="o">;</span>
 <span class="nd">@Url</span><span class="o">(</span><span class="s">"/metals-colors.html"</span><span class="o">)</span> <span class="nd">@Title</span><span class="o">(</span><span class="s">"Metal and Colors"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">MetalAndColorsPage</span> <span class="n">metalAndColorsPage</span><span class="o">;</span>
@@ -3563,23 +3579,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
      <span class="n">TestSite</span><span class="p">.</span><span class="n">SidebarMenu</span><span class="p">.</span><span class="n">AssertThat</span><span class="p">.</span><span class="nf">Selected</span><span class="p">(</span><span class="s">"HTML 5"</span><span class="p">);</span>
 <span class="p">}</span>
 
-</code></pre>
-<p><strong>Menu</strong> - A list of links, which leads to different pages or sections of website.</p>
-
-<p>Menu element is located in JDI Light in:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html. element
-.Menu</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.Menu</em></li>
-</ul>
-
-<p><img src="images/html/menu2.png" alt="Menu example" /> </p>
-
-<p>Here is an example with provided HTML code:</p>
-
-<!-- ![Menu example](../images/html/menu.png) -->
-<pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"sidebar-menu"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"sidebar-menu"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li</span> <span class="na">ui=</span><span class="s">"label"</span> <span class="na">index=</span><span class="s">"1"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"index.html"</span><span class="nt">&gt;</span> <span class="nt">&lt;span&gt;</span>Home<span class="nt">&lt;/span&gt;</span>  <span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/li&gt;</span>           
@@ -4939,8 +4939,11 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.complex.elements.RadioButtons</em></li>
 <li><strong>C#</strong>: <em>JDI.Light.Elements.Complex.RadioButtons</em></li>
 </ul>
-<pre class="highlight java tab-java"><code><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"[name=colors]"</span><span class="o">)</span> <span class="c1">//@FindBy(name = "colors")</span>
+
+<p>Consider an example where each radio button is a particular color, described with given HTML code:</p>
+
+<p><img src="images/html/radio_html2.png" alt="RadioButton" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[name=colors]"</span><span class="o">)</span> <span class="c1">//@FindBy(name = "colors")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtons</span> <span class="n">colors</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -4969,11 +4972,7 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
     <span class="n">MyRadioButtons</span><span class="p">.</span><span class="nf">Is</span><span class="p">().</span><span class="nf">Selected</span><span class="p">(</span><span class="n">Is</span><span class="p">.</span><span class="nf">EqualTo</span><span class="p">(</span><span class="s">"some value"</span><span class="p">));</span> 
     <span class="n">MyRadioButtons</span><span class="p">.</span><span class="nf">AssertThat</span><span class="p">().</span><span class="nf">Selected</span><span class="p">(</span><span class="n">Is</span><span class="p">.</span><span class="nf">EqualTo</span><span class="p">(</span><span class="s">"some value"</span><span class="p">));</span>
 <span class="p">}</span>
-</code></pre>
-<p>Consider an example where each radio button is a particular color, described with given HTML code:</p>
-
-<p><img src="images/html/radio_html2.png" alt="RadioButton" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"red"</span> <span class="na">name=</span><span class="s">"colors"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"red"</span> <span class="na">name=</span><span class="s">"colors"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"red"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
 
 <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"green"</span> <span class="na">name=</span><span class="s">"colors"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
@@ -6101,7 +6100,7 @@ able to perform a list of readonly interactions with this element in order to ge
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/RangeTests.java" target="_blank">Test examples in Java</a><br></p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#datatable-2">BDD Steps example</a>
-<br><br><br><br><br><br><br><br><br><br></p>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h3 id='dropdown'>DropDown</h3>
 <p><strong>DropDown</strong> – A graphical control element that allows user to choose a single value from a list.</p>
 
@@ -6857,6 +6856,8 @@ DataList element contains a set of options with values available as inputs.</p>
 </ul>
 
 <p>See an example with HTML code describing checklist element.</p>
+
+<p><img src="images/html/checklist_html2.png" alt="Checklist Example" /></p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[name=checks-group]"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Checklist</span> <span class="n">weather</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Checklist</span> <span class="n">weatherNoLocator</span><span class="o">;</span>
 
@@ -6926,9 +6927,7 @@ DataList element contains a set of options with values available as inputs.</p>
     <span class="n">_weather</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="k">false</span><span class="p">,</span> <span class="s">"Disabled"</span><span class="p">);</span>
     <span class="n">_weather</span><span class="p">.</span><span class="n">Is</span><span class="p">.</span><span class="nf">Selected</span><span class="p">(</span><span class="nf">HasItems</span><span class="p">(</span><span class="k">new</span> <span class="p">[]</span> <span class="p">{</span> <span class="s">"Hot option"</span> <span class="p">}</span> <span class="p">));</span>
 <span class="p">}</span>
-</code></pre>
-<p><img src="images/html/checklist_html2.png" alt="Checklist Example" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"hot"</span> <span class="na">name=</span><span class="s">"checks-group"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"hot"</span> <span class="na">name=</span><span class="s">"checks-group"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
 <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"hot"</span><span class="nt">&gt;</span>Hot option<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;br&gt;</span>
 
 <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"cold"</span> <span class="na">name=</span><span class="s">"checks-group"</span><span class="nt">&gt;</span>
