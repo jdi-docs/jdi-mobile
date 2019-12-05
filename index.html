@@ -565,18 +565,6 @@
 								<a href="#spinners" class="toc-h2 h3 toc-link" data-title="Spinners">Spinners</a>
                             </li>
                             <li>
-								<a href="#colored-spinners" class="toc-h2 h3 toc-link" data-title="Colored Spinners">Colored Spinners</a>
-                            </li>
-                            <li>
-								<a href="#growing-spinners" class="toc-h2 h3 toc-link" data-title="Growing Spinners">Growing Spinners</a>
-                            </li>
-                            <li>
-								<a href="#spinner-alignment" class="toc-h2 h3 toc-link" data-title="Spinner Alignment">Spinner Alignment</a>
-                            </li>
-                            <li>
-								<a href="#spinner-size" class="toc-h2 h3 toc-link" data-title="Spinner Size">Spinner Size</a>
-                            </li>
-                            <li>
 								<a href="#spinner-buttons" class="toc-h2 h3 toc-link" data-title="Spinner Buttons">Spinner Buttons</a>
                             </li>
                             <li>
@@ -11800,14 +11788,49 @@ Their appearance, alignment, and sizing can be easily customized with Bootstrap 
 
 <p>For accessibility purposes, each loader in the examples below includes <code>role=&quot;status&quot;</code> and a nested <code>&lt;span class=&quot;sr-only&quot;&gt;Loading...&lt;/span&gt;</code>.</p>
 
+<p>Spinners are represented by the following class in JDI:</p>
+
+<ul>
+<li><strong>Java</strong>: <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/common/Spinner.java">Spinner</a></li>
+<li><strong>C#</strong>: TBD</li>
+</ul>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>disappearAfter(int sec)</strong></td>
+<td>Wait when spinner disappear</td>
+<td>Spinner</td>
+</tr>
+<tr>
+<td><strong>getColor()</strong></td>
+<td>Get item color</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>SpinnerAssert</td>
+</tr>
+<tr>
+<td><strong>color()</strong></td>
+<td>Assert action</td>
+<td>SpinnerAssert</td>
+</tr>
+</tbody></table>
+
 <p><strong>Border Spinner</strong></p>
-
-<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/spinners/#border-spinner" target="_blank">Border Spinner</a> - use the border spinners for a lightweight loading indicator.</p>
-
-<p><img src="images/bootstrap/borderspinner.png" alt="Border Spinner Example" /></p>
 <pre class="highlight java tab-java"><code>
 <span class="c1">// @FindBy(id = "button-show-spinner-border")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#button-show-spinner-border"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">buttonSpinnerBorder</span><span class="o">;</span> 
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#button-show-spinner-border"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">buttonSpinnerBorder</span><span class="o">;</span> 
 <span class="c1">// @FindBy(css = "#spinner-border")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-border"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Spinner</span> <span class="n">spinnerBorder</span><span class="o">;</span> 
 
@@ -11823,87 +11846,58 @@ Their appearance, alignment, and sizing can be easily customized with Bootstrap 
 <span class="o">}</span>
 
 </code></pre>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/spinners/#border-spinner" target="_blank">Border Spinner</a> - use the border spinners for a lightweight loading indicator.</p>
+
+<p><img src="images/bootstrap/borderspinner.png" alt="Border Spinner Example" /></p>
+
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-border"</span> <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Border Spinner are represented by the following class:</p>
-
-<ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Spinner</em></li>
-</ul>
-
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>disappearAfter(int sec)</td>
-<td>Wait when spinner dissapear</td>
-<td>Spinner</td>
-</tr>
-<tr>
-<td>is()</td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td>assertThat()</td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-</tbody></table>
-
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/spinner/SpinnerBorderTests.java">Bootstrap test examples</a></p>
-<h3 id='colored-spinners'>Colored Spinners</h3>
-<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/spinners/#colors" target="_blank">Colored spinners</a>.
-The border spinner uses currentColor for its border-color, 
+<h4 id='colors'>Colors</h4><pre class="highlight java tab-java"><code> <span class="c1">// @FindBy(id = "spinner-text-primary")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-text-primary"</span><span class="o">)</span> 
+ <span class="kd">public</span> <span class="kd">static</span> <span class="n">Spinner</span> <span class="n">spinnerWithTextPrimary</span><span class="o">;</span> 
+ <span class="c1">// @FindBy(css = "#spinner-text-light")</span>
+ <span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-text-light"</span><span class="o">)</span> 
+ <span class="kd">public</span> <span class="kd">static</span> <span class="n">Spinner</span> <span class="n">spinnerWithTextLight</span><span class="o">;</span> 
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertColorTests</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span>
+ <span class="o">{</span>
+     <span class="n">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">);</span>
+  <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertSpinnerColorTests</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">colorSpinner</span><span class="o">,</span>
+                                             <span class="n">String</span> <span class="n">color</span><span class="o">){</span>
+     <span class="n">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+         <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+         <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">color</span><span class="o">));</span>
+  <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertColorByHasClassTests</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">colorSpinner</span><span class="o">,</span>
+                                                <span class="n">String</span> <span class="n">color</span><span class="o">){</span>
+     <span class="n">colorSpinner</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"spinner-border"</span> <span class="o">+</span> <span class="n">color</span><span class="o">);</span>
+  <span class="o">}</span>
+
+ <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">__</span><span class="o">){</span>
+     <span class="n">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+         <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+         <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+         <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">))</span>
+         <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"spinner-border"</span><span class="o">))</span>
+         <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"status"</span><span class="o">);</span>
+  <span class="o">}</span>
+</code></pre>
+<p>The border spinner uses <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/spinners/#colors" target="_blank">currentColor</a>
+ for its border-color, 
 meaning you can customize the color with <a href="https://getbootstrap.com/docs/4.3/utilities/colors/" target="_blank">text color utilities</a>. 
 You can use any of our text color utilities on the standard spinner.</p>
-<pre class="highlight java tab-java"><code>
 
-
-
-
-
- <span class="c1">// @FindBy(id = "spinner-text-primary")</span>
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-text-primary"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ColorSpinner</span> <span class="n">spinnerWithTextPrimary</span><span class="o">;</span> 
- <span class="c1">// @FindBy(css = "#spinner-text-light")</span>
- <span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-text-light"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ColorSpinner</span> <span class="n">spinnerWithTextLight</span><span class="o">;</span> 
-
- <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertColorTests</span><span class="o">(</span><span class="n">ColorSpinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">);</span>
- <span class="o">}</span>
-
- <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertSpinnerColorTests</span><span class="o">(</span><span class="n">ColorSpinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">color</span><span class="o">));</span>
- <span class="o">}</span>
-
- <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertColorByHasClassTests</span><span class="o">(</span><span class="n">ColorSpinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">colorSpinner</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"spinner-border"</span> <span class="o">+</span> <span class="n">color</span><span class="o">);</span>
- <span class="o">}</span>
-
- <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"Color Spinners"</span><span class="o">)</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">ColorSpinner</span> <span class="n">colorSpinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">__</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">))</span>
-        <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"spinner-border"</span><span class="o">))</span>
-        <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"status"</span><span class="o">);</span>
- <span class="o">}</span>
-</code></pre>
 <p><img src="images/bootstrap/coloredspinners.png" alt="Colored Spinners Example" />
 Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-border text-primary"</span> <span class="na">role=</span><span class="s">"status"</span> <span class="na">id=</span><span class="s">"spinner-text-primary"</span><span class="nt">&gt;</span>
@@ -11931,46 +11925,13 @@ Here is an example with provided Bootstrap v4.3 code:</p>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Available methods in Java JDI Light:</p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/spinner/SpinnerColorTests.java" target="_blank">Bootstrap test example with colored spinners</a></p>
 
-<table><thead>
-<tr>
-<th>Method/Property</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>getColor()</td>
-<td>Get item color</td>
-<td>String</td>
-</tr>
-<tr>
-<td>is()</td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td>assertThat()</td>
-<td>Assert action</td>
-<td>UIAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ColorSpinnersTests.java" target="_blank">Bootstrap test example with colored spinners</a></p>
-
-<p><br></p>
-<h3 id='growing-spinners'>Growing Spinners</h3>
-<p>If you don’t fancy a border spinner, switch to the <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/spinners/#growing-spinner" target="_blank">grow spinner</a>.</p>
-
-<p>Once again, this spinner is built with currentColor, so you can easily change its appearance with <a href="https://getbootstrap.com/docs/4.3/utilities/colors/" target="_blank">text color utilities</a>. 
-Below it is in blue, along with the supported variants.</p>
-
-<p><img src="images/bootstrap/growingspinners.png" alt="Growing Spinners Example" /></p>
-<pre class="highlight java tab-java"><code>
+<p><br><br></p>
+<h4 id='growing-spinners'>Growing Spinners</h4><pre class="highlight java tab-java"><code>
 <span class="c1">// @FindBy(id = "growing-spinners")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#growing-spinners"</span><span class="o">)</span> 
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">GrowingSpinners</span> <span class="n">growingSpinners</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#growing-spinners"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">GrowingSpinnersSection</span> <span class="n">growingSpinners</span><span class="o">;</span>
 
 <span class="c1">// @FindBy(css = ".text-primary")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">".text-primary"</span><span class="o">)</span>
@@ -12016,6 +11977,13 @@ Below it is in blue, along with the supported variants.</p>
             <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre>
+<p>If you don’t fancy a border spinner, switch to the <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/spinners/#growing-spinner" target="_blank">grow spinner</a>.</p>
+
+<p>Once again, this spinner is built with currentColor, so you can easily change its appearance with <a href="https://getbootstrap.com/docs/4.3/utilities/colors/" target="_blank">text color utilities</a>. 
+Below it is in blue, along with the supported variants.</p>
+
+<p><img src="images/bootstrap/growingspinners.png" alt="Growing Spinners Example" /></p>
+
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"growing-spinners"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-grow text-primary"</span> <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;</span>
@@ -12044,54 +12012,18 @@ Below it is in blue, along with the supported variants.</p>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Spinner is represented by Section class in Java:</p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/spinner/GrowingSpinnersTests.java" target="_blank">Bootstrap Test Examples</a></p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
-
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>is()</strong></td>
-<td>Asserts element</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>displayed()</strong></td>
-<td>Asserts element is displayed</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>enabled()</strong></td>
-<td>Asserts element is enabled</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>UISelectAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/spinner/GrowingSpinnersTests.java" target="_blank">Bootstrap Test Examples</a></p>
-<h3 id='spinner-alignment'>Spinner Alignment</h3>
+<p><br><br><br><br><br><br></p>
+<h4 id='spinner-alignment'>Spinner Alignment</h4>
 <p>Spinners in Bootstrap are built with <code>rem</code>s, <code>currentColor</code>, and <code>display: inline-flex</code>. 
 This means they can easily be resized, recolored, and <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/spinners/#alignment" target="_blank">quickly aligned</a>.</p>
 
 <p><strong>Spinner Margin</strong></p>
-
-<p>Use margin utilities like <code>.m-5</code> for easy spacing.</p>
-
-<p><img src="images/bootstrap/spinnermargin.png" alt="Spinner Margin Example" /></p>
 <pre class="highlight java tab-java"><code>
 <span class="c1">// @FindBy(id = "spinner-alignment")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-alignment"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SpinnerAlignment</span> <span class="n">spinnerAlignment</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-alignment"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">SpinnerAlignmentSection</span> <span class="n">spinnerAlignment</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerData"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">)</span> <span class="o">{</span>
@@ -12104,10 +12036,15 @@ This means they can easily be resized, recolored, and <a style="font-weight: bol
 <span class="o">}</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"spinnerStyleData"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">spinnerAlignmentStyleTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">,</span> <span class="n">String</span> <span class="n">style</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">spinnerAlignmentStyleTest</span><span class="o">(</span><span class="n">Spinner</span> <span class="n">spinner</span><span class="o">,</span>
+                                       <span class="n">String</span> <span class="n">style</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">style</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
+<p>Use margin utilities like <code>.m-5</code> for easy spacing.</p>
+
+<p><img src="images/bootstrap/spinnermargin.png" alt="Spinner Margin Example" /></p>
+
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border mb-3 p-3"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-border"</span> <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;</span>
@@ -12134,7 +12071,8 @@ to place spinners exactly where you need them in any situation.</p>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"d-flex align-items-center border mb-3 p-3"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-border ml-auto"</span> <span class="na">role=</span><span class="s">"status"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-border ml-auto"</span> <span class="na">role=</span><span class="s">"status"</span> 
+        <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p><strong>Spinner Floats</strong></p>
@@ -12159,56 +12097,11 @@ to place spinners exactly where you need them in any situation.</p>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Spinner is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
-
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>is()</strong></td>
-<td>Asserts element</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>displayed()</strong></td>
-<td>Asserts element is displayed</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>enabled()</strong></td>
-<td>Asserts element is enabled</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>UISelectAssert</td>
-</tr>
-<tr>
-<td><strong>attr()</strong></td>
-<td>Match passed value with element attribute</td>
-<td>IsAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/spinner/SpinnerAlignmentTests.java" target="_blank">Bootstrap Test Examples</a></p>
-<h3 id='spinner-size'>Spinner Size</h3>
-<p>Add <code>.spinner-border-sm</code> and <code>.spinner-grow-sm</code> 
-to make a <a href="https://getbootstrap.com/docs/4.3/components/spinners/#size" target="_blank">smaller spinner</a> 
-that can quickly be used within other components.</p>
-
-<p><img src="images/bootstrap/spinner-size-native.png" alt="Spinner Size Native Example" /></p>
-<pre class="highlight java tab-java"><code>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/spinner/SpinnerAlignmentTests.java" target="_blank">Bootstrap Test Examples</a></p>
+<h4 id='spinner-size'>Spinner Size</h4><pre class="highlight java tab-java"><code>
 <span class="c1">// @FindBy(id = "spinner-size")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-size"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">SpinnerSize</span> <span class="n">spinnerSize</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinner-size"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">SpinnerSizeSection</span> <span class="n">spinnerSize</span><span class="o">;</span>
 
 <span class="c1">// @FindBy(css = ".spinner-border-sm")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">".spinner-border-sm"</span><span class="o">)</span>
@@ -12226,9 +12119,12 @@ that can quickly be used within other components.</p>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#spinGrow"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Spinner</span> <span class="n">growingSpinner</span><span class="o">;</span>
 
-<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">smallSpinnerClass</span> <span class="o">=</span> <span class="s">"spinner-border-sm"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">smallGrowingSpinnerClass</span> <span class="o">=</span> <span class="s">"spinner-grow-sm"</span><span class="o">;</span>
-<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerStyleValue</span> <span class="o">=</span> <span class="s">"width: 3rem; height: 3rem; border: 3px dashed red;"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">smallSpinnerClass</span> <span class="o">=</span>
+                                     <span class="s">"spinner-border-sm"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">smallGrowingSpinnerClass</span> <span class="o">=</span>
+                                     <span class="s">"spinner-grow-sm"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerStyleValue</span> <span class="o">=</span> 
+        <span class="s">"width: 3rem; height: 3rem; border: 3px dashed red"</span><span class="o">;</span>
 
 <span class="nd">@DataProvider</span>
 <span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">spinnerData</span><span class="o">()</span> <span class="o">{</span>
@@ -12248,17 +12144,31 @@ that can quickly be used within other components.</p>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">spinnerClassTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">smallSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">smallSpinnerClass</span><span class="o">);</span>
-    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">smallGrowingSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">smallGrowingSpinnerClass</span><span class="o">);</span>
+    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">smallSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span>
+    <span class="n">hasClass</span><span class="o">(</span><span class="n">smallSpinnerClass</span><span class="o">);</span>
+    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">smallGrowingSpinner</span><span class="o">.</span>
+    <span class="nf">is</span><span class="o">().</span>
+    <span class="n">core</span><span class="o">().</span>
+    <span class="n">hasClass</span><span class="o">(</span><span class="n">smallGrowingSpinnerClass</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">spinnerStylingTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"style"</span><span class="o">,</span> <span class="n">spinnerStyleValue</span><span class="o">);</span>
-    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">growingSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">attr</span><span class="o">(</span><span class="s">"style"</span><span class="o">,</span> <span class="n">spinnerStyleValue</span><span class="o">);</span>
+    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">spinner</span><span class="o">.</span>
+    <span class="nf">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span>
+    <span class="n">attr</span><span class="o">(</span><span class="s">"style"</span><span class="o">,</span> <span class="n">spinnerStyleValue</span><span class="o">);</span>
+    <span class="n">spinnerSize</span><span class="o">.</span><span class="na">growingSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span>
+    <span class="n">attr</span><span class="o">(</span><span class="s">"style"</span><span class="o">,</span> <span class="n">spinnerStyleValue</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<p>Add <code>.spinner-border-sm</code> and <code>.spinner-grow-sm</code> 
+to make a <a href="https://getbootstrap.com/docs/4.3/components/spinners/#size" target="_blank">smaller spinner</a> 
+that can quickly be used within other components.</p>
+
+<p><img src="images/bootstrap/spinner-size-native.png" alt="Spinner Size Native Example" /></p>
+
+<p><br>
+Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border mb-3 p-3 text-center"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-border spinner-border-sm"</span> <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
@@ -12268,135 +12178,43 @@ that can quickly be used within other components.</p>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Or, use custom CSS or inline styles to change the dimensions as needed.</p>
+<p><br>
+Or, use custom CSS or inline styles to change the dimensions as needed.</p>
 
 <p><img src="images/bootstrap/spinner-size-css.png" alt="Spinner Size CSS Example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<p><br>
+Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"spinner-size"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border mb-3 p-3 text-center"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-border"</span> <span class="na">id=</span><span class="s">"spinBorder"</span> <span class="na">style=</span><span class="s">"width: 3rem; height: 3rem;"</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-border"</span> <span class="na">id=</span><span class="s">"spinBorder"</span>
+             <span class="na">style=</span><span class="s">"width: 3rem; height: 3rem;"</span>
              <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-grow"</span> <span class="na">id=</span><span class="s">"spinGrow"</span> <span class="na">style=</span><span class="s">"width: 3rem; height: 3rem;"</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spinner-grow"</span> <span class="na">id=</span><span class="s">"spinGrow"</span>
+             <span class="na">style=</span><span class="s">"width: 3rem; height: 3rem;"</span>
              <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p>Spinner is represented by Section class in Java:</p>
+<p><br>
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/spinner/SpinnerSizeTests.java" target="_blank">Bootstrap Test Examples</a></p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a></p>
-
-<p>Available methods in Java JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>is()</strong></td>
-<td>Asserts element</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>displayed()</strong></td>
-<td>Asserts element is displayed</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>enabled()</strong></td>
-<td>Asserts element is enabled</td>
-<td>UIAssert</td>
-</tr>
-<tr>
-<td><strong>hasClass()</strong></td>
-<td>Match passed value with element class</td>
-<td>UISelectAssert</td>
-</tr>
-<tr>
-<td><strong>attr()</strong></td>
-<td>Match passed value with element attribute</td>
-<td>IsAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/spinner/SpinnerSizeTests.java" target="_blank">Bootstrap Test Examples</a></p>
+<p><br><br><br><br><br><br><br></p>
 <h3 id='spinner-buttons'>Spinner Buttons</h3>
 <p>Use <a href="https://getbootstrap.com/docs/4.3/components/spinners/#buttons" target="_blank">spinners within buttons</a> to indicate an action is currently processing or taking place. 
 You may also swap the text out of the spinner element and utilize button text as needed.</p>
 
 <p><img src="images/bootstrap/spinnerbuttons.png" alt="Spinner Buttons Example" /></p>
-<pre class="highlight java tab-java"><code>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonWithSpinner</span> <span class="kd">extends</span> <span class="n">Button</span> <span class="kd">implements</span> <span class="n">PageObject</span> <span class="o">{</span>
-    <span class="c1">// @FindBy(css = "[class*='spinner']")</span>
-    <span class="kd">public</span> <span class="nd">@UI</span><span class="o">(</span><span class="s">"[class*='spinner']"</span><span class="o">)</span> <span class="n">Spinner</span> <span class="n">spinner</span><span class="o">;</span>
-    <span class="c1">// @FindBy(css = "[class*='spinner'] + span")</span>
-    <span class="kd">public</span> <span class="nd">@UI</span><span class="o">(</span><span class="s">"[class*='spinner'] + span"</span><span class="o">)</span>  <span class="n">TextField</span> <span class="n">span</span><span class="o">;</span>
-<span class="o">}</span>
 
-<span class="c1">// @FindBy(id = "#button-with-spinner-and-text")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#button-with-spinner-and-text"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonWithSpinner</span> <span class="n">buttonWithSpinnerAndText</span><span class="o">;</span>
-
-<span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerClass</span> <span class="o">=</span> <span class="s">"spinner-border"</span><span class="o">;</span>
-
-<span class="nd">@Test</span><span class="o">()</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonText</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertTrue</span><span class="o">(</span><span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">());</span>
-    <span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonText</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">()</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkSpinnerInButtonWithText</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">spinnerClass</span><span class="o">);</span>
-    <span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">spinner</span>
-        <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">and</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
-<span class="o">}</span>
-
-</code></pre>
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight html tab-html"><code> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border text-center p-3 mb-3"</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"button-with-spinner"</span><span class="nt">&gt;</span>
-         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"spinner-border spinner-border-sm"</span> <span class="na">role=</span><span class="s">"status"</span>
-               <span class="na">id=</span><span class="s">spinner-in-button"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span>
-         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
-     <span class="nt">&lt;/button&gt;</span>
-     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled=</span><span class="s">""</span>
-             <span class="na">id=</span><span class="s">"button-with-spinner-and-text"</span><span class="nt">&gt;</span>
-         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"spinner-border spinner-border-sm"</span> <span class="na">role=</span><span class="s">"status"</span>
-               <span class="na">id=</span><span class="s">spinner-in-button-with-text"</span>
-               <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span>
-         Loading...
-     <span class="nt">&lt;/button&gt;</span>
- <span class="nt">&lt;/div&gt;</span>
-
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border text-center p-3 mb-3"</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled=</span><span class="s">""</span>
-             <span class="na">id=</span><span class="s">"button-with-growing-spinner"</span><span class="nt">&gt;</span>
-         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"spinner-grow spinner-grow-sm"</span> <span class="na">role=</span><span class="s">"status"</span>
-               <span class="na">id=</span><span class="s">growing-spinner-in-button"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span>
-         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
-     <span class="nt">&lt;/button&gt;</span>
-     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled=</span><span class="s">""</span>
-             <span class="na">id=</span><span class="s">"button-with-growing-spinner-and-text"</span><span class="nt">&gt;</span>
-         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"spinner-grow spinner-grow-sm"</span> <span class="na">role=</span><span class="s">"status"</span>
-               <span class="na">id=</span><span class="s">growing-spinner-in-button-with-text"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span>
-         Loading...
-     <span class="nt">&lt;/button&gt;</span>
- <span class="nt">&lt;/div&gt;</span>
-</code></pre>
-<p>Spinner is represented by ButtonWithSpinner class in Java:</p>
+<p>Buttons with spinner are represented by ButtonWithSpinner class in Java:</p>
 
 <ul>
-<li>com.epam.jdi.light.ui.bootstrap.elements.complex.ButtonWithSpinner</li>
+<li><strong>Java</strong>: <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/complex/ButtonWithSpinner.java">ButtonWithSpinner</a></li>
+<li><strong>C#</strong>: TBD</li>
 </ul>
 
 <p>Available methods in Java JDI Light for ButtonWithSpinner:</p>
@@ -12423,22 +12241,88 @@ You may also swap the text out of the spinner element and utilize button text as
 <td>Assert action</td>
 <td>TextAssert</td>
 </tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
 </tbody></table>
 
-<p>Inner elements of are represented by following classes:</p>
+<p>The inner element is  <a href="https://jdi-docs.github.io/jdi-light/#spinners">Spinner</a></p>
 
-<ul>
-<li><a href="https://jdi-docs.github.io/jdi-light/#text">Text</a></li>
-<li><a href="https://jdi-docs.github.io/jdi-light/#spinners">Spinner</a></li>
-</ul>
+<p><br></p>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/spinner/SpinnerButtonsTests.java" target="_blank">Bootstrap Test Examples</a></p>
-<h3 id='tooltip'>Tooltip</h3>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/spinner/SpinnerButtonsTests.java" target="_blank">Bootstrap Test Examples</a></p>
+<pre class="highlight java tab-java"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonWithSpinner</span> <span class="kd">extends</span> <span class="n">Button</span><span class="o">{</span>
+    <span class="c1">// @FindBy(css = "[class*='spinner']")</span>
+    <span class="kd">public</span> <span class="nd">@UI</span><span class="o">(</span><span class="s">"[class*='spinner']"</span><span class="o">)</span> <span class="n">Spinner</span> <span class="n">spinner</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// @FindBy(id = "#button-with-spinner-and-text")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#button-with-spinner-and-text"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ButtonWithSpinner</span> <span class="n">buttonWithSpinnerAndText</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">spinnerClassName</span> <span class="o">=</span> <span class="s">"spinner-border"</span><span class="o">;</span>
+
+<span class="nd">@Test</span><span class="o">()</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkButtonText</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertTrue</span><span class="o">(</span><span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">());</span>
+    <span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">buttonText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">()</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkSpinnerInButtonWithText</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">spinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="n">spinnerClassName</span><span class="o">);</span>
+    <span class="n">buttonWithSpinnerAndText</span><span class="o">.</span><span class="na">spinner</span>
+        <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">enabled</span><span class="o">();</span>
+<span class="o">}</span>
+
+</code></pre>
+<p><br>
+Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight html tab-html"><code> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border text-center p-3 mb-3"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"button"</span> 
+            <span class="na">disabled=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"button-with-spinner"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"spinner-border spinner-border-sm"</span>
+               <span class="na">role=</span><span class="s">"status"</span>
+               <span class="na">id=</span><span class="s">spinner-in-button"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;/span&gt;</span>
+         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
+     <span class="nt">&lt;/button&gt;</span>
+     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span>
+             <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled=</span><span class="s">""</span>
+             <span class="na">id=</span><span class="s">"button-with-spinner-and-text"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"spinner-border spinner-border-sm"</span>
+               <span class="na">role=</span><span class="s">"status"</span>
+               <span class="na">id=</span><span class="s">spinner-in-button-with-text"</span>
+               <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span>
+         Loading...
+     <span class="nt">&lt;/button&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
+
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border text-center p-3 mb-3"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> 
+            <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled=</span><span class="s">""</span>
+             <span class="na">id=</span><span class="s">"button-with-growing-spinner"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"spinner-grow spinner-grow-sm"</span>
+                <span class="na">role=</span><span class="s">"status"</span>
+               <span class="na">id=</span><span class="s">growing-spinner-in-button"</span> 
+               <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>             
+        <span class="nt">&lt;/span&gt;</span>
+         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
+     <span class="nt">&lt;/button&gt;</span>
+     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> 
+             <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled=</span><span class="s">""</span>
+             <span class="na">id=</span><span class="s">"button-with-growing-spinner-and-text"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"spinner-grow spinner-grow-sm"</span>
+               <span class="na">role=</span><span class="s">"status"</span>
+               <span class="na">id=</span><span class="s">growing-spinner-in-button-with-text"</span>
+                <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span>
+         Loading...
+     <span class="nt">&lt;/button&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
+</code></pre><h3 id='tooltip'>Tooltip</h3>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/tooltips/" target="_blank">Tooltip</a> is a hint that used in conjuction with a pointer.</p>
 
 <p><img src="images/bootstrap/tooltip_top.png" alt="Tooltip top" /></p>
