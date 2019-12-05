@@ -7105,20 +7105,25 @@ MultiSelector is represented by the following class:</p>
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.complex.MultiSelector</em></li>
 <li><strong>C#</strong>: <em>JDI.Light.Elements.Common.MultiSelector</em></li>
 </ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#ages"</span><span class="o">)</span> 
-<span class="c1">// equal to @FindBy(css = "#ages") </span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">MultiSelect</span> <span class="n">ages</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#ages"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#ages")  </span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">MultiSelector</span> <span class="n">ages</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkTest</span><span class="o">()</span> <span class="o">{</span>
-       <span class="n">ages</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">);</span>
-       <span class="n">assertEquals</span><span class="o">(</span><span class="n">ages</span><span class="o">.</span><span class="na">checked</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">));</span>
-    <span class="o">}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">ages</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">ages</span><span class="o">.</span><span class="na">checked</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">));</span>
+<span class="o">}</span>
+
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disabledTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
         <span class="n">ages</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">ages</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">safeException</span><span class="o">(</span><span class="n">ex</span><span class="o">),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"Can't perform click. Element is disabled"</span><span class="o">));</span>
     <span class="o">}</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">ages</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
+<span class="o">}</span>
+
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[Test]</span>
 <span class="k">public</span> <span class="k">void</span> <span class="nf">MultiSelectByValues</span><span class="p">()</span> 
 <span class="p">{</span>
@@ -7407,16 +7412,14 @@ value from a list or enter it by himself (is inherited from the <a href="#datali
 <h2 id='html5-composite-elements'>HTML5 Composite elements</h2><h3 id='section'>Section</h3>
 <p><strong>Section</strong> - Logical part of Web Page that contains other UI Elements</p>
 
-<p>Section is represented by the following class:</p>
+<p>Section is located in the following classes:</p>
 
-<p>Java: com.epam.jdi.light.elements.composite.Section<br>
-public class Section extends JDIBase implements PageObject </p>
-
-<p>C#: JDI.Light.Elements.Composite.Section<br>
-public class Section : UIElement</p>
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.elements.composite.Section</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.Section</em><br></li>
+</ul>
 <pre class="highlight java tab-java"><code>   <span class="nd">@UI</span><span class="o">(</span><span class="s">".someSectionUI"</span><span class="o">)</span> <span class="c1">// @FindBy(css = ".someSectionUI")</span>
    <span class="kd">public</span> <span class="kd">static</span> <span class="n">SomeSection</span> <span class="n">someSectionUI</span><span class="o">;</span>
-   <span class="c1">//public class SomeSection extends Section</span>
 
    <span class="nd">@Test</span>
    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">someSectionWebElementTest</span><span class="o">()</span> <span class="o">{</span>
