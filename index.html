@@ -27010,13 +27010,13 @@ Level <em>STEP</em> can show business-related information in the console output,
 </thead><tbody>
 <tr>
 <td><strong>timeout.wait.page</strong></td>
-<td>JDI Light automatically defines that new page is opened and in this case will use this timeout (usually it is more than enough for an element). By default, it&#39;s 30 seconds</td>
+<td>JDI Light automatically defines that new page is opened and in this case will use this timeout (usually it is more than enough for an element). By default, it&#39;s 30 seconds. Valid values are integers from 0 to 999.</td>
 <td>timeout.wait.page = 40</td>
 </tr>
 <tr>
 <td><strong>domain</strong></td>
 <td>Web application root URL (used if we&#39;re working with one application in tests). Can be also read from the command line, e.g. <em>${domain}</em></td>
-<td>domain = https://jdi-testing.github.io/jdi-light/</td>
+<td>domain = https://jdi-testing.github.io/jdi-light/ <br> domain = http://127.0.0.1:8080</td>
 </tr>
 <tr>
 <td><strong>page.load.strategy</strong></td>
