@@ -27046,6 +27046,11 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td>html.code.logging = off</td>
 </tr>
 <tr>
+<td><strong>log.level</strong></td>
+<td>Defines a level of categorizing the entries in your log file: <em>OFF</em> - no logging; <em>FATAL</em> - unexpected errors; <em>ERROR</em> - critical errors; <em>WARNING</em> - errors due to wrong params; <em>STEP</em> - business related info; <em>INFO</em> - actions info; <em>DEBUG</em> - debug messages; <em>TRACE</em> - trace info; <em>ALL</em> - all log messages. If no level specified log level is <em>INFO</em> by default</td>
+<td>log.level = STEP <br> log.level = ERROR</td>
+</tr>
+<tr>
 <td><strong>smart.locators</strong></td>
 <td>A list of templates for <a href="https://jdi-docs.github.io/jdi-light/#smart-locators">Smart locators</a>. Should be separated by ; symbol</td>
 <td>smart.locators=#%s;[ui=%s]</td>
