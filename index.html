@@ -11472,8 +11472,11 @@ Below are examples of different toggle styles.</p>
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/ExternalContentTests.java" target=a_blank> Bootstrap test examples </a>
 <br></p>
 <h3 id='progress'>Progress</h3>
-<p>Progress is located in the following class:
-- <strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Progress</em></p>
+<p>Progress is located in the following class:</p>
+
+<ul>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Progress</em></li>
+</ul>
 
 <p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/">Progress</a> is custom progress bar featuring support for stacked bars, animated backgrounds, and text labels.</p>
 
@@ -11488,7 +11491,7 @@ Below are examples of different toggle styles.</p>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressWidth"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getWidthTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">width</span><span class="o">);</span>
+   <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">width</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressColor"</span><span class="o">)</span>
@@ -11555,27 +11558,27 @@ Below are examples of different toggle styles.</p>
 </tr>
 <tr>
 <td><strong>value()</strong></td>
-<td>Match passed value with the progress value &#39;aria-valuenow&#39;</td>
+<td>Match passed value with the progress value <em>&#39;aria-valuenow&#39;</em></td>
 <td>ProgressAssert</td>
 </tr>
 <tr>
 <td><strong>color()</strong></td>
-<td>Match passed value with the progress css &#39;background-color&#39;</td>
+<td>Match passed value with the progress css <em>&#39;background-color&#39;</em></td>
 <td>ProgressAssert</td>
 </tr>
 <tr>
 <td><strong>minValue()</strong></td>
-<td>Match passed value with the progress value &#39;aria-valuemin&#39;</td>
+<td>Match passed value with the progress value <em>&#39;aria-valuemin&#39;</em></td>
 <td>ProgressAssert</td>
 </tr>
 <tr>
 <td><strong>maxValue()</strong></td>
-<td>Match passed value with the progress value &#39;aria-valuemax&#39;</td>
+<td>Match passed value with the progress value <em>&#39;aria-valuemax&#39;</em></td>
 <td>ProgressAssert</td>
 </tr>
 <tr>
 <td><strong>animated()</strong></td>
-<td>Match passed value with the progress css &#39;animation-name&#39;</td>
+<td>Match passed value with the progress css <em>&#39;animation-name&#39;</em></td>
 <td>ProgressAssert</td>
 </tr>
 <tr>
@@ -11585,7 +11588,9 @@ Below are examples of different toggle styles.</p>
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBaseTests.java">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBaseTests.java" target=a_blank> Bootstrap test examples </a></p>
+
+<p><br><br><br><br><br></p>
 <h4 id='labels'>Labels</h4>
 <p>Add <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#labels">labels</a> to your progress bars by placing text within the <code>.progress-bar</code>.</p>
 
@@ -11593,29 +11598,30 @@ Below are examples of different toggle styles.</p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#progress-with-labels")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-with-labels"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressWithLabels</span><span class="o">;</span> 
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-with-labels"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressWithLabels</span><span class="o">;</span> 
 
 <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getDefaultPercentTest</span><span class="o">()</span> <span class="o">{</span>
-         <span class="n">assertThat</span><span class="o">(</span><span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getText</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">defaultPercent</span><span class="o">));</span>
-    <span class="o">}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getDefaultPercentTest</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">assertThat</span><span class="o">(</span><span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getText</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="n">defaultPercent</span><span class="o">));</span>
+<span class="o">}</span>
 
 <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getPercentTest</span><span class="o">()</span> <span class="o">{</span>
-         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">defaultPercent</span><span class="o">);</span>
-         <span class="n">minus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"20%"</span><span class="o">);</span>
-         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-             <span class="n">minus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-         <span class="o">}</span>
-         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">minPercent</span><span class="o">);</span>
-         <span class="n">plus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"5%"</span><span class="o">);</span>
-         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-             <span class="n">plus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-         <span class="o">}</span>
-         <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">maxPercent</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getPercentTest</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">defaultPercent</span><span class="o">);</span>
+   <span class="n">minus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+   <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"20%"</span><span class="o">);</span>
+   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+       <span class="n">minus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+   <span class="o">}</span>
+   <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">minPercent</span><span class="o">);</span>
+   <span class="n">plus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+   <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"5%"</span><span class="o">);</span>
+   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+       <span class="n">plus</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+   <span class="o">}</span>
+   <span class="n">progressWithLabels</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">maxPercent</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"progress-with-labels"</span> <span class="na">class=</span><span class="s">"progress-bar"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">style=</span><span class="s">"width: 25%;"</span> <span class="na">aria-valuenow=</span><span class="s">"25"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span><span class="nt">&gt;</span>25%<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
@@ -11634,22 +11640,22 @@ Below are examples of different toggle styles.</p>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-height .progress"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">ProgressSection</span><span class="o">&gt;</span> <span class="n">progressHeightSections</span><span class="o">;</span>
 
- <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">heightOfSectionShouldBeValid</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">for</span> <span class="o">(</span><span class="n">ProgressSection</span> <span class="n">section</span> <span class="o">:</span> <span class="n">progressHeightSections</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">actualHeight</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getSize</span><span class="o">().</span><span class="na">getHeight</span><span class="o">();</span>
-            <span class="kt">int</span> <span class="n">expectedHeight</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="na">getProgressSectionHeightValueInPx</span><span class="o">();</span>
-            <span class="n">assertEquals</span><span class="o">(</span><span class="n">actualHeight</span><span class="o">,</span> <span class="n">expectedHeight</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">heightOfSectionShouldBeValid</span><span class="o">()</span> <span class="o">{</span>
+   <span class="k">for</span> <span class="o">(</span><span class="n">ProgressSection</span> <span class="n">section</span> <span class="o">:</span> <span class="n">progressHeightSections</span><span class="o">)</span> <span class="o">{</span>
+       <span class="kt">int</span> <span class="n">actualHeight</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">getSize</span><span class="o">().</span><span class="na">getHeight</span><span class="o">();</span>
+       <span class="kt">int</span> <span class="n">expectedHeight</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="na">getProgressSectionHeightValueInPx</span><span class="o">();</span>
+       <span class="n">assertEquals</span><span class="o">(</span><span class="n">actualHeight</span><span class="o">,</span> <span class="n">expectedHeight</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">heightOfBarShouldBeValid</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">for</span> <span class="o">(</span><span class="n">ProgressSection</span> <span class="n">section</span> <span class="o">:</span> <span class="n">progressHeightSections</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">expectedBarHeight</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="na">getProgressSectionHeightValueInPx</span><span class="o">();</span>
-            <span class="n">section</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">expectedBarHeight</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">heightOfBarShouldBeValid</span><span class="o">()</span> <span class="o">{</span>
+   <span class="k">for</span> <span class="o">(</span><span class="n">ProgressSection</span> <span class="n">section</span> <span class="o">:</span> <span class="n">progressHeightSections</span><span class="o">)</span> <span class="o">{</span>
+       <span class="kt">int</span> <span class="n">expectedBarHeight</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="na">getProgressSectionHeightValueInPx</span><span class="o">();</span>
+       <span class="n">section</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">expectedBarHeight</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
 
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"progress-height"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p&gt;</span>various heights<span class="nt">&lt;/p&gt;</span>
@@ -11686,26 +11692,26 @@ Below are examples of different toggle styles.</p>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-backgrounds-red"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressBackgroundRed</span><span class="o">;</span>
 
 <span class="nd">@DataProvider</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"progressBackgroundsWithAttributes"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">progressBackgroundsWithAttributes</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
-                <span class="o">{</span><span class="n">progressBackgroundGreen</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="s">"rgba(40, 167, 69, 1)"</span><span class="o">},</span>
-                <span class="o">{</span><span class="n">progressBackgroundBlue</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="s">"rgba(23, 162, 184, 1)"</span><span class="o">},</span>
-                <span class="o">{</span><span class="n">progressBackgroundYellow</span><span class="o">,</span> <span class="mi">75</span><span class="o">,</span> <span class="s">"rgba(255, 193, 7, 1)"</span><span class="o">},</span>
-                <span class="o">{</span><span class="n">progressBackgroundRed</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="s">"rgba(220, 53, 69, 1)"</span><span class="o">}</span>
-        <span class="o">};</span>
-    <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">progressBackgroundsWithAttributes</span><span class="o">()</span> <span class="o">{</span>
+   <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+           <span class="o">{</span><span class="n">progressBackgroundGreen</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="s">"rgba(40, 167, 69, 1)"</span><span class="o">},</span>
+           <span class="o">{</span><span class="n">progressBackgroundBlue</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="s">"rgba(23, 162, 184, 1)"</span><span class="o">},</span>
+           <span class="o">{</span><span class="n">progressBackgroundYellow</span><span class="o">,</span> <span class="mi">75</span><span class="o">,</span> <span class="s">"rgba(255, 193, 7, 1)"</span><span class="o">},</span>
+           <span class="o">{</span><span class="n">progressBackgroundRed</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="s">"rgba(220, 53, 69, 1)"</span><span class="o">}</span>
+   <span class="o">};</span>
+<span class="o">}</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressBackgroundsWithAttributes"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">ICoreElement</span> <span class="n">progressBackground</span><span class="o">,</span> <span class="kt">int</span> <span class="n">widthNumber</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">progressBackground</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">))</span>
-                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"progressbar"</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"style"</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"width: %s%%;"</span><span class="o">,</span> <span class="n">widthNumber</span><span class="o">))</span>
-                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuenow"</span><span class="o">,</span> <span class="n">widthNumber</span> <span class="o">+</span> <span class="s">""</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuemin"</span><span class="o">,</span> <span class="s">"0"</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuemax"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">color</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">(</span><span class="n">ICoreElement</span> <span class="n">progressBackground</span><span class="o">,</span> <span class="kt">int</span> <span class="n">widthNumber</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">progressBackground</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">()</span>
+           <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"div"</span><span class="o">))</span>
+           <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"progressbar"</span><span class="o">)</span>
+           <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"style"</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"width: %s%%;"</span><span class="o">,</span> <span class="n">widthNumber</span><span class="o">))</span>
+           <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuenow"</span><span class="o">,</span> <span class="n">widthNumber</span> <span class="o">+</span> <span class="s">""</span><span class="o">)</span>
+           <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuemin"</span><span class="o">,</span> <span class="s">"0"</span><span class="o">)</span>
+           <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-valuemax"</span><span class="o">,</span> <span class="s">"100"</span><span class="o">)</span>
+           <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"background-color"</span><span class="o">,</span> <span class="n">color</span><span class="o">);</span>
+<span class="o">}</span>
 
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"progress-backgrounds-green"</span> <span class="na">class=</span><span class="s">"progress-bar bg-success"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">style=</span><span class="s">"width: 25%"</span> <span class="na">aria-valuenow=</span><span class="s">"25"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span><span class="nt">&gt;&lt;/div&gt;</span>
@@ -11741,9 +11747,9 @@ Below are examples of different toggle styles.</p>
             <span class="n">progressSection</span> <span class="o">-&gt;</span> <span class="o">{</span>
                 <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">classStriped</span><span class="o">);</span>
                 <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
-                                             <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">)</span>
-                                             <span class="o">.</span><span class="na">minValue</span><span class="o">(</span><span class="n">min</span><span class="o">)</span>
-                                             <span class="o">.</span><span class="na">maxValue</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
+                        <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">minValue</span><span class="o">(</span><span class="n">min</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">maxValue</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
             <span class="o">});</span>
 <span class="o">}</span>
 
@@ -11768,7 +11774,7 @@ Below are examples of different toggle styles.</p>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listprogressbars/ProgressBarsListTests.java">Bootstrap test examples</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBarsListTests.java" target=a_blank> Bootstrap test examples </a></p>
 
 <p><br><br><br><br><br><br></p>
 <h4 id='animated-stripes'>Animated stripes</h4>
@@ -11777,20 +11783,21 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
 <pre class="highlight java tab-java"><code><span class="c1">//FindBy(css = "#progress-animated")</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-animated"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressAnimated</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-animated"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressAnimated</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">progressAnimated</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">animated</span><span class="o">(</span><span class="s">"progress-bar-stripes"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"75"</span><span class="o">);</span>
+   <span class="n">progressAnimated</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+           <span class="o">.</span><span class="na">animated</span><span class="o">(</span><span class="s">"progress-bar-stripes"</span><span class="o">)</span>
+           <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">)</span>
+           <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"75"</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress-bar progress-bar-striped progress-bar-animated"</span> <span class="na">id=</span><span class="s">"progress-animated"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">aria-valuenow=</span><span class="s">"75"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span> <span class="na">style=</span><span class="s">"width: 75%"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre>
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressAnimatedStripesTests.java">Bootstrap test examples</a>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressAnimatedStripesTests.java" target=a_blank> Bootstrap test examples </a>
 <br><br><br><br><br><br><br><br></p>
 <h3 id='spinners'>Spinners</h3>
 <p>Bootstrap “spinners” can be used to show the loading state in your projects. 
