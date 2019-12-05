@@ -11480,20 +11480,23 @@ Below are examples of different toggle styles.</p>
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navbar/ExternalContentTests.java" target=a_blank> Bootstrap test examples </a>
 <br></p>
 <h3 id='progress'>Progress</h3>
+<p>Progress is located in the following class:
+- <strong>Java</strong>: <em>com.epam.jdi.light.ui.bootstrap.elements.common.Progress</em></p>
+
 <p><a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/">Progress</a> is custom progress bar featuring support for stacked bars, animated backgrounds, and text labels.</p>
 
-<p>There is also a complex element <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/progress/">MultiplebarsProgress</a> which may consist of several progress bars.</p>
+<p>There is also a complex element <a style="font-weight: bold;" href="https://jdi-docs.github.io/jdi-light/?java#multiple-progress-bars">MultiplebarsProgress</a> which may consist of several progress bars.</p>
 
 <p><img src="images/bootstrap/progress.png" alt="Progress example" /></p>
 
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<p>Here is an example with provided Bootstrap v4.3 code:_</p>
 <pre class="highlight java tab-java"><code><span class="c1">//FindBy(css = "#progress-bar-base-width-25 .progress-bar"</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#progress-bar-base-width-25 .progress-bar"</span><span class="o">)</span>  
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Progress</span> <span class="n">progressBaseWidth25</span><span class="o">;</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressWidth"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getWidthTest</span><span class="o">(</span><span class="n">Progress</span> <span class="n">progress</span><span class="o">,</span> <span class="n">String</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ariaValue</span><span class="o">(</span><span class="n">width</span><span class="o">);</span>
+    <span class="n">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">width</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressColor"</span><span class="o">)</span>
@@ -11559,14 +11562,39 @@ Below are examples of different toggle styles.</p>
 <td>ProgressAssert</td>
 </tr>
 <tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>UIAssert</td>
+<td><strong>value()</strong></td>
+<td>Match passed value with the progress value &#39;aria-valuenow&#39;</td>
+<td>ProgressAssert</td>
+</tr>
+<tr>
+<td><strong>color()</strong></td>
+<td>Match passed value with the progress css &#39;background-color&#39;</td>
+<td>ProgressAssert</td>
+</tr>
+<tr>
+<td><strong>minValue()</strong></td>
+<td>Match passed value with the progress value &#39;aria-valuemin&#39;</td>
+<td>ProgressAssert</td>
+</tr>
+<tr>
+<td><strong>maxValue()</strong></td>
+<td>Match passed value with the progress value &#39;aria-valuemax&#39;</td>
+<td>ProgressAssert</td>
+</tr>
+<tr>
+<td><strong>animated()</strong></td>
+<td>Match passed value with the progress css &#39;animation-name&#39;</td>
+<td>ProgressAssert</td>
+</tr>
+<tr>
+<td><strong>height()</strong></td>
+<td>Match passed value with the progress height</td>
+<td>ProgressAssert</td>
 </tr>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBaseTests.java">Bootstrap test examples</a></p>
-<h4 id='with-label'>With label</h4>
+<h4 id='labels'>Labels</h4>
 <p>Add <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#labels">labels</a> to your progress bars by placing text within the <code>.progress-bar</code>.</p>
 
 <p><img src="images/bootstrap/progress-label.png" alt="Progress label example" /></p>
@@ -11603,7 +11631,7 @@ Below are examples of different toggle styles.</p>
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressWithLabelsTests.java" target=a_blank> Bootstrap test examples </a></p>
 
 <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-<h4 id='with-height'>With height</h4>
+<h4 id='height'>Height</h4>
 <p>We only set a <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#height">height</a>
  value on the .progress, so if you change that value the inner .progress-bar will automatically resize accordingly.</p>
 
@@ -11650,7 +11678,7 @@ Below are examples of different toggle styles.</p>
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressHeightTests.java" target=a_blank> Bootstrap test examples </a></p>
 
 <p><br><br><br><br><br></p>
-<h4 id='with-backgrounds'>With backgrounds</h4>
+<h4 id='backgrounds'>Backgrounds</h4>
 <p>Use <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#backgrounds">background</a> utility classes to change the appearance of individual progress bars.</p>
 
 <p><img src="images/bootstrap/progress-backgrounds.png" alt="Progress backgroundsexample" /></p>
@@ -11703,37 +11731,29 @@ Below are examples of different toggle styles.</p>
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/progress/ProgressBackgroundTests.java" target=a_blank> Bootstrap test examples </a></p>
 
 <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-<h4 id='with-striped-design'>With striped design</h4>
+<h4 id='striped'>Striped</h4>
 <p>Add <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#striped">.progress-bar-striped</a> to any <code>.progress-bar to apply</code> a stripe via CSS gradient over the progress bar’s background color.</p>
 
 <p><img src="images/bootstrap/progress-striped.png" alt="Progress striped example" /></p>
 
 <p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code>
-    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BootstrapPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#striped-base .progress"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">ProgressSection</span><span class="o">&gt;</span> <span class="n">progressSections</span><span class="o">;</span>
-    <span class="o">}</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#striped-base .progress")    </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#striped-base .progress"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">ProgressSection</span><span class="o">&gt;</span> <span class="n">progressSections</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProgressSection</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-        <span class="c1">//@FindBy(css = ".progress-bar")</span>
-        <span class="nd">@UI</span><span class="o">(</span><span class="s">".progress-bar"</span><span class="o">)</span>
-        <span class="kd">public</span> <span class="n">Progress</span> <span class="n">progress</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressData"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkProgressData</span><span class="o">(</span><span class="n">String</span> <span class="n">progressId</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">,</span>
-                                  <span class="n">String</span> <span class="n">min</span><span class="o">,</span> <span class="n">String</span> <span class="n">max</span><span class="o">,</span> <span class="n">String</span> <span class="n">classStriped</span><span class="o">)</span> <span class="o">{</span>
-
-        <span class="n">progressSections</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">progressSection</span> <span class="o">-&gt;</span>
-                <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">progressId</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span>
-                <span class="n">progressSection</span> <span class="o">-&gt;</span> <span class="o">{</span>
-                    <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">classStriped</span><span class="o">);</span>
-                    <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ariaValue</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
-                                                 <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">)</span>
-                                                 <span class="o">.</span><span class="na">minValue</span><span class="o">(</span><span class="n">min</span><span class="o">)</span>
-                                                 <span class="o">.</span><span class="na">maxValue</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
-                <span class="o">});</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"progressData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkProgressData</span><span class="o">(</span><span class="n">String</span> <span class="n">progressId</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">,</span> <span class="n">String</span> <span class="n">color</span><span class="o">,</span>
+                              <span class="n">String</span> <span class="n">min</span><span class="o">,</span> <span class="n">String</span> <span class="n">max</span><span class="o">,</span> <span class="n">String</span> <span class="n">classStriped</span>
+    <span class="n">progressSections</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">progressSection</span> <span class="o">-&gt;</span>
+            <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">progressId</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span>
+            <span class="n">progressSection</span> <span class="o">-&gt;</span> <span class="o">{</span>
+                <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">hasClass</span><span class="o">(</span><span class="n">classStriped</span><span class="o">);</span>
+                <span class="n">progressSection</span><span class="o">.</span><span class="na">progress</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">value</span><span class="o">)</span>
+                                             <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="n">color</span><span class="o">)</span>
+                                             <span class="o">.</span><span class="na">minValue</span><span class="o">(</span><span class="n">min</span><span class="o">)</span>
+                                             <span class="o">.</span><span class="na">maxValue</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
+            <span class="o">});</span>
+<span class="o">}</span>
 
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"striped-base"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;br&gt;</span>
@@ -11759,7 +11779,7 @@ Below are examples of different toggle styles.</p>
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listprogressbars/ProgressBarsListTests.java">Bootstrap test examples</a></p>
 
 <p><br><br><br><br><br><br></p>
-<h4 id='with-animated-design'>With animated design</h4>
+<h4 id='animated-stripes'>Animated stripes</h4>
 <p>The striped gradient can also be <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/progress/#animated-stripes">animated</a>.
 Add .progress-bar-animated to .progress-bar to animate the stripes right to left via CSS3 animations.</p>
 
@@ -11772,7 +11792,7 @@ Add .progress-bar-animated to .progress-bar to animate the stripes right to left
     <span class="n">progressAnimated</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
             <span class="o">.</span><span class="na">animated</span><span class="o">(</span><span class="s">"progress-bar-stripes"</span><span class="o">)</span>
             <span class="o">.</span><span class="na">color</span><span class="o">(</span><span class="s">"rgba(0, 123, 255, 1)"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">ariaValue</span><span class="o">(</span><span class="s">"75"</span><span class="o">);</span>
+            <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"75"</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress-bar progress-bar-striped progress-bar-animated"</span> <span class="na">id=</span><span class="s">"progress-animated"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">aria-valuenow=</span><span class="s">"75"</span> <span class="na">aria-valuemin=</span><span class="s">"0"</span> <span class="na">aria-valuemax=</span><span class="s">"100"</span> <span class="na">style=</span><span class="s">"width: 75%"</span><span class="nt">&gt;&lt;/div&gt;</span>
