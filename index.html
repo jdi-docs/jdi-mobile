@@ -26946,16 +26946,6 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td>drivers.folder = C:\Selenium</td>
 </tr>
 <tr>
-<td><strong>browser.size</strong></td>
-<td>the size of the tested browser. By default, JDI Light will maximize the browser, but we can set exact values</td>
-<td>browser.size = MAXIMIZE<br>browser.size = 1024x762</td>
-</tr>
-<tr>
-<td><strong>browser.kill</strong></td>
-<td>Set up at what time browser should be shut down</td>
-<td>browser.kill=afterAndBefore<br>browser.kill=after<br>browser.kill=before</td>
-</tr>
-<tr>
 <td><strong>driver.remote.url</strong></td>
 <td><a href="https://jdi-docs.github.io/jdi-light/?java#remote-test-runs">Tests can run on remote web servers<a></td>
 <td>driver.remote.url=http://localhost:4444/wd/hub</td>
@@ -27016,6 +27006,16 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td><strong>domain</strong></td>
 <td>Web application root URL (used if we&#39;re working with one application in tests). Can be also read from the command line, e.g. <em>${domain}</em></td>
 <td>domain = https://jdi-testing.github.io/jdi-light/ <br> domain = http://127.0.0.1:8080</td>
+</tr>
+<tr>
+<td><strong>browser.size</strong></td>
+<td>the size of the tested browser. By default, JDI Light will maximize the browser, but we can set exact values</td>
+<td>browser.size = MAXIMIZE<br>browser.size = 1024x762</td>
+</tr>
+<tr>
+<td><strong>browser.kill</strong></td>
+<td>Set up at what time browser should be shut down</td>
+<td>browser.kill=afterAndBefore<br>browser.kill=after<br>browser.kill=before</td>
 </tr>
 <tr>
 <td><strong>page.load.strategy</strong></td>
