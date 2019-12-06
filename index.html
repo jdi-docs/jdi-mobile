@@ -6080,110 +6080,6 @@ able to perform a list of readonly interactions with this element in order to ge
 <br><br><br></p>
 <h3 id='dropdown'>DropDown</h3>
 <p><strong>DropDown</strong> – A graphical control element that allows user to choose a single value from a list.</p>
-
-<p><img src="images/dropdown.png" alt="DropDown" /></p>
-
-<p>JDI Light has support for dropdown elements with their own type. There are several ways of dropdown usage in JDI Light, each serving different needs.</p>
-
-<p><strong>JDI Dropdown annotation</strong></p>
-
-<p>For better use, JDI Light provides a <strong><em>@JDropdown</em></strong> annotation to locate dropdown elements. This annotation consists of the following elements:</p>
-
-<ul>
-<li><strong><em>root()</em></strong> - value of this element points to the root locator of dropdown element</li>
-<li><strong><em>value()</em></strong> - locator of option selected by default in dropdown list</li>
-<li><strong><em>list()</em></strong> - locator representing list options</li>
-<li><strong><em>expand()</em></strong> - locator for expanding the dropdown list</li>
-<li><strong><em>how()</em></strong> - type of locators with which elements will be identified. By default it is css</li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">"div[ui=dropdown]"</span><span class="o">,</span>
-           <span class="n">value</span> <span class="o">=</span> <span class="s">".filter-option"</span><span class="o">,</span>
-           <span class="n">list</span> <span class="o">=</span> <span class="s">"li"</span><span class="o">,</span>
-           <span class="n">expand</span> <span class="o">=</span> <span class="s">".caret"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Droplist</span> <span class="n">colors</span><span class="o">;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">complexTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">metalAndColorsPage</span><span class="o">.</span><span class="na">shouldBeOpened</span><span class="o">();</span>
-    <span class="n">metalAndColorsPage</span><span class="o">.</span><span class="na">colors</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Green</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="p">[</span><span class="nf">JDropDown</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="s">"#colors"</span><span class="p">,</span> 
-           <span class="k">value</span><span class="p">:</span> <span class="s">".filter-option"</span><span class="p">,</span> 
-           <span class="n">list</span><span class="p">:</span><span class="s">"li"</span><span class="p">,</span> 
-           <span class="n">expand</span><span class="p">:</span><span class="s">".caret"</span><span class="p">)]</span>
-<span class="k">public</span> <span class="n">Droplist</span> <span class="n">Colors</span><span class="p">;</span>
-
-<span class="na">[Test]</span>
-<span class="k">public</span> <span class="k">void</span> <span class="nf">ComplexTest</span><span class="p">()</span> 
-<span class="p">{</span>
-    <span class="n">MetalAndColorsPage</span><span class="p">.</span><span class="nf">ShouldBeOpened</span><span class="p">();</span>
-    <span class="n">MetalAndColorsPage</span><span class="p">.</span><span class="n">Colors</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">Green</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre>
-<p>Suppose we have &#39;Colors&#39; dropdown, which looks like this in HTML code:</p>
-
-<!-- ![Dropdown HTML](../images/html/dropdown_html.png) -->
-<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group colors"</span> <span class="na">ui=</span><span class="s">"dropdown"</span> <span class="na">id=</span><span class="s">"colors"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"selectpicker uui-form-element"</span> <span class="na">style=</span><span class="s">"display: none;"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Colors<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Red<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Green<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Blue<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Yellow<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;/select&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group bootstrap-select uui-form-element"</span><span class="nt">&gt;&lt;button</span> <span class="na">type=</span><span class="s">"button"</span>
-            <span class="na">class=</span><span class="s">"btn dropdown-toggle selectpicker btn-default"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">title=</span><span class="s">"Colors"</span><span class="nt">&gt;&lt;span</span>
-                <span class="na">class=</span><span class="s">"filter-option pull-left"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu open"</span> <span class="na">style=</span><span class="s">"max-height: 933px; overflow: hidden; min-height: 90px;"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu inner selectpicker"</span> <span class="na">role=</span><span class="s">"menu"</span>
-                <span class="na">style=</span><span class="s">"max-height: 921px; overflow-y: auto; min-height: 78px;"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"selected"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"1"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"2"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Green<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"3"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"4"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-            <span class="nt">&lt;/ul&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre>
-<p><strong>Dropdown representation</strong></p>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="n">Droplist</span> <span class="n">colors</span><span class="o">;</span>
-<span class="nd">@CSS</span><span class="o">(</span><span class="s">"#colors"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Droplist</span> <span class="n">colors</span><span class="o">;</span>
-<span class="kd">public</span> <span class="n">Droplist</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">dropdown</span><span class="o">(</span><span class="s">"#colors"</span><span class="o">);</span>
-<span class="kd">public</span> <span class="n">Droplist</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">$d</span><span class="o">(</span><span class="s">"#colors"</span><span class="o">);</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">colorsTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">colors</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Green</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">colors</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="n">Green</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="n">DropDown</span> <span class="n">Colors</span><span class="p">;</span>
-<span class="na">[FindBy(Css = "#colors")]</span> 
-<span class="k">public</span> <span class="n">DropDown</span> <span class="n">Colors</span><span class="p">;</span>
-
-<span class="na">[Test]</span>
-<span class="k">public</span> <span class="k">void</span> <span class="nf">ColorsTest</span><span class="p">()</span> 
-<span class="p">{</span>
-    <span class="n">Colors</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">Green</span><span class="p">);</span>
-    <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">Colors</span><span class="p">.</span><span class="nf">Selected</span><span class="p">(),</span> <span class="n">Green</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre>
-<p>JDI Light provides a <strong>Droplist</strong> class which can be used for dropdown representation as a type of web element.</p>
-
-<p>Simple locator annotations from <em>com.epam.jdi.light.elements.pageobjects.annotations.simple</em> can be used together with dropdown elements.</p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-examples/src/test/java/io/github/epam/tests/epam/ComplexElementsTests.java" target="_blank">Test examples in Java</a></p>
-
-<p>Dropdown lists in JDI light also support HTML5 elements. There is a <strong>Dropdown</strong> class which is more like a special case of Droplist.
-This type can be used in cases when dropdown is represented with HTML <em>&lt;select&gt;</em> tag.</p>
-
-<p>Consider an example of HTML5 dropdown with the given HTML code:</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#dress-code"</span><span class="o">)</span> <span class="c1">//@FindBy(id = "dress-code")</span>
 <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dressCode</span><span class="o">;</span>
 
@@ -6192,6 +6088,32 @@ This type can be used in cases when dropdown is represented with HTML <em>&lt;se
     <span class="n">dressCode</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Fancy</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Fancy"</span><span class="o">);</span>
 <span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectNumTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">dressCode</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Fancy"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectedTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">dressCode</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Pirate</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="s">"Pirate"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Pirate"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Pirate"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">negativeDropdownTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">dressCode</span><span class="o">.</span><span class="na">base</span><span class="o">().</span><span class="na">waitSec</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">dressCode</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Unknown"</span><span class="o">);</span>
+        <span class="n">fail</span><span class="o">(</span><span class="s">"You have selected dressCode that does not exist in dropdown - something went wrong"</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">safeException</span><span class="o">(</span><span class="n">ex</span><span class="o">),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"Cannot locate option with text: Unknown"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#dress-code")]</span> 
 <span class="k">public</span> <span class="n">Dropdown</span> <span class="n">DressCode</span><span class="p">;</span>
 
@@ -6233,6 +6155,18 @@ This type can be used in cases when dropdown is represented with HTML <em>&lt;se
 <span class="p">}</span>
 
 </code></pre>
+<p><img src="images/dropdown.png" alt="DropDown" /></p>
+
+<p>JDI Light has support for dropdown elements with their own type. There are several ways of dropdown usage in JDI Light, each serving different needs.</p>
+
+<p><strong>Dropdown representation</strong></p>
+
+<p>JDI Light provides a <strong>Dropdown</strong> class which is using for dropdown representation as a type of web element.</p>
+
+<p>Also this class can be used when working with HTML5 elements in cases when dropdown is represented with HTML <em>&lt;select&gt;</em> tag.</p>
+
+<p>Consider an example of HTML5 dropdown with the given HTML code:</p>
+
 <p><img src="images/html/dropdown_html52.png" alt="Dropdown HTML5" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"dress-code"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"fancy"</span><span class="nt">&gt;</span>Fancy<span class="nt">&lt;/option&gt;</span>
@@ -6241,6 +6175,96 @@ This type can be used in cases when dropdown is represented with HTML <em>&lt;se
     <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"pirate"</span><span class="nt">&gt;</span>Pirate<span class="nt">&lt;/option&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 </code></pre>
+<p><strong>JDI Dropdown annotation</strong></p>
+
+<p>For better use, JDI Light provides a <strong><em>@JDropdown</em></strong> annotation to locate dropdown elements. This annotation can be used in cases when working with a
+complex element that may consist of more a complicated html structure. JDropdown annotation allows customise navigation of the web element inner structure by using 
+annotation default methods.</p>
+<pre class="highlight java tab-java"><code><span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">"div[ui=dropdown]"</span><span class="o">,</span>
+           <span class="n">value</span> <span class="o">=</span> <span class="s">".filter-option"</span><span class="o">,</span>
+           <span class="n">list</span> <span class="o">=</span> <span class="s">"li"</span><span class="o">,</span>
+           <span class="n">expand</span> <span class="o">=</span> <span class="s">".caret"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Droplist</span> <span class="n">colors</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">complexTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">metalAndColorsPage</span><span class="o">.</span><span class="na">shouldBeOpened</span><span class="o">();</span>
+    <span class="n">metalAndColorsPage</span><span class="o">.</span><span class="na">colors</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Green</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">navigationListTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navigation</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">nContactForm</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">contactFormPage</span><span class="o">.</span><span class="na">checkOpened</span><span class="o">();</span>
+    <span class="n">navigation</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">nHome</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">homePage</span><span class="o">.</span><span class="na">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"QUIS NOSTRUD EXERCITATION"</span><span class="o">));</span>
+    <span class="n">homePage</span><span class="o">.</span><span class="na">githubLink</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">originalWindow</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">navigationMenuTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navigationL</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">ContactForm</span><span class="o">);</span>
+    <span class="n">contactFormPage</span><span class="o">.</span><span class="na">checkOpened</span><span class="o">();</span>
+    <span class="n">navigationL</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Home</span><span class="o">);</span>
+    <span class="n">homePage</span><span class="o">.</span><span class="na">checkOpened</span><span class="o">();</span>
+    <span class="n">navigationL</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Service</span><span class="o">);</span>
+    <span class="n">navigationL</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">ComplexTable</span><span class="o">);</span>
+<span class="o">}</span>
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="p">[</span><span class="nf">JDropDown</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="s">"#colors"</span><span class="p">,</span> 
+           <span class="k">value</span><span class="p">:</span> <span class="s">".filter-option"</span><span class="p">,</span> 
+           <span class="n">list</span><span class="p">:</span><span class="s">"li"</span><span class="p">,</span> 
+           <span class="n">expand</span><span class="p">:</span><span class="s">".caret"</span><span class="p">)]</span>
+<span class="k">public</span> <span class="n">Droplist</span> <span class="n">Colors</span><span class="p">;</span>
+
+<span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">ComplexTest</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="n">MetalAndColorsPage</span><span class="p">.</span><span class="nf">ShouldBeOpened</span><span class="p">();</span>
+    <span class="n">MetalAndColorsPage</span><span class="p">.</span><span class="n">Colors</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">Green</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+<!-- ![Dropdown HTML](../images/html/dropdown_html.png) -->
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group colors"</span> <span class="na">ui=</span><span class="s">"dropdown"</span> <span class="na">id=</span><span class="s">"colors"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"selectpicker uui-form-element"</span> <span class="na">style=</span><span class="s">"display: none;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Colors<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Red<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Green<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Blue<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Yellow<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group bootstrap-select uui-form-element"</span><span class="nt">&gt;&lt;button</span> <span class="na">type=</span><span class="s">"button"</span>
+            <span class="na">class=</span><span class="s">"btn dropdown-toggle selectpicker btn-default"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">title=</span><span class="s">"Colors"</span><span class="nt">&gt;&lt;span</span>
+                <span class="na">class=</span><span class="s">"filter-option pull-left"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu open"</span> <span class="na">style=</span><span class="s">"max-height: 933px; overflow: hidden; min-height: 90px;"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu inner selectpicker"</span> <span class="na">role=</span><span class="s">"menu"</span>
+                <span class="na">style=</span><span class="s">"max-height: 921px; overflow-y: auto; min-height: 78px;"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"selected"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"1"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"2"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Green<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"3"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"4"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+<p>JDropdown annotation consists of the following elements using which element inner structure can be customised:</p>
+
+<ul>
+<li><strong><em>root()</em></strong> - value of this element points to the root locator of dropdown element</li>
+<li><strong><em>value()</em></strong> - locator of option selected by default in dropdown list</li>
+<li><strong><em>list()</em></strong> - locator representing list options</li>
+<li><strong><em>expand()</em></strong> - locator for expanding the dropdown list</li>
+<li><strong><em>how()</em></strong> - type of locators with which elements will be identified. By default it is css</li>
+</ul>
+
 <p>Here is a list of some available methods:</p>
 
 <table><thead>
@@ -6295,17 +6319,6 @@ This type can be used in cases when dropdown is represented with HTML <em>&lt;se
 <td>Send specific keys</td>
 <td>void</td>
 </tr>
-</tbody></table>
-
-<p>Available Assert methods in Java:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
 <tr>
 <td><strong>is()</strong></td>
 <td>Applicable for performing assert actions for DropDown</td>
@@ -6383,7 +6396,8 @@ This type can be used in cases when dropdown is represented with HTML <em>&lt;se
 
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DropDownTests.cs" target="_blank">Test examples in C#</a></p>
 
-<p><a href="https://jdi-docs.github.io/jdi-light/?java#dropdown-2">BDD test examples</a></p>
+<p><a href="https://jdi-docs.github.io/jdi-light/?java#dropdown-3">BDD test examples</a>
+<br><br><br></p>
 <h3 id='multidropdown'>MultiDropDown</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#multi-dropdown"</span><span class="o">)</span> <span class="c1">//@FindBy(id = "multi-dropdown")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">MultiSelect</span> <span class="n">multiDropdown</span><span class="o">;</span>
 
