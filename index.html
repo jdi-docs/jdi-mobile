@@ -585,6 +585,9 @@
 								<a href="#multiple-progress-bars" class="toc-h2 h3 toc-link" data-title="Multiple progress bars">Multiple progress bars</a>
                             </li>
                             <li>
+								<a href="#navs" class="toc-h2 h3 toc-link" data-title="Navs">Navs</a>
+                            </li>
+                            <li>
 								<a href="#radiobuttons-2" class="toc-h2 h3 toc-link" data-title="RadioButtons">RadioButtons</a>
                             </li>
                             <li>
@@ -609,9 +612,6 @@
                             </li>
                             <li>
 								<a href="#popovers" class="toc-h2 h3 toc-link" data-title="Popovers">Popovers</a>
-                            </li>
-                            <li>
-								<a href="#navs" class="toc-h2 h3 toc-link" data-title="Navs">Navs</a>
                             </li>
                             <li>
 								<a href="#list-group" class="toc-h2 h3 toc-link" data-title="List group">List group</a>
@@ -13163,6 +13163,1057 @@ Add data-interval=&quot;&quot; to a .carousel-item to change the amount of time 
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/MultipleProgressBarsTests.java">Bootstrap test examples</a>
 <br><br><br></p>
+<h3 id='navs'>Navs</h3>
+<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/navs/">Navs</a></em></strong> - Different types of combination of navigation components.</p>
+<h4 id='base'>Base</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#base-nav">Base nav</a></strong> </p>
+
+<p><img src="images/bootstrap/nav-base.png" alt="Nav base example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-base-li") public static NavsBaseLi navsBaseLi;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-base-li"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsBaseLi</span> <span class="n">navsBaseLi</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsBaseLi</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-link"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav"</span> <span class="na">id=</span><span class="s">"nav-base-li"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
+            testing tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav"</span> <span class="na">id=</span><span class="s">"nav-base-a"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+       <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI - testing
+        tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+       <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+</code></pre>
+<p>Available methods in Java JDI Light:</p>
+
+<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
+
+<p>Most applicable methods:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/BaseTests.java">Java test examples</a><br></p>
+
+<p>Nav group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='horizontal-alignment'>Horizontal alignment</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#horizontal-alignment">Nav horizontal alignmen</a></strong> </p>
+
+<p><img src="images/bootstrap/nav-align-center.png" alt="Nav horizontal alignmen example" /></p>
+
+<p><img src="images/bootstrap/nav-align-right.png" alt="Nav horizontal alignmen example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-center") public static NavsAlignmentCenter navsAlignmentCenter;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-center"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsAlignmentCenter</span> <span class="n">navsAlignmentCenter</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsAlignmentCenter</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav justify-content-center"</span><span class="o">);</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-item"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav justify-content-center"</span> <span class="na">id=</span><span class="s">"nav-center"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
+            testing tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav justify-content-end"</span> <span class="na">id=</span><span class="s">"nav-end"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
+            testing tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+<p>Available methods in Java JDI Light:</p>
+
+<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
+
+<p>Most applicable methods:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/AlignmentTests.java">Java test examples</a><br></p>
+
+<p>Nav group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='vertical-alignment'>Vertical alignment</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#vertical">Nav vertical alignmen</a></strong> </p>
+
+<p><img src="images/bootstrap/nav-vertical.png" alt="Nav vertical alignmen example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-vert-li") public static NavsVerticalLi navsVerticalLi;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-vert-li"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsVerticalLi</span> <span class="n">navsVerticalLi</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsVerticalLi</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav flex-column"</span><span class="o">);</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav flex-column"</span> <span class="na">id=</span><span class="s">"nav-vert-li"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
+            testing tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav flex-column"</span> <span class="na">id=</span><span class="s">"nav-vert-a"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+       <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI - testing
+        tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+       <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+</code></pre>
+<p>Available methods in Java JDI Light:</p>
+
+<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
+
+<p>Most applicable methods:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/VerticalTests.java">Java test examples</a><br></p>
+
+<p>Nav group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='tabs'>Tabs</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#tabs">Nav tabs</a></strong> </p>
+
+<p><img src="images/bootstrap/nav-tabs.png" alt="Nav tabs example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-tabs") public static NavsTabs navsTabs;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-tabs"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsTabs</span> <span class="n">navsTabs</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsTabs</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav nav-tabs"</span><span class="o">);</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"nav-tabs"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
+            testing tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+<p>Available methods in Java JDI Light:</p>
+
+<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
+
+<p>Most applicable methods:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/TabsTests.java">Java test examples</a><br></p>
+
+<p>Nav group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='pills'>Pills</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#pills">Nav pills</a></strong> </p>
+
+<p><img src="images/bootstrap/nav-pills.png" alt="Nav pills example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-pills") public static NavsPills navsPills;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-pills"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsPills</span> <span class="n">navsPills</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsPills</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-item"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-link"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills"</span> <span class="na">id=</span><span class="s">"nav-pills"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
+            testing tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+<p>Available methods in Java JDI Light:</p>
+
+<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
+
+<p>Most applicable methods:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/PillsTests.java">Java test examples</a><br></p>
+
+<p>Nav group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='fill-and-justify'>Fill and justify</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#fill-and-justify">Nav fill and justify</a></strong> </p>
+
+<p><img src="images/bootstrap/nav-fill-and-justify.png" alt="Nav fill and justify example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-justify") public static NavsJustify navsJustify;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-justify"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsJustify</span> <span class="n">navsJustify</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsJustify</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-item"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-link"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
+    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills nav-fill"</span> <span class="na">id=</span><span class="s">"nav-justify"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI - testing
+            tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+<p>Available methods in Java JDI Light:</p>
+
+<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
+
+<p>Most applicable methods:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/FillAndJustifyTests.java">Java test examples</a><br></p>
+
+<p>Nav group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
+<h4 id='tabs-with-dropdowns'>Tabs with dropdowns</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#tabs-with-dropdowns">Nav tabs with dropdowns</a></strong> </p>
+
+<p><img src="images/bootstrap/nav-tabs-with-dropdowns.png" alt="Nav tabs with dropdowns example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-with-dropdown") public static NavsTabsWithDropdown navsTabsWithDropdown;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsTabsWithDropdown</span> <span class="n">navsTabsWithDropdown</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsTabsWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "a.nav-link") public ListGroup navItemLink;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a.nav-link"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
+    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+            <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav nav-tabs"</span><span class="o">);</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">expanded</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-toggle"</span><span class="o">,</span> <span class="s">"dropdown"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-haspopup"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-expanded"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"nav-with-dropdown"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item dropdown"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">role=</span><span class="s">"button"</span>
+           <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span>Dropdown<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+               <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
+                home<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
+                Docs<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
+                - testing tool<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Bootstrap<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
+            testing tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+<p>Available methods in Java JDI Light:</p>
+
+<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
+
+<p>Most applicable methods:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Get button text</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/TabsWithDropdownTests.java">Java test examples</a><br></p>
+
+<p>Nav group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+<h4 id='pills-with-dropdowns'>Pills with dropdowns</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#pills-with-dropdowns">Nav pills with dropdowns</a></strong> </p>
+
+<p><img src="images/bootstrap/nav-pills-with-dropdowns.png" alt="Nav pills with dropdowns example" /></p>
+
+<p>Here is an example with provided Bootstrap v4.3 code:</p>
+<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-pills-drop") public static NavsPillsWithDropdown navsPillsWithDropdown;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-pills-drop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsPillsWithDropdown</span> <span class="n">navsPillsWithDropdown</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsPillsWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
+    <span class="c1">// @FindBy(css = "a.nav-link") public ListGroup navItemLink;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a.nav-link"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
+    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
+            <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span>
+            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">expanded</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-toggle"</span><span class="o">,</span> <span class="s">"dropdown"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-haspopup"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-expanded"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownClickableTests</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop1</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle1</span><span class="o">);</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop2</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle2</span><span class="o">);</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop3</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle3</span><span class="o">);</span>
+    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop4</span><span class="o">);</span>
+    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle4</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills"</span> <span class="na">id=</span><span class="s">"nav-pills-drop"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
+           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item dropdown"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">role=</span><span class="s">"button"</span>
+           <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span>Dropdown<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+               <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
+                home<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
+                Docs<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
+                - testing tool<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Bootstrap<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
+            testing tool<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+<p>Available methods in Java JDI Light:</p>
+
+<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
+
+<p>Most applicable methods:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get button text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>get()</strong></td>
+<td>Select button by index</td>
+<td>UIElement</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unhighlight()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>Get button text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Get button text</td>
+<td>TextAssertn</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/PillsWithDropdownTests.java">Java test examples</a><br></p>
+
+<p>Nav group is represented by Section class in Java:</p>
+
+<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
+
+<p><br></p>
 <h3 id='radiobuttons-2'>RadioButtons</h3>
 <p><strong>RadioButtons</strong> – extends from <a href="https://jdi-docs.github.io/jdi-light/#radiobuttons">HTML 5 RadioButtons</a> class.</p>
 
@@ -16866,1057 +17917,6 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
     <li> <a href="https://jdi-docs.github.io/jdi-light/#button-2">Button</a> </li> 
     <li> <a href="https://jdi-docs.github.io/jdi-light/#media-object">MediaObject</a> </li>
 </ul></p>
-<h3 id='navs'>Navs</h3>
-<p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/navs/">Navs</a></em></strong> - Different types of combination of navigation components.</p>
-<h4 id='base'>Base</h4>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#base-nav">Base nav</a></strong> </p>
-
-<p><img src="images/bootstrap/nav-base.png" alt="Nav base example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-base-li") public static NavsBaseLi navsBaseLi;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-base-li"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsBaseLi</span> <span class="n">navsBaseLi</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsBaseLi</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
-    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
-    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-link"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
-    <span class="n">navsBaseLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav"</span> <span class="na">id=</span><span class="s">"nav-base-li"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
-            testing tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav"</span> <span class="na">id=</span><span class="s">"nav-base-a"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-       <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI - testing
-        tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-       <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/nav&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
-
-<p>Most applicable methods:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/BaseTests.java">Java test examples</a><br></p>
-
-<p>Nav group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-
-<p><br></p>
-<h4 id='horizontal-alignment'>Horizontal alignment</h4>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#horizontal-alignment">Nav horizontal alignmen</a></strong> </p>
-
-<p><img src="images/bootstrap/nav-align-center.png" alt="Nav horizontal alignmen example" /></p>
-
-<p><img src="images/bootstrap/nav-align-right.png" alt="Nav horizontal alignmen example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-center") public static NavsAlignmentCenter navsAlignmentCenter;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-center"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsAlignmentCenter</span> <span class="n">navsAlignmentCenter</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsAlignmentCenter</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
-    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav justify-content-center"</span><span class="o">);</span>
-    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-item"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
-    <span class="n">navsAlignmentCenter</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav justify-content-center"</span> <span class="na">id=</span><span class="s">"nav-center"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
-            testing tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav justify-content-end"</span> <span class="na">id=</span><span class="s">"nav-end"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
-            testing tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
-
-<p>Most applicable methods:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/AlignmentTests.java">Java test examples</a><br></p>
-
-<p>Nav group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-
-<p><br></p>
-<h4 id='vertical-alignment'>Vertical alignment</h4>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#vertical">Nav vertical alignmen</a></strong> </p>
-
-<p><img src="images/bootstrap/nav-vertical.png" alt="Nav vertical alignmen example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-vert-li") public static NavsVerticalLi navsVerticalLi;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-vert-li"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsVerticalLi</span> <span class="n">navsVerticalLi</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsVerticalLi</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
-    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav flex-column"</span><span class="o">);</span>
-    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
-    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
-    <span class="n">navsVerticalLi</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav flex-column"</span> <span class="na">id=</span><span class="s">"nav-vert-li"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
-            testing tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav flex-column"</span> <span class="na">id=</span><span class="s">"nav-vert-a"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-       <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI - testing
-        tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-       <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/nav&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
-
-<p>Most applicable methods:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/VerticalTests.java">Java test examples</a><br></p>
-
-<p>Nav group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-
-<p><br></p>
-<h4 id='tabs'>Tabs</h4>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#tabs">Nav tabs</a></strong> </p>
-
-<p><img src="images/bootstrap/nav-tabs.png" alt="Nav tabs example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-tabs") public static NavsTabs navsTabs;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-tabs"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsTabs</span> <span class="n">navsTabs</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsTabs</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
-    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-    <span class="n">navsTabs</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav nav-tabs"</span><span class="o">);</span>
-    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
-    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
-    <span class="n">navsTabs</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"nav-tabs"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
-            testing tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
-
-<p>Most applicable methods:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/TabsTests.java">Java test examples</a><br></p>
-
-<p>Nav group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-
-<p><br></p>
-<h4 id='pills'>Pills</h4>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#pills">Nav pills</a></strong> </p>
-
-<p><img src="images/bootstrap/nav-pills.png" alt="Nav pills example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-pills") public static NavsPills navsPills;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-pills"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsPills</span> <span class="n">navsPills</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsPills</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
-    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-item"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
-    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-link"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
-    <span class="n">navsPills</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills"</span> <span class="na">id=</span><span class="s">"nav-pills"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
-            testing tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
-
-<p>Most applicable methods:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/PillsTests.java">Java test examples</a><br></p>
-
-<p>Nav group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-
-<p><br></p>
-<h4 id='fill-and-justify'>Fill and justify</h4>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#fill-and-justify">Nav fill and justify</a></strong> </p>
-
-<p><img src="images/bootstrap/nav-fill-and-justify.png" alt="Nav fill and justify example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-justify") public static NavsJustify navsJustify;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-justify"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsJustify</span> <span class="n">navsJustify</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsJustify</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
-    <span class="c1">// @FindBy(css = "li a")  public ListGroup navItemLink;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li a"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"listData"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">itemsIsValidationTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">linkText</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-item"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
-    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav-link"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">linkText</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"clickValidate"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkClickableLiTests</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">pageTitle</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">highlight</span><span class="o">();</span>
-    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle</span><span class="o">);</span>
-    <span class="n">navsJustify</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">unhighlight</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills nav-fill"</span> <span class="na">id=</span><span class="s">"nav-justify"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI Docs<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI - testing
-            tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
-
-<p>Most applicable methods:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/FillAndJustifyTests.java">Java test examples</a><br></p>
-
-<p>Nav group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-
-<p><br></p>
-<h4 id='tabs-with-dropdowns'>Tabs with dropdowns</h4>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#tabs-with-dropdowns">Nav tabs with dropdowns</a></strong> </p>
-
-<p><img src="images/bootstrap/nav-tabs-with-dropdowns.png" alt="Nav tabs with dropdowns example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-with-dropdown") public static NavsTabsWithDropdown navsTabsWithDropdown;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-with-dropdown"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsTabsWithDropdown</span> <span class="n">navsTabsWithDropdown</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsTabsWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
-    <span class="c1">// @FindBy(css = "a.nav-link") public ListGroup navItemLink;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a.nav-link"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
-            <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">navItem</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"nav nav-tabs"</span><span class="o">);</span>
-    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"active"</span><span class="o">);</span>
-    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">navItemLink</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"disabled"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
-    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">displayed</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">expanded</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-    <span class="n">navsTabsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-toggle"</span><span class="o">,</span> <span class="s">"dropdown"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-haspopup"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-expanded"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"nav-with-dropdown"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item dropdown"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">role=</span><span class="s">"button"</span>
-           <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span>Dropdown<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-               <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
-                home<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
-                Docs<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
-                - testing tool<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Bootstrap<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
-            testing tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
-
-<p>Most applicable methods:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expanded()</strong></td>
-<td>Get button text</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/TabsWithDropdownTests.java">Java test examples</a><br></p>
-
-<p>Nav group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-<h4 id='pills-with-dropdowns'>Pills with dropdowns</h4>
-<p><strong><a href="https://getbootstrap.com/docs/4.3/components/navs/#pills-with-dropdowns">Nav pills with dropdowns</a></strong> </p>
-
-<p><img src="images/bootstrap/nav-pills-with-dropdowns.png" alt="Nav pills with dropdowns example" /></p>
-
-<p>Here is an example with provided Bootstrap v4.3 code:</p>
-<pre class="highlight java tab-java"><code><span class="c1">// @FindBy(css = "#nav-pills-drop") public static NavsPillsWithDropdown navsPillsWithDropdown;</span>
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#nav-pills-drop"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">NavsPillsWithDropdown</span> <span class="n">navsPillsWithDropdown</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavsPillsWithDropdown</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="c1">// @FindBy(css = "li") public ListGroup navItem;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItem</span><span class="o">;</span>
-    <span class="c1">// @FindBy(css = "a.nav-link") public ListGroup navItemLink;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"a.nav-link"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">ListGroup</span> <span class="n">navItemLink</span><span class="o">;</span>
-    <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">expand</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-toggle"</span><span class="o">,</span>
-            <span class="n">list</span> <span class="o">=</span> <span class="s">".dropdown-item"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dropdownMenu</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownIsValidationTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
-    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span>
-            <span class="o">.</span><span class="na">is</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">expanded</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">core</span><span class="o">()</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"data-toggle"</span><span class="o">,</span> <span class="s">"dropdown"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-haspopup"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"aria-expanded"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"role"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
-    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">expand</span><span class="o">();</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dropdownClickableTests</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop1</span><span class="o">);</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle1</span><span class="o">);</span>
-    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop2</span><span class="o">);</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle2</span><span class="o">);</span>
-    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop3</span><span class="o">);</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle3</span><span class="o">);</span>
-    <span class="n">navsPillsWithDropdown</span><span class="o">.</span><span class="na">dropdownMenu</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">linkDrop4</span><span class="o">);</span>
-    <span class="n">newWindowTitleCheck</span><span class="o">(</span><span class="n">pageTitle4</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills"</span> <span class="na">id=</span><span class="s">"nav-pills-drop"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span>
-           <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item dropdown"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">role=</span><span class="s">"button"</span>
-           <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span>Dropdown<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
-               <span class="na">href=</span><span class="s">"https://jdi-testing.github.io/jdi-light/index.html"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
-                home<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-docs"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
-                Docs<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI
-                - testing tool<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Bootstrap<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"https://github.com/jdi-testing"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>JDI -
-            testing tool<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"https://getbootstrap.com"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
-           <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre>
-<p>Available methods in Java JDI Light:</p>
-
-<p>All methods are inherited from base element -  <a href="https://jdi-docs.github.io/jdi-light/#uielement">UIElement</a></p>
-
-<p>Most applicable methods:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>getText()</strong></td>
-<td>Get button text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>Assert action</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>get()</strong></td>
-<td>Select button by index</td>
-<td>UIElement</td>
-</tr>
-<tr>
-<td><strong>click()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>highlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>unhighlight()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expand()</strong></td>
-<td>Get button text</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>expanded()</strong></td>
-<td>Get button text</td>
-<td>TextAssertn</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/navs/PillsWithDropdownTests.java">Java test examples</a><br></p>
-
-<p>Nav group is represented by Section class in Java:</p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
-
-<p><br></p>
 <h3 id='list-group'>List group</h3>
 <p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/">List groups</a></em></strong> are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
 <h4 id='basic-example'>Basic Example</h4>
