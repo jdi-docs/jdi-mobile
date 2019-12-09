@@ -507,7 +507,7 @@
 								<a href="#dropdown" class="toc-h2 h3 toc-link" data-title="Dropdown">Dropdown</a>
                             </li>
                             <li>
-								<a href="#multidropdown" class="toc-h2 h3 toc-link" data-title="MultiDropDown">MultiDropDown</a>
+								<a href="#multidropdown" class="toc-h2 h3 toc-link" data-title="MultiDropdown">MultiDropdown</a>
                             </li>
                             <li>
 								<a href="#datalist" class="toc-h2 h3 toc-link" data-title="DataList">DataList</a>
@@ -5488,14 +5488,41 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 </tr>
 </tbody></table>
 
-<p>AssertTable methods in Java:
-| Method | Description | Return Type|
---- | --- | ---
-<strong>assertThat()</strong> | Applicable for performing assert actions for tables | TableAssert
-<strong>has()</strong> | Applicable for performing assert actions for tables | TableAssert
-<strong>is()</strong> | Applicable for performing assert actions for tables | TableAssert
-<strong>shouldBe()</strong> | Applicable for performing assert actions for tables | TableAssert
-<strong>waitFor()</strong> | Applicable for performing assert actions for tables | TableAssert</p>
+<p>AssertTable methods in Java:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Applicable for performing assert actions for tables</td>
+<td>TableAssert</td>
+</tr>
+<tr>
+<td><strong>has()</strong></td>
+<td>Applicable for performing assert actions for tables</td>
+<td>TableAssert</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Applicable for performing assert actions for tables</td>
+<td>TableAssert</td>
+</tr>
+<tr>
+<td><strong>shouldBe()</strong></td>
+<td>Applicable for performing assert actions for tables</td>
+<td>TableAssert</td>
+</tr>
+<tr>
+<td><strong>waitFor()</strong></td>
+<td>Applicable for performing assert actions for tables</td>
+<td>TableAssert</td>
+</tr>
+</tbody></table>
 
 <p>And here are methods available in C#:</p>
 
@@ -6419,13 +6446,55 @@ annotation default methods.</p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#dropdown-3">BDD test examples</a>
 <br><br><br></p>
-<h3 id='multidropdown'>MultiDropDown</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#multi-dropdown"</span><span class="o">)</span> <span class="c1">//@FindBy(id = "multi-dropdown")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">MultiSelect</span> <span class="n">multiDropdown</span><span class="o">;</span>
+<h3 id='multidropdown'>MultiDropdown</h3>
+<p><strong>MultiDropdown</strong> – A graphical control element that allows user to choose several values from a list.</p>
+
+<p><img src="images/multidropdown.png" alt="DropDown" /></p>
+
+<p>JDI Light provides a MultiSelector class which is using for MultiDropdown representation as a type of web element.</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#multi-dropdown"</span><span class="o">)</span> <span class="c1">//@FindBy(id = "multi-dropdown")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">MultiSelector</span> <span class="n">multiDropdown</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">isFireFox</span><span class="o">())</span> <span class="k">return</span><span class="o">;</span>
+    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">checked</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectEnumTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">isFireFox</span><span class="o">())</span> <span class="k">return</span><span class="o">;</span>
     <span class="n">multiDropdown</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">Wood</span><span class="o">,</span> <span class="n">Steam</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">checked</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">,</span> <span class="s">"Wood"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectedTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">disabledTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">isFireFox</span><span class="o">())</span> <span class="k">return</span><span class="o">;</span>
+    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="s">"Steam"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Multi dropdown:"</span><span class="o">);</span>
+    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Multi"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">);</span>
+    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">Steam</span><span class="o">);</span>
+    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Wood"</span><span class="o">));</span>
+    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">disabled</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">(</span><span class="n">not</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">)))</span>
+            <span class="o">.</span><span class="na">enabled</span><span class="o">(</span><span class="n">hasItems</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#multi-dropdown")]</span>
 <span class="k">public</span> <span class="n">MultiDropdown</span> <span class="n">MultiDropdown</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
@@ -6484,11 +6553,7 @@ annotation default methods.</p>
 <span class="p">{</span>
     <span class="nf">BaseElementValidation</span><span class="p">(</span><span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">MultiDropdown</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre>
-<p><strong>MultiDropDown</strong> – A graphical control element that allows user to choose several values from a list.</p>
-
-<p><img src="images/multidropdown.png" alt="DropDown" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"multiselect-native-select"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"multiselect-native-select"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"multi-dropdown"</span> <span class="na">multiple=</span><span class="s">"multiple"</span><span class="nt">&gt;</span>
          <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"electro"</span><span class="nt">&gt;</span>Electro<span class="nt">&lt;/option&gt;</span>
          <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"steam"</span> <span class="na">selected=</span><span class="s">""</span><span class="nt">&gt;</span>Steam<span class="nt">&lt;/option&gt;</span>
@@ -6517,12 +6582,68 @@ annotation default methods.</p>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/span&gt;</span>
 </code></pre>
-<p>MultiDropDown elements can be described by the following class:</p>
+<p>MultiDropdown are represented by the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.complex.MultiDropdown</em></li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.complex.MultiSelector</em></li>
 <li><strong>C#</strong>: <em>JDI.Light.Elements.Composite.MultiDropdown</em></li>
 </ul>
+
+<p>The list of methods available for Java in JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>check(String/String.../Enum.../int...)</strong></td>
+<td>Select values in multi dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>uncheck(String.../Enum.../int...)</strong></td>
+<td>Deselect values in multi dropdown</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Get selected value by default</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>checked()</strong></td>
+<td>Get selected values</td>
+<td>List&lt;String&gt;</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Applicable for performing assert actions for MultiDropdown</td>
+<td>DataTableAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Applicable for performing assert actions for MultiDropdown</td>
+<td>DataTableAssert</td>
+</tr>
+<tr>
+<td><strong>has()</strong></td>
+<td>Applicable for performing assert actions for MultiDropdown</td>
+<td>DataTableAssert</td>
+</tr>
+<tr>
+<td><strong>waitFor()</strong></td>
+<td>Applicable for performing assert actions for MultiDropdown</td>
+<td>DataTableAssert</td>
+</tr>
+<tr>
+<td><strong>shouldBe()</strong></td>
+<td>Applicable for performing assert actions for MultiDropdown</td>
+<td>DataTableAssert</td>
+</tr>
+</tbody></table>
 
 <p>Here is the list of some methods available for C# in JDI Light:</p>
 
@@ -6568,17 +6689,6 @@ annotation default methods.</p>
 <td>Close expanded list</td>
 <td>void</td>
 </tr>
-</tbody></table>
-
-<p>Available assertion methods in C# for JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
 <tr>
 <td><strong>Selected(string option)</strong></td>
 <td>Check whether option is selected</td>
@@ -6613,37 +6723,6 @@ annotation default methods.</p>
 <td><strong>AssertThat</strong></td>
 <td>Gets multiDropDown assert</td>
 <td>MultiDropdownAssert</td>
-</tr>
-</tbody></table>
-
-<p>The list of methods available for Java in JDI Light:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>check(String/String.../Enum.../int...)</strong></td>
-<td>Select values in multi dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>uncheck(String.../Enum.../int...)</strong></td>
-<td>Deselect values in multi dropdown</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>selected()</strong></td>
-<td>Get selected value by default</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>checked()</strong></td>
-<td>Get selected values</td>
-<td>List&lt;String&gt;</td>
 </tr>
 </tbody></table>
 
