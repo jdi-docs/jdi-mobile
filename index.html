@@ -5769,18 +5769,8 @@ able to perform a list of readonly interactions with this element in order to ge
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">rowsMatcherTest</span><span class="o">()</span> <span class="o">{</span>
-   <span class="n">users</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">allRows</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">user</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">atLeastMatcherTest</span><span class="o">()</span> <span class="o">{</span>
    <span class="n">users</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">atLeast</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">rows</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">type</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"User"</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">exactMatcherTest</span><span class="o">()</span> <span class="o">{</span>
-   <span class="n">users</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">exact</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">rows</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">description</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">":VIP"</span><span class="o">));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -5824,13 +5814,6 @@ able to perform a list of readonly interactions with this element in order to ge
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lineFilterTest</span><span class="o">()</span> <span class="o">{</span>
    <span class="n">MarvelUser</span> <span class="n">line</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="na">line</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">user</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Ivan"</span><span class="o">));</span>
    <span class="n">validateUserRow</span><span class="o">(</span><span class="n">line</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linesFilterTest</span><span class="o">()</span> <span class="o">{</span>
-   <span class="n">List</span><span class="o">&lt;</span><span class="n">MarvelUser</span><span class="o">&gt;</span> <span class="n">filteredData</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="na">lines</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">user</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Ivan"</span><span class="o">));</span>
-   <span class="n">assertEquals</span><span class="o">(</span><span class="n">filteredData</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">1</span><span class="o">);</span>
-   <span class="n">validateUserRow</span><span class="o">(</span><span class="n">filteredData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -6077,7 +6060,7 @@ able to perform a list of readonly interactions with this element in order to ge
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/RangeTests.java" target="_blank">Test examples in Java</a><br></p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#datatable-2">BDD Steps example</a>
-<br><br><br></p>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h3 id='dropdown'>DropDown</h3>
 <p><strong>DropDown</strong> – A graphical control element that allows user to choose a single value from a list.</p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#dress-code"</span><span class="o">)</span> <span class="c1">//@FindBy(id = "dress-code")</span>
@@ -6180,7 +6163,37 @@ able to perform a list of readonly interactions with this element in order to ge
 <p>For better use, JDI Light provides a <strong><em>@JDropdown</em></strong> annotation to locate dropdown elements. This annotation can be used in cases when working with a
 complex element that may consist of more a complicated html structure. JDropdown annotation allows customise navigation of the web element inner structure by using 
 annotation default methods.</p>
-<pre class="highlight java tab-java"><code><span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">"div[ui=dropdown]"</span><span class="o">,</span>
+
+<!-- ![Dropdown HTML](../images/html/dropdown_html.png) -->
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group colors"</span> <span class="na">ui=</span><span class="s">"dropdown"</span> <span class="na">id=</span><span class="s">"colors"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"selectpicker uui-form-element"</span> <span class="na">style=</span><span class="s">"display: none;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Colors<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Red<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Green<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Blue<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Yellow<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group bootstrap-select uui-form-element"</span><span class="nt">&gt;&lt;button</span> <span class="na">type=</span><span class="s">"button"</span>
+            <span class="na">class=</span><span class="s">"btn dropdown-toggle selectpicker btn-default"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">title=</span><span class="s">"Colors"</span><span class="nt">&gt;&lt;span</span>
+                <span class="na">class=</span><span class="s">"filter-option pull-left"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu open"</span> <span class="na">style=</span><span class="s">"max-height: 933px; overflow: hidden; min-height: 90px;"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu inner selectpicker"</span> <span class="na">role=</span><span class="s">"menu"</span>
+                <span class="na">style=</span><span class="s">"max-height: 921px; overflow-y: auto; min-height: 78px;"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"selected"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"1"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"2"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Green<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"3"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"4"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">"div[ui=dropdown]"</span><span class="o">,</span>
            <span class="n">value</span> <span class="o">=</span> <span class="s">".filter-option"</span><span class="o">,</span>
            <span class="n">list</span> <span class="o">=</span> <span class="s">"li"</span><span class="o">,</span>
            <span class="n">expand</span> <span class="o">=</span> <span class="s">".caret"</span><span class="o">)</span>
@@ -6224,36 +6237,6 @@ annotation default methods.</p>
     <span class="n">MetalAndColorsPage</span><span class="p">.</span><span class="nf">ShouldBeOpened</span><span class="p">();</span>
     <span class="n">MetalAndColorsPage</span><span class="p">.</span><span class="n">Colors</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">Green</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre>
-<!-- ![Dropdown HTML](../images/html/dropdown_html.png) -->
-<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group colors"</span> <span class="na">ui=</span><span class="s">"dropdown"</span> <span class="na">id=</span><span class="s">"colors"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"selectpicker uui-form-element"</span> <span class="na">style=</span><span class="s">"display: none;"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Colors<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Red<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Green<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Blue<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option&gt;</span>Yellow<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;/select&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group bootstrap-select uui-form-element"</span><span class="nt">&gt;&lt;button</span> <span class="na">type=</span><span class="s">"button"</span>
-            <span class="na">class=</span><span class="s">"btn dropdown-toggle selectpicker btn-default"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">title=</span><span class="s">"Colors"</span><span class="nt">&gt;&lt;span</span>
-                <span class="na">class=</span><span class="s">"filter-option pull-left"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu open"</span> <span class="na">style=</span><span class="s">"max-height: 933px; overflow: hidden; min-height: 90px;"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu inner selectpicker"</span> <span class="na">role=</span><span class="s">"menu"</span>
-                <span class="na">style=</span><span class="s">"max-height: 921px; overflow-y: auto; min-height: 78px;"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"selected"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Colors<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"1"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"2"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Green<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"3"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">rel=</span><span class="s">"4"</span><span class="nt">&gt;&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">""</span> <span class="na">style=</span><span class="s">""</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/span&gt;</span>
-                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok icon-ok check-mark"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
-            <span class="nt">&lt;/ul&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
 </code></pre>
 <p>JDropdown annotation consists of the following elements using which element inner structure can be customised:</p>
 
