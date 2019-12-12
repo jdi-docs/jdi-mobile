@@ -26987,21 +26987,9 @@ Level <em>STEP</em> can show business-related information in the console output,
 <td>All log messages (do not use for production stage)</td>
 </tr>
 </tbody></table>
-<h2 id='reports'>Reports</h2><h3 id='allure'>Allure</h3><pre class="highlight java tab-java"><code>    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterInvocation</span><span class="o">(</span><span class="n">IInvokedMethod</span> <span class="n">iInvokedMethod</span><span class="o">,</span> <span class="n">ITestResult</span> <span class="n">iTestResult</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">iInvokedMethod</span><span class="o">.</span><span class="na">isTestMethod</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">getTestResult</span><span class="o">(</span><span class="n">iTestResult</span><span class="o">);</span>
-            <span class="k">if</span> <span class="o">(</span><span class="s">"FAILED"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">result</span><span class="o">))</span> <span class="o">{</span>
-                <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"=== Test '%s' %s ==="</span><span class="o">,</span> <span class="n">TEST_NAME</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">result</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"STEP PASSED"</span><span class="o">);</span>
-                <span class="n">logger</span><span class="o">.</span><span class="na">step</span><span class="o">(</span><span class="s">"=== Test '%s' %s ==="</span><span class="o">,</span> <span class="n">TEST_NAME</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">result</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-</code></pre>
-<p>Allure steps are logged in custom TestNG listener.</p>
+<h2 id='reports'>Reports</h2><h3 id='allure'>Allure</h3>
+<p>JDILogger
+<br></p>
 
 <table><thead>
 <tr>
@@ -27016,6 +27004,29 @@ Level <em>STEP</em> can show business-related information in the console output,
 <tr>
 <td><strong>void error(String msg, Object... args)</strong></td>
 <td>Log failed step</td>
+</tr>
+</tbody></table>
+
+<p>AllureLoggerHelper
+<br></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>void startStep(String uuid, String message)</strong></td>
+<td>Start logging step</td>
+</tr>
+<tr>
+<td><strong>void passStep(String uuid)</strong></td>
+<td>Log step is successfully completed</td>
+</tr>
+<tr>
+<td><strong>void failStep(String uuid, String screenName)</strong></td>
+<td>Log step is failed</td>
 </tr>
 </tbody></table>
 
