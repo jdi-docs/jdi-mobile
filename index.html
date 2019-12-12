@@ -8113,6 +8113,21 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <tr>
 <td><strong>WebPage(String url)</strong></td>
 <td>Parameterized URL constructor for WebPage class</td>
+<td>WebPage</td>
+</tr>
+<tr>
+<td><strong>WebPage(String url, String title)</strong></td>
+<td>Parameterized with URL and Title constructor</td>
+<td>WebPage</td>
+</tr>
+<tr>
+<td><strong>openSite()</strong></td>
+<td>Opens a Site</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>openSite(Class&lt;?&gt; site)</strong></td>
+<td>Parameterized Site opening</td>
 <td>void</td>
 </tr>
 <tr>
@@ -8129,6 +8144,16 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <td><strong>getTitle()</strong></td>
 <td>Returns Page Title</td>
 <td>String</td>
+</tr>
+<tr>
+<td><strong>setUrl(String uri)</strong></td>
+<td>Setting Up URL of Page</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setUrl(String uri, String template, CheckTypes validate)</strong></td>
+<td>Parameterized setting Up URL of Page</td>
+<td>void</td>
 </tr>
 <tr>
 <td><strong>updatePageData(Url urlAnnotation, Title titleAnnotation)</strong></td>
@@ -8158,6 +8183,11 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <tr>
 <td><strong>checkOpened()</strong></td>
 <td>Checks that page has opened</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>visualWindowCheck()</strong></td>
+<td>empty</td>
 <td>void</td>
 </tr>
 <tr>
@@ -8246,14 +8276,24 @@ It is customary to reassign these lambdas before all the tests are run, for exam
 <td>void</td>
 </tr>
 <tr>
-<td><strong>addPage(WebPage page)</strong></td>
-<td>Adds selected page to the Map of pages</td>
-<td>void</td>
+<td><strong>zoomLevel()</strong></td>
+<td>Getting zoom level</td>
+<td>double</td>
 </tr>
 <tr>
-<td><strong>getPage(String value)</strong></td>
-<td>Gets page from Map by value</td>
-<td>T_extends_WebPage</td>
+<td><strong>xOffset()</strong></td>
+<td>Getting window x offset</td>
+<td>long</td>
+</tr>
+<tr>
+<td><strong>yOffset()</strong></td>
+<td>Getting window y offset</td>
+<td>long</td>
+</tr>
+<tr>
+<td><strong>windowScreenshot()</strong></td>
+<td>Getting window screenshot</td>
+<td>String</td>
 </tr>
 <tr>
 <td><strong>toString()</strong></td>
