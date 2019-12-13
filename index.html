@@ -2318,13 +2318,13 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">acceptConditions</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">acceptConditions</span><span class="o">.</span><span class="na">isSelected</span><span class="o">(),</span> <span class="kc">true</span><span class="o">);</span>
+    <span class="n">acceptConditions</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">uncheckTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">acceptConditions</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">acceptConditions</span><span class="o">.</span><span class="na">isSelected</span><span class="o">(),</span> <span class="kc">false</span><span class="o">);</span>
+    <span class="n">acceptConditions</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code>
 <span class="na">[FindBy(XPath = "//*[@id='elements-checklist']</span><span class="c1">//*[text()='Water']")]</span>
