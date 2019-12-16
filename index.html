@@ -2326,6 +2326,11 @@ class="uui-button red" onclick="alert('Red button');"&gt;
     <span class="n">acceptConditions</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
     <span class="n">acceptConditions</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
 <span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLabelTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">acceptConditions</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">labelText</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code>
 <span class="na">[FindBy(XPath = "//*[@id='elements-checklist']</span><span class="c1">//*[text()='Water']")]</span>
 <span class="na">[IsChecked(typeof(CustomCheck), nameof(CustomCheck.CheckFunc))]</span>
