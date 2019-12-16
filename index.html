@@ -2068,14 +2068,16 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
 
-  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#name")</span>
- <span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
+  <span class="c1">// @FindBy(css = "#name")</span>
+  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> 
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
 
-  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabled-name"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#disabled-name")</span>
- <span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">disabledName</span><span class="o">;</span>
+  <span class="c1">// @FindBy(css = "#disabled-name")</span>
+  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#disabled-name"</span><span class="o">)</span> 
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">disabledName</span><span class="o">;</span>
 
- <span class="c1">//By default Label is found by locator </span>
- <span class="n">By</span><span class="o">.</span><span class="na">cssSelector</span><span class="o">(</span><span class="s">"[for="</span><span class="o">+</span><span class="n">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">)+</span><span class="s">"]"</span><span class="o">)</span>
+  <span class="c1">//By default Label is found by locator </span>
+  <span class="n">By</span><span class="o">.</span><span class="na">cssSelector</span><span class="o">(</span><span class="s">"[for="</span><span class="o">+</span><span class="n">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">)+</span><span class="s">"]"</span><span class="o">)</span>
 
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
@@ -2084,10 +2086,16 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
       <span class="n">disabledName</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">equalToIgnoringCase</span><span class="o">(</span><span class="s">"Surname:"</span><span class="o">));</span>
   <span class="o">}</span>
 
-<span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLabelTextTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">colorPicker</span><span class="o">.</span><span class="na">lDriver</span> <span class="nf">SettingsabelText</span><span class="o">(),</span> <span class="s">"Select a color"</span><span class="o">);</span>
-  <span class="o">}</span>
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelAssertThatTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">jdiTitle</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
+ <span class="o">}</span>
+
+ <span class="nd">@Test</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelClickTest</span><span class="o">()</span> <span class="o">{</span>
+     <span class="n">jdiTitle</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+     <span class="n">validateAlert</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"JDI Title"</span><span class="o">));</span>
+ <span class="o">}</span>
 
 </code></pre><pre class="highlight csharp tab-csharp"><code>
  <span class="n">In</span> <span class="n">the</span> <span class="n">next</span> <span class="n">test</span> <span class="n">Label</span> <span class="k">is</span> <span class="n">found</span> <span class="k">from</span> <span class="n">NameTextField</span> <span class="n">locator</span><span class="p">:</span>
@@ -2175,15 +2183,28 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">redButton</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">redButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getAlertText</span><span class="o">(),</span> <span class="s">"Red button"</span><span class="o">);</span>
-    <span class="n">acceptAlert</span><span class="o">();</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonTest</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">redButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+   <span class="n">redButton</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">displayed</span><span class="o">()</span>
+         <span class="o">.</span><span class="na">and</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">))</span>
+         <span class="o">.</span><span class="na">core</span><span class="o">()</span>
+         <span class="o">.</span><span class="na">css</span><span class="o">(</span><span class="s">"font-size"</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">"14px"</span><span class="o">))</span>
+         <span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"uui-button red"</span><span class="o">)</span>
+         <span class="o">.</span><span class="na">attr</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"button"</span><span class="o">)</span>
+         <span class="o">.</span><span class="na">tag</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"input"</span><span class="o">));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">redButton</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Big Red Button-Input"</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonAssertThatTest</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">redButton</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buttonClickTest</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">redButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+   <span class="n">validateAlert</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Red button"</span><span class="o">));</span>
+   <span class="n">dblClickButton</span><span class="o">.</span><span class="na">doubleClick</span><span class="o">();</span>
+   <span class="n">validateAlert</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Double Click"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code>
 <span class="na">[FindBy(Css = ".red")]</span>
