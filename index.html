@@ -2449,8 +2449,6 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"accept-conditions"</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>
 <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"accept-conditions"</span><span class="nt">&gt;</span>Accept terms and conditions<span class="nt">&lt;/label&gt;</span>
 </code></pre>
-<p><br><br><br><br><br><br><br><br><br><br><br></p>
-
 <p>Available methods in Java JDI Light:</p>
 
 <table><thead>
@@ -2993,9 +2991,12 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">uploadTest</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">avatar</span><span class="o">.</span><span class="na">uploadFile</span><span class="o">(</span><span class="n">mergePath</span><span class="o">(</span><span class="n">PROJECT_PATH</span><span class="o">,</span> <span class="s">"/src/test/resources/general.xml"</span><span class="o">));</span>
         <span class="n">avatar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">));</span>
-        <span class="n">avatar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">));</span>
 <span class="o">}</span>
 
+ <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">avatar</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"picture:"</span><span class="o">));</span>
+    <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[Test]</span>
 <span class="k">public</span> <span class="k">void</span> <span class="nf">FileInputTest</span><span class="p">()</span>
 <span class="p">{</span>
@@ -3033,8 +3034,6 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"avatar"</span> <span class="na">accept=</span><span class="s">"image/png, image/jpeg"</span><span class="nt">&gt;</span>
 </code></pre>
-<p><br><br><br><br><br><br><br><br><br></p>
-
 <p>Available method in Java JDI Light:</p>
 
 <table><thead>
