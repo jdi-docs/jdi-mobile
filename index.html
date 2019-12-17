@@ -3413,14 +3413,24 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/ImageTests.java" target="_blank">Test examples in Java</a><br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#image-2">BDD Steps example</a><br></p>
-<h3 id='link'>Link</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=github-link]"</span><span class="o">)</span> 
-<span class="c1">// equal to @FindBy(css = "[ui=github-link]") </span>
+<h3 id='link'>Link</h3><pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "[ui=github-link]") </span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=github-link]"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Link</span> <span class="n">githubLink</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">githubLink</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">githubLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">EXPECTED_TEXT</span><span class="o">);</span>
+    <span class="n">githubLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">equalTo</span><span class="o">(</span><span class="n">EXPECTED_TEXT</span><span class="o">));</span>
+    <span class="n">githubLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">PART_OF_EXPECTED_TEXT</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">linkRefTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">githubLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ref</span><span class="o">(</span><span class="n">EXPECTED_URL</span><span class="o">);</span>
+    <span class="n">githubLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ref</span><span class="o">(</span><span class="n">equalTo</span><span class="o">(</span><span class="n">EXPECTED_URL</span><span class="o">));</span>
+    <span class="n">githubLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ref</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">PART_OF_EXPECTED_URL</span><span class="o">));</span>
+    <span class="n">githubLink</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">ref</span><span class="o">(</span><span class="n">matchesPattern</span><span class="o">(</span><span class="n">EXPECTED_URL_REGEX</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "[ui = github-link]</span><span class="s">")]
 </span><span class="k">public</span> <span class="n">ILink</span> <span class="n">GithubLink</span><span class="p">;</span>
 
