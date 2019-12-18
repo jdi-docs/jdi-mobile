@@ -5144,7 +5144,8 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 <span class="kd">private</span> <span class="kt">void</span> <span class="nf">tablePerformance</span><span class="o">(</span><span class="n">Table</span> <span class="n">table</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">4</span><span class="o">);</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">count</span><span class="o">(),</span> <span class="mi">400</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">header</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Name"</span><span class="o">,</span> <span class="s">"Phone"</span><span class="o">,</span> <span class="s">"Email"</span><span class="o">,</span> <span class="s">"City"</span><span class="o">));</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">header</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Name"</span><span class="o">,</span> <span class="s">"Phone"</span><span class="o">,</span>
+                 <span class="s">"Email"</span><span class="o">,</span> <span class="s">"City"</span><span class="o">));</span>
     <span class="n">start</span><span class="o">();</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">row</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">getValue</span><span class="o">(),</span>
             <span class="s">"Burke Tucker;076 1971 1687;et.euismod.et@ut.edu;GozŽe"</span><span class="o">);</span>
@@ -5174,17 +5175,20 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 
     <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">preview</span><span class="o">();</span>
     <span class="n">assertEquals</span><span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">194</span><span class="o">),</span>
-    <span class="s">"Name Phone Email City"</span> <span class="o">+</span>
-        <span class="s">"Burke Tucker 076 1971 1687 et.euismod.et@ut.edu GozŽe"</span> <span class="o">+</span>
-        <span class="s">"Grady Brock (011307) 16843 cursus.et@commodo.org Alcobendas"</span> <span class="o">+</span>
-        <span class="s">"Harding Lloyd 0800 1111 neque.In.ornare@mauris.co.uk Beauvais"</span><span class="o">);</span>
+       <span class="s">"Name Phone Email City"</span> <span class="o">+</span>
+       <span class="s">"Burke Tucker 076 1971 1687 et.euismod.et@ut.edu GozŽe"</span><span class="o">+</span>
+       <span class="s">"Grady Brock (011307) 16843 cursus.et@commodo.org Alcobendas"</span><span class="o">+</span>
+       <span class="s">"Harding Lloyd 0800 1111 neque.In.ornare@mauris.co.uk Beauvais"</span><span class="o">);</span>
     <span class="n">logTime</span><span class="o">(</span><span class="s">"Preview"</span><span class="o">);</span>
     <span class="cm">/*value = table.getValue();
     assertEquals(value.substring(0,228),
-        "||X||Name|Phone|Email|City||\r\n" +
-        "||1||Burke Tucker|076 1971 1687|et.euismod.et@ut.edu|GozŽe||\r\n" +
-        "||2||Grady Brock|(011307) 16843|cursus.et@commodo.org|Alcobendas||\r\n" +
-        "||3||Harding Lloyd|0800 1111|neque.In.ornare@mauris.co.uk|Beauvais||");
+   "||X||Name|Phone|Email|City||\r\n" +
+   "||1||Burke Tucker|076 1971 1687|
+        et.euismod.et@ut.edu|GozŽe||\r\n" +
+   "||2||Grady Brock|(011307) 16843|cursus.et@commodo.org|Alcobendas
+        ||\r\n"+
+   "||3||Harding Lloyd|0800 1111|neque.In.ornare@mauris.co.uk
+        |Beauvais||");
     logTime("Get value");*/</span>
 <span class="o">}</span>
 <span class="nd">@Test</span>
@@ -5206,7 +5210,8 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
     <span class="n">timeStart</span> <span class="o">=</span> <span class="n">currentTimeMillis</span><span class="o">();</span>
 <span class="o">}</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">logTime</span><span class="o">(</span><span class="n">String</span> <span class="n">description</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">description</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="o">(</span><span class="n">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">timeStart</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
+    <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">description</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span>
+         <span class="o">(</span><span class="n">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">timeStart</span><span class="o">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="o">);</span>
     <span class="n">timeStart</span> <span class="o">=</span> <span class="n">currentTimeMillis</span><span class="o">();</span>
 <span class="o">}</span>   
 <span class="nd">@Test</span>
@@ -5215,23 +5220,27 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
      <span class="n">Line</span> <span class="n">row</span> <span class="o">=</span> <span class="n">usersTable</span><span class="o">.</span><span class="na">row</span><span class="o">(</span>
          <span class="n">containsValue</span><span class="o">(</span><span class="s">"Meyer"</span><span class="o">,</span> <span class="n">inColumn</span><span class="o">(</span><span class="s">"Name"</span><span class="o">)),</span>
          <span class="n">containsValue</span><span class="o">(</span><span class="s">"co.uk"</span><span class="o">,</span> <span class="n">inColumn</span><span class="o">(</span><span class="s">"Email"</span><span class="o">)));</span>
-     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Huge table search test Time: "</span> <span class="o">+</span> <span class="n">timer</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
+     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Huge table search test Time: "</span><span class="o">+</span> 
+            <span class="n">timer</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
      <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span>
-     <span class="s">"Brian Meyer;(016977) 0358;mollis.nec@seddictumeleifend.co.uk;Houston"</span><span class="o">);</span>
+        <span class="s">"Brian Meyer;(016977) 0358;mollis.nec@seddictumeleifend.co.uk;
+               Houston"</span><span class="o">);</span>
  <span class="o">}</span>
 <span class="nd">@Test</span>
  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hugeTableValidateTest</span><span class="o">()</span> <span class="o">{</span>
-     <span class="n">StopWatch</span> <span class="n">timer</span> <span class="o">=</span> <span class="n">StopWatch</span><span class="o">.</span><span class="na">createStarted</span><span class="o">();</span>
-     <span class="n">String</span> <span class="n">actualTable</span> <span class="o">=</span> <span class="n">usersTable</span><span class="o">.</span><span class="na">preview</span><span class="o">();</span>
-     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Huge table validate test Time: "</span> <span class="o">+</span> <span class="n">timer</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
-     <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">actualTable</span><span class="o">,</span> <span class="n">TABLE_SNAPSHOOT</span><span class="o">);</span>
+    <span class="n">StopWatch</span> <span class="n">timer</span> <span class="o">=</span> <span class="n">StopWatch</span><span class="o">.</span><span class="na">createStarted</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">actualTable</span> <span class="o">=</span> <span class="n">usersTable</span><span class="o">.</span><span class="na">preview</span><span class="o">();</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Huge table validate test Time: "</span>
+         <span class="o">+</span> <span class="n">timer</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
+    <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">actualTable</span><span class="o">,</span> <span class="n">TABLE_SNAPSHOT</span><span class="o">);</span>
  <span class="o">}</span>
 <span class="nd">@Test</span>
  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bigDropdownTest</span><span class="o">()</span> <span class="o">{</span>
      <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Charles Byers"</span><span class="o">;</span>
      <span class="n">StopWatch</span> <span class="n">timer</span> <span class="o">=</span> <span class="n">StopWatch</span><span class="o">.</span><span class="na">createStarted</span><span class="o">();</span>
      <span class="n">userNames</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
-     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Big dropdown test Time: "</span> <span class="o">+</span> <span class="n">timer</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
+     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Big dropdown test Time: "</span>
+         <span class="o">+</span> <span class="n">timer</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
      <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">userNames</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="n">name</span><span class="o">);</span>
  <span class="o">}</span>
 <span class="nd">@Test</span>
@@ -5250,10 +5259,13 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
      accommodare, 
       utinam graeci iisque vim id, ea fugit scripta deleniti nec.
      Eos cu nisl veri meis.
-      Affert audiam copiosae mel ne, fabulas menandri temporibus has et.
+      Affert audiam copiosae mel ne,
+         fabulas menandri temporibus has et.
       Sed latine graecis ei,
-      eu fugit soluta intellegam vis, nibh graeci meliore ad duo.\\n\\n"</span> <span class="o">+</span>
-      <span class="s">"Et quis meis delenit mea, ius ea sumo laboramus vituperatoribus.
+      eu fugit soluta intellegam vis,
+         nibh graeci meliore ad duo.\\n\\n"</span> <span class="o">+</span>
+      <span class="s">"Et quis meis delenit mea,
+         ius ea sumo laboramus vituperatoribus.
         Te simul luptatum 
       tractatos nam, eam in causae constituam, 
        quod stet ancillae nam ei.
@@ -5265,12 +5277,14 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
       volutpat iudicabit definitionem ut sea.
          Pri at atqui molestiae,
      nibh ullum consulatu vix at.
-      Nec id nisl nonumes epicurei, et vitae possit probatus ius. 
+      Nec id nisl nonumes epicurei,
+         et vitae possit probatus ius. 
       Fierent delicata argumentum ut
      quo. Tation tincidunt sed eu, 
         sit in nostrud democritum.\\n\\n"</span> <span class="o">+</span>
-    <span class="s">"Usu esse utroque sapientem ad. Eam ut consul soleat sapientem,
-     cu dolor consequuntur vis.
+    <span class="s">"Usu esse utroque sapientem ad.
+        Eam ut consul soleat sapientem,
+        cu dolor consequuntur vis.
      Erat temporibus mea id, has ex dicam tritani.
      Pertinacia expetendis consectetuer eos ei,
      vidit malis periculis est ea, ne nam movet fuisset.
@@ -5279,7 +5293,8 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
      Vel eligendi honestatis liberavisse id."</span><span class="o">;</span>
      <span class="n">StopWatch</span> <span class="n">timer</span> <span class="o">=</span> <span class="n">StopWatch</span><span class="o">.</span><span class="na">createStarted</span><span class="o">();</span>
      <span class="n">textareaPerformance</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">text</span> <span class="o">+</span> <span class="s">"\\n"</span><span class="o">+</span> <span class="n">text</span><span class="o">);</span>
-     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Long text test Time: "</span> <span class="o">+</span> <span class="n">timer</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
+     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Long text test Time: "</span> <span class="o">+</span>
+         <span class="n">timer</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
  <span class="o">}</span>  
 </code></pre><pre class="highlight csharp tab-csharp"><code>
 <span class="na">[Test]</span>
@@ -5292,8 +5307,9 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
         <span class="nf">ContainsValue</span><span class="p">(</span><span class="s">"Meyer"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Name"</span><span class="p">)),</span>
         <span class="nf">ContainsValue</span><span class="p">(</span><span class="s">"co.uk"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Email"</span><span class="p">)));</span>
         <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEqual</span><span class="p">(</span>
-            <span class="s">"Brian Meyer;(016977) 0358;mollis.nec@seddictumeleifend.co.uk;Houston"</span><span class="p">,</span>
-            <span class="n">row</span><span class="p">.</span><span class="nf">GetValue</span><span class="p">());</span>
+     <span class="s">"Brian Meyer;(016977) 0358;
+</span>        <span class="n">mollis</span><span class="p">.</span><span class="n">nec@seddictumeleifend</span><span class="p">.</span><span class="n">co</span><span class="p">.</span><span class="n">uk</span><span class="p">;</span><span class="n">Houston</span><span class="s">",
+</span>      <span class="n">row</span><span class="p">.</span><span class="nf">GetValue</span><span class="p">());</span>
 <span class="p">}</span>
 
 <span class="na">[Test]</span>
@@ -5304,10 +5320,11 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
         <span class="nf">ContainsValue</span><span class="p">(</span><span class="s">"ut.edu"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="m">3</span><span class="p">)));</span>
     <span class="kt">var</span> <span class="n">row</span> <span class="p">=</span> <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Row</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
     <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Is</span><span class="p">().</span><span class="nf">HasRowWithValues</span><span class="p">(</span> 
-        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"Brian Meyer"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Name"</span><span class="p">)),</span> 
-        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"(016977) 0358"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Phone"</span><span class="p">)),</span>
-        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"mollis.nec@seddictumeleifend.co.uk"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Email"</span><span class="p">)),</span> 
-        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"Houston"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"City"</span><span class="p">)));</span>
+       <span class="nf">HasValue</span><span class="p">(</span><span class="s">"Brian Meyer"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Name"</span><span class="p">)),</span> 
+       <span class="nf">HasValue</span><span class="p">(</span><span class="s">"(016977) 0358"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Phone"</span><span class="p">)),</span>
+       <span class="nf">HasValue</span><span class="p">(</span><span class="s">"mollis.nec@seddictumeleifend.co.uk"</span><span class="p">,</span> 
+            <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Email"</span><span class="p">)),</span> 
+       <span class="nf">HasValue</span><span class="p">(</span><span class="s">"Houston"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"City"</span><span class="p">)));</span>
 <span class="p">}</span>
 
 <span class="na">[Test]</span>
@@ -5315,13 +5332,15 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 <span class="p">{</span>
     <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">AssertThat</span><span class="p">().</span><span class="nf">HasRowWithValues</span><span class="p">(</span>
         <span class="nf">HasValue</span><span class="p">(</span><span class="s">"Brian Meyer"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Name"</span><span class="p">)),</span>
-        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"mollis.nec@seddictumeleifend.co.uk"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Email"</span><span class="p">)));</span>
+        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"mollis.nec@seddictumeleifend.co.uk"</span><span class="p">,</span>
+        <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Email"</span><span class="p">)));</span>
     <span class="kt">var</span> <span class="n">row</span> <span class="p">=</span> <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Row</span><span class="p">(</span>
         <span class="nf">HasValue</span><span class="p">(</span><span class="s">"Brian Meyer"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Name"</span><span class="p">)),</span>
-        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"mollis.nec@seddictumeleifend.co.uk"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Email"</span><span class="p">)));</span>
+        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"mollis.nec@seddictumeleifend.co.uk"</span><span class="p">,</span>
+         <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Email"</span><span class="p">)));</span>
     <span class="n">Assert</span><span class="p">.</span><span class="nf">AreEqual</span><span class="p">(</span><span class="s">"Brian Meyer;(016977)
 </span>             <span class="m">0358</span><span class="p">;</span><span class="n">mollis</span><span class="p">.</span><span class="n">nec@seddictumeleifend</span><span class="p">.</span><span class="n">co</span><span class="p">.</span><span class="n">uk</span><span class="p">;</span><span class="n">Houston</span><span class="s">",
-</span>        <span class="n">row</span><span class="p">.</span><span class="nf">GetValue</span><span class="p">());</span>
+</span>             <span class="n">row</span><span class="p">.</span><span class="nf">GetValue</span><span class="p">());</span>
 <span class="p">}</span>
 
 <span class="na">[Test]</span>
@@ -5329,7 +5348,8 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 <span class="p">{</span>
     <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">AssertThat</span><span class="p">().</span><span class="nf">HasRowWithValues</span><span class="p">(</span>
         <span class="nf">HasValue</span><span class="p">(</span><span class="s">"Brian Meyer"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="m">1</span><span class="p">)),</span>
-        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"mollis.nec@seddictumeleifend.co.uk"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="m">3</span><span class="p">)));</span>
+        <span class="nf">HasValue</span><span class="p">(</span><span class="s">"mollis.nec@seddictumeleifend.co.uk"</span><span class="p">,</span>
+         <span class="nf">InColumn</span><span class="p">(</span><span class="m">3</span><span class="p">)));</span>
     <span class="kt">var</span> <span class="n">row</span> <span class="p">=</span> <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Row</span><span class="p">(</span>
         <span class="nf">ContainsValue</span><span class="p">(</span><span class="s">"Meyer"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Name"</span><span class="p">)),</span>
         <span class="nf">ContainsValue</span><span class="p">(</span><span class="s">"co.uk"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="s">"Email"</span><span class="p">)));</span>
@@ -5352,7 +5372,8 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
         <span class="p">.</span><span class="nf">RowsWithValues</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="nf">ContainsValue</span><span class="p">(</span><span class="s">"Baker"</span><span class="p">,</span> <span class="nf">InColumn</span><span class="p">(</span><span class="m">1</span><span class="p">)))</span>
         <span class="p">.</span><span class="nf">HasColumn</span><span class="p">(</span><span class="s">"Email"</span><span class="p">)</span>
         <span class="p">.</span><span class="nf">HasColumns</span><span class="p">(</span><span class="k">new</span><span class="p">[]</span> <span class="p">{</span><span class="s">"Name"</span><span class="p">,</span> <span class="s">"City"</span><span class="p">})</span>
-        <span class="p">.</span><span class="nf">Columns</span><span class="p">(</span><span class="n">Is</span><span class="p">.</span><span class="nf">SubsequenceOf</span><span class="p">(</span><span class="k">new</span><span class="p">[]</span> <span class="p">{</span><span class="s">"Name"</span><span class="p">,</span> <span class="s">"City"</span><span class="p">,</span> <span class="s">"Phone"</span><span class="p">,</span> <span class="s">"Email"</span><span class="p">,</span> <span class="s">"Address"</span><span class="p">}));</span>
+        <span class="p">.</span><span class="nf">Columns</span><span class="p">(</span><span class="n">Is</span><span class="p">.</span><span class="nf">SubsequenceOf</span><span class="p">(</span><span class="k">new</span><span class="p">[]</span> <span class="p">{</span><span class="s">"Name"</span><span class="p">,</span> <span class="s">"City"</span><span class="p">,</span> <span class="s">"Phone"</span><span class="p">,</span>
+         <span class="s">"Email"</span><span class="p">,</span> <span class="s">"Address"</span><span class="p">}));</span>
 <span class="p">}</span>
 
 <span class="na">[Test]</span>
@@ -5361,16 +5382,16 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
     <span class="n">PerformancePage</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
     <span class="n">PerformancePage</span><span class="p">.</span><span class="nf">CheckOpened</span><span class="p">();</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"Burke Tucker;076 1971 1687;et.euismod.et@ut.edu;GozŽe"</span><span class="p">,</span>
-                <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Row</span><span class="p">(</span><span class="m">1</span><span class="p">).</span><span class="nf">GetValue</span><span class="p">());</span>
+       <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Row</span><span class="p">(</span><span class="m">1</span><span class="p">).</span><span class="nf">GetValue</span><span class="p">());</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"Burke Tucker;076 1971 1687;et.euismod.et@ut.edu;GozŽe"</span><span class="p">,</span>
-                 <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Row</span><span class="p">(</span><span class="s">"Burke Tucker"</span><span class="p">).</span><span class="nf">GetValue</span><span class="p">());</span>
+      <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Row</span><span class="p">(</span><span class="s">"Burke Tucker"</span><span class="p">).</span><span class="nf">GetValue</span><span class="p">());</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"Burke Tucker;076 1971 1687;et.euismod.et@ut.edu;GozŽe"</span><span class="p">,</span> 
-                <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Row</span><span class="p">(</span><span class="n">Users</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="nf">GetValue</span><span class="p">());</span>
+      <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Row</span><span class="p">(</span><span class="n">Users</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="nf">GetValue</span><span class="p">());</span>
     <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Preview</span><span class="p">();</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"Name Phone Email City"</span> <span class="p">+</span>
-        <span class="s">"Burke Tucker 076 1971 1687 et.euismod.et@ut.edu GozŽe"</span> <span class="p">+</span>
-        <span class="s">"Grady Brock (011307) 16843 cursus.et@commodo.org Alcobendas"</span> <span class="p">+</span>
-        <span class="s">"Harding Lloyd 0800 1111 neque.In.ornare@mauris.co.uk Beauvais"</span><span class="p">,</span>
+      <span class="s">"Burke Tucker 076 1971 1687 et.euismod.et@ut.edu GozŽe"</span><span class="p">+</span>
+      <span class="s">"Grady Brock (011307) 16843 cursus.et@commodo.org Alcobendas"</span><span class="p">+</span>
+      <span class="s">"Harding Lloyd 0800 1111 neque.In.ornare@mauris.co.uk Beauvais"</span><span class="p">,</span>
                          <span class="k">value</span><span class="p">.</span><span class="nf">Substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">194</span><span class="p">));</span>
 <span class="p">}</span>
 
@@ -5380,13 +5401,13 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
     <span class="n">PerformancePage</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
     <span class="n">PerformancePage</span><span class="p">.</span><span class="nf">CheckOpened</span><span class="p">();</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"ipsum.non.arcu@auctorullamcorper.ca"</span><span class="p">,</span>
-         <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Cell</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">));</span>
+       <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Cell</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">));</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"ipsum.non.arcu@auctorullamcorper.ca"</span><span class="p">,</span>
-                 <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Cell</span><span class="p">(</span><span class="s">"Email"</span><span class="p">,</span> <span class="m">4</span><span class="p">));</span>
+       <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Cell</span><span class="p">(</span><span class="s">"Email"</span><span class="p">,</span> <span class="m">4</span><span class="p">));</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"ipsum.non.arcu@auctorullamcorper.ca"</span><span class="p">,</span>
-                 <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Cell</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="s">"Zachary Hendrix"</span><span class="p">));</span>
+       <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Cell</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="s">"Zachary Hendrix"</span><span class="p">));</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"ipsum.non.arcu@auctorullamcorper.ca"</span><span class="p">,</span>
-                 <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Cell</span><span class="p">(</span><span class="s">"Email"</span><span class="p">,</span> <span class="s">"Zachary Hendrix"</span><span class="p">));</span>
+       <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Cell</span><span class="p">(</span><span class="s">"Email"</span><span class="p">,</span> <span class="s">"Zachary Hendrix"</span><span class="p">));</span>
 <span class="p">}</span>
 
 <span class="na">[Test]</span>
@@ -5395,11 +5416,14 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
     <span class="n">PerformancePage</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
     <span class="n">PerformancePage</span><span class="p">.</span><span class="nf">CheckOpened</span><span class="p">();</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"076 1971 1687;(011307) 16843;0"</span><span class="p">,</span>
-       <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Column</span><span class="p">(</span><span class="m">2</span><span class="p">).</span><span class="nf">GetValue</span><span class="p">().</span><span class="nf">Substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">30</span><span class="p">));</span>
+       <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Column</span><span class="p">(</span><span class="m">2</span><span class="p">).</span>
+         <span class="nf">GetValue</span><span class="p">().</span><span class="nf">Substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">30</span><span class="p">));</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"076 1971 1687;(011307) 16843;0"</span><span class="p">,</span>
-       <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Column</span><span class="p">(</span><span class="s">"Phone"</span><span class="p">).</span><span class="nf">GetValue</span><span class="p">().</span><span class="nf">Substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">30</span><span class="p">));</span>
+    <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Column</span><span class="p">(</span><span class="s">"Phone"</span><span class="p">).</span>
+        <span class="nf">GetValue</span><span class="p">().</span><span class="nf">Substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">30</span><span class="p">));</span>
     <span class="nf">AreEqual</span><span class="p">(</span><span class="s">"076 1971 1687;(011307) 16843;0"</span><span class="p">,</span>
-       <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Column</span><span class="p">(</span><span class="n">Users</span><span class="p">.</span><span class="n">Phone</span><span class="p">).</span><span class="nf">GetValue</span><span class="p">().</span><span class="nf">Substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">30</span><span class="p">));</span>
+    <span class="n">PerformancePage</span><span class="p">.</span><span class="n">UsersTable</span><span class="p">.</span><span class="nf">Column</span><span class="p">(</span><span class="n">Users</span><span class="p">.</span><span class="n">Phone</span><span class="p">).</span>
+        <span class="nf">GetValue</span><span class="p">().</span><span class="nf">Substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">30</span><span class="p">));</span>
 <span class="p">}</span>       
 </code></pre>
 <p><strong>JDI JTable annotation</strong></p>
@@ -5422,7 +5446,9 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 <li><strong><em>int size()</em></strong> - amount of columns</li>
 <li><strong><em>int count()</em></strong> - amount of rows</li>
 <li><strong><em>int firstColumnIndex()</em></strong> - index of the first column</li>
-<li><strong><em>int[] columnsMapping()</em></strong> - </li>
+<li><strong><em>int[] columnsMapping()</em></strong> - a collection containing indexes of the columns
+that are going to be used for processing, e.g. if one decides to work with not all columns but only with particular ones
+or if a column contains e.g. an icon or a checkbox and should not be processed then its index shouldn&#39;t be listed in columnsMapping field</li>
 </ul>
 
 <p>Here is a list of available methods in Java:</p>
@@ -5852,7 +5878,8 @@ able to perform a list of readonly interactions with this element in order to ge
 <span class="nd">@JTable</span><span class="o">(</span> <span class="n">root</span> <span class="o">=</span> <span class="s">"#users-table"</span><span class="o">,</span>
   <span class="n">row</span> <span class="o">=</span> <span class="s">"//tr[%s]/td"</span><span class="o">,</span> <span class="n">column</span> <span class="o">=</span> <span class="s">"//tr/td[%s]"</span><span class="o">,</span>
   <span class="n">cell</span> <span class="o">=</span> <span class="s">"//tr[{1}]/td[{0}]"</span><span class="o">,</span> <span class="n">allCells</span> <span class="o">=</span> <span class="s">"td"</span><span class="o">,</span>
-  <span class="n">headers</span> <span class="o">=</span> <span class="s">"th"</span><span class="o">,</span> <span class="n">header</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Name"</span><span class="o">,</span> <span class="s">"Phone"</span><span class="o">,</span> <span class="s">"Email"</span><span class="o">,</span> <span class="s">"City"</span><span class="o">},</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="s">"th"</span><span class="o">,</span> <span class="n">header</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Name"</span><span class="o">,</span> <span class="s">"Phone"</span><span class="o">,</span> <span class="s">"Email"</span><span class="o">,</span>
+                             <span class="s">"City"</span><span class="o">},</span>
   <span class="n">rowHeader</span> <span class="o">=</span> <span class="s">"Name"</span><span class="o">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="o">)</span>
 
@@ -5872,20 +5899,22 @@ able to perform a list of readonly interactions with this element in order to ge
 <span class="kd">private</span> <span class="kt">void</span> <span class="nf">dataTableValidation</span><span class="o">(</span><span class="n">DataTable</span><span class="o">&lt;</span><span class="n">UserRow</span><span class="o">,</span> <span class="n">UserInfo</span><span class="o">&gt;</span> <span class="n">table</span><span class="o">)</span> <span class="o">{</span>
    <span class="n">assertEquals</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">4</span><span class="o">);</span>
    <span class="n">assertEquals</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">count</span><span class="o">(),</span> <span class="mi">400</span><span class="o">);</span>
-   <span class="n">assertEquals</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">header</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Name"</span><span class="o">,</span> <span class="s">"Phone"</span><span class="o">,</span> <span class="s">"Email"</span><span class="o">,</span> <span class="s">"City"</span><span class="o">));</span>
+   <span class="n">assertEquals</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">header</span><span class="o">(),</span> 
+        <span class="n">asList</span><span class="o">(</span><span class="s">"Name"</span><span class="o">,</span> <span class="s">"Phone"</span><span class="o">,</span> <span class="s">"Email"</span><span class="o">,</span> <span class="s">"City"</span><span class="o">));</span>
    <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">preview</span><span class="o">();</span>
    <span class="n">assertEquals</span><span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">194</span><span class="o">),</span>
    <span class="s">"Name Phone Email City"</span> <span class="o">+</span>
-       <span class="s">"Burke Tucker 076 1971 1687 et.euismod.et@ut.edu GozŽe"</span> <span class="o">+</span>
-       <span class="s">"Grady Brock (011307) 16843 cursus.et@commodo.org Alcobendas"</span> <span class="o">+</span>
-       <span class="s">"Harding Lloyd 0800 1111 neque.In.ornare@mauris.co.uk Beauvais"</span><span class="o">);</span>
+   <span class="s">"Burke Tucker 076 1971 1687 et.euismod.et@ut.edu GozŽe"</span><span class="o">+</span>
+   <span class="s">"Grady Brock (011307) 16843 cursus.et@commodo.org Alcobendas"</span><span class="o">+</span>
+   <span class="s">"Harding Lloyd 0800 1111 neque.In.ornare@mauris.co.uk Beauvais"</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">filterDataTest</span><span class="o">()</span> <span class="o">{</span>
    <span class="n">assertEquals</span><span class="o">(</span><span class="n">usersData</span><span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="mi">2</span><span class="o">),</span> <span class="n">GRADY_BROCK</span><span class="o">);</span>
-   <span class="n">assertEquals</span><span class="o">(</span><span class="n">usersData</span><span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="s">"Grady Brock"</span><span class="o">),</span> <span class="n">GRADY_BROCK</span><span class="o">);</span>
-   <span class="n">assertEquals</span><span class="o">(</span><span class="n">usersData</span><span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">name</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Brock"</span><span class="o">)),</span> <span class="n">GRADY_BROCK</span><span class="o">);</span>
+   <span class="n">assertEquals</span><span class="o">(</span><span class="n">usersData</span><span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="s">"Grady Brock"</span><span class="o">),</span><span class="n">GRADY_BROCK</span><span class="o">);</span>
+   <span class="n">assertEquals</span><span class="o">(</span><span class="n">usersData</span><span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">name</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Brock"</span><span class="o">)),</span>
+         <span class="n">GRADY_BROCK</span><span class="o">);</span>
    <span class="n">usersData</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">row</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">GRADY_BROCK</span><span class="o">));</span>
 <span class="o">}</span>
 
@@ -5902,14 +5931,15 @@ able to perform a list of readonly interactions with this element in order to ge
 <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateUserRow</span><span class="o">(</span><span class="n">UserRow</span> <span class="n">line</span><span class="o">)</span> <span class="o">{</span>
    <span class="n">line</span><span class="o">.</span><span class="na">city</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
    <span class="n">validateAlert</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">GRADY_BROCK</span><span class="o">.</span><span class="na">city</span><span class="o">));</span>
-   <span class="n">assertEquals</span><span class="o">(</span><span class="n">line</span><span class="o">.</span><span class="na">email</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">GRADY_BROCK</span><span class="o">.</span><span class="na">email</span><span class="o">);</span>
+   <span class="n">assertEquals</span><span class="o">(</span><span class="n">line</span><span class="o">.</span><span class="na">email</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span><span class="n">GRADY_BROCK</span><span class="o">.</span><span class="na">email</span><span class="o">);</span>
 <span class="o">}</span>   
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tableParamsTest</span><span class="o">()</span> <span class="o">{</span>
    <span class="n">assertEquals</span><span class="o">(</span><span class="n">users</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">4</span><span class="o">);</span>
    <span class="n">assertEquals</span><span class="o">(</span><span class="n">users</span><span class="o">.</span><span class="na">count</span><span class="o">(),</span> <span class="mi">6</span><span class="o">);</span>
-   <span class="n">assertEquals</span><span class="o">(</span><span class="n">users</span><span class="o">.</span><span class="na">header</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Number"</span><span class="o">,</span> <span class="s">"Type"</span><span class="o">,</span> <span class="s">"User"</span><span class="o">,</span> <span class="s">"Description"</span><span class="o">));</span>
+   <span class="n">assertEquals</span><span class="o">(</span><span class="n">users</span><span class="o">.</span><span class="na">header</span><span class="o">(),</span>
+   <span class="n">asList</span><span class="o">(</span><span class="s">"Number"</span><span class="o">,</span> <span class="s">"Type"</span><span class="o">,</span> <span class="s">"User"</span><span class="o">,</span><span class="s">"Description"</span><span class="o">));</span>
 <span class="o">}</span>    
 
 <span class="nd">@Test</span>
@@ -5919,17 +5949,20 @@ able to perform a list of readonly interactions with this element in order to ge
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dataColumnNameTest</span><span class="o">()</span> <span class="o">{</span>
-   <span class="n">assertEquals</span><span class="o">(</span><span class="n">usersSetup</span><span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="s">"Sergey Ivan"</span><span class="o">),</span> <span class="n">SPIDER_MAN</span><span class="o">);</span>
+   <span class="n">assertEquals</span><span class="o">(</span><span class="n">usersSetup</span><span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="s">"Sergey Ivan"</span><span class="o">),</span>
+                <span class="n">SPIDER_MAN</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dataFilterTest</span><span class="o">()</span> <span class="o">{</span>
-   <span class="n">assertEquals</span><span class="o">(</span><span class="n">users</span><span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">user</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Ivan"</span><span class="o">)),</span> <span class="n">SPIDER_MAN</span><span class="o">);</span>
+   <span class="n">assertEquals</span><span class="o">(</span><span class="n">users</span><span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">user</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Ivan"</span><span class="o">)),</span>
+         <span class="n">SPIDER_MAN</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">allDataFilterTest</span><span class="o">()</span> <span class="o">{</span>
-   <span class="n">List</span><span class="o">&lt;</span><span class="n">MarvelUserInfo</span><span class="o">&gt;</span> <span class="n">filteredData</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="na">datas</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">user</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Ivan"</span><span class="o">));</span>
+   <span class="n">List</span><span class="o">&lt;</span><span class="n">MarvelUserInfo</span><span class="o">&gt;</span> <span class="n">filteredData</span> <span class="o">=</span> 
+            <span class="n">users</span><span class="o">.</span><span class="na">datas</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">user</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Ivan"</span><span class="o">));</span>
    <span class="n">assertEquals</span><span class="o">(</span><span class="n">filteredData</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">1</span><span class="o">);</span>
    <span class="n">assertEquals</span><span class="o">(</span><span class="n">filteredData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">SPIDER_MAN</span><span class="o">);</span>
 <span class="o">}</span>
@@ -5949,7 +5982,8 @@ able to perform a list of readonly interactions with this element in order to ge
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">atLeastMatcherTest</span><span class="o">()</span> <span class="o">{</span>
-   <span class="n">users</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">atLeast</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">rows</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">type</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"User"</span><span class="o">));</span>
+   <span class="n">users</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">atLeast</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span>
+        <span class="n">rows</span><span class="o">(</span><span class="n">d</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="o">.</span><span class="na">type</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"User"</span><span class="o">));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
@@ -6008,7 +6042,8 @@ able to perform a list of readonly interactions with this element in order to ge
 </ul>
 
 <p><img src="images/html/tableHtml2.png" alt="DataTable" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"uui-table stripe tbl-without-header table-td-click"</span> <span class="na">ui=</span><span class="s">"table"</span> <span class="na">id=</span><span class="s">"users-table"</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"uui-table stripe tbl-without-header table-td-click"</span>
+     <span class="na">ui=</span><span class="s">"table"</span> <span class="na">id=</span><span class="s">"users-table"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;tbody&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
             <span class="nt">&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
@@ -7853,7 +7888,8 @@ The names of the entity fields should be exactly the same as the names of the fo
 <a href="https://jdi-docs.github.io/jdi-light/?java#smart-locators">See more details and exampels for Smart locators in documentation</a></p>
 <pre class="highlight java tab-java"><code><span class="n">on</span> <span class="n">JDISite</span><span class="o">.</span><span class="na">java</span> <span class="o">&gt;&gt;</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">lightLoginForm</span><span class="o">;</span>
 </code></pre>
-<p><strong>Light Forms</strong> - if a Form consists of only TextFields and Buttons, there is no need to define a Form UI Object. Such form can be added directly to the related page or to the root Site class.</p>
+<p><strong>Light Forms</strong> - if a Form consists of only TextFields and Buttons, there is no need to define a Form UI Object.
+ Such form can be added directly to the related page or to the root Site class.</p>
 <pre class="highlight java tab-java"><code><span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onlyMandatoryOptionTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">shouldContactPageBeOpenedAndRefreshed</span><span class="o">();</span>
