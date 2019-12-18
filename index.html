@@ -3291,18 +3291,21 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ImagesTests.cs" target="_blank">Test examples in C#</a><br></p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#icon-2">BDD Steps example</a></p>
-<h3 id='image'>Image</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdi-logo"</span><span class="o">)</span> 
+<h3 id='image'>Image</h3>
+<p><strong>Image</strong> – Is a simple element type that represents graphic images.</p>
+
+<p><img src="images/html/image_html2.png" alt="Image" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#jdi-logo"</span><span class="o">)</span> 
 <span class="c1">// same as FindBy(css = "#jdi-logo")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Image</span> <span class="n">jdiLogo</span><span class="o">;</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">WebPage</span><span class="o">.</span><span class="na">refresh</span><span class="o">();</span>
-        <span class="n">jdiLogo</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"jdi-logo.jpg"</span><span class="o">));</span>
-        <span class="n">jdiLogo</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Jdi Logo 2"</span><span class="o">));</span>
-        <span class="n">jdiLogo</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
-        <span class="n">jdiLogo</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">101</span><span class="o">));</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">jdiLogo</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">src</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"jdi-logo.jpg"</span><span class="o">));</span>
+    <span class="n">jdiLogo</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">alt</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Jdi Logo 2"</span><span class="o">));</span>
+    <span class="n">jdiLogo</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">height</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
+    <span class="n">jdiLogo</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">width</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">101</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#jdi-logo")]</span>
 <span class="k">public</span> <span class="n">IImage</span> <span class="n">LogoImage</span><span class="p">;</span>
 
@@ -3317,20 +3320,66 @@ class="uui-button red" onclick="alert('Red button');"&gt;
    <span class="p">{</span>
      <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">LogoImage</span><span class="p">.</span><span class="nf">GetAlt</span><span class="p">(),</span> <span class="n">Alt</span><span class="p">);</span>
    <span class="p">}</span>
-</code></pre>
-<p><strong>Image</strong> – Is a simple element type that represents graphic images.</p>
-
-<p><img src="images/html/image_html2.png" alt="Image" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"jdi-logo"</span><span class="nt">&gt;</span>JDI Logo:<span class="nt">&lt;/label&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"jdi-logo"</span><span class="nt">&gt;</span>JDI Logo:<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/jdi-light/images/jdi-logo.jpg"</span> <span class="na">id=</span><span class="s">"jdi-logo"</span> <span class="na">alt=</span><span class="s">"Jdi Logo 2"</span> 
      <span class="na">width=</span><span class="s">"101"</span> <span class="na">height=</span><span class="s">"100"</span> <span class="na">onclick=</span><span class="s">"alert('JDI Logo');"</span><span class="nt">&gt;</span>
 </code></pre>
+<p><br><br><br><br><br><br><br><br><br></p>
+
 <p>Images are represented by the following classes in Java and C#:</p>
 
 <ul>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Image</em></li>
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Image</em></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Image</em></li>
 </ul>
+
+<p>Here is a list of available methods in Java:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on the image</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>src()</strong></td>
+<td>get value of src attribute</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>height()</strong></td>
+<td>get value of height attribute</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>width()</strong></td>
+<td>get value of width attribute</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>alt()</strong></td>
+<td>get value of alt attribute</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>method for building assertions</td>
+<td>ImageAssert</td>
+</tr>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>method for building assertions</td>
+<td>ImageAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/ImageTests.java" target="_blank">Test examples in Java</a></p>
 
 <p>Here is a list of available methods in C#:</p>
 
@@ -3378,57 +3427,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ImagesTests.cs" target="_blank">Test examples in C#</a><br>
-<a href="https://jdi-docs.github.io/jdi-light/?java#image-2">BDD Steps example</a> <br></p>
-
-<p>And here are methods available in Java:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>click()</strong></td>
-<td>click on the image</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>src()</strong></td>
-<td>get value of src attribute</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>height()</strong></td>
-<td>get value of height attribute</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>width()</strong></td>
-<td>get value of width attribute</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>alt()</strong></td>
-<td>get value of alt attribute</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>method for building assertions</td>
-<td>ImageAssert</td>
-</tr>
-<tr>
-<td><strong>assertThat()</strong></td>
-<td>method for building assertions</td>
-<td>ImageAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/ImageTests.java" target="_blank">Test examples in Java</a><br>
-<a href="https://jdi-docs.github.io/jdi-light/?java#image-2">BDD Steps example</a><br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ImagesTests.cs" target="_blank">Test examples in C#</a></p>
 <h3 id='link'>Link</h3><pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "[ui=github-link]") </span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=github-link]"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Link</span> <span class="n">githubLink</span><span class="o">;</span>
@@ -4647,36 +4646,40 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/TextFieldTests.java" target="_blank">Test examples in Java</a><br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#textfield-2">BDD Steps example</a><br></p>
-<h3 id='textarea'>TextArea</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#text-area"</span><span class="o">)</span> 
+<h3 id='textarea'>TextArea</h3>
+<p><strong>TextArea</strong> – Is a simple element type that allows users to fill in text areas (they may contain a few lines). </p>
+
+<p><img src="images/html/textArea_html2.png" alt="InputTypeTextArea" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#text-area"</span><span class="o">)</span> 
 <span class="c1">// same as FindBy(css = "#text-area")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">TextArea</span> <span class="n">textArea</span><span class="o">;</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLinesTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">textArea</span><span class="o">.</span><span class="na">setLines</span><span class="o">(</span><span class="s">"test 1"</span><span class="o">,</span> <span class="s">"test 2"</span><span class="o">,</span> <span class="s">"test 3"</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">textArea</span><span class="o">.</span><span class="na">getLines</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"test 1"</span><span class="o">,</span> <span class="s">"test 2"</span><span class="o">,</span> <span class="s">"test 3"</span><span class="o">));</span>
-    <span class="o">}</span>
+<span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">"TextArea"</span><span class="o">;</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">focusTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">textArea</span><span class="o">.</span><span class="na">focus</span><span class="o">();</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">addNewLineTest</span><span class="o">(){</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">setLines</span><span class="o">(</span><span class="s">"line1"</span><span class="o">,</span> <span class="s">"line2"</span><span class="o">);</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">addNewLine</span><span class="o">(</span><span class="s">"line3"</span><span class="o">);</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"line1\nline2\nline3"</span><span class="o">));</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">""</span><span class="o">));</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">rowsTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">textArea</span><span class="o">.</span><span class="na">rows</span><span class="o">(),</span> <span class="mi">3</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">textArea</span><span class="o">.</span><span class="na">cols</span><span class="o">(),</span> <span class="mi">33</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">textArea</span><span class="o">.</span><span class="na">minlength</span><span class="o">(),</span> <span class="mi">10</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">textArea</span><span class="o">.</span><span class="na">maxlength</span><span class="o">(),</span> <span class="mi">200</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Area"</span><span class="o">));</span>
+    <span class="n">disabledTextArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">disabled</span><span class="o">();</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="c1">// this test demonstrates usage of methods inherited from TextField interface:</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearTest</span><span class="o">()</span> <span class="o">{</span>
-             <span class="n">textArea</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
-             <span class="n">textArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
-             <span class="n">assertEquals</span><span class="o">(</span><span class="n">textArea</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">""</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">rowsTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">rowsCount</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">3</span><span class="o">));</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">colsCount</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">33</span><span class="o">));</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">minlength</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">10</span><span class="o">));</span>
+    <span class="n">textArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">maxlength</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">200</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#text-area")]</span>
 <span class="k">public</span> <span class="n">ITextArea</span> <span class="n">TextArea</span><span class="p">;</span>
 
@@ -4694,11 +4697,7 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
       <span class="n">TextArea</span><span class="p">.</span><span class="nf">AddNewLine</span><span class="p">(</span><span class="s">"line3"</span><span class="p">);</span>
       <span class="n">Assert</span><span class="p">.</span><span class="nf">CollectionEquals</span><span class="p">(</span><span class="n">TextArea</span><span class="p">.</span><span class="nf">GetLines</span><span class="p">(),</span> <span class="k">new</span><span class="p">[]</span> <span class="p">{</span> <span class="s">"line1"</span><span class="p">,</span> <span class="s">"line2"</span><span class="p">,</span> <span class="s">"line3"</span> <span class="p">});</span>
    <span class="p">}</span>
-</code></pre>
-<p><strong>TextArea</strong> – Is a simple element type that allows users to fill in text areas (they may contain a few lines). </p>
-
-<p><img src="images/html/textArea_html2.png" alt="InputTypeTextArea" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"text-area"</span><span class="nt">&gt;</span>Text example:<span class="nt">&lt;/label&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"text-area"</span><span class="nt">&gt;</span>Text example:<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"text-area"</span> <span class="na">rows=</span><span class="s">"3"</span> <span class="na">cols=</span><span class="s">"33"</span> <span class="na">maxlength=</span><span class="s">"200"</span> <span class="na">minlength=</span><span class="s">"10"</span>
           <span class="na">required=</span><span class="s">""</span> <span class="na">wrap=</span><span class="s">"hard"</span> <span class="na">placeholder=</span><span class="s">"Input huge text"</span><span class="nt">&gt;</span>Textarea with sizing
           and wrap attribute (try values of hard, soft, and off to see how it affects wrapping).
@@ -4706,16 +4705,96 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 <span class="nt">&lt;/textarea&gt;</span> <span class="nt">&lt;br&gt;</span>
 <span class="nt">&lt;textarea</span> <span class="na">disabled=</span><span class="s">""</span> <span class="na">placeholder=</span><span class="s">"Disabled area"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
 </code></pre>
-<p>Text areas are represented by the following classes in Java and C#:</p>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+
+<p>Text areas are represented by the following classes:</p>
 
 <ul>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.TextArea</em></li>
 <li><strong>Java</strong>: <a href='https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-html/src/main/java/com/epam/jdi/light/ui/html/elements/common/TextArea.java'>TextArea</a></li>
+<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.TextArea</em></li>
 </ul>
+
+<p>In JAVA TextArea is a descendant of UIBaseElement with HasLabel, SetValue, HasPlaceholder, IsInput interfaces parameterized with TextAreaAssert and inherits its methods. But TextArea also has methods of its own.</p>
 
 <p>In C# TextArea is a descendant of TextField and inherits its methods. But TextArea also has methods of its own.</p>
 
-<p>In JAVA TextArea is a descendant of UIBaseElement parameterized with TextAreaAssert and inherits its methods. But TextArea also has methods of its own.</p>
+<p>Here is a list of available methods in Java:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>setLines(String... lines)</strong></td>
+<td>sets lines (text)</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getLines()</strong></td>
+<td>returns lines (text) from the text area</td>
+<td>List<String></td>
+</tr>
+<tr>
+<td><strong>labelText()</strong></td>
+<td>returns value of TextArea label</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>placeholder()</strong></td>
+<td>returns value of placeholder in TextArea</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>rows()</strong></td>
+<td>returns value of rows attribute</td>
+<td>int</td>
+</tr>
+<tr>
+<td><strong>cols()</strong></td>
+<td>returns value of cols attribute</td>
+<td>int</td>
+</tr>
+<tr>
+<td><strong>minlength()</strong></td>
+<td>returns value of minlength attribute</td>
+<td>int</td>
+</tr>
+<tr>
+<td><strong>maxlength()</strong></td>
+<td>returns value of maxlength attribute</td>
+<td>int</td>
+</tr>
+<tr>
+<td><strong>addNewLine(String line)</strong></td>
+<td>add line to the already existing</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue()</strong></td>
+<td>setting value</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>calls getText() method</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>returns value of attribute &quot;value&quot;</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>returns object for work with assertions</td>
+<td>TextAreaAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/TextAreaTests.java" target="_blank">Test examples in Java</a><br></p>
 
 <p>Here is a list of available methods in C#:</p>
 
@@ -4773,77 +4852,7 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/TextAreaTests.cs" target="_blank">Test examples in C#</a><br>
-  <a href="https://jdi-docs.github.io/jdi-light/#textarea-2">BDD Steps example</a> <br></p>
-
-<p>And here are methods available in Java:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>setLines(String... lines)</strong></td>
-<td>sets lines (text)</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>getLines()</strong></td>
-<td>returns lines (text) from the text area</td>
-<td>List<String></td>
-</tr>
-<tr>
-<td><strong>rows()</strong></td>
-<td>returns value of rows attribute</td>
-<td>int</td>
-</tr>
-<tr>
-<td><strong>cols()</strong></td>
-<td>returns value of cols attribute</td>
-<td>int</td>
-</tr>
-<tr>
-<td><strong>minlength()</strong></td>
-<td>returns value of minlength attribute</td>
-<td>int</td>
-</tr>
-<tr>
-<td><strong>maxlength()</strong></td>
-<td>returns value of maxlength attribute</td>
-<td>int</td>
-</tr>
-<tr>
-<td><strong>addNewLine(String line)</strong></td>
-<td>add line to the already existing</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>setValue()</strong></td>
-<td>setting value</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>getValue()</strong></td>
-<td>calls getText() method</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>getText()</strong></td>
-<td>returns value of attribute &quot;value&quot;</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>returns object for work with assertions</td>
-<td>TextAreaAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/TextAreaTests.java" target="_blank">Test examples in Java</a><br>
-  <a href="https://jdi-docs.github.io/jdi-light/#textarea-2">BDD Steps example</a> <br></p>
+<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/TextAreaTests.cs" target="_blank">Test examples in C#</a><br></p>
 <h3 id='title'>Title</h3>
 <p><strong>Title</strong> – A graphical control element representing document title, which is displayed in the title bar of the browser or tab page.</p>
 
