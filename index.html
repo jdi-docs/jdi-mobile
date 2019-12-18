@@ -2971,7 +2971,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <h3 id='fileinput'>FileInput</h3>
 <p><strong>FileInput</strong> - A graphical control element that allows user to upload documents to web site.</p>
 
-<p><img src="images/fileinput.png" alt="FileInput" /></p>
+<p><img src="images/fileInputAndDownload.png" alt="FileInput" /></p>
 
 <p>FileInput element is located in JDI Light in:</p>
 
@@ -2987,16 +2987,30 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#avatar"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">FileInput</span> <span class="n">avatar</span><span class="o">;</span> 
 
+<span class="nd">@FindBy</span><span class="o">(</span><span class="n">xpath</span> <span class="o">=</span> <span class="s">"//a[@download]"</span><span class="o">)</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"[download]"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Link</span> <span class="n">downloadJdiLogo</span><span class="o">;</span>
+
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">uploadTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">avatar</span><span class="o">.</span><span class="na">uploadFile</span><span class="o">(</span><span class="n">mergePath</span><span class="o">(</span><span class="n">PROJECT_PATH</span><span class="o">,</span> <span class="s">"/src/test/resources/general.xml"</span><span class="o">));</span>
-        <span class="n">avatar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">));</span>
+    <span class="n">avatar</span><span class="o">.</span><span class="na">uploadFile</span><span class="o">(</span><span class="n">mergePath</span><span class="o">(</span><span class="n">PROJECT_PATH</span><span class="o">,</span> <span class="s">"/src/test/resources/general.xml"</span><span class="o">));</span>
+    <span class="n">avatar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"general.xml"</span><span class="o">));</span>
 <span class="o">}</span>
 
- <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">avatar</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"picture:"</span><span class="o">));</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">avatar</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"picture:"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">downloadTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">cleanupDownloads</span><span class="o">();</span>
+    <span class="n">downloadJdiLogo</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">assertThatFile</span><span class="o">(</span><span class="s">"jdi-logo.jpg"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">isDownloaded</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">hasSize</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">32225L</span><span class="o">));</span>
+    <span class="n">assertThatFile</span><span class="o">(</span><span class="s">"jdi-logo.jpg"</span><span class="o">).</span><span class="na">hasSize</span><span class="o">(</span><span class="n">greaterThan</span><span class="o">(</span><span class="mi">100L</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[Test]</span>
 <span class="k">public</span> <span class="k">void</span> <span class="nf">FileInputTest</span><span class="p">()</span>
 <span class="p">{</span>
@@ -3032,7 +3046,10 @@ class="uui-button red" onclick="alert('Red button');"&gt;
     <span class="nf">BaseElementValidation</span><span class="p">(</span><span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">FileInput</span><span class="p">);</span>
 <span class="p">}</span>
 
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"avatar"</span> <span class="na">accept=</span><span class="s">"image/png, image/jpeg"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"avatar"</span><span class="nt">&gt;</span>Profile picture:<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"avatar"</span> <span class="na">accept=</span><span class="s">"image/png, image/jpeg"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">accept=</span><span class="s">"image/png, image/jpeg"</span> <span class="na">disabled=</span><span class="s">""</span><span class="nt">&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/jdi-light/images/jdi-logo.jpg"</span> <span class="na">download=</span><span class="s">""</span><span class="nt">&gt;</span>Download JDI Logo<span class="nt">&lt;/a&gt;</span>
 </code></pre>
 <p>Available method in Java JDI Light:</p>
 
@@ -3131,7 +3148,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/FileUploadTests.java">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/example/common/FileInputExampleTests.java">Test examples in Java</a></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/FileInputTests.cs">Test examples in C#</a></p>
 
