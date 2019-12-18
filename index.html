@@ -4294,35 +4294,24 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <a href="https://jdi-docs.github.io/jdi-light/?java#range-2">BDD Steps example</a> <br></p>
 <h3 id='text'>Text</h3>
 <p><strong>Text</strong> - Is a combination of letters and textual symbols. When performing testing, the text is used in most operations: when typing text into the login field, when finding a button with some certain text in it, or when checking if actual text matches expected one.</p>
-<pre class="highlight java tab-java"><code>  <span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=jdi-text]"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "[ui=jdi-text]") </span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Text</span> <span class="n">jdiText</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=jdi-text]"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "[ui=jdi-text]") </span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Text</span> <span class="n">jdiText</span><span class="o">;</span>
 
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">jdiText</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
-  <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">textPositiveTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">equalTo</span><span class="o">(</span><span class="n">TEXT</span><span class="o">));</span>
+    <span class="n">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">TEXT</span><span class="o">);</span>
+<span class="o">}</span>
 
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValueTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">jdiText</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
-  <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">textContainsTest</span><span class="o">()</span> <span class="o">{</span>        
+    <span class="n">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="n">PART_OF_TEXT</span><span class="o">));</span>
+<span class="o">}</span>
 
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-      <span class="n">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
-      <span class="n">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Powerful Framework for UI"</span><span class="o">));</span>
-  <span class="o">}</span>
-
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertValidationTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">jdiText</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
-  <span class="o">}</span>
-
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseValidationTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">baseValidation</span><span class="o">(</span><span class="n">jdiText</span><span class="o">);</span>
-  <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">textDoesNotContainWordTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">not</span><span class="o">(</span><span class="n">NOT_EXPECTED_TEXT</span><span class="o">));</span>
+<span class="o">}</span>
 
 </code></pre><pre class="highlight csharp tab-csharp"><code>  <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">".main-txt"</span><span class="p">)]</span>
   <span class="k">public</span> <span class="n">TextElement</span> <span class="n">Text</span><span class="p">;</span>
