@@ -2987,7 +2987,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"#avatar"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">FileInput</span> <span class="n">avatar</span><span class="o">;</span> 
 
-<span class="nd">@FindBy</span><span class="o">(</span><span class="n">xpath</span> <span class="o">=</span> <span class="s">"//a[@download]"</span><span class="o">)</span>
+<span class="c1">//@FindBy(xpath = "//a[@download]")</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"[download]"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Link</span> <span class="n">downloadJdiLogo</span><span class="o">;</span>
 
@@ -3004,12 +3004,12 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">downloadTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">cleanupDownloads</span><span class="o">();</span>
-    <span class="n">downloadJdiLogo</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">assertThatFile</span><span class="o">(</span><span class="s">"jdi-logo.jpg"</span><span class="o">)</span>
+    <span class="n">FileAssert</span><span class="o">.</span><span class="na">cleanupDownloads</span><span class="o">();</span>
+    <span class="n">FileAssert</span><span class="o">.</span><span class="na">downloadJdiLogo</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">FileAssert</span><span class="o">.</span><span class="na">assertThatFile</span><span class="o">(</span><span class="s">"jdi-logo.jpg"</span><span class="o">)</span>
             <span class="o">.</span><span class="na">isDownloaded</span><span class="o">()</span>
             <span class="o">.</span><span class="na">hasSize</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">32225L</span><span class="o">));</span>
-    <span class="n">assertThatFile</span><span class="o">(</span><span class="s">"jdi-logo.jpg"</span><span class="o">).</span><span class="na">hasSize</span><span class="o">(</span><span class="n">greaterThan</span><span class="o">(</span><span class="mi">100L</span><span class="o">));</span>
+    <span class="n">FileAssert</span><span class="o">.</span><span class="na">assertThatFile</span><span class="o">(</span><span class="s">"jdi-logo.jpg"</span><span class="o">).</span><span class="na">hasSize</span><span class="o">(</span><span class="n">greaterThan</span><span class="o">(</span><span class="mi">100L</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[Test]</span>
 <span class="k">public</span> <span class="k">void</span> <span class="nf">FileInputTest</span><span class="p">()</span>
