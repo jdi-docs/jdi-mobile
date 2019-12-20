@@ -4818,22 +4818,24 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 
 <ul>
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.Title</em></li>
-<li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Title</em></li>
+<li><strong>C#</strong>: _JDI.Light.Elements.Common.Title</li>
 </ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=jdi-title]"</span><span class="o">)</span> 
-<span class="c1">// equal to @FindBy(css = "[ui=jdi-title]") </span>
+
+<p><img src="images/html/title2.png" alt="Title" /></p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=jdi-title]"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "[ui=jdi-title]") </span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Title</span> <span class="n">jdiTitle</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">jdiTitle</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Title text"</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">textTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">jdiTitle</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">titleText</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">jdiTitle</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">jdiTitle</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getAlertText</span><span class="o">(),</span> <span class="s">"JDI Title"</span><span class="o">);</span>
+    <span class="n">acceptAlert</span><span class="o">();</span>
 <span class="o">}</span>    
-
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "[ui=jdi-title]</span><span class="s">")]
 </span><span class="k">public</span> <span class="n">Title</span> <span class="n">JdiTitle</span><span class="p">;</span>
 
@@ -4870,9 +4872,7 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
        <span class="nf">BaseElementValidation</span><span class="p">(</span><span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">JdiTitle</span><span class="p">);</span>
 <span class="p">}</span>   
 
-</code></pre>
-<p><img src="images/html/title2.png" alt="Title" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;h1</span> <span class="na">ui=</span><span class="s">"jdi-title"</span> <span class="na">onclick=</span><span class="s">"alert('JDI Title');"</span><span class="nt">&gt;</span>JDI Testing platform<span class="nt">&lt;/h1&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;h1</span> <span class="na">ui=</span><span class="s">"jdi-title"</span> <span class="na">onclick=</span><span class="s">"alert('JDI Title');"</span><span class="nt">&gt;</span>JDI Testing platform<span class="nt">&lt;/h1&gt;</span>
 </code></pre>
 <p>Here is the list of methods available in C# JDI Light:</p>
 
