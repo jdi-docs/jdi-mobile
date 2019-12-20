@@ -2560,20 +2560,16 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">ColorPicker</span> <span class="n">colorPicker</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getColorTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">colorPicker</span><span class="o">.</span><span class="na">color</span><span class="o">(),</span> <span class="s">"#3fd7a6"</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkColorTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">colorPicker</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">color</span><span class="o">(</span><span class="n">COLOR</span><span class="o">);</span>
+    <span class="n">disabledPicker</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">color</span><span class="o">(</span><span class="n">DISABLED_COLOR</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setColorTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">colorPicker</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="s">"#432376"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">colorPicker</span><span class="o">.</span><span class="na">color</span><span class="o">(),</span> <span class="s">"#432376"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLabelTextTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">colorPicker</span><span class="o">.</span><span class="na">labelText</span><span class="o">(),</span> <span class="s">"Select a color"</span><span class="o">);</span>
-<span class="o">}</span>
+    <span class="n">colorPicker</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="n">SETTING_COLOR</span><span class="o">);</span>
+    <span class="n">colorPicker</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">color</span><span class="o">(</span><span class="n">SETTING_COLOR</span><span class="o">);</span>
+<span class="o">}</span>  
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#color-picker")]</span>
 <span class="k">public</span> <span class="n">ColorPicker</span> <span class="n">ColorPicker</span><span class="p">;</span>
 
@@ -2598,7 +2594,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p>Colorpicker is located in the following classes:</p>
 
 <ul>
-<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.ColorPicker*</em></li>
+<li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.ColorPicker</em></li>
 </ul>
 
 <p>Here is an example with provided HTML code:</p>
@@ -4068,59 +4064,26 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ProgressTests.cs" target="_blank">Test examples in C#</a><br>
 <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-bdd-tests/src/test/resources/features/ProgressBar.feature">BDD Steps example</a><br></p>
-<h3 id='range'>Range</h3><pre class="highlight java tab-java"><code>  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#volume"</span><span class="o">)</span>  <span class="c1">//@FindBy(id = "volume") </span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Range</span> <span class="n">volume</span><span class="o">;</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLabelTextTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">labelText</span><span class="o">(),</span> <span class="s">"Volume"</span><span class="o">);</span>
-  <span class="o">}</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getValueTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">disabledRange</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="mi">50</span><span class="o">);</span>
-  <span class="o">}</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">minTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">min</span><span class="o">(),</span> <span class="mf">10.0</span><span class="o">);</span>
-  <span class="o">}</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">maxTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">max</span><span class="o">(),</span> <span class="mf">100.0</span><span class="o">);</span>
-  <span class="o">}</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stepTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">step</span><span class="o">(),</span> <span class="mf">5.0</span><span class="o">);</span>
-  <span class="o">}</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setValue</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="mi">10</span><span class="o">);</span>
-  <span class="o">}</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">minValue</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">10.0</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">maxValue</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">100.0</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">step</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">5.0</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">greaterThanOrEqualTo</span><span class="o">(</span><span class="mf">10.0</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">lessThanOrEqualTo</span><span class="o">(</span><span class="mf">100.0</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">90.0</span><span class="o">));</span>
-  <span class="o">}</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">volume</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Volume"</span><span class="o">);</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"lume"</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">equalToIgnoringCase</span><span class="o">(</span><span class="s">"volume"</span><span class="o">));</span>
-  <span class="o">}</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertValidationTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">greaterThan</span><span class="o">(</span><span class="mf">0.0</span><span class="o">));</span>
-      <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">lessThan</span><span class="o">(</span><span class="mf">200.0</span><span class="o">));</span>
-      <span class="n">disabledRange</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">50.0</span><span class="o">));</span>
-  <span class="o">}</span>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">baseValidationTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">baseValidation</span><span class="o">(</span><span class="n">volume</span><span class="o">);</span>
-  <span class="o">}</span>
+<h3 id='range'>Range</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#volume"</span><span class="o">)</span>  <span class="c1">//@FindBy(id = "volume") </span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Range</span> <span class="n">volume</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setVolumeTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">volume</span><span class="o">.</span><span class="na">setVolume</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+    <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">volume</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkStepTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">step</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">step</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkMaxTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">maxVolume</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+    <span class="n">volume</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">maxVolume</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code>  <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#volume"</span><span class="p">)]</span>
   <span class="k">public</span> <span class="n">IRange</span> <span class="n">Volume</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> 
   <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
