@@ -2797,32 +2797,32 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">DateTimeSelector</span> <span class="n">bookingTime</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateTimeTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">partyTime</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"2017-05-10T00:00"</span><span class="o">);</span>
-        <span class="n">partyTime</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
-        <span class="n">partyTime</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"2017-05-10T00:00"</span><span class="o">);</span>
-        <span class="n">bookingTime</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"05:00"</span><span class="o">);</span>
-        <span class="n">bookingTime</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
-        <span class="n">bookingTime</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"05:00"</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateTimeTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">partyTime</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"2017-05-10T00:00"</span><span class="o">);</span>
+    <span class="n">partyTime</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">partyTime</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"2017-05-10T00:00"</span><span class="o">);</span>
+    <span class="n">bookingTime</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"05:00"</span><span class="o">);</span>
+    <span class="n">bookingTime</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="n">bookingTime</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"05:00"</span><span class="o">);</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getDateTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">birthDate</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"1985-06-18"</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getDateTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">birthDate</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"1985-06-18"</span><span class="o">);</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">minMaxTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">partyTime</span><span class="o">.</span><span class="na">min</span><span class="o">(),</span> <span class="s">"2018-05-07T00:00"</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">partyTime</span><span class="o">.</span><span class="na">max</span><span class="o">(),</span> <span class="s">"2018-06-14T00:00"</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">minMaxTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">partyTime</span><span class="o">.</span><span class="na">min</span><span class="o">(),</span> <span class="s">"2018-05-07T00:00"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">partyTime</span><span class="o">.</span><span class="na">max</span><span class="o">(),</span> <span class="s">"2018-06-14T00:00"</span><span class="o">);</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">birthDate</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Birth date"</span><span class="o">));</span>
-        <span class="n">birthDate</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">equalToIgnoringCase</span><span class="o">(</span><span class="s">"birth date"</span><span class="o">));</span>
-        <span class="n">birthDate</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">date</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"1985"</span><span class="o">));</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">birthDate</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Birth date"</span><span class="o">));</span>
+    <span class="n">birthDate</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">equalToIgnoringCase</span><span class="o">(</span><span class="s">"birth date"</span><span class="o">));</span>
+    <span class="n">birthDate</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">date</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"1985"</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#birth-date")]</span>
 <span class="k">public</span> <span class="n">IDateTimeSelector</span> <span class="n">BirthDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
@@ -3145,17 +3145,17 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <span class="k">public</span> <span class="n">IIcon</span> <span class="n">Logo</span>
 <span class="p">;</span>
 
-   <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
-   <span class="k">public</span> <span class="k">void</span> <span class="nf">GetSourceTest</span><span class="p">()</span>
-   <span class="p">{</span>
-     <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">LogoImage</span><span class="p">.</span><span class="nf">GetSource</span><span class="p">(),</span> <span class="n">Src</span><span class="p">);</span>
-   <span class="p">}</span>
+<span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">GetSourceTest</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">LogoImage</span><span class="p">.</span><span class="nf">GetSource</span><span class="p">(),</span> <span class="n">Src</span><span class="p">);</span>
+<span class="p">}</span>
 
-   <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
-   <span class="k">public</span> <span class="k">void</span> <span class="nf">GetTipTest</span><span class="p">()</span>
-   <span class="p">{</span>
-     <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">LogoImage</span><span class="p">.</span><span class="nf">GetAlt</span><span class="p">(),</span> <span class="n">Alt</span><span class="p">);</span>
-   <span class="p">}</span>
+<span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">GetTipTest</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">LogoImage</span><span class="p">.</span><span class="nf">GetAlt</span><span class="p">(),</span> <span class="n">Alt</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"jdi-logo"</span><span class="nt">&gt;</span>JDI Logo:<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/jdi-light/images/jdi-logo.jpg"</span> <span class="na">id=</span><span class="s">"jdi-logo"</span> <span class="na">alt=</span><span class="s">"Jdi Logo 2"</span>
      <span class="na">width=</span><span class="s">"101"</span> <span class="na">height=</span><span class="s">"100"</span> <span class="na">onclick=</span><span class="s">"alert('JDI Logo');"</span><span class="nt">&gt;</span>
