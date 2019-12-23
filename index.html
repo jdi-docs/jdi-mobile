@@ -2784,19 +2784,45 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><strong>In the following sections there are examples of different implementations of such fields.</strong></p>
 
 <p><strong>Input Type Date</strong></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#birth-date"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#birth-date") </span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(css = "#birth-date")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#birth-date"</span><span class="o">)</span>  
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">DateTimeSelector</span> <span class="n">birthDate</span><span class="o">;</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateTimeTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">birthDate</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"2018-11-13"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">birthDate</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="s">"2018-11-13"</span><span class="o">);</span>
-<span class="o">}</span>
+<span class="c1">//@FindBy(id = "party-time")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#party-time"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DateTimeSelector</span> <span class="n">partyTime</span><span class="o">;</span>
+
+<span class="c1">//@FindBy(css = "#booking-time")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"#booking-date"</span><span class="o">)</span>  
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">DateTimeSelector</span> <span class="n">bookingTime</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">maxTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">birthDate</span><span class="o">.</span><span class="na">max</span><span class="o">(),</span> <span class="s">"2030-12-31"</span><span class="o">);</span>
-<span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateTimeTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">partyTime</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"2017-05-10T00:00"</span><span class="o">);</span>
+        <span class="n">partyTime</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+        <span class="n">partyTime</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"2017-05-10T00:00"</span><span class="o">);</span>
+        <span class="n">bookingTime</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"05:00"</span><span class="o">);</span>
+        <span class="n">bookingTime</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+        <span class="n">bookingTime</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"05:00"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getDateTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">birthDate</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"1985-06-18"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">minMaxTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">partyTime</span><span class="o">.</span><span class="na">min</span><span class="o">(),</span> <span class="s">"2018-05-07T00:00"</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">partyTime</span><span class="o">.</span><span class="na">max</span><span class="o">(),</span> <span class="s">"2018-06-14T00:00"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">birthDate</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">assertThat</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Birth date"</span><span class="o">));</span>
+        <span class="n">birthDate</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">equalToIgnoringCase</span><span class="o">(</span><span class="s">"birth date"</span><span class="o">));</span>
+        <span class="n">birthDate</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">date</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"1985"</span><span class="o">));</span>
+    <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#birth-date")]</span>
 <span class="k">public</span> <span class="n">IDateTimeSelector</span> <span class="n">BirthDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
@@ -2819,21 +2845,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/DateTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><strong>Input Type Week</strong></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#autumn-week"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#autumn-week") </span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">DateTimeSelector</span> <span class="n">autumnWeek</span><span class="o">;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">minTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">autumnWeek</span><span class="o">.</span><span class="na">min</span><span class="o">(),</span> <span class="s">"2018-W35"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateTimeTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">autumnWeek</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"2018-W12"</span><span class="o">);</span>
-    <span class="n">autumnWeek</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">autumnWeek</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="s">"2018-W12"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#autumn-week")]</span>
+<pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#autumn-week")]</span>
 <span class="k">public</span> <span class="n">IDateTimeSelector</span> <span class="n">AutumnDateTime</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
 <span class="na">[Test]</span>
@@ -2860,21 +2872,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/WeekTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><strong>Input Type Month</strong></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#month-date"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#month-date") </span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">DateTimeSelector</span> <span class="n">monthDate</span><span class="o">;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">maxTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">monthDate</span><span class="o">.</span><span class="na">max</span><span class="o">(),</span> <span class="s">"2020-12"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateTimeTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">monthDate</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"2018-10"</span><span class="o">);</span>
-    <span class="n">monthDate</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">monthDate</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="s">"2018-10"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#month-date")]</span>
+<pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#month-date")]</span>
 <span class="k">public</span> <span class="n">IDateTimeSelector</span> <span class="n">MonthOfHolidays</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
 <span class="na">[Test]</span>
@@ -2898,21 +2896,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/MonthTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><strong>Input Type Time</strong></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#booking-date"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#booking-time") </span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">DateTimeSelector</span> <span class="n">bookingTime</span><span class="o">;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">minTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">bookingTime</span><span class="o">.</span><span class="na">min</span><span class="o">(),</span> <span class="s">"9:00"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateTimeTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">bookingTime</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"05:00"</span><span class="o">);</span>
-    <span class="n">bookingTime</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">bookingTime</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="s">"05:00"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#booking-time")]</span>
+<pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#booking-time")]</span>
 <span class="k">public</span> <span class="n">IDateTimeSelector</span> <span class="n">BookingTime</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
 <span class="na">[Test]</span>
@@ -2935,15 +2919,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/TimeTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><strong>Input Type DateTime-Local</strong></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#party-time"</span><span class="o">)</span> <span class="c1">//@FindBy(id = "party-time")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">DateTimeSelector</span> <span class="n">partyTime</span><span class="o">;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateTimeTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">partyTime</span><span class="o">.</span><span class="na">setDateTime</span><span class="o">(</span><span class="s">"2017-05-10T00:00"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">partyTime</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="s">"2017-05-10T00:00"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#party-time")]</span>
+<pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#party-time")]</span>
 <span class="k">public</span> <span class="n">IDateTimeSelector</span> <span class="n">PartyTime</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
 <span class="na">[Test]</span>
@@ -3184,6 +3160,9 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/jdi-light/images/jdi-logo.jpg"</span> <span class="na">id=</span><span class="s">"jdi-logo"</span> <span class="na">alt=</span><span class="s">"Jdi Logo 2"</span>
      <span class="na">width=</span><span class="s">"101"</span> <span class="na">height=</span><span class="s">"100"</span> <span class="na">onclick=</span><span class="s">"alert('JDI Logo');"</span><span class="nt">&gt;</span>
 </code></pre>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/ImageTests.java" target="_blank">Test examples in Java</a>
+<br></p>
+
 <p><br><br><br><br><br><br><br><br><br></p>
 
 <p>Icon is represented by Image class:</p>
