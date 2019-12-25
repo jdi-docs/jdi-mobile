@@ -3851,13 +3851,46 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.common.NumberSelector</em></li>
 <li><strong>C#</strong>: <em>JDI.Light.Elements.Common.NumberSelector</em></li>
 </ul>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#height"</span><span class="o">)</span> 
-<span class="c1">// equal to @FindBy(css = "#height") </span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">NumberSelector</span> <span class="n">height</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code>    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#height"</span><span class="o">)</span> 
+    <span class="c1">// equal to @FindBy(css = "#height") </span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">NumberSelector</span> <span class="n">height</span><span class="o">;</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getNumberTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">height</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="n">number</span><span class="o">);</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">minMaxTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">min</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">0.3</span><span class="o">));</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">max</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">2.5</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stepTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">step</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">0.2</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">placeholderTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">placeholder</span><span class="o">(</span><span class="s">"20 cm increments. Range [0.3,2.5]"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNumberTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">setNumber</span><span class="o">(</span><span class="s">"1.4"</span><span class="o">);</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">number</span><span class="o">(</span><span class="n">greaterThanOrEqualTo</span><span class="o">(</span><span class="mf">0.3</span><span class="o">));</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">number</span><span class="o">(</span><span class="n">lessThanOrEqualTo</span><span class="o">(</span><span class="mf">2.5</span><span class="o">));</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">number</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">1.4</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Height (metres):"</span><span class="o">);</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Height"</span><span class="o">));</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">equalToIgnoringCase</span><span class="o">(</span><span class="s">"height (metres):"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertValidationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">number</span><span class="o">(</span><span class="n">greaterThan</span><span class="o">(</span><span class="mf">0.0</span><span class="o">));</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">number</span><span class="o">(</span><span class="n">lessThan</span><span class="o">(</span><span class="mf">3.0</span><span class="o">));</span>
+        <span class="n">height</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">number</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="mf">2.1</span><span class="o">));</span>
     <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#height")]</span>
 <span class="k">public</span> <span class="n">INumberSelector</span> <span class="n">numberSelector</span><span class="p">;</span>
@@ -4978,14 +5011,37 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 <p>Consider an example where each radio button is a particular color, described with given HTML code:</p>
 
 <p><img src="images/html/radio_html2.png" alt="RadioButton" /></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[name=colors]"</span><span class="o">)</span> <span class="c1">//@FindBy(name = "colors")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtons</span> <span class="n">colors</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code>    <span class="c1">//@FindBy(name = "colors")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"[name=colors]"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">RadioButtons</span> <span class="n">colors</span><span class="o">;</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">colors</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Blue</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">colors</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Blue"</span><span class="o">);</span>
-<span class="o">}</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Green"</span><span class="o">);</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">Green</span><span class="o">);</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Green"</span><span class="o">);</span>
+        <span class="n">colorsNoLocator</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Blue"</span><span class="o">);</span>
+        <span class="n">colorsNoLocator</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Blue"</span><span class="o">);</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Blue"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">valuesTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">hasItems</span><span class="o">(</span><span class="s">"Red"</span><span class="o">,</span> <span class="s">"Green"</span><span class="o">,</span> <span class="s">"Blue"</span><span class="o">,</span> <span class="s">"Yellow"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Yellow"</span><span class="o">));</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">disabled</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Yellow"</span><span class="o">));</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">(</span><span class="n">not</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Yellow"</span><span class="o">)));</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">(</span><span class="n">hasItems</span><span class="o">(</span><span class="s">"Green"</span><span class="o">,</span> <span class="s">"Blue"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertValidationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">colors</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">contains</span><span class="o">(</span><span class="s">"Red"</span><span class="o">,</span> <span class="s">"Green"</span><span class="o">,</span> <span class="s">"Blue"</span><span class="o">,</span> <span class="s">"Yellow"</span><span class="o">));</span>
+    <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#colors")]</span> 
 <span class="k">public</span> <span class="n">IRadioButtons</span> <span class="n">MyRadioButtons</span><span class="p">;</span>
 
