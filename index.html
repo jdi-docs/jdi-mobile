@@ -7150,13 +7150,15 @@ DataList element contains a set of options with values available as inputs.</p>
 <p>See an example with HTML code describing checklist element.</p>
 
 <p><img src="images/html/checklist_html2.png" alt="Checklist Example" /></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[name=checks-group]"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Checklist</span> <span class="n">weather</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="c1">//@FindBy(name = "checks-group")</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"[name=checks-group]"</span><span class="o">)</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Checklist</span> <span class="n">weather</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Checklist</span> <span class="n">weatherNoLocator</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">weather</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">Cold</span><span class="o">,</span> <span class="n">Rainy</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">weather</span><span class="o">.</span><span class="na">checked</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Cold"</span><span class="o">,</span> <span class="s">"Rainy day"</span><span class="o">));</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">weather</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="s">"Rainy day"</span><span class="o">,</span> <span class="s">"Sunny"</span><span class="o">);</span>
+    <span class="n">weather</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">checked</span><span class="o">(</span><span class="n">hasSize</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+    <span class="n">weather</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">checked</span><span class="o">(</span><span class="n">hasItems</span><span class="o">(</span><span class="s">"Rainy day"</span><span class="o">,</span> <span class="s">"Sunny"</span><span class="o">));</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
