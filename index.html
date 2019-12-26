@@ -1996,10 +1996,7 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <p>TBD</p>
 <h2 id='entity-driven-testing'>Entity Driven Testing</h2>
 <p>TBD</p>
-<h2 id='smart-locators'>Smart Locators</h2><pre class="highlight plaintext"><code>&lt;input type="text" id="name"&gt;
-&lt;input type="text" id="last-name"&gt;
-&lt;button id="submit-button"&gt;
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserCard</span> <span class="p">:</span> <span class="n">Form</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span>
+<h2 id='smart-locators'>Smart Locators</h2><pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserCard</span> <span class="p">:</span> <span class="n">Form</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span>
 <span class="p">{</span>
     <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#name"</span><span class="p">)]</span>
     <span class="n">TextField</span> <span class="n">Name</span><span class="p">;</span> 
@@ -2033,6 +2030,18 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <span class="c1">//So you can write:</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserCard</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
     <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
@@ -2062,7 +2071,6 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 
 
 
-
 <span class="cm">/* You don't need to set values for WebSettings class fields.
    This code is just for illustrating how the default locator
    value and the default locator naming rule are set 
@@ -2076,7 +2084,12 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="c1">//and the conversion rule is 'hyphen-to-java-name':</span>
   <span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH_NAME</span> <span class="o">=</span> <span class="nl">StringUtils:</span><span class="o">:</span><span class="n">splitHyphen</span><span class="o">;</span>
 
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"name"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"last-name"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"submit-button"</span><span class="nt">&gt;</span>
 </code></pre>
+<p><br></p>
+
 <p>If you have your developers following some standard way of marking UI elements or you have
 an agreement to add special attributes, you can even avoid writing locators for elements,
 thus making your page objects much more compact.</p>
