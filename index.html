@@ -2050,9 +2050,9 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="n">smart</span><span class="o">.</span><span class="na">locators</span><span class="o">.</span><span class="na">toName</span> <span class="o">=</span> <span class="n">UPPER_SNAKE_CASE</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserCard</span> <span class="kd">extends</span> <span class="n">Form</span> <span class="o">{</span>
-<span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
-<span class="n">TextField</span> <span class="n">lastName</span><span class="o">;</span>
-<span class="n">TextField</span> <span class="n">passportCode</span><span class="o">;</span>
+    <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
+    <span class="n">TextField</span> <span class="n">lastName</span><span class="o">;</span>
+    <span class="n">TextField</span> <span class="n">passportCode</span><span class="o">;</span>
 <span class="o">}</span>
 
 <span class="c1">//Then JDI will be using the following locators for the elements:</span>
@@ -2066,15 +2066,15 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <span class="cm">/* You don't need to set values for WebSettings class fields.
    This code is just for illustrating how the default locator
    value and the default locator naming rule are set 
-   in WebSettings*/</span>
+   in WebSettings class*/</span>
 
 <span class="c1">//Smart locator rule is id:</span>
-    <span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH_LOCATORS</span> <span class="o">=</span> <span class="n">asList</span><span class="o">(</span><span class="s">"#%s"</span><span class="o">);</span>
+  <span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH_LOCATORS</span> <span class="o">=</span> <span class="n">asList</span><span class="o">(</span><span class="s">"#%s"</span><span class="o">);</span>
 
 
 
 <span class="c1">//and the conversion rule is 'hyphen-to-java-name':</span>
-    <span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH_NAME</span> <span class="o">=</span> <span class="nl">StringUtils:</span><span class="o">:</span><span class="n">splitHyphen</span><span class="o">;</span>
+  <span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH_NAME</span> <span class="o">=</span> <span class="nl">StringUtils:</span><span class="o">:</span><span class="n">splitHyphen</span><span class="o">;</span>
 
 </code></pre>
 <p>If you have your developers following some standard way of marking UI elements or you have
