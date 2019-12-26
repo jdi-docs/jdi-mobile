@@ -4460,32 +4460,29 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/1509---jdi-light-test-examples/jdi-light-html-tests/src/test/java/io/github/epam/example/common/TextExampleTests.java" target="_blank">Test examples in Java</a></p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#text-2">BDD Steps example</a></p>
-<h3 id='textfield'>TextField</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> 
-<span class="c1">// same as @FindBy(css = "#name")</span>
+<h3 id='textfield'>TextField</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#name")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendKeysTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">name</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">text</span><span class="o">+</span><span class="s">"Test"</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTextTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">name</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="n">name</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="n">name</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
+    <span class="n">name</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Field"</span><span class="o">));</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">inputTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">name</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="s">"New text"</span><span class="o">);</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"New text"</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendKeysTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">name</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="n">name</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+    <span class="n">name</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">text</span> <span class="o">+</span> <span class="s">"Test"</span><span class="o">);</span>
+<span class="o">}</span>
 
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">name</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">""</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">placeholderTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">assertEquals</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">placeholder</span><span class="o">(),</span> <span class="s">"Input name"</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">name</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+    <span class="n">name</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Id = "name")]</span>
 <span class="k">public</span> <span class="n">ITextField</span> <span class="n">NameField</span><span class="p">;</span>
 
