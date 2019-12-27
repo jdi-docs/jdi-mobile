@@ -7427,7 +7427,7 @@ MultiSelector is represented by the following class:</p>
     <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">assertThat</span><span class="o">(</span><span class="n">safeException</span><span class="o">(</span><span class="n">ex</span><span class="o">),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"Can't perform click. Element is disabled"</span><span class="o">));</span>
     <span class="o">}</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">ages</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
+    <span class="n">ages</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
 <span class="o">}</span>
 
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[Test]</span>
