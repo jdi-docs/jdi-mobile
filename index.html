@@ -6333,40 +6333,40 @@ able to perform a list of readonly interactions with this element in order to ge
 <p>Consider an example of HTML5 dropdown with the given HTML code:</p>
 
 <p><img src="images/html/dropdown_html52.png" alt="Dropdown HTML5" /></p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#dress-code"</span><span class="o">)</span> <span class="c1">//@FindBy(id = "dress-code")</span>
-<span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">dressCode</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">"div[ui=dropdown]"</span><span class="o">,</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="s">".filter-option"</span><span class="o">,</span>
+        <span class="n">list</span> <span class="o">=</span> <span class="s">"li"</span><span class="o">,</span>
+        <span class="n">expand</span> <span class="o">=</span> <span class="s">".caret"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Dropdown</span> <span class="n">colors2</span><span class="o">;</span> <span class="c1">//@FindBy(css = "div[ui=dropdown]")</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectStringTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Red"</span><span class="o">);</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Red"</span><span class="o">);</span>
+<span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectEnumTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">dressCode</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Fancy</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Fancy"</span><span class="o">);</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Green</span><span class="o">);</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">Green</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectNumTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">dressCode</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Fancy"</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectIndexTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">Blue</span><span class="o">);</span>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectedTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">dressCode</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Pirate</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="s">"Pirate"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Pirate"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">dressCode</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Pirate"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">negativeDropdownTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="n">dressCode</span><span class="o">.</span><span class="na">base</span><span class="o">().</span><span class="na">waitSec</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-        <span class="n">dressCode</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Unknown"</span><span class="o">);</span>
-        <span class="n">fail</span><span class="o">(</span><span class="s">"You have selected dressCode that does not exist in dropdown - something went wrong"</span><span class="o">);</span>
-    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">assertThat</span><span class="o">(</span><span class="n">safeException</span><span class="o">(</span><span class="n">ex</span><span class="o">),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"Cannot locate option with text: Unknown"</span><span class="o">));</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkValuesTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">dropdownValues</span><span class="o">));</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Yellow"</span><span class="o">));</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">not</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Missing color"</span><span class="o">)));</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">(</span><span class="s">"Colors"</span><span class="o">,</span> <span class="s">"Red"</span><span class="o">,</span> <span class="s">"Green"</span><span class="o">,</span> <span class="s">"Blue"</span><span class="o">,</span> <span class="s">"Yellow"</span><span class="o">);</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">INNER</span><span class="o">,</span> <span class="n">hasItem</span><span class="o">(</span><span class="s">"Yellow"</span><span class="o">));</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">INNER</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="n">dropdownValues</span><span class="o">));</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">INNER</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Missing color"</span><span class="o">)));</span>
+<span class="o">}</span>    
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#dress-code")]</span> 
 <span class="k">public</span> <span class="n">Dropdown</span> <span class="n">DressCode</span><span class="p">;</span>
 
@@ -6414,8 +6414,6 @@ able to perform a list of readonly interactions with this element in order to ge
     <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"pirate"</span><span class="nt">&gt;</span>Pirate<span class="nt">&lt;/option&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 </code></pre>
-<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-
 <p><strong>JDI Dropdown annotation</strong></p>
 
 <p>For better use, JDI Light provides a <strong><em>@JDropdown</em></strong> annotation to locate dropdown elements. This annotation can be used in cases when working with a
@@ -6423,39 +6421,7 @@ complex element that may consist of more a complicated html structure. JDropdown
 annotation default methods.</p>
 
 <!-- ![Dropdown HTML](../images/html/dropdown_html.png) -->
-<pre class="highlight java tab-java"><code><span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">"div[ui=dropdown]"</span><span class="o">,</span>
-           <span class="n">value</span> <span class="o">=</span> <span class="s">".filter-option"</span><span class="o">,</span>
-           <span class="n">list</span> <span class="o">=</span> <span class="s">"li"</span><span class="o">,</span>
-           <span class="n">expand</span> <span class="o">=</span> <span class="s">".caret"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">colors</span><span class="o">;</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">complexTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">metalAndColorsPage</span><span class="o">.</span><span class="na">shouldBeOpened</span><span class="o">();</span>
-    <span class="n">metalAndColorsPage</span><span class="o">.</span><span class="na">colors</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Green</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">navigationListTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navigation</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">nContactForm</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">contactFormPage</span><span class="o">.</span><span class="na">checkOpened</span><span class="o">();</span>
-    <span class="n">navigation</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">nHome</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">homePage</span><span class="o">.</span><span class="na">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"QUIS NOSTRUD EXERCITATION"</span><span class="o">));</span>
-    <span class="n">homePage</span><span class="o">.</span><span class="na">githubLink</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">originalWindow</span><span class="o">();</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">navigationMenuTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">navigationL</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">ContactForm</span><span class="o">);</span>
-    <span class="n">contactFormPage</span><span class="o">.</span><span class="na">checkOpened</span><span class="o">();</span>
-    <span class="n">navigationL</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Home</span><span class="o">);</span>
-    <span class="n">homePage</span><span class="o">.</span><span class="na">checkOpened</span><span class="o">();</span>
-    <span class="n">navigationL</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Service</span><span class="o">);</span>
-    <span class="n">navigationL</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">ComplexTable</span><span class="o">);</span>
-<span class="o">}</span>
-
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="p">[</span><span class="nf">JDropDown</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="s">"#colors"</span><span class="p">,</span> 
+<pre class="highlight csharp tab-csharp"><code><span class="p">[</span><span class="nf">JDropDown</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="s">"#colors"</span><span class="p">,</span> 
            <span class="k">value</span><span class="p">:</span> <span class="s">".filter-option"</span><span class="p">,</span> 
            <span class="n">list</span><span class="p">:</span><span class="s">"li"</span><span class="p">,</span> 
            <span class="n">expand</span><span class="p">:</span><span class="s">".caret"</span><span class="p">)]</span>
@@ -6553,11 +6519,6 @@ annotation default methods.</p>
 <tr>
 <td><strong>setup(Field field)</strong></td>
 <td>Setup the dropdown using specified fields</td>
-<td>void</td>
-</tr>
-<tr>
-<td><strong>sendKeys(CharSequence... charSequence)</strong></td>
-<td>Send specific keys</td>
 <td>void</td>
 </tr>
 <tr>
