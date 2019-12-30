@@ -7372,6 +7372,8 @@ MultiSelector is represented by the following class:</p>
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.complex.MultiSelector</em></li>
 <li><strong>C#</strong>: <em>JDI.Light.Elements.Common.MultiSelector</em></li>
 </ul>
+
+<p><img src="images/html/multiSelectHtml2.png" alt="MultiSelector" /></p>
 <pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#ages"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "#ages")  </span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">MultiSelector</span> <span class="n">ages</span><span class="o">;</span>
 
@@ -7382,15 +7384,16 @@ MultiSelector is represented by the following class:</p>
 <span class="o">}</span>
 
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">disabledTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="n">ages</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">);</span>
-    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">assertThat</span><span class="o">(</span><span class="n">safeException</span><span class="o">(</span><span class="n">ex</span><span class="o">),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"Can't perform click. Element is disabled"</span><span class="o">));</span>
-    <span class="o">}</span>
-    <span class="n">ages</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectEnumTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">ages</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">Wood</span><span class="o">,</span> <span class="n">Steam</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">ages</span><span class="o">.</span><span class="na">checked</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">,</span> <span class="s">"Wood"</span><span class="o">));</span>
 <span class="o">}</span>
 
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectNumTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">ages</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">ages</span><span class="o">.</span><span class="na">checked</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Wood"</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[Test]</span>
 <span class="k">public</span> <span class="k">void</span> <span class="nf">MultiSelectByValues</span><span class="p">()</span> 
 <span class="p">{</span>
@@ -7401,9 +7404,7 @@ MultiSelector is represented by the following class:</p>
 <span class="p">{</span>
     <span class="n">MyMultiSelector</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="kt">int</span><span class="p">[]);</span>
 <span class="p">}</span>
-</code></pre>
-<p><img src="images/html/multiSelectHtml2.png" alt="MultiSelector" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"ages"</span> <span class="na">multiple=</span><span class="s">""</span> <span class="na">size=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"ages"</span> <span class="na">multiple=</span><span class="s">""</span> <span class="na">size=</span><span class="s">"4"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"electro"</span><span class="nt">&gt;</span>Electro<span class="nt">&lt;/option&gt;</span>
     <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"steam"</span> <span class="na">selected=</span><span class="s">""</span><span class="nt">&gt;</span>Steam<span class="nt">&lt;/option&gt;</span>
     <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"metalic"</span><span class="nt">&gt;</span>Metalic<span class="nt">&lt;/option&gt;</span>
