@@ -6606,50 +6606,41 @@ annotation default methods.</p>
 <p><img src="images/multidropdown.png" alt="DropDown" /></p>
 
 <p>JDI Light provides a MultiSelector class which is using for MultiDropdown representation as a type of web element.</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#multi-dropdown"</span><span class="o">)</span> <span class="c1">//@FindBy(id = "multi-dropdown")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">MultiSelector</span> <span class="n">multiDropdown</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code>    <span class="c1">//@FindBy(id = "multi-dropdown")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#multi-dropdown"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">MultiSelector</span> <span class="n">multiDropdown</span><span class="o">;</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">isFireFox</span><span class="o">())</span> <span class="k">return</span><span class="o">;</span>
-    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">checked</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">));</span>
-<span class="o">}</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">);</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">checked</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">asList</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">));</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">);</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">uncheck</span><span class="o">(</span><span class="s">"Metalic"</span><span class="o">);</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">checked</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">asList</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">));</span>
+    <span class="o">}</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectEnumTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">isFireFox</span><span class="o">())</span> <span class="k">return</span><span class="o">;</span>
-    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">Wood</span><span class="o">,</span> <span class="n">Steam</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">checked</span><span class="o">(),</span> <span class="n">asList</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">,</span> <span class="s">"Wood"</span><span class="o">));</span>
-<span class="o">}</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disabledTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">);</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectedTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="n">text</span><span class="o">);</span>
-<span class="o">}</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Multi dropdown:"</span><span class="o">);</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Multi"</span><span class="o">));</span>
+    <span class="o">}</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">disabledTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">isFireFox</span><span class="o">())</span> <span class="k">return</span><span class="o">;</span>
-    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="s">"Steam"</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">multiDropdown</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Multi dropdown:"</span><span class="o">);</span>
-    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Multi"</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">);</span>
-    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">Steam</span><span class="o">);</span>
-    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Wood"</span><span class="o">));</span>
-    <span class="n">multiDropdown</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">disabled</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">))</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">(</span><span class="n">not</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">)))</span>
-            <span class="o">.</span><span class="na">enabled</span><span class="o">(</span><span class="n">hasItems</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">));</span>
-<span class="o">}</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">);</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">Steam</span><span class="o">);</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">));</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">shouldBe</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">);</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">disabled</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">enabled</span><span class="o">(</span><span class="n">not</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">)))</span>
+                <span class="o">.</span><span class="na">enabled</span><span class="o">(</span><span class="n">hasItems</span><span class="o">(</span><span class="s">"Electro"</span><span class="o">,</span> <span class="s">"Metalic"</span><span class="o">));</span>
+    <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[FindBy(Css = "#multi-dropdown")]</span>
 <span class="k">public</span> <span class="n">MultiDropdown</span> <span class="n">MultiDropdown</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
@@ -7526,38 +7517,58 @@ value from a list or enter it by himself (is inherited from the <a href="#datali
 <li><strong>Java</strong>: <em>com.epam.jdi.light.ui.html.complex.Combobox</em></li>
 <li><strong>C#</strong>: <em>JDI.Light.Elements.Common.Combobox</em></li>
 </ul>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">Combobox</span> <span class="n">iceCream</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Combobox</span> <span class="n">iceCream</span><span class="o">;</span>
 
-<span class="nd">@UI</span><span class="o">(</span><span class="s">"#ice-cream"</span><span class="o">)</span> <span class="c1">// @FindBy(id = "ice-cream")</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">DataList</span> <span class="n">iceCreamDataList</span><span class="o">;</span>
+    <span class="c1">// @FindBy(id = "ice-cream")</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"#ice-cream"</span><span class="o">)</span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">DataList</span> <span class="n">iceCreamDataList</span><span class="o">;</span>
 
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Coconut"</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">iceCreamDataList</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Chocolate"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">iceCreamDataList</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Chocolate"</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectNumTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">iceCreamDataList</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">iceCreamDataList</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"Vanilla"</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectedTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">iceCreamDataList</span><span class="o">.</span><span class="na">selected</span><span class="o">(),</span> <span class="s">"Coconut"</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">iceCreamDataList</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Choose your lovely icecream"</span><span class="o">);</span>
-    <span class="n">iceCreamDataList</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"lovely icecream"</span><span class="o">));</span>
-<span class="o">}</span>
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">iceCream</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-    <span class="n">iceCream</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
-    <span class="n">iceCream</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Vanilla</span><span class="o">);</span>
-    <span class="n">iceCream</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Van"</span><span class="o">));</span>
-<span class="o">}</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">inputTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="s">"New text"</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"New text"</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">placeholderTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">placeholder</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"Ice cream"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Chocolate"</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Chocolate"</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Strawberry</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Strawberry"</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Vanilla"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">labelTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Choose your lovely icecream"</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">label</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"lovely icecream"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isValidationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">listEnabled</span><span class="o">();</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">asList</span><span class="o">(</span><span class="s">"Chocolate"</span><span class="o">,</span> <span class="s">"Strawberry"</span><span class="o">));</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Coconut"</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Coconut"</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Coconut"</span><span class="o">));</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Vanilla</span><span class="o">);</span>
+        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"Van"</span><span class="o">));</span>
+    <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="na">[Test]</span>
 <span class="k">public</span> <span class="k">void</span> <span class="nf">ExpandComboBox</span><span class="p">()</span> 
 <span class="p">{</span>
