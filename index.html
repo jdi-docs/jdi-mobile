@@ -6478,6 +6478,7 @@ annotation default methods.</p>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disabledTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">multiDropdown</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">);</span>
         <span class="n">multiDropdown</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Disabled"</span><span class="o">);</span>
         <span class="n">multiDropdown</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Steam"</span><span class="o">);</span>
     <span class="o">}</span>
@@ -7381,11 +7382,6 @@ value from a list or enter it by himself (is inherited from the <a href="#datali
     <span class="kd">public</span> <span class="kd">static</span> <span class="n">DataList</span> <span class="n">iceCreamDataList</span><span class="o">;</span>
 
     <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTextTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Coconut"</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">inputTest</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="s">"New text"</span><span class="o">);</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"New text"</span><span class="o">);</span>
@@ -7401,12 +7397,8 @@ value from a list or enter it by himself (is inherited from the <a href="#datali
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectTest</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"Chocolate"</span><span class="o">);</span>
-        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Chocolate"</span><span class="o">);</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Strawberry</span><span class="o">);</span>
-        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Strawberry"</span><span class="o">);</span>
-        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
-        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Vanilla"</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
@@ -7420,7 +7412,6 @@ value from a list or enter it by himself (is inherited from the <a href="#datali
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">listEnabled</span><span class="o">();</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">asList</span><span class="o">(</span><span class="s">"Chocolate"</span><span class="o">,</span> <span class="s">"Strawberry"</span><span class="o">));</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-        <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Coconut"</span><span class="o">);</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Coconut"</span><span class="o">);</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="s">"Coconut"</span><span class="o">));</span>
         <span class="n">iceCreamIs</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">Vanilla</span><span class="o">);</span>
