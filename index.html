@@ -6216,6 +6216,7 @@ able to perform a list of readonly interactions with this element in order to ge
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkValuesTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">colors2</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
     <span class="n">colors2</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">is</span><span class="o">(</span><span class="n">dropdownValues</span><span class="o">));</span>
     <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Yellow"</span><span class="o">));</span>
     <span class="n">colors2</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">not</span><span class="o">(</span><span class="n">hasItem</span><span class="o">(</span><span class="s">"Missing color"</span><span class="o">)));</span>
