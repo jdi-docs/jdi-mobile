@@ -8089,8 +8089,18 @@ Methods available for Java in JDI Light:</p>
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkUrlPageTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">contactFormPage</span><span class="o">.</span><span class="na">url</span><span class="o">().</span><span class="na">check</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitleTest</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">WebPage</span><span class="o">.</span><span class="na">getTitle</span><span class="o">(),</span> <span class="s">"Contact Form"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkTitlePageTest</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">contactFormPage</span><span class="o">.</span><span class="na">title</span><span class="o">().</span><span class="na">check</span><span class="o">();</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
