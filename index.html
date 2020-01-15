@@ -5191,9 +5191,9 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tableParamTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">usersSetup</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="mi">4</span><span class="o">));</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">usersSetup</span><span class="o">.</span><span class="na">count</span><span class="o">(),</span> <span class="n">is</span><span class="o">(</span><span class="mi">400</span><span class="o">));</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">usersSetup</span><span class="o">.</span><span class="na">header</span><span class="o">(),</span> <span class="n">hasItems</span><span class="o">(</span><span class="s">"Name"</span><span class="o">,</span> <span class="s">"Phone"</span><span class="o">,</span> <span class="s">"Email"</span><span class="o">,</span> <span class="s">"City"</span><span class="o">));</span>
+    <span class="n">usersSetup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">size</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+    <span class="n">usersSetup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">count</span><span class="o">(</span><span class="mi">400</span><span class="o">);</span>
+    <span class="n">usersSetup</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">columns</span><span class="o">(</span><span class="n">asList</span><span class="o">(</span><span class="s">"Name"</span><span class="o">,</span> <span class="s">"Phone"</span><span class="o">,</span> <span class="s">"Email"</span><span class="o">,</span> <span class="s">"City"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code>
 <span class="na">[Test]</span>
