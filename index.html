@@ -7687,25 +7687,117 @@ Form consists of elements based on <em>SetValue</em> interface and buttons with 
 
 <p>Form provides the <em>fill, submit and verify/check</em> functionality.  </p>
 
-<p><img src="images/html/form_html2.png" alt="Form" /></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-horizontal login"</span> <span class="na">id=</span><span class="s">"login-form"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-horizontal-pad"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"col-sm-3"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/label&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;&lt;input</span> <span class="na">id=</span><span class="s">"name"</span>
-                 <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<p><img src="images/html/contact_form_example.png" alt="Form" /></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form"</span> <span class="na">id=</span><span class="s">"contact-form"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row overflow"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"name"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"name"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"password"</span> <span class="na">class=</span><span class="s">"col-sm-3"</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;&lt;input</span> <span class="na">id=</span><span class="s">"password"</span>
-                 <span class="na">type=</span><span class="s">"password"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"last-name"</span><span class="nt">&gt;</span>Last Name<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"last-name"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"login-txt hidden"</span><span class="nt">&gt;</span>* Login Faild<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"position"</span><span class="nt">&gt;</span>Position<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"position"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-3"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10 lower"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"passport"</span><span class="nt">&gt;</span>Passport<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"passport"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"passport"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"passport-number"</span><span class="nt">&gt;</span>Number<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"passport-number"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-5"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"passport-seria"</span><span class="nt">&gt;</span>Seria<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"passport-seria"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"gender"</span><span class="nt">&gt;</span>Gender<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"uui-form-element"</span> <span class="na">ui=</span><span class="s">"dropdown"</span> <span class="na">id=</span><span class="s">"gender"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;option&gt;</span>Male<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">checked=</span><span class="s">""</span><span class="nt">&gt;</span>Female<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;/select&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"religion"</span><span class="nt">&gt;</span>Religion<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">list=</span><span class="s">"religion-options"</span> <span class="na">id=</span><span class="s">"religion"</span> <span class="na">placeholder=</span><span class="s">"Religion"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;datalist</span> <span class="na">id=</span><span class="s">"religion-options"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;option&gt;</span>Christian<span class="nt">&lt;/option&gt;</span>
+                    <span class="nt">&lt;option&gt;</span>Muslims<span class="nt">&lt;/option&gt;</span>
+                    <span class="nt">&lt;option&gt;</span>Induism<span class="nt">&lt;/option&gt;</span>
+                    <span class="nt">&lt;option&gt;</span>Other<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;/datalist&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>  
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"weather"</span><span class="nt">&gt;</span>Weather<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group salad"</span> <span class="na">ui=</span><span class="s">"droplist"</span> <span class="na">id=</span><span class="s">"weather"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown salad"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">style=</span><span class="s">"display: none;"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>
+                            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"g5"</span> <span class="na">class=</span><span class="s">"uui-form-element blue"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"g5"</span><span class="nt">&gt;</span>Sun<span class="nt">&lt;/label&gt;</span>
+                            <span class="nt">&lt;/a&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>
+                            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"g6"</span> <span class="na">class=</span><span class="s">"uui-form-element blue"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"g6"</span><span class="nt">&gt;</span>Rain<span class="nt">&lt;/label&gt;</span>
+                            <span class="nt">&lt;/a&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>
+                            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"g7"</span> <span class="na">class=</span><span class="s">"uui-form-element blue"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"g7"</span><span class="nt">&gt;</span>Weather<span class="nt">&lt;/label&gt;</span>
+                            <span class="nt">&lt;/a&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>
+                            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"g8"</span> <span class="na">class=</span><span class="s">"uui-form-element blue"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"g8"</span><span class="nt">&gt;</span>Snow<span class="nt">&lt;/label&gt;</span>
+                            <span class="nt">&lt;/a&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"uui-button dark-blue btn-login"</span>
-             <span class="na">id=</span><span class="s">"login-button"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-sign-in"</span><span class="nt">&gt;&lt;/i&gt;&lt;span&gt;</span>Enter<span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row overflow"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-12"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"description"</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"uui-form-element"</span> <span class="na">rows=</span><span class="s">"4"</span> <span class="na">cols=</span><span class="s">"10"</span> <span class="na">id=</span><span class="s">"description"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div&gt;</span> 
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"accept-conditions"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"accept-conditions"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"accept-conditions"</span><span class="nt">&gt;</span>Accept conditions<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-12 text-right"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"uui-button dark-blue"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+ <span class="nt">&lt;/form&gt;</span>
 </code></pre>
 <p>Form is located in the following classes:</p>
 
@@ -7713,115 +7805,46 @@ Form consists of elements based on <em>SetValue</em> interface and buttons with 
 <li><strong>Java</strong>: <a href="https://github.com/jdi-testing/jdi-light/tree/master/jdi-light/src/main/java/com/epam/jdi/light/elements/composite/Form.java">Form.java</a></li>
 <li><strong>C#</strong>:   <a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light/Elements/Composite/Form.cs">Form.cs</a></li>
 </ul>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="kd">extends</span> <span class="n">DataClass</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
-     <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">password</span><span class="o">;</span>
- <span class="o">}</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginForm</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{...}</span>
-
-
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginForm</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#password"</span><span class="o">)</span> <span class="n">TextField</span> <span class="n">password</span><span class="o">;</span>
-     <span class="nd">@UI</span><span class="o">(</span><span class="s">"#login-button"</span><span class="o">)</span> <span class="n">Button</span> <span class="n">loginButton</span><span class="o">;}</span>
-
-
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginFormSmart</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="n">TextField</span> <span class="n">name</span><span class="o">,</span> <span class="n">password</span><span class="o">;</span>
-    <span class="n">Button</span> <span class="n">loginButton</span><span class="o">;</span>
-<span class="o">}</span>
-
-
-
-
-
-<span class="n">on</span> <span class="n">JDISite</span><span class="o">.</span><span class="na">java</span> <span class="o">&gt;&gt;</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">lightLoginForm</span><span class="o">;</span>
-
-
-
-
-
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Form</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">onlyMandatory</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">setFilter</span><span class="o">(</span><span class="n">MANDATORY</span><span class="o">);</span>
-        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">onlyOptional</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">setFilter</span><span class="o">(</span><span class="n">OPTIONAL</span><span class="o">);</span>
-        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContactFormCustom</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">Contacts</span><span class="o">&gt;</span> <span class="o">{</span>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContactFormCustom</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">Contacts</span><span class="o">&gt;</span> <span class="o">{</span>
     <span class="nd">@Mandatory</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
     <span class="n">TextField</span> <span class="n">lastName</span><span class="o">,</span> <span class="n">position</span><span class="o">,</span> <span class="n">passportNumber</span><span class="o">,</span> <span class="n">passportSeria</span><span class="o">;</span>
-    <span class="nd">@UI</span><span class="o">(</span><span class="s">"['Submit']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">submit</span><span class="o">;</span>
 
+    <span class="n">Dropdown</span> <span class="n">gender</span><span class="o">;</span>
+    <span class="n">IsCombobox</span> <span class="n">religion</span><span class="o">;</span>
+
+    <span class="n">Checkbox</span> <span class="n">passport</span><span class="o">,</span> <span class="n">acceptConditions</span><span class="o">;</span>
+    <span class="n">TextArea</span> <span class="n">description</span><span class="o">;</span>
+
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"['Submit']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">submit</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">submitEntityToContactFormCustomTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">main</span><span class="o">.</span><span class="na">contactFormCustom</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">DEFAULT_CONTACT</span><span class="o">);</span>
+    <span class="n">main</span><span class="o">.</span><span class="na">contactFormCustom</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">DEFAULT_CONTACT</span><span class="o">);</span>
+    <span class="n">checkContactFormCustomSubmitted</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">plainSubmitTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">main</span><span class="o">.</span><span class="na">contactFormCustom</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">DEFAULT_CONTACT</span><span class="o">);</span>
+    <span class="n">main</span><span class="o">.</span><span class="na">contactFormCustom</span><span class="o">.</span><span class="na">submit</span><span class="o">();</span>
+    <span class="n">main</span><span class="o">.</span><span class="na">contactFormCustom</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">DEFAULT_CONTACT</span><span class="o">);</span>
+    <span class="n">checkContactFormCustomSubmitted</span><span class="o">();</span>
+<span class="o">}</span>
 
 <span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onlyMandatoryOptionTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">shouldContactPageBeOpenedAndRefreshed</span><span class="o">();</span>
     <span class="n">main</span><span class="o">.</span><span class="na">contactFormCustom</span><span class="o">.</span><span class="na">onlyMandatory</span><span class="o">().</span><span class="na">fill</span><span class="o">(</span><span class="n">DEFAULT_CONTACT</span><span class="o">);</span>
     <span class="n">main</span><span class="o">.</span><span class="na">contactFormCustom</span><span class="o">.</span><span class="na">onlyMandatory</span><span class="o">().</span><span class="na">check</span><span class="o">(</span><span class="n">DEFAULT_CONTACT</span><span class="o">);</span>
+    <span class="n">main</span><span class="o">.</span><span class="na">contactFormCustom</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">ONLY_NAME_FILLED_DEFAULT_CONTACT</span><span class="o">);</span>
 <span class="o">}</span>
 
-
-
-<span class="nd">@BeforeSuite</span><span class="o">(</span><span class="n">alwaysRun</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">logger</span><span class="o">.</span><span class="na">setLogLevel</span><span class="o">(</span><span class="n">INFO</span><span class="o">);</span>
-    <span class="n">initElements</span><span class="o">(</span><span class="n">StaticSite</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-    <span class="n">Form</span><span class="o">.</span><span class="na">FILL_ACTION</span> <span class="o">=</span> <span class="o">(</span><span class="n">field</span><span class="o">,</span> <span class="n">element</span><span class="o">,</span> <span class="n">parent</span><span class="o">,</span> <span class="n">setValue</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
-         <span class="k">if</span> <span class="o">(</span><span class="n">isInterface</span><span class="o">(</span><span class="n">field</span><span class="o">,</span> <span class="n">TextField</span><span class="o">.</span><span class="na">class</span><span class="o">))</span>
-            <span class="o">((</span><span class="n">TextField</span><span class="o">)</span><span class="n">element</span><span class="o">).</span><span class="na">higlight</span><span class="o">();</span>
-         <span class="o">((</span><span class="n">SetValue</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">setValue</span><span class="o">(</span><span class="n">setValue</span><span class="o">);</span>
-    <span class="o">};</span>
-    <span class="n">homePage</span><span class="o">.</span><span class="na">open</span><span class="o">();</span>
-    <span class="n">logger</span><span class="o">.</span><span class="na">toLog</span><span class="o">(</span><span class="s">"Run Tests"</span><span class="o">);</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onlyOptionalOptionTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">main</span><span class="o">.</span><span class="na">contactForm</span><span class="o">.</span><span class="na">onlyOptional</span><span class="o">().</span><span class="na">fill</span><span class="o">(</span><span class="n">DEFAULT_CONTACT</span><span class="o">);</span>
+    <span class="n">main</span><span class="o">.</span><span class="na">contactFormCustom</span><span class="o">.</span><span class="na">onlyOptional</span><span class="o">().</span><span class="na">check</span><span class="o">(</span><span class="n">ALL_EXCEPT_NAME_FILLED_DEFAULT_CONTACT</span><span class="o">);</span>
 <span class="o">}</span>
-
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginForm</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="n">TextField</span> <span class="n">name</span><span class="o">,</span> <span class="n">password</span><span class="o">;</span>
-    <span class="n">Button</span> <span class="n">loginButton</span><span class="o">;</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fillAction</span><span class="o">(</span><span class="n">Field</span> <span class="n">field</span><span class="o">,</span> <span class="n">Object</span> <span class="n">element</span><span class="o">,</span>
-         <span class="n">Object</span> <span class="n">parent</span><span class="o">,</span> <span class="n">String</span> <span class="n">setValue</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">isInterface</span><span class="o">(</span><span class="n">field</span><span class="o">,</span> <span class="n">TextField</span><span class="o">.</span><span class="na">class</span><span class="o">))</span>
-            <span class="o">((</span><span class="n">TextField</span><span class="o">)</span><span class="n">element</span><span class="o">).</span><span class="na">higlight</span><span class="o">();</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">fillAction</span><span class="o">(</span><span class="n">field</span><span class="o">,</span> <span class="n">element</span><span class="o">,</span> <span class="n">parent</span><span class="o">,</span> <span class="n">setValue</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-
-
-
-
-
-<span class="n">More</span> <span class="n">test</span> <span class="nl">examples:</span> 
-
-
-
-<span class="n">on</span> <span class="n">JDISite</span><span class="o">.</span><span class="na">java</span> <span class="o">&gt;&gt;</span> <span class="kd">public</span> <span class="kd">static</span> <span class="n">LoginFormSmart</span> <span class="n">loginForm</span><span class="o">;</span>
-
- <span class="nd">@Test</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">loginWithUserTest</span><span class="o">()</span> <span class="o">{</span>
-     <span class="n">shouldBeLoggedOut</span><span class="o">();</span>
-     <span class="n">loginForm</span><span class="o">.</span><span class="na">shouldBeOpened</span><span class="o">();</span>
-     <span class="n">loginForm</span><span class="o">.</span><span class="na">login</span><span class="o">(</span><span class="n">DEFAULT_USER</span><span class="o">);</span>
-     <span class="n">homePage</span><span class="o">.</span><span class="na">checkOpened</span><span class="o">();</span>
- <span class="o">}</span>
-
- <span class="nd">@Test</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fillContactFormTest</span><span class="o">()</span> <span class="o">{</span>
-     <span class="n">shouldContactPageBeOpenedAndRefreshed</span><span class="o">();</span>
-     <span class="n">main</span><span class="o">.</span><span class="na">contactForm</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">DEFAULT_CONTACT</span><span class="o">);</span>
-     <span class="n">main</span><span class="o">.</span><span class="na">contactForm</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="n">DEFAULT_CONTACT</span><span class="o">);</span>
- <span class="o">}</span> 
 </code></pre>
 <p>Form is parameterized by an entity that corresponds to the form. For example, a login form can be parameterized by a user entity. The entity should extend DataClass class (parameterized by the entity itself). 
 The names of the entity fields should be exactly the same as the names of the form fields. All fields of the entity managed by the form should be Strings.</p>
