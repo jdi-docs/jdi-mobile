@@ -2084,7 +2084,14 @@ or &quot;#%s&quot; if that property is empty</p></li>
 (this value will be passed as a %s parameter to SMART_SEARCH_LOCATORS). By default,
 kebab-case will be used</p></li>
 </ul>
-<h2 id='jdi-locators-simple-as-css-powerful-as-xpath'>JDI Locators (simple as css powerful as xpath)</h2>
+<h2 id='jdi-locators-simple-as-css-powerful-as-xpath'>JDI Locators (simple as css powerful as xpath)</h2><pre class="highlight java tab-java"><code><span class="c1">//Here's simple test to find 4th text element's parent element</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">indexAndParentTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">bys</span> <span class="o">=</span> <span class="n">searchBy</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">cssSelector</span><span class="o">(</span><span class="s">"input[type=text][4]&lt;"</span><span class="o">));</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">bys</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">3</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getElement</span><span class="o">(</span><span class="n">bys</span><span class="o">).</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Last Name"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getElement</span><span class="o">(</span><span class="n">bys</span><span class="o">).</span><span class="na">getTagName</span><span class="o">(),</span> <span class="s">"div"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
 <p>JDI locators can be used to perform search with the help of css locators, but with extended possibilities, that are not available within the css element search:</p>
 
 <ul>
@@ -2093,21 +2100,9 @@ kebab-case will be used</p></li>
 <li><p>Search by element index - <strong>[3]</strong></p></li>
 <li><p>Search by element&#39;s parent - <strong>&lt;</strong></p></li>
 </ul>
-<pre class="highlight java tab-java"><code><span class="c1">//Here's simple test to find 4th text element's parent element</span>
-<span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">indexAndParentTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">bys</span> <span class="o">=</span> <span class="n">searchBy</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">cssSelector</span><span class="o">(</span><span class="s">"input[type=text][4]&lt;"</span><span class="o">));</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">bys</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">3</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getElement</span><span class="o">(</span><span class="n">bys</span><span class="o">).</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Last Name"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getElement</span><span class="o">(</span><span class="n">bys</span><span class="o">).</span><span class="na">getTagName</span><span class="o">(),</span> <span class="s">"div"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
-<p>You can also use them apart or altogether. See markup below and test example on the right.</p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group form-group10"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"last-name"</span><span class="nt">&gt;</span>Last Name<span class="nt">&lt;/label&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"last-name"</span> <span class="na">class=</span><span class="s">"uui-form-element"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre><h1 id='faq'>FAQ</h1>
+
+<p>You can also use them apart or altogether</p>
+<h1 id='faq'>FAQ</h1>
 <p>TBD</p>
 <h1 id='documentation'>Documentation</h1><h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='uielement'>UIElement</h3><h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
