@@ -394,7 +394,21 @@
             <a href="#theory" class="toc-h1 toc-link" data-title="Theory">Theory</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#ui-objects-pattern-extend-your-pageobjects-with-ui-elements" class="toc-h2 toc-link" data-title="UI Objects Pattern (Extend your PageObjects with UI elements)">UI Objects Pattern (Extend your PageObjects with UI elements)</a>
+                    <a href="#ui-elements" class="toc-h2 toc-link" data-title="UI Elements">UI Elements</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#common-elements" class="toc-h2 h3 toc-link" data-title="Common elements">Common elements</a>
+                            </li>
+                            <li>
+								<a href="#complex-elements" class="toc-h2 h3 toc-link" data-title="Complex elements">Complex elements</a>
+                            </li>
+                            <li>
+								<a href="#composite-elements" class="toc-h2 h3 toc-link" data-title="Composite elements">Composite elements</a>
+                            </li>
+                        </ul>
+                  </li>
+                  <li>
+                    <a href="#ui-objects-pattern" class="toc-h2 toc-link" data-title="UI Objects Pattern">UI Objects Pattern</a>
                   </li>
                   <li>
                     <a href="#entity-driven-testing" class="toc-h2 toc-link" data-title="Entity Driven Testing">Entity Driven Testing</a>
@@ -1948,7 +1962,41 @@ In addition, if you run test scenarios on JDI Light, you will <strong>get logs o
 <p>TBD</p>
 <h2 id='test-framework-structure'>Test Framework structure</h2>
 <p>TBD</p>
-<h1 id='theory'>Theory</h1><h2 id='ui-objects-pattern-extend-your-pageobjects-with-ui-elements'>UI Objects Pattern (Extend your PageObjects with UI elements)</h2>
+<h1 id='theory'>Theory</h1><h2 id='ui-elements'>UI Elements</h2>
+<p>In order to effectiviely utilize <a href="https://github.com/SeleniumHQ/selenium/wiki/PageObjects" target="_blank">Page Objects pattern</a> we need to use elements on the pages. Instead of tag-like Selenium <code>WebElement</code> s that represents tag in html in JDI we introduce UI Elements that represrent element on UI used by real user.</br>
+JDI provides an ability to create your own element or reuse standard element from our rich collection</br></p>
+<h3 id='common-elements'>Common elements</h3>
+<ul>
+<li>Used to make your Page Objects more intuitive and clear</li>
+<li>In addition we use elements type and name in our logs and reports that simplifies tests maintanance</li>
+<li>And of course we expect from UI elements only actions that are relevant to them (e.g. you can&#39;t sendKeys in <code>Button</code> but this is possible with <code>WebElement</code> or <code>SelenideElement</code>)</li>
+</ul>
+
+<p>In JDI we have following Common elements:</br>
+<a href="https://jdi-docs.github.io/jdi-light/?java#label">Label</a> 
+<a href="https://jdi-docs.github.io/jdi-light/?java#button">Button</a> ...</p>
+<h3 id='complex-elements'>Complex elements</h3>
+<p>In addition to <a href="https://jdi-docs.github.io/jdi-light/?java#common-elements">Common elements</a> features Complex elements helps to combine list of different elements in one UI element</br>
+Typical example of Complex element is <code>Dropdown</code>, <code>Combobx</code>, <code>Table</code> etc.</br>
+Other examples are lists of similar elements like <code>List&lt;WebElement&gt;</code> in Selenium. Typical examples are: <code>Menu</code>, <code>Checklist</code>, <code>RadioButtons</code>, <code>Tabs</code> etc.
+Also you can use list of Common elements as <code>List&lt;...&gt;</code> e.g. <code>List&lt;Button&gt;</code> or <code>List&lt;Label&gt;</code></p>
+
+<p>In JDI we have following Common elements:</br>
+<a href="https://jdi-docs.github.io/jdi-light/?java#dropdown">Dropdown</a> 
+<a href="https://jdi-docs.github.io/jdi-light/?java#combobox">Combobox</a> 
+<a href="https://jdi-docs.github.io/jdi-light/?java#checklist">Checklist</a> ...</p>
+<h3 id='composite-elements'>Composite elements</h3>
+<p>Composite elements represents part of page and often used just as container for elements and actions</br>
+Typical examples are <code>WebPage</code> and <code>Section</code>.</br>
+In the same time composite elements also can have a locator that defines a context for all elements inside. That means that all elements in composite element will be searched relatively under this locator.</br>
+Composite elements also can have predefined actions like fill(...), submit(...) and check(...) for <code>Form</code> or open(), checkOpened() for <code>WebPage</code>.</br>
+Remember that you can create your own Composite elements with JDI Light for example for Header, Navigation bar, Footer, Left sidebar, advertisement or main part ofr the page.</br></p>
+
+<p>In JDI we have following Common elements:</br>
+<a href="https://jdi-docs.github.io/jdi-light/?java#webpage">WebPage</a> 
+<a href="https://jdi-docs.github.io/jdi-light/?java#section">Section</a> 
+<a href="https://jdi-docs.github.io/jdi-light/?java#form">Form</a> ...</p>
+<h2 id='ui-objects-pattern'>UI Objects Pattern</h2>
 <p>TBD</p>
 <h2 id='entity-driven-testing'>Entity Driven Testing</h2>
 <p>TBD</p>
