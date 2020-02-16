@@ -2024,8 +2024,28 @@ Remember that you can create your own Composite elements with JDI Light for exam
     <span class="o">...</span>
 <span class="o">}</span>
 </code></pre><h2 id='ui-objects-pattern'>UI Objects Pattern</h2>
-<p>TBD</p>
-<h2 id='entity-driven-testing'>Entity Driven Testing</h2>
+<p>UI objects extend typical <a href="https://github.com/SeleniumHQ/selenium/wiki/PageObjects" target="_blank">Page Objects pattern</a> with <a href="https://jdi-docs.github.io/jdi-light/?java#ui-elements">UI Elements</a> and add ability to fragmentize pages to sections.</br>
+Typical UI objects structure consists of:</br>
+* Site class that collects all pages and common parts of the application like header, footer or navigation panel
+* Page Objects that extends from <code>WebPage</code> and represents logical application pages
+* Composite elements that typically represented by <code>Sections</code> or other <a href="https://jdi-docs.github.io/jdi-light/?java#composite-elements">Composite elements</a> and acts as Containers for other elements and smaller sections
+* UI Elements that represents functional elements on page used by application user</p>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwesomeApplication</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">LoginPage</span> <span class="n">loginPage</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".nav li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Menu</span> <span class="n">navigation</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nd">@Url</span><span class="o">(</span><span class="s">"/login.html"</span><span class="o">)</span> <span class="nd">@Title</span><span class="o">(</span><span class="s">"Login to JDI"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".top-panel"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TopPanel</span> <span class="n">topPanel</span><span class="o">;</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TopPanel</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"form.login"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">LoginForm</span> <span class="n">loginForm</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"h1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">label</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".colors"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">colors</span><span class="o">;</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre><h2 id='entity-driven-testing'>Entity Driven Testing</h2>
 <p>TBD</p>
 <h2 id='smart-locators'>Smart Locators</h2><pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserCard</span> <span class="p">:</span> <span class="n">Form</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span>
 <span class="p">{</span>
