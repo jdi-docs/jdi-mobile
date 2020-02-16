@@ -1975,7 +1975,12 @@ JDI provides an ability to create your own element or reuse standard element fro
 <p>In JDI we have following Common elements:</br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#label">Label</a> 
 <a href="https://jdi-docs.github.io/jdi-light/?java#button">Button</a> ...</p>
-<h3 id='complex-elements'>Complex elements</h3>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"input[type=text].name"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"h1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">label</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//div[@name='disclamer']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Text</span> <span class="n">disclaimer</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"textarea[ui=description]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TextArea</span> <span class="n">description</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[text()='Submit']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">submit</span><span class="o">;</span>
+</code></pre><h3 id='complex-elements'>Complex elements</h3>
 <p>In addition to <a href="https://jdi-docs.github.io/jdi-light/?java#common-elements">Common elements</a> features Complex elements helps to combine list of different elements in one UI element</br>
 Typical example of Complex element is <code>Dropdown</code>, <code>Combobx</code>, <code>Table</code> etc.</br>
 Other examples are lists of similar elements like <code>List&lt;WebElement&gt;</code> in Selenium. Typical examples are: <code>Menu</code>, <code>Checklist</code>, <code>RadioButtons</code>, <code>Tabs</code> etc.
@@ -1985,7 +1990,13 @@ Also you can use list of Common elements as <code>List&lt;...&gt;</code> e.g. <c
 <a href="https://jdi-docs.github.io/jdi-light/?java#dropdown">Dropdown</a> 
 <a href="https://jdi-docs.github.io/jdi-light/?java#combobox">Combobox</a> 
 <a href="https://jdi-docs.github.io/jdi-light/?java#checklist">Checklist</a> ...</p>
-<h3 id='composite-elements'>Composite elements</h3>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".colors"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">colors</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"input[type=checkbox].conditions"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checklist</span> <span class="n">acceptConditions</span><span class="o">;</span>
+<span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">".colors"</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-value"</span><span class="o">,</span> <span class="n">list</span> <span class="o">=</span> <span class="s">"li"</span><span class="o">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="s">".caret"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">colors</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=label] li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">Labels</span><span class="o">&gt;</span> <span class="n">tabs</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"//button[text()='%s']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">JList</span><span class="o">&lt;</span><span class="n">Button</span><span class="o">&gt;</span> <span class="n">buttons</span><span class="o">;</span>
+</code></pre><h3 id='composite-elements'>Composite elements</h3>
 <p>Composite elements represents part of page and often used just as container for elements and actions</br>
 Typical examples are <code>WebPage</code> and <code>Section</code>.</br>
 In the same time composite elements also can have a locator that defines a context for all elements inside. That means that all elements in composite element will be searched relatively under this locator.</br>
@@ -1996,7 +2007,23 @@ Remember that you can create your own Composite elements with JDI Light for exam
 <a href="https://jdi-docs.github.io/jdi-light/?java#webpage">WebPage</a> 
 <a href="https://jdi-docs.github.io/jdi-light/?java#section">Section</a> 
 <a href="https://jdi-docs.github.io/jdi-light/?java#form">Form</a> ...</p>
-<h2 id='ui-objects-pattern'>UI Objects Pattern</h2>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginForm</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">,</span> <span class="n">password</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[text()='Submit']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">submit</span><span class="o">;</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TopPanel</span> <span class="kd">extends</span> <span class="n">Section</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"form.login"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">LoginForm</span> <span class="n">loginForm</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">"h1"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Label</span> <span class="n">label</span><span class="o">;</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".colors"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">colors</span><span class="o">;</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+<span class="nd">@Url</span><span class="o">(</span><span class="s">"/login.html"</span><span class="o">)</span> <span class="nd">@Title</span><span class="o">(</span><span class="s">"Login to JDI"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+    <span class="nd">@UI</span><span class="o">(</span><span class="s">".top-panel"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">TopPanel</span> <span class="n">topPanel</span><span class="o">;</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre><h2 id='ui-objects-pattern'>UI Objects Pattern</h2>
 <p>TBD</p>
 <h2 id='entity-driven-testing'>Entity Driven Testing</h2>
 <p>TBD</p>
