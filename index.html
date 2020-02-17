@@ -1978,8 +1978,8 @@ JDI allows users to create their own elements or reuse built-ins from the rich c
 </ul>
 
 <p>In JDI we have following Common elements:</br>
-<a href="https://jdi-docs.github.io/jdi-light/?java#label">Label</a> 
-<a href="https://jdi-docs.github.io/jdi-light/?java#button">Button</a> ...</p>
+* <a href="https://jdi-docs.github.io/jdi-light/?java#label">Label</a><br> 
+* <a href="https://jdi-docs.github.io/jdi-light/?java#button">Button</a> ...</p>
 <h3 id='complex-elements'>Complex elements</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".colors"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">colors</span><span class="o">;</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[type=checkbox].conditions"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checklist</span> <span class="n">acceptConditions</span><span class="o">;</span>
 <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">".colors"</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-value"</span><span class="o">,</span> <span class="n">list</span> <span class="o">=</span> <span class="s">"li"</span><span class="o">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="s">".caret"</span><span class="o">)</span>
@@ -1993,8 +1993,8 @@ Other examples are lists of similar elements like <code>List&lt;WebElement&gt;</
 You can also use lists of Common elements such as <code>List&lt;...&gt;</code> (e.g. <code>List&lt;Button&gt;</code> or <code>List&lt;Label&gt;</code>).</p>
 
 <p>In JDI we have the following Complex elements:</br>
-* <a href="https://jdi-docs.github.io/jdi-light/?java#dropdown">Dropdown</a>
-* <a href="https://jdi-docs.github.io/jdi-light/?java#combobox">Combobox</a> 
+* <a href="https://jdi-docs.github.io/jdi-light/?java#dropdown">Dropdown</a><br>
+* <a href="https://jdi-docs.github.io/jdi-light/?java#combobox">Combobox</a><br> 
 * <a href="https://jdi-docs.github.io/jdi-light/?java#checklist">Checklist</a> ...</p>
 <h3 id='composite-elements'>Composite elements</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginForm</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">,</span> <span class="n">password</span><span class="o">;</span>
@@ -2021,8 +2021,8 @@ Composite elements can also have predefined actions like <em>fill(...)</em>, <em
 Remember that you can create your own Composite elements with JDI Light, e.g. a Header, Navigation bar, Footer, Left sidebar, Advertisement or Main part of a page.</br></p>
 
 <p>In JDI we have the following Composite elements:</br>
-* <a href="https://jdi-docs.github.io/jdi-light/?java#webpage">WebPage</a> 
-* <a href="https://jdi-docs.github.io/jdi-light/?java#section">Section</a> 
+* <a href="https://jdi-docs.github.io/jdi-light/?java#webpage">WebPage</a><br> 
+* <a href="https://jdi-docs.github.io/jdi-light/?java#section">Section</a><br>
 * <a href="https://jdi-docs.github.io/jdi-light/?java#form">Form</a> ...</p>
 <h2 id='ui-object-pattern'>UI Object Pattern</h2><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwesomeApplication</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">LoginPage</span> <span class="n">loginPage</span><span class="o">;</span>
@@ -2042,9 +2042,9 @@ Remember that you can create your own Composite elements with JDI Light, e.g. a 
 </code></pre>
 <p>UI objects extend the typical <a href="https://github.com/SeleniumHQ/selenium/wiki/PageObjects" target="_blank">Page Objects pattern</a> with <a href="https://jdi-docs.github.io/jdi-light/?java#ui-elements">UI Elements</a> and allow users to split pages into sections.</br>
 A typical UI object structure consists of:</br>
-* A <code>Site class</code> that contains all pages and common parts of application like header, footer or navigation panel
-* <code>Page Objects</code> extending from <code>WebPage</code> and representing respective application pages
-* Composite elements typically represented by <code>Sections</code> or other <a href="https://jdi-docs.github.io/jdi-light/?java#composite-elements">Composite elements</a>, acting as Containers for other elements and smaller sections
+* A <code>Site class</code> that contains all pages and common parts of application like header, footer or navigation panel<br>
+* <code>Page Objects</code> extending from <code>WebPage</code> and representing respective application pages<br>
+* Composite elements typically represented by <code>Sections</code> or other <a href="https://jdi-docs.github.io/jdi-light/?java#composite-elements">Composite elements</a>, acting as Containers for other elements and smaller sections<br>
 * UI Elements representing functional elements on page utilized by end user</p>
 <h2 id='entity-driven-testing'>Entity Driven Testing</h2>
 <p>TBD</p>
