@@ -2110,17 +2110,15 @@ JDI Light natively supports EDT with Forms, Tables and DataLists. See more examp
 <p>Let&#39;s assume you have some typical way to locate most of the elements for example most of elements has id or name or special attribute to locate ui elements valuable for automation. </br>
 Let&#39;s asume you have <code>@UI(&quot;[ui=last-name]&quot;) public TextField lastName;</code>  element in JDI. In this case you simplify it to <code>public TextField lastName;</code> and omit locator</br>
 See more complex example below and in code panel at the right:</br>
-For example you have following html</br>
-<code>html
-&lt;input type=&quot;text&quot; ui=&quot;name&quot;/&gt;
-&lt;input type=&quot;text&quot; ui=&quot;last-name&quot;/&gt;
-&lt;input type=&quot;text&quot; ui=&quot;pin-code&quot;/&gt;
-&lt;input type=&quot;text&quot; ui=&quot;promo-code&quot;/&gt;
-&lt;input type=&quot;checkbox&quot; ui=&quot;accept-conditions&quot;/&gt;
-&lt;a href=&quot;...&quot; ui=&quot;external-link&quot;&gt;External link&lt;/a&gt;
-&lt;button ui=&quot;submit-button&quot;&gt;
-</code></p>
-<pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserCard</span> <span class="p">:</span> <span class="n">Form</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span>
+For example you have following html</br></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">ui=</span><span class="s">"name"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">ui=</span><span class="s">"last-name"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">ui=</span><span class="s">"pin-code"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">ui=</span><span class="s">"promo-code"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">ui=</span><span class="s">"accept-conditions"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"..."</span> <span class="na">ui=</span><span class="s">"external-link"</span><span class="nt">&gt;</span>External link<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">ui=</span><span class="s">"submit-button"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserCard</span> <span class="p">:</span> <span class="n">Form</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span>
 <span class="p">{</span>
     <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#name"</span><span class="p">)]</span> <span class="k">public</span> <span class="n">TextField</span> <span class="n">Name</span><span class="p">;</span>
     <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#last-name"</span><span class="p">)]</span> <span class="k">public</span> <span class="n">TextField</span> <span class="n">LastName</span><span class="p">;</span>
@@ -2189,14 +2187,14 @@ or if you have <code>smart.locators=//*[text()=&#39;%s&#39;]</code></br>
 <span class="n">JDI</span> <span class="n">Light</span> <span class="n">like</span>
 <span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH</span> <span class="o">=</span> <span class="n">el</span> <span class="o">-&gt;</span> <span class="o">{</span>
   <span class="n">String</span> <span class="n">locatorName</span> <span class="o">=</span> <span class="n">toKebabCase</span><span class="o">(</span><span class="n">el</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
-  <span class="n">UIElement</span> <span class="n">element</span> <span class="o">=</span> <span class="err">$</span><span class="o">(</span><span class="s">"[auto="</span><span class="o">+</span><span class="n">locatorName</span><span class="o">+</span><span class="s">"], el.base().parent));
-  element.setName(el.getName());
-  return element.getWebElement();
-}
-Selenium like:
-WebSettings.SMART_SEARCH = el -&gt; {
-  String locatorName = toKebabCase(el.getName());
-  return getDriver.findElement(By.cssClass("</span><span class="o">[</span><span class="n">auto</span><span class="o">=</span><span class="s">"+locatorName+"</span><span class="o">]</span><span class="err">"</span><span class="o">));</span>
+  <span class="n">UIElement</span> <span class="n">element</span> <span class="o">=</span> <span class="err">$</span><span class="o">(</span><span class="s">"[auto="</span><span class="o">+</span><span class="n">locatorName</span><span class="o">+</span><span class="s">"]"</span><span class="o">,</span> <span class="n">el</span><span class="o">.</span><span class="na">base</span><span class="o">().</span><span class="na">parent</span><span class="o">));</span>
+  <span class="n">element</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">el</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+  <span class="k">return</span> <span class="n">element</span><span class="o">.</span><span class="na">getWebElement</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="n">Selenium</span> <span class="nl">like:</span>
+<span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH</span> <span class="o">=</span> <span class="n">el</span> <span class="o">-&gt;</span> <span class="o">{</span>
+  <span class="n">String</span> <span class="n">locatorName</span> <span class="o">=</span> <span class="n">toKebabCase</span><span class="o">(</span><span class="n">el</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+  <span class="k">return</span> <span class="n">getDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">cssClass</span><span class="o">(</span><span class="s">"[auto="</span><span class="o">+</span><span class="n">locatorName</span><span class="o">+</span><span class="s">"]"</span><span class="o">));</span>
 <span class="o">}</span>
 </code></pre>
 <p>From other hands you can setup Smart Locators in code using <code>WebSettings.SMART_SEARCH_NAME</code> and <code>WebSettings.SMART_SEARCH_LOCATORS</code> variables</br>
