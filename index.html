@@ -2201,24 +2201,23 @@ WebSettings.SMART_SEARCH = el -&gt; {
 </code></pre>
 <p>From other hands you can setup Smart Locators in code using <code>WebSettings.SMART_SEARCH_NAME</code> and <code>WebSettings.SMART_SEARCH_LOCATORS</code> variables</br>
 Or you can define by yourself what should be done in case of UI Element has no locator using <code>WebSettings.SMART_SEARCH</code> function</p>
-<h2 id='jdi-locators-simple-as-css-powerful-as-xpath'>JDI Locators (simple as css powerful as xpath)</h2><pre class="highlight java tab-java"><code><span class="c1">//Here's simple test to find 4th text element's parent element</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">indexAndParentTest</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">bys</span> <span class="o">=</span> <span class="n">searchBy</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">cssSelector</span><span class="o">(</span><span class="s">"input[type=text][4]&lt;"</span><span class="o">));</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">bys</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">3</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getElement</span><span class="o">(</span><span class="n">bys</span><span class="o">).</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Last Name"</span><span class="o">);</span>
-    <span class="n">assertEquals</span><span class="o">(</span><span class="n">getElement</span><span class="o">(</span><span class="n">bys</span><span class="o">).</span><span class="na">getTagName</span><span class="o">(),</span> <span class="s">"div"</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre>
-<p>JDI locators can be used to perform search with the help of css locators, but with extended possibilities, that are not available within the css element search:</p>
+<h2 id='jdi-locators-simple-as-css-powerful-as-xpath'>JDI Locators (simple as css powerful as xpath)</h2>
+<p>With JDI Light you can use simple and fast css selecctors with power of xpath locators. Now you can search by text or index in css or even move up and down in html tree.</br>
+See some examples below:</br>
+XPath: <code>//div[contains(@class,&#39;btn&#39;)]//*[text()=&#39;Submit&#39;]</code></br>
+JDI Locator: <code>div.btn[&#39;Submit&#39;]</code></p>
 
-<ul>
-<li><p>Search by element&#39;s full text - <strong>[&#39;text&#39;]</strong></p></li>
-<li><p>Search by element&#39;s part of the text - <strong>[*&#39;text&#39;]</strong></p></li>
-<li><p>Search by element index - <strong>[3]</strong></p></li>
-<li><p>Search by element&#39;s parent - <strong>&lt;</strong></p></li>
-</ul>
+<p>XPath: <code>//*[contains(@class,&#39;nav-menu&#39;)]//*[@data-role=&#39;header&#39;]//*[contains(text(),&#39;Navigation menu&#39;)]</code></br>
+JDI Locator: <code>.nav-menu [data-role=header][*&#39;Navigation menu&#39;]</code></br></p>
 
-<p>You can also use them apart or altogether</p>
+<p>XPath: <code>//label[text()=&#39;Gold status&#39;]/..//input[@type=&#39;checkbox&#39;]</code></br>
+JDI Locator: <code>label[&#39;Gold status&#39;]&lt;input[type=checkbox]</code></br></p>
+
+<p>XPath: <code>//label[text()=&#39;Gold status&#39;]/..//input[@type=&#39;checkbox&#39;]</code></br>
+JDI Locator: <code>label[&#39;Gold status&#39;]&lt;input[type=checkbox]</code></br></p>
+
+<p>XPath: <code>//*[contains(@class,&#39;nav-menu&#39;)]//*[@data-role=&#39;header&#39;][3]</code></br>
+JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <h1 id='faq'>FAQ</h1>
 <p>TBD</p>
 <h1 id='documentation'>Documentation</h1><h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='uielement'>UIElement</h3><h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
