@@ -425,7 +425,16 @@
                             <li>
 								<a href="#define-smart-locator-using-websettings" class="toc-h2 h3 toc-link" data-title="Define smart locator using WebSettings">Define smart locator using WebSettings</a>
                             </li>
+                            <li>
+								<a href="#smart-annotations" class="toc-h2 h3 toc-link" data-title="Smart Annotations">Smart Annotations</a>
+                            </li>
+                            <li>
+								<a href="#custom-smart-annotation" class="toc-h2 h3 toc-link" data-title="Custom Smart Annotation">Custom Smart Annotation</a>
+                            </li>
                         </ul>
+                  </li>
+                  <li>
+                    <a href="#jdi-annotations" class="toc-h2 toc-link" data-title="JDI Annotations">JDI Annotations</a>
                   </li>
                   <li>
                     <a href="#jdi-locators-simple-as-css-powerful-as-xpath" class="toc-h2 toc-link" data-title="JDI Locators (simple as css powerful as xpath)">JDI Locators (simple as css powerful as xpath)</a>
@@ -2199,6 +2208,60 @@ or if you have <code>smart.locators=//*[text()=&#39;%s&#39;]</code></br>
 </code></pre>
 <p>From other hands you can setup Smart Locators in code using <code>WebSettings.SMART_SEARCH_NAME</code> and <code>WebSettings.SMART_SEARCH_LOCATORS</code> variables</br>
 Or you can define by yourself what should be done in case of UI Element has no locator using <code>WebSettings.SMART_SEARCH</code> function</p>
+<h3 id='smart-annotations'>Smart Annotations</h3>
+<p>In case you have few standart patterns for locators you can use Smart Annotations in order to mark the elements with this locators.</br>
+For <code>@UI(&quot;#last-name&quot;) TextFiled lastName;</code></br>
+use <code>@SId TextField lastName;</code></br>
+For <code>@UI(&quot;.contact-form&quot;) Form&lt;CardData&gt; contactForm;</code></br>
+use <code>@SClass Form&lt;CardData&gt; contactForm;</code></br>
+For <code>@UI(&quot;//*[text()=&#39;Submit Card&#39;]&quot;) Button submitCard;</code></br>
+use <code>@SText Button submitCard;</code></br>
+For <code>@UI(&quot;[name=&#39;accept-conditions&#39;]&quot;) Checkbox acceptConditions;</code></br>
+use <code>@SName Checkbox acceptConditions;</code></br>
+or use @Smart annotation for any specific html attribute
+For <code>@UI(&quot;[data-type=data-multy-combobx]&quot;) MultiCombobox dataMultyCombobx;</code></br>
+use <code>@Smart(&quot;data-type&quot;) MultiCombobox dataMultyCombobx;</code></br>
+</br></p>
+<h3 id='custom-smart-annotation'>Custom Smart Annotation</h3>
+<p>Or you always can create your own annotation for smart behaviour</br>
+Let&#39;s assume you would like to use smart locators for buttons like <code>//button[text()=&#39;Button Text&#39;]</code></br>
+1. Create new annotation</br>
+<code>
+SButton.java
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE, ElementType.FIELD})
+public @interface SButton {
+}
+</code></br>
+2. setup behaviour for this annotations before you call initSite(...)
+<code>
+@BeforeSuite(alwaysRun = true)
+public static void setUp() {
+    JDI_ANNOTATIONS.add(&quot;Buttons&quot;, aRule(SButton.class,
+        (e, a) -&gt; e.setLocator(format(&quot;//button[text()=&#39;%s&#39;]&quot;, splitCamelCase(e.getName())))));
+    initSite(YourAwesomeSite.class);
+</code></br>
+Thats all. Now we can write</br>
+<code>@SButton public Button logIn, signIn, cancel, useVipAccess;</code></br>
+instead of </br>
+<code>
+@FindBy(xpath = &quot;//button[text()=&#39;Log In&#39;]&quot;)
+public WebElement logIn;
+@FindBy(xpath = &quot;//button[text()=&#39;Sign In&#39;]&quot;)
+public WebElement signIn;
+@FindBy(xpath = &quot;//button[text()=&#39;Cancel&#39;]&quot;)
+public WebElement cancel;
+@FindBy(xpath = &quot;//button[text()=&#39;Use Vip Access&#39;]&quot;)
+public WebElement useVipAccess;
+</code></br></p>
+<h2 id='jdi-annotations'>JDI Annotations</h2>
+<p>In order to control elements behaviour in JDI Light you can use following standard annotations:</br>
+<strong>@Root</strong> - ignore all parent sections locators for this element and use only locator that specified for element (including smart locators)</br>
+<strong>@Frame(&quot;frame-id&quot;)</strong> or <strong>@Frame({&quot;frame-id&quot;, &quot;div[name-adv]&quot;})</strong> in case you have two or more frames above element - use driver.switchTo().frame(...) before searching your element. Or call it multiple times if @Frame has list of locators. Can be used together with @UI locator</br>
+<strong>@Css(&quot;div.dropdown&quot;)</strong> - if your element has Css locator (deprecated, recommended to use universal <strong>@UI</strong>)</br>
+<strong>@XPath(&quot;//div[text()=&quot;Submit&quot;]&quot;)</strong> - if your element has Xpath locator (deprecated, recommended to use universal <strong>@UI</strong>)</br>
+<strong>ByText(&quot;Submit&quot;)</strong> - Used for elements that can be forund by text (use locator <code>&quot;.//*/text()[normalize-space(.) = %s]/parent::*&quot;</code>)</br>
+<strong>WithText(&quot;Navigation&quot;)</strong> - Used for elements that can be forund as text contains(use locator <code>&quot;.//*/text()[contains(normalize-space(.), %s)]/parent::*&quot;</code>)</br></p>
 <h2 id='jdi-locators-simple-as-css-powerful-as-xpath'>JDI Locators (simple as css powerful as xpath)</h2>
 <p>With JDI Light you can use simple and fast css selecctors with power of xpath locators. Now you can search by text or index in css or even move up and down in html tree.</br>
 See some examples below:</br>
