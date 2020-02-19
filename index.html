@@ -417,7 +417,13 @@
                     <a href="#smart-locators" class="toc-h2 toc-link" data-title="Smart Locators">Smart Locators</a>
                         <ul class="toc-list-h2">
                             <li>
-								<a href="#how-to-define-a-smart-locator" class="toc-h2 h3 toc-link" data-title="How to define a smart locator">How to define a smart locator</a>
+								<a href="#smart-locators-example" class="toc-h2 h3 toc-link" data-title="Smart locators example">Smart locators example</a>
+                            </li>
+                            <li>
+								<a href="#define-smart-locator-using-test-properties" class="toc-h2 h3 toc-link" data-title="Define smart locator using test.properties">Define smart locator using test.properties</a>
+                            </li>
+                            <li>
+								<a href="#define-smart-locator-using-websettings" class="toc-h2 h3 toc-link" data-title="Define smart locator using WebSettings">Define smart locator using WebSettings</a>
                             </li>
                         </ul>
                   </li>
@@ -2100,138 +2106,101 @@ A typical UI object structure consists of:</br>
 <p>Entites Driven Testing(EDT) is approach where Business Entites going through test scenarios instead of unnamed data.</br>
 EDT can be orgnically combined with DDT that use Business Entites as input to similar scenarios.
 JDI Light natively supports EDT with Forms, Tables and DataLists. See more examples in the right panel.</p>
-<h2 id='smart-locators'>Smart Locators</h2><pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserCard</span> <span class="p">:</span> <span class="n">Form</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span>
+<h2 id='smart-locators'>Smart Locators</h2><h3 id='smart-locators-example'>Smart locators example</h3>
+<p>Let&#39;s assume you have some typical way to locate most of the elements for example most of elements has id or name or special attribute to locate ui elements valuable for automation. </br>
+Let&#39;s asume you have <code>@UI(&quot;[ui=last-name]&quot;) public TextField lastName;</code>  element in JDI. In this case you simplify it to <code>public TextField lastName;</code> and omit locator</br>
+See more complex example below and in code panel at the right:</br>
+For example you have following html</br>
+<code>html
+&lt;input type=&quot;text&quot; ui=&quot;name&quot;/&gt;
+&lt;input type=&quot;text&quot; ui=&quot;last-name&quot;/&gt;
+&lt;input type=&quot;text&quot; ui=&quot;pin-code&quot;/&gt;
+&lt;input type=&quot;text&quot; ui=&quot;promo-code&quot;/&gt;
+&lt;input type=&quot;checkbox&quot; ui=&quot;accept-conditions&quot;/&gt;
+&lt;a href=&quot;...&quot; ui=&quot;external-link&quot;&gt;External link&lt;/a&gt;
+&lt;button ui=&quot;submit-button&quot;&gt;
+</code></p>
+<pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserCard</span> <span class="p">:</span> <span class="n">Form</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span>
 <span class="p">{</span>
-    <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#name"</span><span class="p">)]</span>
-    <span class="n">TextField</span> <span class="n">Name</span><span class="p">;</span> 
-
-    <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#last-name"</span><span class="p">)]</span>
-    <span class="n">TextField</span> <span class="n">LastName</span><span class="p">;</span>
-
-    <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#submit-button"</span><span class="p">)]</span>
-    <span class="n">Button</span> <span class="n">SubmitButton</span><span class="p">;</span>
+    <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#name"</span><span class="p">)]</span> <span class="k">public</span> <span class="n">TextField</span> <span class="n">Name</span><span class="p">;</span>
+    <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#last-name"</span><span class="p">)]</span> <span class="k">public</span> <span class="n">TextField</span> <span class="n">LastName</span><span class="p">;</span>
+    <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">"#submit-button"</span><span class="p">)]</span> <span class="k">public</span> <span class="n">Button</span> <span class="n">SubmitButton</span><span class="p">;</span>
 <span class="p">}</span>
-
-<span class="c1">//If Smart locator rule is id:</span>
-    <span class="n">SmartSearchLocator</span> <span class="p">=</span> <span class="s">"#{0}"</span><span class="p">;</span>
-
-<span class="c1">//and the conversion rule is 'hyphen-to-csharp-name':</span>
-    <span class="nf">SmartSearchName</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">StringExtensions</span><span class="p">.</span><span class="nf">SplitHyphen</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
-
-<span class="c1">//So you can write:</span>
-
+<span class="n">SmartSearchLocator</span> <span class="p">=</span> <span class="s">"#{0}"</span><span class="p">;</span>
+<span class="nf">SmartSearchName</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">StringExtensions</span><span class="p">.</span><span class="nf">SplitHyphen</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">UserCard</span> <span class="p">:</span> <span class="n">Form</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span>
 <span class="p">{</span>
     <span class="n">TextField</span> <span class="n">name</span><span class="p">;</span> 
     <span class="n">TextField</span> <span class="n">LastName</span><span class="p">;</span>
     <span class="n">Button</span> <span class="n">SubmitButton</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserCard</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span> 
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#last-name"</span><span class="o">)</span> <span class="n">TextField</span> <span class="n">lastName</span><span class="o">;</span>  
-    <span class="nd">@Css</span><span class="o">(</span><span class="s">"#submit-button"</span><span class="o">)</span> <span class="n">Button</span> <span class="n">submitButton</span><span class="o">;</span> 
-<span class="o">}</span>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="c1">//So you can write:</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserCard</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
-    <span class="n">TextField</span> <span class="n">lastName</span><span class="o">;</span>
-    <span class="n">Button</span> <span class="n">submitButton</span><span class="o">;</span> 
-<span class="o">}</span>
-
-
-
-
-
-
-<span class="c1">//in test.properties:</span>
-<span class="n">smart</span><span class="o">.</span><span class="na">locators</span> <span class="o">=</span> <span class="s">"#%s"</span>
-<span class="n">smart</span><span class="o">.</span><span class="na">locators</span><span class="o">.</span><span class="na">toName</span> <span class="o">=</span> <span class="n">UPPER_SNAKE_CASE</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserCard</span> <span class="kd">extends</span> <span class="n">Form</span> <span class="o">{</span>
-    <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
-    <span class="n">TextField</span> <span class="n">lastName</span><span class="o">;</span>
-    <span class="n">TextField</span> <span class="n">passportCode</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="c1">//Then JDI will be using the following locators for the elements:</span>
-<span class="n">name</span> <span class="o">--&gt;</span><span class="err">#</span><span class="n">NAME</span>
-<span class="n">lastName</span> <span class="o">--&gt;</span> <span class="err">#</span><span class="n">LAST_NAME</span>
-<span class="n">passportCode</span> <span class="o">--&gt;</span> <span class="err">#</span><span class="n">PASSPORT_CODE</span><span class="o">,</span> <span class="n">etc</span>
-
-
-
-<span class="cm">/* You don't need to set values for WebSettings class fields.
-   This code is just for illustrating how the default locator
-   value and the default locator naming rule are set 
-   in WebSettings class*/</span>
-
-<span class="c1">//Smart locator rule is id:</span>
-  <span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH_LOCATORS</span> <span class="o">=</span> <span class="n">asList</span><span class="o">(</span><span class="s">"#%s"</span><span class="o">);</span>
-
-
-
-<span class="c1">//and the conversion rule is 'hyphen-to-java-name':</span>
-  <span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH_NAME</span> <span class="o">=</span> <span class="nl">StringUtils:</span><span class="o">:</span><span class="n">splitHyphen</span><span class="o">;</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"name"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"last-name"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"submit-button"</span><span class="nt">&gt;</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">Selenium</span>
+<span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"[ui=name]"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">WebElement</span> <span class="n">name</span><span class="o">;</span>
+<span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"[ui=last-name]"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">WebElement</span> <span class="n">lastName</span><span class="o">;</span>
+<span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"[ui=pin-ncodeame]"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">WebElement</span> <span class="n">pinCode</span><span class="o">;</span>
+<span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"[ui=promo-code]"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">WebElement</span> <span class="n">promoCode</span><span class="o">;</span>
+<span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"[ui=accept-conditions]"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">WebElement</span> <span class="n">acceptConditions</span><span class="o">;</span>
+<span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"[ui=submit-button]"</span><span class="o">)</span> 
+<span class="kd">public</span> <span class="n">WebElement</span> <span class="n">submitButton</span><span class="o">;</span> 
 </code></pre>
-<p><br></p>
-
-<p>If you have your developers following some standard way of marking UI elements or you have
-an agreement to add special attributes, you can even avoid writing locators for elements,
-thus making your page objects much more compact.</p>
-
-<p>E.g. let&#39;s say we have an agreement on naming elements and their ids in the following way:<br>
-a Button element <em>submitButton</em> should have id equal to <em>submit-button</em>, a text field
-element <em>lastName</em> should have id equal to <em>last-name</em>, and so on.</p>
-
-<p>In this case we can save time on adding a UI annotation for each element e.g.:<br>
- <em>@Css(&quot;#last-name&quot;)<br>
-  Text lastName</em></p>
-
-<p>Instead, we just write:<br>
- <em>Text lastName</em></p>
-
-<p>and allow JDI Light framework to transform the variable name from &quot;lastName&quot;
- to &quot;last-name&quot; and find an element with such id. </p>
-<h3 id='how-to-define-a-smart-locator'>How to define a smart locator</h3>
-<p>Smart locators can be set in JDI framework via a config file named <em>test.properties</em>.
-There are two properties that we need: <em>smart.locators</em> and <em>smart.locators.toName</em>.</p>
-
-<p><em>smart.locators</em> property is a string representing locators separated by &quot;;&quot; (e.g. &quot;#%s;name=%s&quot;)
-that are going to be used for searching for an element.</p>
-
-<p><em>smart.locators.toName</em> property should contain one of the following values:<br>
-kebab-case | camelCase | snake_case | PascalCase | UPPER_SNAKE_CASE that tells to JDI how to create a locator form a given variable name.</p>
-
-<p><br></p>
-
-<p><em>test.properties</em> file is processed via <strong>WebSetting.java</strong> class:</p>
-
-<ul>
-<li><p><strong>WebSettings.SMART_SEARCH</strong> - method invoked if you have an element with no locator</p></li>
-<li><p><strong>WebSettings.SMART_SEARCH_LOCATORS</strong> - it is either the list of locators taken from smart.locators property
-or &quot;#%s&quot; if that property is empty</p></li>
-<li><p><strong>WebSettings.SMART_SEARCH_NAME</strong> -  method to create locator name from field name
-(this value will be passed as a %s parameter to SMART_SEARCH_LOCATORS). By default,
-kebab-case will be used</p></li>
-</ul>
+<p>In standrd way in Selenium in Page Objects you need to write following code for this elements.
+</br></br></br></br></br></br></br></br></br></br></br>&lt;/br</p>
+<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=name]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Textfield</span> <span class="n">name</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=last-name]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Textfield</span> <span class="n">lastName</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=pin-code]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Textfield</span> <span class="n">pinCode</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=promo-code]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Textfield</span> <span class="n">promoCode</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=accept-conditions]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">acceptConditions</span><span class="o">;</span>
+<span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=submit-button]"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">submitButton</span><span class="o">;</span>
+</code></pre>
+<p>In JDI Light with standard UI Objects code be more obvious but still has duplications in locator and element name.
+</br></br></br></br></br>&lt;/br</p>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="n">Textfield</span> <span class="n">name</span><span class="o">,</span> <span class="n">lastName</span><span class="o">,</span> <span class="n">pinCode</span><span class="o">,</span> <span class="n">promoCode</span><span class="o">;</span>
+<span class="kd">public</span> <span class="n">Checkbox</span> <span class="n">acceptConditions</span><span class="o">;</span>
+<span class="kd">public</span> <span class="n">Button</span> <span class="n">submitButton</span><span class="o">;</span>
+</code></pre>
+<p>And using smart locators you can write this without any duplications (without locators) just in few lines</br>
+Isn&#39;t this looks cool?</br></br></p>
+<h3 id='define-smart-locator-using-test-properties'>Define smart locator using test.properties</h3><pre class="highlight java tab-java"><code><span class="n">smart</span><span class="o">.</span><span class="na">locators</span><span class="o">=</span><span class="s">"[ui=%s]"</span>
+<span class="n">smart</span><span class="o">.</span><span class="na">locators</span><span class="o">.</span><span class="na">toName</span><span class="o">=</span><span class="n">UPPER_SNAKE_CASE</span>
+</code></pre>
+<p>You can setup your smart locators in <code>test.properties</code> in following way:</br>
+Setup <code>smart.locators=</code></br>
+put <code>#%s</code> in case you smart locator is id</br>
+put <code>.%s</code> for class</br>
+put <code>[name=%s]</code> for name or other attribute</br>
+</br>
+For example you set <code>smart.locators=[ui=%s]</code></br>
+Setup <code>smart.toName=</code></br>
+<code>kebab-case</code> will produce <code>[ui=last-name]</code> locator for public WebElement lastName;</br>
+<code>camelCase</code> will produce <code>[ui=lastName]</code> locator for public WebElement lastName;</br>
+<code>snake_case</code> will produce <code>[ui=last_name]</code> locator for public WebElement lastName;</br>
+<code>PascalCase</code> will produce <code>[ui=LastName]</code> locator for public WebElement lastName;</br>
+<code>UPPER_SNAKE_CASE</code> will produce <code>[ui=LAST_NAME]</code> locator for public WebElement lastName;</br>
+or if you have <code>smart.locators=//*[text()=&#39;%s&#39;]</code></br>
+<code>First Upper Case</code> will produce <code>//*[text()=&#39;Submit Form&#39;]</code> locator for public WebElement submitForm;</br>
+<code>ALL UPPER CASE</code> will produce <code>//*[text()=&#39;SUBMIT FORM&#39;]</code> locator for public WebElement submitForm;</br></p>
+<h3 id='define-smart-locator-using-websettings'>Define smart locator using WebSettings</h3><pre class="highlight java tab-java"><code><span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH_LOCATORS</span> <span class="o">=</span> <span class="n">asList</span><span class="o">(</span><span class="s">"#%s"</span><span class="o">);</span>
+<span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH_NAME</span> <span class="o">=</span> <span class="nl">StringUtils:</span><span class="o">:</span><span class="n">toKebabCase</span><span class="o">;</span>
+<span class="n">JDI</span> <span class="n">Light</span> <span class="n">like</span>
+<span class="n">WebSettings</span><span class="o">.</span><span class="na">SMART_SEARCH</span> <span class="o">=</span> <span class="n">el</span> <span class="o">-&gt;</span> <span class="o">{</span>
+  <span class="n">String</span> <span class="n">locatorName</span> <span class="o">=</span> <span class="n">toKebabCase</span><span class="o">(</span><span class="n">el</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+  <span class="n">UIElement</span> <span class="n">element</span> <span class="o">=</span> <span class="err">$</span><span class="o">(</span><span class="s">"[auto="</span><span class="o">+</span><span class="n">locatorName</span><span class="o">+</span><span class="s">"], el.base().parent));
+  element.setName(el.getName());
+  return element.getWebElement();
+}
+Selenium like:
+WebSettings.SMART_SEARCH = el -&gt; {
+  String locatorName = toKebabCase(el.getName());
+  return getDriver.findElement(By.cssClass("</span><span class="o">[</span><span class="n">auto</span><span class="o">=</span><span class="s">"+locatorName+"</span><span class="o">]</span><span class="err">"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+<p>From other hands you can setup Smart Locators in code using <code>WebSettings.SMART_SEARCH_NAME</code> and <code>WebSettings.SMART_SEARCH_LOCATORS</code> variables</br>
+Or you can define by yourself what should be done in case of UI Element has no locator using <code>WebSettings.SMART_SEARCH</code> function</p>
 <h2 id='jdi-locators-simple-as-css-powerful-as-xpath'>JDI Locators (simple as css powerful as xpath)</h2><pre class="highlight java tab-java"><code><span class="c1">//Here's simple test to find 4th text element's parent element</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">indexAndParentTest</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">bys</span> <span class="o">=</span> <span class="n">searchBy</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">cssSelector</span><span class="o">(</span><span class="s">"input[type=text][4]&lt;"</span><span class="o">));</span>
