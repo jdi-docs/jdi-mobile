@@ -2226,7 +2226,7 @@ use <code>@Smart(&quot;data-type&quot;) MultiCombobox dataMultyCombobx;</code></
 <p>Or you always can create your own annotation for smart behaviour</br>
 Let&#39;s assume you would like to use smart locators for buttons like <code>//button[text()=&#39;Button Text&#39;]</code></br>
 1. Create new annotation</br>
-<code>js
+<code>javascript
 SButton.java
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.FIELD})
@@ -2234,7 +2234,7 @@ public @interface SButton {
 }
 </code>
 2. setup behaviour for this annotations before you call initSite(...)
-<code>js
+<code>javascript
 @BeforeSuite(alwaysRun = true)
 public static void setUp() {
     JDI_ANNOTATIONS.add(&quot;Buttons&quot;, aRule(SButton.class,
@@ -2242,11 +2242,9 @@ public static void setUp() {
     initSite(YourAwesomeSite.class);
 </code>
 Thats all. Now we can write</br>
-<code>js
-@SButton public Button logIn, signIn, cancel, useVipAccess;
-</code>
+<code>@SButton public Button logIn, signIn, cancel, useVipAccess;</code>
 instead of </br>
-<code>js
+<code>javascript
 @FindBy(xpath = &quot;//button[text()=&#39;Log In&#39;]&quot;)
 public WebElement logIn;
 @FindBy(xpath = &quot;//button[text()=&#39;Sign In&#39;]&quot;)
