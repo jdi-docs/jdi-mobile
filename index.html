@@ -2113,9 +2113,27 @@ A typical UI object structure consists of:</br>
 <span class="o">}</span>
 </code></pre>
 <p>Entites Driven Testing(EDT) is approach where Business Entites going through test scenarios instead of unnamed data.</br>
-EDT can be orgnically combined with DDT that use Business Entites as input to similar scenarios.
-JDI Light natively supports EDT with Forms, Tables and DataLists. See more examples in the right panel.</p>
-<h2 id='smart-locators'>Smart Locators</h2><h3 id='smart-locators-example'>Smart locators example</h3>
+EDT can be orgnically combined with DDT that use Business Entites as input to similar scenarios.</br>
+JDI Light natively supports EDT with Forms, Tables and DataLists. See more examples in the right panel.</br>
+</br>
+Example scenario:</br></p>
+<pre class="highlight html tab-html"><code>&gt; Provide List<span class="nt">&lt;User&gt;</span> for test
+0. Have user in DB
+1. Login with user
+2. Submit Contact Us Form for user
+3. Get Act. Opening from Vacancy table
+4. Assert Act. Opening equals to Exp. Opening
+</code></pre>
+<p>Code example:</br></p>
+<pre class="highlight html tab-html"><code>@Test(dataProvider = “users")                      //&gt;
+public void formTest(User user) {
+    DB.users.shouldHas(user);                      //0.
+    loginForm.loginAs(user);                       //1.
+    contactUsForm.submit(user);                    //2.
+    Vacancy vacancy = vacancyTable.getEntity(3);   //3.
+    Assert.areEquals(vacancy, expectedVacancy);    //4.
+}
+</code></pre><h2 id='smart-locators'>Smart Locators</h2><h3 id='smart-locators-example'>Smart locators example</h3>
 <p>Let&#39;s assume you have some typical way to locate most of the elements for example most of elements has id or name or special attribute to locate ui elements valuable for automation. </br>
 Let&#39;s asume you have <code>@UI(&quot;[ui=last-name]&quot;) public TextField lastName;</code>  element in JDI. In this case you simplify it to <code>public TextField lastName;</code> and omit locator</br>
 See more complex example below and in code panel at the right:</br>
