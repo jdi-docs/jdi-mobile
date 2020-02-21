@@ -1993,8 +1993,23 @@ JDI provides an ability to create your own element or reuse standard element fro
 </ul>
 
 <p>In JDI we have the following Common elements:</br>
-- <a href="https://jdi-docs.github.io/jdi-light/?java#label">Label</a></br> 
-- <a href="https://jdi-docs.github.io/jdi-light/?java#button">Button</a> ...</p>
+- <a href="https://jdi-docs.github.io/jdi-light/?java#label">Label</a>, 
+<a href="https://jdi-docs.github.io/jdi-light/?java#button">Button</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#checkbox">Checkbox</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#colorpicker">ColorPicker</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#datetimeselector">DateTimeSelector</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#fileinput">FileInput</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#icon">Icon</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#image">Image</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#link">Link</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#menu">Menu</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#numberselector">NumberSelector</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#progressbar">ProgressBar</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#range">Range</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#text">Text</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#textfield">TextField</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#textarea">TextArea</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#title">Title</a>.</p>
 <h3 id='complex-elements'>Complex elements</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">".colors"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Dropdown</span> <span class="n">colors</span><span class="o">;</span>
 <span class="nd">@UI</span><span class="o">(</span><span class="s">"input[type=checkbox].conditions"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Checklist</span> <span class="n">acceptConditions</span><span class="o">;</span>
 <span class="nd">@JDropdown</span><span class="o">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">".colors"</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">".dropdown-value"</span><span class="o">,</span> <span class="n">list</span> <span class="o">=</span> <span class="s">"li"</span><span class="o">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="s">".caret"</span><span class="o">)</span>
@@ -2008,9 +2023,15 @@ Other examples are lists of similar elements like <code>List&lt;WebElement&gt;</
 Also you can use list of Common elements as <code>List&lt;...&gt;</code> e.g. <code>List&lt;Button&gt;</code> or <code>List&lt;Label&gt;</code></p>
 
 <p>In JDI we have the following Complex elements:</br>
-- <a href="https://jdi-docs.github.io/jdi-light/?java#dropdown">Dropdown</a></br>
-- <a href="https://jdi-docs.github.io/jdi-light/?java#combobox">Combobox</a></br> 
-- <a href="https://jdi-docs.github.io/jdi-light/?java#checklist">Checklist</a> ...</p>
+- <a href="https://jdi-docs.github.io/jdi-light/?java#radiobuttons">RadioButtons</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#table">Table</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#datatable">DataTable</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#dropdown">Dropdown</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#multidropdown">MultiDropdown</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#datalist">DataList</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#checklist">Checklist</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#multiselector">MultiSelector</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#combobox">Combobox</a>.</p>
 <h3 id='composite-elements'>Composite elements</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginForm</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">,</span> <span class="n">password</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">"//*[text()='Submit']"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Button</span> <span class="n">submit</span><span class="o">;</span>
@@ -2034,10 +2055,13 @@ In the same time composite elements also can have a locator that defines a conte
 Composite elements also can have predefined actions like fill(...), submit(...) and check(...) for <code>Form</code> or open(), checkOpened() for <code>WebPage</code>.</br>
 Remember that you can create your own Composite elements with JDI Light for example for Header, Navigation bar, Footer, Left sidebar, advertisement or main part ofr the page.</br></p>
 
-<p>In JDI we have the following Composite elements:</br>
-- <a href="https://jdi-docs.github.io/jdi-light/?java#webpage">WebPage</a></br> 
-- <a href="https://jdi-docs.github.io/jdi-light/?java#section">Section</a></br>
-- <a href="https://jdi-docs.github.io/jdi-light/?java#form">Form</a> ...</p>
+<p>In JDI we have the following Composite elements:</br></p>
+
+<ul>
+<li><a href="https://jdi-docs.github.io/jdi-light/?java#section">Section</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#form">Form</a>,
+<a href="https://jdi-docs.github.io/jdi-light/?java#webpage">WebPage</a>.</li>
+</ul>
 <h2 id='ui-objects'>UI Objects</h2><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwesomeApplication</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">LoginPage</span> <span class="n">loginPage</span><span class="o">;</span>
     <span class="nd">@UI</span><span class="o">(</span><span class="s">".nav li"</span><span class="o">)</span> <span class="kd">public</span> <span class="n">Menu</span> <span class="n">navigation</span><span class="o">;</span>
