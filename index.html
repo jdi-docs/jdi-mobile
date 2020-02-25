@@ -2324,7 +2324,309 @@ JDI Locator: <code>label[&#39;Gold status&#39;]&lt;input[type=checkbox]</code></
 JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <h1 id='faq'>FAQ</h1>
 <p>TBD</p>
-<h1 id='documentation'>Documentation</h1><h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='uielement'>UIElement</h3><h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
+<h1 id='documentation'>Documentation</h1><h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='uielement'>UIElement</h3>
+<p>Available methods in Java JDI Light: </p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>check()</strong></td>
+<td>Click on element if not selected</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>classes()</strong></td>
+<td>Get all classes as list</td>
+<td>List<String></td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>Clear input field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click on element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>click(Element area)</strong></td>
+<td>Click on element area(Element area could be SMART_CLICK, TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT, CENTER, JS)</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>click(int x, int y)</strong></td>
+<td>Click on point (x, y)</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleClick()</strong></td>
+<td>Double click on the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>dragAndDropTo(int x, int y)</strong></td>
+<td>Drag and drop it to certain coordinates</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>dragAndDropTo(WebElement to)</strong></td>
+<td>Drag and drop it to another element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>focus()</strong></td>
+<td>Focus on element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getAllAttributes()</strong></td>
+<td>Get all element’s attributes</td>
+<td>MapArray<String, String></td>
+</tr>
+<tr>
+<td><strong>getAttribute(String value)</strong></td>
+<td>Get the attribute value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getCssValue(String value)</strong></td>
+<td>Get element css value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getLocation()</strong></td>
+<td>Get element location as point</td>
+<td>Point</td>
+</tr>
+<tr>
+<td><strong>getRect()</strong></td>
+<td>Get element rectangle</td>
+<td>Rectangle</td>
+</tr>
+<tr>
+<td><strong>getSize()</strong></td>
+<td>Get element size</td>
+<td>Dimension</td>
+</tr>
+<tr>
+<td><strong>getTagName()</strong></td>
+<td>Return tag name, e.g. <button …> will return “button”</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get text of the element</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>hasAttribute(String attrName)</strong></td>
+<td>Return true is element hat expected attribute</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>hasClass(String className)</strong></td>
+<td>Return true of element has expected class</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>highlight()</strong></td>
+<td>Highlight element with red color</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>highlight(String color)</strong></td>
+<td>Scroll view to element and make a border around with specified color</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>hover()</strong></td>
+<td>Hover mouse to element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>input(String value)</strong></td>
+<td>Input specified value as keys</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>isDeselected()</strong></td>
+<td>Check that element is deselected</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isDisabled()</strong></td>
+<td>Check element is disabled</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isDisplayed()</strong></td>
+<td>Check the element is displayed</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isEnabled()</strong></td>
+<td>Check the element is enabled</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isExist()</strong></td>
+<td>Check element exist</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isHidden()</strong></td>
+<td>Check element is hidden</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isNotExist()</strong></td>
+<td>Check element isn’t exist</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isNotVisible()</strong></td>
+<td>Check element is not visible by user</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isSelected()</strong></td>
+<td>Check that element is selected</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isVisible()</strong></td>
+<td>Check element is displayed</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>jsExecute(String jsCode)</strong></td>
+<td>Execute java script call</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>labelText()</strong></td>
+<td>Get label text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>makePhoto()</strong></td>
+<td>Get element’s screenshot</td>
+<td>File</td>
+</tr>
+<tr>
+<td><strong>placeholder()</strong></td>
+<td>Gets attribute ‘placeholder’</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>printHtml()</strong></td>
+<td>Get the element attribute “innerHTML” value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>rightClick()</strong></td>
+<td>Right click on the element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>select()</strong></td>
+<td>Select item</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>select(int index)</strong></td>
+<td>Select item by index</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>select(String value)</strong></td>
+<td>Select item by value</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>select(String… names)</strong></td>
+<td>Select items by values</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>sendKeys(CharSequence… value)</strong></td>
+<td>Send specified value as keys</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setAttribute(String name, String value)</strong></td>
+<td>Set value to the specified attribute</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setText(String value)</strong></td>
+<td>Put value as text</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue()</strong></td>
+<td>Input value</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>show()</strong></td>
+<td>Scroll screen view to item</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Get text</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>uncheck()</strong></td>
+<td>Click on element if selected</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p>Aliases in in Java JDI Light: </p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>attr()</strong></td>
+<td>Get attribute</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>attrs()</strong></td>
+<td>Get all attributes</td>
+<td>MapArray<String, String></td>
+</tr>
+<tr>
+<td><strong>css(String prop)</strong></td>
+<td>Get css value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Get text</td>
+<td>String</td>
+</tr>
+</tbody></table>
+<h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
