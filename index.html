@@ -2328,25 +2328,25 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">click</span><span class="o">()</span> <span class="o">{</span>
       <span class="n">submit</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-      <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">sum</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Summary: 3"</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">sum</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Summary: 3"</span><span class="o">);</span>
   <span class="o">}</span>
 
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isDisplayed</span><span class="o">(){</span>
-      <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">submit</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">());</span>
+      <span class="n">assertTrue</span><span class="o">(</span><span class="n">submit</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">());</span>
   <span class="o">}</span>
 
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">input</span><span class="o">(){</span>
       <span class="n">description</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="s">"Hello world!"</span><span class="o">);</span>
-      <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">description</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Hello world!"</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">description</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="s">"Hello world!"</span><span class="o">);</span>
       <span class="n">description</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
   <span class="o">}</span>
 
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hasAttribute</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">submit</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"class"</span><span class="o">));</span>
-      <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">submit</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"type"</span><span class="o">));</span>
+      <span class="n">assertTrue</span><span class="o">(</span><span class="n">submit</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"class"</span><span class="o">));</span>
+      <span class="n">assertTrue</span><span class="o">(</span><span class="n">submit</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"type"</span><span class="o">));</span>
   <span class="o">}</span>
 
 </code></pre>
