@@ -27654,6 +27654,124 @@ Level <em>STEP</em> can show business-related information in the console output,
 <li><p>As a method in a chain after asserts (e.g. <em>buttonSoftAssertTest</em>)</p></li>
 <li><p>As a separate method if you need to check several elements (e.g. <em>multipleValidationsTest</em>)</p></li>
 </ul>
+
+<p>Also we have some classes with special asserts in the next packages:</p>
+
+<ul>
+<li>com.epam.jdi.light.asserts.generic</li>
+</ul>
+
+<p><strong>ListAssert.class</strong> includes next asserts:</p>
+
+<p><strong>each(JFunc1<T, Boolean> condition)</strong> - assert that each of list elements meet condition
+<strong>any(JFunc1<T, Boolean> condition)</strong> - assert that any of list elements meet condition
+<strong>onlyOne(JFunc1<T, Boolean> condition)</strong> - assert that only one of list elements meet condition
+<strong>noOne(JFunc1<T, Boolean> condition)</strong> - assert that none of list elements meet condition</p>
+
+<p><strong>TextAssert.class</strong> includes next asserts:</p>
+
+<p><strong>text(Matcher<String> condition)</strong> - asserts that element has presented text</p>
+
+<p><strong>UIAssert.class</strong> includes next asserts:</p>
+
+<p><strong>displayed()</strong> - assert that element is displayed
+<strong>visible()</strong> - assert that element is visible for user
+<strong>notVisible()</strong> - assert that element is not visible by user
+<strong>disappear()</strong> - assert that element is disappeared
+<strong>hidden()</strong> - assert that element is hidden
+<strong>notAppear(int timeoutSec)</strong> - assert that element does not appear during presented seconds
+<strong>attr(String attrName, Matcher<String> condition)</strong> - assert that element has presented attribute
+<strong>css(String css, Matcher<String> condition)</strong> - assert that element has presented css
+<strong>hasClass(String className)</strong> - assert that element has presented css class
+<strong>hasAttribute(String attrName)</strong> - assert that element has presented css class attribute
+<strong>enabled()</strong> - assert that element is enabled
+<strong>disabled()</strong> - assert that element is disabled</p>
+
+<p><strong>UISelectAssert.class</strong> includes next asserts:</p>
+
+<p><strong>selected(Matcher<String> condition)</strong> - assert that option selected for element
+<strong>selected(String option)</strong> - assert that option selected for element
+<strong>selected(int i)</strong> - assert that option selected for element
+<strong>values(Matcher&lt;? super List<String>&gt; condition)</strong> - assert that element contains values
+<strong>values(String... values)</strong> - assert that element contains values
+<strong>enabled(String... enabled)</strong> - assert that items enabled
+<strong>size(Matcher<Integer> condition)</strong> - assert element size
+<strong>size(int size)</strong> - assert that element size is equals to presented size
+<strong>empty()</strong> - assert that element size is empty
+<strong>notEmpty()</strong> - assert that element size is not empty
+<strong>displayed()</strong> - assert that element is displayed
+<strong>expanded()</strong> - assert that element is expanded
+<strong>collapsed()</strong> - assert that element is collapsed
+<strong>disappear()</strong> - assert that element is disappeared
+<strong>hidden()</strong> - assert that element is hidden
+<strong>notAppear(int timeoutSec)</strong> - assert that element does not appear during presented seconds</p>
+
+<ul>
+<li>com.epam.jdi.light.ui.html.asserts</li>
+</ul>
+
+<p><strong>CheckboxAssert.class</strong> includes next asserts:</p>
+
+<p><strong>selected()</strong> - assert that element is selected
+<strong>text(Matcher<String> condition)</strong> - assert that element has presented text
+<strong>deselected()</strong> - assert that element is not selected</p>
+
+<p><strong>ColorAssert.class</strong> includes next asserts:</p>
+
+<p><strong>color(String color)</strong> - assert that element has presented color</p>
+
+<p><strong>DateTimeAssert.class</strong> includes next asserts:</p>
+
+<p><strong>text(Matcher<String> condition)</strong> - assert that element has presented text
+<strong>date(Matcher<String> date)</strong> - assert that element has presented date
+<strong>month(Matcher<String> month)</strong> - assert that element has presented month
+<strong>week(Matcher<String> week)</strong> - assert that element has presented week
+<strong>time(Matcher<String> time)</strong> - assert that element has presented time
+<strong>min(Matcher<Float> min)</strong> - assert that element has presented minimum value
+<strong>max(Matcher<Float> max)</strong> - assert that element has presented maximum value</p>
+
+<p><strong>ImageAssert.class</strong> includes next asserts:</p>
+
+<p><strong>src(Matcher<String> condition)</strong> - assert that element has presented src
+<strong>fileName(Matcher<String> condition)</strong> - assert that element has presented file name
+<strong>alt(Matcher<String> condition)</strong> - assert that element has presented alt
+<strong>height(Matcher<Integer> condition)</strong> - assert that element has presented height
+<strong>width(Matcher<Integer> condition)</strong> - assert that element has presented width</p>
+
+<p><strong>LinkAssert.class</strong> includes next asserts:</p>
+
+<p><strong>text(Matcher<String> condition)</strong> - assert that element has presented text
+<strong>alt(Matcher<String> condition)</strong> - assert that element has presented alt
+<strong>ref(Matcher<String> condition)</strong> - assert that element has presented ref</p>
+
+<p><strong>NumberAssert.class</strong> includes next asserts:</p>
+
+<p><strong>text(Matcher<String> condition)</strong> - assert that element has presented text
+<strong>min(Matcher<Double> min)</strong> - assert that element has presented minimum value
+<strong>max(Matcher<Double> max)</strong> - assert that element has presented maximum value
+<strong>step(Matcher<Double> step)</strong> - assert that element step is equals to presented
+<strong>placeholder(Matcher<String> placeholder)</strong> - assert that element placeholder is equals to presented
+<strong>number(Matcher<Double> number)</strong> - assert that element number is equals to presented </p>
+
+<p><strong>ProgressAssert.class</strong> includes next asserts:</p>
+
+<p><strong>max(Matcher<Integer> max)</strong> - assert that element has presented maximum value
+<strong>value(Matcher<Integer> value)</strong> - assert that element value is equals to presented  </p>
+
+<p><strong>RangeAssert.class</strong> includes next asserts:</p>
+
+<p><strong>value(Matcher<Integer> value)</strong> - assert that element value is equals to presented 
+<strong>min(Matcher<Integer> min)</strong> - assert that element has presented minimum value
+<strong>max(Matcher<Integer> max)</strong> - assert that element has presented maximum value
+<strong>step(Matcher<Integer> step)</strong> - assert that element step is equals to presented</p>
+
+<p><strong>TextAreaAssert.class</strong> includes next asserts:</p>
+
+<p><strong>text(Matcher<String> condition)</strong> - assert that element has presented text
+<strong>rowsCount(Matcher<Integer> condition)</strong> - assert that element has presented quantity of rows
+<strong>colsCount(Matcher<Integer> condition)</strong> - assert that element has presented quantity of columns
+<strong>minlength(Matcher<Integer> condition)</strong> - assert minimum length of element
+<strong>maxlength(Matcher<Integer> condition)</strong> - assert minimum length of element</p>
 <h2 id='driver-settings'>Driver Settings</h2>
 <p>We can change default settings placed in the test.properties file (src/test/resources)</p>
 
