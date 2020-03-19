@@ -2301,17 +2301,17 @@ public WebElement useVipAccess;
 </code></pre><h2 id='jdi-annotations'>JDI Annotations</h2>
 <p>In order to control elements behaviour in JDI Light you can use following standard annotations:</br>
 <strong>@Root</strong> - ignores all parent sections locators for this element and uses only locator that specified for element (including smart locators)</br>
-<strong>@Frame(&quot;frame-id&quot;)</strong> or <strong>@Frame({&quot;frame-id&quot;, &quot;div[name-adv]&quot;})</strong> in case you have two or more frames above element - use driver.switchTo().frame(...) before searching your element. Or call it multiple times if @Frame has list of locators. Can be used together with @UI locator</br>
+<strong>@Frame(&quot;frame-id&quot;)</strong> or <strong>@Frame({&quot;frame-id&quot;, &quot;div[name-adv]&quot;})</strong> - in case you have two or more frames above element - use driver.switchTo().frame(...) before searching your element. Or call it multiple times if @Frame has list of locators. Can be used together with @UI locator</br>
 <strong>@Css(&quot;div.dropdown&quot;)</strong> - if your element has Css locator (deprecated, recommended to use universal <strong>@UI</strong>)</br>
 <strong>@XPath(&quot;//div[text()=&quot;Submit&quot;]&quot;)</strong> - if your element has Xpath locator (deprecated, recommended to use universal <strong>@UI</strong>)</br>
-<strong>@ByText(&quot;Submit&quot;)</strong> - Used for elements that can be forund by text (use locator <code>&quot;.//*/text()[normalize-space(.) = %s]/parent::*&quot;</code>)</br>
-<strong>@WithText(&quot;Navigation&quot;)</strong> - Used for elements that can be forund as text contains(use locator <code>&quot;.//*/text()[contains(normalize-space(.), %s)]/parent::*&quot;</code>)</br>
+<strong>@ByText(&quot;Submit&quot;)</strong> - used for elements that can be forund by text (use locator <code>&quot;.//*/text()[normalize-space(.) = %s]/parent::*&quot;</code>)</br>
+<strong>@WithText(&quot;Navigation&quot;)</strong> - used for elements that can be forund as text contains(use locator <code>&quot;.//*/text()[contains(normalize-space(.), %s)]/parent::*&quot;</code>)</br>
 <strong>@ClickArea(...)</strong> - specify how click will be performed. Allowed values: SMART_CLICK(try to find area where user able to click), TOP_LEFT(click top-left corner of the element), TOP_RIGHT(click top-right corner of the element), BOTTOM_LEFT(click bottom-left corner of the element), BOTTOM_RIGHT(click bottom-right corner of the element), CENTER(Selenium standard click in the center of the element), JS(using JS click)</br>
 <strong>@GetTextAs(...)</strong> - specify how getText will be performed. Allowed values: TEXT(getText()), VALUE(getAttribute(&quot;value&quot;)), INNER(jsExecute(&quot;innerText&quot;)), LABEL(using label related to element - good for checkboxes and radio), SMART_TEXT (try to find value smart)</br>
 <strong>@SetTextAs(...)</strong> - specify how input text will be performed. Allowed values: SEND_KEYS(sendKeys(...)), SET_TEXT(set <code>value</code> attribute using JS), CLEAR_SEND_KEYS(clear(); sendKeys(...))</br>
 <strong>@NoCache</strong> - always gets element from page. Not use cache</br>
 <strong>@WaitTimeout(sec)</strong> – waits element for sec seconds implicitly</br>
-<strong>@NoWait</strong> – doesn’t wait element to appear, so it should to be found be already on page</br>
+<strong>@NoWait</strong> – doesn’t wait element to appear, so to be found it should be already on page</br>
 <strong>@Name(“Test”)</strong> – sets name of element to e.g. “Test” like in example</br>
 <strong>@GetAny</strong> – gets element without validation</br>
 <strong>@GetVisible</strong> – returns displayed element</br>
@@ -2321,12 +2321,11 @@ public WebElement useVipAccess;
 <strong>@SId</strong> – sets smart Id locator, e.g “By.cssSelector: #Test”, where “Test” is name of the element</br>
 <strong>@SText</strong> – sets smart text locator, e.g. “By.xpath: .//<em>/text()[normalize-space(.) = &quot;S Text&quot;]/parent::</em>”, where “SText” is name of the element. Pay attention that it’s creating locator with white space for words staring with capital letter</br>
 <strong>@SName</strong> – sets smart name locator, e.g. for “@Name(“Test”) @SName” it will be “By.cssSelector: [name=&#39;test&#39;]”</br>
-<strong>@Smart</strong> – smart locator, e.g. for the variant “@Name(“Smart”) @Smart(“id”)” it will be “By.cssSelector: [id=’smart’]”</br>
-<strong>@SClass</strong> – smart class locator, e.g. for “@Name(“Test”) @SName” it will be “By.cssSelector: .test”</br>
-<strong>@UI</strong> – list UI locator, e.g. @UI(&quot;img&quot;)</br>
+<strong>@Smart</strong> – sets smart locator, e.g. for the variant “@Name(“Smart”) @Smart(“id”)” it will be “By.cssSelector: [id=’smart’]”</br>
+<strong>@SClass</strong> – sets smart class locator, e.g. for “@Name(“Test”) @SName” it will be “By.cssSelector: .test”</br>
+<strong>@UI</strong> – for list UI locator, e.g. @UI(&quot;img&quot;), see more examples in previous section</br>
 <strong>@FindBy</strong> – annotation that could have fields: css, tagName, linkText, partialLinkText, xpath; text, id, name, className, group. Could be quickly changed to from Selenium @FindBy by changing import line</br>
-<strong>@VisualCheck</strong> – adds pair “(“visualCheck”, “”)” to params</br>
-...</p>
+<strong>@VisualCheck</strong> – adds pair “(“visualCheck”, “”)” to params</br></p>
 <h2 id='jdi-locators-simple-as-css-powerful-as-xpath'>JDI Locators (simple as css powerful as xpath)</h2>
 <p>With JDI Light you can use simple and fast css selecctors with power of xpath locators. Now you can search by text or index in css or even move up and down in html tree.</br>
 See some examples below:</br>
