@@ -1140,8 +1140,13 @@ We can change the default settings placed in the <b>test.properties</b> file (<i
 - <strong>timeout.wait.page</strong> – JDI Light automatically defines a newly opened page and in this case will use this timeout (usually it is more than for an element). The default is 30 seconds<br/>
 - <strong>domain</strong> – web application root URL (used if we work with a single application in tests). Can be also read from the command line in the following way: <em>${domain}</em> <br/>
 - <strong>page.load.strategy</strong> – similarly to Selenium, strategies to load the page are: <em>normal, eager, none</em> <br/>
-- <strong>browser.size</strong> – the size of the tested browser. By default, JDI Light will maximize the browser, but we can set exact values
-<em>Note: you can find more examples in the documentation.</em> <br/>
+- <strong>browser.size</strong> – the size of the tested browser. By default, JDI Light will maximize the browser, but we can set exact values<br/>
+- <strong>screenshot.strategy</strong> = off | on fail | on assert | new page - take screenshot, it&#39;s used by AllureLogger.class and upper or lower standing classes. Can be overwritten in test project<br/>
+- <strong>html.code.strategy</strong> = off | on fail | on assert | new page - html code of pages<br/>
+- <strong>requests.strategy</strong> = off | on fail | on assert | new page - requests 4ХХ, 5ХХ errors in console log<br/>
+- <strong>allure.steps</strong> = true - turn on the steps for Allure<br/></p>
+
+<p><em>Note: you can find more examples in the documentation.</em> <br/>
 <a href="https://github.com/jdi-tutorials/01-jdi-light-intro/blob/master/src/test/resources/test.properties" target="_blank">See examples on Github</a></p>
 <h2 id='2-jdi-light-at-a-glance'>2. JDI Light at a glance</h2>
 <ol>
