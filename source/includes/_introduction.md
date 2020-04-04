@@ -1,7 +1,7 @@
 # Introduction
 ## Simple JDI examples
 ### Create a simple Login test
-Second, let's see how JDI solves typical problems. Let's start with Login, since most tests start with signing in.
+First of all, let's see how JDI solves typical problems. Let's start with Login, since most tests start with signing in.
 
 You can find a Java code example <a href='https://github.com/jdi-examples/jdi-introduction' target="_blank">here</a>
 
