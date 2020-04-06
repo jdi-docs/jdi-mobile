@@ -1,7 +1,7 @@
 ﻿# Documentation
 ## Base Elements
 
-### UIBaseElement here
+### UIBaseElement
 
 ### UIElement
 
@@ -33,7 +33,7 @@
   
 ```
 
-Available methods in Java JDI Light: 
+Available methods in Java JDI Light and further: 
 
 |Method | Description | Return Type 
 --- | --- | --- 
