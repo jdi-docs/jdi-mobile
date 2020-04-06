@@ -33,7 +33,7 @@
   
 ```
 
-Available methods in Java JDI Light and further: 
+Available methods in Java JDI Light: 
 
 |Method | Description | Return Type 
 --- | --- | --- 
