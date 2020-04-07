@@ -78,7 +78,52 @@ Available mobile device-specific methods in Java JDI Light Mobile:
 **toggleTouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
 **fingerPrint(int fingerPrintId)** | Authenticates user by using finger print scan on supported emulators ***(Android only)*** | void
 
+### MobileFileManager
 
+```java 
+
+  @Test
+  public void pushAndPull() {
+      File src = new File("/path/to/local/src");
+      pushFile("/path/to/remote/target", src);
+      byte[] pulled = pullFile("/path/to/remote/target");
+  }
+  
+```
+
+Available mobile file-specific methods in Java JDI Light Mobile: 
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**pullFile(String remotePath)** | Pulls a file from the simulator or device | byte[]
+**pullFolder(String remotePath)** | Pulls a folder content from the simulator or device | byte[]
+**pushFile(String remotePath, byte[] base64Data)** | Saves base64 encoded data as a file on the mobile device | void
+**pushFile(String remotePath, File file)** | Saves the given file to the mobile device | void
+
+### MobileKeyboard
+
+```java 
+
+  @Test
+  public void keyboard() {
+      if (isKeyboardShown()) {
+         pressKey(new KeyEvent(SPACE));
+         hideKeyboard();
+      }
+  }
+  
+```
+
+Available mobile file-specific methods in Java JDI Light Mobile: 
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**isKeyboardShown()** | Checks if the keyboard is displayed | boolean
+**hideKeyboard()** | Hides the keyboard if it is displayed | void
+**hideKeyboard(String keyName)** | Hides the keyboard by pressing the button specified by keyName if it is displayed ***(iOS only)*** | void
+**hideKeyboard(String strategy, String keyName)** | Hides the keyboard by pressing the button specified by keyName using specified strategy ***(iOS only)*** | void
+**pressKey(KeyEvent keyEvent)** | Send a key event to the mobile device ***(Android only)*** | void
+**longPressKey(KeyEvent keyEvent)** | Send a long press key event to the mobile  device ***(Android only)*** | void
 
 ## Base Elements
 
