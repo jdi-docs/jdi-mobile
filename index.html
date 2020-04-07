@@ -448,6 +448,17 @@
             <a href="#documentation" class="toc-h1 toc-link" data-title="Documentation">Documentation</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#common-elements" class="toc-h2 toc-link" data-title="Common Elements">Common Elements</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#appmanager" class="toc-h2 h3 toc-link" data-title="AppManager">AppManager</a>
+                            </li>
+                            <li>
+								<a href="#mobiledevice" class="toc-h2 h3 toc-link" data-title="MobileDevice">MobileDevice</a>
+                            </li>
+                        </ul>
+                  </li>
+                  <li>
                     <a href="#base-elements" class="toc-h2 toc-link" data-title="Base Elements">Base Elements</a>
                         <ul class="toc-list-h2">
                             <li>
@@ -2347,7 +2358,194 @@ JDI Locator: <code>label[&#39;Gold status&#39;]&lt;input[type=checkbox]</code></
 JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <h1 id='faq'>FAQ</h1>
 <p>TBD</p>
-<h1 id='documentation'>Documentation</h1><h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='uielement'>UIElement</h3><pre class="highlight java tab-java"><code>
+<h1 id='documentation'>Documentation</h1><h2 id='common-elements'>Common Elements</h2><h3 id='appmanager'>AppManager</h3><pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">install</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">installApp</span><span class="o">(</span><span class="s">"/Users/jdi/path/to/app.apk"</span><span class="o">);</span>
+      <span class="n">assertTrue</span><span class="o">(</span><span class="n">isAppInstalled</span><span class="o">(</span><span class="s">"com.yourdomain.appname"</span><span class="o">));</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">launch</span><span class="o">(){</span>
+      <span class="n">launchApp</span><span class="o">();</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">queryAppState</span><span class="o">(</span><span class="s">"com.yourdomain.appname"</span><span class="o">),</span> <span class="n">RUNNING_IN_FOREGROUND</span><span class="o">);</span>
+      <span class="n">runAppInBackground</span><span class="o">(</span><span class="n">Duration</span><span class="o">.</span><span class="na">ofSeconds</span><span class="o">(</span><span class="mi">30</span><span class="o">));</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">queryAppState</span><span class="o">(</span><span class="s">"com.yourdomain.appname"</span><span class="o">),</span> <span class="n">RUNNING_IN_BACKGROUND</span><span class="o">);</span>
+      <span class="n">description</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">closeAndRemove</span><span class="o">(){</span>
+      <span class="n">closeApp</span><span class="o">();</span>
+      <span class="n">removeApp</span><span class="o">(</span><span class="s">"com.yourdomain.appname"</span><span class="o">);</span>
+      <span class="n">assertFalse</span><span class="o">(</span><span class="n">isAppInstalled</span><span class="o">(</span><span class="s">"com.yourdomain.appname"</span><span class="o">));</span>
+  <span class="o">}</span>
+
+</code></pre>
+<p>Available mobile app-specific methods in Java JDI Light Mobile: </p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>launchApp()</strong></td>
+<td>Launches the app under test, which was provided in the capabilities at session creation and starts new session</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>closeApp()</strong></td>
+<td>Close the app under test and quits the session</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>resetApp()</strong></td>
+<td>Resets the currently running app under test together with the session</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>runAppInBackground(Duration duration)</strong></td>
+<td>Runs the current app under test in background for the requested time duration</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>activateApp(String bundleId)</strong></td>
+<td>Activates the given app if it&#39;s installed, but not running or if it&#39;s running in the background</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>terminateApp(String bundleId)</strong></td>
+<td>Terminates the given app if it&#39;s running</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>queryAppState(String bundleId)</strong></td>
+<td>Queries the state of an app (possible states - NOT_INSTALLED, NOT_RUNNING, RUNNING_IN_BACKGROUND, RUNNING_IN_BACKGROUND_SUSPENDED, RUNNING_IN_FOREGROUND)</td>
+<td>ApplicationState</td>
+</tr>
+<tr>
+<td><strong>installApp(String appPath)</strong></td>
+<td>Installs the given app</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>removeApp(String bundleId)</strong></td>
+<td>Uninstalls the given app</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isAppInstalled(String bundleId)</strong></td>
+<td>Checks whether given app is installed</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+<h3 id='mobiledevice'>MobileDevice</h3><pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">rotate</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">rotate</span><span class="o">(</span><span class="n">LANDSCAPE</span><span class="o">);</span>
+      <span class="n">assertEquals</span><span class="o">(</span><span class="n">getOrientation</span><span class="o">(),</span> <span class="n">LANDSCAPE</span><span class="o">);</span>
+  <span class="o">}</span>
+
+</code></pre>
+<p>Available mobile device-specific methods in Java JDI Light Mobile: </p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>rotate(DeviceRotation rotation)</strong></td>
+<td>Changes the rotation of the screen in three dimensional plane</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>rotate(ScreenOrientation orientation)</strong></td>
+<td>Changes the orientation of the screen (LANDSCAPE, PORTRAIT)</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getRotation()</strong></td>
+<td>Returns rotation of the screen in three dimensional plane</td>
+<td>DeviceRotation</td>
+</tr>
+<tr>
+<td><strong>getOrientation()</strong></td>
+<td>Returns orientation of the screen (LANDSCAPE, PORTRAIT)</td>
+<td>ScreenOrientation</td>
+</tr>
+<tr>
+<td><strong>lockDevice()</strong></td>
+<td>Locks the device screen</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>lockDevice(Duration duration)</strong></td>
+<td>Locks the device screen for specified time duration</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>unlockDevice()</strong></td>
+<td>Unlocks the device screen if it is locked</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>isLocked()</strong></td>
+<td>Checks if the device screen is locked</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>getBatteryInfo()</strong></td>
+<td>Returns battery info from the device under test</td>
+<td>BatteryInfo</td>
+</tr>
+<tr>
+<td><strong>getLocation()</strong></td>
+<td>Returns the physical location information of the device</td>
+<td>Location</td>
+</tr>
+<tr>
+<td><strong>setLocation(Location location)</strong></td>
+<td>Sets the physical location of the device</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getDeviceTime()</strong></td>
+<td>Returns device date and time. The default format is <em>YYYY-MM-DDTHH:mm:ssZ</em></td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getDeviceTime(String format)</strong></td>
+<td>Returns device date and time in specific format</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>shake()</strong></td>
+<td>Simulates shaking the device <strong><em>(iOS only)</em></strong></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>performTouchId(boolean match)</strong></td>
+<td>Simulates touchId event <strong><em>(iOS only)</em></strong></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>toggleTouchIDEnrollment(boolean enabled)</strong></td>
+<td>Enrolls touchId in iOS Simulators <strong><em>(iOS only)</em></strong></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>fingerPrint(int fingerPrintId)</strong></td>
+<td>Authenticates user by using finger print scan on supported emulators <strong><em>(Android only)</em></strong></td>
+<td>void</td>
+</tr>
+</tbody></table>
+<h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='uielement'>UIElement</h3><pre class="highlight java tab-java"><code>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">click</span><span class="o">()</span> <span class="o">{</span>
       <span class="n">submit</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
