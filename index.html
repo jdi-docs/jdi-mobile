@@ -456,6 +456,12 @@
                             <li>
 								<a href="#mobiledevice" class="toc-h2 h3 toc-link" data-title="MobileDevice">MobileDevice</a>
                             </li>
+                            <li>
+								<a href="#mobilefilemanager" class="toc-h2 h3 toc-link" data-title="MobileFileManager">MobileFileManager</a>
+                            </li>
+                            <li>
+								<a href="#mobilekeyboard" class="toc-h2 h3 toc-link" data-title="MobileKeyboard">MobileKeyboard</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -2542,6 +2548,95 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <tr>
 <td><strong>fingerPrint(int fingerPrintId)</strong></td>
 <td>Authenticates user by using finger print scan on supported emulators <strong><em>(Android only)</em></strong></td>
+<td>void</td>
+</tr>
+</tbody></table>
+<h3 id='mobilefilemanager'>MobileFileManager</h3><pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">pushAndPull</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">File</span> <span class="n">src</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"/path/to/local/src"</span><span class="o">);</span>
+      <span class="n">pushFile</span><span class="o">(</span><span class="s">"/path/to/remote/target"</span><span class="o">,</span> <span class="n">src</span><span class="o">);</span>
+      <span class="kt">byte</span><span class="o">[]</span> <span class="n">pulled</span> <span class="o">=</span> <span class="n">pullFile</span><span class="o">(</span><span class="s">"/path/to/remote/target"</span><span class="o">);</span>
+  <span class="o">}</span>
+
+</code></pre>
+<p>Available mobile file-specific methods in Java JDI Light Mobile: </p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>pullFile(String remotePath)</strong></td>
+<td>Pulls a file from the simulator or device</td>
+<td>byte[]</td>
+</tr>
+<tr>
+<td><strong>pullFolder(String remotePath)</strong></td>
+<td>Pulls a folder content from the simulator or device</td>
+<td>byte[]</td>
+</tr>
+<tr>
+<td><strong>pushFile(String remotePath, byte[] base64Data)</strong></td>
+<td>Saves base64 encoded data as a file on the mobile device</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>pushFile(String remotePath, File file)</strong></td>
+<td>Saves the given file to the mobile device</td>
+<td>void</td>
+</tr>
+</tbody></table>
+<h3 id='mobilekeyboard'>MobileKeyboard</h3><pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">keyboard</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">isKeyboardShown</span><span class="o">())</span> <span class="o">{</span>
+         <span class="n">pressKey</span><span class="o">(</span><span class="k">new</span> <span class="n">KeyEvent</span><span class="o">(</span><span class="n">SPACE</span><span class="o">));</span>
+         <span class="n">hideKeyboard</span><span class="o">();</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+
+</code></pre>
+<p>Available mobile file-specific methods in Java JDI Light Mobile: </p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isKeyboardShown()</strong></td>
+<td>Checks if the keyboard is displayed</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>hideKeyboard()</strong></td>
+<td>Hides the keyboard if it is displayed</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>hideKeyboard(String keyName)</strong></td>
+<td>Hides the keyboard by pressing the button specified by keyName if it is displayed <strong><em>(iOS only)</em></strong></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>hideKeyboard(String strategy, String keyName)</strong></td>
+<td>Hides the keyboard by pressing the button specified by keyName using specified strategy <strong><em>(iOS only)</em></strong></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>pressKey(KeyEvent keyEvent)</strong></td>
+<td>Send a key event to the mobile device <strong><em>(Android only)</em></strong></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPressKey(KeyEvent keyEvent)</strong></td>
+<td>Send a long press key event to the mobile  device <strong><em>(Android only)</em></strong></td>
 <td>void</td>
 </tr>
 </tbody></table>
