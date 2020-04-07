@@ -1,4 +1,85 @@
 ﻿# Documentation
+## Common Elements
+
+### AppManager
+
+```java 
+
+  @Test
+  public void install() {
+      installApp("/Users/jdi/path/to/app.apk");
+      assertTrue(isAppInstalled("com.yourdomain.appname"));
+  }
+
+  @Test
+  public void launch(){
+      launchApp();
+      assertEquals(queryAppState("com.yourdomain.appname"), RUNNING_IN_FOREGROUND);
+      runAppInBackground(Duration.ofSeconds(30));
+      assertEquals(queryAppState("com.yourdomain.appname"), RUNNING_IN_BACKGROUND);
+      description.clear();
+  }
+
+  @Test
+  public void closeAndRemove(){
+      closeApp();
+      removeApp("com.yourdomain.appname");
+      assertFalse(isAppInstalled("com.yourdomain.appname"));
+  }
+  
+```
+
+Available mobile app-specific methods in Java JDI Light Mobile: 
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**launchApp()** | Launches the app under test, which was provided in the capabilities at session creation and starts new session | void
+**closeApp()** | Close the app under test and quits the session | void
+**resetApp()** | Resets the currently running app under test together with the session | void
+**runAppInBackground(Duration duration)** | Runs the current app under test in background for the requested time duration | void
+**activateApp(String bundleId)** | Activates the given app if it's installed, but not running or if it's running in the background | void
+**terminateApp(String bundleId)** | Terminates the given app if it's running | boolean
+**queryAppState(String bundleId)** | Queries the state of an app (possible states - NOT_INSTALLED, NOT_RUNNING, RUNNING_IN_BACKGROUND, RUNNING_IN_BACKGROUND_SUSPENDED, RUNNING_IN_FOREGROUND) | ApplicationState
+**installApp(String appPath)** | Installs the given app | void
+**removeApp(String bundleId)** | Uninstalls the given app | boolean
+**isAppInstalled(String bundleId)** | Checks whether given app is installed | boolean
+
+### MobileDevice
+
+```java 
+
+  @Test
+  public void rotate() {
+      rotate(LANDSCAPE);
+      assertEquals(getOrientation(), LANDSCAPE);
+  }
+  
+```
+
+Available mobile device-specific methods in Java JDI Light Mobile: 
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**rotate(DeviceRotation rotation)** | Changes the rotation of the screen in three dimensional plane | void
+**rotate(ScreenOrientation orientation)** | Changes the orientation of the screen (LANDSCAPE, PORTRAIT) | void
+**getRotation()** | Returns rotation of the screen in three dimensional plane | DeviceRotation
+**getOrientation()** | Returns orientation of the screen (LANDSCAPE, PORTRAIT) | ScreenOrientation
+**lockDevice()** | Locks the device screen | void
+**lockDevice(Duration duration)** | Locks the device screen for specified time duration | void
+**unlockDevice()** | Unlocks the device screen if it is locked | void
+**isLocked()** | Checks if the device screen is locked | boolean
+**getBatteryInfo()** | Returns battery info from the device under test | BatteryInfo
+**getLocation()** | Returns the physical location information of the device | Location
+**setLocation(Location location)** | Sets the physical location of the device | void
+**getDeviceTime()** | Returns device date and time. The default format is *YYYY-MM-DDTHH:mm:ssZ* | String
+**getDeviceTime(String format)** | Returns device date and time in specific format | String
+**shake()** | Simulates shaking the device ***(iOS only)*** | void
+**performTouchId(boolean match)** | Simulates touchId event ***(iOS only)*** | void
+**toggleTouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
+**fingerPrint(int fingerPrintId)** | Authenticates user by using finger print scan on supported emulators ***(Android only)*** | void
+
+
+
 ## Base Elements
 
 ### UIBaseElement
