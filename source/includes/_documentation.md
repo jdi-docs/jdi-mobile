@@ -1,5 +1,5 @@
 ﻿# Documentation
-## Common Elements
+## Common
 
 ### AppManager
 
