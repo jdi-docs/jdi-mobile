@@ -114,7 +114,7 @@ Available mobile file-specific methods in Java JDI Light Mobile:
   
 ```
 
-Available mobile file-specific methods in Java JDI Light Mobile: 
+Available mobile keyboard-specific methods in Java JDI Light Mobile: 
 
 |Method | Description | Return Type 
 --- | --- | --- 
