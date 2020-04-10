@@ -1753,7 +1753,7 @@ And here are methods available in Java:
 **Text** - Is a combination of letters and textual symbols. When performing testing, the text is used in most operations: when typing text into the login field, when finding a button with some certain text in it, or when checking if actual text matches expected one.
 
 ```java 
-@UI("[ui=jdi-text]") //@FindBy(css = "[ui=jdi-text]") 
+@FindBy(id = "app:id/text") 
 public static Text jdiText;
 
 @Test
@@ -1774,65 +1774,6 @@ public void textDoesNotContainWordTest() {
   
 ```
 
-```csharp
-  [FindBy(Css = ".main-txt")]
-  public TextElement Text;
-        
-  [Test]
-  public void GetTextTest()
-  {
-      Jdi.Assert.AreEquals(TestSite.HomePage.Text.Value, _expectedText);
-  }
-
-  [Test]
-  public void GetValueTest()
-  {
-      Jdi.Assert.AreEquals(TestSite.HomePage.Text.Value, _expectedText);
-  }
-
-  [Test]
-  public void SetAttributeTest()
-  {
-      var attributeName = "testAttr";
-      var value = "testValue";
-      TestSite.HomePage.Text.SetAttribute(attributeName, value);
-      Jdi.Assert.AreEquals(TestSite.HomePage.Text.GetAttribute(attributeName), value);
-  }
-
-  [Test]
-  public void WaitSuspendButtonTextTest()
-  {
-       TestSite.Html5Page.Open();
-       TestSite.Html5Page.GhostButton.Is.Displayed();
-       TestSite.Html5Page.GhostButton.Is.Text(EqualTo("GHOST BUTTON"));
-       Thread.Sleep(3000);
-  	   TestSite.Html5Page.SuspendButton.Is.Displayed();
-       TestSite.Html5Page.SuspendButton.Is.Text(EqualTo("SUSPEND BUTTON"));
-  }
-  
-   [Test]
-   public void IsValidationTest()
-   {
-        TestSite.HomePage.Text.Is.Enabled();
-        TestSite.HomePage.Text.Is.Text(EqualTo(_expectedText));
-        TestSite.HomePage.Text.Is.Text(ContainsString(_contains));
-   }
-
-   [Test]
-   public void AssertValidationTest()
-   {
-        TestSite.HomePage.Text.AssertThat.Text(EqualTo(_expectedText));
-   }
-
-   [Test]
-   public void BaseValidationTest()
-   {
-       TestSite.Html5Page.Open();
-       BaseElementValidation(TestSite.Html5Page.JdiText);
-   }
-  
-```
-
 ![Text](../images/html/text_html2.png)
 
 ```html 
@@ -1842,22 +1783,9 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.</p>
 
 Text is represented by the following class:
 
-  - __C#__: JDI.Light.Elements.Common.TextElement
-  - __Java__: com.epam.jdi.light.ui.html.common.Text  
+  - __Java__: com.epam.jdi.light.mobile.elements.common.Text 
 
-Here is a list of available methods in C#:
-
-|Method | Description | Return Type
---- | --- | ---
-**AssertThat** | Gets text assert | TextAssert
-**Is** | Gets text assert | TextAssert
-**GetText()** | returns text| String
-**GetValue()** | returns text| String
-**WaitFor** | Gets text assert | TextAssert
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/TextTests.cs" target="_blank">Test examples in C#</a>
-
-And here are methods available in Java:
+Here is a list of available methods in Java:
     
 |Method | Description | Return Type
 --- | --- | ---
@@ -1865,9 +1793,8 @@ And here are methods available in Java:
 **getText()** |Get current value | String
 **is()** |Various assert actions for Text| TextAssert
 
-<a href="https://github.com/jdi-testing/jdi-light/tree/1509---jdi-light-test-examples/jdi-light-html-tests/src/test/java/io/github/epam/example/common/TextExampleTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeApp/elements/common/TextTests.java" target="_blank">Test examples in Java</a>
 
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#text-2)
 
 ### TextField
 ```java 
