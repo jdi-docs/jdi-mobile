@@ -1774,11 +1774,10 @@ public void textDoesNotContainWordTest() {
   
 ```
 
-![Text](../images/html/text_html2.png)
+![Text](../images/html/text_native_app.png)
 
 ```html 
-<p ui="jdi-text">Powerful Framework for UI Tests Automation. Suitable for any UI project: 
-Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.</p>
+<android.widget.TextView resource-id="app:id/text">
 ```
 
 Text is represented by the following class:
