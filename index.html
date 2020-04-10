@@ -5179,7 +5179,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <a href="https://jdi-docs.github.io/jdi-light/?java#range-2">BDD Steps example</a> <br></p>
 <h3 id='text'>Text</h3>
 <p><strong>Text</strong> - Is a combination of letters and textual symbols. When performing testing, the text is used in most operations: when typing text into the login field, when finding a button with some certain text in it, or when checking if actual text matches expected one.</p>
-<pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[ui=jdi-text]"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "[ui=jdi-text]") </span>
+<pre class="highlight java tab-java"><code><span class="nd">@FindBy</span><span class="o">(</span><span class="n">id</span> <span class="o">=</span> <span class="s">"app:id/text"</span><span class="o">)</span> 
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Text</span> <span class="n">jdiText</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -5198,62 +5198,6 @@ class="uui-button red" onclick="alert('Red button');"&gt;
     <span class="n">jdiText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">not</span><span class="o">(</span><span class="n">NOT_EXPECTED_TEXT</span><span class="o">));</span>
 <span class="o">}</span>
 
-</code></pre><pre class="highlight csharp tab-csharp"><code>  <span class="p">[</span><span class="nf">FindBy</span><span class="p">(</span><span class="n">Css</span> <span class="p">=</span> <span class="s">".main-txt"</span><span class="p">)]</span>
-  <span class="k">public</span> <span class="n">TextElement</span> <span class="n">Text</span><span class="p">;</span>
-
-  <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
-  <span class="k">public</span> <span class="k">void</span> <span class="nf">GetTextTest</span><span class="p">()</span>
-  <span class="p">{</span>
-      <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">TestSite</span><span class="p">.</span><span class="n">HomePage</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Value</span><span class="p">,</span> <span class="n">_expectedText</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
-  <span class="k">public</span> <span class="k">void</span> <span class="nf">GetValueTest</span><span class="p">()</span>
-  <span class="p">{</span>
-      <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">TestSite</span><span class="p">.</span><span class="n">HomePage</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Value</span><span class="p">,</span> <span class="n">_expectedText</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
-  <span class="k">public</span> <span class="k">void</span> <span class="nf">SetAttributeTest</span><span class="p">()</span>
-  <span class="p">{</span>
-      <span class="kt">var</span> <span class="n">attributeName</span> <span class="p">=</span> <span class="s">"testAttr"</span><span class="p">;</span>
-      <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="s">"testValue"</span><span class="p">;</span>
-      <span class="n">TestSite</span><span class="p">.</span><span class="n">HomePage</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">SetAttribute</span><span class="p">(</span><span class="n">attributeName</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
-      <span class="n">Jdi</span><span class="p">.</span><span class="n">Assert</span><span class="p">.</span><span class="nf">AreEquals</span><span class="p">(</span><span class="n">TestSite</span><span class="p">.</span><span class="n">HomePage</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">GetAttribute</span><span class="p">(</span><span class="n">attributeName</span><span class="p">),</span> <span class="k">value</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
-  <span class="k">public</span> <span class="k">void</span> <span class="nf">WaitSuspendButtonTextTest</span><span class="p">()</span>
-  <span class="p">{</span>
-       <span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
-       <span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">GhostButton</span><span class="p">.</span><span class="n">Is</span><span class="p">.</span><span class="nf">Displayed</span><span class="p">();</span>
-       <span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">GhostButton</span><span class="p">.</span><span class="n">Is</span><span class="p">.</span><span class="nf">Text</span><span class="p">(</span><span class="nf">EqualTo</span><span class="p">(</span><span class="s">"GHOST BUTTON"</span><span class="p">));</span>
-       <span class="n">Thread</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="m">3000</span><span class="p">);</span>
-       <span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">SuspendButton</span><span class="p">.</span><span class="n">Is</span><span class="p">.</span><span class="nf">Displayed</span><span class="p">();</span>
-       <span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">SuspendButton</span><span class="p">.</span><span class="n">Is</span><span class="p">.</span><span class="nf">Text</span><span class="p">(</span><span class="nf">EqualTo</span><span class="p">(</span><span class="s">"SUSPEND BUTTON"</span><span class="p">));</span>
-  <span class="p">}</span>
-
-   <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
-   <span class="k">public</span> <span class="k">void</span> <span class="nf">IsValidationTest</span><span class="p">()</span>
-   <span class="p">{</span>
-        <span class="n">TestSite</span><span class="p">.</span><span class="n">HomePage</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Is</span><span class="p">.</span><span class="nf">Enabled</span><span class="p">();</span>
-        <span class="n">TestSite</span><span class="p">.</span><span class="n">HomePage</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Is</span><span class="p">.</span><span class="nf">Text</span><span class="p">(</span><span class="nf">EqualTo</span><span class="p">(</span><span class="n">_expectedText</span><span class="p">));</span>
-        <span class="n">TestSite</span><span class="p">.</span><span class="n">HomePage</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Is</span><span class="p">.</span><span class="nf">Text</span><span class="p">(</span><span class="nf">ContainsString</span><span class="p">(</span><span class="n">_contains</span><span class="p">));</span>
-   <span class="p">}</span>
-
-   <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
-   <span class="k">public</span> <span class="k">void</span> <span class="nf">AssertValidationTest</span><span class="p">()</span>
-   <span class="p">{</span>
-        <span class="n">TestSite</span><span class="p">.</span><span class="n">HomePage</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">AssertThat</span><span class="p">.</span><span class="nf">Text</span><span class="p">(</span><span class="nf">EqualTo</span><span class="p">(</span><span class="n">_expectedText</span><span class="p">));</span>
-   <span class="p">}</span>
-
-   <span class="p">[</span><span class="n">Test</span><span class="p">]</span>
-   <span class="k">public</span> <span class="k">void</span> <span class="nf">BaseValidationTest</span><span class="p">()</span>
-   <span class="p">{</span>
-       <span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
-       <span class="nf">BaseElementValidation</span><span class="p">(</span><span class="n">TestSite</span><span class="p">.</span><span class="n">Html5Page</span><span class="p">.</span><span class="n">JdiText</span><span class="p">);</span>
-   <span class="p">}</span>
-
 </code></pre>
 <p><img src="images/html/text_html2.png" alt="Text" /></p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">ui=</span><span class="s">"jdi-text"</span><span class="nt">&gt;</span>Powerful Framework for UI Tests Automation. Suitable for any UI project: 
@@ -5262,49 +5206,10 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 <p>Text is represented by the following class:</p>
 
 <ul>
-<li><strong>C#</strong>: JDI.Light.Elements.Common.TextElement</li>
-<li><strong>Java</strong>: com.epam.jdi.light.ui.html.common.Text<br></li>
+<li><strong>Java</strong>: com.epam.jdi.light.mobile.elements.common.Text </li>
 </ul>
 
-<p>Here is a list of available methods in C#:</p>
-
-<table><thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-<th>Return Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>AssertThat</strong></td>
-<td>Gets text assert</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>Is</strong></td>
-<td>Gets text assert</td>
-<td>TextAssert</td>
-</tr>
-<tr>
-<td><strong>GetText()</strong></td>
-<td>returns text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>GetValue()</strong></td>
-<td>returns text</td>
-<td>String</td>
-</tr>
-<tr>
-<td><strong>WaitFor</strong></td>
-<td>Gets text assert</td>
-<td>TextAssert</td>
-</tr>
-</tbody></table>
-
-<p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/TextTests.cs" target="_blank">Test examples in C#</a></p>
-
-<p>And here are methods available in Java:</p>
+<p>Here is a list of available methods in Java:</p>
 
 <table><thead>
 <tr>
@@ -5330,9 +5235,7 @@ Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc.<span c
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/tree/1509---jdi-light-test-examples/jdi-light-html-tests/src/test/java/io/github/epam/example/common/TextExampleTests.java" target="_blank">Test examples in Java</a></p>
-
-<p><a href="https://jdi-docs.github.io/jdi-light/?java#text-2">BDD Steps example</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeApp/elements/common/TextTests.java" target="_blank">Test examples in Java</a></p>
 <h3 id='textfield'>TextField</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#name")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
 
