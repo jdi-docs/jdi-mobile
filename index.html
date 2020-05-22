@@ -482,13 +482,27 @@
                     <a href="#extended-selenium-features" class="toc-h2 toc-link" data-title="Extended Selenium features">Extended Selenium features</a>
                   </li>
                   <li>
+                    <a href="#ios-native-application-common-elements" class="toc-h2 toc-link" data-title="iOS Native Application Common elements">iOS Native Application Common elements</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#button" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
+                            </li>
+                            <li>
+								<a href="#systembutton" class="toc-h2 h3 toc-link" data-title="SystemButton">SystemButton</a>
+                            </li>
+                            <li>
+								<a href="#detaildisclosurebutton" class="toc-h2 h3 toc-link" data-title="DetailDisclosureButton">DetailDisclosureButton</a>
+                            </li>
+                        </ul>
+                  </li>
+                  <li>
                     <a href="#html5-common-elements" class="toc-h2 toc-link" data-title="HTML5 Common elements">HTML5 Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
 								<a href="#label" class="toc-h2 h3 toc-link" data-title="Label">Label</a>
                             </li>
                             <li>
-								<a href="#button" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
+								<a href="#button-2" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
                             </li>
                             <li>
 								<a href="#checkbox" class="toc-h2 h3 toc-link" data-title="Checkbox">Checkbox</a>
@@ -727,7 +741,7 @@
 								<a href="#link-2" class="toc-h2 h3 toc-link" data-title="Link">Link</a>
                             </li>
                             <li>
-								<a href="#button-2" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
+								<a href="#button-3" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
                             </li>
                             <li>
 								<a href="#datetimeselector-2" class="toc-h2 h3 toc-link" data-title="DateTimeSelector">DateTimeSelector</a>
@@ -2964,7 +2978,175 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 </tbody></table>
 <h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
-<h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
+<h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='button'>Button</h3>
+<p><img src="images/ios/button.png" alt="Button" /></p>
+
+<p>Available methods in Java JDI Light Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+<h3 id='systembutton'>SystemButton</h3>
+<p><img src="images/ios/system_button.png" alt="System button" /></p>
+
+<p>Available methods in Java JDI Light Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>done()</strong></td>
+<td>Alias of tap() for Done button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>cancel()</strong></td>
+<td>Alias of tap() for Cancel button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>send()</strong></td>
+<td>Alias of tap() for Send button</td>
+<td>void</td>
+</tr>
+</tbody></table>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">systemButtonTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+      <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">GroupsPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsListView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+      <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+  <span class="o">}</span>
+
+</code></pre><h3 id='detaildisclosurebutton'>DetailDisclosureButton</h3>
+<p><img src="images/ios/detail_disclosure_button.png" alt="Detail disclosure button" /></p>
+
+<p>Available methods in Java JDI Light Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>openDetails()</strong></td>
+<td>Alias of tap() for Done button</td>
+<td>void</td>
+</tr>
+</tbody></table>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">detailsDisclosureButtonTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">WelcomePage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">())</span>
+          <span class="n">WelcomePage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+
+      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">dayViewNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">calendarsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">firstCalendarDetailsButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
+      <span class="n">EditCalendarPage</span><span class="o">.</span><span class="na">editCalendarNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+      <span class="n">EditCalendarPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
+      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">dayViewNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+  <span class="o">}</span>
+
+</code></pre><h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
 
   <span class="c1">// @FindBy(css = "#name")</span>
@@ -3078,7 +3260,7 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/LabelTests.java" target="_blank">Java test examples</a> </p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#label-2">BDD Steps examples</a></p>
-<h3 id='button'>Button</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[value*='Red Button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "[value*='Red Button']")</span>
+<h3 id='button-2'>Button</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[value*='Red Button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "[value*='Red Button']")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">redButton</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -25983,7 +26165,7 @@ Validations: <br></p>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Link.feature" target="_blank">Cucumber tests</a> for Link<br></p>
 
 <p><br><br><br></p>
-<h3 id='button-2'>Button</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Button action examples</span><span class="p">:</span>
+<h3 id='button-3'>Button</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Button action examples</span><span class="p">:</span>
 
 <span class="nf">When</span> I click on <span class="s">"Red Button"</span> 
 <span class="nf">When</span> I click with JS on <span class="s">"Red Button"</span>     
