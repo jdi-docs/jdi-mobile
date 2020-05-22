@@ -232,6 +232,93 @@ Aliases in Java JDI Light:
 ## Extended Selenium features
 TBD
 
+## iOS Native Application Common elements
+
+### Button
+
+![Button](../images/ios/button.png)
+
+Available methods in Java JDI Light Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+
+### SystemButton
+
+![System button](../images/ios/system_button.png)
+
+Available methods in Java JDI Light Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**done()** | Alias of tap() for Done button| void
+**cancel()** | Alias of tap() for Cancel button| void
+**send()** | Alias of tap() for Send button| void
+
+```java 
+  
+  @Test
+  public void systemButtonTest() {
+      ContactsListPage.groupsButton.tap();
+      GroupsPage.groupsBar.is().displayed();
+      GroupsPage.doneButton.done();
+      ContactsListPage.contactsListView.is().displayed();
+
+      ContactsListPage.addButton.tap();
+      AddNewContactPage.newContactNavBar.is().displayed();
+      AddNewContactPage.cancelButton.cancel();
+      ContactsListPage.addButton.is().displayed();
+  }
+  
+ ```
+### DetailDisclosureButton
+
+![Detail disclosure button](../images/ios/detail_disclosure_button.png)
+
+Available methods in Java JDI Light Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**openDetails()** | Alias of tap() for Done button| void
+
+```java 
+   
+  @Test
+  public void detailsDisclosureButtonTest() {
+      if(WelcomePage.continueButton.isDisplayed())
+          WelcomePage.continueButton.tap();
+
+      CalendarPage.dayViewNavBar.is().displayed();
+      CalendarPage.calendarsButton.tap();
+      CalendarsListPage.calendarsNavBar.is().displayed();
+
+      CalendarsListPage.firstCalendarDetailsButton.openDetails();
+      EditCalendarPage.editCalendarNavBar.is().displayed();
+
+      EditCalendarPage.cancelButton.cancel();
+      CalendarsListPage.calendarsNavBar.is().displayed();
+
+      CalendarsListPage.doneButton.done();
+      CalendarPage.dayViewNavBar.is().displayed();
+  }
+  
+ ```
+
 ## HTML5 Common elements
 
 ### Label 
