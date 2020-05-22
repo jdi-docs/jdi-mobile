@@ -234,11 +234,15 @@ TBD
 
 ## iOS Native Application Common elements
 
-### Button
+### Buttons
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
+The system provides a number of predefined button styles for most use cases.
+You can also design fully custom buttons.
 
 ![Button](../images/ios/button.png)
 
-Available methods in Java JDI Light Mobile:
+Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -246,24 +250,13 @@ Available methods in Java JDI Light Mobile:
 **doubleTap()** | Double tap  | void
 **longPress()** | Long press | void
 **longPress(int seconds)** | Long press | void
-**is()** | Assert action | TextAssert 
+**is()** | Assert action | TextAssert
 
-### SystemButton
+<a href="javascript: void();" target="_blank">Test examples in Java</a>
 
-![System button](../images/ios/system_button.png)
+### System Button
 
-Available methods in Java JDI Light Mobile:
-
-|Method | Description | Return Type
---- | --- | ---
-**tap()** | Tap | void
-**doubleTap()** | Double tap  | void
-**longPress()** | Long press | void
-**longPress(int seconds)** | Long press | void
-**is()** | Assert action | TextAssert 
-**done()** | Alias of tap() for Done button| void
-**cancel()** | Alias of tap() for Cancel button| void
-**send()** | Alias of tap() for Send button| void
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">System buttons</a> often appear in navigation bars and toolbars, but may be used anywhere.
 
 ```java 
   
@@ -281,11 +274,10 @@ Available methods in Java JDI Light Mobile:
   }
   
  ```
-### DetailDisclosureButton
 
-![Detail disclosure button](../images/ios/detail_disclosure_button.png)
+![System button](../images/ios/system_button.png)
 
-Available methods in Java JDI Light Mobile:
+Available methods in Java JDI Mobile (**iOS 13 compatible**):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -294,7 +286,16 @@ Available methods in Java JDI Light Mobile:
 **longPress()** | Long press | void
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert 
-**openDetails()** | Alias of tap() for Done button| void
+**done()** | Alias of tap() for Done button| void
+**cancel()** | Alias of tap() for Cancel button| void
+**send()** | Alias of tap() for Send button| void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+
+### Detail Disclosure Button
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Detail disclosure buttons</a> open views—typically, modal views—containing additional information or functionality related to a specific item onscreen.
+They are commonly used in tables to access information about specific rows.
 
 ```java 
    
@@ -318,6 +319,21 @@ Available methods in Java JDI Light Mobile:
   }
   
  ```
+
+![Detail disclosure button](../images/ios/detail_disclosure_button.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**openDetails()** | Alias of tap() for Done button| void
+
+<a href="javascript: void();" target="_blank">Test examples in Java</a>
 
 ## HTML5 Common elements
 
