@@ -485,13 +485,13 @@
                     <a href="#ios-native-application-common-elements" class="toc-h2 toc-link" data-title="iOS Native Application Common elements">iOS Native Application Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
-								<a href="#button" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
+								<a href="#buttons" class="toc-h2 h3 toc-link" data-title="Buttons">Buttons</a>
                             </li>
                             <li>
-								<a href="#systembutton" class="toc-h2 h3 toc-link" data-title="SystemButton">SystemButton</a>
+								<a href="#system-button" class="toc-h2 h3 toc-link" data-title="System Button">System Button</a>
                             </li>
                             <li>
-								<a href="#detaildisclosurebutton" class="toc-h2 h3 toc-link" data-title="DetailDisclosureButton">DetailDisclosureButton</a>
+								<a href="#detail-disclosure-button" class="toc-h2 h3 toc-link" data-title="Detail Disclosure Button">Detail Disclosure Button</a>
                             </li>
                         </ul>
                   </li>
@@ -502,7 +502,7 @@
 								<a href="#label" class="toc-h2 h3 toc-link" data-title="Label">Label</a>
                             </li>
                             <li>
-								<a href="#button-2" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
+								<a href="#button" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
                             </li>
                             <li>
 								<a href="#checkbox" class="toc-h2 h3 toc-link" data-title="Checkbox">Checkbox</a>
@@ -741,7 +741,7 @@
 								<a href="#link-2" class="toc-h2 h3 toc-link" data-title="Link">Link</a>
                             </li>
                             <li>
-								<a href="#button-3" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
+								<a href="#button-2" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
                             </li>
                             <li>
 								<a href="#datetimeselector-2" class="toc-h2 h3 toc-link" data-title="DateTimeSelector">DateTimeSelector</a>
@@ -2978,10 +2978,14 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 </tbody></table>
 <h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
-<h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='button'>Button</h3>
+<h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
+The system provides a number of predefined button styles for most use cases.
+You can also design fully custom buttons.</p>
+
 <p><img src="images/ios/button.png" alt="Button" /></p>
 
-<p>Available methods in Java JDI Light Mobile:</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -3016,10 +3020,28 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <td>TextAssert</td>
 </tr>
 </tbody></table>
-<h3 id='systembutton'>SystemButton</h3>
+
+<p><a href="javascript: void();" target="_blank">Test examples in Java</a></p>
+<h3 id='system-button'>System Button</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">System buttons</a> often appear in navigation bars and toolbars, but may be used anywhere.</p>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">systemButtonTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+      <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">GroupsPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsListView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+      <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+  <span class="o">}</span>
+
+</code></pre>
 <p><img src="images/ios/system_button.png" alt="System button" /></p>
 
-<p>Available methods in Java JDI Light Mobile:</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 13 compatible</strong>):</p>
 
 <table><thead>
 <tr>
@@ -3069,24 +3091,35 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <td>void</td>
 </tr>
 </tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/ContactsAppTests.java" target="_blank">Test examples in Java</a></p>
+<h3 id='detail-disclosure-button'>Detail Disclosure Button</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Detail disclosure buttons</a> open views—typically, modal views—containing additional information or functionality related to a specific item onscreen.
+They are commonly used in tables to access information about specific rows.</p>
 <pre class="highlight java tab-java"><code>
   <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">systemButtonTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-      <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-      <span class="n">GroupsPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsListView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">detailsDisclosureButtonTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">WelcomePage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">())</span>
+          <span class="n">WelcomePage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-      <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-      <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">dayViewNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">calendarsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">firstCalendarDetailsButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
+      <span class="n">EditCalendarPage</span><span class="o">.</span><span class="na">editCalendarNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+      <span class="n">EditCalendarPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
+      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">dayViewNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
   <span class="o">}</span>
 
-</code></pre><h3 id='detaildisclosurebutton'>DetailDisclosureButton</h3>
+</code></pre>
 <p><img src="images/ios/detail_disclosure_button.png" alt="Detail disclosure button" /></p>
 
-<p>Available methods in Java JDI Light Mobile:</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -3126,27 +3159,9 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <td>void</td>
 </tr>
 </tbody></table>
-<pre class="highlight java tab-java"><code>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">detailsDisclosureButtonTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">if</span><span class="o">(</span><span class="n">WelcomePage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">())</span>
-          <span class="n">WelcomePage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">dayViewNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">calendarsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-
-      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">firstCalendarDetailsButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
-      <span class="n">EditCalendarPage</span><span class="o">.</span><span class="na">editCalendarNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-
-      <span class="n">EditCalendarPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-
-      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
-      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">dayViewNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-  <span class="o">}</span>
-
-</code></pre><h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
+<p><a href="javascript: void();" target="_blank">Test examples in Java</a></p>
+<h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
 
   <span class="c1">// @FindBy(css = "#name")</span>
@@ -3260,7 +3275,7 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/LabelTests.java" target="_blank">Java test examples</a> </p>
 
 <p><a href="https://jdi-docs.github.io/jdi-light/?java#label-2">BDD Steps examples</a></p>
-<h3 id='button-2'>Button</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[value*='Red Button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "[value*='Red Button']")</span>
+<h3 id='button'>Button</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[value*='Red Button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "[value*='Red Button']")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">redButton</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -19155,7 +19170,7 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
 
 <p><br></p>
-<h4 id='buttons'>Buttons</h4>
+<h4 id='buttons-2'>Buttons</h4>
 <p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#links-and-buttons">List group links and buttons</a></em></strong></p>
 
 <p>List Group is located in the following classes:</p>
@@ -26165,7 +26180,7 @@ Validations: <br></p>
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Link.feature" target="_blank">Cucumber tests</a> for Link<br></p>
 
 <p><br><br><br></p>
-<h3 id='button-3'>Button</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Button action examples</span><span class="p">:</span>
+<h3 id='button-2'>Button</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Button action examples</span><span class="p">:</span>
 
 <span class="nf">When</span> I click on <span class="s">"Red Button"</span> 
 <span class="nf">When</span> I click with JS on <span class="s">"Red Button"</span>     
