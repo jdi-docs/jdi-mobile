@@ -331,7 +331,87 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **longPress()** | Long press | void
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert 
-**openDetails()** | Alias of tap() for Done button| void
+**openDetails()** | Alias of tap() for button| void
+
+<a href="javascript: void();" target="_blank">Test examples in Java</a>
+
+### Info button
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">An Info button</a>
+reveals configuration details about an app, sometimes on the back of the current view, after flipping the view around. 
+Info buttons come in two styles—light and dark. Pick the style that best coordinates with your app’s design and doesn’t get lost onscreen.
+
+```java 
+   
+  @Test
+  public void infoButtonTest() {
+      if (RemindersApp.continueButton.isDisplayed())
+          RemindersApp.continueButton.click();
+
+      RemindersListPage.todayRemindersButton.tap();
+
+      RemindersPage.newReminderButton.tap();
+      RemindersPage.editDetailsInfoButton.openDetails();
+
+      EditDetailsPage.detailsNavBar.is().displayed();
+  }
+  
+ ```
+
+![Info button](../images/ios/info_button.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**openDetails()** | Alias of tap() for button| void
+
+<a href="javascript: void();" target="_blank">Test examples in Java</a>
+
+### Add Contact Button
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Add contact buttons</a><br>
+Users can tap an Add Contact button to browse a list of existing contacts and to select one for insertion into a text field or other view. 
+In Mail, for example, you can tap the Add Contact button in the To field of a message to select a recipient from your list of contacts.
+
+```java 
+   
+  @Test
+  public void addContactButtonTest() throws InterruptedException {
+      if (WhatsNewPage.continueButton.isDisplayed()) {
+          WhatsNewPage.continueButton.tap();
+      }
+
+      MessagesListPage.newMessageButton.tap();
+
+      NewMessagePage.addContactButton.openContacts();
+
+      Thread.sleep(5000);
+      ContactsListPage.contactNavBar.is().displayed();
+      ContactsListPage.cancelButton.cancel();
+
+      NewMessagePage.addContactButton.is().displayed();
+  }
+  
+ ```
+ 
+![Add contact button](../images/ios/add_contact_button.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**openContacts()** | Alias of tap() for button| void
 
 <a href="javascript: void();" target="_blank">Test examples in Java</a>
 
