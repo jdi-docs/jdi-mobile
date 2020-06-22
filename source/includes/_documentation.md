@@ -333,7 +333,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **is()** | Assert action | TextAssert 
 **openDetails()** | Alias of tap() for button| void
 
-<a href="javascript: void();" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/CalendarAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Info button
 
@@ -371,7 +371,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **is()** | Assert action | TextAssert 
 **openDetails()** | Alias of tap() for button| void
 
-<a href="javascript: void();" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/RemindersAppTests.java;" target="_blank">Test examples in Java</a>
 
 ### Add Contact Button
 
@@ -413,7 +413,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **is()** | Assert action | TextAssert 
 **openContacts()** | Alias of tap() for button| void
 
-<a href="javascript: void();" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a>
 
 ## HTML5 Common elements
 
