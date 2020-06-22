@@ -493,6 +493,12 @@
                             <li>
 								<a href="#detail-disclosure-button" class="toc-h2 h3 toc-link" data-title="Detail Disclosure Button">Detail Disclosure Button</a>
                             </li>
+                            <li>
+								<a href="#info-button" class="toc-h2 h3 toc-link" data-title="Info button">Info button</a>
+                            </li>
+                            <li>
+								<a href="#add-contact-button" class="toc-h2 h3 toc-link" data-title="Add Contact Button">Add Contact Button</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -3155,7 +3161,137 @@ They are commonly used in tables to access information about specific rows.</p>
 </tr>
 <tr>
 <td><strong>openDetails()</strong></td>
-<td>Alias of tap() for Done button</td>
+<td>Alias of tap() for button</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="javascript: void();" target="_blank">Test examples in Java</a></p>
+<h3 id='info-button'>Info button</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">An Info button</a>
+reveals configuration details about an app, sometimes on the back of the current view, after flipping the view around. 
+Info buttons come in two styles—light and dark. Pick the style that best coordinates with your app’s design and doesn’t get lost onscreen.</p>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">infoButtonTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">RemindersApp</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">())</span>
+          <span class="n">RemindersApp</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+      <span class="n">RemindersListPage</span><span class="o">.</span><span class="na">todayRemindersButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+
+      <span class="n">RemindersPage</span><span class="o">.</span><span class="na">newReminderButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+      <span class="n">RemindersPage</span><span class="o">.</span><span class="na">editDetailsInfoButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
+
+      <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">detailsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+  <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/info_button.png" alt="Info button" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>openDetails()</strong></td>
+<td>Alias of tap() for button</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="javascript: void();" target="_blank">Test examples in Java</a></p>
+<h3 id='add-contact-button'>Add Contact Button</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Add contact buttons</a><br>
+Users can tap an Add Contact button to browse a list of existing contacts and to select one for insertion into a text field or other view. 
+In Mail, for example, you can tap the Add Contact button in the To field of a message to select a recipient from your list of contacts.</p>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addContactButtonTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">WhatsNewPage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">())</span> <span class="o">{</span>
+          <span class="n">WhatsNewPage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+      <span class="o">}</span>
+
+      <span class="n">MessagesListPage</span><span class="o">.</span><span class="na">newMessageButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+
+      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">addContactButton</span><span class="o">.</span><span class="na">openContacts</span><span class="o">();</span>
+
+      <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span>
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+
+      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">addContactButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+  <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/add_contact_button.png" alt="Add contact button" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>openContacts()</strong></td>
+<td>Alias of tap() for button</td>
 <td>void</td>
 </tr>
 </tbody></table>
