@@ -906,6 +906,9 @@
                             </li>
                         </ul>
                   </li>
+                  <li>
+                    <a href="#launch-ios-native-applications-tests-example" class="toc-h2 toc-link" data-title="Launch iOS native applications tests example">Launch iOS native applications tests example</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -28893,6 +28896,22 @@ object
 <li>It&#39;s better to tell about a problem to someone than to not take actions at all</li>
 <li>Always leave newline symbol as a last symbol of file</li>
 </ol>
+<h2 id='launch-ios-native-applications-tests-example'>Launch iOS native applications tests example</h2>
+<p><strong><em>Example tests work properly only on macOS computers and iOS 13.4 iPhone simulators</em></strong>
+<br>
+<strong>Required tools:</strong> macOS 10.15, Xcode 11.5, iOS Simulator 13.4, Appium 1.17.0</p>
+
+<p>0) Set following settings in test.properties file: <br>
+   <strong><code>driver=ios</code></strong> <br>
+   <strong><code>remote.type=appium</code></strong> <br>
+   If your version of appium has its own URL (not http://0.0.0.0:4723), specify it in the <strong><code>driver.remote.url</code></strong> property
+1) Set following settings in ios.properties file: <br>
+   <strong><code>platformVersion=13.4</code></strong> <br>
+   <strong><code>deviceName=iPhone 11 (or your preferred iPhone)</code></strong>
+2) Launch Appium client
+3) Open iOS Simulator device
+4) Run tests from JDI Light Mobile tests directory:<br>
+<code>mvn clean test -Dsuite.xml.file=src/test/resources/iosApps.xml</code></p>
 
       </div>
       <div class="dark-box">
