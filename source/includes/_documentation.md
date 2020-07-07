@@ -20997,14 +20997,14 @@ object
 <br>
 **Required tools:** macOS 10.15, Xcode 11.5, iOS Simulator 13.4, Appium 1.17.0
 
-0) Set following settings in test.properties file: <br>
+1. Set following settings in test.properties file: <br>
    **`driver=ios`** <br>
    **`remote.type=appium`** <br>
    If your version of appium has its own URL (not http://0.0.0.0:4723), specify it in the **`driver.remote.url`** property
-1) Set following settings in ios.properties file: <br>
+2. Set following settings in ios.properties file: <br>
    **`platformVersion=13.4`** <br>
    **`deviceName=iPhone 11 (or your preferred iPhone)`**
-2) Launch Appium client
-3) Open iOS Simulator device
-4) Run tests from JDI Light Mobile tests directory:<br>
+3. Launch Appium client
+4. Open iOS Simulator device
+5. Run tests from JDI Light Mobile tests directory:<br>
 `mvn clean test -Dsuite.xml.file=src/test/resources/iosApps.xml`
