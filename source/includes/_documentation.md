@@ -252,7 +252,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert
 
-<a href="javascript: void();" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
 
 ### System Button
 
@@ -290,7 +290,7 @@ Available methods in Java JDI Mobile (**iOS 13 compatible**):
 **cancel()** | Alias of tap() for Cancel button| void
 **send()** | Alias of tap() for Send button| void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Detail Disclosure Button
 
@@ -328,7 +328,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **is()** | Assert action | TextAssert 
 **openDetails()** | Alias of tap() for button| void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/CalendarAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Info button
 
@@ -366,7 +366,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **is()** | Assert action | TextAssert 
 **openDetails()** | Alias of tap() for button| void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/RemindersAppTests.java;" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java;" target="_blank">Test examples in Java</a>
 
 ### Add Contact Button
 
@@ -403,7 +403,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **is()** | Assert action | TextAssert 
 **openContacts()** | Alias of tap() for button| void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Text Field
 
@@ -441,7 +441,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **getText()** | Get text from text field | String
 **clear()** | Clear value in text field | void
  
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
 
 ## iOS Native Application Composite elements
 
@@ -474,7 +474,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Edit menu
 
@@ -517,7 +517,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **lookUp()** | Tap Look Up menu option | void 
 **share()** | Tap Share... menu option | void 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
 
 ## HTML5 Common elements
 
