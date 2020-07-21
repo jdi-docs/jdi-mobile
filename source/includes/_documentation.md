@@ -273,7 +273,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
       ContactsListPage.addButton.is().displayed();
   }
   
- ```
+```
 
 ![System button](../images/ios/system_button.png)
 
@@ -301,24 +301,19 @@ They are commonly used in tables to access information about specific rows.
    
   @Test
   public void detailsDisclosureButtonTest() {
-      if(WelcomePage.continueButton.isDisplayed())
-          WelcomePage.continueButton.tap();
-
-      CalendarPage.dayViewNavBar.is().displayed();
       CalendarPage.calendarsButton.tap();
-      CalendarsListPage.calendarsNavBar.is().displayed();
-
+      CalendarsListPage.calendarsNavBar.is().visible();
+  
       CalendarsListPage.firstCalendarDetailsButton.openDetails();
-      EditCalendarPage.editCalendarNavBar.is().displayed();
-
+      EditCalendarPage.editCalendarNavBar.is().visible();
+  
       EditCalendarPage.cancelButton.cancel();
-      CalendarsListPage.calendarsNavBar.is().displayed();
-
+      CalendarsListPage.calendarsNavBar.is().visible();
+  
       CalendarsListPage.doneButton.done();
-      CalendarPage.dayViewNavBar.is().displayed();
   }
   
- ```
+```
 
 ![Detail disclosure button](../images/ios/detail_disclosure_button.png)
 
@@ -356,7 +351,7 @@ Info buttons come in two styles—light and dark. Pick the style that best coord
       EditDetailsPage.detailsNavBar.is().displayed();
   }
   
- ```
+```
 
 ![Info button](../images/ios/info_button.png)
 
@@ -383,22 +378,17 @@ In Mail, for example, you can tap the Add Contact button in the To field of a me
    
   @Test
   public void addContactButtonTest() throws InterruptedException {
-      if (WhatsNewPage.continueButton.isDisplayed()) {
-          WhatsNewPage.continueButton.tap();
-      }
-
       MessagesListPage.newMessageButton.tap();
-
+      
       NewMessagePage.addContactButton.openContacts();
 
-      Thread.sleep(5000);
       ContactsListPage.contactNavBar.is().displayed();
       ContactsListPage.cancelButton.cancel();
 
       NewMessagePage.addContactButton.is().displayed();
   }
   
- ```
+```
  
 ![Add contact button](../images/ios/add_contact_button.png)
 
@@ -414,6 +404,120 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **openContacts()** | Alias of tap() for button| void
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a>
+
+### Text Field
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
+A Text Field</a> is a single-line, fixed-height field, often with rounded corners, that automatically brings up a keyboard when the user taps it. Use a text field to request a small amount of information, such as an email address.
+
+```java 
+   
+  @Test
+  public void textFieldTest() {
+      MessagesListPage.newMessageButton.tap();
+
+      NewMessagePage.messageTextField.setValue("Test");
+      NewMessagePage.messageTextField.is().text("Test");
+
+      NewMessagePage.messageTextField.clear();
+      NewMessagePage.messageTextField.is().empty();
+  }
+  
+```
+
+![Text Field](../images/ios/textfield.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**setValue()** | Set value in text field | void
+**getValue()** | Get value from text field | String
+**getText()** | Get text from text field | String
+**clear()** | Clear value in text field | void
+ 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
+
+## iOS Native Application Composite elements
+
+### Context Menu
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/context-menus/" target="_blank" style="font-weight: bold;">Context menu.</a><br>
+You can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.
+
+```java 
+   
+    @Test
+    public void contextMenuTest() {
+        ContactsListPage.johnAppleseedCard.longPress(2);
+        ContactContextMenu.johnApplessedPhoto.is().displayed();
+        ContactContextMenu.messageOptionExpand.tap();
+        ContactContextMenu.johnAppleseedEmail.is().displayed();
+    }
+  
+```
+
+![Context menu](../images/ios/context_menu.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+
+### Edit menu
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/edit-menus/" target="_blank" style="font-weight: bold;">Edit menu.</a><br>
+People can touch and hold or double-tap an element in a text field, a text view, a web view, or an image view to select content and reveal edit options, such as Copy and Paste.
+
+```java 
+   
+    @Test
+    public void editMenuTest() {
+        MessagesListPage.newMessageButton.tap();
+
+        NewMessagePage.messageTextField.setValue("Test");
+        NewMessagePage.messageTextField.doubleTap();
+        NewMessagePage.messageEditMenu.copy();
+        NewMessagePage.messageTextField.doubleTap();
+        NewMessagePage.messageEditMenu.cut();
+        NewMessagePage.messageTextField.is().empty();
+        NewMessagePage.messageTextField.doubleTap();
+        NewMessagePage.messageEditMenu.paste();
+        NewMessagePage.messageTextField.is().text("Test");
+    }
+  
+```
+
+![Edit menu](../images/ios/edit_menu.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**cut()** | Tap Cut menu option | void 
+**copy()** | Tap Copy menu option | void 
+**paste()** | Tap Paste menu option | void 
+**lookUp()** | Tap Look Up menu option | void 
+**share()** | Tap Share... menu option | void 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
 
 ## HTML5 Common elements
 
