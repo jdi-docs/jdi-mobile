@@ -499,6 +499,20 @@
                             <li>
 								<a href="#add-contact-button" class="toc-h2 h3 toc-link" data-title="Add Contact Button">Add Contact Button</a>
                             </li>
+                            <li>
+								<a href="#text-field" class="toc-h2 h3 toc-link" data-title="Text Field">Text Field</a>
+                            </li>
+                        </ul>
+                  </li>
+                  <li>
+                    <a href="#ios-native-application-composite-elements" class="toc-h2 toc-link" data-title="iOS Native Application Composite elements">iOS Native Application Composite elements</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#context-menu" class="toc-h2 h3 toc-link" data-title="Context Menu">Context Menu</a>
+                            </li>
+                            <li>
+								<a href="#edit-menu" class="toc-h2 h3 toc-link" data-title="Edit menu">Edit menu</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -3108,21 +3122,16 @@ They are commonly used in tables to access information about specific rows.</p>
 <pre class="highlight java tab-java"><code>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">detailsDisclosureButtonTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">if</span><span class="o">(</span><span class="n">WelcomePage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">())</span>
-          <span class="n">WelcomePage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-
-      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">dayViewNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
       <span class="n">CalendarPage</span><span class="o">.</span><span class="na">calendarsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">visible</span><span class="o">();</span>
 
       <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">firstCalendarDetailsButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
-      <span class="n">EditCalendarPage</span><span class="o">.</span><span class="na">editCalendarNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">EditCalendarPage</span><span class="o">.</span><span class="na">editCalendarNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">visible</span><span class="o">();</span>
 
       <span class="n">EditCalendarPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">calendarsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">visible</span><span class="o">();</span>
 
       <span class="n">CalendarsListPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
-      <span class="n">CalendarPage</span><span class="o">.</span><span class="na">dayViewNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
   <span class="o">}</span>
 
 </code></pre>
@@ -3240,15 +3249,10 @@ In Mail, for example, you can tap the Add Contact button in the To field of a me
 <pre class="highlight java tab-java"><code>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addContactButtonTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">WhatsNewPage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">())</span> <span class="o">{</span>
-          <span class="n">WhatsNewPage</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-      <span class="o">}</span>
-
       <span class="n">MessagesListPage</span><span class="o">.</span><span class="na">newMessageButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
       <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">addContactButton</span><span class="o">.</span><span class="na">openContacts</span><span class="o">();</span>
 
-      <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span>
       <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
       <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
 
@@ -3300,6 +3304,217 @@ In Mail, for example, you can tap the Add Contact button in the To field of a me
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a></p>
+<h3 id='text-field'>Text Field</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
+A Text Field</a> is a single-line, fixed-height field, often with rounded corners, that automatically brings up a keyboard when the user taps it. Use a text field to request a small amount of information, such as an email address.</p>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">textFieldTest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">MessagesListPage</span><span class="o">.</span><span class="na">newMessageButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+
+      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+
+      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">empty</span><span class="o">();</span>
+  <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/textfield.png" alt="Text Field" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>setValue()</strong></td>
+<td>Set value in text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get value from text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get text from text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>Clear value in text field</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a> </p>
+<h2 id='ios-native-application-composite-elements'>iOS Native Application Composite elements</h2><h3 id='context-menu'>Context Menu</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/context-menus/" target="_blank" style="font-weight: bold;">Context menu.</a><br>
+You can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">contextMenuTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">johnAppleseedCard</span><span class="o">.</span><span class="na">longPress</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">ContactContextMenu</span><span class="o">.</span><span class="na">johnApplessedPhoto</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">ContactContextMenu</span><span class="o">.</span><span class="na">messageOptionExpand</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">ContactContextMenu</span><span class="o">.</span><span class="na">johnAppleseedEmail</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/context_menu.png" alt="Context menu" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/ContactsAppTests.java" target="_blank">Test examples in Java</a></p>
+<h3 id='edit-menu'>Edit menu</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/edit-menus/" target="_blank" style="font-weight: bold;">Edit menu.</a><br>
+People can touch and hold or double-tap an element in a text field, a text view, a web view, or an image view to select content and reveal edit options, such as Copy and Paste.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">editMenuTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">MessagesListPage</span><span class="o">.</span><span class="na">newMessageButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+
+        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">copy</span><span class="o">();</span>
+        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">cut</span><span class="o">();</span>
+        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">empty</span><span class="o">();</span>
+        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">paste</span><span class="o">();</span>
+        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/edit_menu.png" alt="Edit menu" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>cut()</strong></td>
+<td>Tap Cut menu option</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>copy()</strong></td>
+<td>Tap Copy menu option</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>paste()</strong></td>
+<td>Tap Paste menu option</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>lookUp()</strong></td>
+<td>Tap Look Up menu option</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>share()</strong></td>
+<td>Tap Share... menu option</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/MessagesAppTests.java" target="_blank">Test examples in Java</a> </p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
 
