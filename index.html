@@ -513,6 +513,9 @@
                             <li>
 								<a href="#edit-menu" class="toc-h2 h3 toc-link" data-title="Edit menu">Edit menu</a>
                             </li>
+                            <li>
+								<a href="#navigation-bar" class="toc-h2 h3 toc-link" data-title="Navigation Bar">Navigation Bar</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -3515,6 +3518,78 @@ People can touch and hold or double-tap an element in a text field, a text view,
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> </p>
+<h3 id='navigation-bar'>Navigation Bar</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/navigation-bars/" target="_blank" style="font-weight: bold;">A Navigation bar </a>
+appears at the top of an app screen, below the status bar, and enables navigation through a series of hierarchical screens.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">navigationBarTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Groups"</span><span class="o">);</span>
+        <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Done"</span><span class="o">);</span>
+
+        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">GroupsPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
+
+        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Add"</span><span class="o">);</span>
+        <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Cancel"</span><span class="o">);</span>
+        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/navigation_bar.png" alt="Navigation bar" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>tapBarButton(String buttonName)</strong></td>
+<td>Tap button with buttonName on Navigation bar</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a></p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
 
