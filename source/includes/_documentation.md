@@ -519,6 +519,53 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
 
+### Navigation Bar
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/navigation-bars/" target="_blank" style="font-weight: bold;">A Navigation bar </a>
+appears at the top of an app screen, below the status bar, and enables navigation through a series of hierarchical screens.
+
+```java 
+   
+    @Test
+    public void navigationBarTest() {
+        ContactsListPage.contactsNavigationBar.is().displayed();
+        ContactsListPage.contactsNavigationBar.groupsButton.is().displayed();
+        ContactsListPage.contactsNavigationBar.tapBarButton("Groups");
+        GroupsPage.groupsBar.is().displayed();
+        GroupsPage.groupsBar.tapBarButton("Done");
+
+        ContactsListPage.contactsNavigationBar.groupsButton.tap();
+        GroupsPage.groupsBar.is().displayed();
+        GroupsPage.doneButton.done();
+
+        ContactsListPage.contactsNavigationBar.addButton.tap();
+        AddNewContactPage.newContactNavBar.is().displayed();
+        AddNewContactPage.cancelButton.cancel();
+        ContactsListPage.contactsNavigationBar.addButton.is().displayed();
+
+        ContactsListPage.contactsNavigationBar.tapBarButton("Add");
+        AddNewContactPage.newContactNavBar.is().displayed();
+        AddNewContactPage.newContactNavBar.tapBarButton("Cancel");
+        ContactsListPage.contactsNavigationBar.addButton.is().displayed();
+    }
+  
+```
+
+![Navigation bar](../images/ios/navigation_bar.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**tapBarButton(String buttonName)** | Tap button with buttonName on Navigation bar | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+
 ## HTML5 Common elements
 
 ### Label 
