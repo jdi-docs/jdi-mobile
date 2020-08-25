@@ -443,6 +443,47 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
  
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
 
+### Picker Wheel
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/pickers/" target="_blank" style="font-weight: bold;">
+A Picker Wheel</a> is a scrollable list of distinct values from which people can choose. Make it easy for people to enter information by choosing single or multipart values.
+
+```java 
+
+@Test
+    public void pickerWheelTest() {
+        RemindersListPage.todayRemindersButton.tap();
+
+        RemindersPage.newReminderButton.tap();
+        RemindersPage.editDetailsInfoButton.openDetails();
+
+        EditDetailsPage.alarm.tap();
+        EditDetailsPage.yearPicker.setPickerWheelValue("2015");
+        EditDetailsPage.yearPicker.is().text("2015");
+
+        EditDetailsPage.yearPicker.movePickerWheelForward("0.1");
+        EditDetailsPage.yearPicker.is().text("2016");
+
+        EditDetailsPage.monthPicker.setPickerWheelValue("April");
+        EditDetailsPage.monthPicker.movePickerWheelBackward("0.1");
+        EditDetailsPage.monthPicker.is().text("March");
+    }
+
+```
+
+![Picker Wheel](../images/ios/picker.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**getText()** | Get text of selected value | String
+**is()** | Assert action | TextAssert 
+**setPickerWheelValue(String value)** | Set the value | void
+**movePickerWheelForward(String offset)** | Move picker forward by offset(share of picker height) | void
+**movePickerWheelBackward(String offset)** | Move picker backward by offset(share of picker height) | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
+
 ## iOS Native Application Composite elements
 
 ### Context Menu
