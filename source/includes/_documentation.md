@@ -484,6 +484,44 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
 
+### Slider
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/sliders/" target="_blank" style="font-weight: bold;">
+A Slider</a> is a horizontal track with a control called a thumb, which you can slide with your finger to move between a minimum and maximum value, such as screen brightness level or position during media playback. As a slider’s value changes, the portion of track between the minimum value and the thumb fills with color. A slider can optionally display left and right icons that illustrate the meaning of the minimum and maximum values.
+
+```java 
+
+@Test
+    public void sliderTest() {
+        SettingsListPage.accessibilityMenuItem.tap();
+        AccessibilityPage.displayAndTextSizeMenuItem.tap();
+        DisplayAndTextSizePage.largerTextMenuItem.tap();
+
+        LargerTextPage.largerTextSlider.setSliderValue("0.5");
+        LargerTextPage.largerTextSlider.is().text("50%");
+
+        LargerTextPage.largerTextSlider.setMaximumValue();
+        LargerTextPage.largerTextSlider.is().text("100%");
+
+        LargerTextPage.largerTextSlider.setMinimumValue();
+        LargerTextPage.largerTextSlider.is().text("0%");
+    }
+
+```
+
+![Slider](../images/ios/slider.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**getText()** | Get text of selected value | String
+**is()** | Assert action | TextAssert 
+**setSliderValue(String value)** | Set the value | void
+**setMaximumValue()** | Set the maximum value | void 
+**setMinimumValue()** | Set the minimum value | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
+
 ## iOS Native Application Composite elements
 
 ### Context Menu
