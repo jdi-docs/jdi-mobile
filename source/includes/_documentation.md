@@ -486,7 +486,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 ### Slider
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/sliders/" target="_blank" style="font-weight: bold;">
-A Slider</a> is a horizontal track with a control called a thumb, which you can slide with your finger to move between a minimum and maximum value, such as screen brightness level or position during media playback. As a slider’s value changes, the portion of track between the minimum value and the thumb fills with color. A slider can optionally display left and right icons that illustrate the meaning of the minimum and maximum values.
+A Slider</a> is a horizontal track with a control called a thumb, which you can slide with your finger to move between a minimum and maximum value, such as screen brightness level or position during media playback.
 
 ```java 
 
@@ -516,7 +516,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 --- | --- | ---
 **getText()** | Get text of selected value | String
 **is()** | Assert action | TextAssert 
-**setSliderValue(String value)** | Set the value | void
+**setSliderValue(String value)** | Set the value (value should be in 0..1 range) | void
 **setMaximumValue()** | Set the maximum value | void 
 **setMinimumValue()** | Set the minimum value | void
 
