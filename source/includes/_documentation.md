@@ -232,6 +232,51 @@ Aliases in Java JDI Light:
 ## Extended Selenium features
 TBD
 
+## Android Native Application Common elements
+
+### Switch
+
+<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton" target="_blank" style="font-weight: bold;">Switch</a> allows the user to change a setting between two states.
+Switches are either on or off. Providing labels that describe these states is redundant and clutters the interface.
+
+![Switch](../images/android/switch_on.PNG)
+![Switch](../images/android/switch_off.PNG)
+
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**is()** | Assert action | SwitchAssert 
+**isOn()** | Check that switch is on | boolean
+**setToOn()** | Set switch to on | void
+**setToOff()** | Set switch to off | void
+
+```java 
+
+@Test
+    public void switchAirplaneModeTest(){
+        networkAndInternetButton.click();
+        airplaneModeSwitch.setToOn();
+        airplaneModeSwitch.is().on();
+        airplaneModeSwitch.setToOff();
+        airplaneModeSwitch.is().off();
+
+    }
+
+    @Test
+    public void switchWiFiConnectionTest(){
+        networkAndInternetButton.click();
+        wiFiSwitch.setToOn();
+        wiFiSwitch.is().on();
+        wiFiSwitch.setToOff();
+        wiFiSwitch.is().off();
+    }
+
+```
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
+
+
 ## iOS Native Application Common elements
 
 ### Buttons
