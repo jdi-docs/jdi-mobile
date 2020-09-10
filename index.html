@@ -482,6 +482,14 @@
                     <a href="#extended-selenium-features" class="toc-h2 toc-link" data-title="Extended Selenium features">Extended Selenium features</a>
                   </li>
                   <li>
+                    <a href="#android-native-application-common-elements" class="toc-h2 toc-link" data-title="Android Native Application Common elements">Android Native Application Common elements</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#switch" class="toc-h2 h3 toc-link" data-title="Switch">Switch</a>
+                            </li>
+                        </ul>
+                  </li>
+                  <li>
                     <a href="#ios-native-application-common-elements" class="toc-h2 toc-link" data-title="iOS Native Application Common elements">iOS Native Application Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
@@ -3007,6 +3015,65 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 </tbody></table>
 <h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
+<h2 id='android-native-application-common-elements'>Android Native Application Common elements</h2><h3 id='switch'>Switch</h3>
+<p><a href="https://developer.android.com/guide/topics/ui/controls/togglebutton" target="_blank" style="font-weight: bold;">Switch</a> allows the user to change a setting between two states.
+Switches are either on or off. Providing labels that describe these states is redundant and clutters the interface.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">switchAirplaneModeTest</span><span class="o">(){</span>
+        <span class="n">networkAndInternetButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">airplaneModeSwitch</span><span class="o">.</span><span class="na">setToOn</span><span class="o">();</span>
+        <span class="n">airplaneModeSwitch</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">airplaneModeSwitch</span><span class="o">.</span><span class="na">setToOff</span><span class="o">();</span>
+        <span class="n">airplaneModeSwitch</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">switchWiFiConnectionTest</span><span class="o">(){</span>
+        <span class="n">networkAndInternetButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">wiFiSwitch</span><span class="o">.</span><span class="na">setToOn</span><span class="o">();</span>
+        <span class="n">wiFiSwitch</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">wiFiSwitch</span><span class="o">.</span><span class="na">setToOff</span><span class="o">();</span>
+        <span class="n">wiFiSwitch</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/android/switch_on.PNG" alt="Switch" />
+<img src="images/android/switch_off.PNG" alt="Switch" /></p>
+
+<p>Available methods in Java JDI Mobile</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>SwitchAssert</td>
+</tr>
+<tr>
+<td><strong>isOn()</strong></td>
+<td>Check that switch is on</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>setToOn()</strong></td>
+<td>Set switch to on</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setToOff()</strong></td>
+<td>Set switch to off</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a></p>
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
