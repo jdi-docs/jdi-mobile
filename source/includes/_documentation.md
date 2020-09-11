@@ -232,6 +232,37 @@ Aliases in Java JDI Light:
 ## Extended Selenium features
 TBD
 
+## Android Native Application Common elements
+
+### ToggleButton
+
+<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">ToggleButton</a> allows the user to change a setting between two states.
+
+![ToggleButton](../images/android/togglebutton.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**isOn()**  | Check that toggle button is On | boolean
+**setToOff** | Set toggle button to Off | void
+**setToOn** | Set toggle button to On | void
+**is()** | Assert action | SwitchAssert
+
+```java
+    @Test
+    public void toggleButtonTest() {
+        IndexPage.viewsPage.click();
+        ViewsPage.buttonsPage.click();
+        ButtonsPage.toggleButton.is().displayed();
+        ButtonsPage.toggleButton.is().off();
+        ButtonsPage.toggleButton.setToOn();
+        ButtonsPage.toggleButton.is().on();
+        ButtonsPage.toggleButton.setToOff();
+        ButtonsPage.toggleButton.is().off();
+    }
+```
+
 ## iOS Native Application Common elements
 
 ### Buttons
