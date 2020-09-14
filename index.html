@@ -527,6 +527,9 @@
                             <li>
 								<a href="#navigation-bar" class="toc-h2 h3 toc-link" data-title="Navigation Bar">Navigation Bar</a>
                             </li>
+                            <li>
+								<a href="#segmented-control" class="toc-h2 h3 toc-link" data-title="Segmented Control">Segmented Control</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -3723,6 +3726,56 @@ appears at the top of an app screen, below the status bar, and enables navigatio
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a></p>
+<h3 id='segmented-control'>Segmented Control</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/" target="_blank" style="font-weight: bold;">A Segmented control </a>
+is a linear set of two or more segments, each of which functions as a mutually exclusive button.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">segmentedControlTest</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">CalendarPage</span><span class="o">.</span><span class="na">inboxButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+
+            <span class="n">InboxPage</span><span class="o">.</span><span class="na">eventTypesSegmentedControl</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">segments</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"New"</span><span class="o">,</span> <span class="s">"Replied"</span><span class="o">));</span>
+
+            <span class="n">InboxPage</span><span class="o">.</span><span class="na">eventTypesSegmentedControl</span><span class="o">.</span><span class="na">tapSegment</span><span class="o">(</span><span class="s">"Replied"</span><span class="o">);</span>
+            <span class="n">InboxPage</span><span class="o">.</span><span class="na">eventTypesSegmentedControl</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Replied"</span><span class="o">);</span>
+            <span class="n">InboxPage</span><span class="o">.</span><span class="na">eventsInfoText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"No Events You’ve Replied To"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/segmented_control.png" alt="Segmented control" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tapSegment(String segmentName)</strong></td>
+<td>Tap segment with segmentName on Segmented control</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getSelectedSegmentText()</strong></td>
+<td>Get text of selected segment</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getSegmentTexts()</strong></td>
+<td>Get text of all segments</td>
+<td>List<String></td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a></p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
 
