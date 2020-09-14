@@ -487,6 +487,9 @@
                             <li>
 								<a href="#switch" class="toc-h2 h3 toc-link" data-title="Switch">Switch</a>
                             </li>
+                            <li>
+								<a href="#togglebutton" class="toc-h2 h3 toc-link" data-title="ToggleButton">ToggleButton</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -3080,6 +3083,56 @@ Switches are either on or off. Providing labels that describe these states is re
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a></p>
+<h3 id='togglebutton'>ToggleButton</h3>
+<p><a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">ToggleButton</a> allows the user to change a setting between two states.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toggleButtonTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">IndexPage</span><span class="o">.</span><span class="na">viewsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ViewsPage</span><span class="o">.</span><span class="na">buttonsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">setToOn</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">setToOff</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/android/togglebutton.png" alt="ToggleButton" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isOn()</strong></td>
+<td>Check that toggle button is On</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>setToOff</strong></td>
+<td>Set toggle button to Off</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setToOn</strong></td>
+<td>Set toggle button to On</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>SwitchAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/%232248_android_toggle_buttons/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTest.java">Test examples in Java</a></p>
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
