@@ -234,34 +234,48 @@ TBD
 
 ## Android Native Application Common elements
 
-### ToggleButton
+### Switch
 
-<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">ToggleButton</a> allows the user to change a setting between two states.
+<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton" target="_blank" style="font-weight: bold;">Switch</a> allows the user to change a setting between two states.
+Switches are either on or off. Providing labels that describe these states is redundant and clutters the interface.
 
-![ToggleButton](../images/android/togglebutton.png)
+```java 
 
-Available methods in Java JDI Mobile:
+@Test
+    public void switchAirplaneModeTest(){
+        networkAndInternetButton.click();
+        airplaneModeSwitch.setToOn();
+        airplaneModeSwitch.is().on();
+        airplaneModeSwitch.setToOff();
+        airplaneModeSwitch.is().off();
+
+    }
+
+    @Test
+    public void switchWiFiConnectionTest(){
+        networkAndInternetButton.click();
+        wiFiSwitch.setToOn();
+        wiFiSwitch.is().on();
+        wiFiSwitch.setToOff();
+        wiFiSwitch.is().off();
+    }
+
+```
+
+![Switch](../images/android/switch_on.PNG)
+![Switch](../images/android/switch_off.PNG)
+
+Available methods in Java JDI Mobile
 
 |Method | Description | Return Type
 --- | --- | ---
-**isOn()**  | Check that toggle button is On | boolean
-**setToOff** | Set toggle button to Off | void
-**setToOn** | Set toggle button to On | void
-**is()** | Assert action | SwitchAssert
+**is()** | Assert action | SwitchAssert 
+**isOn()** | Check that switch is on | boolean
+**setToOn()** | Set switch to on | void
+**setToOff()** | Set switch to off | void
 
-```java
-    @Test
-    public void toggleButtonTest() {
-        IndexPage.viewsPage.click();
-        ViewsPage.buttonsPage.click();
-        ButtonsPage.toggleButton.is().displayed();
-        ButtonsPage.toggleButton.is().off();
-        ButtonsPage.toggleButton.setToOn();
-        ButtonsPage.toggleButton.is().on();
-        ButtonsPage.toggleButton.setToOff();
-        ButtonsPage.toggleButton.is().off();
-    }
-```
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
+
 
 ## iOS Native Application Common elements
 
@@ -515,6 +529,44 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
 
+### Slider
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/sliders/" target="_blank" style="font-weight: bold;">
+A Slider</a> is a horizontal track with a control called a thumb, which you can slide with your finger to move between a minimum and maximum value, such as screen brightness level or position during media playback.
+
+```java 
+
+@Test
+    public void sliderTest() {
+        SettingsListPage.accessibilityMenuItem.tap();
+        AccessibilityPage.displayAndTextSizeMenuItem.tap();
+        DisplayAndTextSizePage.largerTextMenuItem.tap();
+
+        LargerTextPage.largerTextSlider.setSliderValue("0.5");
+        LargerTextPage.largerTextSlider.is().text("50%");
+
+        LargerTextPage.largerTextSlider.setMaximumValue();
+        LargerTextPage.largerTextSlider.is().text("100%");
+
+        LargerTextPage.largerTextSlider.setMinimumValue();
+        LargerTextPage.largerTextSlider.is().text("0%");
+    }
+
+```
+
+![Slider](../images/ios/slider.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**getText()** | Get text of selected value | String
+**is()** | Assert action | TextAssert 
+**setSliderValue(String value)** | Set the value (value should be in 0..1 range) | void
+**setMaximumValue()** | Set the maximum value | void 
+**setMinimumValue()** | Set the minimum value | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
+
 ## iOS Native Application Composite elements
 
 ### Context Menu
@@ -637,6 +689,39 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **tapBarButton(String buttonName)** | Tap button with buttonName on Navigation bar | void
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+
+### Segmented Control
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/" target="_blank" style="font-weight: bold;">A Segmented control </a>
+is a linear set of two or more segments, each of which functions as a mutually exclusive button.
+
+```java 
+   
+    @Test
+        public void segmentedControlTest() {
+            CalendarPage.inboxButton.tap();
+    
+            InboxPage.eventTypesSegmentedControl.has().segments(Arrays.asList("New", "Replied"));
+    
+            InboxPage.eventTypesSegmentedControl.tapSegment("Replied");
+            InboxPage.eventTypesSegmentedControl.is().selected("Replied");
+            InboxPage.eventsInfoText.is().text("No Events You’ve Replied To");
+        }
+  
+```
+
+![Segmented control](../images/ios/segmented_control.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tapSegment(String segmentName)** | Tap segment with segmentName on Segmented control | void
+**getSelectedSegmentText()** | Get text of selected segment  | String
+**getSegmentTexts()** | Get text of all segments | List<String>
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
 
 ## HTML5 Common elements
 
