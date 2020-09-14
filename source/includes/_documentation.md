@@ -652,6 +652,39 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
+### Segmented Control
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/" target="_blank" style="font-weight: bold;">A Segmented control </a>
+is a linear set of two or more segments, each of which functions as a mutually exclusive button.
+
+```java 
+   
+    @Test
+        public void segmentedControlTest() {
+            CalendarPage.inboxButton.tap();
+    
+            InboxPage.eventTypesSegmentedControl.has().segments(Arrays.asList("New", "Replied"));
+    
+            InboxPage.eventTypesSegmentedControl.tapSegment("Replied");
+            InboxPage.eventTypesSegmentedControl.is().selected("Replied");
+            InboxPage.eventsInfoText.is().text("No Events You’ve Replied To");
+        }
+  
+```
+
+![Segmented control](../images/ios/segmented_control.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tapSegment(String segmentName)** | Tap segment with segmentName on Segmented control | void
+**getSelectedSegmentText()** | Get text of selected segment  | String
+**getSegmentTexts()** | Get text of all segments | List<String>
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
+
 ## HTML5 Common elements
 
 ### Label 
