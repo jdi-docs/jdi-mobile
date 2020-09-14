@@ -513,6 +513,9 @@
                             <li>
 								<a href="#picker-wheel" class="toc-h2 h3 toc-link" data-title="Picker Wheel">Picker Wheel</a>
                             </li>
+                            <li>
+								<a href="#slider" class="toc-h2 h3 toc-link" data-title="Slider">Slider</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -3518,6 +3521,66 @@ A Picker Wheel</a> is a scrollable list of distinct values from which people can
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a></p>
+<h3 id='slider'>Slider</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/sliders/" target="_blank" style="font-weight: bold;">
+A Slider</a> is a horizontal track with a control called a thumb, which you can slide with your finger to move between a minimum and maximum value, such as screen brightness level or position during media playback.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sliderTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">SettingsListPage</span><span class="o">.</span><span class="na">accessibilityMenuItem</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">AccessibilityPage</span><span class="o">.</span><span class="na">displayAndTextSizeMenuItem</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">DisplayAndTextSizePage</span><span class="o">.</span><span class="na">largerTextMenuItem</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+
+        <span class="n">LargerTextPage</span><span class="o">.</span><span class="na">largerTextSlider</span><span class="o">.</span><span class="na">setSliderValue</span><span class="o">(</span><span class="s">"0.5"</span><span class="o">);</span>
+        <span class="n">LargerTextPage</span><span class="o">.</span><span class="na">largerTextSlider</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"50%"</span><span class="o">);</span>
+
+        <span class="n">LargerTextPage</span><span class="o">.</span><span class="na">largerTextSlider</span><span class="o">.</span><span class="na">setMaximumValue</span><span class="o">();</span>
+        <span class="n">LargerTextPage</span><span class="o">.</span><span class="na">largerTextSlider</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"100%"</span><span class="o">);</span>
+
+        <span class="n">LargerTextPage</span><span class="o">.</span><span class="na">largerTextSlider</span><span class="o">.</span><span class="na">setMinimumValue</span><span class="o">();</span>
+        <span class="n">LargerTextPage</span><span class="o">.</span><span class="na">largerTextSlider</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"0%"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/slider.png" alt="Slider" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get text of selected value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>setSliderValue(String value)</strong></td>
+<td>Set the value (value should be in 0..1 range)</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setMaximumValue()</strong></td>
+<td>Set the maximum value</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setMinimumValue()</strong></td>
+<td>Set the minimum value</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a></p>
 <h2 id='ios-native-application-composite-elements'>iOS Native Application Composite elements</h2><h3 id='context-menu'>Context Menu</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/context-menus/" target="_blank" style="font-weight: bold;">Context menu.</a><br>
 You can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.</p>
