@@ -276,6 +276,38 @@ Available methods in Java JDI Mobile
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
 
+### ToggleButton
+
+<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">ToggleButton</a> allows the user to change a setting between two states.
+
+```java 
+
+@Test
+    public void toggleButtonTest() {
+        IndexPage.viewsPage.click();
+        ViewsPage.buttonsPage.click();
+        ButtonsPage.toggleButton.is().displayed();
+        ButtonsPage.toggleButton.is().off();
+        ButtonsPage.toggleButton.setToOn();
+        ButtonsPage.toggleButton.is().on();
+        ButtonsPage.toggleButton.setToOff();
+        ButtonsPage.toggleButton.is().off();
+    }
+
+```
+
+![ToggleButton](../images/android/togglebutton.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**isOn()**  | Check that toggle button is On | boolean
+**setToOff** | Set toggle button to Off | void
+**setToOn** | Set toggle button to On | void
+**is()** | Assert action | SwitchAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/%232248_android_toggle_buttons/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTest.java">Test examples in Java</a>
 
 ## iOS Native Application Common elements
 
