@@ -482,6 +482,43 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a>
 
+
+### Switch
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/switches/" target="_blank" style="font-weight: bold;">A switch</a><br>
+ is a visual toggle between two mutually exclusive states — on and off.
+
+```java 
+   
+  @Test
+  public void switchTest() {
+      RemindersListPage.todayRemindersButton.tap();
+
+      RemindersPage.newReminderButton.tap();
+      RemindersPage.editDetailsInfoButton.openDetails();
+
+      EditDetailsPage.remindSwitch.setToOff();
+      EditDetailsPage.remindSwitch.is().off();
+      EditDetailsPage.remindSwitch.setToOn();
+      EditDetailsPage.remindSwitch.is().on();
+  }
+  
+```
+ 
+![Switch](../images/ios/switch.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**is()** | Assert action | SwitchAssert 
+**isOn()** | Check that switch is on | boolean
+**setToOn()** | Set switch to on | void
+**setToOff()** | Set switch to off | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
+
 ### Text Field
 
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
