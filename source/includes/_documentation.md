@@ -309,6 +309,43 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/%232248_android_toggle_buttons/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTest.java">Test examples in Java</a>
 
+### Spinner
+
+<a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
+In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
+all other available values, from which the user can select a new one.
+
+```java 
+
+@Test
+    public void toggleButtonTest() {
+        IndexPage.viewsPage.click();
+        AndroidScreen.scrollDown(3000);
+        ViewsPage.spinnerPage.click();
+        SpinnerPage.colorSpinner.is().displayed();
+        SpinnerPage.colorSpinner.has().text("red");
+        SpinnerPage.colorSpinner.tap();
+        SpinnerPage.colorSpinner.select("yellow");
+        SpinnerPage.colorSpinner.has().text("yellow");
+        SpinnerPage.colorSpinner.tap();
+        SpinnerPage.colorSpinner.select("violet");
+        SpinnerPage.colorSpinner.has().text("violet");
+    }
+
+```
+
+![Spinner](../images/android/spinner.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**select** | Select value in spinner | void
+**is()** | Assert action | TextAssert
+**has()** | Assert action | TextAssert
+
+<a href="***">Test examples in Java</a>
+
 ## iOS Native Application Common elements
 
 ### Buttons
