@@ -785,12 +785,57 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
 **tapSegment(String segmentName)** | Tap segment with segmentName on Segmented control | void
 **getSelectedSegmentText()** | Get text of selected segment  | String
 **getSegmentTexts()** | Get text of all segments | List<String>
 **is()** | Assert action | TextAssert 
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
+
+### Search Bar
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/search-bars/" target="_blank" style="font-weight: bold;">A Search bar </a>
+allows people to search through a large collection of values by typing text into a field.
+
+```java 
+   
+   @Test
+       public void searchBarTest() {
+           ContactsListPage.contactsSearchBar.setValue("John");
+           ContactsListPage.johnAppleseedCard.is().displayed();
+   
+           ContactsListPage.contactsSearchBar.tapClearButton();
+           ContactsListPage.contactsSearchBar.is().text("Search");
+   
+           ContactsListPage.contactsSearchBar.tapCancelButton();
+           ContactsListPage.contactsNavigationBar.addButton.is().displayed();
+       }
+  
+```
+
+![Search bar](../images/ios/search_bar.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**setValue()** | Set value in search bar | void
+**getValue()** | Get value from search bar | String
+**getText()** | Get text from search bar | String
+**clear()** | Clear value in search bar | void
+**tapCancelButton()** | Tap cancel button | void
+**tapClearButton()** | Tap clear button | void
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
 ## HTML5 Common elements
 
