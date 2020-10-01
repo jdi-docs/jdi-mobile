@@ -539,6 +539,9 @@
                             <li>
 								<a href="#segmented-control" class="toc-h2 h3 toc-link" data-title="Segmented Control">Segmented Control</a>
                             </li>
+                            <li>
+								<a href="#search-bar" class="toc-h2 h3 toc-link" data-title="Search Bar">Search Bar</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -3930,6 +3933,26 @@ is a linear set of two or more segments, each of which functions as a mutually e
 </tr>
 </thead><tbody>
 <tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
 <td><strong>tapSegment(String segmentName)</strong></td>
 <td>Tap segment with segmentName on Segmented control</td>
 <td>void</td>
@@ -3952,6 +3975,92 @@ is a linear set of two or more segments, each of which functions as a mutually e
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a></p>
+<h3 id='search-bar'>Search Bar</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/search-bars/" target="_blank" style="font-weight: bold;">A Search bar </a>
+allows people to search through a large collection of values by typing text into a field.</p>
+<pre class="highlight java tab-java"><code>
+   <span class="nd">@Test</span>
+       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">searchBarTest</span><span class="o">()</span> <span class="o">{</span>
+           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
+           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">johnAppleseedCard</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">tapClearButton</span><span class="o">();</span>
+           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Search"</span><span class="o">);</span>
+
+           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">tapCancelButton</span><span class="o">();</span>
+           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+       <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/search_bar.png" alt="Search bar" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue()</strong></td>
+<td>Set value in search bar</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get value from search bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get text from search bar</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>Clear value in search bar</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>tapCancelButton()</strong></td>
+<td>Tap cancel button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>tapClearButton()</strong></td>
+<td>Tap clear button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a></p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
 
