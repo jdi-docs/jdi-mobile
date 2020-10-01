@@ -377,7 +377,7 @@ Available methods in Java JDI Mobile
 **check()** | Set to checked | void
 **uncheck()** | Set to unchecked | void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/2246-android-checkbox/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/CheckboxTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile/src/main/java/com/epam/jdi/light/mobile/elements/common/app/android/Checkbox.java" target="_blank">Test examples in Java</a>
 
 ## iOS Native Application Common elements
 
