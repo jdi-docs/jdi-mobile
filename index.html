@@ -485,10 +485,13 @@
                     <a href="#android-native-application-common-elements" class="toc-h2 toc-link" data-title="Android Native Application Common elements">Android Native Application Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
+								<a href="#toggle-button" class="toc-h2 h3 toc-link" data-title="Toggle Button">Toggle Button</a>
+                            </li>
+                            <li>
 								<a href="#switch" class="toc-h2 h3 toc-link" data-title="Switch">Switch</a>
                             </li>
                             <li>
-								<a href="#togglebutton" class="toc-h2 h3 toc-link" data-title="ToggleButton">ToggleButton</a>
+								<a href="#checkbox" class="toc-h2 h3 toc-link" data-title="Checkbox">Checkbox</a>
                             </li>
                         </ul>
                   </li>
@@ -554,7 +557,7 @@
 								<a href="#button" class="toc-h2 h3 toc-link" data-title="Button">Button</a>
                             </li>
                             <li>
-								<a href="#checkbox" class="toc-h2 h3 toc-link" data-title="Checkbox">Checkbox</a>
+								<a href="#checkbox-2" class="toc-h2 h3 toc-link" data-title="Checkbox">Checkbox</a>
                             </li>
                             <li>
 								<a href="#colorpicker" class="toc-h2 h3 toc-link" data-title="ColorPicker">ColorPicker</a>
@@ -796,7 +799,7 @@
 								<a href="#datetimeselector-2" class="toc-h2 h3 toc-link" data-title="DateTimeSelector">DateTimeSelector</a>
                             </li>
                             <li>
-								<a href="#checkbox-2" class="toc-h2 h3 toc-link" data-title="Checkbox">Checkbox</a>
+								<a href="#checkbox-3" class="toc-h2 h3 toc-link" data-title="Checkbox">Checkbox</a>
                             </li>
                             <li>
 								<a href="#progress-bar" class="toc-h2 h3 toc-link" data-title="Progress Bar">Progress Bar</a>
@@ -3030,8 +3033,58 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 </tbody></table>
 <h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
-<h2 id='android-native-application-common-elements'>Android Native Application Common elements</h2><h3 id='switch'>Switch</h3>
-<p><a href="https://developer.android.com/guide/topics/ui/controls/togglebutton" target="_blank" style="font-weight: bold;">Switch</a> allows the user to change a setting between two states.
+<h2 id='android-native-application-common-elements'>Android Native Application Common elements</h2><h3 id='toggle-button'>Toggle Button</h3>
+<p><a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">Toggle Button</a> allows the user to change a setting between two states (ON or OFF) as a button with a light indicator.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toggleButtonTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">IndexPage</span><span class="o">.</span><span class="na">viewsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ViewsPage</span><span class="o">.</span><span class="na">buttonsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">setToOn</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">on</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">setToOff</span><span class="o">();</span>
+        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/android/togglebutton.png" alt="ToggleButton" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isOn()</strong></td>
+<td>Check that toggle button is On</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>setToOff</strong></td>
+<td>Set toggle button to Off</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setToOn</strong></td>
+<td>Set toggle button to On</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>SwitchAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a></p>
+<h3 id='switch'>Switch</h3>
+<p><a href="https://developer.android.com/reference/android/widget/Switch" target="_blank" style="font-weight: bold;">Switch</a> is another type of toggle button that’s predominantly used since Android 4.0. Android Switch provides a slider control and allows the user to change a setting between two states.
 Switches are either on or off. Providing labels that describe these states is redundant and clutters the interface.</p>
 <pre class="highlight java tab-java"><code>
 <span class="nd">@Test</span>
@@ -3089,25 +3142,61 @@ Switches are either on or off. Providing labels that describe these states is re
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a></p>
-<h3 id='togglebutton'>ToggleButton</h3>
-<p><a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">ToggleButton</a> allows the user to change a setting between two states.</p>
+<h3 id='checkbox'>Checkbox</h3>
+<p><a href="https://developer.android.com/guide/topics/ui/controls/checkbox" target="_blank" style="font-weight: bold;">Checkbox</a>  is a specific type of two-states button that can be either checked or unchecked.
+It allows the user to select one or more options from a set. </p>
 <pre class="highlight java tab-java"><code>
-<span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toggleButtonTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">IndexPage</span><span class="o">.</span><span class="na">viewsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">ViewsPage</span><span class="o">.</span><span class="na">buttonsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
-        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">setToOn</span><span class="o">();</span>
-        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">on</span><span class="o">();</span>
-        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">setToOff</span><span class="o">();</span>
-        <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">toggleButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
+<span class="nd">@BeforeMethod</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initSteps</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">animationPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">layoutAnimationsButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">customAnimationsCheckboxTest</span><span class="o">(){</span>
+        <span class="n">customAnimationsCheckbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+        <span class="n">customAnimationsCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+        <span class="n">customAnimationsCheckbox</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
+        <span class="n">customAnimationsCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">inCheckboxTest</span><span class="o">(){</span>
+        <span class="n">inCheckbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+        <span class="n">inCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+        <span class="n">inCheckbox</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
+        <span class="n">inCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">outCheckboxTest</span><span class="o">(){</span>
+        <span class="n">outCheckbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+        <span class="n">outCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+        <span class="n">outCheckbox</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
+        <span class="n">outCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changingInCheckboxTest</span><span class="o">(){</span>
+        <span class="n">changingInCheckbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+        <span class="n">changingInCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+        <span class="n">changingInCheckbox</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
+        <span class="n">changingInCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changingOutCheckboxTest</span><span class="o">(){</span>
+        <span class="n">changingOutCheckbox</span><span class="o">.</span><span class="na">check</span><span class="o">();</span>
+        <span class="n">changingOutCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+        <span class="n">changingOutCheckbox</span><span class="o">.</span><span class="na">uncheck</span><span class="o">();</span>
+        <span class="n">changingOutCheckbox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
     <span class="o">}</span>
 
 </code></pre>
-<p><img src="images/android/togglebutton.png" alt="ToggleButton" /></p>
+<p><img src="images/android/checkbox.png" alt="Checkbox" /></p>
 
-<p>Available methods in Java JDI Mobile:</p>
+<p>Available methods in Java JDI Mobile</p>
 
 <table><thead>
 <tr>
@@ -3117,28 +3206,28 @@ Switches are either on or off. Providing labels that describe these states is re
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>isOn()</strong></td>
-<td>Check that toggle button is On</td>
+<td><strong>is()</strong></td>
+<td>Assert action checkbox</td>
+<td>CheckboxAssert</td>
+</tr>
+<tr>
+<td><strong>isChecked()</strong></td>
+<td>Check that checkbox is selected</td>
 <td>boolean</td>
 </tr>
 <tr>
-<td><strong>setToOff</strong></td>
-<td>Set toggle button to Off</td>
+<td><strong>check()</strong></td>
+<td>Set to checked</td>
 <td>void</td>
 </tr>
 <tr>
-<td><strong>setToOn</strong></td>
-<td>Set toggle button to On</td>
+<td><strong>uncheck()</strong></td>
+<td>Set to unchecked</td>
 <td>void</td>
-</tr>
-<tr>
-<td><strong>is()</strong></td>
-<td>Assert action</td>
-<td>SwitchAssert</td>
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/%232248_android_toggle_buttons/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTest.java">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile/src/main/java/com/epam/jdi/light/mobile/elements/common/app/android/Checkbox.java" target="_blank">Test examples in Java</a></p>
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
@@ -4313,7 +4402,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ButtonTests.cs" target="_blank">C# test examples</a>
 <br>
 <a href="https://jdi-docs.github.io/jdi-light/?java#button-3">BDD Steps example</a></p>
-<h3 id='checkbox'>Checkbox</h3>
+<h3 id='checkbox-2'>Checkbox</h3>
 <p><strong>Checkbox</strong> – Element allows you to select single value for submission.</p>
 
 <p><img src="images/checkbox.png" alt="Checkbox" /></p>
@@ -27202,7 +27291,7 @@ Validations: <br></p>
 <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Month.feature">Input Type Month</a>,<br>
 <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Time.feature">Input Type Time</a>,
 <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DateTime.feature">DateTime-Local</a><br><br></p>
-<h3 id='checkbox-2'>Checkbox</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Checkbox action examples</span><span class="p">:</span>
+<h3 id='checkbox-3'>Checkbox</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Checkbox action examples</span><span class="p">:</span>
 
 <span class="nf">When</span> check <span class="s">"Accept Conditions"</span>
 <span class="nf">When</span> uncheck <span class="s">"Accept Conditions"</span>
