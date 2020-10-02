@@ -234,9 +234,42 @@ TBD
 
 ## Android Native Application Common elements
 
+### Toggle Button
+
+<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">Toggle Button</a> allows the user to change a setting between two states (ON or OFF) as a button with a light indicator.
+
+```java 
+
+@Test
+    public void toggleButtonTest() {
+        IndexPage.viewsPage.click();
+        ViewsPage.buttonsPage.click();
+        ButtonsPage.toggleButton.is().displayed();
+        ButtonsPage.toggleButton.is().off();
+        ButtonsPage.toggleButton.setToOn();
+        ButtonsPage.toggleButton.is().on();
+        ButtonsPage.toggleButton.setToOff();
+        ButtonsPage.toggleButton.is().off();
+    }
+
+```
+
+![ToggleButton](../images/android/togglebutton.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**isOn()**  | Check that toggle button is On | boolean
+**setToOff** | Set toggle button to Off | void
+**setToOn** | Set toggle button to On | void
+**is()** | Assert action | SwitchAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
+
 ### Switch
 
-<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton" target="_blank" style="font-weight: bold;">Switch</a> allows the user to change a setting between two states.
+<a href="https://developer.android.com/reference/android/widget/Switch" target="_blank" style="font-weight: bold;">Switch</a> is another type of toggle button that’s predominantly used since Android 4.0. Android Switch provides a slider control and allows the user to change a setting between two states.
 Switches are either on or off. Providing labels that describe these states is redundant and clutters the interface.
 
 ```java 
@@ -276,38 +309,75 @@ Available methods in Java JDI Mobile
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
 
-### ToggleButton
+### Checkbox
 
-<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">ToggleButton</a> allows the user to change a setting between two states.
+<a href="https://developer.android.com/guide/topics/ui/controls/checkbox" target="_blank" style="font-weight: bold;">Checkbox</a>  is a specific type of two-states button that can be either checked or unchecked.
+It allows the user to select one or more options from a set. 
 
 ```java 
 
-@Test
-    public void toggleButtonTest() {
-        IndexPage.viewsPage.click();
-        ViewsPage.buttonsPage.click();
-        ButtonsPage.toggleButton.is().displayed();
-        ButtonsPage.toggleButton.is().off();
-        ButtonsPage.toggleButton.setToOn();
-        ButtonsPage.toggleButton.is().on();
-        ButtonsPage.toggleButton.setToOff();
-        ButtonsPage.toggleButton.is().off();
+@BeforeMethod
+    public void initSteps() {
+        animationPage.click();
+        layoutAnimationsButton.click();
+    }
+
+    @Test
+    public void customAnimationsCheckboxTest(){
+        customAnimationsCheckbox.check();
+        customAnimationsCheckbox.is().selected();
+        customAnimationsCheckbox.uncheck();
+        customAnimationsCheckbox.is().deselected();
+
+    }
+
+    @Test
+    public void inCheckboxTest(){
+        inCheckbox.check();
+        inCheckbox.is().selected();
+        inCheckbox.uncheck();
+        inCheckbox.is().deselected();
+    }
+
+    @Test
+    public void outCheckboxTest(){
+        outCheckbox.check();
+        outCheckbox.is().selected();
+        outCheckbox.uncheck();
+        outCheckbox.is().deselected();
+    }
+
+    @Test
+    public void changingInCheckboxTest(){
+        changingInCheckbox.check();
+        changingInCheckbox.is().selected();
+        changingInCheckbox.uncheck();
+        changingInCheckbox.is().deselected();
+    }
+
+    @Test
+    public void changingOutCheckboxTest(){
+        changingOutCheckbox.check();
+        changingOutCheckbox.is().selected();
+        changingOutCheckbox.uncheck();
+        changingOutCheckbox.is().deselected();
     }
 
 ```
 
-![ToggleButton](../images/android/togglebutton.png)
+![Checkbox](../images/android/checkbox.png)
 
-Available methods in Java JDI Mobile:
+
+Available methods in Java JDI Mobile
 
 |Method | Description | Return Type
 --- | --- | ---
-**isOn()**  | Check that toggle button is On | boolean
-**setToOff** | Set toggle button to Off | void
-**setToOn** | Set toggle button to On | void
-**is()** | Assert action | SwitchAssert
+**is()** | Assert action checkbox | CheckboxAssert 
+**isChecked()** | Check that checkbox is selected | boolean
+**check()** | Set to checked | void
+**uncheck()** | Set to unchecked | void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/%232248_android_toggle_buttons/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTest.java">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile/src/main/java/com/epam/jdi/light/mobile/elements/common/app/android/Checkbox.java" target="_blank">Test examples in Java</a>
 
 ## iOS Native Application Common elements
 
