@@ -265,7 +265,7 @@ Available methods in Java JDI Mobile:
 **setToOn** | Set toggle button to On | void
 **is()** | Assert action | SwitchAssert
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/%232248_android_toggle_buttons/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTest.java">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
 
 ### Switch
 
