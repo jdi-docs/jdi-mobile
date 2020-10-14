@@ -379,6 +379,53 @@ Available methods in Java JDI Mobile
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile/src/main/java/com/epam/jdi/light/mobile/elements/common/app/android/Checkbox.java" target="_blank">Test examples in Java</a>
 
+### Search View
+
+<a href="https://https://developer.android.com/reference/android/widget/SearchView">Search View</a> is a widget that provides an interface for a user to enter a search query and submit a request to a search provider. It shows a list of query suggestions or results, if available, and allows the user to pick a suggestion or result to launch into.
+
+```java 
+
+@Test
+    public void searchViewTestForActionBar() {
+        IndexPage.viewsPage.click();
+        MobileScreen.scrollDown(3300);
+        ViewsPage.searchViewPage.click();
+        SearchViewPage.actionBarPage.click();
+        SearchViewActionBarPage.searchViewButton.is().iconifiedByDefault();
+        SearchViewActionBarPage.searchViewButton.setExpanded();
+        SearchViewActionBarPage.searchViewField.is().expanded();
+        SearchViewActionBarPage.home.click();
+        SearchViewActionBarPage.searchViewButton.isIconified();
+        SearchViewActionBarPage.searchViewButton.setExpanded();
+        SearchViewActionBarPage.searchViewField.has().text(PLACEHOLDER_ActionBar);
+        SearchViewActionBarPage.searchViewField.input("Settings");
+        SearchViewActionBarPage.query.has().text("Query = Settings");
+        SearchViewActionBarPage.searchViewField.clear();
+        SearchViewActionBarPage.searchViewField.input("Animation");
+        MobileKeyboard.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.ENTER));
+        SearchViewActionBarPage.queryText.has().text("Animation");
+    }
+
+```
+
+![Search View](../images/android/searchView_iconified.png)
+
+![Search View](../images/android/searchView_expanded.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**isIconifiedByDefault()**  | Returns the default iconified state of the search field | boolean
+**setExpanded()** | Sets the search field expanded | void
+**expanded()** | Checks that the search field is expanded | boolean
+**input(String value)** | Inputs values into the the search field | void
+**clear()** | Remove values from the search field | void
+**is()** | Assert action | SearchViewAssert
+**has()** | Assert action | SearchViewAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SearchViewTests.java">Test examples in Java</a>
+
 ## iOS Native Application Common elements
 
 ### Buttons
