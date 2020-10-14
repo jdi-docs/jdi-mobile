@@ -493,6 +493,9 @@
                             <li>
 								<a href="#checkbox" class="toc-h2 h3 toc-link" data-title="Checkbox">Checkbox</a>
                             </li>
+                            <li>
+								<a href="#search-view" class="toc-h2 h3 toc-link" data-title="Search View">Search View</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -3228,6 +3231,82 @@ It allows the user to select one or more options from a set. </p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile/src/main/java/com/epam/jdi/light/mobile/elements/common/app/android/Checkbox.java" target="_blank">Test examples in Java</a></p>
+<h3 id='search-view'>Search View</h3>
+<p><a href="https://https://developer.android.com/reference/android/widget/SearchView">Search View</a> is a widget that provides an interface for a user to enter a search query and submit a request to a search provider. It shows a list of query suggestions or results, if available, and allows the user to pick a suggestion or result to launch into.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">searchViewTestForActionBar</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">IndexPage</span><span class="o">.</span><span class="na">viewsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">MobileScreen</span><span class="o">.</span><span class="na">scrollDown</span><span class="o">(</span><span class="mi">3300</span><span class="o">);</span>
+        <span class="n">ViewsPage</span><span class="o">.</span><span class="na">searchViewPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">SearchViewPage</span><span class="o">.</span><span class="na">actionBarPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">searchViewButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">iconifiedByDefault</span><span class="o">();</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">searchViewButton</span><span class="o">.</span><span class="na">setExpanded</span><span class="o">();</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">searchViewField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">expanded</span><span class="o">();</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">home</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">searchViewButton</span><span class="o">.</span><span class="na">isIconified</span><span class="o">();</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">searchViewButton</span><span class="o">.</span><span class="na">setExpanded</span><span class="o">();</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">searchViewField</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">PLACEHOLDER_ActionBar</span><span class="o">);</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">searchViewField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="s">"Settings"</span><span class="o">);</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">query</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Query = Settings"</span><span class="o">);</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">searchViewField</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">searchViewField</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="s">"Animation"</span><span class="o">);</span>
+        <span class="n">MobileKeyboard</span><span class="o">.</span><span class="na">pressKey</span><span class="o">(</span><span class="k">new</span> <span class="n">io</span><span class="o">.</span><span class="na">appium</span><span class="o">.</span><span class="na">java_client</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">nativekey</span><span class="o">.</span><span class="na">KeyEvent</span><span class="o">(</span><span class="n">AndroidKey</span><span class="o">.</span><span class="na">ENTER</span><span class="o">));</span>
+        <span class="n">SearchViewActionBarPage</span><span class="o">.</span><span class="na">queryText</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Animation"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/android/searchView_iconified.png" alt="Search View" /></p>
+
+<p><img src="images/android/searchView_expanded.png" alt="Search View" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isIconifiedByDefault()</strong></td>
+<td>Returns the default iconified state of the search field</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>setExpanded()</strong></td>
+<td>Sets the search field expanded</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Checks that the search field is expanded</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>input(String value)</strong></td>
+<td>Inputs values into the the search field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>Remove values from the search field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>SearchViewAssert</td>
+</tr>
+<tr>
+<td><strong>has()</strong></td>
+<td>Assert action</td>
+<td>SearchViewAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SearchViewTests.java">Test examples in Java</a></p>
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
