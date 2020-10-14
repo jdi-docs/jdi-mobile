@@ -381,7 +381,7 @@ Available methods in Java JDI Mobile
 
 ### Search View
 
-<a href="https://https://developer.android.com/reference/android/widget/SearchView">Search View</a> is a widget that provides an interface for a user to enter a search query and submit a request to a search provider. It shows a list of query suggestions or results, if available, and allows the user to pick a suggestion or result to launch into.
+<a href="https://developer.android.com/reference/android/widget/SearchView" target="_blank" style="font-weight: bold;">Search View</a> is a widget that provides an interface for a user to enter a search query and submit a request to a search provider. It shows a list of query suggestions or results, if available, and allows the user to pick a suggestion or result to launch into.
 
 ```java 
 
