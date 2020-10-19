@@ -987,100 +987,6 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 ## HTML5 Common elements
 
-### Label 
-
-```java 
-   
-  //In the next test Label is found from 'name' and 'disabledName' locators:
-   
-  // @FindBy(css = "#name")
-  @UI("#name") 
-  public static TextField name;
-	
-  // @FindBy(css = "#disabled-name")
-  @UI("#disabled-name") 
-  public static TextField disabledName;
-	
-  //By default Label is found by locator 
-  By.cssSelector("[for="+getAttribute("id")+"]")
-   
-  @Test
-  public void labelTest() {
-      assertEquals(name.label().getText(), "Your name:");
-      name.label().is().text(containsString("Your"));
-      disabledName.label().is().text(equalToIgnoringCase("Surname:"));
-  }
-	
- @Test
- public void labelAssertThatTest() {
-     jdiTitle.assertThat().text(is(text));
- }
-
- @Test
- public void labelClickTest() {
-     jdiTitle.click();
-     validateAlert(containsString("JDI Title"));
- }
-  
- ```
-
- ```csharp 
-  	
- In the next test Label is found from NameTextField locator:
-  
- [FindBy(Css = "div.main-content #name")]
- public TextField NameTextField { get; set; }
-	
- By default Label is found by locator By.CssSelector($"[for={WebElement.GetAttribute("id")}]")
-
- [Test] 
- public void LabelTest() 
- { 
-     Assert.AreEqual(TestSite.Html5Page.NameTextField.Label().GetText(), "Your name:");
-     TestSite.Html5Page.NameTextField.Label().Is.Text(ContainsString("Your"));
-     Assert.AreEqual(TestSite.Html5Page.SurnameTextField.Label().GetText(), "Surname:");
-     TestSite.Html5Page.SurnameTextField.Label().Is.Text(ContainsString("Surname:")); 
- }	 
-	
- [Test] 
- public void GetLabelTextTest() 
- { 
-     AreEqual(TestSite.Html5Page.ColorPicker.LabelText(), "Select a color"); 
- } 
- 
-  ```
- **Label** – Elements' caption for a big number of JDI common elements. 
- 
-![Label](../images/colorpicker.png) 
-
-```html 
-<label for="test">Description</label>
-```
-
-Label's implementation is located in the following classes: 
-
-   - __Java__: _com.epam.jdi.light.elements.base.BaseUIElement_
-   - __C#__: _JDI.Light.Elements.Base.UIElement_
-
- 
- 
-Available methods in C# JDI Light: 
-
-|Method | Description | Return Type 
---- | --- | --- 
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button  | void
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert
-**Label()** | Creates label for element using the element's Id | Label 
-**LabelText()** | Gets the text of a label | string 
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/LabelsTests.cs" target="_blank">C# test examples</a> 
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/LabelTests.java" target="_blank">Java test examples</a> 
-
-[BDD Steps examples](https://jdi-docs.github.io/jdi-light/?java#label-2)
-
-
 ### Button
 
 ```java 
@@ -1953,6 +1859,99 @@ Here is a list of available methods in C#:
 
 <a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ImagesTests.cs" target="_blank">Test examples in C#</a>
 
+### Label 
+
+```java 
+   
+  //In the next test Label is found from 'name' and 'disabledName' locators:
+   
+  // @FindBy(css = "#name")
+  @UI("#name") 
+  public static TextField name;
+	
+  // @FindBy(css = "#disabled-name")
+  @UI("#disabled-name") 
+  public static TextField disabledName;
+	
+  //By default Label is found by locator 
+  By.cssSelector("[for="+getAttribute("id")+"]")
+   
+  @Test
+  public void labelTest() {
+      assertEquals(name.label().getText(), "Your name:");
+      name.label().is().text(containsString("Your"));
+      disabledName.label().is().text(equalToIgnoringCase("Surname:"));
+  }
+	
+ @Test
+ public void labelAssertThatTest() {
+     jdiTitle.assertThat().text(is(text));
+ }
+
+ @Test
+ public void labelClickTest() {
+     jdiTitle.click();
+     validateAlert(containsString("JDI Title"));
+ }
+  
+ ```
+
+ ```csharp 
+  	
+ In the next test Label is found from NameTextField locator:
+  
+ [FindBy(Css = "div.main-content #name")]
+ public TextField NameTextField { get; set; }
+	
+ By default Label is found by locator By.CssSelector($"[for={WebElement.GetAttribute("id")}]")
+
+ [Test] 
+ public void LabelTest() 
+ { 
+     Assert.AreEqual(TestSite.Html5Page.NameTextField.Label().GetText(), "Your name:");
+     TestSite.Html5Page.NameTextField.Label().Is.Text(ContainsString("Your"));
+     Assert.AreEqual(TestSite.Html5Page.SurnameTextField.Label().GetText(), "Surname:");
+     TestSite.Html5Page.SurnameTextField.Label().Is.Text(ContainsString("Surname:")); 
+ }	 
+	
+ [Test] 
+ public void GetLabelTextTest() 
+ { 
+     AreEqual(TestSite.Html5Page.ColorPicker.LabelText(), "Select a color"); 
+ } 
+ 
+  ```
+ **Label** – Elements' caption for a big number of JDI common elements. 
+ 
+![Label](../images/colorpicker.png) 
+
+```html 
+<label for="test">Description</label>
+```
+
+Label's implementation is located in the following classes: 
+
+   - __Java__: _com.epam.jdi.light.elements.base.BaseUIElement_
+   - __C#__: _JDI.Light.Elements.Base.UIElement_
+
+ 
+ 
+Available methods in C# JDI Light: 
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button  | void
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert
+**Label()** | Creates label for element using the element's Id | Label 
+**LabelText()** | Gets the text of a label | string 
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/LabelsTests.cs" target="_blank">C# test examples</a> 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/LabelTests.java" target="_blank">Java test examples</a> 
+
+[BDD Steps examples](https://jdi-docs.github.io/jdi-light/?java#label-2)
+
 ### Link
 
 ```java 
@@ -2547,108 +2546,6 @@ Here is a list of available methods in Java:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeApp/elements/common/TextTests.java" target="_blank">Test examples in Java</a>
 
-
-### TextField
-```java 
-@UI("#name") //@FindBy(css = "#name")
-public static TextField name;
-
-@Test
-public void setTextTest() {
-    name.setText(text);
-    name.is().text(text);
-    name.is().text(is(text));
-    name.is().text(containsString("Field"));
-}
-
-@Test
-public void sendKeysTest() {
-    name.setText(text);
-    name.sendKeys("Test");
-    name.is().text(text + "Test");
-}
-
-@Test
-public void clearTest() {
-    name.clear();
-    name.is().text("");
-}
-```
-```csharp 
-[FindBy(Id = "name")]
-public ITextField NameField;
-        
-        [Test]
-        public void InputTest()
-        {
-            TestSite.ContactFormPage.NameField.Input(ToAddText);
-            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, ToAddText);
-        }
-        
-        [Test]
-        public void SendKeyTest()
-        {
-            TestSite.ContactFormPage.NameField.SendKeys(ToAddText);
-            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, _defaultText + ToAddText);
-        }
-
-        [Test]
-        public void ClearTest()
-        {
-            TestSite.ContactFormPage.NameField.Clear();
-            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, "");
-        }
-```
-**TextField** – Is a simple element type that allows users to fill in text fields.
-
-![InputTypeTextField](../images/html/textField_html2.png)
-
-```html
-<label for="name">Your name:</label>
-<input type="text" id="name" placeholder="Input name">
-<label for="disabled-name">Surname:</label>
-<input type="text" id="disabled-name" placeholder="Iovlev" disabled="">
-```
-
-Text fields are represented by the following classes in Java and C#:
- 
-  - __C#__: _JDI.Light.Elements.Common.TextField_
-  - __Java__: _com.epam.jdi.light.ui.html.common.TextField_
-  
-Here is a list of available methods and properties in C#:
-
-|Method / Property | Description | Return Type
---- | --- | ---
-**AssertThat** | property that returns object for work with assertions| TextAssert
-**Clear()** | clears the text field | void
-**Focus()** | places cursor within the text field | void
-**GetText()** | returns text from the text field  | String
-**GetValue()** | returns text from the text field| String
-**Input(string text)** | sets new text  | void
-**Is** | property that returns object for work with assertions| TextAssert
-**Placeholder** | returns value of the placeholder attribute | String
-**SendKeys(string value)** | adds text to the field | void
-**SetText(String value)** | sets new text | void
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/TextFieldsTests.cs" target="_blank">Test examples in C#</a><br>
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#textfield-2)<br>
-
-And here are methods available in Java:
-
-|Method | Description | Return Type
---- | --- | ---
-**clear()** | clears the text field | void
-**focus()** | places cursor within the text field | void
-**getText()** | returns text from the text field  | String
-**getValue()** | returns text from the text field| String
-**input(String value)** | sets new text | void
-**placeholder()** | returns value of the placeholder attribute | String
-**sendKeys(CharSequence... value)** | adds text to the field | void
-**setText(String value)** | sets new text | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/TextFieldTests.java" target="_blank">Test examples in Java</a><br>
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#textfield-2)<br>
-
 ### TextArea
 
 **TextArea** – Is a simple element type that allows users to fill in text areas (they may contain a few lines). 
@@ -2765,6 +2662,107 @@ Here is a list of available methods in C#:
  
   <a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/TextAreaTests.cs" target="_blank">Test examples in C#</a><br>
 
+### TextField
+```java 
+@UI("#name") //@FindBy(css = "#name")
+public static TextField name;
+
+@Test
+public void setTextTest() {
+    name.setText(text);
+    name.is().text(text);
+    name.is().text(is(text));
+    name.is().text(containsString("Field"));
+}
+
+@Test
+public void sendKeysTest() {
+    name.setText(text);
+    name.sendKeys("Test");
+    name.is().text(text + "Test");
+}
+
+@Test
+public void clearTest() {
+    name.clear();
+    name.is().text("");
+}
+```
+```csharp 
+[FindBy(Id = "name")]
+public ITextField NameField;
+        
+        [Test]
+        public void InputTest()
+        {
+            TestSite.ContactFormPage.NameField.Input(ToAddText);
+            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, ToAddText);
+        }
+        
+        [Test]
+        public void SendKeyTest()
+        {
+            TestSite.ContactFormPage.NameField.SendKeys(ToAddText);
+            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, _defaultText + ToAddText);
+        }
+
+        [Test]
+        public void ClearTest()
+        {
+            TestSite.ContactFormPage.NameField.Clear();
+            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, "");
+        }
+```
+**TextField** – Is a simple element type that allows users to fill in text fields.
+
+![InputTypeTextField](../images/html/textField_html2.png)
+
+```html
+<label for="name">Your name:</label>
+<input type="text" id="name" placeholder="Input name">
+<label for="disabled-name">Surname:</label>
+<input type="text" id="disabled-name" placeholder="Iovlev" disabled="">
+```
+
+Text fields are represented by the following classes in Java and C#:
+ 
+  - __C#__: _JDI.Light.Elements.Common.TextField_
+  - __Java__: _com.epam.jdi.light.ui.html.common.TextField_
+  
+Here is a list of available methods and properties in C#:
+
+|Method / Property | Description | Return Type
+--- | --- | ---
+**AssertThat** | property that returns object for work with assertions| TextAssert
+**Clear()** | clears the text field | void
+**Focus()** | places cursor within the text field | void
+**GetText()** | returns text from the text field  | String
+**GetValue()** | returns text from the text field| String
+**Input(string text)** | sets new text  | void
+**Is** | property that returns object for work with assertions| TextAssert
+**Placeholder** | returns value of the placeholder attribute | String
+**SendKeys(string value)** | adds text to the field | void
+**SetText(String value)** | sets new text | void
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/TextFieldsTests.cs" target="_blank">Test examples in C#</a><br>
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#textfield-2)<br>
+
+And here are methods available in Java:
+
+|Method | Description | Return Type
+--- | --- | ---
+**clear()** | clears the text field | void
+**focus()** | places cursor within the text field | void
+**getText()** | returns text from the text field  | String
+**getValue()** | returns text from the text field| String
+**input(String value)** | sets new text | void
+**placeholder()** | returns value of the placeholder attribute | String
+**sendKeys(CharSequence... value)** | adds text to the field | void
+**setText(String value)** | sets new text | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/TextFieldTests.java" target="_blank">Test examples in Java</a><br>
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#textfield-2)<br>
+
 ### Title
 **Title** – A graphical control element representing document title, which is displayed in the title bar of the browser or tab page.
 
@@ -2856,6 +2854,910 @@ Here is the list of available methods in Java JDI Light:
 
 
 ## HTML5 Complex elements
+
+### CheckList
+**CheckList** – A graphical control element representing a set of checkboxes, each of which allows user to control a two-state parameter (enabled or disabled).
+
+Checklist element type is available in the following packages:
+ 
+ - __Java__: com.epam.jdi.light.ui.html.complex.Checklist
+ - __C__#: JDI.Light.Elements.Complex.CheckList 
+
+See an example with HTML code describing checklist element.
+
+![Checklist Example](../images/html/checklist_html2.png)
+
+```java 
+//@FindBy(name = "checks-group")
+@UI("[name=checks-group]") public static Checklist weather;
+public static Checklist weatherNoLocator;
+
+@Test
+public void checkTest() {
+    weather.check("Rainy day", "Sunny");
+    weather.is().checked(hasSize(2));
+    weather.is().checked(hasItems("Rainy day", "Sunny"));
+}
+
+@Test
+public void assertValidationTest() {
+    weather.assertThat().values(containsInAnyOrder(
+      "Hot option", "Cold", "Rainy day", "Sunny", "Disabled"));
+    weatherNoLocator.assertThat().selected("Hot option");
+}
+```
+```csharp 
+[FindBy(Css = "div:nth-child(11) > div.html-left")]
+public ICheckList weather;
+
+[FindBy(Css = "div:nth-child(11) > div.html-left")]
+public ICheckList<MyCheckBox> genericWeather;
+
+[Test]
+public void CheckCheckList()
+{
+    weather.Check("Cold", "Hot option");
+    Jdi.Assert.CollectionEquals(new[] { "Cold", "Hot option" }, weather.Checked());
+}
+
+[Test]
+public void UncheckTest()
+{
+    _weather.Check(false, "Rainy day", "Sunny");
+    _weather.Uncheck(false, "Rainy day", "Sunny");
+    _weather.Is.Selected(HasSize(2));
+    _weather.Is.Selected(HasItems(new[] { "Hot option", "Cold" }));
+}
+
+[Test]
+public void IsValidationTests()
+{
+    weather.AssertThat
+                .Values(HasItems(new[] {"Cold", "Sunny"}))
+                .Disabled(HasItems(new[] {"Disabled"}))                
+                .Size(Is.LessThan(6))
+                .AllDisplayed();
+}
+
+[Test]
+public void UncheckAllTest()
+{
+    _weather.Uncheck(false, "Rainy day", "Sunny");
+    _weather.UncheckAll();
+    _weather.Is.Selected(HasSize(0));
+}
+
+[Test]
+public void CheckAllTest()
+{
+    _weather.CheckAll();
+    _weather.Is.Selected(HasSize(4));
+    _weather.Is.Selected(HasItems(new[] { "Hot option", "Cold", "Rainy day", "Sunny" }));
+}
+
+[Test]
+public void IsDisabledTest()
+{
+    _weather.Select(false, "Disabled");
+    _weather.Is.Selected(HasItems(new [] { "Hot option" } ));
+}
+```
+
+```html
+<input type="checkbox" id="hot" name="checks-group" checked="">
+<label for="hot">Hot option</label> <br>
+
+<input type="checkbox" id="cold" name="checks-group">
+<label for="cold">Cold</label> <br>
+
+<input type="checkbox" id="rainy" name="checks-group">
+<label for="rainy">Rainy day</label> <br>
+
+<input type="checkbox" id="sunny-day" name="checks-group">
+<label for="sunny-day">Sunny</label> <br>
+
+<input type="checkbox" id="disabled-ch" name="checks-group" disabled="">
+<label for="disabled-ch">Disabled</label>
+```
+
+List of available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Get select assert | selectAssert
+**check(String.../Enum/int...)** | Check specified checkboxes and uncheck others | void
+**checkAll()** | Check all checkboxes in checklist | void
+**checked()** | Get selected checkbox values | List\<String>
+**has()** | Get select assert | selectAssert
+**is()** | Get select assert | selectAssert
+**listEnabled()** | Get enabled checkboxes | List\<String>
+**listDisabled()** | Get disabled checkboxes | List\<String>
+**selected()** | Get selected checkbox values | String
+**select(String.../Enum/int...)** | Select checkboxes | void
+**size()** | Get checklist size | int
+**uncheck(String.../Enum/int...)** | Uncheck specified checkboxes and check others  | void
+**uncheckAll()** | Uncheck all checkboxes in checklist | void
+**values()** | Get checklist values | List\<String>
+
+Here is the list of some methods available for C# in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**AssertThat** | Get select assert | SelectAssert
+**Check(params string[]/params int[])** |Check checklist by values/indexes  | void
+**CheckAll()** |Check all checkboxes | void
+**Checked()** |Get selected checkboxes from checklist value  | List\<String>
+**Has** | Get select assert | SelectAssert
+**Is** | Get select assert | SelectAssert
+**ListEnabled()** | Get enabled checkboxes | List\<String>
+**ListDisabled()** | Get disabled checkboxes | List\<String>
+**Select(params string[]/params int[])** |Select checklist by values/indexes  | void
+**Selected(string option)** | Checks whether a checkbox is selected | bool
+**Size()** | Get checklist size | int
+**Uncheck(params string[]/params int[])** |Unselect checklist by values/indexes  | void
+**UncheckAll()** |Uncheck all checkboxes | void
+**Values()** | Get checklist values | List\<String>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/ChecklistTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Complex/CheckListTests.cs" target="_blank">Test examples in C#</a>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#checklist-2)
+
+### ComboBox
+
+**ComboBox** – A graphical control element that allows user to choose a single 
+value from a list or enter it by himself (is inherited from the [Datalist](#datalist))
+
+![ComboBox](../images/icecreamdatalist.png)
+
+ComboBox is provided by JDI Light in:
+ 
+  - __Java__: _com.epam.jdi.light.ui.html.complex.Combobox_
+  - __C#__: _JDI.Light.Elements.Common.Combobox_
+
+```java 
+    public static Combobox iceCream;
+
+    // @FindBy(id = "ice-cream")
+    @UI("#ice-cream") 
+    public static DataList iceCreamDataList;
+
+    @Test
+    public void inputTest() {
+        iceCreamIs.input("New text");
+        iceCreamIs.is().text("New text");
+        iceCreamIs.clear();
+        iceCreamIs.is().text("");
+    }
+
+    @Test
+    public void placeholderTest() {
+        iceCreamIs.placeholder().equals("Ice cream");
+    }
+
+    @Test
+    public void selectTest() {
+        iceCreamIs.select("Chocolate");
+        iceCreamIs.select(Strawberry);
+        iceCreamIs.select(5);
+    }
+
+    @Test
+    public void labelTest() {
+        iceCreamIs.label().is().text("Choose your lovely icecream");
+        iceCreamIs.label().is().text(containsString("lovely icecream"));
+    }
+
+    @Test
+    public void isValidationTest() {
+        iceCreamIs.listEnabled();
+        iceCreamIs.assertThat().equals(asList("Chocolate", "Strawberry"));
+        iceCreamIs.is().enabled();
+        iceCreamIs.is().selected("Coconut");
+        iceCreamIs.is().selected(is("Coconut"));
+        iceCreamIs.select(Vanilla);
+        iceCreamIs.is().text(containsString("Van"));
+    }
+```
+```csharp 
+[Test]
+public void ExpandComboBox() 
+{
+    MyComboBox.Expand();
+}
+[Test]
+public void SelectComboBox() 
+{
+    MyComboBox.Select("some value");
+	MyComboBox.Is().Selected(Is.EqualTo("some value"));
+	TestSite.Html5Page.IceCreamComboBox.AssertThat().Selected(Is.EqualTo("Strawberry"));	
+}
+[Test]
+public void SelectByIndex() 
+{
+    MyComboBox.Select(1);
+}
+[Test]
+public void FillComboBox() 
+{
+    MyComboBox.Input("some value");
+    SubmitButton.Click();
+}
+```
+
+Have a look at the following example with HTML code provided:
+
+<!-- ![Combobox example](../images/html/datalist_html.png) -->
+
+```html
+<input list="ice-cream-flavors" id="ice-cream" placeholder="Ice cream">
+
+<datalist id="ice-cream-flavors">
+    <option value="Chocolate"></option>
+    <option value="Coconut"></option>
+    <option value="Mint"></option>
+    <option value="Strawberry"></option>
+    <option value="Vanilla"></option>
+</datalist>
+```
+
+The list of methods available for Java in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**listEnabled()** |Return list of values of enabled options | List\<String>
+**listDisabled()** |Return list of values of disabled options | List\<String>
+**select(String/Enum/int)** |Select combobox option by value or index | void
+**selected()** |Get selected option value | String
+**values()** |Get all option values from combobox | List\<String>
+
+Here is the list of some methods available for C# in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Returns object for work with assertions| ComboBoxAssert
+**Expand()** |Expands the list of possible values | void
+**GetSelected()** |Get selected combobox value  | string
+**Input(string)** |Input user's value into combobox  | void
+**is()** |  Returns object for work with assertions| ComboBoxAssert
+**Select(string/int)** |Select combobox by value/index  | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/combobox/IsComboboxTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/ComboboxTests.java" target="_blank">Test examples in C#</a>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#combobox-2)
+
+### DataList
+
+**DataList** – A graphical control element that allows user to choose one value from a list or enter it by himself.
+DataList element contains a set of options with values available as inputs.
+
+![DataList](../images/icecreamdatalist.png)
+
+__C# JDI DataList annotation__
+
+For better use in C# JDI Light provides a __*[JDataList]*__ annotation to locate DataList elements. This annotation consists of the following elements:
+
+ - __*root*__ - value of this element points to the root locator of the dropdown element
+ - __*values*__ - options locator in dropdown list
+ - __*how*__ - type of locators with which elements will be identified. By default it is set as css
+ 
+```csharp 
+[JDataList("#ice-cream", "#ice-cream-flavors > option")]
+    public DataList IceCream { get; set; }
+
+[JDataList("#disabled-dropdown",
+          "#disabled-dropdown > option")]
+    public DataList DisabledDropdownAsDataList { get; set; }
+
+[Test]
+public void GetValueTest()
+{
+    AreEqual(TestSite.Html5Page.IceCream.Selected(), "Coconut");
+}
+
+[Test]
+public void LabelTest()
+{
+    AreEqual(TestSite.Html5Page.IceCream.Label().GetText(), "Choose your lovely icecream");
+    TestSite.Html5Page.IceCream.Label().Is.Text(ContainsString("lovely icecream"));
+}
+
+[Test]
+public void IsValidationTest()
+{
+     TestSite.Html5Page.IceCream.Is.Enabled();
+     TestSite.Html5Page.IceCream.Is.Attr("value" ,EqualTo(_text));
+     TestSite.Html5Page.IceCream.Select("Vanilla");
+     TestSite.Html5Page.IceCream.Is.Attr("value", ContainsString("Van"));
+}
+
+[Test]
+public void AssertValidationTest()
+{
+     TestSite.Html5Page.IceCream.AssertThat.Attr("value", ContainsString(_text));
+}
+
+[Test]
+public void BaseValidationTest()
+{
+     BaseElementValidation(TestSite.Html5Page.IceCream);
+}
+
+[Test]
+public void NegativeSelectTest()
+{
+     Throws<ElementNotSelectableException>(() => TestSite.Html5Page.DisabledDropdownAsDataList.Select("Fancy", false));
+}
+
+[Test]
+public void NegativeSelectEnumTest()
+{
+      Throws<ElementNotSelectableException>(() => TestSite.Html5Page.DisabledDropdownAsDataList.Select(DressCode.Fancy, false));
+}
+
+[Test]
+public void NegativeSelectNumTest()
+{
+      Throws<ElementNotFoundException>(() => TestSite.Html5Page.IceCream.Select(7, false));
+}
+
+[Test]
+public void AssertOptionsValuesTest()
+{
+      IsTrue(TestSite.Html5Page.IceCream.Values().SequenceEqual(_options));
+}
+
+```
+
+DataList element type is provided by JDI Light in:
+
+ - __Java__: _com.epam.jdi.light.ui.html.complex.DataListOptions_
+ - __C#__: _JDI.Light.Elements.Common.DataList_
+ 
+Have a look at the following example with HTML code provided:
+
+```java 
+@UI("#ice-cream") //@FindBy(id = "ice-cream")
+public static DataListOptions iceCreamDataList;
+
+@Test
+public void selectTest() {
+    iceCream.select("Chocolate");
+    iceCream.is().selected("Chocolate");
+}
+
+@Test
+public void selectNumTest() {
+    iceCream.select(5);
+    iceCream.is().selected("Vanilla");
+}
+```
+
+
+<!-- ![Datalist example](../images/html/datalist_html.png) -->
+
+```html
+<label for="ice-cream">Choose your lovely icecream</label>
+<input list="ice-cream-flavors" id="ice-cream" placeholder="Ice cream">
+
+<datalist id="ice-cream-flavors">
+    <option value="Chocolate"></option>
+    <option value="Coconut"></option>
+    <option value="Mint"></option>
+    <option value="Strawberry"></option>
+    <option value="Vanilla"></option>
+</datalist>
+```
+
+The list of methods available for Java in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat** |Gets element's assert | DataListAssert
+**input(string value)** |Input user's value into DataList  | void
+**is** |Gets element's assert | DataListAssert
+**listEnabled()** |Return a list of values of enabled options | List\<String>
+**listDisabled()** |Return a list of values of disabled options | List\<String>
+**select(String/Enum/int)** |Select datalist option by value or index | void
+**selected()** |Get selected option value | String
+**values()** |Get all option values from DataList | List\<String>
+
+The list of some methods available for C# in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**AssertThat** |Gets element's assert | DataListAssert
+**Expand()** |Expands the list of possible values | void
+**GetSelected()** |Get selected DataList value  | string
+**Input(string value)** |Input user's value into DataList  | void
+**Is** |Gets element's assert | DataListAssert
+**Select(string/int)** |Select datalist by value/index  | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/combobox/DataListTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DataListTests.cs" target="_blank">Test examples in C#</a>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#datalist-2)
+
+### Dropdown
+
+**Dropdown** – A graphical control element that allows user to choose a single value from a list.
+
+![DropDown](../images/dropdown.png)
+
+JDI Light has support for dropdown elements with their own type. There are several ways of dropdown usage in JDI Light, each serving different needs.
+
+__Dropdown representation__
+
+JDI Light provides a __Dropdown__ class which is using for dropdown representation as a type of web element.
+
+Also this class can be used when working with HTML5 elements in cases when dropdown is represented with HTML _\<select>_ tag.
+
+Consider an example of HTML5 dropdown with the given HTML code:
+
+![Dropdown HTML5](../images/html/dropdown_html52.png)
+
+```java 
+@JDropdown(root = "div[ui=dropdown]",
+    value = ".filter-option",
+    list = "li",
+    expand = ".caret")
+public static Dropdown colors2; //@FindBy(css = "div[ui=dropdown]")
+	
+@Test
+public void selectStringTest() {
+    colors2.select("Red");
+    colors2.is().selected("Red");
+}
+
+@Test
+public void selectEnumTest() {
+    colors2.select(Green);
+    colors2.is().selected(Green);
+}
+
+@Test
+public void selectIndexTest() {
+    colors2.select(4);
+    colors2.is().selected(Blue);
+}
+
+@Test
+public void checkValuesTest() {
+    colors2.assertThat().size(5);
+    colors2.assertThat().values(is(dropdownValues));
+    colors2.is().values(hasItem("Yellow"));
+    colors2.is().values(not(hasItem("Missing color")));
+    colors2.is().enabled("Colors", "Red", "Green", "Blue", "Yellow");
+    colors2.is().values(INNER, hasItem("Yellow"));
+    colors2.assertThat().values(INNER, is(dropdownValues));
+    colors2.is().values(INNER, not(hasItem("Missing color")));
+}    
+```
+
+```csharp 
+[FindBy(Css = "#dress-code")] 
+public Dropdown DressCode;
+
+[Test]
+public void SelectEnumTest() 
+{
+    DressCode.Select(Fancy);
+    Assert.AreEquals(DressCode.GetSelected(), "Fancy");
+}
+
+[Test]
+public void LabelTest()
+{
+    AreEqual(TestSite.Html5Page.DressCode.Label().GetText(), "Dress code:");
+    TestSite.Html5Page.DressCode.Label().Is.Text(ContainsString("Dress"));
+}
+
+[Test]
+public void IsValidationTest()
+{
+    TestSite.Html5Page.DressCode.Is.Selected("Casual");
+    TestSite.Html5Page.DressCode.Is.Selected(DressCode.Casual);
+    TestSite.Html5Page.DressCode.Is.Values(HasItems(new[] { "Pirate" }));
+    TestSite.Html5Page.DressCode.Is.Disabled(HasItems(new[] { "Disabled" }));
+    TestSite.Html5Page.DressCode.Is.Enabled(HasItems(new[] { "Pirate", "Fancy" }));
+}
+
+[Test]
+public void AssertValidationTest()
+{
+    TestSite.Html5Page.DressCode.AssertThat.Values(
+    ContainsInAnyOrder(new[] {"Fancy", "Casual", "Disabled", "Pirate"}));
+}
+
+[Test]
+public void BaseValidationTest()
+{
+    BaseElementValidation(TestSite.Html5Page.DressCode);
+}
+
+```
+
+```html
+<select id="dress-code">
+    <option value="fancy">Fancy</option>
+    <option value="casual" selected="">Casual</option>
+    <option value="disabled" disabled="">Disabled</option>
+    <option value="pirate">Pirate</option>
+</select>
+```
+
+
+__JDI Dropdown annotation__
+
+For better use, JDI Light provides a __*@JDropdown*__ annotation to locate dropdown elements. This annotation can be used in cases when working with a
+complex element that may consist of more a complicated html structure. JDropdown annotation allows customise navigation of the web element inner structure by using 
+annotation default methods.
+
+<!-- ![Dropdown HTML](../images/html/dropdown_html.png) -->
+
+
+```csharp 
+[JDropDown(root: "#colors", 
+           value: ".filter-option", 
+           list:"li", 
+           expand:".caret")]
+public Droplist Colors;
+
+[Test]
+public void ComplexTest() 
+{
+    MetalAndColorsPage.ShouldBeOpened();
+    MetalAndColorsPage.Colors.Select(Green);
+}
+```
+
+```html 
+<div class="form-group colors" ui="dropdown" id="colors">
+    <select class="selectpicker uui-form-element" style="display: none;">
+        <option>Colors</option>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Blue</option>
+        <option>Yellow</option>
+    </select>
+    <div class="btn-group bootstrap-select uui-form-element"><button type="button"
+            class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" title="Colors"><span
+                class="filter-option pull-left" value="">Colors</span>&nbsp;<span class="caret"></span></button>
+        <div class="dropdown-menu open" style="max-height: 933px; overflow: hidden; min-height: 90px;">
+            <ul class="dropdown-menu inner selectpicker" role="menu"
+                style="max-height: 921px; overflow-y: auto; min-height: 78px;">
+                <li rel="0" class="selected"><a tabindex="0" class="" style=""><span class="text">Colors</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+                <li rel="1"><a tabindex="0" class="" style=""><span class="text">Red</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+                <li rel="2"><a tabindex="0" class="" style=""><span class="text">Green</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+                <li rel="3"><a tabindex="0" class="" style=""><span class="text">Blue</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+                <li rel="4"><a tabindex="0" class="" style=""><span class="text">Yellow</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+```
+
+JDropdown annotation consists of the following elements using which element inner structure can be customised:
+
+ - __*root()*__ - value of this element points to the root locator of dropdown element
+ - __*value()*__ - locator of option selected by default in dropdown list
+ - __*list()*__ - locator representing list options
+ - __*expand()*__ - locator for expanding the dropdown list
+ - __*how()*__ - type of locators with which elements will be identified. By default it is css
+
+Here is a list of some available methods:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+**close()** | Close expanded before dropdown list | void
+**expand()** | Expand dropdown list | void
+**getValue()/getText()/getSelected()** | Return selected dropdown value | String
+**has()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+**is()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+**isExpanded()** | Show that dropdown element expanded | boolean
+**isDisplayed()** | Show\wait that dropdown element displayed on the screen | boolean
+**selected(String option)** | Check if option has been selected | boolean
+**setup(Field field)** | Setup the dropdown using specified fields | void
+**shouldBe()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+**size()** | Return amount of elements in the list | int
+**waitFor()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+
+Available Assert methods in C#:
+
+|Method | Description | Return Type
+--- | --- | ---
+**AssertThat** |Gets dropdown assertion | DropDownAssert
+**Disabled(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values are disabled by some condition | DropDownAssert
+**Enabled(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values are enabled by some condition | DropDownAssert
+**Is** |Gets dropdown assertion | DropDownAssert
+**Selected(string option)** |Checks whether some option is selected  | DropDownAssert 
+**Selected(Enum option)** |Checks whether some option is selected  | DropDownAssert
+**Values(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values match some condition | DropDownAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/tree/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/dropdown" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DropDownTests.cs" target="_blank">Test examples in C#</a>
+
+[BDD test examples](https://jdi-docs.github.io/jdi-light/?java#dropdown-3)
+<br><br><br>
+
+### MultiDropdown
+
+**MultiDropdown** – A graphical control element that allows user to choose several values from a list.
+
+![DropDown](../images/multidropdown.png)
+
+JDI Light provides a MultiSelector class which is using for MultiDropdown representation as a type of web element.
+
+```java 
+    //@FindBy(id = "multi-dropdown")
+    @UI("#multi-dropdown") 
+    public static MultiSelector multiDropdown;
+
+    @Test
+    public void selectTest() {
+        multiDropdown.check("Electro", "Metalic");
+        multiDropdown.checked().equals(asList("Electro", "Metalic"));
+        multiDropdown.is().selected("Electro");
+        multiDropdown.uncheck("Metalic");
+        multiDropdown.checked().equals(asList("Electro"));
+    }
+
+    @Test
+    public void disabledTest() {
+        multiDropdown.check("Steam");
+        multiDropdown.select("Disabled");
+        multiDropdown.is().selected("Steam");
+    }
+
+    @Test
+    public void labelTest() {
+        multiDropdown.label().is().text("Multi dropdown:");
+        multiDropdown.label().is().text(containsString("Multi"));
+    }
+
+    @Test
+    public void isValidationTest() {
+        multiDropdown.is().selected("Steam");
+        multiDropdown.is().selected(Steam);
+        multiDropdown.assertThat().values(hasItem("Steam"));
+        multiDropdown.shouldBe().value("Steam");
+        multiDropdown.assertThat().disabled(hasItem("Disabled"))
+                .enabled(not(hasItem("Disabled")))
+                .enabled(hasItems("Electro", "Metalic"));
+    }
+```
+
+```csharp 
+[FindBy(Css = "#multi-dropdown")]
+public MultiDropdown MultiDropdown { get; set; }
+
+[Test]
+public void SelectMultipleOptions()
+{
+    var optionsList = new List<string> { "Steam", "Electro" };
+    TestSite.Html5Page.MultiDropdown.SelectOptions(optionsList);
+    Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionsAreSelected(optionsList));
+}
+
+[Test]
+public void CheckOptionExists()
+{
+    TestSite.Html5Page.MultiDropdown.Expand();
+    Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionExists("Steam"));
+    Jdi.Assert.IsFalse(TestSite.Html5Page.MultiDropdown.OptionExists("Steam2"));
+}
+
+[Test]
+public void CheckOptionIsDisabled()
+{
+    TestSite.Html5Page.MultiDropdown.Expand();
+    Jdi.Assert.IsFalse(TestSite.Html5Page.MultiDropdown.OptionIsEnabled("Disabled"));
+	Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionIsEnabled("Wood"));
+}
+
+[Test]
+public void LabelTest()
+{
+    Jdi.Assert.AreEquals(TestSite.Html5Page.MultiDropdown.Label().GetText(), "Multi dropdown:");
+    TestSite.Html5Page.MultiDropdown.Label().Is.Text(ContainsString("Multi"));
+}
+
+[Test]
+public void IsValidationTest()
+{
+    TestSite.Html5Page.MultiDropdown.SelectOptions(new List<string> { "Steam" });
+    TestSite.Html5Page.MultiDropdown.Is.Selected("Steam");
+    TestSite.Html5Page.MultiDropdown.Is.Selected(Ages.Steam);
+    TestSite.Html5Page.MultiDropdown.Is.Values(HasItems( new []{ "Wood" }));
+    TestSite.Html5Page.MultiDropdown.Is.Disabled(HasItems(new[] { "Disabled" }));
+    TestSite.Html5Page.MultiDropdown.Is.Enabled(HasItems( new []{ "Electro", "Metalic" }));
+}
+
+[Test]
+public void AssertValidationTest()
+{
+    TestSite.Html5Page.MultiDropdown.SelectOptions(new List<string> { "Steam" });
+    TestSite.Html5Page.MultiDropdown.AssertThat.Values(ContainsInAnyOrder( new []{ "Disabled", "Electro", "Metalic", "Wood", "Steam" }));
+}
+
+[Test]
+public void BaseValidationTest()
+{
+    BaseElementValidation(TestSite.Html5Page.MultiDropdown);
+}
+```
+
+```html
+<span class="multiselect-native-select">
+    <select id="multi-dropdown" multiple="multiple">
+         <option value="electro">Electro</option>
+         <option value="steam" selected="">Steam</option>
+         <option value="metalic">Metalic</option>
+         <option value="dis" disabled="">Disabled</option>
+         <option value="wood">Wood</option>
+    </select>
+    <div class="btn-group">
+        <button type="button" class="multiselect dropdown-toggle btn btn-default"
+                data-toggle="dropdown" title="Steam">
+            <span class="multiselect-selected-text">Steam</span>
+            <b class="caret"></b>
+        </button>
+        <ul class="multiselect-container dropdown-menu">
+            <li><a tabindex="0"><label class="checkbox" title="Electro"><input
+                    type="checkbox" value="electro"> Electro</label></a></li>
+            <li class="active"><a tabindex="0"><label class="checkbox" title="Steam">
+                <input type="checkbox" value="steam"> Steam</label></a></li>
+            <li><a tabindex="0"><label class="checkbox" title="Metalic">
+                <input type="checkbox" value="metalic"> Metalic</label></a></li>
+            <li class="disabled"><a tabindex="-1"><label class="checkbox" title="Disabled">
+                <input type="checkbox" value="dis" disabled=""> Disabled</label></a></li>
+            <li><a tabindex="0"><label class="checkbox" title="Wood">
+                <input type="checkbox" value="wood"> Wood</label></a></li>
+        </ul>
+    </div>
+</span>
+```
+
+MultiDropdown are represented by the following classes:
+
+ - __Java__: _com.epam.jdi.light.ui.html.complex.MultiSelector_
+ - __C#__: _JDI.Light.Elements.Composite.MultiDropdown_
+ 
+ The list of methods available for Java in JDI Light:
+ 
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+**check(String/String.../Enum.../int...)** |Select values in multi dropdown | void
+**checked()** | Get selected values | List\<String>
+**has()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+**is()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+**selected()** | Get selected value by default | String
+**shouldBe()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+**uncheck(String.../Enum.../int...)** | Deselect values in multi dropdown | void
+**waitFor()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+
+Here is the list of some methods available for C# in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**AssertThat** |Gets multiDropDown assert  | MultiDropdownAssert
+**Close()** |Close expanded list  | void
+**Disabled(Matcher<IEnumerable<string>> condition)** |Check whether some values are disabled in MultiDropDown by some matcher  | MultiDropdownAssert
+**Enabled(Matcher<IEnumerable<string>> condition)** |Check whether some values are enabled in MultiDropDown by some matcher  | MultiDropdownAssert
+**Expand()** |Expand list  | void
+**GetSelectedOptions()** |Get selected options  | List
+**Is** |Gets multiDropDown assert  | MultiDropdownAssert
+**OptionIsEnabled(string)** |Check whether option is enabled  | bool
+**OptionExists(string)** |Check whether option exists in list  | bool
+**SelectOption(string)** |Select specified option  | void
+**SelectOptions(List)** |Select specified options  | void
+**Selected(string option)** |Check whether option is selected  | MultiDropdownAssert
+**Selected(Enum option)** |Check whether option is selected  | MultiDropdownAssert
+**Values(Matcher<IEnumerable<string>> condition)** |Check whether some values exist in MultiDropDown by some matcher  | MultiDropdownAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/MultiDropdownTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/MultiDropdownTests.cs" target="_blank">Test examples in C#</a><br>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#multidropdown-2)<br>
+
+### MultiSelector
+**MultiSelector** – A graphical control element that allows user to make a multiple choice.
+MultiSelector is represented by the following class:
+ 
+  - __Java__: _com.epam.jdi.light.ui.html.complex.MultiSelector_
+  - __C#__: _JDI.Light.Elements.Common.MultiSelector_
+
+![MultiSelector](../images/html/multiSelectHtml2.png)
+
+```java 
+@UI("#ages") // @FindBy(css = "#ages")  
+public static MultiSelector ages;
+
+@Test
+public void selectTest() {
+    ages.check("Electro", "Metalic");
+    assertEquals(ages.checked(), asList("Electro", "Metalic"));
+}
+
+@Test
+public void selectEnumTest() {
+    ages.check(Wood, Steam);
+    assertEquals(ages.checked(), asList("Steam", "Wood"));
+}
+
+@Test
+public void selectNumTest() {
+    ages.check(1, 5);
+    assertEquals(ages.checked(), asList("Electro", "Wood"));
+}
+```
+```csharp 
+[Test]
+public void MultiSelectByValues() 
+{
+    MyMultiSelector.Select(string[]);
+}
+[Test]
+public void MultiSelectByIndexes() 
+{
+    MyMultiSelector.Select(int[]);
+}
+```
+
+```html
+<select id="ages" multiple="" size="4">
+    <option value="electro">Electro</option>
+    <option value="steam" selected="">Steam</option>
+    <option value="metalic">Metalic</option>
+    <option value="dis" disabled="">Disabled</option>
+    <option value="wood">Wood</option>
+</select>
+```
+
+Here is a list of available methods and properties in C#:
+
+|Method / Property | Description | Return Type
+--- | --- | ---
+**AssertThat** | Property that returns object for work with assertions | SelectAssert
+**Check(string/string[]/int/int[]/Enum[])** | Select multiselector by values | void
+**Checked()** | Get selected values  | List\<string>
+**has()** | Returns object for work with assertions | SelectAssert
+**Is** | Property that returns object for work with assertions | SelectAssert
+**Selected()** | Get selected values | string
+**shouldBe()** | Returns object for work with assertions | SelectAssert
+**Uncheck(string[]/Enum[]/int[])** | Select multiselector by values/indexes | void
+**waitFor()** | Returns object for work with assertions | SelectAssert
+
+Here is the list of available methods/asserts in Java:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Returns object for work with assertions| SelectAssert
+**check(String/Strings.../TEnum...)** |Select multiselector by values | void
+**checked()** |Get selected values  | List\<String>
+**is()** |  Returns object for work with assertions| SelectAssert
+**selected()** |Get selected values  | String
+**uncheck(Strings.../TEnum.../int)** |Select multiselector by values/indices  | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/MultiSelectorTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/MultiSelectorTests.cs" target="_blank">Test examples in C#</a>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#multidropdown-2)<br>
+
 ### RadioButtons
 
 **RadioButtons** – Interface element that allows user to select a single option from a predefined group.
@@ -3441,1040 +4343,10 @@ DataTableAssert methods in Java:
 [BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#datatable-2)
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-### Dropdown
-
-**Dropdown** – A graphical control element that allows user to choose a single value from a list.
-
-![DropDown](../images/dropdown.png)
-
-JDI Light has support for dropdown elements with their own type. There are several ways of dropdown usage in JDI Light, each serving different needs.
-
-__Dropdown representation__
-
-JDI Light provides a __Dropdown__ class which is using for dropdown representation as a type of web element.
-
-Also this class can be used when working with HTML5 elements in cases when dropdown is represented with HTML _\<select>_ tag.
-
-Consider an example of HTML5 dropdown with the given HTML code:
-
-![Dropdown HTML5](../images/html/dropdown_html52.png)
-
-```java 
-@JDropdown(root = "div[ui=dropdown]",
-    value = ".filter-option",
-    list = "li",
-    expand = ".caret")
-public static Dropdown colors2; //@FindBy(css = "div[ui=dropdown]")
-	
-@Test
-public void selectStringTest() {
-    colors2.select("Red");
-    colors2.is().selected("Red");
-}
-
-@Test
-public void selectEnumTest() {
-    colors2.select(Green);
-    colors2.is().selected(Green);
-}
-
-@Test
-public void selectIndexTest() {
-    colors2.select(4);
-    colors2.is().selected(Blue);
-}
-
-@Test
-public void checkValuesTest() {
-    colors2.assertThat().size(5);
-    colors2.assertThat().values(is(dropdownValues));
-    colors2.is().values(hasItem("Yellow"));
-    colors2.is().values(not(hasItem("Missing color")));
-    colors2.is().enabled("Colors", "Red", "Green", "Blue", "Yellow");
-    colors2.is().values(INNER, hasItem("Yellow"));
-    colors2.assertThat().values(INNER, is(dropdownValues));
-    colors2.is().values(INNER, not(hasItem("Missing color")));
-}    
-```
-
-```csharp 
-[FindBy(Css = "#dress-code")] 
-public Dropdown DressCode;
-
-[Test]
-public void SelectEnumTest() 
-{
-    DressCode.Select(Fancy);
-    Assert.AreEquals(DressCode.GetSelected(), "Fancy");
-}
-
-[Test]
-public void LabelTest()
-{
-    AreEqual(TestSite.Html5Page.DressCode.Label().GetText(), "Dress code:");
-    TestSite.Html5Page.DressCode.Label().Is.Text(ContainsString("Dress"));
-}
-
-[Test]
-public void IsValidationTest()
-{
-    TestSite.Html5Page.DressCode.Is.Selected("Casual");
-    TestSite.Html5Page.DressCode.Is.Selected(DressCode.Casual);
-    TestSite.Html5Page.DressCode.Is.Values(HasItems(new[] { "Pirate" }));
-    TestSite.Html5Page.DressCode.Is.Disabled(HasItems(new[] { "Disabled" }));
-    TestSite.Html5Page.DressCode.Is.Enabled(HasItems(new[] { "Pirate", "Fancy" }));
-}
-
-[Test]
-public void AssertValidationTest()
-{
-    TestSite.Html5Page.DressCode.AssertThat.Values(
-    ContainsInAnyOrder(new[] {"Fancy", "Casual", "Disabled", "Pirate"}));
-}
-
-[Test]
-public void BaseValidationTest()
-{
-    BaseElementValidation(TestSite.Html5Page.DressCode);
-}
-
-```
-
-```html
-<select id="dress-code">
-    <option value="fancy">Fancy</option>
-    <option value="casual" selected="">Casual</option>
-    <option value="disabled" disabled="">Disabled</option>
-    <option value="pirate">Pirate</option>
-</select>
-```
-
-
-__JDI Dropdown annotation__
-
-For better use, JDI Light provides a __*@JDropdown*__ annotation to locate dropdown elements. This annotation can be used in cases when working with a
-complex element that may consist of more a complicated html structure. JDropdown annotation allows customise navigation of the web element inner structure by using 
-annotation default methods.
-
-<!-- ![Dropdown HTML](../images/html/dropdown_html.png) -->
-
-
-```csharp 
-[JDropDown(root: "#colors", 
-           value: ".filter-option", 
-           list:"li", 
-           expand:".caret")]
-public Droplist Colors;
-
-[Test]
-public void ComplexTest() 
-{
-    MetalAndColorsPage.ShouldBeOpened();
-    MetalAndColorsPage.Colors.Select(Green);
-}
-```
-
-```html 
-<div class="form-group colors" ui="dropdown" id="colors">
-    <select class="selectpicker uui-form-element" style="display: none;">
-        <option>Colors</option>
-        <option>Red</option>
-        <option>Green</option>
-        <option>Blue</option>
-        <option>Yellow</option>
-    </select>
-    <div class="btn-group bootstrap-select uui-form-element"><button type="button"
-            class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" title="Colors"><span
-                class="filter-option pull-left" value="">Colors</span>&nbsp;<span class="caret"></span></button>
-        <div class="dropdown-menu open" style="max-height: 933px; overflow: hidden; min-height: 90px;">
-            <ul class="dropdown-menu inner selectpicker" role="menu"
-                style="max-height: 921px; overflow-y: auto; min-height: 78px;">
-                <li rel="0" class="selected"><a tabindex="0" class="" style=""><span class="text">Colors</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-                <li rel="1"><a tabindex="0" class="" style=""><span class="text">Red</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-                <li rel="2"><a tabindex="0" class="" style=""><span class="text">Green</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-                <li rel="3"><a tabindex="0" class="" style=""><span class="text">Blue</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-                <li rel="4"><a tabindex="0" class="" style=""><span class="text">Yellow</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-```
-
-JDropdown annotation consists of the following elements using which element inner structure can be customised:
-
- - __*root()*__ - value of this element points to the root locator of dropdown element
- - __*value()*__ - locator of option selected by default in dropdown list
- - __*list()*__ - locator representing list options
- - __*expand()*__ - locator for expanding the dropdown list
- - __*how()*__ - type of locators with which elements will be identified. By default it is css
-
-Here is a list of some available methods:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-**close()** | Close expanded before dropdown list | void
-**expand()** | Expand dropdown list | void
-**getValue()/getText()/getSelected()** | Return selected dropdown value | String
-**has()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-**is()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-**isExpanded()** | Show that dropdown element expanded | boolean
-**isDisplayed()** | Show\wait that dropdown element displayed on the screen | boolean
-**selected(String option)** | Check if option has been selected | boolean
-**setup(Field field)** | Setup the dropdown using specified fields | void
-**shouldBe()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-**size()** | Return amount of elements in the list | int
-**waitFor()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-
-Available Assert methods in C#:
-
-|Method | Description | Return Type
---- | --- | ---
-**AssertThat** |Gets dropdown assertion | DropDownAssert
-**Disabled(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values are disabled by some condition | DropDownAssert
-**Enabled(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values are enabled by some condition | DropDownAssert
-**Is** |Gets dropdown assertion | DropDownAssert
-**Selected(string option)** |Checks whether some option is selected  | DropDownAssert 
-**Selected(Enum option)** |Checks whether some option is selected  | DropDownAssert
-**Values(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values match some condition | DropDownAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/tree/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/dropdown" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DropDownTests.cs" target="_blank">Test examples in C#</a>
-
-[BDD test examples](https://jdi-docs.github.io/jdi-light/?java#dropdown-3)
-<br><br><br>
-
-### MultiDropdown
-
-**MultiDropdown** – A graphical control element that allows user to choose several values from a list.
-
-![DropDown](../images/multidropdown.png)
-
-JDI Light provides a MultiSelector class which is using for MultiDropdown representation as a type of web element.
-
-```java 
-    //@FindBy(id = "multi-dropdown")
-    @UI("#multi-dropdown") 
-    public static MultiSelector multiDropdown;
-
-    @Test
-    public void selectTest() {
-        multiDropdown.check("Electro", "Metalic");
-        multiDropdown.checked().equals(asList("Electro", "Metalic"));
-        multiDropdown.is().selected("Electro");
-        multiDropdown.uncheck("Metalic");
-        multiDropdown.checked().equals(asList("Electro"));
-    }
-
-    @Test
-    public void disabledTest() {
-        multiDropdown.check("Steam");
-        multiDropdown.select("Disabled");
-        multiDropdown.is().selected("Steam");
-    }
-
-    @Test
-    public void labelTest() {
-        multiDropdown.label().is().text("Multi dropdown:");
-        multiDropdown.label().is().text(containsString("Multi"));
-    }
-
-    @Test
-    public void isValidationTest() {
-        multiDropdown.is().selected("Steam");
-        multiDropdown.is().selected(Steam);
-        multiDropdown.assertThat().values(hasItem("Steam"));
-        multiDropdown.shouldBe().value("Steam");
-        multiDropdown.assertThat().disabled(hasItem("Disabled"))
-                .enabled(not(hasItem("Disabled")))
-                .enabled(hasItems("Electro", "Metalic"));
-    }
-```
-
-```csharp 
-[FindBy(Css = "#multi-dropdown")]
-public MultiDropdown MultiDropdown { get; set; }
-
-[Test]
-public void SelectMultipleOptions()
-{
-    var optionsList = new List<string> { "Steam", "Electro" };
-    TestSite.Html5Page.MultiDropdown.SelectOptions(optionsList);
-    Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionsAreSelected(optionsList));
-}
-
-[Test]
-public void CheckOptionExists()
-{
-    TestSite.Html5Page.MultiDropdown.Expand();
-    Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionExists("Steam"));
-    Jdi.Assert.IsFalse(TestSite.Html5Page.MultiDropdown.OptionExists("Steam2"));
-}
-
-[Test]
-public void CheckOptionIsDisabled()
-{
-    TestSite.Html5Page.MultiDropdown.Expand();
-    Jdi.Assert.IsFalse(TestSite.Html5Page.MultiDropdown.OptionIsEnabled("Disabled"));
-	Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionIsEnabled("Wood"));
-}
-
-[Test]
-public void LabelTest()
-{
-    Jdi.Assert.AreEquals(TestSite.Html5Page.MultiDropdown.Label().GetText(), "Multi dropdown:");
-    TestSite.Html5Page.MultiDropdown.Label().Is.Text(ContainsString("Multi"));
-}
-
-[Test]
-public void IsValidationTest()
-{
-    TestSite.Html5Page.MultiDropdown.SelectOptions(new List<string> { "Steam" });
-    TestSite.Html5Page.MultiDropdown.Is.Selected("Steam");
-    TestSite.Html5Page.MultiDropdown.Is.Selected(Ages.Steam);
-    TestSite.Html5Page.MultiDropdown.Is.Values(HasItems( new []{ "Wood" }));
-    TestSite.Html5Page.MultiDropdown.Is.Disabled(HasItems(new[] { "Disabled" }));
-    TestSite.Html5Page.MultiDropdown.Is.Enabled(HasItems( new []{ "Electro", "Metalic" }));
-}
-
-[Test]
-public void AssertValidationTest()
-{
-    TestSite.Html5Page.MultiDropdown.SelectOptions(new List<string> { "Steam" });
-    TestSite.Html5Page.MultiDropdown.AssertThat.Values(ContainsInAnyOrder( new []{ "Disabled", "Electro", "Metalic", "Wood", "Steam" }));
-}
-
-[Test]
-public void BaseValidationTest()
-{
-    BaseElementValidation(TestSite.Html5Page.MultiDropdown);
-}
-```
-
-```html
-<span class="multiselect-native-select">
-    <select id="multi-dropdown" multiple="multiple">
-         <option value="electro">Electro</option>
-         <option value="steam" selected="">Steam</option>
-         <option value="metalic">Metalic</option>
-         <option value="dis" disabled="">Disabled</option>
-         <option value="wood">Wood</option>
-    </select>
-    <div class="btn-group">
-        <button type="button" class="multiselect dropdown-toggle btn btn-default"
-                data-toggle="dropdown" title="Steam">
-            <span class="multiselect-selected-text">Steam</span>
-            <b class="caret"></b>
-        </button>
-        <ul class="multiselect-container dropdown-menu">
-            <li><a tabindex="0"><label class="checkbox" title="Electro"><input
-                    type="checkbox" value="electro"> Electro</label></a></li>
-            <li class="active"><a tabindex="0"><label class="checkbox" title="Steam">
-                <input type="checkbox" value="steam"> Steam</label></a></li>
-            <li><a tabindex="0"><label class="checkbox" title="Metalic">
-                <input type="checkbox" value="metalic"> Metalic</label></a></li>
-            <li class="disabled"><a tabindex="-1"><label class="checkbox" title="Disabled">
-                <input type="checkbox" value="dis" disabled=""> Disabled</label></a></li>
-            <li><a tabindex="0"><label class="checkbox" title="Wood">
-                <input type="checkbox" value="wood"> Wood</label></a></li>
-        </ul>
-    </div>
-</span>
-```
-
-MultiDropdown are represented by the following classes:
-
- - __Java__: _com.epam.jdi.light.ui.html.complex.MultiSelector_
- - __C#__: _JDI.Light.Elements.Composite.MultiDropdown_
- 
- The list of methods available for Java in JDI Light:
- 
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-**check(String/String.../Enum.../int...)** |Select values in multi dropdown | void
-**checked()** | Get selected values | List\<String>
-**has()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-**is()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-**selected()** | Get selected value by default | String
-**shouldBe()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-**uncheck(String.../Enum.../int...)** | Deselect values in multi dropdown | void
-**waitFor()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-
-Here is the list of some methods available for C# in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**AssertThat** |Gets multiDropDown assert  | MultiDropdownAssert
-**Close()** |Close expanded list  | void
-**Disabled(Matcher<IEnumerable<string>> condition)** |Check whether some values are disabled in MultiDropDown by some matcher  | MultiDropdownAssert
-**Enabled(Matcher<IEnumerable<string>> condition)** |Check whether some values are enabled in MultiDropDown by some matcher  | MultiDropdownAssert
-**Expand()** |Expand list  | void
-**GetSelectedOptions()** |Get selected options  | List
-**Is** |Gets multiDropDown assert  | MultiDropdownAssert
-**OptionIsEnabled(string)** |Check whether option is enabled  | bool
-**OptionExists(string)** |Check whether option exists in list  | bool
-**SelectOption(string)** |Select specified option  | void
-**SelectOptions(List)** |Select specified options  | void
-**Selected(string option)** |Check whether option is selected  | MultiDropdownAssert
-**Selected(Enum option)** |Check whether option is selected  | MultiDropdownAssert
-**Values(Matcher<IEnumerable<string>> condition)** |Check whether some values exist in MultiDropDown by some matcher  | MultiDropdownAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/MultiDropdownTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/MultiDropdownTests.cs" target="_blank">Test examples in C#</a><br>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#multidropdown-2)<br>
-### DataList
-
-**DataList** – A graphical control element that allows user to choose one value from a list or enter it by himself.
-DataList element contains a set of options with values available as inputs.
-
-![DataList](../images/icecreamdatalist.png)
-
-__C# JDI DataList annotation__
-
-For better use in C# JDI Light provides a __*[JDataList]*__ annotation to locate DataList elements. This annotation consists of the following elements:
-
- - __*root*__ - value of this element points to the root locator of the dropdown element
- - __*values*__ - options locator in dropdown list
- - __*how*__ - type of locators with which elements will be identified. By default it is set as css
- 
-```csharp 
-[JDataList("#ice-cream", "#ice-cream-flavors > option")]
-    public DataList IceCream { get; set; }
-
-[JDataList("#disabled-dropdown",
-          "#disabled-dropdown > option")]
-    public DataList DisabledDropdownAsDataList { get; set; }
-
-[Test]
-public void GetValueTest()
-{
-    AreEqual(TestSite.Html5Page.IceCream.Selected(), "Coconut");
-}
-
-[Test]
-public void LabelTest()
-{
-    AreEqual(TestSite.Html5Page.IceCream.Label().GetText(), "Choose your lovely icecream");
-    TestSite.Html5Page.IceCream.Label().Is.Text(ContainsString("lovely icecream"));
-}
-
-[Test]
-public void IsValidationTest()
-{
-     TestSite.Html5Page.IceCream.Is.Enabled();
-     TestSite.Html5Page.IceCream.Is.Attr("value" ,EqualTo(_text));
-     TestSite.Html5Page.IceCream.Select("Vanilla");
-     TestSite.Html5Page.IceCream.Is.Attr("value", ContainsString("Van"));
-}
-
-[Test]
-public void AssertValidationTest()
-{
-     TestSite.Html5Page.IceCream.AssertThat.Attr("value", ContainsString(_text));
-}
-
-[Test]
-public void BaseValidationTest()
-{
-     BaseElementValidation(TestSite.Html5Page.IceCream);
-}
-
-[Test]
-public void NegativeSelectTest()
-{
-     Throws<ElementNotSelectableException>(() => TestSite.Html5Page.DisabledDropdownAsDataList.Select("Fancy", false));
-}
-
-[Test]
-public void NegativeSelectEnumTest()
-{
-      Throws<ElementNotSelectableException>(() => TestSite.Html5Page.DisabledDropdownAsDataList.Select(DressCode.Fancy, false));
-}
-
-[Test]
-public void NegativeSelectNumTest()
-{
-      Throws<ElementNotFoundException>(() => TestSite.Html5Page.IceCream.Select(7, false));
-}
-
-[Test]
-public void AssertOptionsValuesTest()
-{
-      IsTrue(TestSite.Html5Page.IceCream.Values().SequenceEqual(_options));
-}
-
-```
-
-DataList element type is provided by JDI Light in:
-
- - __Java__: _com.epam.jdi.light.ui.html.complex.DataListOptions_
- - __C#__: _JDI.Light.Elements.Common.DataList_
- 
-Have a look at the following example with HTML code provided:
-
-```java 
-@UI("#ice-cream") //@FindBy(id = "ice-cream")
-public static DataListOptions iceCreamDataList;
-
-@Test
-public void selectTest() {
-    iceCream.select("Chocolate");
-    iceCream.is().selected("Chocolate");
-}
-
-@Test
-public void selectNumTest() {
-    iceCream.select(5);
-    iceCream.is().selected("Vanilla");
-}
-```
-
-
-<!-- ![Datalist example](../images/html/datalist_html.png) -->
-
-```html
-<label for="ice-cream">Choose your lovely icecream</label>
-<input list="ice-cream-flavors" id="ice-cream" placeholder="Ice cream">
-
-<datalist id="ice-cream-flavors">
-    <option value="Chocolate"></option>
-    <option value="Coconut"></option>
-    <option value="Mint"></option>
-    <option value="Strawberry"></option>
-    <option value="Vanilla"></option>
-</datalist>
-```
-
-The list of methods available for Java in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat** |Gets element's assert | DataListAssert
-**input(string value)** |Input user's value into DataList  | void
-**is** |Gets element's assert | DataListAssert
-**listEnabled()** |Return a list of values of enabled options | List\<String>
-**listDisabled()** |Return a list of values of disabled options | List\<String>
-**select(String/Enum/int)** |Select datalist option by value or index | void
-**selected()** |Get selected option value | String
-**values()** |Get all option values from DataList | List\<String>
-
-The list of some methods available for C# in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**AssertThat** |Gets element's assert | DataListAssert
-**Expand()** |Expands the list of possible values | void
-**GetSelected()** |Get selected DataList value  | string
-**Input(string value)** |Input user's value into DataList  | void
-**Is** |Gets element's assert | DataListAssert
-**Select(string/int)** |Select datalist by value/index  | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/combobox/DataListTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DataListTests.cs" target="_blank">Test examples in C#</a>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#datalist-2)
-
-### CheckList
-**CheckList** – A graphical control element representing a set of checkboxes, each of which allows user to control a two-state parameter (enabled or disabled).
-
-Checklist element type is available in the following packages:
- 
- - __Java__: com.epam.jdi.light.ui.html.complex.Checklist
- - __C__#: JDI.Light.Elements.Complex.CheckList 
-
-See an example with HTML code describing checklist element.
-
-![Checklist Example](../images/html/checklist_html2.png)
-
-```java 
-//@FindBy(name = "checks-group")
-@UI("[name=checks-group]") public static Checklist weather;
-public static Checklist weatherNoLocator;
-
-@Test
-public void checkTest() {
-    weather.check("Rainy day", "Sunny");
-    weather.is().checked(hasSize(2));
-    weather.is().checked(hasItems("Rainy day", "Sunny"));
-}
-
-@Test
-public void assertValidationTest() {
-    weather.assertThat().values(containsInAnyOrder(
-      "Hot option", "Cold", "Rainy day", "Sunny", "Disabled"));
-    weatherNoLocator.assertThat().selected("Hot option");
-}
-```
-```csharp 
-[FindBy(Css = "div:nth-child(11) > div.html-left")]
-public ICheckList weather;
-
-[FindBy(Css = "div:nth-child(11) > div.html-left")]
-public ICheckList<MyCheckBox> genericWeather;
-
-[Test]
-public void CheckCheckList()
-{
-    weather.Check("Cold", "Hot option");
-    Jdi.Assert.CollectionEquals(new[] { "Cold", "Hot option" }, weather.Checked());
-}
-
-[Test]
-public void UncheckTest()
-{
-    _weather.Check(false, "Rainy day", "Sunny");
-    _weather.Uncheck(false, "Rainy day", "Sunny");
-    _weather.Is.Selected(HasSize(2));
-    _weather.Is.Selected(HasItems(new[] { "Hot option", "Cold" }));
-}
-
-[Test]
-public void IsValidationTests()
-{
-    weather.AssertThat
-                .Values(HasItems(new[] {"Cold", "Sunny"}))
-                .Disabled(HasItems(new[] {"Disabled"}))                
-                .Size(Is.LessThan(6))
-                .AllDisplayed();
-}
-
-[Test]
-public void UncheckAllTest()
-{
-    _weather.Uncheck(false, "Rainy day", "Sunny");
-    _weather.UncheckAll();
-    _weather.Is.Selected(HasSize(0));
-}
-
-[Test]
-public void CheckAllTest()
-{
-    _weather.CheckAll();
-    _weather.Is.Selected(HasSize(4));
-    _weather.Is.Selected(HasItems(new[] { "Hot option", "Cold", "Rainy day", "Sunny" }));
-}
-
-[Test]
-public void IsDisabledTest()
-{
-    _weather.Select(false, "Disabled");
-    _weather.Is.Selected(HasItems(new [] { "Hot option" } ));
-}
-```
-
-```html
-<input type="checkbox" id="hot" name="checks-group" checked="">
-<label for="hot">Hot option</label> <br>
-
-<input type="checkbox" id="cold" name="checks-group">
-<label for="cold">Cold</label> <br>
-
-<input type="checkbox" id="rainy" name="checks-group">
-<label for="rainy">Rainy day</label> <br>
-
-<input type="checkbox" id="sunny-day" name="checks-group">
-<label for="sunny-day">Sunny</label> <br>
-
-<input type="checkbox" id="disabled-ch" name="checks-group" disabled="">
-<label for="disabled-ch">Disabled</label>
-```
-
-List of available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Get select assert | selectAssert
-**check(String.../Enum/int...)** | Check specified checkboxes and uncheck others | void
-**checkAll()** | Check all checkboxes in checklist | void
-**checked()** | Get selected checkbox values | List\<String>
-**has()** | Get select assert | selectAssert
-**is()** | Get select assert | selectAssert
-**listEnabled()** | Get enabled checkboxes | List\<String>
-**listDisabled()** | Get disabled checkboxes | List\<String>
-**selected()** | Get selected checkbox values | String
-**select(String.../Enum/int...)** | Select checkboxes | void
-**size()** | Get checklist size | int
-**uncheck(String.../Enum/int...)** | Uncheck specified checkboxes and check others  | void
-**uncheckAll()** | Uncheck all checkboxes in checklist | void
-**values()** | Get checklist values | List\<String>
-
-Here is the list of some methods available for C# in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**AssertThat** | Get select assert | SelectAssert
-**Check(params string[]/params int[])** |Check checklist by values/indexes  | void
-**CheckAll()** |Check all checkboxes | void
-**Checked()** |Get selected checkboxes from checklist value  | List\<String>
-**Has** | Get select assert | SelectAssert
-**Is** | Get select assert | SelectAssert
-**ListEnabled()** | Get enabled checkboxes | List\<String>
-**ListDisabled()** | Get disabled checkboxes | List\<String>
-**Select(params string[]/params int[])** |Select checklist by values/indexes  | void
-**Selected(string option)** | Checks whether a checkbox is selected | bool
-**Size()** | Get checklist size | int
-**Uncheck(params string[]/params int[])** |Unselect checklist by values/indexes  | void
-**UncheckAll()** |Uncheck all checkboxes | void
-**Values()** | Get checklist values | List\<String>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/ChecklistTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Complex/CheckListTests.cs" target="_blank">Test examples in C#</a>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#checklist-2)
-
-### MultiSelector
-**MultiSelector** – A graphical control element that allows user to make a multiple choice.
-MultiSelector is represented by the following class:
- 
-  - __Java__: _com.epam.jdi.light.ui.html.complex.MultiSelector_
-  - __C#__: _JDI.Light.Elements.Common.MultiSelector_
-
-![MultiSelector](../images/html/multiSelectHtml2.png)
-
-```java 
-@UI("#ages") // @FindBy(css = "#ages")  
-public static MultiSelector ages;
-
-@Test
-public void selectTest() {
-    ages.check("Electro", "Metalic");
-    assertEquals(ages.checked(), asList("Electro", "Metalic"));
-}
-
-@Test
-public void selectEnumTest() {
-    ages.check(Wood, Steam);
-    assertEquals(ages.checked(), asList("Steam", "Wood"));
-}
-
-@Test
-public void selectNumTest() {
-    ages.check(1, 5);
-    assertEquals(ages.checked(), asList("Electro", "Wood"));
-}
-```
-```csharp 
-[Test]
-public void MultiSelectByValues() 
-{
-    MyMultiSelector.Select(string[]);
-}
-[Test]
-public void MultiSelectByIndexes() 
-{
-    MyMultiSelector.Select(int[]);
-}
-```
-
-```html
-<select id="ages" multiple="" size="4">
-    <option value="electro">Electro</option>
-    <option value="steam" selected="">Steam</option>
-    <option value="metalic">Metalic</option>
-    <option value="dis" disabled="">Disabled</option>
-    <option value="wood">Wood</option>
-</select>
-```
-
-Here is a list of available methods and properties in C#:
-
-|Method / Property | Description | Return Type
---- | --- | ---
-**AssertThat** | Property that returns object for work with assertions | SelectAssert
-**Check(string/string[]/int/int[]/Enum[])** | Select multiselector by values | void
-**Checked()** | Get selected values  | List\<string>
-**has()** | Returns object for work with assertions | SelectAssert
-**Is** | Property that returns object for work with assertions | SelectAssert
-**Selected()** | Get selected values | string
-**shouldBe()** | Returns object for work with assertions | SelectAssert
-**Uncheck(string[]/Enum[]/int[])** | Select multiselector by values/indexes | void
-**waitFor()** | Returns object for work with assertions | SelectAssert
-
-Here is the list of available methods/asserts in Java:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Returns object for work with assertions| SelectAssert
-**check(String/Strings.../TEnum...)** |Select multiselector by values | void
-**checked()** |Get selected values  | List\<String>
-**is()** |  Returns object for work with assertions| SelectAssert
-**selected()** |Get selected values  | String
-**uncheck(Strings.../TEnum.../int)** |Select multiselector by values/indices  | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/MultiSelectorTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/MultiSelectorTests.cs" target="_blank">Test examples in C#</a>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#multidropdown-2)<br>
-
-### ComboBox
-
-**ComboBox** – A graphical control element that allows user to choose a single 
-value from a list or enter it by himself (is inherited from the [Datalist](#datalist))
-
-![ComboBox](../images/icecreamdatalist.png)
-
-ComboBox is provided by JDI Light in:
- 
-  - __Java__: _com.epam.jdi.light.ui.html.complex.Combobox_
-  - __C#__: _JDI.Light.Elements.Common.Combobox_
-
-```java 
-    public static Combobox iceCream;
-
-    // @FindBy(id = "ice-cream")
-    @UI("#ice-cream") 
-    public static DataList iceCreamDataList;
-
-    @Test
-    public void inputTest() {
-        iceCreamIs.input("New text");
-        iceCreamIs.is().text("New text");
-        iceCreamIs.clear();
-        iceCreamIs.is().text("");
-    }
-
-    @Test
-    public void placeholderTest() {
-        iceCreamIs.placeholder().equals("Ice cream");
-    }
-
-    @Test
-    public void selectTest() {
-        iceCreamIs.select("Chocolate");
-        iceCreamIs.select(Strawberry);
-        iceCreamIs.select(5);
-    }
-
-    @Test
-    public void labelTest() {
-        iceCreamIs.label().is().text("Choose your lovely icecream");
-        iceCreamIs.label().is().text(containsString("lovely icecream"));
-    }
-
-    @Test
-    public void isValidationTest() {
-        iceCreamIs.listEnabled();
-        iceCreamIs.assertThat().equals(asList("Chocolate", "Strawberry"));
-        iceCreamIs.is().enabled();
-        iceCreamIs.is().selected("Coconut");
-        iceCreamIs.is().selected(is("Coconut"));
-        iceCreamIs.select(Vanilla);
-        iceCreamIs.is().text(containsString("Van"));
-    }
-```
-```csharp 
-[Test]
-public void ExpandComboBox() 
-{
-    MyComboBox.Expand();
-}
-[Test]
-public void SelectComboBox() 
-{
-    MyComboBox.Select("some value");
-	MyComboBox.Is().Selected(Is.EqualTo("some value"));
-	TestSite.Html5Page.IceCreamComboBox.AssertThat().Selected(Is.EqualTo("Strawberry"));	
-}
-[Test]
-public void SelectByIndex() 
-{
-    MyComboBox.Select(1);
-}
-[Test]
-public void FillComboBox() 
-{
-    MyComboBox.Input("some value");
-    SubmitButton.Click();
-}
-```
-
-Have a look at the following example with HTML code provided:
-
-<!-- ![Combobox example](../images/html/datalist_html.png) -->
-
-```html
-<input list="ice-cream-flavors" id="ice-cream" placeholder="Ice cream">
-
-<datalist id="ice-cream-flavors">
-    <option value="Chocolate"></option>
-    <option value="Coconut"></option>
-    <option value="Mint"></option>
-    <option value="Strawberry"></option>
-    <option value="Vanilla"></option>
-</datalist>
-```
-
-The list of methods available for Java in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**listEnabled()** |Return list of values of enabled options | List\<String>
-**listDisabled()** |Return list of values of disabled options | List\<String>
-**select(String/Enum/int)** |Select combobox option by value or index | void
-**selected()** |Get selected option value | String
-**values()** |Get all option values from combobox | List\<String>
-
-Here is the list of some methods available for C# in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Returns object for work with assertions| ComboBoxAssert
-**Expand()** |Expands the list of possible values | void
-**GetSelected()** |Get selected combobox value  | string
-**Input(string)** |Input user's value into combobox  | void
-**is()** |  Returns object for work with assertions| ComboBoxAssert
-**Select(string/int)** |Select combobox by value/index  | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/combobox/IsComboboxTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/ComboboxTests.java" target="_blank">Test examples in C#</a>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#combobox-2)
 
 ## HTML5 Composite elements
-###Section
-
-```csharp
-
-  [FindBy(Id = "contact-form")]
-  public Contact ContactSection;
-  
-  [FindBy(Css = ".footer-content")]
-  public static Footer Footer;
-  
-  [FindBy(Css = ".uui-header")]
-  public static Header Header;
-  
-  public JdiSearch Search;
-  
-  [FindBy(Id = "summary-block")]
-  public Summary SummaryBlock;
-        
-  [Test]
-  public void SectionTest()
-  {
-      var e = TestSite.HomePage.Get<Section>(By.CssSelector(".main-title"));
-      Assert.AreEqual("EPAM FRAMEWORK WISHES…", e.Text);
-      Assert.AreEqual("Section", e.Name);
-      Assert.AreEqual(true, e.Displayed);
-      Assert.AreEqual(true, e.Enabled);
-      Assert.AreEqual(false, e.Hidden);
-      Assert.AreEqual(By.CssSelector(".main-title"), e.Locator);
-      Assert.AreEqual(false, e.Selected);
-      Assert.AreEqual("h3", e.TagName);
-  }
-  
-  [TestCaseSource(nameof(ContactSectionCases))]
-  public void CustomContactSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
-  {
-      ContactSection.CheckInitializedElement(ContactSection.GetType().GetField(htmlElementToCheckName).GetValue(ContactSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
-  }
-
-  [Test]
-  public void CustomFooterSectionTest()
-  {
-      FooterSection.CheckInitializedElement(FooterSection.AboutLink, "By.PartialLinkText: About", "AboutLink", null);            
-  }
-
-  [TestCaseSource(nameof(HeaderSectionCases))]
-  public void CustomHeaderSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
-  {
-      HeaderSection.CheckInitializedElement(HeaderSection.GetType().GetField(htmlElementToCheckName).GetValue(HeaderSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
-  }
-
-  [TestCaseSource(nameof(JdiSearchSectionCases))]
-  public void CustomJdiSearchSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
-  {
-      JdiSearchSection.CheckInitializedElement(JdiSearchSection.GetType().GetField(htmlElementToCheckName).GetValue(JdiSearchSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
-  }
-
-  [Test]
-  public void CustomSummarySectionTest()
-  {
-      TestSite.MetalsColorsPage.Open();
-      SummarySection.CheckInitializedElement(SummarySection.Calculate, "By.Id: calculate-button", "Calculate", null);
-  }
-
-  public static object[] ContactSectionCases =
-  {
-      new object[] { nameof(ContactSection.DescriptionField), "By.CssSelector: textarea#description", "Description", null },
-      new object[] { nameof(ContactSection.FirstRoller), "By.XPath: .//a[@class='ui-slider-handle ui-state-default ui-corner-all' and position()=1]", "FirstRoller", null },
-      new object[] { nameof(ContactSection.LastNameField), "By.CssSelector: input#last-name", "Last Name", null },
-      new object[] { nameof(ContactSection.NameField), "By.CssSelector: input#name", "First Name", null },
-      new object[] { nameof(ContactSection.SecondRoller), "By.XPath: .//a[@class='ui-slider-handle ui-state-default ui-corner-all' and position()=2]", "SecondRoller", null },
-      new object[] { nameof(ContactSection.SubmitButton), "By.XPath: //button[@type='submit' and contains(., 'Submit')]", "SubmitButton", null },
-  };
-
-  public static object[] HeaderSectionCases =
-  {
-      new object[] { nameof(HeaderSection.Image), "By.XPath: //img[@src=\"label/Logo_Epam_Color.svg\"]", "Image", null },
-      new object[] { nameof(HeaderSection.Menu), "By.CssSelector: ul.uui-navigation.nav", "Menu", null },
-      new object[] { nameof(HeaderSection.UserIcon), "By.CssSelector: #user-icon", "UserIcon", null },
-      new object[] { nameof(HeaderSection.Search), "By.CssSelector: input#last-name", "Search", "By.Id: search" }
-  };
-
-  public static object[] JdiSearchSectionCases =
-  {
-      new object[] { nameof(JdiSearchSection.SearchButton), "By.CssSelector: .search>.icon-search", "SearchButton", null },
-      new object[] { nameof(JdiSearchSection.SearchButtonActive), "By.CssSelector: .icon-search.active", "SearchButtonActive", null },
-      new object[] { nameof(JdiSearchSection.SearchInput), "By.CssSelector: .search-field input", "SearchInput", null },
-  };
-```
-
-**Section** - Logical part of Web Page that contains other UI Elements
-  
-Section is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.elements.composite.Section_
-  - __C#__: _JDI.Light.Elements.Composite.Section_  
-
-  
-```java 
-   @UI(".someSectionUI") // @FindBy(css = ".someSectionUI")
-   public static SomeSection someSectionUI;
-
-   @Test
-   public void someSectionWebElementTest() {
-      assertNotNull(someSection.webElementPublic);
-      assertEquals(someSection.webElementPublic.locator.toString(), "id='webElementPublic'");
-      assertEquals(someSection.webElementPublic.parent, someSection);
-      assertEquals(someSection.webElementPublic.name, "Web Element Public");
-   }
-   
-```
-
-
-
-And here are methods available in Java:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Returns object for work with assertions | IsAssert
-**has()** | Returns object for work with assertions | IsAssert
-**is()** | Returns object for work with assertions | IsAssert
-**shouldBe()** | Returns object for work with assertions | IsAssert
-**waitFor()** | Returns object for work with assertions | IsAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/composite/section" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/SectionTests.cs" target="_blank">Test examples in C#</a>
-
 
 ### Form
-
-
 
 **Form** – Logical part of a web page that represents an HTML form. 
 Form consists of elements based on _SetValue_ interface and buttons with **submit** function.
@@ -4749,6 +4621,133 @@ Methods available for Java in JDI Light:
 <a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/FormTests.cs" target="_blank">Test examples in C#</a>
 
 [BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#form-2)
+
+###Section
+
+```csharp
+
+  [FindBy(Id = "contact-form")]
+  public Contact ContactSection;
+  
+  [FindBy(Css = ".footer-content")]
+  public static Footer Footer;
+  
+  [FindBy(Css = ".uui-header")]
+  public static Header Header;
+  
+  public JdiSearch Search;
+  
+  [FindBy(Id = "summary-block")]
+  public Summary SummaryBlock;
+        
+  [Test]
+  public void SectionTest()
+  {
+      var e = TestSite.HomePage.Get<Section>(By.CssSelector(".main-title"));
+      Assert.AreEqual("EPAM FRAMEWORK WISHES…", e.Text);
+      Assert.AreEqual("Section", e.Name);
+      Assert.AreEqual(true, e.Displayed);
+      Assert.AreEqual(true, e.Enabled);
+      Assert.AreEqual(false, e.Hidden);
+      Assert.AreEqual(By.CssSelector(".main-title"), e.Locator);
+      Assert.AreEqual(false, e.Selected);
+      Assert.AreEqual("h3", e.TagName);
+  }
+  
+  [TestCaseSource(nameof(ContactSectionCases))]
+  public void CustomContactSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
+  {
+      ContactSection.CheckInitializedElement(ContactSection.GetType().GetField(htmlElementToCheckName).GetValue(ContactSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
+  }
+
+  [Test]
+  public void CustomFooterSectionTest()
+  {
+      FooterSection.CheckInitializedElement(FooterSection.AboutLink, "By.PartialLinkText: About", "AboutLink", null);            
+  }
+
+  [TestCaseSource(nameof(HeaderSectionCases))]
+  public void CustomHeaderSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
+  {
+      HeaderSection.CheckInitializedElement(HeaderSection.GetType().GetField(htmlElementToCheckName).GetValue(HeaderSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
+  }
+
+  [TestCaseSource(nameof(JdiSearchSectionCases))]
+  public void CustomJdiSearchSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
+  {
+      JdiSearchSection.CheckInitializedElement(JdiSearchSection.GetType().GetField(htmlElementToCheckName).GetValue(JdiSearchSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
+  }
+
+  [Test]
+  public void CustomSummarySectionTest()
+  {
+      TestSite.MetalsColorsPage.Open();
+      SummarySection.CheckInitializedElement(SummarySection.Calculate, "By.Id: calculate-button", "Calculate", null);
+  }
+
+  public static object[] ContactSectionCases =
+  {
+      new object[] { nameof(ContactSection.DescriptionField), "By.CssSelector: textarea#description", "Description", null },
+      new object[] { nameof(ContactSection.FirstRoller), "By.XPath: .//a[@class='ui-slider-handle ui-state-default ui-corner-all' and position()=1]", "FirstRoller", null },
+      new object[] { nameof(ContactSection.LastNameField), "By.CssSelector: input#last-name", "Last Name", null },
+      new object[] { nameof(ContactSection.NameField), "By.CssSelector: input#name", "First Name", null },
+      new object[] { nameof(ContactSection.SecondRoller), "By.XPath: .//a[@class='ui-slider-handle ui-state-default ui-corner-all' and position()=2]", "SecondRoller", null },
+      new object[] { nameof(ContactSection.SubmitButton), "By.XPath: //button[@type='submit' and contains(., 'Submit')]", "SubmitButton", null },
+  };
+
+  public static object[] HeaderSectionCases =
+  {
+      new object[] { nameof(HeaderSection.Image), "By.XPath: //img[@src=\"label/Logo_Epam_Color.svg\"]", "Image", null },
+      new object[] { nameof(HeaderSection.Menu), "By.CssSelector: ul.uui-navigation.nav", "Menu", null },
+      new object[] { nameof(HeaderSection.UserIcon), "By.CssSelector: #user-icon", "UserIcon", null },
+      new object[] { nameof(HeaderSection.Search), "By.CssSelector: input#last-name", "Search", "By.Id: search" }
+  };
+
+  public static object[] JdiSearchSectionCases =
+  {
+      new object[] { nameof(JdiSearchSection.SearchButton), "By.CssSelector: .search>.icon-search", "SearchButton", null },
+      new object[] { nameof(JdiSearchSection.SearchButtonActive), "By.CssSelector: .icon-search.active", "SearchButtonActive", null },
+      new object[] { nameof(JdiSearchSection.SearchInput), "By.CssSelector: .search-field input", "SearchInput", null },
+  };
+```
+
+**Section** - Logical part of Web Page that contains other UI Elements
+  
+Section is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.elements.composite.Section_
+  - __C#__: _JDI.Light.Elements.Composite.Section_  
+
+  
+```java 
+   @UI(".someSectionUI") // @FindBy(css = ".someSectionUI")
+   public static SomeSection someSectionUI;
+
+   @Test
+   public void someSectionWebElementTest() {
+      assertNotNull(someSection.webElementPublic);
+      assertEquals(someSection.webElementPublic.locator.toString(), "id='webElementPublic'");
+      assertEquals(someSection.webElementPublic.parent, someSection);
+      assertEquals(someSection.webElementPublic.name, "Web Element Public");
+   }
+   
+```
+
+
+
+And here are methods available in Java:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Returns object for work with assertions | IsAssert
+**has()** | Returns object for work with assertions | IsAssert
+**is()** | Returns object for work with assertions | IsAssert
+**shouldBe()** | Returns object for work with assertions | IsAssert
+**waitFor()** | Returns object for work with assertions | IsAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/composite/section" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/SectionTests.cs" target="_blank">Test examples in C#</a>
 
 ### WebPage
 
