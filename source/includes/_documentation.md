@@ -19350,245 +19350,6 @@ Note: domain is read from test.properties automatically. <br><br><br><br><br>
 
 ## JDI Light BDD Steps
 
-### Label 
-
-```gherkin
-Label action examples:
-
-When I click on "JDI Title"
-
-Label validation examples:
-
-Then the "JDI Title" text equals to "JDI TESTING PLATFORM"
-Then the "JDI Title" text contains "JDI"
-Then the "JDI Title" text matches to ".* TESTING .*"
-Then the "JDI Title" is enabled 
-Then the "JDI Title" is disabled 
-Then the "JDI Title" is displayed 
-Then the "JDI Title" disappears 
-Then the "JDI Title" is hidden 
-Then the "JDI Title" does not appear 
-Then the "JDI Title" does not appear during "5" seconds 
-
-Scenario example for Label:
-
- Scenario: Text equals
-    Given I open "Html5 Page"
-    Then the "Jdi Title" text equals to "JDI TESTING PLATFORM"
-```
-Actions: <br>
-
-**When** \<I\> click on "\<ELEMENT NAME\>" <br>
-<br>
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Label.feature" target="_blank">Cucumber tests</a> for Label<br>
-<br><br><br><br>
-
-### ColorPicker
-
-```gherkin
-ColorPicker action example:
-
-When I set "Color Picker" to "#00FF00" color
-
-
-ColorPicker validation examples:
-
-Then the "Color Picker" color equals to "#00FF00"
-Then the "Color Picker" label text equals to "Select a color"
-Then the "Color Picker" color is "#00FF00"
-Then the "Color Picker" is enabled 
-Then the "Color Picker" is disabled 
-Then the "Color Picker" is displayed 
-Then the "Color Picker" disappears 
-Then the "Color Picker" is hidden 
-Then the "Color Picker" does not appear 
-Then the "Color Picker" does not appear during "5" seconds 
-
-
-Scenario example for ColorPicker:
-
-  Scenario: Color picker set color test
-    Given I open "Html5 Page"
-    When I set "Color Picker" to "#ffd7a6" color
-    Then the "Color Picker" color equals to "#ffd7a6"
-    
-```
-
-Actions: <br>
-
-**When** \<I\> set "\<ELEMENT NAME\>" to "\<COLOR HEX CODE\>"<br>
-<br><br>
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" color equals to "\<COLOR HEX CODE>" <br>
-**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT>" <br>
-**Then** the "\<ELEMENT NAME\>" color is "\<COLOR HEX CODE>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/ColorPicker.feature" target="_blank">Cucumber tests</a> for ColorPicker<br>
-
-<br><br><br><br><br><br>
-
-### DropDown
-
-```gherkin
-DropDown action example:
-
-When I Select "Pirate" field from "Drop Down"
-
-
-DropDown validation examples:
-
-Then the "Pirate" in "Drop Down" is selected
-Then the "Drop Down" is enabled 
-Then the "Drop Down" is disabled 
-Then the "Drop Down" is displayed 
-Then the "Drop Down" disappears 
-Then the "Drop Down" is hidden 
-Then the "Drop Down" does not appear 
-Then the "Drop Down" does not appear during "5" seconds 
-
-
-Scenario example for DropDown:
-
-  Scenario: Selected Test
-    Given I open "Html5 Page"
-    When I Select "Pirate" field from "Dress Code"
-    Then the "Pirate" in "Dress Code" is selected
-    
-```
-
-Actions: <br>
-
-**When** \<I\> select "\<TEXT\>" field from "\<ELEMENT NAME\>"<br>
-<br><br>
-Validations: <br>
-
-**Then** the "\<TEXT\>" in "\<ELEMENT NAME>" is selected <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DropDown.feature" target="_blank">Cucumber tests</a> for DropDown<br>
-
-<br><br><br><br><br>
-
-### Image
-
-````gherkin
-Image validation examples:
-
-  Then the "Jdi Logo" attribute "src" equals to "https;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
-  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "height" contains "100"
-  Then the "Jdi Logo" attribute "width" contains "101"
-  Then the "Jdi Logo" is enabled 
-  Then the "Jdi Logo" is disabled 
-  Then the "Jdi Logo" is displayed 
-  Then the "Jdi Logo" disappears
-  Then the "Jdi Logo" is hidden 
-  Then the "Jdi Logo" does not appear 
-  Then the "Jdi Logo" does not appear during "5" seconds 
-
-Scenario example for Image:
-
-  Scenario: Image validation test
-    Given I open "Html5 Page"
-    And refresh webpage
-    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-    And the "Jdi Logo" attribute "height" contains "100"
-    And the "Jdi Logo" attribute "width" contains "101"
-
-````
-
-Validations: <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-### Icon
-
-````gherkin
-Image validation examples:
-
-  Then the "Jdi Logo" attribute "src" equals to "http;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
-  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "height" contains "100"
-  Then the "Jdi Logo" attribute "width" contains "101"
-  Then the "Jdi Logo" is enabled 
-  Then the "Jdi Logo" is disabled 
-  Then the "Jdi Logo" is displayed 
-  Then the "Jdi Logo" disappears
-  Then the "Jdi Logo" is hidden 
-  Then the "Jdi Logo" does not appear 
-  Then the "Jdi Logo" does not appear during "5" seconds 
-
-Scenario example for Image:
-
-  Scenario: Image validation test
-    Given I open "Html5 Page"
-    And refresh webpage
-    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-    And the "Jdi Logo" attribute "height" contains "100"
-    And the "Jdi Logo" attribute "width" contains "101"
-
-````
-Note: this element is an alias for Image<br>
-<br>
-Validations: <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 ### Alert
 
 ````gherkin
@@ -19639,151 +19400,6 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <br>
 <br>
 
-### FileInput
-
-```gherkin
-FileInput action examples:
-
-When I upload file "/res/general.xml" by "Avatar" file input element
-When try to upload file "/res/general.xml" by "File Input" file input element
-
-
-FileInput validation examples:
-
-Then the "Avatar" file input element label equals to "Profile picture"
-Then the "Avatar" file input element label contains "picture"
-Then the "Avatar" file input element text equals to "fakepath\general.xml"
-Then the "Avatar" file input element text contains "general.xml"
-Then the "Avatar" attribute "id" equals to "avatar"
-Then "File Input" is enabled
-Then "File Input" is disabled
-Then "File Input" is displayed
-Then "File Input" disapears
-Then "File Input" is hidden
-Then "File Input" does not appear
-Then "File Input" is does not appear during "5" seconds 
-
-
-
-
-
-
-
-Scenario example for FileInput:
-
-  Scenario: Upload file by enabled file input element
-    Given I open "Html5 Page"
-    When I upload file "/res/general.xml" by "Avatar" file input element
-    Then the "Avatar" text contains "general.xml"
-```
-
-Actions:<br>
-**When** \<I\> upload file "\<PATH TO FILE\>" by "\<ELEMENT NAME\>" file input element<br>
-**When** \<I\> try to upload file "\<PATH TO FILE\>" by "\<ELEMENT NAME\>" file input element<br>
-
-Validations:<br>
-**Then** the "\<ELEMENT NAME\>" file input element label equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" file input element label contains "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" file input element text equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" file input element text contains "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/FileInput.feature" target="_blank">Cucumber tests</a> for FileInput<br>
-
-<br><br><br><br><br><br>
-
-### Link 
-
-```gherkin
-Link action examples:
-
-When I click on "Github Link"
-When I higlight "Github Link"
-When I show "Github Link"
-When I set "Github Link" attribute "alt" with value "Github JDI Link EDITED"
-
-```
-
-Actions: <br>
-
-**When** \<I\> click on "\<ELEMENT NAME\>" <br>
-**When** \<I\> highlight "\<ELEMENT NAME\>" <br>
-**When** \<I\> show "\<ELEMENT NAME\>" <br>
-**When** \<I\> set "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" with value "\<ATTRIBUTE NAME\>" <br><br><br><br>
-
-```gherkin
-Link validation examples:
-
-Then the "Github Link" is enabled
-Then the "Github Link" is disabled
-Then the "Github Link" is displayed
-Then the "Github Link" is hidden
-Then the "Github Link" URL path equals to "/jdi-testing"
-Then the "Github Link" text equals to "Github JDI"
-Then the "Github Link" text contains "JDI"
-Then the "Github Link" text matches to "[a-zA-Z]{6} JE*DI"
-Then the "Github Link" reference equals to "https//github.com/jdi-testing"
-Then the "Github Link" reference contains "github"
-Then the "Github Link" reference matches to "https//github.com/.*"
-Then the "Github Link" alternative text equals to "Github JDI Link"
-Then the "Github Link" alternative text contains "JDI"
-Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
-Then the "Github Link" attribute "alt" equals to "Github JDI Link"
-Then the "Github Link" attribute "href" contains "https//github.com"
-Then the "Github Link" attribute "ui" matches to "github.link"
-Then the "Github Link" does not appear
-Then the "Github Link" does not appear during "5" seconds
-
-Scenario examples for Link:
-
-  Scenario: Click link test
-     Given I open "Html5 Page"
-     When click on "Github Link"
-     Then the current URL is "https//github.com/jdi-testing"
-    
-  Scenario: Link alternative text matching to RegExp
-     Given I open "Html5 Page"
-     Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
-  
-
-```
-
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" URL path equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" reference equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" reference contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" reference match to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" alternative text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" alternative text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" alternative text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Link.feature" target="_blank">Cucumber tests</a> for Link<br>
-
-
-<br><br><br>
 ### Button
 
 ```gherkin
@@ -19870,63 +19486,6 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Button.feature" target="_blank">Cucumber tests</a>) for Button<br>
 
 <br>
-### DateTimeSelector
-
-```gherkin
-DateTimeSelector action example:
-
-When I set date "2018-11-13" in "Birth Date"
-
-DateTimeSelector validation example:
-
-Then the "Birth Date" text equals to "1985-06-18"
-Then the "Birth Date" text contains "1985"
-Then the "Birth Date" is enabled
-Then the "Birth Date" label text equals to "Birth date"
-Then the "Birth Date" label text contains "Birth"
-Then the "Birth Date" attribute min equals to "1970-01-01"
-Then the "Birth Date" attribute max equals to "2030-12-31"
-
-Scenario example for DateTimeSelector:
-
-  Scenario: Set date
-    Given I open "Html5 Page"
-    Then the "Birth Date" text equals to "1985-06-18"
-    When Set date "2018-11-13" in "Birth Date"
-    Then the "Birth Date" text equals to "2018-11-13"
-
-```
-Actions:<br>
-
-**When** \<I\> set date "\<TEXT\>" in "\<ELEMENT NAME\>" <br>
-
-Validations:<br>
-
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" label text contains "\<TEXT\>"_ <br>
-**Then** the "\<ELEMENT NAME\>" attribute min equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" attribute max equals to "\<TEXT\>"<br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-
-There are BDD test examples for Input Type Date derivatives:<br>
-[Input Type Date](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Date.feature),
-[Input Type Week](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Week.feature),
-[Input Type Month](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Month.feature),<br>
-[Input Type Time](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Time.feature),
-[DateTime-Local](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DateTime.feature)<br><br>
-
-
-
-
-
-
-
-
-
 
 ### Checkbox  
 
@@ -19988,102 +19547,142 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Checkbox.feature" target="_blank">Cucumber tests</a> for Checkbox<br>
 
 <br><br><br><br><br><br><br><br>
-### Progress Bar
-  
+
+### CheckList
+
 ```gherkin
-Progress Bar validation examples:
+CheckList actions examples:
 
-Then the "Progress" attribute "max" equals to "110"
-Then the "Progress" progress volume greater or equal to 10
-Then the "Progress" progress volume less or equal to 110
-Then the "Progress" label text equals to "Progress"
-Then the "Progress" label text contains "ress"
-Then the "Progress" is enabled
-Then the "Progress" is disabled
-Then the "Progress" is displayed
-Then the "Progress" is hidden
-Then the "Progress" does not appear
-Then the "Progress" does not appear during "5" seconds <br>
+When I check element "Hot option" in "Weather" checklist
+When I select fields from "Weather" checklist
+     | Cold       | 
+     | Hot option |
+When I check elements in "Weather" checklist
+     | Hot option |
+When I select in "Weather" checklist elements by numbers
+     | 1 |
+     | 2 |
+When I check all elements in "Weather" checklist
+When I uncheck all elements in "Weather" checklist
+When I check elements in "Weather" checklist
+     | Rainy day |
+     | Sunny     |
 
-Scenario example for Progress Bar:
 
-  Scenario: progress bar validation
-    Given I open "Html5 Page" page
-    Then the "Progress" attribute "max" equals to "100"
-    And the "Progress" progress volume greater or equal to 10
-    And the "Progress" progress volume less or equal to 100
-    And the "Progress" attribute "value" equals to "70"
-    And the "Progress" is enabled
-  
+CheckList validation examples:
+
+Then in the "Weather" checklist checked element is "Cold"
+Then the "Weather" checklist text is "Hot option"
+Then count of selected elements in "Weather" checklist is "2"
+Then in the "Weather" checklist checked elements are
+     | Hot option |
+     | Sunny      |
+
+Scenario example for CheckList:
+
+Scenario: Check element via numbers test
+  When I check in "Weather" checklist elements by numbers
+      | 1 |
+      | 4 |
+  Then in the "Weather" checklist checked elements are
+      | Hot option |
+      | Sunny      |
+
 ```
+Actions: <br>
 
+ **When**  \<I\> check element "\<VALUE\>" in "\<ELEMENT NAME\>" checklist <br>
+ **When**  \<I\> select fields from "\<ELEMENT NAME\>" checklist:  <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> check elements in "\<ELEMENT NAME\>" checklist:  <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> uncheck element "\<VALUE\>" in "\<ELEMENT NAME\>" checklist <br>
+ **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist elements:  <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist elements by numbers: <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br> 
+ **When**  \<I\> check in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br>
+ **When**  \<I\> check in "\<ELEMENT NAME\>" checklist elements by numbers: <br> 
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> select in "\<ELEMENT NAME\>" checklist elements by numbers: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> select in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br>
+ **When**  \<I\> check all elements in "\<ELEMENT NAME\>" checklist  <br>
+ **When**  \<I\> uncheck all elements in "\<ELEMENT NAME\>" checklist  <br> 
+ 
 Validations: <br>
 
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" progress volume greater or equal to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" progress volume less or equal to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" label text contains "\<TEXT\>" <br>
+**Then** in the "\<ELEMENT NAME\>" checklist checked element is "\<VALUE\>" <br>
+**Then** count of selected elements in "\<ELEMENT NAME\>" checklist is "\<COUNT\>" <br>
+**Then** in the "\<ELEMENT NAME\>" checklist checked element are: <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+**Then** the "\<ELEMENT NAME\>" checklist text is "\<ELEMENT NAME\>" <br>
 **Then** the "\<ELEMENT NAME\>" is enabled <br>
 **Then** the "\<ELEMENT NAME\>" is disabled <br>
 **Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden	 <br>
-**Then** the "\<ELEMENT NAME\>" does not appear	<br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<NUMBER\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial) <br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/ProgressBar.feature" target="_blank">Cucumber tests</a> for Progress Bar<br>
-<br><br><br><br><br><br><br><br>
-
-### Text
-
-```gherkin
-Text validation examples:
-
-Then the "Jdi Text" text equals to "Powerful Framework for UI Tests Automation. Suitable for any UI project such as Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc."
-Then the "Jdi Text" text contains "Powerful Framework for UI"
-Then the "Jdi Text" is enabled
-Then the "Jdi Text" text matches to ".+"
-Then the "Jdi Text" css "font-size" equals to "14px"
-Then the "Jdi Text" css "font-family" contains "Source Sans Pro"
-Then the "Jdi Text" css "font-family" matches to "(.*)sans-serif"
-Then the "Jdi Text" is enabled
-Then the "Jdi Text" is disabled
-Then the "Jdi Text" is displayed
-Then the "Jdi Text" disappears
-Then the "Jdi Text" is hidden
-Then the "Jdi Text" does not appear
-Then the "Jdi Text" does not appear during "5" seconds
-
-
-
-Scenario example for Text:
-
-    Scenario: Text validation test
-        Given I open "Html5 Page"
-        Then the "Jdi Text" is enabled
-        Then the "Jdi Text" text contains "Powerful Framework for UI"
-
-```
-Validations:<br>
-
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" contains "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" matches to "\<REGEXP\>"<br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
 **Then** the "\<ELEMENT NAME\>" is hidden	 <br>
 **Then** the "\<ELEMENT NAME\>" does not appear	<br>
 **Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
 
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Text.feature" target="_blank">Cucumber tests</a> for Text<br><br>
-<br><br><br><br><br><br><br><br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/CheckList.feature" target="_blank">Cucumber tests</a> for CheckList<br>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+
+### ColorPicker
+
+```gherkin
+ColorPicker action example:
+
+When I set "Color Picker" to "#00FF00" color
+
+
+ColorPicker validation examples:
+
+Then the "Color Picker" color equals to "#00FF00"
+Then the "Color Picker" label text equals to "Select a color"
+Then the "Color Picker" color is "#00FF00"
+Then the "Color Picker" is enabled 
+Then the "Color Picker" is disabled 
+Then the "Color Picker" is displayed 
+Then the "Color Picker" disappears 
+Then the "Color Picker" is hidden 
+Then the "Color Picker" does not appear 
+Then the "Color Picker" does not appear during "5" seconds 
+
+
+Scenario example for ColorPicker:
+
+  Scenario: Color picker set color test
+    Given I open "Html5 Page"
+    When I set "Color Picker" to "#ffd7a6" color
+    Then the "Color Picker" color equals to "#ffd7a6"
+    
+```
+
+Actions: <br>
+
+**When** \<I\> set "\<ELEMENT NAME\>" to "\<COLOR HEX CODE\>"<br>
+<br><br>
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" color equals to "\<COLOR HEX CODE>" <br>
+**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT>" <br>
+**Then** the "\<ELEMENT NAME\>" color is "\<COLOR HEX CODE>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/ColorPicker.feature" target="_blank">Cucumber tests</a> for ColorPicker<br>
+
+<br><br><br><br><br><br>
 
 ### ComboBox
 
@@ -20237,6 +19836,776 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DataList.feature" target="_blank">Cucumber tests</a> for DataList<br><br>
 <br><br><br><br><br><br><br><br>
 
+### DataTable
+
+Note: this element is an alias for Table
+
+```gherkin
+Table validation examples:
+
+Then the "Users Table" is enabled
+Then the "Users Table" is disabled
+Then the "Users Table" is displayed
+Then the "Users Table" is hidden
+Then the "Users Table" does not appear
+Then the "Users Table" does not appear during "5" seconds
+Then the "Users Table" table columns count equals "4"
+Then the "Users Table" table rows count equals "6"
+Then the "Users Table" table header has items
+Then the "Users Table" table preview equals values
+Then the "Users Table" table has size "6"
+Then the "Users Table" table has size greater than "3"
+Then the "Users Table" table has size less or equal to "6"
+Then the "Users Table" table is not empty
+Then the "Users Table" table has row that contains value "Ivan" in column "User"
+Then the "Users Table" table all rows contain value "Vip" in column "Description"
+Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
+Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
+Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
+Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
+
+Scenario examples for Table:
+
+  Scenario: Get label text test
+    Given I open "Users Page"
+    Then the "Users Table" table columns count equals "4"
+    And the "Users Table" table rows count equals "6"
+    And the "Users Table" table header has items
+      | Number      |
+      | Type        |
+      | User        |
+      | Description |
+
+  Scenario: Common matchers test
+    Given I open "Users Page"
+    Then the "Users Table" table has size "6"
+    And the "Users Table" table has size greater than "3"
+    And the "Users Table" table has size less or equal to "6"
+    And the "Users Table" table is not empty
+
+```
+
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+**Then** the "\<ELEMENT NAME\>" table columns count equals "\<COUNT\>" <br>
+**Then** the "\<ELEMENT NAME\>" table rows count equals "\<COUNT\>" <br>
+**Then** the "\<ELEMENT NAME\>" table header has items: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+**Then** the "\<ELEMENT NAME\>" table preview equals values: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+**Then** the "\<ELEMENT NAME\>" table has size "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has size greater than "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has size less or equal to "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table is not empty <br>
+**Then** the "\<ELEMENT NAME\>" table has row that contains value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table all rows contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has no rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has at least "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which have value "\<TEXT\>" in column "\<COLUMN\>" <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Table.feature" target="_blank">Cucumber tests</a> for Table<br>
+<br><br><br><br><br><br><br><br><br><br><br>
+
+### DateTimeSelector
+
+```gherkin
+DateTimeSelector action example:
+
+When I set date "2018-11-13" in "Birth Date"
+
+DateTimeSelector validation example:
+
+Then the "Birth Date" text equals to "1985-06-18"
+Then the "Birth Date" text contains "1985"
+Then the "Birth Date" is enabled
+Then the "Birth Date" label text equals to "Birth date"
+Then the "Birth Date" label text contains "Birth"
+Then the "Birth Date" attribute min equals to "1970-01-01"
+Then the "Birth Date" attribute max equals to "2030-12-31"
+
+Scenario example for DateTimeSelector:
+
+  Scenario: Set date
+    Given I open "Html5 Page"
+    Then the "Birth Date" text equals to "1985-06-18"
+    When Set date "2018-11-13" in "Birth Date"
+    Then the "Birth Date" text equals to "2018-11-13"
+
+```
+Actions:<br>
+
+**When** \<I\> set date "\<TEXT\>" in "\<ELEMENT NAME\>" <br>
+
+Validations:<br>
+
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" label text contains "\<TEXT\>"_ <br>
+**Then** the "\<ELEMENT NAME\>" attribute min equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" attribute max equals to "\<TEXT\>"<br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+
+There are BDD test examples for Input Type Date derivatives:<br>
+[Input Type Date](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Date.feature),
+[Input Type Week](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Week.feature),
+[Input Type Month](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Month.feature),<br>
+[Input Type Time](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Time.feature),
+[DateTime-Local](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DateTime.feature)<br><br>
+
+### DropDown
+
+```gherkin
+DropDown action example:
+
+When I Select "Pirate" field from "Drop Down"
+
+
+DropDown validation examples:
+
+Then the "Pirate" in "Drop Down" is selected
+Then the "Drop Down" is enabled 
+Then the "Drop Down" is disabled 
+Then the "Drop Down" is displayed 
+Then the "Drop Down" disappears 
+Then the "Drop Down" is hidden 
+Then the "Drop Down" does not appear 
+Then the "Drop Down" does not appear during "5" seconds 
+
+
+Scenario example for DropDown:
+
+  Scenario: Selected Test
+    Given I open "Html5 Page"
+    When I Select "Pirate" field from "Dress Code"
+    Then the "Pirate" in "Dress Code" is selected
+    
+```
+
+Actions: <br>
+
+**When** \<I\> select "\<TEXT\>" field from "\<ELEMENT NAME\>"<br>
+<br><br>
+Validations: <br>
+
+**Then** the "\<TEXT\>" in "\<ELEMENT NAME>" is selected <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DropDown.feature" target="_blank">Cucumber tests</a> for DropDown<br>
+
+<br><br><br><br><br>
+
+### FileInput
+
+```gherkin
+FileInput action examples:
+
+When I upload file "/res/general.xml" by "Avatar" file input element
+When try to upload file "/res/general.xml" by "File Input" file input element
+
+
+FileInput validation examples:
+
+Then the "Avatar" file input element label equals to "Profile picture"
+Then the "Avatar" file input element label contains "picture"
+Then the "Avatar" file input element text equals to "fakepath\general.xml"
+Then the "Avatar" file input element text contains "general.xml"
+Then the "Avatar" attribute "id" equals to "avatar"
+Then "File Input" is enabled
+Then "File Input" is disabled
+Then "File Input" is displayed
+Then "File Input" disapears
+Then "File Input" is hidden
+Then "File Input" does not appear
+Then "File Input" is does not appear during "5" seconds 
+
+
+
+
+
+
+
+Scenario example for FileInput:
+
+  Scenario: Upload file by enabled file input element
+    Given I open "Html5 Page"
+    When I upload file "/res/general.xml" by "Avatar" file input element
+    Then the "Avatar" text contains "general.xml"
+```
+
+Actions:<br>
+**When** \<I\> upload file "\<PATH TO FILE\>" by "\<ELEMENT NAME\>" file input element<br>
+**When** \<I\> try to upload file "\<PATH TO FILE\>" by "\<ELEMENT NAME\>" file input element<br>
+
+Validations:<br>
+**Then** the "\<ELEMENT NAME\>" file input element label equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" file input element label contains "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" file input element text equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" file input element text contains "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/FileInput.feature" target="_blank">Cucumber tests</a> for FileInput<br>
+
+<br><br><br><br><br><br>
+
+### Form
+
+```gherkin
+Form actions examples:
+
+When fill form "Contact Form" with data
+    | name | Roman |
+    | lastName| Iovlev |
+    | position| ChiefQA |
+    | passportNumber| 654321 |
+    | passportSeria| 1234 |
+    | description| JDI - awesome UI automation tool |
+    | acceptConditions| true | 
+    | gender| Female |
+    | religion| Other |
+When I submit form "Contact Form"
+When I save form
+
+JSON data file examples:
+When fill form "Contact Form" with "Roman Contacts"
+When send form "Contact Form" with "Roman Contacts"
+
+Form validation examples:
+
+Then the form "Contact Form" data equals to
+    | name| Roman |
+    | lastName | Iovlev |
+    | position | ChiefQA |
+    | passportNumber | 654321 |
+    | passportSeria | 1234 |
+    | description | JDI - awesome UI automation tool |
+    | acceptConditions | true |
+    | gender| Female |
+    | religion| Other |
+Then the form "Contact Form" is displayed
+Then the form "Contact Form" is hidden
+Then the form "Contact Form" does not appear
+Then the form "Contact Form" does not appear during 7
+Then the form "Contact Form" disappear
+
+JSON data file examples:
+Then the form "Contact Form" data equals to "Roman Contacts"
+
+Form scenario example:
+
+  Scenario: fillContactForm
+    Given I open "Contact Form Page"
+    When fill form "Contact Form" with data
+    | name| Roman |
+    | lastName | Iovlev |
+    | position | ChiefQA |
+    | passportNumber | 654321 |
+    | passportSeria | 1234 |
+    | description | JDI - awesome UI automation tool |
+    | acceptConditions | true |
+    | gender | Female |
+    | religion | Other |
+    And I submit form "Contact Form"
+    Then the form "Contact Form" data equals to
+    | name | Roman |
+    | lastName | Iovlev |
+    | position | ChiefQA |
+    | passportNumber | 654321 |
+    | passportSeria | 1234 |
+    | description | JDI - awesome UI automation tool |
+    | acceptConditions | true |
+    | gender | Female |
+    | religion | Other |
+
+```
+Actions: <br>
+
+ **When** \<I\> fill form \<ELEMENT NAME\> with data:<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form \<ELEMENT NAME\> with data:<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form<br>
+ 
+ It's also possible to use JSON data files:<br>
+ **When** \<I\> fill form \<ELEMENT NAME\> with \<JSON DATA FILE NAME\><br>
+ **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form \<ELEMENT NAME\> with \<JSON DATA FILE NAME\><br>
+ <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/json/test/data/Roman%20Contacts.json" target="_blank">JSON data file example</a>
+ 
+Validations: <br>
+
+ **Then** the form \<ELEMENT NAME\> data equals to: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the form \<ELEMENT NAME\> is displayed<br>
+ **Then** the form \<ELEMENT NAME\> is hidden<br>
+ **Then** the form \<ELEMENT NAME\> does not appear<br>
+ **Then** the form \<ELEMENT NAME\> does not appear during \<SECONDS\><br>
+ **Then** the form \<ELEMENT NAME\> disappear<br>
+ 
+ It's also possible to use JSON data files:<br>
+ **Then** the form \<ELEMENT NAME\> data equals to \<JSON DATA FILE NAME\><br>
+ <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/json/test/data/Roman%20Contacts.json" target="_blank">JSON data file example</a>
+
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Form.feature" target="_blank">Cucumber tests</a> for Form<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+<br>
+
+### Icon
+
+````gherkin
+Image validation examples:
+
+  Then the "Jdi Logo" attribute "src" equals to "http;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
+  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
+  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
+  Then the "Jdi Logo" attribute "height" contains "100"
+  Then the "Jdi Logo" attribute "width" contains "101"
+  Then the "Jdi Logo" is enabled 
+  Then the "Jdi Logo" is disabled 
+  Then the "Jdi Logo" is displayed 
+  Then the "Jdi Logo" disappears
+  Then the "Jdi Logo" is hidden 
+  Then the "Jdi Logo" does not appear 
+  Then the "Jdi Logo" does not appear during "5" seconds 
+
+Scenario example for Image:
+
+  Scenario: Image validation test
+    Given I open "Html5 Page"
+    And refresh webpage
+    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
+    And the "Jdi Logo" attribute "height" contains "100"
+    And the "Jdi Logo" attribute "width" contains "101"
+
+````
+Note: this element is an alias for Image<br>
+<br>
+Validations: <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+### Image
+
+````gherkin
+Image validation examples:
+
+  Then the "Jdi Logo" attribute "src" equals to "https;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
+  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
+  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
+  Then the "Jdi Logo" attribute "height" contains "100"
+  Then the "Jdi Logo" attribute "width" contains "101"
+  Then the "Jdi Logo" is enabled 
+  Then the "Jdi Logo" is disabled 
+  Then the "Jdi Logo" is displayed 
+  Then the "Jdi Logo" disappears
+  Then the "Jdi Logo" is hidden 
+  Then the "Jdi Logo" does not appear 
+  Then the "Jdi Logo" does not appear during "5" seconds 
+
+Scenario example for Image:
+
+  Scenario: Image validation test
+    Given I open "Html5 Page"
+    And refresh webpage
+    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
+    And the "Jdi Logo" attribute "height" contains "100"
+    And the "Jdi Logo" attribute "width" contains "101"
+
+````
+
+Validations: <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+### Label 
+
+```gherkin
+Label action examples:
+
+When I click on "JDI Title"
+
+Label validation examples:
+
+Then the "JDI Title" text equals to "JDI TESTING PLATFORM"
+Then the "JDI Title" text contains "JDI"
+Then the "JDI Title" text matches to ".* TESTING .*"
+Then the "JDI Title" is enabled 
+Then the "JDI Title" is disabled 
+Then the "JDI Title" is displayed 
+Then the "JDI Title" disappears 
+Then the "JDI Title" is hidden 
+Then the "JDI Title" does not appear 
+Then the "JDI Title" does not appear during "5" seconds 
+
+Scenario example for Label:
+
+ Scenario: Text equals
+    Given I open "Html5 Page"
+    Then the "Jdi Title" text equals to "JDI TESTING PLATFORM"
+```
+Actions: <br>
+
+**When** \<I\> click on "\<ELEMENT NAME\>" <br>
+<br>
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Label.feature" target="_blank">Cucumber tests</a> for Label<br>
+<br><br><br><br>
+
+### Link 
+
+```gherkin
+Link action examples:
+
+When I click on "Github Link"
+When I higlight "Github Link"
+When I show "Github Link"
+When I set "Github Link" attribute "alt" with value "Github JDI Link EDITED"
+
+```
+
+Actions: <br>
+
+**When** \<I\> click on "\<ELEMENT NAME\>" <br>
+**When** \<I\> highlight "\<ELEMENT NAME\>" <br>
+**When** \<I\> show "\<ELEMENT NAME\>" <br>
+**When** \<I\> set "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" with value "\<ATTRIBUTE NAME\>" <br><br><br><br>
+
+```gherkin
+Link validation examples:
+
+Then the "Github Link" is enabled
+Then the "Github Link" is disabled
+Then the "Github Link" is displayed
+Then the "Github Link" is hidden
+Then the "Github Link" URL path equals to "/jdi-testing"
+Then the "Github Link" text equals to "Github JDI"
+Then the "Github Link" text contains "JDI"
+Then the "Github Link" text matches to "[a-zA-Z]{6} JE*DI"
+Then the "Github Link" reference equals to "https//github.com/jdi-testing"
+Then the "Github Link" reference contains "github"
+Then the "Github Link" reference matches to "https//github.com/.*"
+Then the "Github Link" alternative text equals to "Github JDI Link"
+Then the "Github Link" alternative text contains "JDI"
+Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
+Then the "Github Link" attribute "alt" equals to "Github JDI Link"
+Then the "Github Link" attribute "href" contains "https//github.com"
+Then the "Github Link" attribute "ui" matches to "github.link"
+Then the "Github Link" does not appear
+Then the "Github Link" does not appear during "5" seconds
+
+Scenario examples for Link:
+
+  Scenario: Click link test
+     Given I open "Html5 Page"
+     When click on "Github Link"
+     Then the current URL is "https//github.com/jdi-testing"
+    
+  Scenario: Link alternative text matching to RegExp
+     Given I open "Html5 Page"
+     Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
+  
+
+```
+
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" URL path equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" reference equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" reference contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" reference match to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" alternative text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" alternative text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" alternative text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Link.feature" target="_blank">Cucumber tests</a> for Link<br>
+
+
+<br><br><br>
+
+### Menu 
+
+```gherkin
+Menu actions examples:
+
+When I select "Contact form" in "Left Menu" menu
+When I select "Service;Dates" items in "Left Menu" menu
+When I show "Contact form" in "Left Menu" menu
+
+Menu validations examples:
+
+Then the "Left Menu" is enabled
+Then the "Left Menu" is disabled
+Then the "Left Menu" is displayed
+Then the "Left Menu" is hidden
+Then the "Left Menu" does not appear
+Then the "Left Menu" does not appear during "5" seconds
+Then the "Contact form" in "Left Menu" menu is selected
+Then the "Contact form" in "Left Menu" menu is deselected
+
+Scenario examples for Menu:
+
+  Scenario: Select items test
+    Given I open "Html5 Page"
+    When I check "Accept Conditions"
+    When select items in "Left Menu" menu
+     | Service |
+     | Dates   |
+    Then the "Dates Page" page is opened
+
+  Scenario: Is validation test
+    Given I open "Html5 Page"
+    When I check "Accept Conditions"
+    Then the "HTML 5" in "Left Menu" menu is selected
+
+```
+
+Actions: <br>
+
+**When** \<I\> select "\<VALUE\>" in "\<ELEMENT NAME\>" menu <br>
+**When** \<I\> select items in "\<ELEMENT NAME\>" menu:<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+**When** \<I\> show "\<VALUE\>" in "\<ELEMENT NAME\>" menu <br>
+
+
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+**Then** the "\<VALUE\>" in "\<ELEMENT NAME\>" menu is selected <br>
+**Then** the "\<VALUE\>" in "\<ELEMENT NAME\>" menu is deselected <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Menu.feature" target="_blank">Cucumber tests</a> for Menu<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### MultiDropDown
+
+<p style="color:#FFA500">Note: this element is an alias for MultiSelector</p>
+
+```gherkin
+MultiDropDown actions examples:
+
+ When I check in the "Multi Dropdown" values
+      | Electro | Metalic |
+ When I check in the "Multi Dropdown" values by number
+      | 1 | 5 |
+ When I check value "Steam" in the "Multi Dropdown"
+
+```
+Actions: <br>
+
+ **When** \<I\> check in the  \<ELEMENT NAME\>  values:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **When** \<I\> check in the  \<ELEMENT NAME\>  values by number:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **When** \<I\> check value  \<ELEMENT NAME\>  in the  \<ELEMENT NAME\> <br>
+
+```gherkin
+MultiDropDown validation examples:
+
+ Then the "Multi Dropdown" selected values
+      | Electro | Wood |
+ Then the "Multi Dropdown" selected value is "Steam"
+ Then the "Multi Dropdown" values has item "Wood"
+ Then the "Multi Dropdown" has disabled item "Disabled"
+ Then the "Multi Dropdown" has no enabled item "Disabled"
+ Then the "Multi Dropdown" has enabled items
+      | Electro | Metalic |
+ Then the "Multi Dropdown" contains items
+      | Disabled | Wood | Steam | Electro | Metalic |
+    
+Scenario: MultiDropDown validation
+    Given I open "Html5 Page"
+    Then the "Ages" selected value is "Steam"
+    And the "Ages" values has item "Wood"
+    And  the "Ages" has disabled item "Disabled"
+    And the "Ages" has no enabled item "Disabled"
+    And the "Ages" has enabled items
+      | Electro | Metalic |
+
+```
+Validations: <br>
+
+ **Then** the \<ELEMENT NAME\> selected values:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the \<ELEMENT NAME\> selected value is \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> values has item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has disabled item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has no enabled item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has enabled items:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the \<ELEMENT NAME\> contains items:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/MultiDropDown.feature" target="_blank">Cucumber tests</a> for CheckList<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### MultiSelector
+```gherkin
+MultiSelector actions examples:
+
+ When I check in the "Multi Dropdown" values
+      | Electro | Metalic |
+ When I check in the "Multi Dropdown" values by number
+      | 1 | 5 |
+ When I check value "Steam" in the "Multi Dropdown"
+
+```
+Actions: <br>
+
+ **When** \<I\> check in the  \<ELEMENT NAME\>  values:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **When** \<I\> check in the  \<ELEMENT NAME\>  values by number:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **When** \<I\> check value  \<ELEMENT NAME\>  in the  \<ELEMENT NAME\> <br>
+
+```gherkin
+MultiSelector validation examples:
+
+ Then the "Multi Dropdown" selected values
+      | Electro | Wood |
+ Then the "Multi Dropdown" selected value is "Steam"
+ Then the "Multi Dropdown" values has item "Wood"
+ Then the "Multi Dropdown" has disabled item "Disabled"
+ Then the "Multi Dropdown" has no enabled item "Disabled"
+ Then the "Multi Dropdown" has enabled items
+      | Electro | Metalic |
+ Then the "Multi Dropdown" contains items
+      | Disabled | Wood | Steam | Electro | Metalic |
+    
+Scenario: MultiSelector validation
+    Given I open "Html5 Page"
+    Then the "Ages" selected value is "Steam"
+    And the "Ages" values has item "Wood"
+    And  the "Ages" has disabled item "Disabled"
+    And the "Ages" has no enabled item "Disabled"
+    And the "Ages" has enabled items
+      | Electro | Metalic |
+
+```
+Validations: <br>
+
+ **Then** the \<ELEMENT NAME\> selected values:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the \<ELEMENT NAME\> selected value is \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> values has item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has disabled item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has no enabled item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has enabled items:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the \<ELEMENT NAME\> contains items:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/MultiDropDown.feature" target="_blank">Cucumber tests</a> for CheckList<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ### NumberSelector
 
 ````gherkin
@@ -20343,6 +20712,126 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <br>
 <br>
 
+### Progress Bar
+  
+```gherkin
+Progress Bar validation examples:
+
+Then the "Progress" attribute "max" equals to "110"
+Then the "Progress" progress volume greater or equal to 10
+Then the "Progress" progress volume less or equal to 110
+Then the "Progress" label text equals to "Progress"
+Then the "Progress" label text contains "ress"
+Then the "Progress" is enabled
+Then the "Progress" is disabled
+Then the "Progress" is displayed
+Then the "Progress" is hidden
+Then the "Progress" does not appear
+Then the "Progress" does not appear during "5" seconds <br>
+
+Scenario example for Progress Bar:
+
+  Scenario: progress bar validation
+    Given I open "Html5 Page" page
+    Then the "Progress" attribute "max" equals to "100"
+    And the "Progress" progress volume greater or equal to 10
+    And the "Progress" progress volume less or equal to 100
+    And the "Progress" attribute "value" equals to "70"
+    And the "Progress" is enabled
+  
+```
+
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" progress volume greater or equal to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" progress volume less or equal to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" label text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden	 <br>
+**Then** the "\<ELEMENT NAME\>" does not appear	<br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<NUMBER\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial) <br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/ProgressBar.feature" target="_blank">Cucumber tests</a> for Progress Bar<br>
+<br><br><br><br><br><br><br><br>
+
+### Radiobuttons
+
+```gherkin
+Radiobuttons actions examples:
+
+When I select "Blue" field from "Colors"
+When select the radio button with "1" index from "Colors" 
+When I highlight "Colors"	
+When set "Colors" attribute "test-jdi" with value "test-value" 
+
+Radiobuttons validation examples:
+
+Then the "Colors" text equals to "Blue"	
+Then the "Colors" text contains "Blue"	
+Then the "Colors" text matches to "\w{15}" 
+Then the "Colors" is enabled 
+Then the "Colors" is disabled 
+Then the "Colors" is displayed 
+Then the "Colors" is hidden 
+Then the "Colors" disappears 
+Then the "Colors" does not appear 
+Then the "Colors" does not appear during "2" seconds 
+Then the "Colors" css "type" equals to "radio" 
+Then the "Colors" consists of next values 
+Then the "Colors" contains "Blue" radio button 
+Then the "Colors" contains "Yellow" disabled radio button 
+Then the "Colors" does not contain "Yellow" enabled radio button 
+Then the "Colors" contains next enabled values
+	| Red | Green | Blue | Yellow |
+
+Scenario example for Radiobuttons:
+
+ Given I open "Html5 Page" page
+ Then the "Html5 Page.Colors" consists of next values
+      | Red | Green | Blue | Yellow |
+ When I highlight "Colors"	
+ When I Select "Blue" field from "Html5 Page.Colors"
+ Then the "Html5 Page.Colors" text equals to "Blue"
+
+
+
+```
+Actions: <br><br>
+
+**When** \<I\> select "TEXT" field from "\<ELEMENT NAME\>" <br>
+**When** \<I\> select the radio button with "\<INDEX\>" index from "\<ELEMENT NAME\>" <br>
+**When** \<I\> highlight "\<ELEMENT NAME\>"	<br>
+**When** \<I\> set "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" with value "\<ATTRIBUTE VALUE\>" <br>
+ 
+Validations: <br><br>
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>"	<br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>"	<br>
+**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" consists of next values <br>
+**Then** the "\<ELEMENT NAME\>" contains "\<TEXT\>" radio button <br>
+**Then** the "\<ELEMENT NAME\>" contains "\<TEXT\>" disabled radio button <br>
+**Then** the "\<ELEMENT NAME\>" does not contain "\<TEXT\>" enabled radio button <br>
+**Then** the "\<ELEMENT NAME\>" contains next enabled values: <br>
+    |"\<RADIO_3\>" | "\<RADIO_2\>" | "\<RADIO_3\>" |
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/RadioButtons.feature" target="_blank">Cucumber tests</a> for Radiobuttons<br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
 ### Range
 
 ```gherkin
@@ -20407,6 +20896,143 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <br>
 <br>
 <br>
+
+### Table
+
+```gherkin
+Table actions examples:
+
+When I click the cell in row "2" in column "2" of the table "Simple Table"
+
+Table validation examples:
+
+Then the "Users Table" is enabled
+Then the "Users Table" is disabled
+Then the "Users Table" is displayed
+Then the "Users Table" is hidden
+Then the cell in row "1" in column "3" of the table "Simple Table" is selected
+Then the cell in row "1" in column "3" of the table "Simple Table" is deselected
+Then the "Users Table" does not appear
+Then the "Users Table" does not appear during "5" seconds
+Then the "Users Table" table columns count equals "4"
+Then the "Users Table" table rows count equals "6"
+Then the "Users Table" table header has items
+Then the "Users Table" table preview equals values
+Then the "Users Table" table has size "6"
+Then the "Users Table" table has size greater than "3"
+Then the "Users Table" table has size less or equal to "6"
+Then the "Users Table" table is not empty
+Then the "Users Table" table has row that contains value "Ivan" in column "User"
+Then the "Users Table" table all rows contain value "Vip" in column "Description"
+Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
+Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
+Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
+Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
+
+Scenario examples for Table:
+
+  Scenario: Get label text test
+    Given I open "Users Page"
+    Then the "Users Table" table columns count equals "4"
+    And the "Users Table" table rows count equals "6"
+    And the "Users Table" table header has items
+      | Number      |
+      | Type        |
+      | User        |
+      | Description |
+
+  Scenario: Common matchers test
+    Given I open "Users Page"
+    Then the "Users Table" table has size "6"
+    And the "Users Table" table has size greater than "3"
+    And the "Users Table" table has size less or equal to "6"
+    And the "Users Table" table is not empty
+
+```
+Actions: <br>
+
+ **When** \<I\> click the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\><br>
+ 
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\> is selected <br>
+**Then** the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\> is deselected <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+**Then** the "\<ELEMENT NAME\>" table columns count equals "\<COUNT\>" <br>
+**Then** the "\<ELEMENT NAME\>" table rows count equals "\<COUNT\>" <br>
+**Then** the "\<ELEMENT NAME\>" table header has items: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+**Then** the "\<ELEMENT NAME\>" table preview equals values: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+**Then** the "\<ELEMENT NAME\>" table has size "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has size greater than "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has size less or equal to "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table is not empty <br>
+**Then** the "\<ELEMENT NAME\>" table has row that contains value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table all rows contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has no rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has at least "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which have value "\<TEXT\>" in column "\<COLUMN\>" <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Table.feature" target="_blank">Cucumber tests</a> for Table<br>
+<br><br><br><br><br><br><br><br><br><br><br>
+
+### Text
+
+```gherkin
+Text validation examples:
+
+Then the "Jdi Text" text equals to "Powerful Framework for UI Tests Automation. Suitable for any UI project such as Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc."
+Then the "Jdi Text" text contains "Powerful Framework for UI"
+Then the "Jdi Text" is enabled
+Then the "Jdi Text" text matches to ".+"
+Then the "Jdi Text" css "font-size" equals to "14px"
+Then the "Jdi Text" css "font-family" contains "Source Sans Pro"
+Then the "Jdi Text" css "font-family" matches to "(.*)sans-serif"
+Then the "Jdi Text" is enabled
+Then the "Jdi Text" is disabled
+Then the "Jdi Text" is displayed
+Then the "Jdi Text" disappears
+Then the "Jdi Text" is hidden
+Then the "Jdi Text" does not appear
+Then the "Jdi Text" does not appear during "5" seconds
+
+
+
+Scenario example for Text:
+
+    Scenario: Text validation test
+        Given I open "Html5 Page"
+        Then the "Jdi Text" is enabled
+        Then the "Jdi Text" text contains "Powerful Framework for UI"
+
+```
+Validations:<br>
+
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" contains "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" matches to "\<REGEXP\>"<br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden	 <br>
+**Then** the "\<ELEMENT NAME\>" does not appear	<br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Text.feature" target="_blank">Cucumber tests</a> for Text<br><br>
+<br><br><br><br><br><br><br><br>
 
 ### TextArea 
 
@@ -20526,75 +21152,7 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi
 <br>
 <br>
 
-### Menu 
 
-```gherkin
-Menu actions examples:
-
-When I select "Contact form" in "Left Menu" menu
-When I select "Service;Dates" items in "Left Menu" menu
-When I show "Contact form" in "Left Menu" menu
-
-Menu validations examples:
-
-Then the "Left Menu" is enabled
-Then the "Left Menu" is disabled
-Then the "Left Menu" is displayed
-Then the "Left Menu" is hidden
-Then the "Left Menu" does not appear
-Then the "Left Menu" does not appear during "5" seconds
-Then the "Contact form" in "Left Menu" menu is selected
-Then the "Contact form" in "Left Menu" menu is deselected
-
-Scenario examples for Menu:
-
-  Scenario: Select items test
-    Given I open "Html5 Page"
-    When I check "Accept Conditions"
-    When select items in "Left Menu" menu
-     | Service |
-     | Dates   |
-    Then the "Dates Page" page is opened
-
-  Scenario: Is validation test
-    Given I open "Html5 Page"
-    When I check "Accept Conditions"
-    Then the "HTML 5" in "Left Menu" menu is selected
-
-```
-
-Actions: <br>
-
-**When** \<I\> select "\<VALUE\>" in "\<ELEMENT NAME\>" menu <br>
-**When** \<I\> select items in "\<ELEMENT NAME\>" menu:<br>
- &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
-**When** \<I\> show "\<VALUE\>" in "\<ELEMENT NAME\>" menu <br>
-
-
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-**Then** the "\<VALUE\>" in "\<ELEMENT NAME\>" menu is selected <br>
-**Then** the "\<VALUE\>" in "\<ELEMENT NAME\>" menu is deselected <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Menu.feature" target="_blank">Cucumber tests</a> for Menu<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 ### TextField
 ```gherkin
 TextField action example:
@@ -20648,566 +21206,6 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <br>
 <br>
 <br>
-
-### MultiSelector
-```gherkin
-MultiSelector actions examples:
-
- When I check in the "Multi Dropdown" values
-      | Electro | Metalic |
- When I check in the "Multi Dropdown" values by number
-      | 1 | 5 |
- When I check value "Steam" in the "Multi Dropdown"
-
-```
-Actions: <br>
-
- **When** \<I\> check in the  \<ELEMENT NAME\>  values:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **When** \<I\> check in the  \<ELEMENT NAME\>  values by number:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **When** \<I\> check value  \<ELEMENT NAME\>  in the  \<ELEMENT NAME\> <br>
-
-```gherkin
-MultiSelector validation examples:
-
- Then the "Multi Dropdown" selected values
-      | Electro | Wood |
- Then the "Multi Dropdown" selected value is "Steam"
- Then the "Multi Dropdown" values has item "Wood"
- Then the "Multi Dropdown" has disabled item "Disabled"
- Then the "Multi Dropdown" has no enabled item "Disabled"
- Then the "Multi Dropdown" has enabled items
-      | Electro | Metalic |
- Then the "Multi Dropdown" contains items
-      | Disabled | Wood | Steam | Electro | Metalic |
-    
-Scenario: MultiSelector validation
-    Given I open "Html5 Page"
-    Then the "Ages" selected value is "Steam"
-    And the "Ages" values has item "Wood"
-    And  the "Ages" has disabled item "Disabled"
-    And the "Ages" has no enabled item "Disabled"
-    And the "Ages" has enabled items
-      | Electro | Metalic |
-
-```
-Validations: <br>
-
- **Then** the \<ELEMENT NAME\> selected values:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the \<ELEMENT NAME\> selected value is \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> values has item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has disabled item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has no enabled item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has enabled items:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the \<ELEMENT NAME\> contains items:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/MultiDropDown.feature" target="_blank">Cucumber tests</a> for CheckList<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### MultiDropDown
-
-<p style="color:#FFA500">Note: this element is an alias for MultiSelector</p>
-
-```gherkin
-MultiDropDown actions examples:
-
- When I check in the "Multi Dropdown" values
-      | Electro | Metalic |
- When I check in the "Multi Dropdown" values by number
-      | 1 | 5 |
- When I check value "Steam" in the "Multi Dropdown"
-
-```
-Actions: <br>
-
- **When** \<I\> check in the  \<ELEMENT NAME\>  values:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **When** \<I\> check in the  \<ELEMENT NAME\>  values by number:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **When** \<I\> check value  \<ELEMENT NAME\>  in the  \<ELEMENT NAME\> <br>
-
-```gherkin
-MultiDropDown validation examples:
-
- Then the "Multi Dropdown" selected values
-      | Electro | Wood |
- Then the "Multi Dropdown" selected value is "Steam"
- Then the "Multi Dropdown" values has item "Wood"
- Then the "Multi Dropdown" has disabled item "Disabled"
- Then the "Multi Dropdown" has no enabled item "Disabled"
- Then the "Multi Dropdown" has enabled items
-      | Electro | Metalic |
- Then the "Multi Dropdown" contains items
-      | Disabled | Wood | Steam | Electro | Metalic |
-    
-Scenario: MultiDropDown validation
-    Given I open "Html5 Page"
-    Then the "Ages" selected value is "Steam"
-    And the "Ages" values has item "Wood"
-    And  the "Ages" has disabled item "Disabled"
-    And the "Ages" has no enabled item "Disabled"
-    And the "Ages" has enabled items
-      | Electro | Metalic |
-
-```
-Validations: <br>
-
- **Then** the \<ELEMENT NAME\> selected values:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the \<ELEMENT NAME\> selected value is \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> values has item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has disabled item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has no enabled item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has enabled items:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the \<ELEMENT NAME\> contains items:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/MultiDropDown.feature" target="_blank">Cucumber tests</a> for CheckList<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### CheckList
-
-```gherkin
-CheckList actions examples:
-
-When I check element "Hot option" in "Weather" checklist
-When I select fields from "Weather" checklist
-     | Cold       | 
-     | Hot option |
-When I check elements in "Weather" checklist
-     | Hot option |
-When I select in "Weather" checklist elements by numbers
-     | 1 |
-     | 2 |
-When I check all elements in "Weather" checklist
-When I uncheck all elements in "Weather" checklist
-When I check elements in "Weather" checklist
-     | Rainy day |
-     | Sunny     |
-
-
-CheckList validation examples:
-
-Then in the "Weather" checklist checked element is "Cold"
-Then the "Weather" checklist text is "Hot option"
-Then count of selected elements in "Weather" checklist is "2"
-Then in the "Weather" checklist checked elements are
-     | Hot option |
-     | Sunny      |
-
-Scenario example for CheckList:
-
-Scenario: Check element via numbers test
-  When I check in "Weather" checklist elements by numbers
-      | 1 |
-      | 4 |
-  Then in the "Weather" checklist checked elements are
-      | Hot option |
-      | Sunny      |
-
-```
-Actions: <br>
-
- **When**  \<I\> check element "\<VALUE\>" in "\<ELEMENT NAME\>" checklist <br>
- **When**  \<I\> select fields from "\<ELEMENT NAME\>" checklist:  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> check elements in "\<ELEMENT NAME\>" checklist:  <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> uncheck element "\<VALUE\>" in "\<ELEMENT NAME\>" checklist <br>
- **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist elements:  <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist elements by numbers: <br>
-   &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br> 
- **When**  \<I\> check in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br>
- **When**  \<I\> check in "\<ELEMENT NAME\>" checklist elements by numbers: <br> 
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> select in "\<ELEMENT NAME\>" checklist elements by numbers: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> select in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br>
- **When**  \<I\> check all elements in "\<ELEMENT NAME\>" checklist  <br>
- **When**  \<I\> uncheck all elements in "\<ELEMENT NAME\>" checklist  <br> 
- 
-Validations: <br>
-
-**Then** in the "\<ELEMENT NAME\>" checklist checked element is "\<VALUE\>" <br>
-**Then** count of selected elements in "\<ELEMENT NAME\>" checklist is "\<COUNT\>" <br>
-**Then** in the "\<ELEMENT NAME\>" checklist checked element are: <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
-**Then** the "\<ELEMENT NAME\>" checklist text is "\<ELEMENT NAME\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden	 <br>
-**Then** the "\<ELEMENT NAME\>" does not appear	<br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/CheckList.feature" target="_blank">Cucumber tests</a> for CheckList<br>
-
-<br><br><br><br><br><br><br><br><br><br><br>
-
-### Table
-
-```gherkin
-Table actions examples:
-
-When I click the cell in row "2" in column "2" of the table "Simple Table"
-
-Table validation examples:
-
-Then the "Users Table" is enabled
-Then the "Users Table" is disabled
-Then the "Users Table" is displayed
-Then the "Users Table" is hidden
-Then the cell in row "1" in column "3" of the table "Simple Table" is selected
-Then the cell in row "1" in column "3" of the table "Simple Table" is deselected
-Then the "Users Table" does not appear
-Then the "Users Table" does not appear during "5" seconds
-Then the "Users Table" table columns count equals "4"
-Then the "Users Table" table rows count equals "6"
-Then the "Users Table" table header has items
-Then the "Users Table" table preview equals values
-Then the "Users Table" table has size "6"
-Then the "Users Table" table has size greater than "3"
-Then the "Users Table" table has size less or equal to "6"
-Then the "Users Table" table is not empty
-Then the "Users Table" table has row that contains value "Ivan" in column "User"
-Then the "Users Table" table all rows contain value "Vip" in column "Description"
-Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
-Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
-Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
-Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
-
-Scenario examples for Table:
-
-  Scenario: Get label text test
-    Given I open "Users Page"
-    Then the "Users Table" table columns count equals "4"
-    And the "Users Table" table rows count equals "6"
-    And the "Users Table" table header has items
-      | Number      |
-      | Type        |
-      | User        |
-      | Description |
-
-  Scenario: Common matchers test
-    Given I open "Users Page"
-    Then the "Users Table" table has size "6"
-    And the "Users Table" table has size greater than "3"
-    And the "Users Table" table has size less or equal to "6"
-    And the "Users Table" table is not empty
-
-```
-Actions: <br>
-
- **When** \<I\> click the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\><br>
- 
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\> is selected <br>
-**Then** the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\> is deselected <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-**Then** the "\<ELEMENT NAME\>" table columns count equals "\<COUNT\>" <br>
-**Then** the "\<ELEMENT NAME\>" table rows count equals "\<COUNT\>" <br>
-**Then** the "\<ELEMENT NAME\>" table header has items: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
-**Then** the "\<ELEMENT NAME\>" table preview equals values: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
-**Then** the "\<ELEMENT NAME\>" table has size "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has size greater than "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has size less or equal to "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table is not empty <br>
-**Then** the "\<ELEMENT NAME\>" table has row that contains value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table all rows contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has no rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has at least "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which have value "\<TEXT\>" in column "\<COLUMN\>" <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Table.feature" target="_blank">Cucumber tests</a> for Table<br>
-<br><br><br><br><br><br><br><br><br><br><br>
-
-### DataTable
-
-Note: this element is an alias for Table
-
-```gherkin
-Table validation examples:
-
-Then the "Users Table" is enabled
-Then the "Users Table" is disabled
-Then the "Users Table" is displayed
-Then the "Users Table" is hidden
-Then the "Users Table" does not appear
-Then the "Users Table" does not appear during "5" seconds
-Then the "Users Table" table columns count equals "4"
-Then the "Users Table" table rows count equals "6"
-Then the "Users Table" table header has items
-Then the "Users Table" table preview equals values
-Then the "Users Table" table has size "6"
-Then the "Users Table" table has size greater than "3"
-Then the "Users Table" table has size less or equal to "6"
-Then the "Users Table" table is not empty
-Then the "Users Table" table has row that contains value "Ivan" in column "User"
-Then the "Users Table" table all rows contain value "Vip" in column "Description"
-Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
-Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
-Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
-Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
-
-Scenario examples for Table:
-
-  Scenario: Get label text test
-    Given I open "Users Page"
-    Then the "Users Table" table columns count equals "4"
-    And the "Users Table" table rows count equals "6"
-    And the "Users Table" table header has items
-      | Number      |
-      | Type        |
-      | User        |
-      | Description |
-
-  Scenario: Common matchers test
-    Given I open "Users Page"
-    Then the "Users Table" table has size "6"
-    And the "Users Table" table has size greater than "3"
-    And the "Users Table" table has size less or equal to "6"
-    And the "Users Table" table is not empty
-
-```
-
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-**Then** the "\<ELEMENT NAME\>" table columns count equals "\<COUNT\>" <br>
-**Then** the "\<ELEMENT NAME\>" table rows count equals "\<COUNT\>" <br>
-**Then** the "\<ELEMENT NAME\>" table header has items: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
-**Then** the "\<ELEMENT NAME\>" table preview equals values: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
-**Then** the "\<ELEMENT NAME\>" table has size "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has size greater than "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has size less or equal to "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table is not empty <br>
-**Then** the "\<ELEMENT NAME\>" table has row that contains value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table all rows contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has no rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has at least "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which have value "\<TEXT\>" in column "\<COLUMN\>" <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Table.feature" target="_blank">Cucumber tests</a> for Table<br>
-<br><br><br><br><br><br><br><br><br><br><br>
-
-### Form
-
-```gherkin
-Form actions examples:
-
-When fill form "Contact Form" with data
-    | name | Roman |
-    | lastName| Iovlev |
-    | position| ChiefQA |
-    | passportNumber| 654321 |
-    | passportSeria| 1234 |
-    | description| JDI - awesome UI automation tool |
-    | acceptConditions| true | 
-    | gender| Female |
-    | religion| Other |
-When I submit form "Contact Form"
-When I save form
-
-JSON data file examples:
-When fill form "Contact Form" with "Roman Contacts"
-When send form "Contact Form" with "Roman Contacts"
-
-Form validation examples:
-
-Then the form "Contact Form" data equals to
-    | name| Roman |
-    | lastName | Iovlev |
-    | position | ChiefQA |
-    | passportNumber | 654321 |
-    | passportSeria | 1234 |
-    | description | JDI - awesome UI automation tool |
-    | acceptConditions | true |
-    | gender| Female |
-    | religion| Other |
-Then the form "Contact Form" is displayed
-Then the form "Contact Form" is hidden
-Then the form "Contact Form" does not appear
-Then the form "Contact Form" does not appear during 7
-Then the form "Contact Form" disappear
-
-JSON data file examples:
-Then the form "Contact Form" data equals to "Roman Contacts"
-
-Form scenario example:
-
-  Scenario: fillContactForm
-    Given I open "Contact Form Page"
-    When fill form "Contact Form" with data
-    | name| Roman |
-    | lastName | Iovlev |
-    | position | ChiefQA |
-    | passportNumber | 654321 |
-    | passportSeria | 1234 |
-    | description | JDI - awesome UI automation tool |
-    | acceptConditions | true |
-    | gender | Female |
-    | religion | Other |
-    And I submit form "Contact Form"
-    Then the form "Contact Form" data equals to
-    | name | Roman |
-    | lastName | Iovlev |
-    | position | ChiefQA |
-    | passportNumber | 654321 |
-    | passportSeria | 1234 |
-    | description | JDI - awesome UI automation tool |
-    | acceptConditions | true |
-    | gender | Female |
-    | religion | Other |
-
-```
-Actions: <br>
-
- **When** \<I\> fill form \<ELEMENT NAME\> with data:<br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form \<ELEMENT NAME\> with data:<br>
- &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form<br>
- 
- It's also possible to use JSON data files:<br>
- **When** \<I\> fill form \<ELEMENT NAME\> with \<JSON DATA FILE NAME\><br>
- **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form \<ELEMENT NAME\> with \<JSON DATA FILE NAME\><br>
- <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/json/test/data/Roman%20Contacts.json" target="_blank">JSON data file example</a>
- 
-Validations: <br>
-
- **Then** the form \<ELEMENT NAME\> data equals to: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the form \<ELEMENT NAME\> is displayed<br>
- **Then** the form \<ELEMENT NAME\> is hidden<br>
- **Then** the form \<ELEMENT NAME\> does not appear<br>
- **Then** the form \<ELEMENT NAME\> does not appear during \<SECONDS\><br>
- **Then** the form \<ELEMENT NAME\> disappear<br>
- 
- It's also possible to use JSON data files:<br>
- **Then** the form \<ELEMENT NAME\> data equals to \<JSON DATA FILE NAME\><br>
- <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/json/test/data/Roman%20Contacts.json" target="_blank">JSON data file example</a>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Form.feature" target="_blank">Cucumber tests</a> for Form<br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-<br>
-### Radiobuttons
-
-```gherkin
-Radiobuttons actions examples:
-
-When I select "Blue" field from "Colors"
-When select the radio button with "1" index from "Colors" 
-When I highlight "Colors"	
-When set "Colors" attribute "test-jdi" with value "test-value" 
-
-Radiobuttons validation examples:
-
-Then the "Colors" text equals to "Blue"	
-Then the "Colors" text contains "Blue"	
-Then the "Colors" text matches to "\w{15}" 
-Then the "Colors" is enabled 
-Then the "Colors" is disabled 
-Then the "Colors" is displayed 
-Then the "Colors" is hidden 
-Then the "Colors" disappears 
-Then the "Colors" does not appear 
-Then the "Colors" does not appear during "2" seconds 
-Then the "Colors" css "type" equals to "radio" 
-Then the "Colors" consists of next values 
-Then the "Colors" contains "Blue" radio button 
-Then the "Colors" contains "Yellow" disabled radio button 
-Then the "Colors" does not contain "Yellow" enabled radio button 
-Then the "Colors" contains next enabled values
-	| Red | Green | Blue | Yellow |
-
-Scenario example for Radiobuttons:
-
- Given I open "Html5 Page" page
- Then the "Html5 Page.Colors" consists of next values
-      | Red | Green | Blue | Yellow |
- When I highlight "Colors"	
- When I Select "Blue" field from "Html5 Page.Colors"
- Then the "Html5 Page.Colors" text equals to "Blue"
-
-
-
-```
-Actions: <br><br>
-
-**When** \<I\> select "TEXT" field from "\<ELEMENT NAME\>" <br>
-**When** \<I\> select the radio button with "\<INDEX\>" index from "\<ELEMENT NAME\>" <br>
-**When** \<I\> highlight "\<ELEMENT NAME\>"	<br>
-**When** \<I\> set "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" with value "\<ATTRIBUTE VALUE\>" <br>
- 
-Validations: <br><br>
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>"	<br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>"	<br>
-**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" consists of next values <br>
-**Then** the "\<ELEMENT NAME\>" contains "\<TEXT\>" radio button <br>
-**Then** the "\<ELEMENT NAME\>" contains "\<TEXT\>" disabled radio button <br>
-**Then** the "\<ELEMENT NAME\>" does not contain "\<TEXT\>" enabled radio button <br>
-**Then** the "\<ELEMENT NAME\>" contains next enabled values: <br>
-    |"\<RADIO_3\>" | "\<RADIO_2\>" | "\<RADIO_3\>" |
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/RadioButtons.feature" target="_blank">Cucumber tests</a> for Radiobuttons<br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
 
 ### WebPage
 ```gherkin
