@@ -477,30 +477,31 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
 
-### System Button
+### Add Contact Button
 
-<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">System buttons</a> often appear in navigation bars and toolbars, but may be used anywhere.
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Add contact buttons</a><br>
+Users can tap an Add Contact button to browse a list of existing contacts and to select one for insertion into a text field or other view. 
+In Mail, for example, you can tap the Add Contact button in the To field of a message to select a recipient from your list of contacts.
 
 ```java 
-  
+   
   @Test
-  public void systemButtonTest() {
-      ContactsListPage.groupsButton.tap();
-      GroupsPage.groupsBar.is().displayed();
-      GroupsPage.doneButton.done();
-      ContactsListPage.contactsListView.is().displayed();
+  public void addContactButtonTest() throws InterruptedException {
+      MessagesListPage.newMessageButton.tap();
+      
+      NewMessagePage.addContactButton.openContacts();
 
-      ContactsListPage.addButton.tap();
-      AddNewContactPage.newContactNavBar.is().displayed();
-      AddNewContactPage.cancelButton.cancel();
-      ContactsListPage.addButton.is().displayed();
+      ContactsListPage.contactNavBar.is().displayed();
+      ContactsListPage.cancelButton.cancel();
+
+      NewMessagePage.addContactButton.is().displayed();
   }
   
 ```
+ 
+![Add contact button](../images/ios/add_contact_button.png)
 
-![System button](../images/ios/system_button.png)
-
-Available methods in Java JDI Mobile (**iOS 13 compatible**):
+Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -509,11 +510,9 @@ Available methods in Java JDI Mobile (**iOS 13 compatible**):
 **longPress()** | Long press | void
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert 
-**done()** | Alias of tap() for Done button| void
-**cancel()** | Alias of tap() for Cancel button| void
-**send()** | Alias of tap() for Send button| void
+**openContacts()** | Alias of tap() for button| void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Detail Disclosure Button
 
@@ -591,31 +590,31 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java;" target="_blank">Test examples in Java</a>
 
-### Add Contact Button
 
-<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Add contact buttons</a><br>
-Users can tap an Add Contact button to browse a list of existing contacts and to select one for insertion into a text field or other view. 
-In Mail, for example, you can tap the Add Contact button in the To field of a message to select a recipient from your list of contacts.
+### System Button
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">System buttons</a> often appear in navigation bars and toolbars, but may be used anywhere.
 
 ```java 
-   
+  
   @Test
-  public void addContactButtonTest() throws InterruptedException {
-      MessagesListPage.newMessageButton.tap();
-      
-      NewMessagePage.addContactButton.openContacts();
+  public void systemButtonTest() {
+      ContactsListPage.groupsButton.tap();
+      GroupsPage.groupsBar.is().displayed();
+      GroupsPage.doneButton.done();
+      ContactsListPage.contactsListView.is().displayed();
 
-      ContactsListPage.contactNavBar.is().displayed();
-      ContactsListPage.cancelButton.cancel();
-
-      NewMessagePage.addContactButton.is().displayed();
+      ContactsListPage.addButton.tap();
+      AddNewContactPage.newContactNavBar.is().displayed();
+      AddNewContactPage.cancelButton.cancel();
+      ContactsListPage.addButton.is().displayed();
   }
   
 ```
- 
-![Add contact button](../images/ios/add_contact_button.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+![System button](../images/ios/system_button.png)
+
+Available methods in Java JDI Mobile (**iOS 13 compatible**):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -624,84 +623,11 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **longPress()** | Long press | void
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert 
-**openContacts()** | Alias of tap() for button| void
+**done()** | Alias of tap() for Done button| void
+**cancel()** | Alias of tap() for Cancel button| void
+**send()** | Alias of tap() for Send button| void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a>
-
-
-### Switch
-
-<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/switches/" target="_blank" style="font-weight: bold;">A switch</a><br>
- is a visual toggle between two mutually exclusive states — on and off.
-
-```java 
-   
-  @Test
-  public void switchTest() {
-      RemindersListPage.todayRemindersButton.tap();
-
-      RemindersPage.newReminderButton.tap();
-      RemindersPage.editDetailsInfoButton.openDetails();
-
-      EditDetailsPage.remindSwitch.setToOff();
-      EditDetailsPage.remindSwitch.is().off();
-      EditDetailsPage.remindSwitch.setToOn();
-      EditDetailsPage.remindSwitch.is().on();
-  }
-  
-```
- 
-![Switch](../images/ios/switch.png)
-
-Available methods in Java JDI Mobile (**iOS 13** compatible):
-
-|Method | Description | Return Type
---- | --- | ---
-**tap()** | Tap | void
-**is()** | Assert action | SwitchAssert 
-**isOn()** | Check that switch is on | boolean
-**setToOn()** | Set switch to on | void
-**setToOff()** | Set switch to off | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
-
-### Text Field
-
-<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
-A Text Field</a> is a single-line, fixed-height field, often with rounded corners, that automatically brings up a keyboard when the user taps it. Use a text field to request a small amount of information, such as an email address.
-
-```java 
-   
-  @Test
-  public void textFieldTest() {
-      MessagesListPage.newMessageButton.tap();
-
-      NewMessagePage.messageTextField.setValue("Test");
-      NewMessagePage.messageTextField.is().text("Test");
-
-      NewMessagePage.messageTextField.clear();
-      NewMessagePage.messageTextField.is().empty();
-  }
-  
-```
-
-![Text Field](../images/ios/textfield.png)
-
-Available methods in Java JDI Mobile (**iOS 13** compatible):
-
-|Method | Description | Return Type
---- | --- | ---
-**tap()** | Tap | void
-**doubleTap()** | Double tap  | void
-**longPress()** | Long press | void
-**longPress(int seconds)** | Long press | void
-**is()** | Assert action | TextAssert 
-**setValue()** | Set value in text field | void
-**getValue()** | Get value from text field | String
-**getText()** | Get text from text field | String
-**clear()** | Clear value in text field | void
- 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Picker Wheel
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/pickers/" target="_blank" style="font-weight: bold;">
@@ -781,6 +707,81 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **setMinimumValue()** | Set the minimum value | void
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
+
+### Switch
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/switches/" target="_blank" style="font-weight: bold;">A switch</a><br>
+ is a visual toggle between two mutually exclusive states — on and off.
+
+```java 
+   
+  @Test
+  public void switchTest() {
+      RemindersListPage.todayRemindersButton.tap();
+
+      RemindersPage.newReminderButton.tap();
+      RemindersPage.editDetailsInfoButton.openDetails();
+
+      EditDetailsPage.remindSwitch.setToOff();
+      EditDetailsPage.remindSwitch.is().off();
+      EditDetailsPage.remindSwitch.setToOn();
+      EditDetailsPage.remindSwitch.is().on();
+  }
+  
+```
+ 
+![Switch](../images/ios/switch.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**is()** | Assert action | SwitchAssert 
+**isOn()** | Check that switch is on | boolean
+**setToOn()** | Set switch to on | void
+**setToOff()** | Set switch to off | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
+
+### Text Field
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
+A Text Field</a> is a single-line, fixed-height field, often with rounded corners, that automatically brings up a keyboard when the user taps it. Use a text field to request a small amount of information, such as an email address.
+
+```java 
+   
+  @Test
+  public void textFieldTest() {
+      MessagesListPage.newMessageButton.tap();
+
+      NewMessagePage.messageTextField.setValue("Test");
+      NewMessagePage.messageTextField.is().text("Test");
+
+      NewMessagePage.messageTextField.clear();
+      NewMessagePage.messageTextField.is().empty();
+  }
+  
+```
+
+![Text Field](../images/ios/textfield.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**setValue()** | Set value in text field | void
+**getValue()** | Get value from text field | String
+**getText()** | Get text from text field | String
+**clear()** | Clear value in text field | void
+ 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
+
 
 ## iOS Native Application Composite elements
 
@@ -905,43 +906,6 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
-### Segmented Control
-
-<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/" target="_blank" style="font-weight: bold;">A Segmented control </a>
-is a linear set of two or more segments, each of which functions as a mutually exclusive button.
-
-```java 
-   
-    @Test
-        public void segmentedControlTest() {
-            CalendarPage.inboxButton.tap();
-    
-            InboxPage.eventTypesSegmentedControl.has().segments(Arrays.asList("New", "Replied"));
-    
-            InboxPage.eventTypesSegmentedControl.tapSegment("Replied");
-            InboxPage.eventTypesSegmentedControl.is().selected("Replied");
-            InboxPage.eventsInfoText.is().text("No Events You’ve Replied To");
-        }
-  
-```
-
-![Segmented control](../images/ios/segmented_control.png)
-
-Available methods in Java JDI Mobile (**iOS 13** compatible):
-
-|Method | Description | Return Type
---- | --- | ---
-**tap()** | Tap | void
-**doubleTap()** | Double tap  | void
-**longPress()** | Long press | void
-**longPress(int seconds)** | Long press | void
-**tapSegment(String segmentName)** | Tap segment with segmentName on Segmented control | void
-**getSelectedSegmentText()** | Get text of selected segment  | String
-**getSegmentTexts()** | Get text of all segments | List<String>
-**is()** | Assert action | TextAssert 
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
-
 ### Search Bar
 
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/search-bars/" target="_blank" style="font-weight: bold;">A Search bar </a>
@@ -982,6 +946,44 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **is()** | Assert action | TextAssert 
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+
+### Segmented Control
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/" target="_blank" style="font-weight: bold;">A Segmented control </a>
+is a linear set of two or more segments, each of which functions as a mutually exclusive button.
+
+```java 
+   
+    @Test
+        public void segmentedControlTest() {
+            CalendarPage.inboxButton.tap();
+    
+            InboxPage.eventTypesSegmentedControl.has().segments(Arrays.asList("New", "Replied"));
+    
+            InboxPage.eventTypesSegmentedControl.tapSegment("Replied");
+            InboxPage.eventTypesSegmentedControl.is().selected("Replied");
+            InboxPage.eventsInfoText.is().text("No Events You’ve Replied To");
+        }
+  
+```
+
+![Segmented control](../images/ios/segmented_control.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**tapSegment(String segmentName)** | Tap segment with segmentName on Segmented control | void
+**getSelectedSegmentText()** | Get text of selected segment  | String
+**getSegmentTexts()** | Get text of all segments | List<String>
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
+
 
 ## HTML5 Common elements
 
