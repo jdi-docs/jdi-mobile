@@ -426,6 +426,34 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SearchViewTests.java">Test examples in Java</a>
 
+### Rating Bar
+
+<a href="https://developer.android.com/reference/android/widget/RatingBar" target="_blank" style="font-weight: bold;">RatingBar</a> is an extension of SeekBar and ProgressBar that shows a rating in stars.
+
+```java
+
+@Test
+public void RatingBarTestExample(){
+        RatingBarPage.ratingBar1.setRating(4.0);
+        RatingBarPage.ratingBar1.is().value(4.0);
+        RatingBarPage.ratingBar1.setRatingByClick(3.0, 6.0);
+        RatingBarPage.ratingBar1.is().value(3.0);
+    }
+
+```
+
+![RatingBar](../images/android/ratingBar_example.png)
+
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**getRating()** | Returns rating as a number, 1.0 for every half of a star | double
+**setRating(double value)** | Sets new rating value | void
+**setRatingByClick(double value, double fullStars)** | Sets rating imitation of user actions | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/2391-ratingBar/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RatingBarTests.java">Test examples in Java</a>
+
 ## iOS Native Application Common elements
 
 ### Buttons
