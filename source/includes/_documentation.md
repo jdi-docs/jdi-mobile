@@ -234,81 +234,6 @@ TBD
 
 ## Android Native Application Common elements
 
-### Toggle Button
-
-<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">Toggle Button</a> allows the user to change a setting between two states (ON or OFF) as a button with a light indicator.
-
-```java 
-
-@Test
-    public void toggleButtonTest() {
-        IndexPage.viewsPage.click();
-        ViewsPage.buttonsPage.click();
-        ButtonsPage.toggleButton.is().displayed();
-        ButtonsPage.toggleButton.is().off();
-        ButtonsPage.toggleButton.setToOn();
-        ButtonsPage.toggleButton.is().on();
-        ButtonsPage.toggleButton.setToOff();
-        ButtonsPage.toggleButton.is().off();
-    }
-
-```
-
-![ToggleButton](../images/android/togglebutton.png)
-
-Available methods in Java JDI Mobile:
-
-|Method | Description | Return Type
---- | --- | ---
-**isOn()**  | Check that toggle button is On | boolean
-**setToOff** | Set toggle button to Off | void
-**setToOn** | Set toggle button to On | void
-**is()** | Assert action | SwitchAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
-
-### Switch
-
-<a href="https://developer.android.com/reference/android/widget/Switch" target="_blank" style="font-weight: bold;">Switch</a> is another type of toggle button that’s predominantly used since Android 4.0. Android Switch provides a slider control and allows the user to change a setting between two states.
-Switches are either on or off. Providing labels that describe these states is redundant and clutters the interface.
-
-```java 
-
-@Test
-    public void switchAirplaneModeTest(){
-        networkAndInternetButton.click();
-        airplaneModeSwitch.setToOn();
-        airplaneModeSwitch.is().on();
-        airplaneModeSwitch.setToOff();
-        airplaneModeSwitch.is().off();
-
-    }
-
-    @Test
-    public void switchWiFiConnectionTest(){
-        networkAndInternetButton.click();
-        wiFiSwitch.setToOn();
-        wiFiSwitch.is().on();
-        wiFiSwitch.setToOff();
-        wiFiSwitch.is().off();
-    }
-
-```
-
-![Switch](../images/android/switch_on.PNG)
-![Switch](../images/android/switch_off.PNG)
-
-Available methods in Java JDI Mobile
-
-|Method | Description | Return Type
---- | --- | ---
-**is()** | Assert action | SwitchAssert 
-**isOn()** | Check that switch is on | boolean
-**setToOn()** | Set switch to on | void
-**setToOff()** | Set switch to off | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
-
 ### Checkbox
 
 <a href="https://developer.android.com/guide/topics/ui/controls/checkbox" target="_blank" style="font-weight: bold;">Checkbox</a>  is a specific type of two-states button that can be either checked or unchecked.
@@ -379,6 +304,34 @@ Available methods in Java JDI Mobile
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile/src/main/java/com/epam/jdi/light/mobile/elements/common/app/android/Checkbox.java" target="_blank">Test examples in Java</a>
 
+### Rating Bar
+
+<a href="https://developer.android.com/reference/android/widget/RatingBar" target="_blank" style="font-weight: bold;">RatingBar</a> is an extension of SeekBar and ProgressBar that shows a rating in stars.
+
+```java
+
+@Test
+public void RatingBarTestExample(){
+        RatingBarPage.ratingBar1.setRating(4.0);
+        RatingBarPage.ratingBar1.is().value(4.0);
+        RatingBarPage.ratingBar1.setRatingByClick(3.0, 6.0);
+        RatingBarPage.ratingBar1.is().value(3.0);
+    }
+
+```
+
+![RatingBar](../images/android/ratingBar_example.png)
+
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**getRating()** | Returns rating as a number, 1.0 for every half of a star | double
+**setRating(double value)** | Sets new rating value | void
+**setRatingByClick(double value, double fullStars)** | Sets rating imitation of user actions | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/2391-ratingBar/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RatingBarTests.java">Test examples in Java</a>
+
 ### Search View
 
 <a href="https://developer.android.com/reference/android/widget/SearchView" target="_blank" style="font-weight: bold;">Search View</a> is a widget that provides an interface for a user to enter a search query and submit a request to a search provider. It shows a list of query suggestions or results, if available, and allows the user to pick a suggestion or result to launch into.
@@ -426,33 +379,81 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SearchViewTests.java">Test examples in Java</a>
 
-### Rating Bar
+### Switch
 
-<a href="https://developer.android.com/reference/android/widget/RatingBar" target="_blank" style="font-weight: bold;">RatingBar</a> is an extension of SeekBar and ProgressBar that shows a rating in stars.
+<a href="https://developer.android.com/reference/android/widget/Switch" target="_blank" style="font-weight: bold;">Switch</a> is another type of toggle button that’s predominantly used since Android 4.0. Android Switch provides a slider control and allows the user to change a setting between two states.
+Switches are either on or off. Providing labels that describe these states is redundant and clutters the interface.
 
-```java
+```java 
 
 @Test
-public void RatingBarTestExample(){
-        RatingBarPage.ratingBar1.setRating(4.0);
-        RatingBarPage.ratingBar1.is().value(4.0);
-        RatingBarPage.ratingBar1.setRatingByClick(3.0, 6.0);
-        RatingBarPage.ratingBar1.is().value(3.0);
+    public void switchAirplaneModeTest(){
+        networkAndInternetButton.click();
+        airplaneModeSwitch.setToOn();
+        airplaneModeSwitch.is().on();
+        airplaneModeSwitch.setToOff();
+        airplaneModeSwitch.is().off();
+
+    }
+
+    @Test
+    public void switchWiFiConnectionTest(){
+        networkAndInternetButton.click();
+        wiFiSwitch.setToOn();
+        wiFiSwitch.is().on();
+        wiFiSwitch.setToOff();
+        wiFiSwitch.is().off();
     }
 
 ```
 
-![RatingBar](../images/android/ratingBar_example.png)
+![Switch](../images/android/switch_on.PNG)
+![Switch](../images/android/switch_off.PNG)
 
 Available methods in Java JDI Mobile
 
 |Method | Description | Return Type
 --- | --- | ---
-**getRating()** | Returns rating as a number, 1.0 for every half of a star | double
-**setRating(double value)** | Sets new rating value | void
-**setRatingByClick(double value, double fullStars)** | Sets rating imitation of user actions | void
+**is()** | Assert action | SwitchAssert 
+**isOn()** | Check that switch is on | boolean
+**setToOn()** | Set switch to on | void
+**setToOff()** | Set switch to off | void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/2391-ratingBar/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RatingBarTests.java">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
+
+### Toggle Button
+
+<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">Toggle Button</a> allows the user to change a setting between two states (ON or OFF) as a button with a light indicator.
+
+```java 
+
+@Test
+    public void toggleButtonTest() {
+        IndexPage.viewsPage.click();
+        ViewsPage.buttonsPage.click();
+        ButtonsPage.toggleButton.is().displayed();
+        ButtonsPage.toggleButton.is().off();
+        ButtonsPage.toggleButton.setToOn();
+        ButtonsPage.toggleButton.is().on();
+        ButtonsPage.toggleButton.setToOff();
+        ButtonsPage.toggleButton.is().off();
+    }
+
+```
+
+![ToggleButton](../images/android/togglebutton.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**isOn()**  | Check that toggle button is On | boolean
+**setToOff** | Set toggle button to Off | void
+**setToOn** | Set toggle button to On | void
+**is()** | Assert action | SwitchAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
+
 
 ## iOS Native Application Common elements
 
