@@ -956,9 +956,9 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **doubleTap()** | Double tap  | void
 **longPress()** | Long press | void
 **longPress(int seconds)** | Long press | void
-**tapSegment(String segmentName)** | Tap segment with segmentName on Segmented control | void
-**getSelectedSegmentText()** | Get text of selected segment  | String
-**getSegmentTexts()** | Get text of all segments | List<String>
+**tapSegment(String segmentName)** | Tap segment with segmentName on Segmented Control | void
+**selected()** | Get selected value | String
+**values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
@@ -1003,6 +1003,43 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **is()** | Assert action | TextAssert 
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+
+### Tab Bar
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/tab-bars/" target="_blank" style="font-weight: bold;">A Tab bar </a>
+appears at the bottom of an app screen and provides the ability to quickly switch between different sections of an app.
+
+```java 
+   
+    @Test
+        public void tabBarTest() {
+            PhotosPage.photosTabBar.has().values(Arrays.asList("All Photos", "For You", "Albums", "Search"));
+    
+            PhotosPage.photosTabBar.tapBarButton("Search");
+            PhotosPage.photosTabBar.is().selected("Search");
+    
+            PhotosPage.photosTabBar.tapBarButton("For You");
+            PhotosPage.noContentText.is().displayed();
+        }
+  
+```
+
+![Tab bar](../images/ios/tab_bar.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**tapBarButton(String buttonName)** | Tap button with buttonName on Tab bar | void
+**selected()** | Get selected value | String
+**values()** | Get values of all elements | List<String>
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/PhotosAppTests.java" target="_blank">Test examples in Java</a>
 
 ## HTML5 Common elements
 
