@@ -527,6 +527,81 @@ Available methods in Java JDI Mobile:
  
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/TextFieldTests.java" target="_blank">Test examples in Java</a>
 
+### Status Bar
+
+<a href="https://developer.android.com/guide/topics/ui/notifiers/notifications" target="_blank" style="font-weight: bold;">Status Bar </a> 
+contains notification icons and system icons on Android.
+
+
+```java 
+
+@BeforeMethod
+    public void initSteps() {
+        appPage.click();
+        notificationPage.click();
+
+        statusBarButton.click();
+        happyButton.click();
+    }
+
+    @Test
+    public void openNotificationTest() {
+
+        AndroidScreen.openStatusBar();
+        notificationPanel.is().displayed();
+        appIcon.is().displayed();
+
+        appName.is().text("API Demos");
+        title.is().text("Mood ring");
+        appText.is().text("I am happy");
+
+        statusBarLatestEventContent.click();
+        happyIconButton.is().displayed();
+        happyIconButton.click();
+    }
+
+    @Test
+    public void clearNotificationButtonTest(){
+
+        AndroidScreen.openStatusBar();
+        notificationPanel.is().displayed();
+        AndroidScreen.closeStatusBar();
+
+        clearNotificationButton.click();
+        AndroidScreen.openStatusBar();
+        noNotifications.is().displayed();
+        AndroidScreen.closeStatusBar();
+
+    }
+
+    @Test
+    public void clearAllButtonTest(){
+
+        AndroidScreen.openStatusBar();
+        notificationPanel.is().displayed();
+        clearAllButton.click();
+
+        AndroidScreen.openStatusBar();
+        noNotifications.is().displayed();
+        AndroidScreen.closeStatusBar();
+    }
+
+```
+
+![StatusBar](../images/android/statusBar1.png)
+
+![StatusBar](../images/android/statusBar2.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**is()** | Assert action | TextAssert 
+**openStatusBar()** | Open status bar | void
+**closeStatusBar()** | Closee status bar | void
+ 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/StatusBarTests.java" target="_blank">Test examples in Java</a>
+
 ## iOS Native Application Common elements
 
 ### Buttons
