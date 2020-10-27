@@ -48,11 +48,44 @@ Available mobile app-specific methods in Java JDI Light Mobile:
 
 ```java 
 
-  @Test
-  public void rotate() {
-      rotate(LANDSCAPE);
-      assertEquals(getOrientation(), LANDSCAPE);
-  }
+    @Test
+    public void mobileRotationTest() {
+        rotate(new DeviceRotation(0, 0, 90));
+        assertThat(getRotation().getX()).isEqualTo(0);
+        assertThat(getRotation().getY()).isEqualTo(0);
+        assertThat(getRotation().getZ()).isEqualTo(90);
+    }
+
+    @Test
+    public void mobileOrientationTest() {
+        MobileDevice.rotate(ScreenOrientation.LANDSCAPE);
+        assertThat(MobileDevice.getOrientation()).isEqualTo(ScreenOrientation.LANDSCAPE);
+        MobileDevice.rotate(ScreenOrientation.PORTRAIT);
+        assertThat(MobileDevice.getOrientation()).isEqualTo(ScreenOrientation.PORTRAIT);
+    }
+
+    @Test
+    public void mobileLockTest() {
+        lockDevice();
+        unlockDevice();
+        lockDevice(Duration.ofSeconds(2));
+    }
+
+    @Test
+    public void mobileLocationTest() {
+        setLocation(new Location(49, 123, 10));
+        assertThat(getLocation().getLatitude()).isEqualTo(49.0);
+        assertThat(getLocation().getLongitude()).isEqualTo(123.0);
+        assertThat(getLocation().getAltitude()).isEqualTo(10.0);
+    }
+
+    @Test
+    public void mobileTimeTest() throws InterruptedException {
+        String deviceTime = getDeviceTime();
+        Thread.sleep(1000);
+        String deviceTimeWithFormat = getDeviceTime("DD-MM-YYYY");
+        assertThat(deviceTime).isNotEqualTo(deviceTimeWithFormat);
+    }
   
 ```
 
@@ -111,6 +144,23 @@ Available mobile file-specific methods in Java JDI Light Mobile:
          hideKeyboard();
       }
   }
+
+ @Test
+    public void pressKeyTest() {
+        TextFieldsPage.displayedInputTextField.tap();
+        pressKey(new KeyEvent(AndroidKey.APOSTROPHE));
+        assertThat(displayedInputTextField.getText()).isEqualTo("'");
+    }
+
+    @Test
+    public void longPressKeyTest() throws InterruptedException {
+        TextFieldsPage.displayedInputTextField.tap();
+        pressKey(new KeyEvent(AndroidKey.APOSTROPHE));
+        pressKey(new KeyEvent(AndroidKey.APOSTROPHE));
+        MobileKeyboard.longPressKey(new KeyEvent(AndroidKey.DEL));
+        assertThat(TextFieldsPage.displayedInputTextField.getText()).
+                isEqualTo("");
+    }
   
 ```
 
