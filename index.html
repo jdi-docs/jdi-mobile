@@ -548,6 +548,9 @@
                             <li>
 								<a href="#search-bar" class="toc-h2 h3 toc-link" data-title="Search Bar">Search Bar</a>
                             </li>
+                            <li>
+								<a href="#tab-bar" class="toc-h2 h3 toc-link" data-title="Tab Bar">Tab Bar</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -2521,11 +2524,44 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 </tr>
 </tbody></table>
 <h3 id='mobiledevice'>MobileDevice</h3><pre class="highlight java tab-java"><code>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">rotate</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">rotate</span><span class="o">(</span><span class="n">LANDSCAPE</span><span class="o">);</span>
-      <span class="n">assertEquals</span><span class="o">(</span><span class="n">getOrientation</span><span class="o">(),</span> <span class="n">LANDSCAPE</span><span class="o">);</span>
-  <span class="o">}</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mobileRotationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">rotate</span><span class="o">(</span><span class="k">new</span> <span class="n">DeviceRotation</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">90</span><span class="o">));</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">getRotation</span><span class="o">().</span><span class="na">getX</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">getRotation</span><span class="o">().</span><span class="na">getY</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">getRotation</span><span class="o">().</span><span class="na">getZ</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">90</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mobileOrientationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">MobileDevice</span><span class="o">.</span><span class="na">rotate</span><span class="o">(</span><span class="n">ScreenOrientation</span><span class="o">.</span><span class="na">LANDSCAPE</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">MobileDevice</span><span class="o">.</span><span class="na">getOrientation</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">ScreenOrientation</span><span class="o">.</span><span class="na">LANDSCAPE</span><span class="o">);</span>
+        <span class="n">MobileDevice</span><span class="o">.</span><span class="na">rotate</span><span class="o">(</span><span class="n">ScreenOrientation</span><span class="o">.</span><span class="na">PORTRAIT</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">MobileDevice</span><span class="o">.</span><span class="na">getOrientation</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">ScreenOrientation</span><span class="o">.</span><span class="na">PORTRAIT</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mobileLockTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">lockDevice</span><span class="o">();</span>
+        <span class="n">unlockDevice</span><span class="o">();</span>
+        <span class="n">lockDevice</span><span class="o">(</span><span class="n">Duration</span><span class="o">.</span><span class="na">ofSeconds</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mobileLocationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setLocation</span><span class="o">(</span><span class="k">new</span> <span class="n">Location</span><span class="o">(</span><span class="mi">49</span><span class="o">,</span> <span class="mi">123</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">getLocation</span><span class="o">().</span><span class="na">getLatitude</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mf">49.0</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">getLocation</span><span class="o">().</span><span class="na">getLongitude</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mf">123.0</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">getLocation</span><span class="o">().</span><span class="na">getAltitude</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mf">10.0</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mobileTimeTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">deviceTime</span> <span class="o">=</span> <span class="n">getDeviceTime</span><span class="o">();</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">deviceTimeWithFormat</span> <span class="o">=</span> <span class="n">getDeviceTime</span><span class="o">(</span><span class="s">"DD-MM-YYYY"</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">deviceTime</span><span class="o">).</span><span class="na">isNotEqualTo</span><span class="o">(</span><span class="n">deviceTimeWithFormat</span><span class="o">);</span>
+    <span class="o">}</span>
 
 </code></pre>
 <p>Available mobile device-specific methods in Java JDI Light Mobile: </p>
@@ -2670,6 +2706,23 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
          <span class="n">hideKeyboard</span><span class="o">();</span>
       <span class="o">}</span>
   <span class="o">}</span>
+
+ <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">pressKeyTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">TextFieldsPage</span><span class="o">.</span><span class="na">displayedInputTextField</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">pressKey</span><span class="o">(</span><span class="k">new</span> <span class="n">KeyEvent</span><span class="o">(</span><span class="n">AndroidKey</span><span class="o">.</span><span class="na">APOSTROPHE</span><span class="o">));</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">displayedInputTextField</span><span class="o">.</span><span class="na">getText</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="s">"'"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">longPressKeyTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">TextFieldsPage</span><span class="o">.</span><span class="na">displayedInputTextField</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">pressKey</span><span class="o">(</span><span class="k">new</span> <span class="n">KeyEvent</span><span class="o">(</span><span class="n">AndroidKey</span><span class="o">.</span><span class="na">APOSTROPHE</span><span class="o">));</span>
+        <span class="n">pressKey</span><span class="o">(</span><span class="k">new</span> <span class="n">KeyEvent</span><span class="o">(</span><span class="n">AndroidKey</span><span class="o">.</span><span class="na">APOSTROPHE</span><span class="o">));</span>
+        <span class="n">MobileKeyboard</span><span class="o">.</span><span class="na">longPressKey</span><span class="o">(</span><span class="k">new</span> <span class="n">KeyEvent</span><span class="o">(</span><span class="n">AndroidKey</span><span class="o">.</span><span class="na">DEL</span><span class="o">));</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">TextFieldsPage</span><span class="o">.</span><span class="na">displayedInputTextField</span><span class="o">.</span><span class="na">getText</span><span class="o">()).</span>
+                <span class="n">isEqualTo</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+    <span class="o">}</span>
 
 </code></pre>
 <p>Available mobile keyboard-specific methods in Java JDI Light Mobile: </p>
@@ -4122,17 +4175,17 @@ is a linear set of two or more segments, each of which functions as a mutually e
 </tr>
 <tr>
 <td><strong>tapSegment(String segmentName)</strong></td>
-<td>Tap segment with segmentName on Segmented control</td>
+<td>Tap segment with segmentName on Segmented Control</td>
 <td>void</td>
 </tr>
 <tr>
-<td><strong>getSelectedSegmentText()</strong></td>
-<td>Get text of selected segment</td>
+<td><strong>selected()</strong></td>
+<td>Get selected value</td>
 <td>String</td>
 </tr>
 <tr>
-<td><strong>getSegmentTexts()</strong></td>
-<td>Get text of all segments</td>
+<td><strong>values()</strong></td>
+<td>Get values of all elements</td>
 <td>List<String></td>
 </tr>
 <tr>
@@ -4229,6 +4282,76 @@ allows people to search through a large collection of values by typing text into
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a></p>
+<h3 id='tab-bar'>Tab Bar</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/tab-bars/" target="_blank" style="font-weight: bold;">A Tab bar </a>
+appears at the bottom of an app screen and provides the ability to quickly switch between different sections of an app.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tabBarTest</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">photosTabBar</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"All Photos"</span><span class="o">,</span> <span class="s">"For You"</span><span class="o">,</span> <span class="s">"Albums"</span><span class="o">,</span> <span class="s">"Search"</span><span class="o">));</span>
+
+            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">photosTabBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Search"</span><span class="o">);</span>
+            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">photosTabBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Search"</span><span class="o">);</span>
+
+            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">photosTabBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"For You"</span><span class="o">);</span>
+            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">noContentText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/tab_bar.png" alt="Tab bar" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>tapBarButton(String buttonName)</strong></td>
+<td>Tap button with buttonName on Tab bar</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected()</strong></td>
+<td>Get selected value</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>values()</strong></td>
+<td>Get values of all elements</td>
+<td>List<String></td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/PhotosAppTests.java" target="_blank">Test examples in Java</a></p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='label'>Label</h3><pre class="highlight java tab-java"><code>
   <span class="c1">//In the next test Label is found from 'name' and 'disabledName' locators:</span>
 
