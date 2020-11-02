@@ -86,6 +86,14 @@ Available mobile app-specific methods in Java JDI Light Mobile:
         String deviceTimeWithFormat = getDeviceTime("DD-MM-YYYY");
         assertThat(deviceTime).isNotEqualTo(deviceTimeWithFormat);
     }
+
+    @Test
+    public void clipBoardTest() {
+        MobileDevice.setClipBoardText(text);
+        String getText = MobileDevice.getClipBoardText();
+        System.out.println(getText);
+        assertThat(getText.contains(text));
+    }
   
 ```
 
@@ -110,6 +118,8 @@ Available mobile device-specific methods in Java JDI Light Mobile:
 **performTouchId(boolean match)** | Simulates touchId event ***(iOS only)*** | void
 **toggleTouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
 **fingerPrint(int fingerPrintId)** | Authenticates user by using finger print scan on supported emulators ***(Android only)*** | void
+**setClipBoardText(String text)** | Set the content of the system clipboard ***(Android only)*** | void
+**getClipBoardText()** | Get the content of the system clipboard ***(Android only)*** | String
 
 ### MobileFileManager
 
