@@ -87,6 +87,15 @@ Available mobile app-specific methods in Java JDI Light Mobile:
         assertThat(deviceTime).isNotEqualTo(deviceTimeWithFormat);
     }
   
+    @Test
+    public void performanceDataTest() {
+        System.out.println(MobileDevice.getPerformanceDataTypes());
+        System.out.println(MobileDevice.getPerformanceData("", "cpuinfo", 5));
+        //System.out.println(MobileDevice.getPerformanceData("com.google.android.deskclock","memoryinfo",5));
+        System.out.println(MobileDevice.getPerformanceData("", "batteryinfo", 5));
+        System.out.println(MobileDevice.getPerformanceData("", "networkinfo", 5));
+    }
+
 ```
 
 Available mobile device-specific methods in Java JDI Light Mobile: 
@@ -110,6 +119,8 @@ Available mobile device-specific methods in Java JDI Light Mobile:
 **performTouchId(boolean match)** | Simulates touchId event ***(iOS only)*** | void
 **toggleTouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
 **fingerPrint(int fingerPrintId)** | Authenticates user by using finger print scan on supported emulators ***(Android only)*** | void
+**getPerformanceDataTypes()** | Returns the information types of the system state which is supported to read as like cpu, memory, network traffic, and battery | List<String>
+**getPerformanceData(String packageName, String dataType, int dataReadTimeout)** |  Returns the information of the system state which is supported to read as like cpu, memory, network traffic, and battery | List<List<Object>>
 
 ### MobileFileManager
 
