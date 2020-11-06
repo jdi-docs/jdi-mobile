@@ -504,6 +504,7 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
 
+
 ## Android Native Application Complex elements
 
 ### Action Bar
@@ -568,6 +569,7 @@ Available methods in Java JDI Mobile:
 **has()** | Assert action | ActionBarAssert
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a>
+
 
 ## iOS Native Application Common elements
 
