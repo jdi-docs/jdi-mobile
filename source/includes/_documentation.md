@@ -505,6 +505,72 @@ Available methods in Java JDI Mobile:
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
 
 
+## Android Native Application Complex elements
+
+### Action Bar
+
+<a href="https://developer.android.com/reference/androidx/appcompat/app/ActionBar">Action Bar</a> is a primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
+
+```java 
+
+    @Test
+    public void actionBarUsagePageSearchTest() {
+        IndexPage.appPage.click();
+        AppPage.actionBarPage.click();
+        ActionBarPage.actionBarUsagePage.click();
+        ActionBarUsagePage.searchButton.is().iconifiedByDefault();
+        ActionBarUsagePage.searchButton.setExpanded();
+        ActionBarUsagePage.searchVield.is().enabled();
+        ActionBarUsagePage.searchVield.has().text(PLACEHOLDER);
+        ActionBarUsagePage.searchVield.input("Internet");
+        ActionBarUsagePage.text.has().text("Query so far: Internet");
+        ActionBarUsagePage.clearQuery.click();
+        ActionBarUsagePage.searchButton.isIconified();
+    }
+
+    @Test
+    public void actionBarUsagePageMoreOptionsTest() {
+        IndexPage.appPage.click();
+        AppPage.actionBarPage.click();
+        ActionBarPage.actionBarUsagePage.click();
+        ActionBarUsagePage.moreOptions.is().enabled();
+        ActionBarUsagePage.moreOptions.click();
+        ActionBarUsagePage.moreOptions.selectOption("Add");
+        ActionBarUsagePage.text.is().displayed();
+        ActionBarUsagePage.moreOptions.click();
+        ActionBarUsagePage.moreOptions.selectOption("Sort");
+        ActionBarUsagePage.moreOptions.selectOption("Alphabetically");
+    }
+
+    @Test
+    public void displayOptionsPageNavigationTest() {
+        IndexPage.appPage.click();
+        AppPage.actionBarPage.click();
+        ActionBarPage.displayOptionsPage.click();
+        ActionBarDisplayOptionsPage.navigation.is().enabled();
+        ActionBarDisplayOptionsPage.navigation.click();
+        ActionBarDisplayOptionsPage.horizontalScrollView.is().displayed();
+        ActionBarDisplayOptionsPage.horizontalScrollView.selectOption("TAB 1");
+    }
+```
+![Action Bar](../images/android/ActionBar.PNG)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**isIconified()**  | Checks that the Search View in the Action Bar is in iconified state | boolean
+**setExpanded()** | Sets the search field expanded | void
+**expanded()** | Checks that the search field is expanded | boolean
+**input(String value)** | Inputs values into the the search field | void
+**clear()** | Remove values from the search field | void
+**selectOption(String text)** | Selects value from a list of options | void
+**is()** | Assert action | ActionBarAssert
+**has()** | Assert action | ActionBarAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a>
+
+
 ## iOS Native Application Common elements
 
 ### Buttons
