@@ -502,6 +502,14 @@
                         </ul>
                   </li>
                   <li>
+                    <a href="#android-native-application-complex-elements" class="toc-h2 toc-link" data-title="Android Native Application Complex elements">Android Native Application Complex elements</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#action-bar" class="toc-h2 h3 toc-link" data-title="Action Bar">Action Bar</a>
+                            </li>
+                        </ul>
+                  </li>
+                  <li>
                     <a href="#ios-native-application-common-elements" class="toc-h2 toc-link" data-title="iOS Native Application Common elements">iOS Native Application Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
@@ -2563,6 +2571,14 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
         <span class="n">assertThat</span><span class="o">(</span><span class="n">deviceTime</span><span class="o">).</span><span class="na">isNotEqualTo</span><span class="o">(</span><span class="n">deviceTimeWithFormat</span><span class="o">);</span>
     <span class="o">}</span>
 
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clipBoardTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">MobileDevice</span><span class="o">.</span><span class="na">setClipBoardText</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">getText</span> <span class="o">=</span> <span class="n">MobileDevice</span><span class="o">.</span><span class="na">getClipBoardText</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getText</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">getText</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
+    <span class="o">}</span>
+
 </code></pre>
 <p>Available mobile device-specific methods in Java JDI Light Mobile: </p>
 
@@ -2657,6 +2673,16 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <td><strong>fingerPrint(int fingerPrintId)</strong></td>
 <td>Authenticates user by using finger print scan on supported emulators <strong><em>(Android only)</em></strong></td>
 <td>void</td>
+</tr>
+<tr>
+<td><strong>setClipBoardText(String text)</strong></td>
+<td>Set the content of the system clipboard <strong><em>(Android only)</em></strong></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getClipBoardText()</strong></td>
+<td>Get the content of the system clipboard <strong><em>(Android only)</em></strong></td>
+<td>String</td>
 </tr>
 </tbody></table>
 <h3 id='mobilefilemanager'>MobileFileManager</h3><pre class="highlight java tab-java"><code>
@@ -3401,6 +3427,103 @@ Switches are either on or off. Providing labels that describe these states is re
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a></p>
+<h2 id='android-native-application-complex-elements'>Android Native Application Complex elements</h2><h3 id='action-bar'>Action Bar</h3>
+<p><a href="https://developer.android.com/reference/androidx/appcompat/app/ActionBar">Action Bar</a> is a primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionBarUsagePageSearchTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">IndexPage</span><span class="o">.</span><span class="na">appPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">AppPage</span><span class="o">.</span><span class="na">actionBarPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarPage</span><span class="o">.</span><span class="na">actionBarUsagePage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">searchButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">iconifiedByDefault</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">searchButton</span><span class="o">.</span><span class="na">setExpanded</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">searchVield</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">searchVield</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">PLACEHOLDER</span><span class="o">);</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">searchVield</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="s">"Internet"</span><span class="o">);</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Query so far: Internet"</span><span class="o">);</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">clearQuery</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">searchButton</span><span class="o">.</span><span class="na">isIconified</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionBarUsagePageMoreOptionsTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">IndexPage</span><span class="o">.</span><span class="na">appPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">AppPage</span><span class="o">.</span><span class="na">actionBarPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarPage</span><span class="o">.</span><span class="na">actionBarUsagePage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">moreOptions</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">moreOptions</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">moreOptions</span><span class="o">.</span><span class="na">selectOption</span><span class="o">(</span><span class="s">"Add"</span><span class="o">);</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">moreOptions</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">moreOptions</span><span class="o">.</span><span class="na">selectOption</span><span class="o">(</span><span class="s">"Sort"</span><span class="o">);</span>
+        <span class="n">ActionBarUsagePage</span><span class="o">.</span><span class="na">moreOptions</span><span class="o">.</span><span class="na">selectOption</span><span class="o">(</span><span class="s">"Alphabetically"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">displayOptionsPageNavigationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">IndexPage</span><span class="o">.</span><span class="na">appPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">AppPage</span><span class="o">.</span><span class="na">actionBarPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarPage</span><span class="o">.</span><span class="na">displayOptionsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">navigation</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
+        <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">navigation</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">horizontalScrollView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">horizontalScrollView</span><span class="o">.</span><span class="na">selectOption</span><span class="o">(</span><span class="s">"TAB 1"</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
+<p><img src="images/android/ActionBar.PNG" alt="Action Bar" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isIconified()</strong></td>
+<td>Checks that the Search View in the Action Bar is in iconified state</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>setExpanded()</strong></td>
+<td>Sets the search field expanded</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>Checks that the search field is expanded</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>input(String value)</strong></td>
+<td>Inputs values into the the search field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>Remove values from the search field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selectOption(String text)</strong></td>
+<td>Selects value from a list of options</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>ActionBarAssert</td>
+</tr>
+<tr>
+<td><strong>has()</strong></td>
+<td>Assert action</td>
+<td>ActionBarAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a></p>
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
