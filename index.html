@@ -491,6 +491,9 @@
 								<a href="#rating-bar" class="toc-h2 h3 toc-link" data-title="Rating Bar">Rating Bar</a>
                             </li>
                             <li>
+								<a href="#seekbar" class="toc-h2 h3 toc-link" data-title="SeekBar">SeekBar</a>
+                            </li>
+                            <li>
 								<a href="#search-view" class="toc-h2 h3 toc-link" data-title="Search View">Search View</a>
                             </li>
                             <li>
@@ -506,6 +509,9 @@
                         <ul class="toc-list-h2">
                             <li>
 								<a href="#action-bar" class="toc-h2 h3 toc-link" data-title="Action Bar">Action Bar</a>
+                            </li>
+                            <li>
+								<a href="#spinner" class="toc-h2 h3 toc-link" data-title="Spinner">Spinner</a>
                             </li>
                         </ul>
                   </li>
@@ -2665,7 +2671,7 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <td>void</td>
 </tr>
 <tr>
-<td><strong>toggleTouchIDEnrollment(boolean enabled)</strong></td>
+<td>** TouchIDEnrollment(boolean enabled)**</td>
 <td>Enrolls touchId in iOS Simulators <strong><em>(iOS only)</em></strong></td>
 <td>void</td>
 </tr>
@@ -3205,7 +3211,7 @@ It allows the user to select one or more options from a set. </p>
 <p><a href="https://developer.android.com/reference/android/widget/RatingBar" target="_blank" style="font-weight: bold;">RatingBar</a> is an extension of SeekBar and ProgressBar that shows a rating in stars.</p>
 <pre class="highlight java tab-java"><code>
 <span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">RatingBarTestExample</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">RatingBarTestExample</span><span class="o">(){</span>
         <span class="n">RatingBarPage</span><span class="o">.</span><span class="na">ratingBar1</span><span class="o">.</span><span class="na">setRating</span><span class="o">(</span><span class="mf">4.0</span><span class="o">);</span>
         <span class="n">RatingBarPage</span><span class="o">.</span><span class="na">ratingBar1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="mf">4.0</span><span class="o">);</span>
         <span class="n">RatingBarPage</span><span class="o">.</span><span class="na">ratingBar1</span><span class="o">.</span><span class="na">setRatingByClick</span><span class="o">(</span><span class="mf">3.0</span><span class="o">,</span> <span class="mf">6.0</span><span class="o">);</span>
@@ -3242,6 +3248,55 @@ It allows the user to select one or more options from a set. </p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/2391-ratingBar/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RatingBarTests.java">Test examples in Java</a></p>
+<h3 id='seekbar'>SeekBar</h3>
+<p><a href="https://developer.android.com/reference/android/widget/SeekBar" target="_blank" style="font-weight: bold;">SeekBar</a> is an extension of ProgressBar that adds a draggable thumb. The user can touch the thumb and drag left or right to set the current progress level or use the arrow keys. Placing focusable widgets to the left or right of a SeekBar is discouraged.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">seekBarTests</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">IndexPage</span><span class="o">.</span><span class="na">viewsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">clickOnElementInList</span><span class="o">(</span><span class="n">ViewsPage</span><span class="o">.</span><span class="na">seekBarPage</span><span class="o">);</span>
+        <span class="n">SeekBarPage</span><span class="o">.</span><span class="na">seekBar</span><span class="o">.</span><span class="na">setMinimumValue</span><span class="o">();</span>
+        <span class="n">SeekBarPage</span><span class="o">.</span><span class="na">seekBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"0.0"</span><span class="o">);</span>
+        <span class="n">SeekBarPage</span><span class="o">.</span><span class="na">seekBar</span><span class="o">.</span><span class="na">setMaximumValue</span><span class="o">();</span>
+        <span class="n">SeekBarPage</span><span class="o">.</span><span class="na">seekBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"100.0"</span><span class="o">);</span>
+        <span class="n">SeekBarPage</span><span class="o">.</span><span class="na">seekBar</span><span class="o">.</span><span class="na">setSliderValue</span><span class="o">(</span><span class="s">"20"</span><span class="o">);</span>
+        <span class="n">SeekBarPage</span><span class="o">.</span><span class="na">seekBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"20.0"</span><span class="o">);</span>
+
+</code></pre>
+<p><img src="images/android/seekbar.png" alt="SeekBar" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>setSliderValue(String value)</strong></td>
+<td>Set value</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setMinimumValue()</strong></td>
+<td>Set minimum value</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setMaximumValue()</strong></td>
+<td>Set to maximum value</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert SeekBar value</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SeekBarTest.java" target="_blank">Test examples in Java</a></p>
 <h3 id='search-view'>Search View</h3>
 <p><a href="https://developer.android.com/reference/android/widget/SearchView" target="_blank" style="font-weight: bold;">Search View</a> is a widget that provides an interface for a user to enter a search query and submit a request to a search provider. It shows a list of query suggestions or results, if available, and allows the user to pick a suggestion or result to launch into.</p>
 <pre class="highlight java tab-java"><code>
@@ -3524,6 +3579,56 @@ Switches are either on or off. Providing labels that describe these states is re
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a></p>
+<h3 id='spinner'>Spinner</h3>
+<p><a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
+In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
+all other available values, from which the user can select a new one.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toggleButtonTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">IndexPage</span><span class="o">.</span><span class="na">viewsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">scrollDown</span><span class="o">(</span><span class="mi">3000</span><span class="o">);</span>
+        <span class="n">ViewsPage</span><span class="o">.</span><span class="na">spinnerPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">SpinnerPage</span><span class="o">.</span><span class="na">colorSpinner</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">SpinnerPage</span><span class="o">.</span><span class="na">colorSpinner</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"red"</span><span class="o">);</span>
+        <span class="n">SpinnerPage</span><span class="o">.</span><span class="na">colorSpinner</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">SpinnerPage</span><span class="o">.</span><span class="na">colorSpinner</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"yellow"</span><span class="o">);</span>
+        <span class="n">SpinnerPage</span><span class="o">.</span><span class="na">colorSpinner</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"yellow"</span><span class="o">);</span>
+        <span class="n">SpinnerPage</span><span class="o">.</span><span class="na">colorSpinner</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">SpinnerPage</span><span class="o">.</span><span class="na">colorSpinner</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="s">"violet"</span><span class="o">);</span>
+        <span class="n">SpinnerPage</span><span class="o">.</span><span class="na">colorSpinner</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"violet"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/android/spinner.png" alt="Spinner" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>select</strong></td>
+<td>Select value in spinner</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>has()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="***">Test examples in Java</a></p>
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
