@@ -116,7 +116,7 @@ Available mobile device-specific methods in Java JDI Light Mobile:
 **getDeviceTime(String format)** | Returns device date and time in specific format | String
 **shake()** | Simulates shaking the device ***(iOS only)*** | void
 **performTouchId(boolean match)** | Simulates touchId event ***(iOS only)*** | void
-**toggleTouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
+** TouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
 **fingerPrint(int fingerPrintId)** | Authenticates user by using finger print scan on supported emulators ***(Android only)*** | void
 **setClipBoardText(String text)** | Set the content of the system clipboard ***(Android only)*** | void
 **getClipBoardText()** | Get the content of the system clipboard ***(Android only)*** | String
@@ -368,10 +368,10 @@ Available methods in Java JDI Mobile
 
 <a href="https://developer.android.com/reference/android/widget/RatingBar" target="_blank" style="font-weight: bold;">RatingBar</a> is an extension of SeekBar and ProgressBar that shows a rating in stars.
 
-```java
+```java 
 
 @Test
-public void RatingBarTestExample(){
+    public void RatingBarTestExample(){
         RatingBarPage.ratingBar1.setRating(4.0);
         RatingBarPage.ratingBar1.is().value(4.0);
         RatingBarPage.ratingBar1.setRatingByClick(3.0, 6.0);
@@ -391,6 +391,38 @@ Available methods in Java JDI Mobile
 **setRatingByClick(double value, double fullStars)** | Sets rating imitation of user actions | void
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/2391-ratingBar/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RatingBarTests.java">Test examples in Java</a>
+
+###SeekBar
+
+<a href="https://developer.android.com/reference/android/widget/SeekBar" target="_blank" style="font-weight: bold;">SeekBar</a> is an extension of ProgressBar that adds a draggable thumb. The user can touch the thumb and drag left or right to set the current progress level or use the arrow keys. Placing focusable widgets to the left or right of a SeekBar is discouraged.
+
+```java 
+
+@Test
+    public void seekBarTests() throws InterruptedException {
+        IndexPage.viewsPage.click();
+        clickOnElementInList(ViewsPage.seekBarPage);
+        SeekBarPage.seekBar.setMinimumValue();
+        SeekBarPage.seekBar.is().text("0.0");
+        SeekBarPage.seekBar.setMaximumValue();
+        SeekBarPage.seekBar.is().text("100.0");
+        SeekBarPage.seekBar.setSliderValue("20");
+        SeekBarPage.seekBar.is().text("20.0");
+
+```
+
+![SeekBar](../images/android/seekbar.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**setSliderValue(String value)** | Set value | void 
+**setMinimumValue()** | Set minimum value | void
+**setMaximumValue()** | Set to maximum value | void
+**is()** | Assert SeekBar value | TextAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SeekBarTest.java" target="_blank">Test examples in Java</a>
 
 ### Search View
 
