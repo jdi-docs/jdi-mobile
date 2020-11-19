@@ -1,6 +1,37 @@
 ﻿# Documentation
 ## Common
 
+### EmulatorPower
+
+```java 
+
+    @DataProvider
+    public Object[][] capacity() {
+        return new Object[][]{
+                {0},
+                {45},
+                {76},
+                {100},
+        };
+    }
+
+    @Test(dataProvider = "capacity")
+    public void setPowerCapacityTest(int capacity) {
+        emulatorPower.setPowerCapacity(capacity);
+        List<List<Object>> listOfData = getPerformanceData(
+                "com.google.android.apps.nexuslauncher", "batteryinfo", 5);
+        int getCapacity = Integer.valueOf(listOfData.get(1).get(0).toString());
+        Assert.assertEquals(getCapacity, capacity);
+    }
+  
+```
+Available mobile file-specific methods in Java JDI Light Mobile: 
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**setPowerCapacity(int value)** | Set the battery percentage in range from 0 to 100 inclusive | void
+**setPowerAC(PowerACState powerACState)** | Set the state of the battery charger to connected or not (PowerACState.ON or PowerACState.OFF) | void
+
 ### AppManager
 
 ```java 
@@ -86,6 +117,14 @@ Available mobile app-specific methods in Java JDI Light Mobile:
         String deviceTimeWithFormat = getDeviceTime("DD-MM-YYYY");
         assertThat(deviceTime).isNotEqualTo(deviceTimeWithFormat);
     }
+
+    @Test
+    public void clipBoardTest() {
+        MobileDevice.setClipBoardText(text);
+        String getText = MobileDevice.getClipBoardText();
+        System.out.println(getText);
+        assertThat(getText.contains(text));
+    }
   
 ```
 
@@ -108,8 +147,10 @@ Available mobile device-specific methods in Java JDI Light Mobile:
 **getDeviceTime(String format)** | Returns device date and time in specific format | String
 **shake()** | Simulates shaking the device ***(iOS only)*** | void
 **performTouchId(boolean match)** | Simulates touchId event ***(iOS only)*** | void
-**toggleTouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
+** TouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
 **fingerPrint(int fingerPrintId)** | Authenticates user by using finger print scan on supported emulators ***(Android only)*** | void
+**setClipBoardText(String text)** | Set the content of the system clipboard ***(Android only)*** | void
+**getClipBoardText()** | Get the content of the system clipboard ***(Android only)*** | String
 
 ### Mobile Device Activity
 ```java 
@@ -417,6 +458,38 @@ Available methods in Java JDI Mobile
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/2391-ratingBar/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RatingBarTests.java">Test examples in Java</a>
 
+###SeekBar
+
+<a href="https://developer.android.com/reference/android/widget/SeekBar" target="_blank" style="font-weight: bold;">SeekBar</a> is an extension of ProgressBar that adds a draggable thumb. The user can touch the thumb and drag left or right to set the current progress level or use the arrow keys. Placing focusable widgets to the left or right of a SeekBar is discouraged.
+
+```java 
+
+@Test
+    public void seekBarTests() throws InterruptedException {
+        IndexPage.viewsPage.click();
+        clickOnElementInList(ViewsPage.seekBarPage);
+        SeekBarPage.seekBar.setMinimumValue();
+        SeekBarPage.seekBar.is().text("0.0");
+        SeekBarPage.seekBar.setMaximumValue();
+        SeekBarPage.seekBar.is().text("100.0");
+        SeekBarPage.seekBar.setSliderValue("20");
+        SeekBarPage.seekBar.is().text("20.0");
+
+```
+
+![SeekBar](../images/android/seekbar.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**setSliderValue(String value)** | Set value | void 
+**setMinimumValue()** | Set minimum value | void
+**setMaximumValue()** | Set to maximum value | void
+**is()** | Assert SeekBar value | TextAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SeekBarTest.java" target="_blank">Test examples in Java</a>
+
 ### Search View
 
 <a href="https://developer.android.com/reference/android/widget/SearchView" target="_blank" style="font-weight: bold;">Search View</a> is a widget that provides an interface for a user to enter a search query and submit a request to a search provider. It shows a list of query suggestions or results, if available, and allows the user to pick a suggestion or result to launch into.
@@ -539,6 +612,109 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
 
+
+## Android Native Application Complex elements
+
+### Action Bar
+
+<a href="https://developer.android.com/reference/androidx/appcompat/app/ActionBar">Action Bar</a> is a primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
+
+```java 
+
+    @Test
+    public void actionBarUsagePageSearchTest() {
+        IndexPage.appPage.click();
+        AppPage.actionBarPage.click();
+        ActionBarPage.actionBarUsagePage.click();
+        ActionBarUsagePage.searchButton.is().iconifiedByDefault();
+        ActionBarUsagePage.searchButton.setExpanded();
+        ActionBarUsagePage.searchVield.is().enabled();
+        ActionBarUsagePage.searchVield.has().text(PLACEHOLDER);
+        ActionBarUsagePage.searchVield.input("Internet");
+        ActionBarUsagePage.text.has().text("Query so far: Internet");
+        ActionBarUsagePage.clearQuery.click();
+        ActionBarUsagePage.searchButton.isIconified();
+    }
+
+    @Test
+    public void actionBarUsagePageMoreOptionsTest() {
+        IndexPage.appPage.click();
+        AppPage.actionBarPage.click();
+        ActionBarPage.actionBarUsagePage.click();
+        ActionBarUsagePage.moreOptions.is().enabled();
+        ActionBarUsagePage.moreOptions.click();
+        ActionBarUsagePage.moreOptions.selectOption("Add");
+        ActionBarUsagePage.text.is().displayed();
+        ActionBarUsagePage.moreOptions.click();
+        ActionBarUsagePage.moreOptions.selectOption("Sort");
+        ActionBarUsagePage.moreOptions.selectOption("Alphabetically");
+    }
+
+    @Test
+    public void displayOptionsPageNavigationTest() {
+        IndexPage.appPage.click();
+        AppPage.actionBarPage.click();
+        ActionBarPage.displayOptionsPage.click();
+        ActionBarDisplayOptionsPage.navigation.is().enabled();
+        ActionBarDisplayOptionsPage.navigation.click();
+        ActionBarDisplayOptionsPage.horizontalScrollView.is().displayed();
+        ActionBarDisplayOptionsPage.horizontalScrollView.selectOption("TAB 1");
+    }
+```
+![Action Bar](../images/android/ActionBar.PNG)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**isIconified()**  | Checks that the Search View in the Action Bar is in iconified state | boolean
+**setExpanded()** | Sets the search field expanded | void
+**expanded()** | Checks that the search field is expanded | boolean
+**input(String value)** | Inputs values into the the search field | void
+**clear()** | Remove values from the search field | void
+**selectOption(String text)** | Selects value from a list of options | void
+**is()** | Assert action | ActionBarAssert
+**has()** | Assert action | ActionBarAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a>
+
+
+### Spinner
+
+<a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
+In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
+all other available values, from which the user can select a new one.
+
+```java 
+
+@Test
+    public void toggleButtonTest() {
+        IndexPage.viewsPage.click();
+        AndroidScreen.scrollDown(3000);
+        ViewsPage.spinnerPage.click();
+        SpinnerPage.colorSpinner.is().displayed();
+        SpinnerPage.colorSpinner.has().text("red");
+        SpinnerPage.colorSpinner.tap();
+        SpinnerPage.colorSpinner.select("yellow");
+        SpinnerPage.colorSpinner.has().text("yellow");
+        SpinnerPage.colorSpinner.tap();
+        SpinnerPage.colorSpinner.select("violet");
+        SpinnerPage.colorSpinner.has().text("violet");
+    }
+
+```
+
+![Spinner](../images/android/spinner.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**select** | Select value in spinner | void
+**is()** | Assert action | TextAssert
+**has()** | Assert action | TextAssert
+
+<a href="***">Test examples in Java</a>
 
 ## iOS Native Application Common elements
 
