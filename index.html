@@ -451,6 +451,9 @@
                     <a href="#common" class="toc-h2 toc-link" data-title="Common">Common</a>
                         <ul class="toc-list-h2">
                             <li>
+								<a href="#emulatorpower" class="toc-h2 h3 toc-link" data-title="EmulatorPower">EmulatorPower</a>
+                            </li>
+                            <li>
 								<a href="#appmanager" class="toc-h2 h3 toc-link" data-title="AppManager">AppManager</a>
                             </li>
                             <li>
@@ -2453,7 +2456,48 @@ JDI Locator: <code>label[&#39;Gold status&#39;]&lt;input[type=checkbox]</code></
 JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <h1 id='faq'>FAQ</h1>
 <p>TBD</p>
-<h1 id='documentation'>Documentation</h1><h2 id='common'>Common</h2><h3 id='appmanager'>AppManager</h3><pre class="highlight java tab-java"><code>
+<h1 id='documentation'>Documentation</h1><h2 id='common'>Common</h2><h3 id='emulatorpower'>EmulatorPower</h3><pre class="highlight java tab-java"><code>
+    <span class="nd">@DataProvider</span>
+    <span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">capacity</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+                <span class="o">{</span><span class="mi">0</span><span class="o">},</span>
+                <span class="o">{</span><span class="mi">45</span><span class="o">},</span>
+                <span class="o">{</span><span class="mi">76</span><span class="o">},</span>
+                <span class="o">{</span><span class="mi">100</span><span class="o">},</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"capacity"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPowerCapacityTest</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">emulatorPower</span><span class="o">.</span><span class="na">setPowerCapacity</span><span class="o">(</span><span class="n">capacity</span><span class="o">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">listOfData</span> <span class="o">=</span> <span class="n">getPerformanceData</span><span class="o">(</span>
+                <span class="s">"com.google.android.apps.nexuslauncher"</span><span class="o">,</span> <span class="s">"batteryinfo"</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">getCapacity</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">listOfData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">getCapacity</span><span class="o">,</span> <span class="n">capacity</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p>Available mobile file-specific methods in Java JDI Light Mobile: </p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>setPowerCapacity(int value)</strong></td>
+<td>Set the battery percentage in range from 0 to 100 inclusive</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setPowerAC(PowerACState powerACState)</strong></td>
+<td>Set the state of the battery charger to connected or not (PowerACState.ON or PowerACState.OFF)</td>
+<td>void</td>
+</tr>
+</tbody></table>
+<h3 id='appmanager'>AppManager</h3><pre class="highlight java tab-java"><code>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">install</span><span class="o">()</span> <span class="o">{</span>
       <span class="n">installApp</span><span class="o">(</span><span class="s">"/Users/jdi/path/to/app.apk"</span><span class="o">);</span>
