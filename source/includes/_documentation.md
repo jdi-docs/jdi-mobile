@@ -1,6 +1,37 @@
 ﻿# Documentation
 ## Common
 
+### EmulatorPower
+
+```java 
+
+    @DataProvider
+    public Object[][] capacity() {
+        return new Object[][]{
+                {0},
+                {45},
+                {76},
+                {100},
+        };
+    }
+
+    @Test(dataProvider = "capacity")
+    public void setPowerCapacityTest(int capacity) {
+        emulatorPower.setPowerCapacity(capacity);
+        List<List<Object>> listOfData = getPerformanceData(
+                "com.google.android.apps.nexuslauncher", "batteryinfo", 5);
+        int getCapacity = Integer.valueOf(listOfData.get(1).get(0).toString());
+        Assert.assertEquals(getCapacity, capacity);
+    }
+  
+```
+Available mobile file-specific methods in Java JDI Light Mobile: 
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**setPowerCapacity(int value)** | Set the battery percentage in range from 0 to 100 inclusive | void
+**setPowerAC(PowerACState powerACState)** | Set the state of the battery charger to connected or not (PowerACState.ON or PowerACState.OFF) | void
+
 ### AppManager
 
 ```java 
