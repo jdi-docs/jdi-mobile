@@ -643,8 +643,48 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a>
 
+### Progress Bar
 
-### Spinner
+<a href="https://developer.android.com/reference/android/widget/ProgressBar">ProgressBar</a>
+```java
+    @Test
+        public void decreaseStandardProgressBar() {
+            ProgressBarPage.decreaseStandardButton.click();
+            ProgressBarPage.decreaseStandardButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+    
+        @Test
+        public void increaseStandardProgressBar() {
+            ProgressBarPage.increaseStandardButton.click();
+            ProgressBarPage.increaseStandardButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+    
+        @Test
+        public void decreaseSecondaryProgressBar() {
+            ProgressBarPage.decreaseSecondaryButton.click();
+            ProgressBarPage.decreaseSecondaryButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+    
+        @Test
+        public void increaseSecondaryProgressBar() {
+            ProgressBarPage.increaseSecondaryButton.click();
+            ProgressBarPage.increaseSecondaryButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+```
+![Progress Bar](../images/android/progress_bar.PNG)
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**enabled()**  | Button availiable for click | boolean
+**is()** | Assert action | ActionBarAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ProgressBarTests.java">Test examples in Java</a>
+
 
 <a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
 In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
