@@ -685,6 +685,7 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ProgressBarTests.java">Test examples in Java</a>
 
+### Spinner
 
 <a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
 In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
