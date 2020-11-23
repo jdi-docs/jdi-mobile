@@ -514,6 +514,9 @@
 								<a href="#action-bar" class="toc-h2 h3 toc-link" data-title="Action Bar">Action Bar</a>
                             </li>
                             <li>
+								<a href="#progress-bar" class="toc-h2 h3 toc-link" data-title="Progress Bar">Progress Bar</a>
+                            </li>
+                            <li>
 								<a href="#spinner" class="toc-h2 h3 toc-link" data-title="Spinner">Spinner</a>
                             </li>
                         </ul>
@@ -852,7 +855,7 @@
 								<a href="#numberselector-2" class="toc-h2 h3 toc-link" data-title="NumberSelector">NumberSelector</a>
                             </li>
                             <li>
-								<a href="#progress-bar" class="toc-h2 h3 toc-link" data-title="Progress Bar">Progress Bar</a>
+								<a href="#progress-bar-2" class="toc-h2 h3 toc-link" data-title="Progress Bar">Progress Bar</a>
                             </li>
                             <li>
 								<a href="#radiobuttons-3" class="toc-h2 h3 toc-link" data-title="Radiobuttons">Radiobuttons</a>
@@ -3623,6 +3626,60 @@ Switches are either on or off. Providing labels that describe these states is re
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a></p>
+<h3 id='progress-bar'>Progress Bar</h3>
+<p><a href="https://developer.android.com/reference/android/widget/ProgressBar">ProgressBar</a>
+```java
+    @Test
+        public void decreaseStandardProgressBar() {
+            ProgressBarPage.decreaseStandardButton.click();
+            ProgressBarPage.decreaseStandardButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }</p>
+
+<p>@Test
+        public void increaseStandardProgressBar() {
+            ProgressBarPage.increaseStandardButton.click();
+            ProgressBarPage.increaseStandardButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }</p>
+
+<p>@Test
+        public void decreaseSecondaryProgressBar() {
+            ProgressBarPage.decreaseSecondaryButton.click();
+            ProgressBarPage.decreaseSecondaryButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }</p>
+
+<p>@Test
+        public void increaseSecondaryProgressBar() {
+            ProgressBarPage.increaseSecondaryButton.click();
+            ProgressBarPage.increaseSecondaryButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+```
+<img src="images/android/progress_bar.PNG" alt="Progress Bar" />
+Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>Button availiable for click</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>ActionBarAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ProgressBarTests.java">Test examples in Java</a></p>
 <h3 id='spinner'>Spinner</h3>
 <p><a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
 In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
@@ -28499,7 +28556,7 @@ Validations: <br>
 <br>
 <br>
 <br></p>
-<h3 id='progress-bar'>Progress Bar</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Progress Bar validation examples</span><span class="p">:</span>
+<h3 id='progress-bar-2'>Progress Bar</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Progress Bar validation examples</span><span class="p">:</span>
 
 <span class="nf">Then</span> the <span class="s">"Progress"</span> attribute <span class="s">"max"</span> equals to <span class="s">"110"</span>
 <span class="nf">Then</span> the <span class="s">"Progress"</span> progress volume greater or equal to 10
