@@ -152,6 +152,40 @@ Available mobile device-specific methods in Java JDI Light Mobile:
 **setClipBoardText(String text)** | Set the content of the system clipboard ***(Android only)*** | void
 **getClipBoardText()** | Get the content of the system clipboard ***(Android only)*** | String
 
+### Mobile Device Activity
+```java 
+
+      @DataProvider(name = "forStartActivityTest")
+      public Object[][] providerForStartActivity() {
+          return new Object[][]{
+              //packageName, activityName
+              {"com.android.dialer",                  ".main.impl.MainActivity"},         
+              {"com.google.android.apps.messaging",   ".ui.ConversationListActivity"},       
+              {"com.android.settings",                ".Settings"}                            
+          };
+      }
+
+      @Test(dataProvider = "forStartActivityTest")
+      public void startActivityTest(String expPack, String expActivity) {
+          MobileDeviceActivity.startActivity(expPack, expActivity);
+          String currentPack = MobileDeviceActivity.currentPackage();
+          String currentActivity = MobileDeviceActivity.currentActivity();
+          SoftAssert softAssert = new SoftAssert();
+          softAssert.assertEquals(currentPack, expPack);
+          softAssert.assertEquals(currentActivity, expActivity);
+          softAssert.assertAll();
+      }
+  
+```
+Available mobile device activity methods in Java JDI Light Mobile (for Android only):
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**startActivity(String package, String activityName)** | Launches an activity by providing package and activity names | void
+**currentActivity()** | Returns the name of the current activity | String
+**currentPackage()** | Returns the name of the current package | String
+
+
 ### MobileFileManager
 
 ```java 
@@ -401,15 +435,16 @@ Available methods in Java JDI Mobile
 
 ```java 
 
-@Test
+    @Test
     public void RatingBarTestExample(){
         RatingBarPage.ratingBar1.setRating(4.0);
         RatingBarPage.ratingBar1.is().value(4.0);
         RatingBarPage.ratingBar1.setRatingByClick(3.0, 6.0);
         RatingBarPage.ratingBar1.is().value(3.0);
     }
-
+  
 ```
+
 
 ![RatingBar](../images/android/ratingBar_example.png)
 
