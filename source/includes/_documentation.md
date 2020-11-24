@@ -1,6 +1,37 @@
 ﻿# Documentation
 ## Common
 
+### EmulatorPower
+
+```java 
+
+    @DataProvider
+    public Object[][] capacity() {
+        return new Object[][]{
+                {0},
+                {45},
+                {76},
+                {100},
+        };
+    }
+
+    @Test(dataProvider = "capacity")
+    public void setPowerCapacityTest(int capacity) {
+        emulatorPower.setPowerCapacity(capacity);
+        List<List<Object>> listOfData = getPerformanceData(
+                "com.google.android.apps.nexuslauncher", "batteryinfo", 5);
+        int getCapacity = Integer.valueOf(listOfData.get(1).get(0).toString());
+        Assert.assertEquals(getCapacity, capacity);
+    }
+  
+```
+Available mobile file-specific methods in Java JDI Light Mobile: 
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**setPowerCapacity(int value)** | Set the battery percentage in range from 0 to 100 inclusive | void
+**setPowerAC(PowerACState powerACState)** | Set the state of the battery charger to connected or not (PowerACState.ON or PowerACState.OFF) | void
+
 ### AppManager
 
 ```java 
@@ -86,6 +117,14 @@ Available mobile app-specific methods in Java JDI Light Mobile:
         String deviceTimeWithFormat = getDeviceTime("DD-MM-YYYY");
         assertThat(deviceTime).isNotEqualTo(deviceTimeWithFormat);
     }
+
+    @Test
+    public void clipBoardTest() {
+        MobileDevice.setClipBoardText(text);
+        String getText = MobileDevice.getClipBoardText();
+        System.out.println(getText);
+        assertThat(getText.contains(text));
+    }
   
     @Test
     public void performanceDataTest() {
@@ -117,10 +156,12 @@ Available mobile device-specific methods in Java JDI Light Mobile:
 **getDeviceTime(String format)** | Returns device date and time in specific format | String
 **shake()** | Simulates shaking the device ***(iOS only)*** | void
 **performTouchId(boolean match)** | Simulates touchId event ***(iOS only)*** | void
-**toggleTouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
+**TouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
 **fingerPrint(int fingerPrintId)** | Authenticates user by using finger print scan on supported emulators ***(Android only)*** | void
 **getPerformanceDataTypes()** | Returns the information types of the system state which is supported to read as like cpu, memory, network traffic, and battery | List<String>
 **getPerformanceData(String packageName, String dataType, int dataReadTimeout)** |  Returns the information of the system state which is supported to read as like cpu, memory, network traffic, and battery | List<List<Object>>
+**setClipBoardText(String text)** | Set the content of the system clipboard ***(Android only)*** | void
+**getClipBoardText()** | Get the content of the system clipboard ***(Android only)*** | String
 
 ### MobileFileManager
 
@@ -295,81 +336,6 @@ TBD
 
 ## Android Native Application Common elements
 
-### Toggle Button
-
-<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">Toggle Button</a> allows the user to change a setting between two states (ON or OFF) as a button with a light indicator.
-
-```java 
-
-@Test
-    public void toggleButtonTest() {
-        IndexPage.viewsPage.click();
-        ViewsPage.buttonsPage.click();
-        ButtonsPage.toggleButton.is().displayed();
-        ButtonsPage.toggleButton.is().off();
-        ButtonsPage.toggleButton.setToOn();
-        ButtonsPage.toggleButton.is().on();
-        ButtonsPage.toggleButton.setToOff();
-        ButtonsPage.toggleButton.is().off();
-    }
-
-```
-
-![ToggleButton](../images/android/togglebutton.png)
-
-Available methods in Java JDI Mobile:
-
-|Method | Description | Return Type
---- | --- | ---
-**isOn()**  | Check that toggle button is On | boolean
-**setToOff** | Set toggle button to Off | void
-**setToOn** | Set toggle button to On | void
-**is()** | Assert action | SwitchAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
-
-### Switch
-
-<a href="https://developer.android.com/reference/android/widget/Switch" target="_blank" style="font-weight: bold;">Switch</a> is another type of toggle button that’s predominantly used since Android 4.0. Android Switch provides a slider control and allows the user to change a setting between two states.
-Switches are either on or off. Providing labels that describe these states is redundant and clutters the interface.
-
-```java 
-
-@Test
-    public void switchAirplaneModeTest(){
-        networkAndInternetButton.click();
-        airplaneModeSwitch.setToOn();
-        airplaneModeSwitch.is().on();
-        airplaneModeSwitch.setToOff();
-        airplaneModeSwitch.is().off();
-
-    }
-
-    @Test
-    public void switchWiFiConnectionTest(){
-        networkAndInternetButton.click();
-        wiFiSwitch.setToOn();
-        wiFiSwitch.is().on();
-        wiFiSwitch.setToOff();
-        wiFiSwitch.is().off();
-    }
-
-```
-
-![Switch](../images/android/switch_on.PNG)
-![Switch](../images/android/switch_off.PNG)
-
-Available methods in Java JDI Mobile
-
-|Method | Description | Return Type
---- | --- | ---
-**is()** | Assert action | SwitchAssert 
-**isOn()** | Check that switch is on | boolean
-**setToOn()** | Set switch to on | void
-**setToOff()** | Set switch to off | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
-
 ### Checkbox
 
 <a href="https://developer.android.com/guide/topics/ui/controls/checkbox" target="_blank" style="font-weight: bold;">Checkbox</a>  is a specific type of two-states button that can be either checked or unchecked.
@@ -440,6 +406,66 @@ Available methods in Java JDI Mobile
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile/src/main/java/com/epam/jdi/light/mobile/elements/common/app/android/Checkbox.java" target="_blank">Test examples in Java</a>
 
+### Rating Bar
+
+<a href="https://developer.android.com/reference/android/widget/RatingBar" target="_blank" style="font-weight: bold;">RatingBar</a> is an extension of SeekBar and ProgressBar that shows a rating in stars.
+
+```java 
+
+@Test
+    public void RatingBarTestExample(){
+        RatingBarPage.ratingBar1.setRating(4.0);
+        RatingBarPage.ratingBar1.is().value(4.0);
+        RatingBarPage.ratingBar1.setRatingByClick(3.0, 6.0);
+        RatingBarPage.ratingBar1.is().value(3.0);
+    }
+
+```
+
+![RatingBar](../images/android/ratingBar_example.png)
+
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**getRating()** | Returns rating as a number, 1.0 for every half of a star | double
+**setRating(double value)** | Sets new rating value | void
+**setRatingByClick(double value, double fullStars)** | Sets rating imitation of user actions | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/2391-ratingBar/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RatingBarTests.java">Test examples in Java</a>
+
+###SeekBar
+
+<a href="https://developer.android.com/reference/android/widget/SeekBar" target="_blank" style="font-weight: bold;">SeekBar</a> is an extension of ProgressBar that adds a draggable thumb. The user can touch the thumb and drag left or right to set the current progress level or use the arrow keys. Placing focusable widgets to the left or right of a SeekBar is discouraged.
+
+```java 
+
+@Test
+    public void seekBarTests() throws InterruptedException {
+        IndexPage.viewsPage.click();
+        clickOnElementInList(ViewsPage.seekBarPage);
+        SeekBarPage.seekBar.setMinimumValue();
+        SeekBarPage.seekBar.is().text("0.0");
+        SeekBarPage.seekBar.setMaximumValue();
+        SeekBarPage.seekBar.is().text("100.0");
+        SeekBarPage.seekBar.setSliderValue("20");
+        SeekBarPage.seekBar.is().text("20.0");
+
+```
+
+![SeekBar](../images/android/seekbar.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**setSliderValue(String value)** | Set value | void 
+**setMinimumValue()** | Set minimum value | void
+**setMaximumValue()** | Set to maximum value | void
+**is()** | Assert SeekBar value | TextAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SeekBarTest.java" target="_blank">Test examples in Java</a>
+
 ### Search View
 
 <a href="https://developer.android.com/reference/android/widget/SearchView" target="_blank" style="font-weight: bold;">Search View</a> is a widget that provides an interface for a user to enter a search query and submit a request to a search provider. It shows a list of query suggestions or results, if available, and allows the user to pick a suggestion or result to launch into.
@@ -487,6 +513,226 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SearchViewTests.java">Test examples in Java</a>
 
+### Switch
+
+<a href="https://developer.android.com/reference/android/widget/Switch" target="_blank" style="font-weight: bold;">Switch</a> is another type of toggle button that’s predominantly used since Android 4.0. Android Switch provides a slider control and allows the user to change a setting between two states.
+Switches are either on or off. Providing labels that describe these states is redundant and clutters the interface.
+
+```java 
+
+@Test
+    public void switchAirplaneModeTest(){
+        networkAndInternetButton.click();
+        airplaneModeSwitch.setToOn();
+        airplaneModeSwitch.is().on();
+        airplaneModeSwitch.setToOff();
+        airplaneModeSwitch.is().off();
+
+    }
+
+    @Test
+    public void switchWiFiConnectionTest(){
+        networkAndInternetButton.click();
+        wiFiSwitch.setToOn();
+        wiFiSwitch.is().on();
+        wiFiSwitch.setToOff();
+        wiFiSwitch.is().off();
+    }
+
+```
+
+![Switch](../images/android/switch_on.PNG)
+![Switch](../images/android/switch_off.PNG)
+
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**is()** | Assert action | SwitchAssert 
+**isOn()** | Check that switch is on | boolean
+**setToOn()** | Set switch to on | void
+**setToOff()** | Set switch to off | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
+
+### Toggle Button
+
+<a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">Toggle Button</a> allows the user to change a setting between two states (ON or OFF) as a button with a light indicator.
+
+```java 
+
+@Test
+    public void toggleButtonTest() {
+        IndexPage.viewsPage.click();
+        ViewsPage.buttonsPage.click();
+        ButtonsPage.toggleButton.is().displayed();
+        ButtonsPage.toggleButton.is().off();
+        ButtonsPage.toggleButton.setToOn();
+        ButtonsPage.toggleButton.is().on();
+        ButtonsPage.toggleButton.setToOff();
+        ButtonsPage.toggleButton.is().off();
+    }
+
+```
+
+![ToggleButton](../images/android/togglebutton.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**isOn()**  | Check that toggle button is On | boolean
+**setToOff** | Set toggle button to Off | void
+**setToOn** | Set toggle button to On | void
+**is()** | Assert action | SwitchAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
+
+
+## Android Native Application Complex elements
+
+### Action Bar
+
+<a href="https://developer.android.com/reference/androidx/appcompat/app/ActionBar">Action Bar</a> is a primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
+
+```java 
+
+    @Test
+    public void actionBarUsagePageSearchTest() {
+        IndexPage.appPage.click();
+        AppPage.actionBarPage.click();
+        ActionBarPage.actionBarUsagePage.click();
+        ActionBarUsagePage.searchButton.is().iconifiedByDefault();
+        ActionBarUsagePage.searchButton.setExpanded();
+        ActionBarUsagePage.searchVield.is().enabled();
+        ActionBarUsagePage.searchVield.has().text(PLACEHOLDER);
+        ActionBarUsagePage.searchVield.input("Internet");
+        ActionBarUsagePage.text.has().text("Query so far: Internet");
+        ActionBarUsagePage.clearQuery.click();
+        ActionBarUsagePage.searchButton.isIconified();
+    }
+
+    @Test
+    public void actionBarUsagePageMoreOptionsTest() {
+        IndexPage.appPage.click();
+        AppPage.actionBarPage.click();
+        ActionBarPage.actionBarUsagePage.click();
+        ActionBarUsagePage.moreOptions.is().enabled();
+        ActionBarUsagePage.moreOptions.click();
+        ActionBarUsagePage.moreOptions.selectOption("Add");
+        ActionBarUsagePage.text.is().displayed();
+        ActionBarUsagePage.moreOptions.click();
+        ActionBarUsagePage.moreOptions.selectOption("Sort");
+        ActionBarUsagePage.moreOptions.selectOption("Alphabetically");
+    }
+
+    @Test
+    public void displayOptionsPageNavigationTest() {
+        IndexPage.appPage.click();
+        AppPage.actionBarPage.click();
+        ActionBarPage.displayOptionsPage.click();
+        ActionBarDisplayOptionsPage.navigation.is().enabled();
+        ActionBarDisplayOptionsPage.navigation.click();
+        ActionBarDisplayOptionsPage.horizontalScrollView.is().displayed();
+        ActionBarDisplayOptionsPage.horizontalScrollView.selectOption("TAB 1");
+    }
+```
+![Action Bar](../images/android/ActionBar.PNG)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**isIconified()**  | Checks that the Search View in the Action Bar is in iconified state | boolean
+**setExpanded()** | Sets the search field expanded | void
+**expanded()** | Checks that the search field is expanded | boolean
+**input(String value)** | Inputs values into the the search field | void
+**clear()** | Remove values from the search field | void
+**selectOption(String text)** | Selects value from a list of options | void
+**is()** | Assert action | ActionBarAssert
+**has()** | Assert action | ActionBarAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a>
+
+### Progress Bar
+
+<a href="https://developer.android.com/reference/android/widget/ProgressBar">ProgressBar</a>
+```java
+    @Test
+        public void decreaseStandardProgressBar() {
+            ProgressBarPage.decreaseStandardButton.click();
+            ProgressBarPage.decreaseStandardButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+    
+        @Test
+        public void increaseStandardProgressBar() {
+            ProgressBarPage.increaseStandardButton.click();
+            ProgressBarPage.increaseStandardButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+    
+        @Test
+        public void decreaseSecondaryProgressBar() {
+            ProgressBarPage.decreaseSecondaryButton.click();
+            ProgressBarPage.decreaseSecondaryButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+    
+        @Test
+        public void increaseSecondaryProgressBar() {
+            ProgressBarPage.increaseSecondaryButton.click();
+            ProgressBarPage.increaseSecondaryButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+```
+![Progress Bar](../images/android/progress_bar.PNG)
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**enabled()**  | Button availiable for click | boolean
+**is()** | Assert action | ActionBarAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ProgressBarTests.java">Test examples in Java</a>
+
+### Spinner
+
+<a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
+In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
+all other available values, from which the user can select a new one.
+
+```java 
+
+@Test
+    public void toggleButtonTest() {
+        IndexPage.viewsPage.click();
+        AndroidScreen.scrollDown(3000);
+        ViewsPage.spinnerPage.click();
+        SpinnerPage.colorSpinner.is().displayed();
+        SpinnerPage.colorSpinner.has().text("red");
+        SpinnerPage.colorSpinner.tap();
+        SpinnerPage.colorSpinner.select("yellow");
+        SpinnerPage.colorSpinner.has().text("yellow");
+        SpinnerPage.colorSpinner.tap();
+        SpinnerPage.colorSpinner.select("violet");
+        SpinnerPage.colorSpinner.has().text("violet");
+    }
+
+```
+
+![Spinner](../images/android/spinner.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**select** | Select value in spinner | void
+**is()** | Assert action | TextAssert
+**has()** | Assert action | TextAssert
+
+<a href="***">Test examples in Java</a>
+
 ## iOS Native Application Common elements
 
 ### Buttons
@@ -509,30 +755,31 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
 
-### System Button
+### Add Contact Button
 
-<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">System buttons</a> often appear in navigation bars and toolbars, but may be used anywhere.
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Add contact buttons</a><br>
+Users can tap an Add Contact button to browse a list of existing contacts and to select one for insertion into a text field or other view. 
+In Mail, for example, you can tap the Add Contact button in the To field of a message to select a recipient from your list of contacts.
 
 ```java 
-  
+   
   @Test
-  public void systemButtonTest() {
-      ContactsListPage.groupsButton.tap();
-      GroupsPage.groupsBar.is().displayed();
-      GroupsPage.doneButton.done();
-      ContactsListPage.contactsListView.is().displayed();
+  public void addContactButtonTest() throws InterruptedException {
+      MessagesListPage.newMessageButton.tap();
+      
+      NewMessagePage.addContactButton.openContacts();
 
-      ContactsListPage.addButton.tap();
-      AddNewContactPage.newContactNavBar.is().displayed();
-      AddNewContactPage.cancelButton.cancel();
-      ContactsListPage.addButton.is().displayed();
+      ContactsListPage.contactNavBar.is().displayed();
+      ContactsListPage.cancelButton.cancel();
+
+      NewMessagePage.addContactButton.is().displayed();
   }
   
 ```
+ 
+![Add contact button](../images/ios/add_contact_button.png)
 
-![System button](../images/ios/system_button.png)
-
-Available methods in Java JDI Mobile (**iOS 13 compatible**):
+Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -541,11 +788,9 @@ Available methods in Java JDI Mobile (**iOS 13 compatible**):
 **longPress()** | Long press | void
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert 
-**done()** | Alias of tap() for Done button| void
-**cancel()** | Alias of tap() for Cancel button| void
-**send()** | Alias of tap() for Send button| void
+**openContacts()** | Alias of tap() for button| void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Detail Disclosure Button
 
@@ -623,31 +868,31 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java;" target="_blank">Test examples in Java</a>
 
-### Add Contact Button
 
-<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Add contact buttons</a><br>
-Users can tap an Add Contact button to browse a list of existing contacts and to select one for insertion into a text field or other view. 
-In Mail, for example, you can tap the Add Contact button in the To field of a message to select a recipient from your list of contacts.
+### System Button
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">System buttons</a> often appear in navigation bars and toolbars, but may be used anywhere.
 
 ```java 
-   
+  
   @Test
-  public void addContactButtonTest() throws InterruptedException {
-      MessagesListPage.newMessageButton.tap();
-      
-      NewMessagePage.addContactButton.openContacts();
+  public void systemButtonTest() {
+      ContactsListPage.groupsButton.tap();
+      GroupsPage.groupsBar.is().displayed();
+      GroupsPage.doneButton.done();
+      ContactsListPage.contactsListView.is().displayed();
 
-      ContactsListPage.contactNavBar.is().displayed();
-      ContactsListPage.cancelButton.cancel();
-
-      NewMessagePage.addContactButton.is().displayed();
+      ContactsListPage.addButton.tap();
+      AddNewContactPage.newContactNavBar.is().displayed();
+      AddNewContactPage.cancelButton.cancel();
+      ContactsListPage.addButton.is().displayed();
   }
   
 ```
- 
-![Add contact button](../images/ios/add_contact_button.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+![System button](../images/ios/system_button.png)
+
+Available methods in Java JDI Mobile (**iOS 13 compatible**):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -656,84 +901,11 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **longPress()** | Long press | void
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert 
-**openContacts()** | Alias of tap() for button| void
+**done()** | Alias of tap() for Done button| void
+**cancel()** | Alias of tap() for Cancel button| void
+**send()** | Alias of tap() for Send button| void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a>
-
-
-### Switch
-
-<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/switches/" target="_blank" style="font-weight: bold;">A switch</a><br>
- is a visual toggle between two mutually exclusive states — on and off.
-
-```java 
-   
-  @Test
-  public void switchTest() {
-      RemindersListPage.todayRemindersButton.tap();
-
-      RemindersPage.newReminderButton.tap();
-      RemindersPage.editDetailsInfoButton.openDetails();
-
-      EditDetailsPage.remindSwitch.setToOff();
-      EditDetailsPage.remindSwitch.is().off();
-      EditDetailsPage.remindSwitch.setToOn();
-      EditDetailsPage.remindSwitch.is().on();
-  }
-  
-```
- 
-![Switch](../images/ios/switch.png)
-
-Available methods in Java JDI Mobile (**iOS 13** compatible):
-
-|Method | Description | Return Type
---- | --- | ---
-**tap()** | Tap | void
-**is()** | Assert action | SwitchAssert 
-**isOn()** | Check that switch is on | boolean
-**setToOn()** | Set switch to on | void
-**setToOff()** | Set switch to off | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
-
-### Text Field
-
-<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
-A Text Field</a> is a single-line, fixed-height field, often with rounded corners, that automatically brings up a keyboard when the user taps it. Use a text field to request a small amount of information, such as an email address.
-
-```java 
-   
-  @Test
-  public void textFieldTest() {
-      MessagesListPage.newMessageButton.tap();
-
-      NewMessagePage.messageTextField.setValue("Test");
-      NewMessagePage.messageTextField.is().text("Test");
-
-      NewMessagePage.messageTextField.clear();
-      NewMessagePage.messageTextField.is().empty();
-  }
-  
-```
-
-![Text Field](../images/ios/textfield.png)
-
-Available methods in Java JDI Mobile (**iOS 13** compatible):
-
-|Method | Description | Return Type
---- | --- | ---
-**tap()** | Tap | void
-**doubleTap()** | Double tap  | void
-**longPress()** | Long press | void
-**longPress(int seconds)** | Long press | void
-**is()** | Assert action | TextAssert 
-**setValue()** | Set value in text field | void
-**getValue()** | Get value from text field | String
-**getText()** | Get text from text field | String
-**clear()** | Clear value in text field | void
- 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Picker Wheel
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/pickers/" target="_blank" style="font-weight: bold;">
@@ -813,6 +985,81 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **setMinimumValue()** | Set the minimum value | void
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
+
+### Switch
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/switches/" target="_blank" style="font-weight: bold;">A switch</a><br>
+ is a visual toggle between two mutually exclusive states — on and off.
+
+```java 
+   
+  @Test
+  public void switchTest() {
+      RemindersListPage.todayRemindersButton.tap();
+
+      RemindersPage.newReminderButton.tap();
+      RemindersPage.editDetailsInfoButton.openDetails();
+
+      EditDetailsPage.remindSwitch.setToOff();
+      EditDetailsPage.remindSwitch.is().off();
+      EditDetailsPage.remindSwitch.setToOn();
+      EditDetailsPage.remindSwitch.is().on();
+  }
+  
+```
+ 
+![Switch](../images/ios/switch.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**is()** | Assert action | SwitchAssert 
+**isOn()** | Check that switch is on | boolean
+**setToOn()** | Set switch to on | void
+**setToOff()** | Set switch to off | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
+
+### Text Field
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
+A Text Field</a> is a single-line, fixed-height field, often with rounded corners, that automatically brings up a keyboard when the user taps it. Use a text field to request a small amount of information, such as an email address.
+
+```java 
+   
+  @Test
+  public void textFieldTest() {
+      MessagesListPage.newMessageButton.tap();
+
+      NewMessagePage.messageTextField.setValue("Test");
+      NewMessagePage.messageTextField.is().text("Test");
+
+      NewMessagePage.messageTextField.clear();
+      NewMessagePage.messageTextField.is().empty();
+  }
+  
+```
+
+![Text Field](../images/ios/textfield.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+**setValue()** | Set value in text field | void
+**getValue()** | Get value from text field | String
+**getText()** | Get text from text field | String
+**clear()** | Clear value in text field | void
+ 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
+
 
 ## iOS Native Application Composite elements
 
@@ -967,9 +1214,9 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **doubleTap()** | Double tap  | void
 **longPress()** | Long press | void
 **longPress(int seconds)** | Long press | void
-**tapSegment(String segmentName)** | Tap segment with segmentName on Segmented control | void
-**getSelectedSegmentText()** | Get text of selected segment  | String
-**getSegmentTexts()** | Get text of all segments | List<String>
+**tapSegment(String segmentName)** | Tap segment with segmentName on Segmented Control | void
+**selected()** | Get selected value | String
+**values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
@@ -1015,101 +1262,46 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
-## HTML5 Common elements
 
-### Label 
+### Tab Bar
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/tab-bars/" target="_blank" style="font-weight: bold;">A Tab bar </a>
+appears at the bottom of an app screen and provides the ability to quickly switch between different sections of an app.
 
 ```java 
    
-  //In the next test Label is found from 'name' and 'disabledName' locators:
-   
-  // @FindBy(css = "#name")
-  @UI("#name") 
-  public static TextField name;
-	
-  // @FindBy(css = "#disabled-name")
-  @UI("#disabled-name") 
-  public static TextField disabledName;
-	
-  //By default Label is found by locator 
-  By.cssSelector("[for="+getAttribute("id")+"]")
-   
-  @Test
-  public void labelTest() {
-      assertEquals(name.label().getText(), "Your name:");
-      name.label().is().text(containsString("Your"));
-      disabledName.label().is().text(equalToIgnoringCase("Surname:"));
-  }
-	
- @Test
- public void labelAssertThatTest() {
-     jdiTitle.assertThat().text(is(text));
- }
-
- @Test
- public void labelClickTest() {
-     jdiTitle.click();
-     validateAlert(containsString("JDI Title"));
- }
+    @Test
+        public void tabBarTest() {
+            PhotosPage.photosTabBar.has().values(Arrays.asList("All Photos", "For You", "Albums", "Search"));
+    
+            PhotosPage.photosTabBar.tapBarButton("Search");
+            PhotosPage.photosTabBar.is().selected("Search");
+    
+            PhotosPage.photosTabBar.tapBarButton("For You");
+            PhotosPage.noContentText.is().displayed();
+        }
   
- ```
-
- ```csharp 
-  	
- In the next test Label is found from NameTextField locator:
-  
- [FindBy(Css = "div.main-content #name")]
- public TextField NameTextField { get; set; }
-	
- By default Label is found by locator By.CssSelector($"[for={WebElement.GetAttribute("id")}]")
-
- [Test] 
- public void LabelTest() 
- { 
-     Assert.AreEqual(TestSite.Html5Page.NameTextField.Label().GetText(), "Your name:");
-     TestSite.Html5Page.NameTextField.Label().Is.Text(ContainsString("Your"));
-     Assert.AreEqual(TestSite.Html5Page.SurnameTextField.Label().GetText(), "Surname:");
-     TestSite.Html5Page.SurnameTextField.Label().Is.Text(ContainsString("Surname:")); 
- }	 
-	
- [Test] 
- public void GetLabelTextTest() 
- { 
-     AreEqual(TestSite.Html5Page.ColorPicker.LabelText(), "Select a color"); 
- } 
- 
-  ```
- **Label** – Elements' caption for a big number of JDI common elements. 
- 
-![Label](../images/colorpicker.png) 
-
-```html 
-<label for="test">Description</label>
 ```
 
-Label's implementation is located in the following classes: 
+![Tab bar](../images/ios/tab_bar.png)
 
-   - __Java__: _com.epam.jdi.light.elements.base.BaseUIElement_
-   - __C#__: _JDI.Light.Elements.Base.UIElement_
+Available methods in Java JDI Mobile (**iOS 13** compatible):
 
- 
- 
-Available methods in C# JDI Light: 
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**tapBarButton(String buttonName)** | Tap button with buttonName on Tab bar | void
+**selected()** | Get selected value | String
+**values()** | Get values of all elements | List<String>
+**is()** | Assert action | TextAssert 
 
-|Method | Description | Return Type 
---- | --- | --- 
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button  | void
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert
-**Label()** | Creates label for element using the element's Id | Label 
-**LabelText()** | Gets the text of a label | string 
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/LabelsTests.cs" target="_blank">C# test examples</a> 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/PhotosAppTests.java" target="_blank">Test examples in Java</a>
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/LabelTests.java" target="_blank">Java test examples</a> 
 
-[BDD Steps examples](https://jdi-docs.github.io/jdi-light/?java#label-2)
-
+## HTML5 Common elements
 
 ### Button
 
@@ -1983,6 +2175,99 @@ Here is a list of available methods in C#:
 
 <a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/ImagesTests.cs" target="_blank">Test examples in C#</a>
 
+### Label 
+
+```java 
+   
+  //In the next test Label is found from 'name' and 'disabledName' locators:
+   
+  // @FindBy(css = "#name")
+  @UI("#name") 
+  public static TextField name;
+	
+  // @FindBy(css = "#disabled-name")
+  @UI("#disabled-name") 
+  public static TextField disabledName;
+	
+  //By default Label is found by locator 
+  By.cssSelector("[for="+getAttribute("id")+"]")
+   
+  @Test
+  public void labelTest() {
+      assertEquals(name.label().getText(), "Your name:");
+      name.label().is().text(containsString("Your"));
+      disabledName.label().is().text(equalToIgnoringCase("Surname:"));
+  }
+	
+ @Test
+ public void labelAssertThatTest() {
+     jdiTitle.assertThat().text(is(text));
+ }
+
+ @Test
+ public void labelClickTest() {
+     jdiTitle.click();
+     validateAlert(containsString("JDI Title"));
+ }
+  
+ ```
+
+ ```csharp 
+  	
+ In the next test Label is found from NameTextField locator:
+  
+ [FindBy(Css = "div.main-content #name")]
+ public TextField NameTextField { get; set; }
+	
+ By default Label is found by locator By.CssSelector($"[for={WebElement.GetAttribute("id")}]")
+
+ [Test] 
+ public void LabelTest() 
+ { 
+     Assert.AreEqual(TestSite.Html5Page.NameTextField.Label().GetText(), "Your name:");
+     TestSite.Html5Page.NameTextField.Label().Is.Text(ContainsString("Your"));
+     Assert.AreEqual(TestSite.Html5Page.SurnameTextField.Label().GetText(), "Surname:");
+     TestSite.Html5Page.SurnameTextField.Label().Is.Text(ContainsString("Surname:")); 
+ }	 
+	
+ [Test] 
+ public void GetLabelTextTest() 
+ { 
+     AreEqual(TestSite.Html5Page.ColorPicker.LabelText(), "Select a color"); 
+ } 
+ 
+  ```
+ **Label** – Elements' caption for a big number of JDI common elements. 
+ 
+![Label](../images/colorpicker.png) 
+
+```html 
+<label for="test">Description</label>
+```
+
+Label's implementation is located in the following classes: 
+
+   - __Java__: _com.epam.jdi.light.elements.base.BaseUIElement_
+   - __C#__: _JDI.Light.Elements.Base.UIElement_
+
+ 
+ 
+Available methods in C# JDI Light: 
+
+|Method | Description | Return Type 
+--- | --- | --- 
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button  | void
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert
+**Label()** | Creates label for element using the element's Id | Label 
+**LabelText()** | Gets the text of a label | string 
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/LabelsTests.cs" target="_blank">C# test examples</a> 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/LabelTests.java" target="_blank">Java test examples</a> 
+
+[BDD Steps examples](https://jdi-docs.github.io/jdi-light/?java#label-2)
+
 ### Link
 
 ```java 
@@ -2577,108 +2862,6 @@ Here is a list of available methods in Java:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeApp/elements/common/TextTests.java" target="_blank">Test examples in Java</a>
 
-
-### TextField
-```java 
-@UI("#name") //@FindBy(css = "#name")
-public static TextField name;
-
-@Test
-public void setTextTest() {
-    name.setText(text);
-    name.is().text(text);
-    name.is().text(is(text));
-    name.is().text(containsString("Field"));
-}
-
-@Test
-public void sendKeysTest() {
-    name.setText(text);
-    name.sendKeys("Test");
-    name.is().text(text + "Test");
-}
-
-@Test
-public void clearTest() {
-    name.clear();
-    name.is().text("");
-}
-```
-```csharp 
-[FindBy(Id = "name")]
-public ITextField NameField;
-        
-        [Test]
-        public void InputTest()
-        {
-            TestSite.ContactFormPage.NameField.Input(ToAddText);
-            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, ToAddText);
-        }
-        
-        [Test]
-        public void SendKeyTest()
-        {
-            TestSite.ContactFormPage.NameField.SendKeys(ToAddText);
-            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, _defaultText + ToAddText);
-        }
-
-        [Test]
-        public void ClearTest()
-        {
-            TestSite.ContactFormPage.NameField.Clear();
-            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, "");
-        }
-```
-**TextField** – Is a simple element type that allows users to fill in text fields.
-
-![InputTypeTextField](../images/html/textField_html2.png)
-
-```html
-<label for="name">Your name:</label>
-<input type="text" id="name" placeholder="Input name">
-<label for="disabled-name">Surname:</label>
-<input type="text" id="disabled-name" placeholder="Iovlev" disabled="">
-```
-
-Text fields are represented by the following classes in Java and C#:
- 
-  - __C#__: _JDI.Light.Elements.Common.TextField_
-  - __Java__: _com.epam.jdi.light.ui.html.common.TextField_
-  
-Here is a list of available methods and properties in C#:
-
-|Method / Property | Description | Return Type
---- | --- | ---
-**AssertThat** | property that returns object for work with assertions| TextAssert
-**Clear()** | clears the text field | void
-**Focus()** | places cursor within the text field | void
-**GetText()** | returns text from the text field  | String
-**GetValue()** | returns text from the text field| String
-**Input(string text)** | sets new text  | void
-**Is** | property that returns object for work with assertions| TextAssert
-**Placeholder** | returns value of the placeholder attribute | String
-**SendKeys(string value)** | adds text to the field | void
-**SetText(String value)** | sets new text | void
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/TextFieldsTests.cs" target="_blank">Test examples in C#</a><br>
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#textfield-2)<br>
-
-And here are methods available in Java:
-
-|Method | Description | Return Type
---- | --- | ---
-**clear()** | clears the text field | void
-**focus()** | places cursor within the text field | void
-**getText()** | returns text from the text field  | String
-**getValue()** | returns text from the text field| String
-**input(String value)** | sets new text | void
-**placeholder()** | returns value of the placeholder attribute | String
-**sendKeys(CharSequence... value)** | adds text to the field | void
-**setText(String value)** | sets new text | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/TextFieldTests.java" target="_blank">Test examples in Java</a><br>
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#textfield-2)<br>
-
 ### TextArea
 
 **TextArea** – Is a simple element type that allows users to fill in text areas (they may contain a few lines). 
@@ -2795,6 +2978,107 @@ Here is a list of available methods in C#:
  
   <a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/TextAreaTests.cs" target="_blank">Test examples in C#</a><br>
 
+### TextField
+```java 
+@UI("#name") //@FindBy(css = "#name")
+public static TextField name;
+
+@Test
+public void setTextTest() {
+    name.setText(text);
+    name.is().text(text);
+    name.is().text(is(text));
+    name.is().text(containsString("Field"));
+}
+
+@Test
+public void sendKeysTest() {
+    name.setText(text);
+    name.sendKeys("Test");
+    name.is().text(text + "Test");
+}
+
+@Test
+public void clearTest() {
+    name.clear();
+    name.is().text("");
+}
+```
+```csharp 
+[FindBy(Id = "name")]
+public ITextField NameField;
+        
+        [Test]
+        public void InputTest()
+        {
+            TestSite.ContactFormPage.NameField.Input(ToAddText);
+            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, ToAddText);
+        }
+        
+        [Test]
+        public void SendKeyTest()
+        {
+            TestSite.ContactFormPage.NameField.SendKeys(ToAddText);
+            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, _defaultText + ToAddText);
+        }
+
+        [Test]
+        public void ClearTest()
+        {
+            TestSite.ContactFormPage.NameField.Clear();
+            Jdi.Assert.AreEquals(TestSite.ContactFormPage.NameField.Value, "");
+        }
+```
+**TextField** – Is a simple element type that allows users to fill in text fields.
+
+![InputTypeTextField](../images/html/textField_html2.png)
+
+```html
+<label for="name">Your name:</label>
+<input type="text" id="name" placeholder="Input name">
+<label for="disabled-name">Surname:</label>
+<input type="text" id="disabled-name" placeholder="Iovlev" disabled="">
+```
+
+Text fields are represented by the following classes in Java and C#:
+ 
+  - __C#__: _JDI.Light.Elements.Common.TextField_
+  - __Java__: _com.epam.jdi.light.ui.html.common.TextField_
+  
+Here is a list of available methods and properties in C#:
+
+|Method / Property | Description | Return Type
+--- | --- | ---
+**AssertThat** | property that returns object for work with assertions| TextAssert
+**Clear()** | clears the text field | void
+**Focus()** | places cursor within the text field | void
+**GetText()** | returns text from the text field  | String
+**GetValue()** | returns text from the text field| String
+**Input(string text)** | sets new text  | void
+**Is** | property that returns object for work with assertions| TextAssert
+**Placeholder** | returns value of the placeholder attribute | String
+**SendKeys(string value)** | adds text to the field | void
+**SetText(String value)** | sets new text | void
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/TextFieldsTests.cs" target="_blank">Test examples in C#</a><br>
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#textfield-2)<br>
+
+And here are methods available in Java:
+
+|Method | Description | Return Type
+--- | --- | ---
+**clear()** | clears the text field | void
+**focus()** | places cursor within the text field | void
+**getText()** | returns text from the text field  | String
+**getValue()** | returns text from the text field| String
+**input(String value)** | sets new text | void
+**placeholder()** | returns value of the placeholder attribute | String
+**sendKeys(CharSequence... value)** | adds text to the field | void
+**setText(String value)** | sets new text | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/common/TextFieldTests.java" target="_blank">Test examples in Java</a><br>
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#textfield-2)<br>
+
 ### Title
 **Title** – A graphical control element representing document title, which is displayed in the title bar of the browser or tab page.
 
@@ -2886,6 +3170,910 @@ Here is the list of available methods in Java JDI Light:
 
 
 ## HTML5 Complex elements
+
+### CheckList
+**CheckList** – A graphical control element representing a set of checkboxes, each of which allows user to control a two-state parameter (enabled or disabled).
+
+Checklist element type is available in the following packages:
+ 
+ - __Java__: com.epam.jdi.light.ui.html.complex.Checklist
+ - __C__#: JDI.Light.Elements.Complex.CheckList 
+
+See an example with HTML code describing checklist element.
+
+![Checklist Example](../images/html/checklist_html2.png)
+
+```java 
+//@FindBy(name = "checks-group")
+@UI("[name=checks-group]") public static Checklist weather;
+public static Checklist weatherNoLocator;
+
+@Test
+public void checkTest() {
+    weather.check("Rainy day", "Sunny");
+    weather.is().checked(hasSize(2));
+    weather.is().checked(hasItems("Rainy day", "Sunny"));
+}
+
+@Test
+public void assertValidationTest() {
+    weather.assertThat().values(containsInAnyOrder(
+      "Hot option", "Cold", "Rainy day", "Sunny", "Disabled"));
+    weatherNoLocator.assertThat().selected("Hot option");
+}
+```
+```csharp 
+[FindBy(Css = "div:nth-child(11) > div.html-left")]
+public ICheckList weather;
+
+[FindBy(Css = "div:nth-child(11) > div.html-left")]
+public ICheckList<MyCheckBox> genericWeather;
+
+[Test]
+public void CheckCheckList()
+{
+    weather.Check("Cold", "Hot option");
+    Jdi.Assert.CollectionEquals(new[] { "Cold", "Hot option" }, weather.Checked());
+}
+
+[Test]
+public void UncheckTest()
+{
+    _weather.Check(false, "Rainy day", "Sunny");
+    _weather.Uncheck(false, "Rainy day", "Sunny");
+    _weather.Is.Selected(HasSize(2));
+    _weather.Is.Selected(HasItems(new[] { "Hot option", "Cold" }));
+}
+
+[Test]
+public void IsValidationTests()
+{
+    weather.AssertThat
+                .Values(HasItems(new[] {"Cold", "Sunny"}))
+                .Disabled(HasItems(new[] {"Disabled"}))                
+                .Size(Is.LessThan(6))
+                .AllDisplayed();
+}
+
+[Test]
+public void UncheckAllTest()
+{
+    _weather.Uncheck(false, "Rainy day", "Sunny");
+    _weather.UncheckAll();
+    _weather.Is.Selected(HasSize(0));
+}
+
+[Test]
+public void CheckAllTest()
+{
+    _weather.CheckAll();
+    _weather.Is.Selected(HasSize(4));
+    _weather.Is.Selected(HasItems(new[] { "Hot option", "Cold", "Rainy day", "Sunny" }));
+}
+
+[Test]
+public void IsDisabledTest()
+{
+    _weather.Select(false, "Disabled");
+    _weather.Is.Selected(HasItems(new [] { "Hot option" } ));
+}
+```
+
+```html
+<input type="checkbox" id="hot" name="checks-group" checked="">
+<label for="hot">Hot option</label> <br>
+
+<input type="checkbox" id="cold" name="checks-group">
+<label for="cold">Cold</label> <br>
+
+<input type="checkbox" id="rainy" name="checks-group">
+<label for="rainy">Rainy day</label> <br>
+
+<input type="checkbox" id="sunny-day" name="checks-group">
+<label for="sunny-day">Sunny</label> <br>
+
+<input type="checkbox" id="disabled-ch" name="checks-group" disabled="">
+<label for="disabled-ch">Disabled</label>
+```
+
+List of available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Get select assert | selectAssert
+**check(String.../Enum/int...)** | Check specified checkboxes and uncheck others | void
+**checkAll()** | Check all checkboxes in checklist | void
+**checked()** | Get selected checkbox values | List\<String>
+**has()** | Get select assert | selectAssert
+**is()** | Get select assert | selectAssert
+**listEnabled()** | Get enabled checkboxes | List\<String>
+**listDisabled()** | Get disabled checkboxes | List\<String>
+**selected()** | Get selected checkbox values | String
+**select(String.../Enum/int...)** | Select checkboxes | void
+**size()** | Get checklist size | int
+**uncheck(String.../Enum/int...)** | Uncheck specified checkboxes and check others  | void
+**uncheckAll()** | Uncheck all checkboxes in checklist | void
+**values()** | Get checklist values | List\<String>
+
+Here is the list of some methods available for C# in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**AssertThat** | Get select assert | SelectAssert
+**Check(params string[]/params int[])** |Check checklist by values/indexes  | void
+**CheckAll()** |Check all checkboxes | void
+**Checked()** |Get selected checkboxes from checklist value  | List\<String>
+**Has** | Get select assert | SelectAssert
+**Is** | Get select assert | SelectAssert
+**ListEnabled()** | Get enabled checkboxes | List\<String>
+**ListDisabled()** | Get disabled checkboxes | List\<String>
+**Select(params string[]/params int[])** |Select checklist by values/indexes  | void
+**Selected(string option)** | Checks whether a checkbox is selected | bool
+**Size()** | Get checklist size | int
+**Uncheck(params string[]/params int[])** |Unselect checklist by values/indexes  | void
+**UncheckAll()** |Uncheck all checkboxes | void
+**Values()** | Get checklist values | List\<String>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/ChecklistTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Complex/CheckListTests.cs" target="_blank">Test examples in C#</a>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#checklist-2)
+
+### ComboBox
+
+**ComboBox** – A graphical control element that allows user to choose a single 
+value from a list or enter it by himself (is inherited from the [Datalist](#datalist))
+
+![ComboBox](../images/icecreamdatalist.png)
+
+ComboBox is provided by JDI Light in:
+ 
+  - __Java__: _com.epam.jdi.light.ui.html.complex.Combobox_
+  - __C#__: _JDI.Light.Elements.Common.Combobox_
+
+```java 
+    public static Combobox iceCream;
+
+    // @FindBy(id = "ice-cream")
+    @UI("#ice-cream") 
+    public static DataList iceCreamDataList;
+
+    @Test
+    public void inputTest() {
+        iceCreamIs.input("New text");
+        iceCreamIs.is().text("New text");
+        iceCreamIs.clear();
+        iceCreamIs.is().text("");
+    }
+
+    @Test
+    public void placeholderTest() {
+        iceCreamIs.placeholder().equals("Ice cream");
+    }
+
+    @Test
+    public void selectTest() {
+        iceCreamIs.select("Chocolate");
+        iceCreamIs.select(Strawberry);
+        iceCreamIs.select(5);
+    }
+
+    @Test
+    public void labelTest() {
+        iceCreamIs.label().is().text("Choose your lovely icecream");
+        iceCreamIs.label().is().text(containsString("lovely icecream"));
+    }
+
+    @Test
+    public void isValidationTest() {
+        iceCreamIs.listEnabled();
+        iceCreamIs.assertThat().equals(asList("Chocolate", "Strawberry"));
+        iceCreamIs.is().enabled();
+        iceCreamIs.is().selected("Coconut");
+        iceCreamIs.is().selected(is("Coconut"));
+        iceCreamIs.select(Vanilla);
+        iceCreamIs.is().text(containsString("Van"));
+    }
+```
+```csharp 
+[Test]
+public void ExpandComboBox() 
+{
+    MyComboBox.Expand();
+}
+[Test]
+public void SelectComboBox() 
+{
+    MyComboBox.Select("some value");
+	MyComboBox.Is().Selected(Is.EqualTo("some value"));
+	TestSite.Html5Page.IceCreamComboBox.AssertThat().Selected(Is.EqualTo("Strawberry"));	
+}
+[Test]
+public void SelectByIndex() 
+{
+    MyComboBox.Select(1);
+}
+[Test]
+public void FillComboBox() 
+{
+    MyComboBox.Input("some value");
+    SubmitButton.Click();
+}
+```
+
+Have a look at the following example with HTML code provided:
+
+<!-- ![Combobox example](../images/html/datalist_html.png) -->
+
+```html
+<input list="ice-cream-flavors" id="ice-cream" placeholder="Ice cream">
+
+<datalist id="ice-cream-flavors">
+    <option value="Chocolate"></option>
+    <option value="Coconut"></option>
+    <option value="Mint"></option>
+    <option value="Strawberry"></option>
+    <option value="Vanilla"></option>
+</datalist>
+```
+
+The list of methods available for Java in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**listEnabled()** |Return list of values of enabled options | List\<String>
+**listDisabled()** |Return list of values of disabled options | List\<String>
+**select(String/Enum/int)** |Select combobox option by value or index | void
+**selected()** |Get selected option value | String
+**values()** |Get all option values from combobox | List\<String>
+
+Here is the list of some methods available for C# in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Returns object for work with assertions| ComboBoxAssert
+**Expand()** |Expands the list of possible values | void
+**GetSelected()** |Get selected combobox value  | string
+**Input(string)** |Input user's value into combobox  | void
+**is()** |  Returns object for work with assertions| ComboBoxAssert
+**Select(string/int)** |Select combobox by value/index  | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/combobox/IsComboboxTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/ComboboxTests.java" target="_blank">Test examples in C#</a>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#combobox-2)
+
+### DataList
+
+**DataList** – A graphical control element that allows user to choose one value from a list or enter it by himself.
+DataList element contains a set of options with values available as inputs.
+
+![DataList](../images/icecreamdatalist.png)
+
+__C# JDI DataList annotation__
+
+For better use in C# JDI Light provides a __*[JDataList]*__ annotation to locate DataList elements. This annotation consists of the following elements:
+
+ - __*root*__ - value of this element points to the root locator of the dropdown element
+ - __*values*__ - options locator in dropdown list
+ - __*how*__ - type of locators with which elements will be identified. By default it is set as css
+ 
+```csharp 
+[JDataList("#ice-cream", "#ice-cream-flavors > option")]
+    public DataList IceCream { get; set; }
+
+[JDataList("#disabled-dropdown",
+          "#disabled-dropdown > option")]
+    public DataList DisabledDropdownAsDataList { get; set; }
+
+[Test]
+public void GetValueTest()
+{
+    AreEqual(TestSite.Html5Page.IceCream.Selected(), "Coconut");
+}
+
+[Test]
+public void LabelTest()
+{
+    AreEqual(TestSite.Html5Page.IceCream.Label().GetText(), "Choose your lovely icecream");
+    TestSite.Html5Page.IceCream.Label().Is.Text(ContainsString("lovely icecream"));
+}
+
+[Test]
+public void IsValidationTest()
+{
+     TestSite.Html5Page.IceCream.Is.Enabled();
+     TestSite.Html5Page.IceCream.Is.Attr("value" ,EqualTo(_text));
+     TestSite.Html5Page.IceCream.Select("Vanilla");
+     TestSite.Html5Page.IceCream.Is.Attr("value", ContainsString("Van"));
+}
+
+[Test]
+public void AssertValidationTest()
+{
+     TestSite.Html5Page.IceCream.AssertThat.Attr("value", ContainsString(_text));
+}
+
+[Test]
+public void BaseValidationTest()
+{
+     BaseElementValidation(TestSite.Html5Page.IceCream);
+}
+
+[Test]
+public void NegativeSelectTest()
+{
+     Throws<ElementNotSelectableException>(() => TestSite.Html5Page.DisabledDropdownAsDataList.Select("Fancy", false));
+}
+
+[Test]
+public void NegativeSelectEnumTest()
+{
+      Throws<ElementNotSelectableException>(() => TestSite.Html5Page.DisabledDropdownAsDataList.Select(DressCode.Fancy, false));
+}
+
+[Test]
+public void NegativeSelectNumTest()
+{
+      Throws<ElementNotFoundException>(() => TestSite.Html5Page.IceCream.Select(7, false));
+}
+
+[Test]
+public void AssertOptionsValuesTest()
+{
+      IsTrue(TestSite.Html5Page.IceCream.Values().SequenceEqual(_options));
+}
+
+```
+
+DataList element type is provided by JDI Light in:
+
+ - __Java__: _com.epam.jdi.light.ui.html.complex.DataListOptions_
+ - __C#__: _JDI.Light.Elements.Common.DataList_
+ 
+Have a look at the following example with HTML code provided:
+
+```java 
+@UI("#ice-cream") //@FindBy(id = "ice-cream")
+public static DataListOptions iceCreamDataList;
+
+@Test
+public void selectTest() {
+    iceCream.select("Chocolate");
+    iceCream.is().selected("Chocolate");
+}
+
+@Test
+public void selectNumTest() {
+    iceCream.select(5);
+    iceCream.is().selected("Vanilla");
+}
+```
+
+
+<!-- ![Datalist example](../images/html/datalist_html.png) -->
+
+```html
+<label for="ice-cream">Choose your lovely icecream</label>
+<input list="ice-cream-flavors" id="ice-cream" placeholder="Ice cream">
+
+<datalist id="ice-cream-flavors">
+    <option value="Chocolate"></option>
+    <option value="Coconut"></option>
+    <option value="Mint"></option>
+    <option value="Strawberry"></option>
+    <option value="Vanilla"></option>
+</datalist>
+```
+
+The list of methods available for Java in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat** |Gets element's assert | DataListAssert
+**input(string value)** |Input user's value into DataList  | void
+**is** |Gets element's assert | DataListAssert
+**listEnabled()** |Return a list of values of enabled options | List\<String>
+**listDisabled()** |Return a list of values of disabled options | List\<String>
+**select(String/Enum/int)** |Select datalist option by value or index | void
+**selected()** |Get selected option value | String
+**values()** |Get all option values from DataList | List\<String>
+
+The list of some methods available for C# in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**AssertThat** |Gets element's assert | DataListAssert
+**Expand()** |Expands the list of possible values | void
+**GetSelected()** |Get selected DataList value  | string
+**Input(string value)** |Input user's value into DataList  | void
+**Is** |Gets element's assert | DataListAssert
+**Select(string/int)** |Select datalist by value/index  | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/combobox/DataListTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DataListTests.cs" target="_blank">Test examples in C#</a>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#datalist-2)
+
+### Dropdown
+
+**Dropdown** – A graphical control element that allows user to choose a single value from a list.
+
+![DropDown](../images/dropdown.png)
+
+JDI Light has support for dropdown elements with their own type. There are several ways of dropdown usage in JDI Light, each serving different needs.
+
+__Dropdown representation__
+
+JDI Light provides a __Dropdown__ class which is using for dropdown representation as a type of web element.
+
+Also this class can be used when working with HTML5 elements in cases when dropdown is represented with HTML _\<select>_ tag.
+
+Consider an example of HTML5 dropdown with the given HTML code:
+
+![Dropdown HTML5](../images/html/dropdown_html52.png)
+
+```java 
+@JDropdown(root = "div[ui=dropdown]",
+    value = ".filter-option",
+    list = "li",
+    expand = ".caret")
+public static Dropdown colors2; //@FindBy(css = "div[ui=dropdown]")
+	
+@Test
+public void selectStringTest() {
+    colors2.select("Red");
+    colors2.is().selected("Red");
+}
+
+@Test
+public void selectEnumTest() {
+    colors2.select(Green);
+    colors2.is().selected(Green);
+}
+
+@Test
+public void selectIndexTest() {
+    colors2.select(4);
+    colors2.is().selected(Blue);
+}
+
+@Test
+public void checkValuesTest() {
+    colors2.assertThat().size(5);
+    colors2.assertThat().values(is(dropdownValues));
+    colors2.is().values(hasItem("Yellow"));
+    colors2.is().values(not(hasItem("Missing color")));
+    colors2.is().enabled("Colors", "Red", "Green", "Blue", "Yellow");
+    colors2.is().values(INNER, hasItem("Yellow"));
+    colors2.assertThat().values(INNER, is(dropdownValues));
+    colors2.is().values(INNER, not(hasItem("Missing color")));
+}    
+```
+
+```csharp 
+[FindBy(Css = "#dress-code")] 
+public Dropdown DressCode;
+
+[Test]
+public void SelectEnumTest() 
+{
+    DressCode.Select(Fancy);
+    Assert.AreEquals(DressCode.GetSelected(), "Fancy");
+}
+
+[Test]
+public void LabelTest()
+{
+    AreEqual(TestSite.Html5Page.DressCode.Label().GetText(), "Dress code:");
+    TestSite.Html5Page.DressCode.Label().Is.Text(ContainsString("Dress"));
+}
+
+[Test]
+public void IsValidationTest()
+{
+    TestSite.Html5Page.DressCode.Is.Selected("Casual");
+    TestSite.Html5Page.DressCode.Is.Selected(DressCode.Casual);
+    TestSite.Html5Page.DressCode.Is.Values(HasItems(new[] { "Pirate" }));
+    TestSite.Html5Page.DressCode.Is.Disabled(HasItems(new[] { "Disabled" }));
+    TestSite.Html5Page.DressCode.Is.Enabled(HasItems(new[] { "Pirate", "Fancy" }));
+}
+
+[Test]
+public void AssertValidationTest()
+{
+    TestSite.Html5Page.DressCode.AssertThat.Values(
+    ContainsInAnyOrder(new[] {"Fancy", "Casual", "Disabled", "Pirate"}));
+}
+
+[Test]
+public void BaseValidationTest()
+{
+    BaseElementValidation(TestSite.Html5Page.DressCode);
+}
+
+```
+
+```html
+<select id="dress-code">
+    <option value="fancy">Fancy</option>
+    <option value="casual" selected="">Casual</option>
+    <option value="disabled" disabled="">Disabled</option>
+    <option value="pirate">Pirate</option>
+</select>
+```
+
+
+__JDI Dropdown annotation__
+
+For better use, JDI Light provides a __*@JDropdown*__ annotation to locate dropdown elements. This annotation can be used in cases when working with a
+complex element that may consist of more a complicated html structure. JDropdown annotation allows customise navigation of the web element inner structure by using 
+annotation default methods.
+
+<!-- ![Dropdown HTML](../images/html/dropdown_html.png) -->
+
+
+```csharp 
+[JDropDown(root: "#colors", 
+           value: ".filter-option", 
+           list:"li", 
+           expand:".caret")]
+public Droplist Colors;
+
+[Test]
+public void ComplexTest() 
+{
+    MetalAndColorsPage.ShouldBeOpened();
+    MetalAndColorsPage.Colors.Select(Green);
+}
+```
+
+```html 
+<div class="form-group colors" ui="dropdown" id="colors">
+    <select class="selectpicker uui-form-element" style="display: none;">
+        <option>Colors</option>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Blue</option>
+        <option>Yellow</option>
+    </select>
+    <div class="btn-group bootstrap-select uui-form-element"><button type="button"
+            class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" title="Colors"><span
+                class="filter-option pull-left" value="">Colors</span>&nbsp;<span class="caret"></span></button>
+        <div class="dropdown-menu open" style="max-height: 933px; overflow: hidden; min-height: 90px;">
+            <ul class="dropdown-menu inner selectpicker" role="menu"
+                style="max-height: 921px; overflow-y: auto; min-height: 78px;">
+                <li rel="0" class="selected"><a tabindex="0" class="" style=""><span class="text">Colors</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+                <li rel="1"><a tabindex="0" class="" style=""><span class="text">Red</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+                <li rel="2"><a tabindex="0" class="" style=""><span class="text">Green</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+                <li rel="3"><a tabindex="0" class="" style=""><span class="text">Blue</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+                <li rel="4"><a tabindex="0" class="" style=""><span class="text">Yellow</span>
+                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+```
+
+JDropdown annotation consists of the following elements using which element inner structure can be customised:
+
+ - __*root()*__ - value of this element points to the root locator of dropdown element
+ - __*value()*__ - locator of option selected by default in dropdown list
+ - __*list()*__ - locator representing list options
+ - __*expand()*__ - locator for expanding the dropdown list
+ - __*how()*__ - type of locators with which elements will be identified. By default it is css
+
+Here is a list of some available methods:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+**close()** | Close expanded before dropdown list | void
+**expand()** | Expand dropdown list | void
+**getValue()/getText()/getSelected()** | Return selected dropdown value | String
+**has()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+**is()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+**isExpanded()** | Show that dropdown element expanded | boolean
+**isDisplayed()** | Show\wait that dropdown element displayed on the screen | boolean
+**selected(String option)** | Check if option has been selected | boolean
+**setup(Field field)** | Setup the dropdown using specified fields | void
+**shouldBe()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+**size()** | Return amount of elements in the list | int
+**waitFor()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
+
+Available Assert methods in C#:
+
+|Method | Description | Return Type
+--- | --- | ---
+**AssertThat** |Gets dropdown assertion | DropDownAssert
+**Disabled(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values are disabled by some condition | DropDownAssert
+**Enabled(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values are enabled by some condition | DropDownAssert
+**Is** |Gets dropdown assertion | DropDownAssert
+**Selected(string option)** |Checks whether some option is selected  | DropDownAssert 
+**Selected(Enum option)** |Checks whether some option is selected  | DropDownAssert
+**Values(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values match some condition | DropDownAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/tree/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/dropdown" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DropDownTests.cs" target="_blank">Test examples in C#</a>
+
+[BDD test examples](https://jdi-docs.github.io/jdi-light/?java#dropdown-3)
+<br><br><br>
+
+### MultiDropdown
+
+**MultiDropdown** – A graphical control element that allows user to choose several values from a list.
+
+![DropDown](../images/multidropdown.png)
+
+JDI Light provides a MultiSelector class which is using for MultiDropdown representation as a type of web element.
+
+```java 
+    //@FindBy(id = "multi-dropdown")
+    @UI("#multi-dropdown") 
+    public static MultiSelector multiDropdown;
+
+    @Test
+    public void selectTest() {
+        multiDropdown.check("Electro", "Metalic");
+        multiDropdown.checked().equals(asList("Electro", "Metalic"));
+        multiDropdown.is().selected("Electro");
+        multiDropdown.uncheck("Metalic");
+        multiDropdown.checked().equals(asList("Electro"));
+    }
+
+    @Test
+    public void disabledTest() {
+        multiDropdown.check("Steam");
+        multiDropdown.select("Disabled");
+        multiDropdown.is().selected("Steam");
+    }
+
+    @Test
+    public void labelTest() {
+        multiDropdown.label().is().text("Multi dropdown:");
+        multiDropdown.label().is().text(containsString("Multi"));
+    }
+
+    @Test
+    public void isValidationTest() {
+        multiDropdown.is().selected("Steam");
+        multiDropdown.is().selected(Steam);
+        multiDropdown.assertThat().values(hasItem("Steam"));
+        multiDropdown.shouldBe().value("Steam");
+        multiDropdown.assertThat().disabled(hasItem("Disabled"))
+                .enabled(not(hasItem("Disabled")))
+                .enabled(hasItems("Electro", "Metalic"));
+    }
+```
+
+```csharp 
+[FindBy(Css = "#multi-dropdown")]
+public MultiDropdown MultiDropdown { get; set; }
+
+[Test]
+public void SelectMultipleOptions()
+{
+    var optionsList = new List<string> { "Steam", "Electro" };
+    TestSite.Html5Page.MultiDropdown.SelectOptions(optionsList);
+    Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionsAreSelected(optionsList));
+}
+
+[Test]
+public void CheckOptionExists()
+{
+    TestSite.Html5Page.MultiDropdown.Expand();
+    Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionExists("Steam"));
+    Jdi.Assert.IsFalse(TestSite.Html5Page.MultiDropdown.OptionExists("Steam2"));
+}
+
+[Test]
+public void CheckOptionIsDisabled()
+{
+    TestSite.Html5Page.MultiDropdown.Expand();
+    Jdi.Assert.IsFalse(TestSite.Html5Page.MultiDropdown.OptionIsEnabled("Disabled"));
+	Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionIsEnabled("Wood"));
+}
+
+[Test]
+public void LabelTest()
+{
+    Jdi.Assert.AreEquals(TestSite.Html5Page.MultiDropdown.Label().GetText(), "Multi dropdown:");
+    TestSite.Html5Page.MultiDropdown.Label().Is.Text(ContainsString("Multi"));
+}
+
+[Test]
+public void IsValidationTest()
+{
+    TestSite.Html5Page.MultiDropdown.SelectOptions(new List<string> { "Steam" });
+    TestSite.Html5Page.MultiDropdown.Is.Selected("Steam");
+    TestSite.Html5Page.MultiDropdown.Is.Selected(Ages.Steam);
+    TestSite.Html5Page.MultiDropdown.Is.Values(HasItems( new []{ "Wood" }));
+    TestSite.Html5Page.MultiDropdown.Is.Disabled(HasItems(new[] { "Disabled" }));
+    TestSite.Html5Page.MultiDropdown.Is.Enabled(HasItems( new []{ "Electro", "Metalic" }));
+}
+
+[Test]
+public void AssertValidationTest()
+{
+    TestSite.Html5Page.MultiDropdown.SelectOptions(new List<string> { "Steam" });
+    TestSite.Html5Page.MultiDropdown.AssertThat.Values(ContainsInAnyOrder( new []{ "Disabled", "Electro", "Metalic", "Wood", "Steam" }));
+}
+
+[Test]
+public void BaseValidationTest()
+{
+    BaseElementValidation(TestSite.Html5Page.MultiDropdown);
+}
+```
+
+```html
+<span class="multiselect-native-select">
+    <select id="multi-dropdown" multiple="multiple">
+         <option value="electro">Electro</option>
+         <option value="steam" selected="">Steam</option>
+         <option value="metalic">Metalic</option>
+         <option value="dis" disabled="">Disabled</option>
+         <option value="wood">Wood</option>
+    </select>
+    <div class="btn-group">
+        <button type="button" class="multiselect dropdown-toggle btn btn-default"
+                data-toggle="dropdown" title="Steam">
+            <span class="multiselect-selected-text">Steam</span>
+            <b class="caret"></b>
+        </button>
+        <ul class="multiselect-container dropdown-menu">
+            <li><a tabindex="0"><label class="checkbox" title="Electro"><input
+                    type="checkbox" value="electro"> Electro</label></a></li>
+            <li class="active"><a tabindex="0"><label class="checkbox" title="Steam">
+                <input type="checkbox" value="steam"> Steam</label></a></li>
+            <li><a tabindex="0"><label class="checkbox" title="Metalic">
+                <input type="checkbox" value="metalic"> Metalic</label></a></li>
+            <li class="disabled"><a tabindex="-1"><label class="checkbox" title="Disabled">
+                <input type="checkbox" value="dis" disabled=""> Disabled</label></a></li>
+            <li><a tabindex="0"><label class="checkbox" title="Wood">
+                <input type="checkbox" value="wood"> Wood</label></a></li>
+        </ul>
+    </div>
+</span>
+```
+
+MultiDropdown are represented by the following classes:
+
+ - __Java__: _com.epam.jdi.light.ui.html.complex.MultiSelector_
+ - __C#__: _JDI.Light.Elements.Composite.MultiDropdown_
+ 
+ The list of methods available for Java in JDI Light:
+ 
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+**check(String/String.../Enum.../int...)** |Select values in multi dropdown | void
+**checked()** | Get selected values | List\<String>
+**has()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+**is()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+**selected()** | Get selected value by default | String
+**shouldBe()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+**uncheck(String.../Enum.../int...)** | Deselect values in multi dropdown | void
+**waitFor()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
+
+Here is the list of some methods available for C# in JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**AssertThat** |Gets multiDropDown assert  | MultiDropdownAssert
+**Close()** |Close expanded list  | void
+**Disabled(Matcher<IEnumerable<string>> condition)** |Check whether some values are disabled in MultiDropDown by some matcher  | MultiDropdownAssert
+**Enabled(Matcher<IEnumerable<string>> condition)** |Check whether some values are enabled in MultiDropDown by some matcher  | MultiDropdownAssert
+**Expand()** |Expand list  | void
+**GetSelectedOptions()** |Get selected options  | List
+**Is** |Gets multiDropDown assert  | MultiDropdownAssert
+**OptionIsEnabled(string)** |Check whether option is enabled  | bool
+**OptionExists(string)** |Check whether option exists in list  | bool
+**SelectOption(string)** |Select specified option  | void
+**SelectOptions(List)** |Select specified options  | void
+**Selected(string option)** |Check whether option is selected  | MultiDropdownAssert
+**Selected(Enum option)** |Check whether option is selected  | MultiDropdownAssert
+**Values(Matcher<IEnumerable<string>> condition)** |Check whether some values exist in MultiDropDown by some matcher  | MultiDropdownAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/MultiDropdownTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/MultiDropdownTests.cs" target="_blank">Test examples in C#</a><br>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#multidropdown-2)<br>
+
+### MultiSelector
+**MultiSelector** – A graphical control element that allows user to make a multiple choice.
+MultiSelector is represented by the following class:
+ 
+  - __Java__: _com.epam.jdi.light.ui.html.complex.MultiSelector_
+  - __C#__: _JDI.Light.Elements.Common.MultiSelector_
+
+![MultiSelector](../images/html/multiSelectHtml2.png)
+
+```java 
+@UI("#ages") // @FindBy(css = "#ages")  
+public static MultiSelector ages;
+
+@Test
+public void selectTest() {
+    ages.check("Electro", "Metalic");
+    assertEquals(ages.checked(), asList("Electro", "Metalic"));
+}
+
+@Test
+public void selectEnumTest() {
+    ages.check(Wood, Steam);
+    assertEquals(ages.checked(), asList("Steam", "Wood"));
+}
+
+@Test
+public void selectNumTest() {
+    ages.check(1, 5);
+    assertEquals(ages.checked(), asList("Electro", "Wood"));
+}
+```
+```csharp 
+[Test]
+public void MultiSelectByValues() 
+{
+    MyMultiSelector.Select(string[]);
+}
+[Test]
+public void MultiSelectByIndexes() 
+{
+    MyMultiSelector.Select(int[]);
+}
+```
+
+```html
+<select id="ages" multiple="" size="4">
+    <option value="electro">Electro</option>
+    <option value="steam" selected="">Steam</option>
+    <option value="metalic">Metalic</option>
+    <option value="dis" disabled="">Disabled</option>
+    <option value="wood">Wood</option>
+</select>
+```
+
+Here is a list of available methods and properties in C#:
+
+|Method / Property | Description | Return Type
+--- | --- | ---
+**AssertThat** | Property that returns object for work with assertions | SelectAssert
+**Check(string/string[]/int/int[]/Enum[])** | Select multiselector by values | void
+**Checked()** | Get selected values  | List\<string>
+**has()** | Returns object for work with assertions | SelectAssert
+**Is** | Property that returns object for work with assertions | SelectAssert
+**Selected()** | Get selected values | string
+**shouldBe()** | Returns object for work with assertions | SelectAssert
+**Uncheck(string[]/Enum[]/int[])** | Select multiselector by values/indexes | void
+**waitFor()** | Returns object for work with assertions | SelectAssert
+
+Here is the list of available methods/asserts in Java:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Returns object for work with assertions| SelectAssert
+**check(String/Strings.../TEnum...)** |Select multiselector by values | void
+**checked()** |Get selected values  | List\<String>
+**is()** |  Returns object for work with assertions| SelectAssert
+**selected()** |Get selected values  | String
+**uncheck(Strings.../TEnum.../int)** |Select multiselector by values/indices  | void
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/MultiSelectorTests.java" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/MultiSelectorTests.cs" target="_blank">Test examples in C#</a>
+
+[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#multidropdown-2)<br>
+
 ### RadioButtons
 
 **RadioButtons** – Interface element that allows user to select a single option from a predefined group.
@@ -3471,1040 +4659,10 @@ DataTableAssert methods in Java:
 [BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#datatable-2)
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-### Dropdown
-
-**Dropdown** – A graphical control element that allows user to choose a single value from a list.
-
-![DropDown](../images/dropdown.png)
-
-JDI Light has support for dropdown elements with their own type. There are several ways of dropdown usage in JDI Light, each serving different needs.
-
-__Dropdown representation__
-
-JDI Light provides a __Dropdown__ class which is using for dropdown representation as a type of web element.
-
-Also this class can be used when working with HTML5 elements in cases when dropdown is represented with HTML _\<select>_ tag.
-
-Consider an example of HTML5 dropdown with the given HTML code:
-
-![Dropdown HTML5](../images/html/dropdown_html52.png)
-
-```java 
-@JDropdown(root = "div[ui=dropdown]",
-    value = ".filter-option",
-    list = "li",
-    expand = ".caret")
-public static Dropdown colors2; //@FindBy(css = "div[ui=dropdown]")
-	
-@Test
-public void selectStringTest() {
-    colors2.select("Red");
-    colors2.is().selected("Red");
-}
-
-@Test
-public void selectEnumTest() {
-    colors2.select(Green);
-    colors2.is().selected(Green);
-}
-
-@Test
-public void selectIndexTest() {
-    colors2.select(4);
-    colors2.is().selected(Blue);
-}
-
-@Test
-public void checkValuesTest() {
-    colors2.assertThat().size(5);
-    colors2.assertThat().values(is(dropdownValues));
-    colors2.is().values(hasItem("Yellow"));
-    colors2.is().values(not(hasItem("Missing color")));
-    colors2.is().enabled("Colors", "Red", "Green", "Blue", "Yellow");
-    colors2.is().values(INNER, hasItem("Yellow"));
-    colors2.assertThat().values(INNER, is(dropdownValues));
-    colors2.is().values(INNER, not(hasItem("Missing color")));
-}    
-```
-
-```csharp 
-[FindBy(Css = "#dress-code")] 
-public Dropdown DressCode;
-
-[Test]
-public void SelectEnumTest() 
-{
-    DressCode.Select(Fancy);
-    Assert.AreEquals(DressCode.GetSelected(), "Fancy");
-}
-
-[Test]
-public void LabelTest()
-{
-    AreEqual(TestSite.Html5Page.DressCode.Label().GetText(), "Dress code:");
-    TestSite.Html5Page.DressCode.Label().Is.Text(ContainsString("Dress"));
-}
-
-[Test]
-public void IsValidationTest()
-{
-    TestSite.Html5Page.DressCode.Is.Selected("Casual");
-    TestSite.Html5Page.DressCode.Is.Selected(DressCode.Casual);
-    TestSite.Html5Page.DressCode.Is.Values(HasItems(new[] { "Pirate" }));
-    TestSite.Html5Page.DressCode.Is.Disabled(HasItems(new[] { "Disabled" }));
-    TestSite.Html5Page.DressCode.Is.Enabled(HasItems(new[] { "Pirate", "Fancy" }));
-}
-
-[Test]
-public void AssertValidationTest()
-{
-    TestSite.Html5Page.DressCode.AssertThat.Values(
-    ContainsInAnyOrder(new[] {"Fancy", "Casual", "Disabled", "Pirate"}));
-}
-
-[Test]
-public void BaseValidationTest()
-{
-    BaseElementValidation(TestSite.Html5Page.DressCode);
-}
-
-```
-
-```html
-<select id="dress-code">
-    <option value="fancy">Fancy</option>
-    <option value="casual" selected="">Casual</option>
-    <option value="disabled" disabled="">Disabled</option>
-    <option value="pirate">Pirate</option>
-</select>
-```
-
-
-__JDI Dropdown annotation__
-
-For better use, JDI Light provides a __*@JDropdown*__ annotation to locate dropdown elements. This annotation can be used in cases when working with a
-complex element that may consist of more a complicated html structure. JDropdown annotation allows customise navigation of the web element inner structure by using 
-annotation default methods.
-
-<!-- ![Dropdown HTML](../images/html/dropdown_html.png) -->
-
-
-```csharp 
-[JDropDown(root: "#colors", 
-           value: ".filter-option", 
-           list:"li", 
-           expand:".caret")]
-public Droplist Colors;
-
-[Test]
-public void ComplexTest() 
-{
-    MetalAndColorsPage.ShouldBeOpened();
-    MetalAndColorsPage.Colors.Select(Green);
-}
-```
-
-```html 
-<div class="form-group colors" ui="dropdown" id="colors">
-    <select class="selectpicker uui-form-element" style="display: none;">
-        <option>Colors</option>
-        <option>Red</option>
-        <option>Green</option>
-        <option>Blue</option>
-        <option>Yellow</option>
-    </select>
-    <div class="btn-group bootstrap-select uui-form-element"><button type="button"
-            class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" title="Colors"><span
-                class="filter-option pull-left" value="">Colors</span>&nbsp;<span class="caret"></span></button>
-        <div class="dropdown-menu open" style="max-height: 933px; overflow: hidden; min-height: 90px;">
-            <ul class="dropdown-menu inner selectpicker" role="menu"
-                style="max-height: 921px; overflow-y: auto; min-height: 78px;">
-                <li rel="0" class="selected"><a tabindex="0" class="" style=""><span class="text">Colors</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-                <li rel="1"><a tabindex="0" class="" style=""><span class="text">Red</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-                <li rel="2"><a tabindex="0" class="" style=""><span class="text">Green</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-                <li rel="3"><a tabindex="0" class="" style=""><span class="text">Blue</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-                <li rel="4"><a tabindex="0" class="" style=""><span class="text">Yellow</span>
-                    <i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-```
-
-JDropdown annotation consists of the following elements using which element inner structure can be customised:
-
- - __*root()*__ - value of this element points to the root locator of dropdown element
- - __*value()*__ - locator of option selected by default in dropdown list
- - __*list()*__ - locator representing list options
- - __*expand()*__ - locator for expanding the dropdown list
- - __*how()*__ - type of locators with which elements will be identified. By default it is css
-
-Here is a list of some available methods:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-**close()** | Close expanded before dropdown list | void
-**expand()** | Expand dropdown list | void
-**getValue()/getText()/getSelected()** | Return selected dropdown value | String
-**has()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-**is()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-**isExpanded()** | Show that dropdown element expanded | boolean
-**isDisplayed()** | Show\wait that dropdown element displayed on the screen | boolean
-**selected(String option)** | Check if option has been selected | boolean
-**setup(Field field)** | Setup the dropdown using specified fields | void
-**shouldBe()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-**size()** | Return amount of elements in the list | int
-**waitFor()** | Applicable for performing assert actions for DropDown | ListAssert<UIElement>
-
-Available Assert methods in C#:
-
-|Method | Description | Return Type
---- | --- | ---
-**AssertThat** |Gets dropdown assertion | DropDownAssert
-**Disabled(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values are disabled by some condition | DropDownAssert
-**Enabled(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values are enabled by some condition | DropDownAssert
-**Is** |Gets dropdown assertion | DropDownAssert
-**Selected(string option)** |Checks whether some option is selected  | DropDownAssert 
-**Selected(Enum option)** |Checks whether some option is selected  | DropDownAssert
-**Values(Matcher<IEnumerable<string>> condition)** |Checks that dropdown values match some condition | DropDownAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/tree/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/dropdown" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DropDownTests.cs" target="_blank">Test examples in C#</a>
-
-[BDD test examples](https://jdi-docs.github.io/jdi-light/?java#dropdown-3)
-<br><br><br>
-
-### MultiDropdown
-
-**MultiDropdown** – A graphical control element that allows user to choose several values from a list.
-
-![DropDown](../images/multidropdown.png)
-
-JDI Light provides a MultiSelector class which is using for MultiDropdown representation as a type of web element.
-
-```java 
-    //@FindBy(id = "multi-dropdown")
-    @UI("#multi-dropdown") 
-    public static MultiSelector multiDropdown;
-
-    @Test
-    public void selectTest() {
-        multiDropdown.check("Electro", "Metalic");
-        multiDropdown.checked().equals(asList("Electro", "Metalic"));
-        multiDropdown.is().selected("Electro");
-        multiDropdown.uncheck("Metalic");
-        multiDropdown.checked().equals(asList("Electro"));
-    }
-
-    @Test
-    public void disabledTest() {
-        multiDropdown.check("Steam");
-        multiDropdown.select("Disabled");
-        multiDropdown.is().selected("Steam");
-    }
-
-    @Test
-    public void labelTest() {
-        multiDropdown.label().is().text("Multi dropdown:");
-        multiDropdown.label().is().text(containsString("Multi"));
-    }
-
-    @Test
-    public void isValidationTest() {
-        multiDropdown.is().selected("Steam");
-        multiDropdown.is().selected(Steam);
-        multiDropdown.assertThat().values(hasItem("Steam"));
-        multiDropdown.shouldBe().value("Steam");
-        multiDropdown.assertThat().disabled(hasItem("Disabled"))
-                .enabled(not(hasItem("Disabled")))
-                .enabled(hasItems("Electro", "Metalic"));
-    }
-```
-
-```csharp 
-[FindBy(Css = "#multi-dropdown")]
-public MultiDropdown MultiDropdown { get; set; }
-
-[Test]
-public void SelectMultipleOptions()
-{
-    var optionsList = new List<string> { "Steam", "Electro" };
-    TestSite.Html5Page.MultiDropdown.SelectOptions(optionsList);
-    Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionsAreSelected(optionsList));
-}
-
-[Test]
-public void CheckOptionExists()
-{
-    TestSite.Html5Page.MultiDropdown.Expand();
-    Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionExists("Steam"));
-    Jdi.Assert.IsFalse(TestSite.Html5Page.MultiDropdown.OptionExists("Steam2"));
-}
-
-[Test]
-public void CheckOptionIsDisabled()
-{
-    TestSite.Html5Page.MultiDropdown.Expand();
-    Jdi.Assert.IsFalse(TestSite.Html5Page.MultiDropdown.OptionIsEnabled("Disabled"));
-	Jdi.Assert.IsTrue(TestSite.Html5Page.MultiDropdown.OptionIsEnabled("Wood"));
-}
-
-[Test]
-public void LabelTest()
-{
-    Jdi.Assert.AreEquals(TestSite.Html5Page.MultiDropdown.Label().GetText(), "Multi dropdown:");
-    TestSite.Html5Page.MultiDropdown.Label().Is.Text(ContainsString("Multi"));
-}
-
-[Test]
-public void IsValidationTest()
-{
-    TestSite.Html5Page.MultiDropdown.SelectOptions(new List<string> { "Steam" });
-    TestSite.Html5Page.MultiDropdown.Is.Selected("Steam");
-    TestSite.Html5Page.MultiDropdown.Is.Selected(Ages.Steam);
-    TestSite.Html5Page.MultiDropdown.Is.Values(HasItems( new []{ "Wood" }));
-    TestSite.Html5Page.MultiDropdown.Is.Disabled(HasItems(new[] { "Disabled" }));
-    TestSite.Html5Page.MultiDropdown.Is.Enabled(HasItems( new []{ "Electro", "Metalic" }));
-}
-
-[Test]
-public void AssertValidationTest()
-{
-    TestSite.Html5Page.MultiDropdown.SelectOptions(new List<string> { "Steam" });
-    TestSite.Html5Page.MultiDropdown.AssertThat.Values(ContainsInAnyOrder( new []{ "Disabled", "Electro", "Metalic", "Wood", "Steam" }));
-}
-
-[Test]
-public void BaseValidationTest()
-{
-    BaseElementValidation(TestSite.Html5Page.MultiDropdown);
-}
-```
-
-```html
-<span class="multiselect-native-select">
-    <select id="multi-dropdown" multiple="multiple">
-         <option value="electro">Electro</option>
-         <option value="steam" selected="">Steam</option>
-         <option value="metalic">Metalic</option>
-         <option value="dis" disabled="">Disabled</option>
-         <option value="wood">Wood</option>
-    </select>
-    <div class="btn-group">
-        <button type="button" class="multiselect dropdown-toggle btn btn-default"
-                data-toggle="dropdown" title="Steam">
-            <span class="multiselect-selected-text">Steam</span>
-            <b class="caret"></b>
-        </button>
-        <ul class="multiselect-container dropdown-menu">
-            <li><a tabindex="0"><label class="checkbox" title="Electro"><input
-                    type="checkbox" value="electro"> Electro</label></a></li>
-            <li class="active"><a tabindex="0"><label class="checkbox" title="Steam">
-                <input type="checkbox" value="steam"> Steam</label></a></li>
-            <li><a tabindex="0"><label class="checkbox" title="Metalic">
-                <input type="checkbox" value="metalic"> Metalic</label></a></li>
-            <li class="disabled"><a tabindex="-1"><label class="checkbox" title="Disabled">
-                <input type="checkbox" value="dis" disabled=""> Disabled</label></a></li>
-            <li><a tabindex="0"><label class="checkbox" title="Wood">
-                <input type="checkbox" value="wood"> Wood</label></a></li>
-        </ul>
-    </div>
-</span>
-```
-
-MultiDropdown are represented by the following classes:
-
- - __Java__: _com.epam.jdi.light.ui.html.complex.MultiSelector_
- - __C#__: _JDI.Light.Elements.Composite.MultiDropdown_
- 
- The list of methods available for Java in JDI Light:
- 
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-**check(String/String.../Enum.../int...)** |Select values in multi dropdown | void
-**checked()** | Get selected values | List\<String>
-**has()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-**is()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-**selected()** | Get selected value by default | String
-**shouldBe()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-**uncheck(String.../Enum.../int...)** | Deselect values in multi dropdown | void
-**waitFor()** | Applicable for performing assert actions for MultiDropdown | DataTableAssert
-
-Here is the list of some methods available for C# in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**AssertThat** |Gets multiDropDown assert  | MultiDropdownAssert
-**Close()** |Close expanded list  | void
-**Disabled(Matcher<IEnumerable<string>> condition)** |Check whether some values are disabled in MultiDropDown by some matcher  | MultiDropdownAssert
-**Enabled(Matcher<IEnumerable<string>> condition)** |Check whether some values are enabled in MultiDropDown by some matcher  | MultiDropdownAssert
-**Expand()** |Expand list  | void
-**GetSelectedOptions()** |Get selected options  | List
-**Is** |Gets multiDropDown assert  | MultiDropdownAssert
-**OptionIsEnabled(string)** |Check whether option is enabled  | bool
-**OptionExists(string)** |Check whether option exists in list  | bool
-**SelectOption(string)** |Select specified option  | void
-**SelectOptions(List)** |Select specified options  | void
-**Selected(string option)** |Check whether option is selected  | MultiDropdownAssert
-**Selected(Enum option)** |Check whether option is selected  | MultiDropdownAssert
-**Values(Matcher<IEnumerable<string>> condition)** |Check whether some values exist in MultiDropDown by some matcher  | MultiDropdownAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/MultiDropdownTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/MultiDropdownTests.cs" target="_blank">Test examples in C#</a><br>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#multidropdown-2)<br>
-### DataList
-
-**DataList** – A graphical control element that allows user to choose one value from a list or enter it by himself.
-DataList element contains a set of options with values available as inputs.
-
-![DataList](../images/icecreamdatalist.png)
-
-__C# JDI DataList annotation__
-
-For better use in C# JDI Light provides a __*[JDataList]*__ annotation to locate DataList elements. This annotation consists of the following elements:
-
- - __*root*__ - value of this element points to the root locator of the dropdown element
- - __*values*__ - options locator in dropdown list
- - __*how*__ - type of locators with which elements will be identified. By default it is set as css
- 
-```csharp 
-[JDataList("#ice-cream", "#ice-cream-flavors > option")]
-    public DataList IceCream { get; set; }
-
-[JDataList("#disabled-dropdown",
-          "#disabled-dropdown > option")]
-    public DataList DisabledDropdownAsDataList { get; set; }
-
-[Test]
-public void GetValueTest()
-{
-    AreEqual(TestSite.Html5Page.IceCream.Selected(), "Coconut");
-}
-
-[Test]
-public void LabelTest()
-{
-    AreEqual(TestSite.Html5Page.IceCream.Label().GetText(), "Choose your lovely icecream");
-    TestSite.Html5Page.IceCream.Label().Is.Text(ContainsString("lovely icecream"));
-}
-
-[Test]
-public void IsValidationTest()
-{
-     TestSite.Html5Page.IceCream.Is.Enabled();
-     TestSite.Html5Page.IceCream.Is.Attr("value" ,EqualTo(_text));
-     TestSite.Html5Page.IceCream.Select("Vanilla");
-     TestSite.Html5Page.IceCream.Is.Attr("value", ContainsString("Van"));
-}
-
-[Test]
-public void AssertValidationTest()
-{
-     TestSite.Html5Page.IceCream.AssertThat.Attr("value", ContainsString(_text));
-}
-
-[Test]
-public void BaseValidationTest()
-{
-     BaseElementValidation(TestSite.Html5Page.IceCream);
-}
-
-[Test]
-public void NegativeSelectTest()
-{
-     Throws<ElementNotSelectableException>(() => TestSite.Html5Page.DisabledDropdownAsDataList.Select("Fancy", false));
-}
-
-[Test]
-public void NegativeSelectEnumTest()
-{
-      Throws<ElementNotSelectableException>(() => TestSite.Html5Page.DisabledDropdownAsDataList.Select(DressCode.Fancy, false));
-}
-
-[Test]
-public void NegativeSelectNumTest()
-{
-      Throws<ElementNotFoundException>(() => TestSite.Html5Page.IceCream.Select(7, false));
-}
-
-[Test]
-public void AssertOptionsValuesTest()
-{
-      IsTrue(TestSite.Html5Page.IceCream.Values().SequenceEqual(_options));
-}
-
-```
-
-DataList element type is provided by JDI Light in:
-
- - __Java__: _com.epam.jdi.light.ui.html.complex.DataListOptions_
- - __C#__: _JDI.Light.Elements.Common.DataList_
- 
-Have a look at the following example with HTML code provided:
-
-```java 
-@UI("#ice-cream") //@FindBy(id = "ice-cream")
-public static DataListOptions iceCreamDataList;
-
-@Test
-public void selectTest() {
-    iceCream.select("Chocolate");
-    iceCream.is().selected("Chocolate");
-}
-
-@Test
-public void selectNumTest() {
-    iceCream.select(5);
-    iceCream.is().selected("Vanilla");
-}
-```
-
-
-<!-- ![Datalist example](../images/html/datalist_html.png) -->
-
-```html
-<label for="ice-cream">Choose your lovely icecream</label>
-<input list="ice-cream-flavors" id="ice-cream" placeholder="Ice cream">
-
-<datalist id="ice-cream-flavors">
-    <option value="Chocolate"></option>
-    <option value="Coconut"></option>
-    <option value="Mint"></option>
-    <option value="Strawberry"></option>
-    <option value="Vanilla"></option>
-</datalist>
-```
-
-The list of methods available for Java in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat** |Gets element's assert | DataListAssert
-**input(string value)** |Input user's value into DataList  | void
-**is** |Gets element's assert | DataListAssert
-**listEnabled()** |Return a list of values of enabled options | List\<String>
-**listDisabled()** |Return a list of values of disabled options | List\<String>
-**select(String/Enum/int)** |Select datalist option by value or index | void
-**selected()** |Get selected option value | String
-**values()** |Get all option values from DataList | List\<String>
-
-The list of some methods available for C# in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**AssertThat** |Gets element's assert | DataListAssert
-**Expand()** |Expands the list of possible values | void
-**GetSelected()** |Get selected DataList value  | string
-**Input(string value)** |Input user's value into DataList  | void
-**Is** |Gets element's assert | DataListAssert
-**Select(string/int)** |Select datalist by value/index  | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/combobox/DataListTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/DataListTests.cs" target="_blank">Test examples in C#</a>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#datalist-2)
-
-### CheckList
-**CheckList** – A graphical control element representing a set of checkboxes, each of which allows user to control a two-state parameter (enabled or disabled).
-
-Checklist element type is available in the following packages:
- 
- - __Java__: com.epam.jdi.light.ui.html.complex.Checklist
- - __C__#: JDI.Light.Elements.Complex.CheckList 
-
-See an example with HTML code describing checklist element.
-
-![Checklist Example](../images/html/checklist_html2.png)
-
-```java 
-//@FindBy(name = "checks-group")
-@UI("[name=checks-group]") public static Checklist weather;
-public static Checklist weatherNoLocator;
-
-@Test
-public void checkTest() {
-    weather.check("Rainy day", "Sunny");
-    weather.is().checked(hasSize(2));
-    weather.is().checked(hasItems("Rainy day", "Sunny"));
-}
-
-@Test
-public void assertValidationTest() {
-    weather.assertThat().values(containsInAnyOrder(
-      "Hot option", "Cold", "Rainy day", "Sunny", "Disabled"));
-    weatherNoLocator.assertThat().selected("Hot option");
-}
-```
-```csharp 
-[FindBy(Css = "div:nth-child(11) > div.html-left")]
-public ICheckList weather;
-
-[FindBy(Css = "div:nth-child(11) > div.html-left")]
-public ICheckList<MyCheckBox> genericWeather;
-
-[Test]
-public void CheckCheckList()
-{
-    weather.Check("Cold", "Hot option");
-    Jdi.Assert.CollectionEquals(new[] { "Cold", "Hot option" }, weather.Checked());
-}
-
-[Test]
-public void UncheckTest()
-{
-    _weather.Check(false, "Rainy day", "Sunny");
-    _weather.Uncheck(false, "Rainy day", "Sunny");
-    _weather.Is.Selected(HasSize(2));
-    _weather.Is.Selected(HasItems(new[] { "Hot option", "Cold" }));
-}
-
-[Test]
-public void IsValidationTests()
-{
-    weather.AssertThat
-                .Values(HasItems(new[] {"Cold", "Sunny"}))
-                .Disabled(HasItems(new[] {"Disabled"}))                
-                .Size(Is.LessThan(6))
-                .AllDisplayed();
-}
-
-[Test]
-public void UncheckAllTest()
-{
-    _weather.Uncheck(false, "Rainy day", "Sunny");
-    _weather.UncheckAll();
-    _weather.Is.Selected(HasSize(0));
-}
-
-[Test]
-public void CheckAllTest()
-{
-    _weather.CheckAll();
-    _weather.Is.Selected(HasSize(4));
-    _weather.Is.Selected(HasItems(new[] { "Hot option", "Cold", "Rainy day", "Sunny" }));
-}
-
-[Test]
-public void IsDisabledTest()
-{
-    _weather.Select(false, "Disabled");
-    _weather.Is.Selected(HasItems(new [] { "Hot option" } ));
-}
-```
-
-```html
-<input type="checkbox" id="hot" name="checks-group" checked="">
-<label for="hot">Hot option</label> <br>
-
-<input type="checkbox" id="cold" name="checks-group">
-<label for="cold">Cold</label> <br>
-
-<input type="checkbox" id="rainy" name="checks-group">
-<label for="rainy">Rainy day</label> <br>
-
-<input type="checkbox" id="sunny-day" name="checks-group">
-<label for="sunny-day">Sunny</label> <br>
-
-<input type="checkbox" id="disabled-ch" name="checks-group" disabled="">
-<label for="disabled-ch">Disabled</label>
-```
-
-List of available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Get select assert | selectAssert
-**check(String.../Enum/int...)** | Check specified checkboxes and uncheck others | void
-**checkAll()** | Check all checkboxes in checklist | void
-**checked()** | Get selected checkbox values | List\<String>
-**has()** | Get select assert | selectAssert
-**is()** | Get select assert | selectAssert
-**listEnabled()** | Get enabled checkboxes | List\<String>
-**listDisabled()** | Get disabled checkboxes | List\<String>
-**selected()** | Get selected checkbox values | String
-**select(String.../Enum/int...)** | Select checkboxes | void
-**size()** | Get checklist size | int
-**uncheck(String.../Enum/int...)** | Uncheck specified checkboxes and check others  | void
-**uncheckAll()** | Uncheck all checkboxes in checklist | void
-**values()** | Get checklist values | List\<String>
-
-Here is the list of some methods available for C# in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**AssertThat** | Get select assert | SelectAssert
-**Check(params string[]/params int[])** |Check checklist by values/indexes  | void
-**CheckAll()** |Check all checkboxes | void
-**Checked()** |Get selected checkboxes from checklist value  | List\<String>
-**Has** | Get select assert | SelectAssert
-**Is** | Get select assert | SelectAssert
-**ListEnabled()** | Get enabled checkboxes | List\<String>
-**ListDisabled()** | Get disabled checkboxes | List\<String>
-**Select(params string[]/params int[])** |Select checklist by values/indexes  | void
-**Selected(string option)** | Checks whether a checkbox is selected | bool
-**Size()** | Get checklist size | int
-**Uncheck(params string[]/params int[])** |Unselect checklist by values/indexes  | void
-**UncheckAll()** |Uncheck all checkboxes | void
-**Values()** | Get checklist values | List\<String>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/ChecklistTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Complex/CheckListTests.cs" target="_blank">Test examples in C#</a>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#checklist-2)
-
-### MultiSelector
-**MultiSelector** – A graphical control element that allows user to make a multiple choice.
-MultiSelector is represented by the following class:
- 
-  - __Java__: _com.epam.jdi.light.ui.html.complex.MultiSelector_
-  - __C#__: _JDI.Light.Elements.Common.MultiSelector_
-
-![MultiSelector](../images/html/multiSelectHtml2.png)
-
-```java 
-@UI("#ages") // @FindBy(css = "#ages")  
-public static MultiSelector ages;
-
-@Test
-public void selectTest() {
-    ages.check("Electro", "Metalic");
-    assertEquals(ages.checked(), asList("Electro", "Metalic"));
-}
-
-@Test
-public void selectEnumTest() {
-    ages.check(Wood, Steam);
-    assertEquals(ages.checked(), asList("Steam", "Wood"));
-}
-
-@Test
-public void selectNumTest() {
-    ages.check(1, 5);
-    assertEquals(ages.checked(), asList("Electro", "Wood"));
-}
-```
-```csharp 
-[Test]
-public void MultiSelectByValues() 
-{
-    MyMultiSelector.Select(string[]);
-}
-[Test]
-public void MultiSelectByIndexes() 
-{
-    MyMultiSelector.Select(int[]);
-}
-```
-
-```html
-<select id="ages" multiple="" size="4">
-    <option value="electro">Electro</option>
-    <option value="steam" selected="">Steam</option>
-    <option value="metalic">Metalic</option>
-    <option value="dis" disabled="">Disabled</option>
-    <option value="wood">Wood</option>
-</select>
-```
-
-Here is a list of available methods and properties in C#:
-
-|Method / Property | Description | Return Type
---- | --- | ---
-**AssertThat** | Property that returns object for work with assertions | SelectAssert
-**Check(string/string[]/int/int[]/Enum[])** | Select multiselector by values | void
-**Checked()** | Get selected values  | List\<string>
-**has()** | Returns object for work with assertions | SelectAssert
-**Is** | Property that returns object for work with assertions | SelectAssert
-**Selected()** | Get selected values | string
-**shouldBe()** | Returns object for work with assertions | SelectAssert
-**Uncheck(string[]/Enum[]/int[])** | Select multiselector by values/indexes | void
-**waitFor()** | Returns object for work with assertions | SelectAssert
-
-Here is the list of available methods/asserts in Java:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Returns object for work with assertions| SelectAssert
-**check(String/Strings.../TEnum...)** |Select multiselector by values | void
-**checked()** |Get selected values  | List\<String>
-**is()** |  Returns object for work with assertions| SelectAssert
-**selected()** |Get selected values  | String
-**uncheck(Strings.../TEnum.../int)** |Select multiselector by values/indices  | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/MultiSelectorTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Common/MultiSelectorTests.cs" target="_blank">Test examples in C#</a>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#multidropdown-2)<br>
-
-### ComboBox
-
-**ComboBox** – A graphical control element that allows user to choose a single 
-value from a list or enter it by himself (is inherited from the [Datalist](#datalist))
-
-![ComboBox](../images/icecreamdatalist.png)
-
-ComboBox is provided by JDI Light in:
- 
-  - __Java__: _com.epam.jdi.light.ui.html.complex.Combobox_
-  - __C#__: _JDI.Light.Elements.Common.Combobox_
-
-```java 
-    public static Combobox iceCream;
-
-    // @FindBy(id = "ice-cream")
-    @UI("#ice-cream") 
-    public static DataList iceCreamDataList;
-
-    @Test
-    public void inputTest() {
-        iceCreamIs.input("New text");
-        iceCreamIs.is().text("New text");
-        iceCreamIs.clear();
-        iceCreamIs.is().text("");
-    }
-
-    @Test
-    public void placeholderTest() {
-        iceCreamIs.placeholder().equals("Ice cream");
-    }
-
-    @Test
-    public void selectTest() {
-        iceCreamIs.select("Chocolate");
-        iceCreamIs.select(Strawberry);
-        iceCreamIs.select(5);
-    }
-
-    @Test
-    public void labelTest() {
-        iceCreamIs.label().is().text("Choose your lovely icecream");
-        iceCreamIs.label().is().text(containsString("lovely icecream"));
-    }
-
-    @Test
-    public void isValidationTest() {
-        iceCreamIs.listEnabled();
-        iceCreamIs.assertThat().equals(asList("Chocolate", "Strawberry"));
-        iceCreamIs.is().enabled();
-        iceCreamIs.is().selected("Coconut");
-        iceCreamIs.is().selected(is("Coconut"));
-        iceCreamIs.select(Vanilla);
-        iceCreamIs.is().text(containsString("Van"));
-    }
-```
-```csharp 
-[Test]
-public void ExpandComboBox() 
-{
-    MyComboBox.Expand();
-}
-[Test]
-public void SelectComboBox() 
-{
-    MyComboBox.Select("some value");
-	MyComboBox.Is().Selected(Is.EqualTo("some value"));
-	TestSite.Html5Page.IceCreamComboBox.AssertThat().Selected(Is.EqualTo("Strawberry"));	
-}
-[Test]
-public void SelectByIndex() 
-{
-    MyComboBox.Select(1);
-}
-[Test]
-public void FillComboBox() 
-{
-    MyComboBox.Input("some value");
-    SubmitButton.Click();
-}
-```
-
-Have a look at the following example with HTML code provided:
-
-<!-- ![Combobox example](../images/html/datalist_html.png) -->
-
-```html
-<input list="ice-cream-flavors" id="ice-cream" placeholder="Ice cream">
-
-<datalist id="ice-cream-flavors">
-    <option value="Chocolate"></option>
-    <option value="Coconut"></option>
-    <option value="Mint"></option>
-    <option value="Strawberry"></option>
-    <option value="Vanilla"></option>
-</datalist>
-```
-
-The list of methods available for Java in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**listEnabled()** |Return list of values of enabled options | List\<String>
-**listDisabled()** |Return list of values of disabled options | List\<String>
-**select(String/Enum/int)** |Select combobox option by value or index | void
-**selected()** |Get selected option value | String
-**values()** |Get all option values from combobox | List\<String>
-
-Here is the list of some methods available for C# in JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Returns object for work with assertions| ComboBoxAssert
-**Expand()** |Expands the list of possible values | void
-**GetSelected()** |Get selected combobox value  | string
-**Input(string)** |Input user's value into combobox  | void
-**is()** |  Returns object for work with assertions| ComboBoxAssert
-**Select(string/int)** |Select combobox by value/index  | void
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/combobox/IsComboboxTests.java" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/complex/ComboboxTests.java" target="_blank">Test examples in C#</a>
-
-[BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#combobox-2)
 
 ## HTML5 Composite elements
-###Section
-
-```csharp
-
-  [FindBy(Id = "contact-form")]
-  public Contact ContactSection;
-  
-  [FindBy(Css = ".footer-content")]
-  public static Footer Footer;
-  
-  [FindBy(Css = ".uui-header")]
-  public static Header Header;
-  
-  public JdiSearch Search;
-  
-  [FindBy(Id = "summary-block")]
-  public Summary SummaryBlock;
-        
-  [Test]
-  public void SectionTest()
-  {
-      var e = TestSite.HomePage.Get<Section>(By.CssSelector(".main-title"));
-      Assert.AreEqual("EPAM FRAMEWORK WISHES…", e.Text);
-      Assert.AreEqual("Section", e.Name);
-      Assert.AreEqual(true, e.Displayed);
-      Assert.AreEqual(true, e.Enabled);
-      Assert.AreEqual(false, e.Hidden);
-      Assert.AreEqual(By.CssSelector(".main-title"), e.Locator);
-      Assert.AreEqual(false, e.Selected);
-      Assert.AreEqual("h3", e.TagName);
-  }
-  
-  [TestCaseSource(nameof(ContactSectionCases))]
-  public void CustomContactSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
-  {
-      ContactSection.CheckInitializedElement(ContactSection.GetType().GetField(htmlElementToCheckName).GetValue(ContactSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
-  }
-
-  [Test]
-  public void CustomFooterSectionTest()
-  {
-      FooterSection.CheckInitializedElement(FooterSection.AboutLink, "By.PartialLinkText: About", "AboutLink", null);            
-  }
-
-  [TestCaseSource(nameof(HeaderSectionCases))]
-  public void CustomHeaderSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
-  {
-      HeaderSection.CheckInitializedElement(HeaderSection.GetType().GetField(htmlElementToCheckName).GetValue(HeaderSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
-  }
-
-  [TestCaseSource(nameof(JdiSearchSectionCases))]
-  public void CustomJdiSearchSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
-  {
-      JdiSearchSection.CheckInitializedElement(JdiSearchSection.GetType().GetField(htmlElementToCheckName).GetValue(JdiSearchSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
-  }
-
-  [Test]
-  public void CustomSummarySectionTest()
-  {
-      TestSite.MetalsColorsPage.Open();
-      SummarySection.CheckInitializedElement(SummarySection.Calculate, "By.Id: calculate-button", "Calculate", null);
-  }
-
-  public static object[] ContactSectionCases =
-  {
-      new object[] { nameof(ContactSection.DescriptionField), "By.CssSelector: textarea#description", "Description", null },
-      new object[] { nameof(ContactSection.FirstRoller), "By.XPath: .//a[@class='ui-slider-handle ui-state-default ui-corner-all' and position()=1]", "FirstRoller", null },
-      new object[] { nameof(ContactSection.LastNameField), "By.CssSelector: input#last-name", "Last Name", null },
-      new object[] { nameof(ContactSection.NameField), "By.CssSelector: input#name", "First Name", null },
-      new object[] { nameof(ContactSection.SecondRoller), "By.XPath: .//a[@class='ui-slider-handle ui-state-default ui-corner-all' and position()=2]", "SecondRoller", null },
-      new object[] { nameof(ContactSection.SubmitButton), "By.XPath: //button[@type='submit' and contains(., 'Submit')]", "SubmitButton", null },
-  };
-
-  public static object[] HeaderSectionCases =
-  {
-      new object[] { nameof(HeaderSection.Image), "By.XPath: //img[@src=\"label/Logo_Epam_Color.svg\"]", "Image", null },
-      new object[] { nameof(HeaderSection.Menu), "By.CssSelector: ul.uui-navigation.nav", "Menu", null },
-      new object[] { nameof(HeaderSection.UserIcon), "By.CssSelector: #user-icon", "UserIcon", null },
-      new object[] { nameof(HeaderSection.Search), "By.CssSelector: input#last-name", "Search", "By.Id: search" }
-  };
-
-  public static object[] JdiSearchSectionCases =
-  {
-      new object[] { nameof(JdiSearchSection.SearchButton), "By.CssSelector: .search>.icon-search", "SearchButton", null },
-      new object[] { nameof(JdiSearchSection.SearchButtonActive), "By.CssSelector: .icon-search.active", "SearchButtonActive", null },
-      new object[] { nameof(JdiSearchSection.SearchInput), "By.CssSelector: .search-field input", "SearchInput", null },
-  };
-```
-
-**Section** - Logical part of Web Page that contains other UI Elements
-  
-Section is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.elements.composite.Section_
-  - __C#__: _JDI.Light.Elements.Composite.Section_  
-
-  
-```java 
-   @UI(".someSectionUI") // @FindBy(css = ".someSectionUI")
-   public static SomeSection someSectionUI;
-
-   @Test
-   public void someSectionWebElementTest() {
-      assertNotNull(someSection.webElementPublic);
-      assertEquals(someSection.webElementPublic.locator.toString(), "id='webElementPublic'");
-      assertEquals(someSection.webElementPublic.parent, someSection);
-      assertEquals(someSection.webElementPublic.name, "Web Element Public");
-   }
-   
-```
-
-
-
-And here are methods available in Java:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Returns object for work with assertions | IsAssert
-**has()** | Returns object for work with assertions | IsAssert
-**is()** | Returns object for work with assertions | IsAssert
-**shouldBe()** | Returns object for work with assertions | IsAssert
-**waitFor()** | Returns object for work with assertions | IsAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/composite/section" target="_blank">Test examples in Java</a>
-
-<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/SectionTests.cs" target="_blank">Test examples in C#</a>
-
 
 ### Form
-
-
 
 **Form** – Logical part of a web page that represents an HTML form. 
 Form consists of elements based on _SetValue_ interface and buttons with **submit** function.
@@ -4780,6 +4938,133 @@ Methods available for Java in JDI Light:
 
 [BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#form-2)
 
+###Section
+
+```csharp
+
+  [FindBy(Id = "contact-form")]
+  public Contact ContactSection;
+  
+  [FindBy(Css = ".footer-content")]
+  public static Footer Footer;
+  
+  [FindBy(Css = ".uui-header")]
+  public static Header Header;
+  
+  public JdiSearch Search;
+  
+  [FindBy(Id = "summary-block")]
+  public Summary SummaryBlock;
+        
+  [Test]
+  public void SectionTest()
+  {
+      var e = TestSite.HomePage.Get<Section>(By.CssSelector(".main-title"));
+      Assert.AreEqual("EPAM FRAMEWORK WISHES…", e.Text);
+      Assert.AreEqual("Section", e.Name);
+      Assert.AreEqual(true, e.Displayed);
+      Assert.AreEqual(true, e.Enabled);
+      Assert.AreEqual(false, e.Hidden);
+      Assert.AreEqual(By.CssSelector(".main-title"), e.Locator);
+      Assert.AreEqual(false, e.Selected);
+      Assert.AreEqual("h3", e.TagName);
+  }
+  
+  [TestCaseSource(nameof(ContactSectionCases))]
+  public void CustomContactSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
+  {
+      ContactSection.CheckInitializedElement(ContactSection.GetType().GetField(htmlElementToCheckName).GetValue(ContactSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
+  }
+
+  [Test]
+  public void CustomFooterSectionTest()
+  {
+      FooterSection.CheckInitializedElement(FooterSection.AboutLink, "By.PartialLinkText: About", "AboutLink", null);            
+  }
+
+  [TestCaseSource(nameof(HeaderSectionCases))]
+  public void CustomHeaderSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
+  {
+      HeaderSection.CheckInitializedElement(HeaderSection.GetType().GetField(htmlElementToCheckName).GetValue(HeaderSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
+  }
+
+  [TestCaseSource(nameof(JdiSearchSectionCases))]
+  public void CustomJdiSearchSectionTest(string htmlElementToCheckName, string expectedLocator, string expectedName, string expectedSmartLocator)
+  {
+      JdiSearchSection.CheckInitializedElement(JdiSearchSection.GetType().GetField(htmlElementToCheckName).GetValue(JdiSearchSection) as UIElement, expectedLocator, expectedName, expectedSmartLocator);
+  }
+
+  [Test]
+  public void CustomSummarySectionTest()
+  {
+      TestSite.MetalsColorsPage.Open();
+      SummarySection.CheckInitializedElement(SummarySection.Calculate, "By.Id: calculate-button", "Calculate", null);
+  }
+
+  public static object[] ContactSectionCases =
+  {
+      new object[] { nameof(ContactSection.DescriptionField), "By.CssSelector: textarea#description", "Description", null },
+      new object[] { nameof(ContactSection.FirstRoller), "By.XPath: .//a[@class='ui-slider-handle ui-state-default ui-corner-all' and position()=1]", "FirstRoller", null },
+      new object[] { nameof(ContactSection.LastNameField), "By.CssSelector: input#last-name", "Last Name", null },
+      new object[] { nameof(ContactSection.NameField), "By.CssSelector: input#name", "First Name", null },
+      new object[] { nameof(ContactSection.SecondRoller), "By.XPath: .//a[@class='ui-slider-handle ui-state-default ui-corner-all' and position()=2]", "SecondRoller", null },
+      new object[] { nameof(ContactSection.SubmitButton), "By.XPath: //button[@type='submit' and contains(., 'Submit')]", "SubmitButton", null },
+  };
+
+  public static object[] HeaderSectionCases =
+  {
+      new object[] { nameof(HeaderSection.Image), "By.XPath: //img[@src=\"label/Logo_Epam_Color.svg\"]", "Image", null },
+      new object[] { nameof(HeaderSection.Menu), "By.CssSelector: ul.uui-navigation.nav", "Menu", null },
+      new object[] { nameof(HeaderSection.UserIcon), "By.CssSelector: #user-icon", "UserIcon", null },
+      new object[] { nameof(HeaderSection.Search), "By.CssSelector: input#last-name", "Search", "By.Id: search" }
+  };
+
+  public static object[] JdiSearchSectionCases =
+  {
+      new object[] { nameof(JdiSearchSection.SearchButton), "By.CssSelector: .search>.icon-search", "SearchButton", null },
+      new object[] { nameof(JdiSearchSection.SearchButtonActive), "By.CssSelector: .icon-search.active", "SearchButtonActive", null },
+      new object[] { nameof(JdiSearchSection.SearchInput), "By.CssSelector: .search-field input", "SearchInput", null },
+  };
+```
+
+**Section** - Logical part of Web Page that contains other UI Elements
+  
+Section is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.elements.composite.Section_
+  - __C#__: _JDI.Light.Elements.Composite.Section_  
+
+  
+```java 
+   @UI(".someSectionUI") // @FindBy(css = ".someSectionUI")
+   public static SomeSection someSectionUI;
+
+   @Test
+   public void someSectionWebElementTest() {
+      assertNotNull(someSection.webElementPublic);
+      assertEquals(someSection.webElementPublic.locator.toString(), "id='webElementPublic'");
+      assertEquals(someSection.webElementPublic.parent, someSection);
+      assertEquals(someSection.webElementPublic.name, "Web Element Public");
+   }
+   
+```
+
+
+
+And here are methods available in Java:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Returns object for work with assertions | IsAssert
+**has()** | Returns object for work with assertions | IsAssert
+**is()** | Returns object for work with assertions | IsAssert
+**shouldBe()** | Returns object for work with assertions | IsAssert
+**waitFor()** | Returns object for work with assertions | IsAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-light-html-tests/src/test/java/io/github/epam/html/tests/elements/composite/section" target="_blank">Test examples in Java</a>
+
+<a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Composite/SectionTests.cs" target="_blank">Test examples in C#</a>
+
 ### WebPage
 
 **WebPage** - A parent Java class for all JDI Page Object classes. WebPage class extends _DriverBase_ class, implements PageObject interface and contains a number of commonly used methods:
@@ -4903,6 +5188,764 @@ More than that, it has a nested **StringCheckType** class with the following met
 [BDD Steps example](https://jdi-docs.github.io/jdi-light/?java#webpage-2)
 
 ## Bootstrap Common elements
+
+### Alert
+Alert is located in the following class: <br>
+- __Java__: _com.epam.jdi.light.ui.bootstrap.common.Alert_
+
+**<a href="https://getbootstrap.com/docs/4.3/components/alerts/" target="_blank">Alert</a>** – Element that provides contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
+
+![Alert](../images/bootstrap/alert-dismissible.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "#simple-alert") public static Alert simpleAlert; 
+@Css("#simple-alert") 
+public static Alert simpleAlert;
+
+// @FindBy(css = "#dismissible-alert") public static Alert dismissibleAlert;
+@Css("#dismissible-alert") 
+public static Alert dismissibleAlert;
+
+@Test
+public void simpleAlertExistingTest() {
+    simpleAlert.is().displayed();
+    simpleAlert.is().enabled();
+    dismissibleAlert.is().displayed();
+    dismissibleAlert.is().enabled();
+}
+
+@Test
+public void simpleAlertLinkClickableTest() {
+    simpleAlert.click();
+    switchToNewWindow();
+    assertEquals(getTitle(), pageTitle);
+    closeWindow();
+}
+
+@Test
+public void dismissibleAlertButtonIsValidationTest() {
+    dismissibleAlert.dismissButton().is().displayed()
+            .enabled()
+            .core()
+            .attr("type", "button")
+            .attr("data-dismiss", "alert")
+            .attr("aria-label", "Close")
+            .tag(is("button"));
+}
+
+@Test (priority = 1)
+public void dismissibleAlertButtonClickTest() {
+    dismissibleAlert.dismissButton().click();
+    dismissibleAlert.base().waitSec(1);
+    dismissibleAlert.is().hidden();
+}
+```
+
+<br>
+
+```html
+<div class="alert alert-success" id="simple-alert" role="alert">
+    Alert with <a
+        href="https://jdi-testing.github.io/jdi-light/index.html"
+        class="alert-link" target="_blank">index page link</a>.
+</div>
+<div class="alert alert-warning alert-dismissible fade show" id="dismissible-alert"
+     role="alert">
+    <strong>Dismissible alert!</strong><br> Hide alert clicking on "x".
+    <button type="button" class="close" id="dismissible-alert-close-button"
+            data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click to hide alert | Action
+**displayed()** | Check that element is displayed | TextAssert
+**hidden()** | Check that element is hidden | TextAssert
+**is()** | Assert action | TextAssert 
+
+<br>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/AlertTests.java" target="_blank">Alert test examples</a>
+
+
+<br><br><br><br><br><br>
+### Badge
+
+**1) <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/badge/" target="_blank">Badge</a>** - Element that scale to match the size of the immediate parent element by using relative font sizing and em units.<br>
+
+Here is an example badge with provided Bootstrap v4.3 code: 
+ 
+![Badge](../images/bootstrap/badge_heading.png)
+
+```java 
+// @FindBy(css = "#badge-secondary")
+@UI("#badge-secondary") public static Text badgeSecondary;
+// @FindBy(css = "#btn-primary")
+@UI("#btn-primary") public static ButtonWithBadge buttonWithBadge;
+
+@Test
+public void getTextTest() {
+    assertEquals(badgeSecondary.getText(), badgeSecondaryText);
+    assertEquals(badgeSecondary.getValue(), badgeSecondaryText);
+}
+
+@Test
+public void simpleVisibilityTest() {
+    assertTrue(badgeSecondary.isDisplayed());
+}
+
+@Test
+public void checkBadgeInButton(){
+    buttonWithBadge.badge.is().displayed();
+    buttonWithBadge.badge.is().text(badgeInButtonText);
+}
+```
+
+```html
+<h1>Heading 
+    <span class="badge badge-secondary" id="badge-secondary">Badge</span>
+</h1>
+``` 
+
+An example nested badge in button with provided Bootstrap v4.3 code:  
+
+![Badge](../images/bootstrap/badge_button.png)
+
+```html 
+<button type="button" class="btn btn-primary" id="btn-primary" onclick="alert('Button with badge');">
+    Profile
+    <span class="badge badge-light">9</span> 
+    <span class="sr-only">unread messages</span>
+</button>
+```
+
+In this case Badge is represented by the following class: 
+
+  [Text](https://jdi-docs.github.io/jdi-light/#text)
+  
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**displayed()** | Check that element is displayed | TextAssert
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+<br>
+**2) <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/badge/#links" target="_blank">Badge</a>** - .badge-* classes on an link element quickly provide actionable badges with hover and focus states.<br>
+
+![Badge](../images/bootstrap/badge_link.png)
+
+Here is an example with provided Bootstrap v4.3 code:  
+
+```java 
+// @FindBy(css = "#badge-success")
+@UI("#badge-success") public static Link badgeSuccess;
+
+@Test
+public void getTextTest() {
+    assertEquals(badgeSuccess.getText(), badgeSuccessText);
+    assertEquals(badgeSuccess.getValue(), badgeSuccessText);
+}
+
+@Test
+public void simpleVisibilityTest() {
+    assertTrue(badgeSuccess.isDisplayed());
+}
+```
+
+```html 
+<a href="https://github.com/jdi-testing" style="font-size: 16px;"class="badge badge-success" id="badge-success" alt="Github JDI Link">Github JDI</a>
+```
+
+In this case Badge is represented by Text class in Java:
+ 
+  [Link](https://jdi-docs.github.io/jdi-light/#link)
+  
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**alt()** |Returns the alternate text | String
+**assertThat()** | Returns object for work with assertions | LinkAssert
+**click()** |Follow the link | void
+**getText()** |Returns the link text  | String
+**is()** | Returns object for work with assertions | LinkAssert
+**ref()** |Returns the reference  | String
+**url()** |Returns the URL  | URL
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/BadgeTests.java" target="_blank">Bootstrap badge test examples</a><br>
+<br><br>
+
+### Breadcrumb
+
+<a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/" target="_blank">Breadcrumb</a> is a control element  used for navigational on web pages
+
+![Breadcrumb example](../images/bootstrap/breadcrumb.png)
+
+```java 
+
+// @FindBy(css = "#breadcrumb")
+@UI("#breadcrumb") public static Breadcrumb breadcrumb;
+
+@Test
+public void getTextTest() {
+    breadcrumb.items.has().size(3);
+    breadcrumb.items
+              .assertThat()
+              .values(TEXT, hasItems(ITEMS_VALUES));
+}
+    
+@Test
+public void getCurrectItemTest() {
+    breadcrumb.items.last().has().value(BOOTSTRAP);
+    breadcrumb.items.last().has().text(BOOTSTRAP);
+}
+```
+
+Here is an example with provided Bootstrap v4.3 code:
+  
+```html
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" id="breadcrumb">
+        <li class="breadcrumb-item"><a
+                href="https://jdi-testing.github.io/jdi-light/index.html" target="_blank">Home</a>
+        </li>
+        <li class="breadcrumb-item"><a
+                href="https://jdi-testing.github.io/jdi-light/html5.html" target="_blank">HTML
+            5</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Bootstrap</li>
+    </ol>
+</nav>
+```
+
+Breadcrumb is represented  by the following class: <br>
+- [UIBaseElement](https://jdi-docs.github.io/jdi-light/#uibaseelement) 
+
+Inner elements are represented  by the following class: <br>
+- [Weblist](https://jdi-docs.github.io/jdi-light/#weblist) 
+
+Available methods in Java JDI Light:
+
+|Method/Property | Description | Return Type
+--- | --- | ---
+**assertThat()**	 |  Assert action	| UIAssert
+**click()** | Click the item  | void
+**first()**|Get first item |UIElement
+**getText()** |Get item text  |  String
+**getValue()** |Get item value  |  String
+**get(String option)**|Get item by text|UIElement 
+**get(int index)**|Get item by index| UIElement
+**is()**	 |  Assert action	| UIAssert
+**last()**|Get last item |UIElement
+**shouldBe()**	 |  Assert action	| UIAssert
+
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/BreadcrumbTests.java" target="_blank">Breadcrumb Tests Example</a>
+
+<br><br>
+
+### Button group
+
+<a href="https://getbootstrap.com/docs/4.3/components/button-group/" target="_blank">Button group</a> – Element that groups a series of buttons together on a single line with the button group, and super-power them with JavaScript.
+
+Button group is located in the following packages:
+ 
+  - __Java__: _io.github.epam.bootstrap.tests.composite.section.buttonGroup_
+  - __C#__:
+
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+#### <a href="https://getbootstrap.com/docs/4.3/components/button-group/#basic-example" target="_blank">Button Group Basic</a> 
+Wrap a series of buttons with .btn in .btn-group.
+
+![Button Group Basic Example HTML](../images/bootstrap/bgroup-basic-example-screen.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "#basic-example") public static ButtonGroupBasic buttonGroupBasic;
+@UI("#basic-example") 
+public static ButtonGroupBasic buttonGroupBasic;
+
+public class ButtonGroupBasic extends Section {
+    @UI("//button[text()='Left']") 
+    public Button leftButton;
+    
+    @UI("//button[text()='Middle']") 
+    public Button middleButton;
+    
+    @UI("//button[text()='Right']") 
+    public Button rightButton;
+}
+
+@Test
+public void leftButtonTests() {
+    buttonGroupBasic.leftButton.is()
+            .displayed()
+            .enabled()
+            .core()
+            .hasClass("btn btn-secondary")
+            .css("font-size", "16px");
+    buttonGroupBasic.leftButton.click();
+    validateAlert(is(leftButtonClickAlert));
+}
+```
+
+<br>
+
+<!-- ![Button Group Basic Example Example](../images/bootstrap/bgroup-basic-example-html.png) -->
+```html
+<div id="btn-md-group" class="btn-group mb-3" role="group" aria-label="Default button group">
+    <button type="button" class="btn btn-secondary" ondblclick="alert('Left Button Double Clicked!');"
+            oncontextmenu="alert('Left Button Right Clicked!');">Left
+    </button>
+    <button type="button" class="btn btn-secondary" ondblclick="alert('Middle Button Double Clicked!');"
+            oncontextmenu="alert('Middle Button Right Clicked!');">Middle
+    </button>
+    <button type="button" class="btn btn-secondary" ondblclick="alert('Right Button Double Clicked!');"
+            oncontextmenu="alert('Right Button Right Clicked!');">Right
+    </button>
+</div>
+```
+
+<br>
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button | void
+**displayed()** | Check that element is displayed | TextAssert
+**enabled()** | Check that element is enabled | TextAssert
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/BasicTests.java" target="_blank">Button Group Basic Tests Example</a>
+
+
+#### <a href="https://getbootstrap.com/docs/4.0/components/button-group/#button-toolbar" target="_blank">Button toolbar</a>
+Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.
+
+![Button toolbar](../images/bootstrap/button_toolbar.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = ".btn-toolbar") public static ButtonToolbar buttonToolbar;
+@UI(".btn-toolbar") 
+public static ButtonToolbar buttonToolbar;
+
+public class ButtonGroupToolbar extends Section {
+    @UI("button") 
+    public WebList buttonsInToolbar;
+    
+    @UI("input") 
+    public TextField inputAreaInToolbar;
+
+    @Test
+    public void buttonsInButtonToolbarTest() {
+        buttonToolbar.buttonsInToolbar.forEach(button -> {
+            button.is().displayed();
+            button.is().enabled();
+            button.assertThat().css("background-color", backgroundColorBeforeHovering);
+            button.core().hover();
+            button.assertThat().css("background-color", backgroundColorAfterHovering);
+            button.assertThat().css("border-color", borderColorBeforeClicking);
+            button.click();
+            validateAlert(containsString("button is clicked"));
+            button.assertThat().css("border-color", borderColorAfterClicking);
+        });
+    }
+}
+```
+
+<!-- ![Button toolbar example](../images/bootstrap/button_toolbar-html.png) -->
+
+```html
+
+<div class="btn-toolbar" id="buttonToolbar1" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button type="button" class="btn btn-secondary" onclick="alert('1st button is clicked');">1
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="alert('2nd button is clicked');">2
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="alert('3rd button is clicked');">3
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="alert('4th button is clicked');">4
+        </button>
+    </div>
+    <div class="btn-group mr-2" role="group" aria-label="Second group">
+        <button type="button" class="btn btn-secondary" onclick="alert('5th button is clicked');">5
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="alert('6th button is clicked');">6
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="alert('7th button is clicked');">7
+        </button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Third group">
+        <button type="button" class="btn btn-secondary" onclick="alert('8th button is clicked');">8
+        </button>
+    </div>
+</div>
+
+```
+
+
+It is possible to mix input groups with button groups in your toolbars.
+
+![Button toolbar_mixed](../images/bootstrap/button_toolbar_mixed.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+    @Test
+    public void inputFieldInButtonToolbarTest() {
+        buttonToolbar.inputAreaInToolbar.is().displayed();
+        buttonToolbar.inputAreaInToolbar.is().enabled();
+        buttonToolbar.inputAreaInToolbar.is().core().attr("placeholder", placeholderForInputField);
+        buttonToolbar.inputAreaInToolbar.setValue(textForTestingInputField);
+        assertEquals(buttonToolbar.inputAreaInToolbar.getValue(), textForTestingInputField);
+    }
+``` 
+
+```html
+<div class="btn-toolbar mb-3" id="buttonToolbar2" role="toolbar"
+     aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button type="button" class="btn btn-secondary"
+                onclick="alert('1st button is clicked');">1
+        </button>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon">@</div>
+        </div>
+        <input type="text" class="form-control" placeholder="Input group example"
+               aria-label="Input group example" aria-describedby="btnGroupAddon">
+    </div>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button | void
+**displayed()** | Check that element is displayed | TextAssert
+**enabled()** | Check that element is enabled | TextAssert
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/ToolbarTests.java" target="_blank">Bootstrap test examples</a>
+
+
+#### <a href="https://getbootstrap.com/docs/4.0/components/button-group/#sizing" target="_blank">Button Group Sizing</a>
+
+Instead of applying button sizing classes to every button in a group, 
+just add ``.btn-group-*`` to each ``.btn-group``, including each one when nesting multiple groups.
+
+![Button Group Sizing Example](../images/bootstrap/bgroup-sizing.png)
+
+```java 
+@UI("#btn-lg-group") // @FindBy(id = "btn-lg-group")
+public static ButtonGroupSizing largeBtnGroup;
+
+public class ButtonGroupSizing extends Section { 
+    @UI("//button[contains(text(), 'Left')]")
+    public Button leftBtn;
+    
+    @UI("//button[contains(text(), 'Middle')]")
+    public Button midBtn;
+    
+    @UI("//button[contains(text(), 'Right')]")
+    public Button rightBtn;
+    
+    String leftBtnText = "Left";
+    
+    @Test
+    public void isValidationTest() {
+        largeBtnGroup.highlight();
+        largeBtnGroup.is().displayed();
+        largeBtnGroup.is().enabled();
+        largeBtnGroup.leftBtn.is().text(is(leftBtnText));
+        largeBtnGroup.leftBtn.is().text(containsString("Le"));
+        assertThat(largeBtnGroup.leftBtn.core().css("font-size"), is("20px"));
+        largeBtnGroup.leftBtn.assertThat().displayed()
+                .and().text(is(leftBtnText))
+                .core()
+                .css("font-size", is("20px"))
+                .cssClass("btn btn-secondary")
+                .attr("type", "button")
+                .tag(is("button"));
+    }
+}
+``` 
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<div id="btn-lg-group" class="btn-group btn-group-lg mb-3" role="group"
+     aria-label="Large button group">
+    <button type="button" class="btn btn-secondary"
+            onclick="alert('Lg Left Button Clicked!');"
+            ondblclick="alert('Lg Left Button Double Clicked!');"
+            oncontextmenu="alert('Lg Left Button Right Clicked!');">Left
+    </button>
+    <button type="button" class="btn btn-secondary"
+            onclick="alert('Lg Middle Button Clicked!');"
+            ondblclick="alert('Lg Middle Button Double Clicked!');"
+            oncontextmenu="alert('Lg Middle Button Right Clicked!');">Middle
+    </button>
+    <button type="button" class="btn btn-secondary"
+            onclick="alert('Lg Right Button Clicked!');"
+            ondblclick="alert('Lg Right Button Double Clicked!');"
+            oncontextmenu="alert('Lg Right Button Right Clicked!');">Right
+    </button>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button | void
+**displayed()** | Check that element is displayed | TextAssert
+**enabled()** | Check that element is enabled | TextAssert
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/SizingTests.java" target="_blank">Bootstrap test examples</a>
+
+
+#### <a href="https://getbootstrap.com/docs/4.3/components/button-group/#nesting" target="_blank">Button Group Nesting</a>
+Place a ``.btn-group`` within another ``.btn-group`` when you want dropdown menus mixed with a series of buttons.
+
+![Button Group Nesting Example](../images/bootstrap/bgroup-nesting.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "#button-group-nesting") public static ButtonGroupNesting buttonGroupNesting;
+@UI("#button-group-nesting") 
+public static ButtonGroupNesting buttonGroupNesting;
+
+public class ButtonGroupNesting extends Section {
+    @UI("button[onclick*='Button 1']") 
+    public Button one;
+    
+    @UI("button[onclick*='Button 2']") 
+    public Button two;
+    
+    @JDropdown(expand = ".btn-group",
+            value = ".dropdown-menu",
+            list = ".dropdown-item")
+    public Dropdown dropdownMenu;
+}
+
+@Test
+ public void buttonOneTests() {
+     buttonGroupNesting.one.is()
+             .displayed()
+             .enabled()
+             .core()
+             .hasClass("btn btn-secondary")
+             .css("font-size", "16px");
+     buttonGroupNesting.one.click();
+     validateAlert(is(buttonOneClickAlert));
+}
+
+@Test
+public void dropdownMenuTests() {
+    buttonGroupNesting.dropdownMenu.expand();
+    buttonGroupNesting.dropdownMenu.is().expanded();
+    buttonGroupNesting.dropdownMenu.is().size(2);
+    buttonGroupNesting.dropdownMenu.list().get(0).is().text(dropdownMenuLinkOne);
+    buttonGroupNesting.dropdownMenu.select(dropdownMenuLinkOne);
+    newWindowTitleCheck(linkOnePageTitle);
+}
+```
+
+<br>
+
+```html
+<div class="btn-group" id="button-group-nesting" role="group"
+     aria-label="Button group with nested dropdown">
+    <button type="button" class="btn btn-secondary" onclick="alert('Button 1 Clicked!');">
+        1
+    </button>
+    <button type="button" class="btn btn-secondary" onclick="alert('Button 2 Clicked!');">
+        2
+    </button>
+
+    <div class="btn-group" role="group">
+        <button id="btnGroupDr1" type="button" class="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDr1">
+            <a class="dropdown-item" href="https://github.com/jdi-testing/jdi-light"
+               target="_blank">JDI Github</a>
+            <a class="dropdown-item"
+               href="https://jdi-docs.github.io/jdi-light/#jdi-light-framework"
+               target="_blank">JDI Docs</a>
+        </div>
+    </div>
+</div>
+```
+<br>
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button | void
+**displayed()** | Check that element is displayed | TextAssert
+**enabled()** | Check that element is enabled | TextAssert
+**expand()** | Dropdown expand | void
+**expanded()** | Check that dropdown is expanded | TextAssert
+**getText()** | Get button text | String
+**getValue()** | Get button value | String
+**is()** | Assert action | TextAssert 
+**select(String option)** | Select option by text | void
+**select(int option)** | Select option by index | void
+<br>
+
+Inner elements represented by the following classes:
+<ul>
+    <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+    <li> [Button](https://jdi-docs.github.io/jdi-light/#button)</li>
+    <li> [Dropdown](https://jdi-docs.github.io/jdi-light/#dropdown-2)</li>
+</ul>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/NestingTests.java" target="_blank">Button Group Nesting Tests Example</a>
+
+<br>
+
+
+#### <a href="https://getbootstrap.com/docs/4.3/components/button-group/#vertical-variation" target="_blank">Button Group Vertical Variation</a>
+Make a set of buttons appear vertically stacked rather than horizontally.
+
+![Button Group Nesting Example](../images/bootstrap/bgroup-vertical-variation.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "#vertical-variation") public static  ButtonGroupVerticalVariation buttonGroupVerticalVariation;
+@UI("#vertical-variation") 
+public static  ButtonGroupVerticalVariation buttonGroupVerticalVariation;
+
+public class ButtonGroupVerticalVariation extends Section {
+    @UI("button[onclick*='Button One']") 
+    public Button buttonOne;
+    
+    @UI("button[onclick*='Button Two']") 
+    public Button buttonTwo;
+    
+    @JDropdown(expand = ".btn-group",
+            value = ".dropdown-menu",
+            list = ".dropdown-item")
+    public Dropdown dropdownMenu;
+}
+
+@Test
+public void buttonOneTests() {
+    buttonGroupVerticalVariation.buttonOne.is()
+            .displayed()
+            .enabled()
+            .core()
+            .hasClass("btn btn-secondary")
+            .css("font-size", "16px");
+    buttonGroupVerticalVariation.buttonOne.click();
+    validateAlert(is(buttonOneClickAlert));
+
+@Test
+public void dropdownMenuTests() {
+    buttonGroupVerticalVariation.dropdownMenu.expand();
+    buttonGroupVerticalVariation.dropdownMenu.is().expanded();
+    buttonGroupVerticalVariation.dropdownMenu.is().size(2);
+    buttonGroupVerticalVariation.dropdownMenu.list().get(1).is().text(dropdownMenuLinkTwo);
+    buttonGroupVerticalVariation.dropdownMenu.select(dropdownMenuLinkTwo);
+    newWindowTitleCheck(linkTwoPageTitle);
+}
+```
+
+<br>
+
+```html 
+<div class="btn-group-vertical mb-3" id="vertical-variation" role="group"
+     aria-label="Vertical button group">
+    <button type="button" class="btn btn-secondary" onclick="alert('Button One Clicked!');">
+        Button one
+    </button>
+    <button type="button" class="btn btn-secondary" onclick="alert('Button Two Clicked!');">
+        Button two
+    </button>
+    <div class="btn-group" role="group">
+        <button id="btnGroupVerticalDrop1" type="button"
+                class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            Dropdown
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1"
+             x-placement="bottom-start"
+             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+            <a class="dropdown-item" href="https://github.com/jdi-testing/jdi-light"
+               target="_blank">JDI Light</a>
+            <a class="dropdown-item"
+               href="https://jdi-docs.github.io/jdi-light/#jdi-light-framework"
+               target="_blank">JDI Docs</a>
+        </div>
+    </div>
+</div>
+```
+<br>
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button | void
+**displayed()** | Check that element is displayed | TextAssert
+**enabled()** | Check that element is enabled | TextAssert
+**expand()** | Dropdown expand | void
+**expanded()** | Check that dropdown is expanded | TextAssert
+**getText()** | Get button text | String
+**getValue()** | Get button value | String
+**is()** | Assert action | TextAssert 
+**select(String option)** | Select option by text | void
+**select(int option)** | Select option by index | void
+<br>
+
+Inner elements represented by the following classes:
+<ul>
+    <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+    <li> [Button](https://jdi-docs.github.io/jdi-light/#button)</li>
+    <li> [Dropdown](https://jdi-docs.github.io/jdi-light/#dropdown-2)</li>
+</ul>
+<br>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/VerticalVariationTests.java" target="_blank">Button Group Vertical Variation Tests Example</a>
+<br><br>
 
 ### Checkboxes and radios
 
@@ -5783,765 +6826,72 @@ Button group is represented by Section class in Java:
 
 <br>
 
-### Button group
+###Image
 
-<a href="https://getbootstrap.com/docs/4.3/components/button-group/" target="_blank">Button group</a> – Element that groups a series of buttons together on a single line with the button group, and super-power them with JavaScript.
-
-Button group is located in the following packages:
- 
-  - __Java__: _io.github.epam.bootstrap.tests.composite.section.buttonGroup_
-  - __C#__:
-
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-#### <a href="https://getbootstrap.com/docs/4.3/components/button-group/#basic-example" target="_blank">Button Group Basic</a> 
-Wrap a series of buttons with .btn in .btn-group.
-
-![Button Group Basic Example HTML](../images/bootstrap/bgroup-basic-example-screen.png)
-
-Here is an example with provided Bootstrap v4.3 code:
+<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/content/images/" target="_blank">Images</a> is a hint that used in conjuction with a pointer.
 
 ```java 
-// @FindBy(css = "#basic-example") public static ButtonGroupBasic buttonGroupBasic;
-@UI("#basic-example") 
-public static ButtonGroupBasic buttonGroupBasic;
+    //@FindBy(css = "#card-image")
+    @UI("#card-image")
+    public static CardImage cardImage;
 
-public class ButtonGroupBasic extends Section {
-    @UI("//button[text()='Left']") 
-    public Button leftButton;
-    
-    @UI("//button[text()='Middle']") 
-    public Button middleButton;
-    
-    @UI("//button[text()='Right']") 
-    public Button rightButton;
-}
-
-@Test
-public void leftButtonTests() {
-    buttonGroupBasic.leftButton.is()
-            .displayed()
-            .enabled()
-            .core()
-            .hasClass("btn btn-secondary")
-            .css("font-size", "16px");
-    buttonGroupBasic.leftButton.click();
-    validateAlert(is(leftButtonClickAlert));
-}
-```
-
-<br>
-
-<!-- ![Button Group Basic Example Example](../images/bootstrap/bgroup-basic-example-html.png) -->
-```html
-<div id="btn-md-group" class="btn-group mb-3" role="group" aria-label="Default button group">
-    <button type="button" class="btn btn-secondary" ondblclick="alert('Left Button Double Clicked!');"
-            oncontextmenu="alert('Left Button Right Clicked!');">Left
-    </button>
-    <button type="button" class="btn btn-secondary" ondblclick="alert('Middle Button Double Clicked!');"
-            oncontextmenu="alert('Middle Button Right Clicked!');">Middle
-    </button>
-    <button type="button" class="btn btn-secondary" ondblclick="alert('Right Button Double Clicked!');"
-            oncontextmenu="alert('Right Button Right Clicked!');">Right
-    </button>
-</div>
-```
-
-<br>
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button | void
-**displayed()** | Check that element is displayed | TextAssert
-**enabled()** | Check that element is enabled | TextAssert
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/BasicTests.java" target="_blank">Button Group Basic Tests Example</a>
-
-
-#### <a href="https://getbootstrap.com/docs/4.0/components/button-group/#button-toolbar" target="_blank">Button toolbar</a>
-Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.
-
-![Button toolbar](../images/bootstrap/button_toolbar.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = ".btn-toolbar") public static ButtonToolbar buttonToolbar;
-@UI(".btn-toolbar") 
-public static ButtonToolbar buttonToolbar;
-
-public class ButtonGroupToolbar extends Section {
-    @UI("button") 
-    public WebList buttonsInToolbar;
-    
-    @UI("input") 
-    public TextField inputAreaInToolbar;
+    public class CardImage extends Card {
+        @UI(".card-text") public Text text;
+        @UI("#bs-card-image") public Image image;
+    }
 
     @Test
-    public void buttonsInButtonToolbarTest() {
-        buttonToolbar.buttonsInToolbar.forEach(button -> {
-            button.is().displayed();
-            button.is().enabled();
-            button.assertThat().css("background-color", backgroundColorBeforeHovering);
-            button.core().hover();
-            button.assertThat().css("background-color", backgroundColorAfterHovering);
-            button.assertThat().css("border-color", borderColorBeforeClicking);
-            button.click();
-            validateAlert(containsString("button is clicked"));
-            button.assertThat().css("border-color", borderColorAfterClicking);
-        });
+    public void availabilityTest() {
+        cardImage.image.is()
+                .displayed()
+                .enabled();
     }
-}
-```
 
-<!-- ![Button toolbar example](../images/bootstrap/button_toolbar-html.png) -->
-
-```html
-
-<div class="btn-toolbar" id="buttonToolbar1" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-        <button type="button" class="btn btn-secondary" onclick="alert('1st button is clicked');">1
-        </button>
-        <button type="button" class="btn btn-secondary" onclick="alert('2nd button is clicked');">2
-        </button>
-        <button type="button" class="btn btn-secondary" onclick="alert('3rd button is clicked');">3
-        </button>
-        <button type="button" class="btn btn-secondary" onclick="alert('4th button is clicked');">4
-        </button>
-    </div>
-    <div class="btn-group mr-2" role="group" aria-label="Second group">
-        <button type="button" class="btn btn-secondary" onclick="alert('5th button is clicked');">5
-        </button>
-        <button type="button" class="btn btn-secondary" onclick="alert('6th button is clicked');">6
-        </button>
-        <button type="button" class="btn btn-secondary" onclick="alert('7th button is clicked');">7
-        </button>
-    </div>
-    <div class="btn-group" role="group" aria-label="Third group">
-        <button type="button" class="btn btn-secondary" onclick="alert('8th button is clicked');">8
-        </button>
-    </div>
-</div>
-
-```
-
-
-It is possible to mix input groups with button groups in your toolbars.
-
-![Button toolbar_mixed](../images/bootstrap/button_toolbar_mixed.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
     @Test
-    public void inputFieldInButtonToolbarTest() {
-        buttonToolbar.inputAreaInToolbar.is().displayed();
-        buttonToolbar.inputAreaInToolbar.is().enabled();
-        buttonToolbar.inputAreaInToolbar.is().core().attr("placeholder", placeholderForInputField);
-        buttonToolbar.inputAreaInToolbar.setValue(textForTestingInputField);
-        assertEquals(buttonToolbar.inputAreaInToolbar.getValue(), textForTestingInputField);
+    public void getAltTest() {
+        assertEquals(cardImage.image.alt(), ALT_ATTR_EXPECTED);
     }
-``` 
 
-```html
-<div class="btn-toolbar mb-3" id="buttonToolbar2" role="toolbar"
-     aria-label="Toolbar with button groups">
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-        <button type="button" class="btn btn-secondary"
-                onclick="alert('1st button is clicked');">1
-        </button>
-    </div>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">@</div>
-        </div>
-        <input type="text" class="form-control" placeholder="Input group example"
-               aria-label="Input group example" aria-describedby="btnGroupAddon">
-    </div>
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button | void
-**displayed()** | Check that element is displayed | TextAssert
-**enabled()** | Check that element is enabled | TextAssert
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/ToolbarTests.java" target="_blank">Bootstrap test examples</a>
-
-
-#### <a href="https://getbootstrap.com/docs/4.0/components/button-group/#sizing" target="_blank">Button Group Sizing</a>
-
-Instead of applying button sizing classes to every button in a group, 
-just add ``.btn-group-*`` to each ``.btn-group``, including each one when nesting multiple groups.
-
-![Button Group Sizing Example](../images/bootstrap/bgroup-sizing.png)
-
-```java 
-@UI("#btn-lg-group") // @FindBy(id = "btn-lg-group")
-public static ButtonGroupSizing largeBtnGroup;
-
-public class ButtonGroupSizing extends Section { 
-    @UI("//button[contains(text(), 'Left')]")
-    public Button leftBtn;
-    
-    @UI("//button[contains(text(), 'Middle')]")
-    public Button midBtn;
-    
-    @UI("//button[contains(text(), 'Right')]")
-    public Button rightBtn;
-    
-    String leftBtnText = "Left";
-    
     @Test
     public void isValidationTest() {
-        largeBtnGroup.highlight();
-        largeBtnGroup.is().displayed();
-        largeBtnGroup.is().enabled();
-        largeBtnGroup.leftBtn.is().text(is(leftBtnText));
-        largeBtnGroup.leftBtn.is().text(containsString("Le"));
-        assertThat(largeBtnGroup.leftBtn.core().css("font-size"), is("20px"));
-        largeBtnGroup.leftBtn.assertThat().displayed()
-                .and().text(is(leftBtnText))
-                .core()
-                .css("font-size", is("20px"))
-                .cssClass("btn btn-secondary")
-                .attr("type", "button")
-                .tag(is("button"));
+        cardImage.image.is().src(is(SRC_ATTR_EXPECTED));
+        cardImage.image.is().alt(is(ALT_ATTR_EXPECTED));
+        cardImage.image.unhighlight();
+        cardImage.image.assertThat().width(is(WIDTH));
+        cardImage.image.assertThat().height(is(HEIGHT));
     }
-}
-``` 
 
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<div id="btn-lg-group" class="btn-group btn-group-lg mb-3" role="group"
-     aria-label="Large button group">
-    <button type="button" class="btn btn-secondary"
-            onclick="alert('Lg Left Button Clicked!');"
-            ondblclick="alert('Lg Left Button Double Clicked!');"
-            oncontextmenu="alert('Lg Left Button Right Clicked!');">Left
-    </button>
-    <button type="button" class="btn btn-secondary"
-            onclick="alert('Lg Middle Button Clicked!');"
-            ondblclick="alert('Lg Middle Button Double Clicked!');"
-            oncontextmenu="alert('Lg Middle Button Right Clicked!');">Middle
-    </button>
-    <button type="button" class="btn btn-secondary"
-            onclick="alert('Lg Right Button Clicked!');"
-            ondblclick="alert('Lg Right Button Double Clicked!');"
-            oncontextmenu="alert('Lg Right Button Right Clicked!');">Right
-    </button>
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button | void
-**displayed()** | Check that element is displayed | TextAssert
-**enabled()** | Check that element is enabled | TextAssert
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/SizingTests.java" target="_blank">Bootstrap test examples</a>
-
-
-#### <a href="https://getbootstrap.com/docs/4.3/components/button-group/#nesting" target="_blank">Button Group Nesting</a>
-Place a ``.btn-group`` within another ``.btn-group`` when you want dropdown menus mixed with a series of buttons.
-
-![Button Group Nesting Example](../images/bootstrap/bgroup-nesting.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "#button-group-nesting") public static ButtonGroupNesting buttonGroupNesting;
-@UI("#button-group-nesting") 
-public static ButtonGroupNesting buttonGroupNesting;
-
-public class ButtonGroupNesting extends Section {
-    @UI("button[onclick*='Button 1']") 
-    public Button one;
-    
-    @UI("button[onclick*='Button 2']") 
-    public Button two;
-    
-    @JDropdown(expand = ".btn-group",
-            value = ".dropdown-menu",
-            list = ".dropdown-item")
-    public Dropdown dropdownMenu;
-}
-
-@Test
- public void buttonOneTests() {
-     buttonGroupNesting.one.is()
-             .displayed()
-             .enabled()
-             .core()
-             .hasClass("btn btn-secondary")
-             .css("font-size", "16px");
-     buttonGroupNesting.one.click();
-     validateAlert(is(buttonOneClickAlert));
-}
-
-@Test
-public void dropdownMenuTests() {
-    buttonGroupNesting.dropdownMenu.expand();
-    buttonGroupNesting.dropdownMenu.is().expanded();
-    buttonGroupNesting.dropdownMenu.is().size(2);
-    buttonGroupNesting.dropdownMenu.list().get(0).is().text(dropdownMenuLinkOne);
-    buttonGroupNesting.dropdownMenu.select(dropdownMenuLinkOne);
-    newWindowTitleCheck(linkOnePageTitle);
-}
-```
-
-<br>
-
-```html
-<div class="btn-group" id="button-group-nesting" role="group"
-     aria-label="Button group with nested dropdown">
-    <button type="button" class="btn btn-secondary" onclick="alert('Button 1 Clicked!');">
-        1
-    </button>
-    <button type="button" class="btn btn-secondary" onclick="alert('Button 2 Clicked!');">
-        2
-    </button>
-
-    <div class="btn-group" role="group">
-        <button id="btnGroupDr1" type="button" class="btn btn-secondary dropdown-toggle"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-        </button>
-        <div class="dropdown-menu" aria-labelledby="btnGroupDr1">
-            <a class="dropdown-item" href="https://github.com/jdi-testing/jdi-light"
-               target="_blank">JDI Github</a>
-            <a class="dropdown-item"
-               href="https://jdi-docs.github.io/jdi-light/#jdi-light-framework"
-               target="_blank">JDI Docs</a>
-        </div>
-    </div>
-</div>
-```
-<br>
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button | void
-**displayed()** | Check that element is displayed | TextAssert
-**enabled()** | Check that element is enabled | TextAssert
-**expand()** | Dropdown expand | void
-**expanded()** | Check that dropdown is expanded | TextAssert
-**getText()** | Get button text | String
-**getValue()** | Get button value | String
-**is()** | Assert action | TextAssert 
-**select(String option)** | Select option by text | void
-**select(int option)** | Select option by index | void
-<br>
-
-Inner elements represented by the following classes:
-<ul>
-    <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-    <li> [Button](https://jdi-docs.github.io/jdi-light/#button)</li>
-    <li> [Dropdown](https://jdi-docs.github.io/jdi-light/#dropdown-2)</li>
-</ul>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/NestingTests.java" target="_blank">Button Group Nesting Tests Example</a>
-
-<br>
-
-
-#### <a href="https://getbootstrap.com/docs/4.3/components/button-group/#vertical-variation" target="_blank">Button Group Vertical Variation</a>
-Make a set of buttons appear vertically stacked rather than horizontally.
-
-![Button Group Nesting Example](../images/bootstrap/bgroup-vertical-variation.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "#vertical-variation") public static  ButtonGroupVerticalVariation buttonGroupVerticalVariation;
-@UI("#vertical-variation") 
-public static  ButtonGroupVerticalVariation buttonGroupVerticalVariation;
-
-public class ButtonGroupVerticalVariation extends Section {
-    @UI("button[onclick*='Button One']") 
-    public Button buttonOne;
-    
-    @UI("button[onclick*='Button Two']") 
-    public Button buttonTwo;
-    
-    @JDropdown(expand = ".btn-group",
-            value = ".dropdown-menu",
-            list = ".dropdown-item")
-    public Dropdown dropdownMenu;
-}
-
-@Test
-public void buttonOneTests() {
-    buttonGroupVerticalVariation.buttonOne.is()
-            .displayed()
-            .enabled()
-            .core()
-            .hasClass("btn btn-secondary")
-            .css("font-size", "16px");
-    buttonGroupVerticalVariation.buttonOne.click();
-    validateAlert(is(buttonOneClickAlert));
-
-@Test
-public void dropdownMenuTests() {
-    buttonGroupVerticalVariation.dropdownMenu.expand();
-    buttonGroupVerticalVariation.dropdownMenu.is().expanded();
-    buttonGroupVerticalVariation.dropdownMenu.is().size(2);
-    buttonGroupVerticalVariation.dropdownMenu.list().get(1).is().text(dropdownMenuLinkTwo);
-    buttonGroupVerticalVariation.dropdownMenu.select(dropdownMenuLinkTwo);
-    newWindowTitleCheck(linkTwoPageTitle);
-}
-```
-
-<br>
-
-```html 
-<div class="btn-group-vertical mb-3" id="vertical-variation" role="group"
-     aria-label="Vertical button group">
-    <button type="button" class="btn btn-secondary" onclick="alert('Button One Clicked!');">
-        Button one
-    </button>
-    <button type="button" class="btn btn-secondary" onclick="alert('Button Two Clicked!');">
-        Button two
-    </button>
-    <div class="btn-group" role="group">
-        <button id="btnGroupVerticalDrop1" type="button"
-                class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-            Dropdown
-        </button>
-        <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1"
-             x-placement="bottom-start"
-             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-            <a class="dropdown-item" href="https://github.com/jdi-testing/jdi-light"
-               target="_blank">JDI Light</a>
-            <a class="dropdown-item"
-               href="https://jdi-docs.github.io/jdi-light/#jdi-light-framework"
-               target="_blank">JDI Docs</a>
-        </div>
-    </div>
-</div>
-```
-<br>
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button | void
-**displayed()** | Check that element is displayed | TextAssert
-**enabled()** | Check that element is enabled | TextAssert
-**expand()** | Dropdown expand | void
-**expanded()** | Check that dropdown is expanded | TextAssert
-**getText()** | Get button text | String
-**getValue()** | Get button value | String
-**is()** | Assert action | TextAssert 
-**select(String option)** | Select option by text | void
-**select(int option)** | Select option by index | void
-<br>
-
-Inner elements represented by the following classes:
-<ul>
-    <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-    <li> [Button](https://jdi-docs.github.io/jdi-light/#button)</li>
-    <li> [Dropdown](https://jdi-docs.github.io/jdi-light/#dropdown-2)</li>
-</ul>
-<br>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/buttonGroup/VerticalVariationTests.java" target="_blank">Button Group Vertical Variation Tests Example</a>
-<br><br>
-
-### Alert
-Alert is located in the following class: <br>
-- __Java__: _com.epam.jdi.light.ui.bootstrap.common.Alert_
-
-**<a href="https://getbootstrap.com/docs/4.3/components/alerts/" target="_blank">Alert</a>** – Element that provides contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
-
-![Alert](../images/bootstrap/alert-dismissible.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "#simple-alert") public static Alert simpleAlert; 
-@Css("#simple-alert") 
-public static Alert simpleAlert;
-
-// @FindBy(css = "#dismissible-alert") public static Alert dismissibleAlert;
-@Css("#dismissible-alert") 
-public static Alert dismissibleAlert;
-
-@Test
-public void simpleAlertExistingTest() {
-    simpleAlert.is().displayed();
-    simpleAlert.is().enabled();
-    dismissibleAlert.is().displayed();
-    dismissibleAlert.is().enabled();
-}
-
-@Test
-public void simpleAlertLinkClickableTest() {
-    simpleAlert.click();
-    switchToNewWindow();
-    assertEquals(getTitle(), pageTitle);
-    closeWindow();
-}
-
-@Test
-public void dismissibleAlertButtonIsValidationTest() {
-    dismissibleAlert.dismissButton().is().displayed()
-            .enabled()
-            .core()
-            .attr("type", "button")
-            .attr("data-dismiss", "alert")
-            .attr("aria-label", "Close")
-            .tag(is("button"));
-}
-
-@Test (priority = 1)
-public void dismissibleAlertButtonClickTest() {
-    dismissibleAlert.dismissButton().click();
-    dismissibleAlert.base().waitSec(1);
-    dismissibleAlert.is().hidden();
-}
-```
-
-<br>
-
-```html
-<div class="alert alert-success" id="simple-alert" role="alert">
-    Alert with <a
-        href="https://jdi-testing.github.io/jdi-light/index.html"
-        class="alert-link" target="_blank">index page link</a>.
-</div>
-<div class="alert alert-warning alert-dismissible fade show" id="dismissible-alert"
-     role="alert">
-    <strong>Dismissible alert!</strong><br> Hide alert clicking on "x".
-    <button type="button" class="close" id="dismissible-alert-close-button"
-            data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click to hide alert | Action
-**displayed()** | Check that element is displayed | TextAssert
-**hidden()** | Check that element is hidden | TextAssert
-**is()** | Assert action | TextAssert 
-
-<br>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/AlertTests.java" target="_blank">Alert test examples</a>
-
-
-<br><br><br><br><br><br>
-### Badge
-
-**1) <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/badge/" target="_blank">Badge</a>** - Element that scale to match the size of the immediate parent element by using relative font sizing and em units.<br>
-
-Here is an example badge with provided Bootstrap v4.3 code: 
- 
-![Badge](../images/bootstrap/badge_heading.png)
-
-```java 
-// @FindBy(css = "#badge-secondary")
-@UI("#badge-secondary") public static Text badgeSecondary;
-// @FindBy(css = "#btn-primary")
-@UI("#btn-primary") public static ButtonWithBadge buttonWithBadge;
-
-@Test
-public void getTextTest() {
-    assertEquals(badgeSecondary.getText(), badgeSecondaryText);
-    assertEquals(badgeSecondary.getValue(), badgeSecondaryText);
-}
-
-@Test
-public void simpleVisibilityTest() {
-    assertTrue(badgeSecondary.isDisplayed());
-}
-
-@Test
-public void checkBadgeInButton(){
-    buttonWithBadge.badge.is().displayed();
-    buttonWithBadge.badge.is().text(badgeInButtonText);
-}
-```
-
-```html
-<h1>Heading 
-    <span class="badge badge-secondary" id="badge-secondary">Badge</span>
-</h1>
-``` 
-
-An example nested badge in button with provided Bootstrap v4.3 code:  
-
-![Badge](../images/bootstrap/badge_button.png)
-
-```html 
-<button type="button" class="btn btn-primary" id="btn-primary" onclick="alert('Button with badge');">
-    Profile
-    <span class="badge badge-light">9</span> 
-    <span class="sr-only">unread messages</span>
-</button>
-```
-
-In this case Badge is represented by the following class: 
-
-  [Text](https://jdi-docs.github.io/jdi-light/#text)
-  
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**displayed()** | Check that element is displayed | TextAssert
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-<br>
-**2) <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/badge/#links" target="_blank">Badge</a>** - .badge-* classes on an link element quickly provide actionable badges with hover and focus states.<br>
-
-![Badge](../images/bootstrap/badge_link.png)
-
-Here is an example with provided Bootstrap v4.3 code:  
-
-```java 
-// @FindBy(css = "#badge-success")
-@UI("#badge-success") public static Link badgeSuccess;
-
-@Test
-public void getTextTest() {
-    assertEquals(badgeSuccess.getText(), badgeSuccessText);
-    assertEquals(badgeSuccess.getValue(), badgeSuccessText);
-}
-
-@Test
-public void simpleVisibilityTest() {
-    assertTrue(badgeSuccess.isDisplayed());
-}
-```
-
-```html 
-<a href="https://github.com/jdi-testing" style="font-size: 16px;"class="badge badge-success" id="badge-success" alt="Github JDI Link">Github JDI</a>
-```
-
-In this case Badge is represented by Text class in Java:
- 
-  [Link](https://jdi-docs.github.io/jdi-light/#link)
-  
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**alt()** |Returns the alternate text | String
-**assertThat()** | Returns object for work with assertions | LinkAssert
-**click()** |Follow the link | void
-**getText()** |Returns the link text  | String
-**is()** | Returns object for work with assertions | LinkAssert
-**ref()** |Returns the reference  | String
-**url()** |Returns the URL  | URL
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/BadgeTests.java" target="_blank">Bootstrap badge test examples</a><br>
-<br><br>
-
-### Breadcrumb
-
-
-
-<a href="https://getbootstrap.com/docs/4.3/components/breadcrumb/" target="_blank">Breadcrumb</a> is a control element  used for navigational on web pages
-
-![Breadcrumb example](../images/bootstrap/breadcrumb.png)
-
-```java 
-
-// @FindBy(css = "#breadcrumb")
-@UI("#breadcrumb") public static Breadcrumb breadcrumb;
-
-@Test
-public void getTextTest() {
-    breadcrumb.items.has().size(3);
-    breadcrumb.items
-              .assertThat()
-              .values(TEXT, hasItems(ITEMS_VALUES));
-}
-    
-@Test
-public void getCurrectItemTest() {
-    breadcrumb.items.last().has().value(BOOTSTRAP);
-    breadcrumb.items.last().has().text(BOOTSTRAP);
-}
+    @Test
+    public void imageClassTest() {
+        cardImage.image.is().core().hasClass(IMAGE_TOP_CLASS);
+        cardImage.image.assertThat().core().hasClass(IMAGE_TOP_CLASS);
+    }
 ```
 
 Here is an example with provided Bootstrap v4.3 code:
   
 ```html
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb" id="breadcrumb">
-        <li class="breadcrumb-item"><a
-                href="https://jdi-testing.github.io/jdi-light/index.html" target="_blank">Home</a>
-        </li>
-        <li class="breadcrumb-item"><a
-                href="https://jdi-testing.github.io/jdi-light/html5.html" target="_blank">HTML
-            5</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Bootstrap</li>
-    </ol>
-</nav>
+<div class="card mb-3" id="card-image-caps-1" style="width: 18rem;">
+  <img style="width: 30%; margin: 0 auto;" src="images/captain-america.jpg" class="card-img-top"
+    alt="Captain America image">
+</div>
 ```
-
-Breadcrumb is represented  by the following class: <br>
-- [UIBaseElement](https://jdi-docs.github.io/jdi-light/#uibaseelement) 
-
-Inner elements are represented  by the following class: <br>
-- [Weblist](https://jdi-docs.github.io/jdi-light/#weblist) 
 
 Available methods in Java JDI Light:
 
 |Method/Property | Description | Return Type
 --- | --- | ---
-**assertThat()**	 |  Assert action	| UIAssert
-**click()** | Click the item  | void
-**first()**|Get first item |UIElement
-**getText()** |Get item text  |  String
-**getValue()** |Get item value  |  String
-**get(String option)**|Get item by text|UIElement 
-**get(int index)**|Get item by index| UIElement
-**is()**	 |  Assert action	| UIAssert
-**last()**|Get last item |UIElement
-**shouldBe()**	 |  Assert action	| UIAssert
+alt() | Assert alt image attribute  | ImageAssert
+assertThat()	 |  Assert action	| ImageAssert
+getText() | Get item text | String
+getValue() |Get item value  |  String
+height() | Assert image height | ImageAssert
+is()	 |  Assert action	| UIAssert
+width() | Assert image width | ImageAssert
 
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/BreadcrumbTests.java" target="_blank">Breadcrumb Tests Example</a>
-
-<br><br>
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ImageTests.java" target="_blank">Bootstrap test example with tooltips</a>
+ 
+<br>
 
 ### Navbar
 
@@ -8660,157 +9010,8 @@ is()	 |  Assert action	| UIAssert
  
 <br>
 
-###Image
-
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/content/images/" target="_blank">Images</a> is a hint that used in conjuction with a pointer.
-
-```java 
-    //@FindBy(css = "#card-image")
-    @UI("#card-image")
-    public static CardImage cardImage;
-
-    public class CardImage extends Card {
-        @UI(".card-text") public Text text;
-        @UI("#bs-card-image") public Image image;
-    }
-
-    @Test
-    public void availabilityTest() {
-        cardImage.image.is()
-                .displayed()
-                .enabled();
-    }
-
-    @Test
-    public void getAltTest() {
-        assertEquals(cardImage.image.alt(), ALT_ATTR_EXPECTED);
-    }
-
-    @Test
-    public void isValidationTest() {
-        cardImage.image.is().src(is(SRC_ATTR_EXPECTED));
-        cardImage.image.is().alt(is(ALT_ATTR_EXPECTED));
-        cardImage.image.unhighlight();
-        cardImage.image.assertThat().width(is(WIDTH));
-        cardImage.image.assertThat().height(is(HEIGHT));
-    }
-
-    @Test
-    public void imageClassTest() {
-        cardImage.image.is().core().hasClass(IMAGE_TOP_CLASS);
-        cardImage.image.assertThat().core().hasClass(IMAGE_TOP_CLASS);
-    }
-```
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-```html
-<div class="card mb-3" id="card-image-caps-1" style="width: 18rem;">
-  <img style="width: 30%; margin: 0 auto;" src="images/captain-america.jpg" class="card-img-top"
-    alt="Captain America image">
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method/Property | Description | Return Type
---- | --- | ---
-alt() | Assert alt image attribute  | ImageAssert
-assertThat()	 |  Assert action	| ImageAssert
-getText() | Get item text | String
-getValue() |Get item value  |  String
-height() | Assert image height | ImageAssert
-is()	 |  Assert action	| UIAssert
-width() | Assert image width | ImageAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/ImageTests.java" target="_blank">Bootstrap test example with tooltips</a>
- 
-<br>
-
 
 ## Bootstrap Complex elements
-
-###Collapse
-
-The <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/collapse/" target="_blank">collapse</a> is used to show and hide content. 
-Buttons or anchors are used as triggers that are mapped to specific elements you toggle.
-
-``Collapse`` extends JDI Light's ``DropdownExpand``, thus inheriting its methods.<br>
-You can use a ``@JDropdown`` annotation to declare a Collapse within your Page Object.
-
-![Collapse example](../images/bootstrap/collapse.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@JDropdown(expand = "#bs-group-toggle-one",
-            value = "#bs-group-one",
-            list = "#bs-group-one-body")
-public static Collapse collapseGroupOne;
-
-String groupOneText = "You probably haven't heard of them accusamus labore sustainable VHS.";
-
-@Test
-public void collapseGroupOneTest() {
-    collapseGroupOne.highlight();
-    collapseGroupOne.expand();
-
-    collapseGroupOne.is().expanded();
-    collapseGroupOne.value().is().text(groupOneText);
-
-    collapseGroupOne.collapse();
-    collapseGroupOne.is().collapsed();
-}
-
-@Test
-public void collapseGroupOneListTest() {
-    collapseGroupOne.highlight();
-    collapseGroupOne.expand();
-
-    collapseGroupOne.is().expanded();
-    collapseGroupOne.list().is().size(1);
-    collapseGroupOne.list().get(1).is().text(groupOneText);
-
-    collapseGroupOne.collapse();
-    collapseGroupOne.is().collapsed();
-}
-```
-
-```html
-<div class="accordion mb-3" id="accordionExample">
-    <div class="card">
-        <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-                <button id="bs-group-toggle-one" class="btn btn-link" type="button"
-                        data-toggle="collapse" data-target="#bs-group-one"
-                        aria-expanded="true" aria-controls="collapseOne">
-                    Collapsible Group Item #1
-                </button>
-            </h2>
-        </div>
-
-        <div class="collapse"
-             aria-labelledby="headingOne" data-parent="#accordionExample" id="bs-group-one">
-            <div class="card-body" id="bs-group-one-body">You probably haven't heard of
-                them accusamus labore sustainable VHS.
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | UISelectAssert 
-**collapse()** | Collapses element  | void
-**expand()** | Expands element  | void
-**is()** | Various assert actions | UISelectAssert
-**list()** | Returns collapse ``list()`` property | WebList
-**value()** | Returns collapse ``value()`` property | UIElement
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/CollapseTests.java)
 
 ###Carousel
 <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/carousel/" target="_blank">Carousel</a> - a slideshow component for cycling through elements—images or slides of text—like a carousel.<br>
@@ -9295,6 +9496,88 @@ select(int i) | Select slide by index  | void
 <br>
 <br>
 <br>
+
+###Collapse
+
+The <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/collapse/" target="_blank">collapse</a> is used to show and hide content. 
+Buttons or anchors are used as triggers that are mapped to specific elements you toggle.
+
+``Collapse`` extends JDI Light's ``DropdownExpand``, thus inheriting its methods.<br>
+You can use a ``@JDropdown`` annotation to declare a Collapse within your Page Object.
+
+![Collapse example](../images/bootstrap/collapse.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@JDropdown(expand = "#bs-group-toggle-one",
+            value = "#bs-group-one",
+            list = "#bs-group-one-body")
+public static Collapse collapseGroupOne;
+
+String groupOneText = "You probably haven't heard of them accusamus labore sustainable VHS.";
+
+@Test
+public void collapseGroupOneTest() {
+    collapseGroupOne.highlight();
+    collapseGroupOne.expand();
+
+    collapseGroupOne.is().expanded();
+    collapseGroupOne.value().is().text(groupOneText);
+
+    collapseGroupOne.collapse();
+    collapseGroupOne.is().collapsed();
+}
+
+@Test
+public void collapseGroupOneListTest() {
+    collapseGroupOne.highlight();
+    collapseGroupOne.expand();
+
+    collapseGroupOne.is().expanded();
+    collapseGroupOne.list().is().size(1);
+    collapseGroupOne.list().get(1).is().text(groupOneText);
+
+    collapseGroupOne.collapse();
+    collapseGroupOne.is().collapsed();
+}
+```
+
+```html
+<div class="accordion mb-3" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button id="bs-group-toggle-one" class="btn btn-link" type="button"
+                        data-toggle="collapse" data-target="#bs-group-one"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    Collapsible Group Item #1
+                </button>
+            </h2>
+        </div>
+
+        <div class="collapse"
+             aria-labelledby="headingOne" data-parent="#accordionExample" id="bs-group-one">
+            <div class="card-body" id="bs-group-one-body">You probably haven't heard of
+                them accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | UISelectAssert 
+**collapse()** | Collapses element  | void
+**expand()** | Expands element  | void
+**is()** | Various assert actions | UISelectAssert
+**list()** | Returns collapse ``list()`` property | WebList
+**value()** | Returns collapse ``value()`` property | UIElement
+
+[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/CollapseTests.java)
 
 ###Multiple progress bars
 
@@ -10209,5631 +10492,6 @@ Nav group is represented by Section class in Java:
 
 
 ## Bootstrap Composite elements
-### Forms
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/forms/" target="_blank">Forms</a> – logical part of a web page that represents an HTML form.
-Form can consists of:
-<ul>
-<li>Textual form controls(inputs, selects, and textareas)</li>
-<li>File inputs</li>
-<li>Range inputs</li>
-<li>Checkboxes and Radiobuttons</li>
-<li>Help text</li>
-<li>Fieldsets(which can disable all the controls within)</li>
-</ul>
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**add(T entity)** | Fills all settable elements and clicks “add” Button or ”addButton” | void
-**back(T entity)** | Fills all settable elements and clicks “back” Button or ”backButton” | void
-**cancel(T entity)** | Fills all settable elements and clicks “cancel” Button or ”cancelButton” | void
-**check(T entity)** | Verifies that form has been filled correctly. If not, throws an exception | void
-**close(T entity)** | Fills all settable elements and clicks “close” Button or ”closeButton” | void
-**fill(T entity)** | Fills all settable elements of the form that can be matched with fields of the input entity | void
-**fillAction(Field field, Object element, Object parent, String setValue)** | Defines the specifics of how form elements will be filled | void
-**getAction(Field field, Object element, Object parent)** | Defines the specifics of how form elements will be obtained for verification and checks | String
-**is()** | Asserts element  | UIAssert
-**login()** | Clicks "login" Button or "loginButton"| void
-**login(T entity)** | Fills all settable elements and clicks “login” Button or ”loginButton” | void
-**loginAs(T entity)** | Fills all settable elements and clicks “login” Button or ”loginButton” | void
-**next(T entity)** | Fills all settable elements and clicks “next” Button or ”nextButton” | void
-**onlyMandatory()** | Sets form filter option to **MANDATORY**, meaning that only mandatory form elements are filled/submitted or verified/checked for the duration of a single form action | void
-**onlyOptional()** | Sets form filter option to **OPTIONAL**, meaning that only optional form elements are filled/submitted or verified/checked for the duration of a single form action | void
-**pressButton(String buttonName)** | Clicks “buttonName” Button or "buttonNamebutton". Allows different buttons to send one form, e.g. save/publish/cancel/search/update/... | void
-**publish(T entity)** | Fills all settable elements and clicks “publish” Button or ”publishButton” | void
-**save(T entity)** | Fills all settable elements and clicks “save” Button or ”saveButton” | void
-**search(T entity)** | Fills all settable elements and clicks “search” Button or ”searchButton” | void
-**select(T entity)** | Fills all settable elements and clicks “select” Button or ”selectButton” | void
-**send()** | Sends the form by clicking “send” Button or "sendButton" | void
-**send(T entity)** | Fills all settable elements and clicks “send” Button or ”sendButton” | void
-**submit()** | Sends the form by clicking "submit" Button or "submitButton" | void
-**submit(String text)** | Fills first settable form field with value and clicks "submit" Button or "submitButton"  | void
-**submit(T entity)** | Fills all settable elements and clicks "submit" Button or "submitButton"  | void
-**submit(String text, String buttonName)** | Fills first settable field with value and clicks “buttonName” Button or "buttonNamebutton"| void
-**submit(T entity, String buttonName)** | Fills all settable elements and clicks “buttonName” Button or "buttonNamebutton" | void
-**update(T entity)** | Fills all settable elements and clicks “update” Button or ”updateButton” | void
-**verify(T entity)** | Verifies that form has been filled correctly. If not, returns a list of keys where verification has failed | List<String>
-
-#### Simple form
-This is an example of simple form consisting of some basic elements.
-![Simple form](../images/bootstrap/form-simple.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-     public class BootstrapFormsPage extends WebPage {
-         // FindBy(css = "#support-form")
-         @UI("#support-form")      
-         public static SupportMessageForm supportMessageForm;
-     }
-    
-    @Test
-    public void submitButtonTest() {
-        supportMessageForm.supportButtonSubmit.click();
-        lastLogEntry.has().text(containsString(logLineSubmit));
-    }
-
-    @Test
-    public void clearButtonTest() {
-        supportMessageForm.supportButtonClear.click();
-        lastLogEntry.has().text(containsString(logLineClear));
-    }
-
-    @Test
-    public void submitFormTest() {
-        setDefaultValues();
-        supportMessageForm.submit(EXAMPLE_MESSAGE);
-        lastLogEntry.has().text(containsString(logLineSubmit));
-        supportMessageForm.check(EXAMPLE_MESSAGE);
-    }
-
-    @Test
-    public void fillFormTest() {
-        setDefaultValues();
-        supportMessageForm.fill(EXAMPLE_MESSAGE);
-        supportMessageForm.supportEmail.has().text(EXAMPLE_MESSAGE.supportEmail);
-        supportMessageForm.supportMessage.has().text(EXAMPLE_MESSAGE.supportMessage);
-        supportMessageForm.check(EXAMPLE_MESSAGE);
-    }
-
-    @Test
-    public void clearFormTest() {
-        setDefaultValues();
-        supportMessageForm.clear(EXAMPLE_MESSAGE);
-        lastLogEntry.has().text(containsString(logLineClear));
-        supportMessageForm.check(TEMPLATE_MESSAGE);
-    }
-```
-
-```html 
-<form id="support-form">
-    <div class="form-group">
-        <label for="support-email">Please enter your email address at which
-            our manager can contact you</label>
-        <input type="email" class="form-control" id="support-email" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-            else.</small>
-    </div>
-    <div class="form-group">
-        <label for="support-message">Your message</label>
-        <textarea class="form-control" id="support-message" rows="3"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" id="support-button-submit">Submit</button>
-    <button type="reset" class="btn btn-danger" id="support-button-clear">Clear</button>
-</form>
-```
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/SimpleFormTests.java)
-<br><br><br><br><br><br><br><br><br><br><br>
-
-#### Complicated form
-This is an example of complicated form consisting of various specific elements.
-![Complicated form](../images/bootstrap/form-complicated.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-    public class BootstrapFormsPage extends WebPage {
-        // @FindBy(css = "#superhero-creation-form")
-        @UI("#superhero-creation-form") 
-        public static SuperheroForm superheroForm;
-        // @FindBy(css = ".logs  li:first-child")        
-        @UI(".logs  li:first-child") 
-        public static Text lastLogEntry;
-    }
-    
-    @Test
-    public void submitButtonTest() {
-        superheroForm.superheroButtonSubmit.click();
-        lastLogEntry.has().text(containsString(logLineSubmit));
-    }
-    
-    @Test
-    public void clearButtonTest() {
-        superheroForm.superheroButtonClear.click();
-        lastLogEntry.has().text(containsString(logLineClear));
-    }
-    
-    @Test
-    public void submitFormTest() {
-        superheroForm.submit(EXAMPLE_HERO);
-        lastLogEntry.has().text(containsString(logLineSubmit));
-        superheroForm.check(EXAMPLE_HERO);
-    }
-    
-    @Test
-    public void clearFormTest() {
-        superheroForm.clear(EXAMPLE_HERO);
-        lastLogEntry.has().text(containsString(logLineClear));
-        superheroForm.check(TEMPLATE_HERO);
-    }
-``` 
-
-```html 
-<form id="superhero-creation-form">
-    <div class="form-group">
-        <label for="current-alias">Enter your alias</label>
-        <input type="text" class="form-control" id="current-alias" aria-describedby="emailHelp" placeholder="Enter alias">
-    </div>
-    <div class="form-group">
-        <label for="alter-ego">Enter your alter ego</label>
-        <input type="text" class="form-control" id="alter-ego" aria-describedby="emailHelp" placeholder="Enter alter ego">
-    </div>
-    <!-- Radios start -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Species</legend>
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="superheroSpecies" id="human" value="option1" checked="">
-                    <label class="form-check-label" for="human">
-                        Human
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="superheroSpecies" id="symbiote" value="option2">
-                    <label class="form-check-label" for="symbiote">
-                        Symbiote
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="superheroSpecies" id="skrulls" value="option3">
-                    <label class="form-check-label" for="skrulls">
-                        Skrulls
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="superheroSpecies" id="kryptonian" value="option4">
-                    <label class="form-check-label" for="kryptonian">
-                        Kryptonian
-                    </label>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-    <!-- Radios end -->
-    <div>
-        <label for="superhero-range">Power scale:</label>
-        <input type="range" class="custom-range mb-3" min="0" max="100" id="superhero-range">
-    </div>
-    <label for="select-universe">Universe:</label>
-    <select class="custom-select mb-3" id="select-universe">
-        <option selected="">Select character's universe</option>
-        <option value="1">DC</option>
-        <option value="2">Marvel Earth-616</option>
-        <option value="3">Marvel Cinematic Universe</option>
-    </select>
-    <div class="custom-control custom-switch mb-3" id="superhero-switch-div">
-        <input type="checkbox" class="custom-control-input" id="superhero-switch">
-        <label class="custom-control-label" for="superhero-switch">I'm not going to destroy all living beings</label>
-    </div>
-    <button type="submit" class="btn btn-primary" id="superhero-button-submit">Submit</button>
-    <button type="reset" class="btn btn-danger" id="superhero-button-clear">Clear</button>
-</form>
-```
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/ComplicatedFormTests.java)
-
-####Sizing
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.0/components/forms/#sizing" target="_blank">Set</a> heights using classes like .form-control-lg and .form-control-sm.
-
-![Forms_sizing](../images/bootstrap/forms-sizing.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#forms-sizing")  //@FindBy(css = "#forms-sizing")
-public static FormsSizing formsSizing;
-
-@UI("#form-sizing-lg")  //@FindBy(css = "#form-sizing-lg")
-public TextField largeTextField;
-
-@UI("#form-sizing-select-lg")  //@FindBy(css = "#form-sizing-select-lg")
-public DropdownSelect largeSelect;
-
-private String text = "TextField";
-private String placeholderLarge = ".form-control-lg";
-private String placeholderDefault = "Default input";
-private String placeholderSmall = ".form-control-sm";
-
-@Test
-public void sendKeysTest() {
-    formsSizing.largeTextField.sendKeys("Test");
-    assertEquals(formsSizing.largeTextField.getText(), text+"Test");
-}
-
-@Test
-public void selectOptionTest() {
-    formsSizing.largeSelect.select("Large select");
-    assertEquals(formsSizing.largeSelect.getValue(), "Large select");
-}
-
-@Test
-public void isValidationTest() {
-    formsSizing.largeTextField.is()
-                    .enabled()
-                    .text(is(text));
-    formsSizing.largeSelect.is()
-                    .displayed()
-                    .selected("Large option");
-    formsSizing.largeTextField.is()
-                    .enabled()
-                    .placeholder(placeholderLarge);
-}
-
-```
-
-````html
-<div class="html-left" id="forms-sizing">
-    <div class="mb-3">
-        <input class="form-control form-control-lg mb-3" id="form-sizing-lg" type="text"
-               placeholder=".form-control-lg">
-        <input class="form-control mb-3" id="form-sizing-default" type="text"
-               placeholder="Default input">
-        <input class="form-control form-control-sm mb-3" id="form-sizing-sm" type="text"
-               placeholder=".form-control-sm">
-    </div>
-
-    <div class="mb-3">
-        <select class="form-control form-control-lg mb-3" id="form-sizing-select-lg">
-            <option>Large select</option>
-            <option>Large option</option>
-        </select>
-        <select class="form-control mb-3" id="form-sizing-select-default">
-            <option>Default select</option>
-            <option>Default option</option>
-        </select>
-        <select class="form-control form-control-sm mb-3" id="form-sizing-select-sm">
-            <option>Small select</option>
-            <option>Small option</option>
-        </select>
-    </div>
-</div>
-````
-
-Form group is represented by Section class in Java:
-
-  [Section](https://jdi-docs.github.io/jdi-light/#section)
-
-Inner elements of Forms - Sizing are represented by the following classes:
-
-+ [TextField](https://jdi-docs.github.io/jdi-light/#textfield)
-
-+ DropdownSelect    TBD 
-
-|Method / Property | Description | Return Type
---- | --- | ---
-**AssertThat** | Assert action | TextAssert
-**GetText()** | returns text from the text field  | String
-**GetValue()** | returns text from the text field| String
-**Is** | Assert action | TextAssert
-**select(string/int)** | Select data by value/index| void
-**SendKeys(string value)** | adds text to the field | void
-**SetText(String value)** | sets new text | void
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormReadOnlyTests.java)
-
-<br><br>
-**Readonly**
-
-Add the <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#readonly">readonly</a> boolean attribute on an input to prevent modification of the input’s value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
-
-![Forms_readonly_example](../images/bootstrap/form-readonly.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-//@FindBy(css = "#forms-readonly-input")
-@UI("#forms-readonly-input")
-public static TextField readonlyInput;
-
-
-@Test
-public void checkReadonlyAttribute() {
-    assertTrue(readonlyInput.attrs().has("readonly"));
-    readonlyInput.highlight();
-    readonlyInput.is()
-            .displayed()
-            .enabled();
-}
-
-@Test(expectedExceptions = {InvalidElementStateException.class})
-public void check() {
-    readonlyInput.setValue(text);
-    readonlyInput.sendKeys(text);
-}
-
-
-```
-
-```html
-<input class="form-control mb-3" id="forms-readonly-input" type="text"
-                                   placeholder="Readonly input here..." readonly>
-```
-
-Available methods in Java JDI Light:
-
-|Method / Property | Description | Return Type
---- | --- | ---
-**AssertThat()** | property that returns object for work with assertions| TextAssert
-**Focus()** | places cursor within the text field | void
-**GetText()** | returns text from the text field  | String
-**GetValue()** | returns text from the text field| String
-**Is()** | property that returns object for work with assertions| TextAssert
-**Input(string text)** | sets new text  | void
-**Placeholder** | returns value of the placeholder attribute | String
-**SendKeys(string value)** | adds text to the field | void
-**SetText(String value)** | sets new text | void
-
-
-<a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite.section.form.FormReadOnlyTests.java" target=a_blank> Bootstrap test examples </a>
-
-
-<br><br>
-####Readonly plain text
-
-If you want to have input readonly elements in your form styled as 
-<a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#readonly-plain-text">plain text</a>,
- use the <b>.form-control-plaintext</b> class to remove the default form field styling and preserve the correct margin and padding.
-Compare items with plaintext mark (upper) and without it (lower):
-
-![Forms_readonly_plain_text_example](../images/bootstrap/readonly_plain_text.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-//@FindBy(css = "#readonlyPlainText1")
-@UI("#readonlyPlainText1")
-public static ReadonlyPlainText readonlyPlainText1;
-
-@Test
-public void isValidationTest() {
-    readonlyPlainText1.is().core().hasClass("form-control-plaintext");
-    assertTrue(readonlyPlainText1.hasAttribute("readonly"));
-    readonlyPlainText1.is().core().attr("type", "text");
-
-@Test
-public void textValidationTest() {
-    readonlyPlainText1.is().text("email@example.com");
-}
-
-@Test
-public void labelTest() {
-    readonlyPlainText1.label().is().text("Email");
-}
-```
-
-```html
-<div class="form-group row">
-    <label for="readonlyPlainText1" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="readonlyPlainText1"
-               value="email@example.com">
-    </div>
-</div>
-```
-
-
-Available methods in Java JDI Light:
-
-|Method/Property | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**attr()** | Match passed value with element attribute | ICoreElement
-**getValue()** | Get item value | String
-**hasClass()** | Match passed value with element class | ICoreElement
-**is()** | Various assert actions for Progress | ProgressAssert 
-**label()** | Get label associated with an item | Label
-**labelText()** | Get text of a label associated with an item | String
-
-<a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/mposite.section.form.ReadonlyPlainTextTests.java" target=a_blank> Bootstrap test examples </a>
-
-<br><br>
-
-####Range input
-
-Set horizontally scrollable <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#range-inputs">range inputs</a>
-using .form-control-range.
-
-![Forms_range_input_example](../images/bootstrap/range_input.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-//@FindBy(css = "#formControlRange")
-@UI("#formControlRange")
-public static RangeInput rangeInput;
-
- @Test
- public void itemHasProperClass() {
-    rangeInput.is().core().hasClass("form-control-range");
- }
-
- @Test
- public void itemHasProperType() {
-    rangeInput.is().core().attr("type", "range");
- }
-
- @Test
- public void labelValidationTest() {
-    rangeInput.label().is().text("Example Range input");
- }
-```
-
-```html
-<form class="mb-3">
-    <div class="form-group">
-        <label for="formControlRange">Example Range input</label>
-        <input type="range" class="form-control-range" id="formControlRange">
-    </div>
-</form>
-```
-
-Available methods in Java JDI Light:
-
-|Method/Property | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | UIAssert
-**attr()** | Match passed value with element attribute | String
-**hasClass()** | Match passed value with element class | boolean
-**is()** | Various assert actions for Progress | UIAssert 
-**label()** | Get label associated with an item | Label
-**labelText()** | Get text of a label associated with an item | String
-
-<a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/RangeInputTests.java" target=a_blank> Bootstrap test examples </a>
-
-####Select menu
-
-```java 
-public class SelectMenu extends Form implements ISelector {
-    //FindBy(css = "option")
-    @UI("option") public WebList optionsSelectMenu;
-    //FindBy(css = "option[selected]")
-    @UI("option[selected]") public UIElement selectedOptionsSelectMenu;
-    @Override
-    public WebList list() { return optionsSelectMenu; }
-}
-
-//FindBy(id = "forms-select-menu")
-@UI("#forms-select-menu")
-public static SelectMenu formsSelectMenu;
-
-@Test
-public void getSelectedOptionFormsSelectMenuTest() {
-  formsSelectMenu.selectedOptionsSelectMenu.is().text("Open this select menu");
-}
-
-//FindBy(id = "forms-select-menu-large")
-@UI("#forms-select-menu-large")
-public static SelectMenu formsSelectMenuLarge;
- 
-@Test(dataProvider = "optionFormSelectMenuTest")
-public void getTextFormsSelectMenuTest(int i, String optionText, String value) {
-  formsSelectMenuLarge.optionsSelectMenu.get(i).is().text(optionText);
-  formsSelectMenuLarge.optionsSelectMenu.get(i).assertThat().attr("value", value);
-}
-
-
-
-
-//FindBy(id = "forms-select-menu-small")
-@UI("#forms-select-menu-small")
-public static SelectMenu formsSelectMenuSmall;
-
-
-
-
-
-
-
-
-//FindBy(id = "forms-select-menu-multiple")
-@UI("#forms-select-menu-multiple")
-public static SelectMenu formsSelectMenuMultiple;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//FindBy(id = "forms-select-menu-size")
-@UI("#forms-select-menu-size")
-public static SelectMenu formsSelectMenuSize;
-
-
-
-
-
-
-@Test
-public void selectOptionFormsSelectMenuTest() {
-  formsSelectMenuSize.optionsSelectMenu.get(4).click();
-  assertEquals(formsSelectMenuSize.getValue(), "Three");
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
-You can use custom <a href = "https://getbootstrap.com/docs/4.3/components/forms/#select-menu" target = "a_blank">select menus</a>.
-
-Select menu is located in the following classes:
-
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.common.SelectMenu*_
-  
-
-![Select menu](../images/bootstrap/form-select-menu.png) <br>
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<select class="custom-select mb-3" id="forms-select-menu">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-``` 
-<br>
-
-**Large select menu**
-![Select menu](../images/bootstrap/form-select-menu-large.png) <br>
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<select class="custom-select custom-select-lg mb-3" id="forms-select-menu-large">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-```
- <br>
-
-**Small select menu**
-![Select menu](../images/bootstrap/form-select-menu-small.png) <br>
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<select class="custom-select custom-select-sm mb-3" id="forms-select-menu-small">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-```
-<br>
-
-**Select menu multiple**
-![Select menu](../images/bootstrap/form-select-menu-multiple.png) <br>
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<select class="custom-select mb-3" multiple id="forms-select-menu-multiple">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-```
-<br>
-
-**Select menu size**
-![Select menu](../images/bootstrap/form-select-menu-size.png) <br>
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<select class="custom-select mb-3" size="3" id="forms-select-menu-size">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-```
-<br>
-
-Available methods in Java JDI Light:
-<br>
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button | void
-**is()** | Assert action | TextAssert 
-<br>
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormsSelectMenuTests.java" target=a_blank> Bootstrap test examples </a>
-
-####Range
-
-Create custom <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#range">range</a>
- controls (`<input type="range">`) with .custom-range. The track (the background) and thumb (the value) are both styled to appear the same across browsers. 
-Range inputs have implicit values for min and max: 0 and 100, respectively. You may specify new values for those using the min and max attributes.
-  
-![Range_example](../images/bootstrap/range.png)
- 
-Here is an example with provided Bootstrap v4.3 code:
- 
-```java 
-//@FindBy(css = "#customRange3")
-@UI("#customRange3")
-public static Range range;
-
-@Test
-public void labelTest() {\
-    range.label().is().text(labelText);
- }
-
-@Test
-public void validateThumbMinMaxAndStepValuesTest() {
-    range.is().thumbValue(2.5);
-    range.is().minValue(0);
-    range.is().maxValue(5);
-    range.is().step(0.5);
-}
- 
-@Test
-public void setThumbValueTest() {
-    range3.setThumbValue(5);
-    range3.is().thumbValue(5);
-}
-```
-
-```html
-<div class="html-left">
-    <label for="customRange1">Example range</label>
-    <input type="range" class="custom-range" id="customRange1">
-
-    <label for="customRange2">Example range</label>
-    <input type="range" class="custom-range" min="0" max="5" id="customRange2">
-
-    <label for="customRange3">Example range</label>
-    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method/Property | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | UIAssert
-**getValue()** | Get thumb value as String | String
-**is()** | Various assert actions for Progress | RangeAssert 
-**label()** | Get label associated with an item | Label
-**labelText()** | Get text of a label associated with an item | String
-**max()** | Get maximal limit of range | double
-**min()** | Get minimal limit of range | double
-**step()** | Get incremental step of range | double
-**setThumbValue()** | Set thumb value with a "double" parameter | void
-**setValue()** | Set thumb value with a String parameter | void
-**thumbValue()** | Get thumb value | double
-
-
-<a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/RangeTests.java" target=a_blank> Bootstrap test examples </a>
-
-<br><br>
- 
-#### Form Validation
-
-##### Custom style
-You can use custom <a href = "https://getbootstrap.com/docs/4.3/components/forms/#custom-styles" target = "a_blank">Bootstrap form validation</a> messages.
-
-![Custom style validation](../images/bootstrap/form-bootstrap-validation.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#validated-form")
-public FormValidationForm form;
-
-@Test
-public void bootstrapValidationTest() {
-    String name = "ValidName";
-    String email = "InvalidEmail";
-    String phone = "InvalidPhone";
-
-    SimpleContact entity = new SimpleContact(name, email, phone);
-
-    form.fill(entity);
-    form.submit();
-
-    Map<String, String> validFeedback = form.getValidFeedback();
-    MatcherAssert.assertThat("Number of valid feedbacks not equals 1", validFeedback.size() == 1);
-    MatcherAssert.assertThat(validFeedback.keySet(), Matchers.hasItems("Name"));
-    MatcherAssert.assertThat(validFeedback.values(), Matchers.hasItem("Hi, " + name + "!"));
-
-    Map<String, String> invalidFeedback = form.getInvalidFeedback();
-    MatcherAssert.assertThat("Number of invalid feedbacks not equals 2", invalidFeedback.size() == 2);
-    MatcherAssert.assertThat(invalidFeedback.keySet(), 
-        Matchers.hasItems("Email", "Phone"));
-    MatcherAssert.assertThat(invalidFeedback.values(), 
-        Matchers.hasItems("Enter valid email!", "It doesn't look like a valid phone number"));
-}
-```
-
- ```html 
-<form id="validated-form" class="" novalidate="">
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
-                <input id="validated-form-name-field" type="text" class="form-control" placeholder="Enter name" required="">
-                <div id="name-valid-feedback" class="valid-feedback">Hi, Valid Name!</div>
-                <div class="invalid-feedback">Enter your name!</div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <input type="email" class="form-control" id="validated-form-email" placeholder="Enter email" required="">
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Enter valid email!</div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <input type="text" class="form-control" id="validated-form-phone" placeholder="Enter phone" pattern="^[-+0-9()\s]+$">
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">It doesn't look like a valid phone number</div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-        <button type="submit" class="btn btn-primary" id="validated-form-submit">Send</button>
-        <button type="reset" class="btn btn-danger" id="validated-form-reset">Clear</button>
-        </div>
-    </div>
-</form>
-```
-
-Additional JavaScript code to use Bootstrap validation:
-
-![Browser default validation](../images/bootstrap/form-bootstrap-validation-js.png)
-
-##### Browser default
-
-Also you can use <a href = "https://getbootstrap.com/docs/4.3/components/forms/#browser-defaults" target = "a_blank">browser default validation</a>.
-
-![Browser default validation](../images/bootstrap/form-browser-defaults.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#validated-form")
-public FormValidationForm form;
-
-@Test
-public void browserValidationTest() {
-    String name = "ValidName";
-    String email = "InvalidEmail";
-    String phone = "InvalidPhone";
-
-    SimpleContact entity = new SimpleContact(name, email, phone);
-
-    form.fill(entity);
-    form.submit();
-
-    Map<String, String> validFeedback = form.getValidationMessages();
-
-    MatcherAssert.assertThat("", validFeedback.get("Email"),
-        Matchers.is("Please include an '@' in the email address. 'InvalidEmail' is missing an '@'.")); //Browser dependent message
-    MatcherAssert.assertThat("", validFeedback.get("Phone"),
-        Matchers.is("Please match the requested format.")); //Browser dependent message
-    MatcherAssert.assertThat("", validFeedback.get("Name"), Matchers.is(""));
-}
-```
-
- ```html 
-<form id="validated-form"">
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
-                <input id="validated-form-name-field" type="text" class="form-control" placeholder="Enter name" required="">
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <input type="email" class="form-control" id="validated-form-email" placeholder="Enter email" required="">
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <input type="text" class="form-control" id="validated-form-phone" placeholder="Enter phone" pattern="^[-+0-9()\s]+$">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-        <button type="submit" class="btn btn-primary" id="validated-form-submit">Send</button>
-        <button type="reset" class="btn btn-danger" id="validated-form-reset">Clear</button>
-        </div>
-    </div>
-</form>
-```
- 
-Available methods for form validation in Java JDI Light:
-
-|Method/Property | Description | Return Type
---- | --- | ---
-**isValid()** | Return if form valid | boolean 
-**getValidationMessages()** | Return map field names to browser validation messages | Map<String, String>
-**getValidFeedback()** |  Return map field names to visible valid bootstrap feedback text | Map<String, String>
-**getInvalidFeedback()** |  Return map field names to visible invalid bootstrap feedback text | Map<String, String>
-**getFeedbackElements()** |  Return map field names to visible bootstrap feedback elements | Map<String, UIElement>
-
- <a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/BootstrapValidationTest.java" target="_blank">Bootstrap Test Examples</a>
- 
- 
- 
-### Scrollspy
-**[Scrollspy](https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar)** – automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
-<br><br>
-- [Scrollspy in navbar] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar) 
-<br>
-
-
-
-![Scrollspy](../images/bootstrap/scroll_spy1.png)<br>
-
-```java 
-    // @FindBy(css = "#navbar-example2")
-    @UI("#navbar-example2") public static NavbarWithDropdown navbarWithDropdown;
-    // @FindBy(css = "#navbar-example2~div")
-    @UI("#navbar-example2~div") public static ScrollSpyNav scrollSpyInNavbar;
-    
-    public class NavbarWithDropdown extends Section {
-        // @FindBy(css = "ul>li")
-        @UI("ul>li") 
-        public ListGroup navGroup;
-        // @FindBy(css ="ul>li>a")
-        @UI("ul>li>a") 
-        public ListGroup navItemLink;
-        @JDropdown(expand = ".dropdown-toggle",
-                value = ".dropdown-toggle",
-                list = ".dropdown-item")
-        public Dropdown dropdownMenu;
-        // @FindBy(css = ".navbar-brand")
-        @UI(".navbar-brand") 
-        public Link navbarLink;
-    }
-  
-    public class ScrollSpyNav extends Section {
-        // @FindBy(xpath = ".//h4 | .//h5")
-        @UI(".//h4 | .//h5") public ListGroup header;
-        // @FindBy(css = "p")
-        @UI("p") public ListGroup mainText;          
-    
-        public void scrollParagraph(ListGroup listGroup, int index, String className){
-            mainText.get(index).show();
-    
-            if (!listGroup.get(index).core().hasClass(className) &&
-                    index < header.size()) {
-                header.get(index + 1).show();
-            }
-        }
-    }
-
-    private String itemLink = "https://jdi-testing.github.io/jdi-light/bootstrap.html#";
-    
-    @DataProvider
-    public Object[][] dropdownCheck() {
-        return new Object[][]{
-                {3, itemLink + "one", "one"},
-                {4, itemLink + "two", "two"},
-                {5, itemLink + "three", "three"}
-        };
-    }
-
-    @Test(dataProvider = "dropdownCheck", priority = 1)
-    public void dropdownCheckTests(int _index, String link, String header) {
-        navbarWithDropdown.dropdownMenu.expand();
-        navbarWithDropdown.dropdownMenu.list().get(header).is()
-                .core()
-                .displayed()
-                .enabled()
-                .text(is(header))
-                .value(is(header))
-                .attr(ATTR_NAME_HREF, is(link));
-    }
-
-    @Test
-    public void navbarLinkClickableTests() {
-        navbarWithDropdown.navbarLink.click();
-        newWindowTitleCheck(pageTitle);
-    }
-
-    @Test
-    public void isValidationTests() {
-        navbarWithDropdown.navItemLink.get(3).is().text(dropdown);
-        navbarWithDropdown.navItemLink.get(3).is().value(dropdown);
-        navbarWithDropdown.navItemLink.is().size(3);
-        navbarWithDropdown.navGroup.is().size(3);
-
-        navbarWithDropdown.dropdownMenu.expand();
-        navbarWithDropdown.dropdownMenu.is().size(3);
-
-        navbarWithDropdown.find(By.className("dropdown-divider")).is()
-                .core()
-                .displayed()
-                .enabled()
-                .attr("role", "separator");
-    }
-      
-```
-
-```html
-<nav id="navbar-example2" class="navbar navbar-light bg-light">
-    <a class="navbar-brand"
-       href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar"
-       target="_blank">Navbar</a>
-    <ul class="nav nav-pills">
-        <li class="nav-item"><a class="nav-link" href="#fat">@fat</a>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="#mdo">@mdo</a>
-        </li>
-        <li class="nav-item dropdown"><a
-                class="nav-link dropdown-toggle" data-toggle="dropdown"
-                href="#" role="button" aria-haspopup="true"
-                aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#one">one</a> <a
-                    class="dropdown-item" href="#two">two</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#three">three</a>
-            </div>
-        </li>
-    </ul>
-</nav>
-<div data-spy="scroll" data-target="#navbar-example2"
-     data-offset="0" class="scrollspy-example">
-    <h4 id="fat">@fat</h4>
-    <p>...</p>
-    <h4 id="mdo">@mdo</h4>
-    <p>...</p>
-    <h4 id="one">one</h4>
-    <p>...</p>
-    <h4 id="two">two</h4>
-    <p>...</p>
-    <h4 id="three">three</h4>
-    <p>...</p>
-</div>
-```
-<br>
-<br>
-
-
-
-
-
-
-- [Scrollspy with nested nav] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-nested-nav)
-<br> 
-
-![Scrollspy](../images/bootstrap/scroll_spy2.png)<br>
-
-```java 
-// @FindBy(css = "#navbar-example3")
-@UI("#navbar-example3") public static NestedNav nestedNav;
-// @FindBy(css = "#navbar-example3~div")
-@UI("#navbar-example3~div") public static ScrollSpyNav scrollSpyWithNestedNav;
-  
-public class NestedNav extends Section {
-    // @FindBy(css = "nav")
-    @UI("nav") public ListGroup navGroup;          
-    // @FindBy(css = "nav nav a")
-    @UI("nav nav a") public ListGroup navItemLink; 
-    // @FindBy(css = ".navbar-brand")
-    @UI(".navbar-brand") public Link navbarLink;   
-}
-
-public class ScrollSpyNav extends Section {
-    // @FindBy(xpath = ".//h4 | .//h5")
-    @UI(".//h4 | .//h5") public ListGroup header;
-    // @FindBy(css = "p")
-    @UI("p") public ListGroup mainText;          
-
-    public void scrollParagraph(ListGroup listGroup, int index, String className){
-        mainText.get(index).show();
-
-        if (!listGroup.get(index).core().hasClass(className) &&
-                index < header.size()) {
-            header.get(index + 1).show();
-        }
-    }
-}
-
-@DataProvider
-public Object[][] itemsCheck() {
-    return new Object[][]{
-            {1}, {2}, {3}, {4}, {5}, {6}, {7}
-    };
-}
-
-@Test(dataProvider = "itemsCheck")
-public void paragraphClickableTests(int index) {
-    scrollSpyWithNestedNav.mainText.get(index).highlight();
-
-    scrollSpyWithNestedNav.scrollParagraph(nestedNav.navItemLink, index, CLASS_NAME_ACTIVE);
-
-    assertTrue(nestedNav.navItemLink.get(index).hasClass(CLASS_NAME_ACTIVE));
-    nestedNav.navItemLink.get(index).unhighlight();
-}
-
-
-@Test
-public void isValidationTests() {
-    nestedNav.navItemLink.is().size(7);
-    nestedNav.navGroup.is().size(3);
-    scrollSpyWithNestedNav.mainText.is().size(7);
-    scrollSpyWithNestedNav.header.is().size(7);
-}
-```
-
-```html
-<nav id="navbar-example3" class="navbar navbar-light bg-light">
-    <a class="navbar-brand"
-       href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-nested-nav"
-       target="_blank">Navbar</a>
-    <nav class="nav nav-pills flex-column">
-        <a class="nav-link" href="#item-1">Item 1</a>
-        <nav class="nav nav-pills flex-column">
-            <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a> <a
-                class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
-        </nav>
-        <a class="nav-link" href="#item-2">Item 2</a> <a
-            class="nav-link" href="#item-3">Item 3</a>
-        <nav class="nav nav-pills flex-column">
-            <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a> <a
-                class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
-        </nav>
-    </nav>
-</nav>
-
-<div data-spy="scroll" data-target="#navbar-example3"
-     data-offset="0" class="scrollspy-example-2">
-    <h4 id="item-1">Item 1</h4>
-    <p>...</p>
-    <h5 id="item-1-1">Item 1-1</h5>
-    <p>...</p>
-    <h5 id="item-1-2">Item 1-2</h5>
-    <p>...</p>
-    <h4 id="item-2">Item 2</h4>
-    <p>...</p>
-    <h4 id="item-3">Item 3</h4>
-    <p>...</p>
-    <h5 id="item-3-1">Item 3-1</h5>
-    <p>...</p>
-    <h5 id="item-3-2">Item 3-2</h5>
-    <p>...</p>
-</div>
-```
-<br>
-<br>
-
-- [Scrollspy with list-group] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-list-group)
-<br>
-
-![Scrollspy](../images/bootstrap/scroll_spy3.png)<br>
-
-```java 
-// @FindBy(css = "#list-example>a")
-@UI("#list-example>a") public static ListGroup listGroupForScrollSpy;
-// @FindBy(css = "#list-example~div")
-@UI("#list-example~div") public static ScrollSpyNav scrollSpyWithListGroup;
-
-public class ScrollSpyNav extends Section {
-    // @FindBy(xpath = ".//h4 | .//h5")
-    @UI(".//h4 | .//h5") public ListGroup header;
-    // @FindBy(css = "p")
-    @UI("p") public ListGroup mainText;          
-
-    public void scrollParagraph(ListGroup listGroup, int index, String className){
-        mainText.get(index).show();
-
-        if (!listGroup.get(index).core().hasClass(className) &&
-                index < header.size()) {
-            header.get(index + 1).show();
-        }
-    }
-}
-
-@DataProvider
-public Object[][] itemsCheck() {
-    return new Object[][]{
-            {1}, {2}, {3}, {4}
-    };
-}   
-
-@Test(dataProvider = "itemsCheck")
-public void paragraphClickableTests(int index) {
-    scrollSpyWithListGroup.mainText.get(index).highlight();
-
-    scrollSpyWithListGroup.scrollParagraph(listGroupForScrollSpy, index, CLASS_NAME_ACTIVE);
-
-    listGroupForScrollSpy.get(index)
-            .is()
-            .core()
-            .displayed()
-            .enabled()
-            .cssClass(CLASS_NAME_LIST_GROUP_ITEM_LIST_GROUP_ITEM_ACTION_ACTIVE)
-            .css(CSS_NAME_BACKGROUND_COLOR, "rgba(0, 123, 255, 1)")//#007bff Color Hex
-            .css(CSS_NAME_BORDER_COLOR, "rgb(0, 123, 255)");//#007bff Color Hex
-
-    listGroupForScrollSpy.get(index).unhighlight();
-}
-
-@Test
-public void isValidationTests() {
-    scrollSpyWithListGroup.header.is().size(4);
-    scrollSpyWithListGroup.mainText.is().size(4);
-    listGroupForScrollSpy.is().size(4);
-}
-```
-
-```html
-<div id="list-example" class="list-group">
-    <a class="list-group-item list-group-item-action"
-       href="#list-item-1">Item 1</a> <a
-        class="list-group-item list-group-item-action"
-        href="#list-item-2">Item 2</a> <a
-        class="list-group-item list-group-item-action"
-        href="#list-item-3">Item 3</a> <a
-        class="list-group-item list-group-item-action"
-        href="#list-item-4">Item 4</a>
-</div>
-<div data-spy="scroll" data-target="#list-example"
-     data-offset="0" class="scrollspy-example">
-    <h4 id="list-item-1">Item 1</h4>
-    <p>...</p>
-    <h4 id="list-item-2">Item 2</h4>
-    <p>...</p>
-    <h4 id="list-item-3">Item 3</h4>
-    <p>...</p>
-    <h4 id="list-item-4">Item 4</h4>
-    <p>...</p>
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()**	|  Assert action	| TextAssert
-**click()**	| Click element | void
-**expand()**| Expand dropdown|void  
-**get(int)**	| Select element by index	 | UIElement
-**get(String)**	| Select element by text	 | UIElement
-**getText()**|Get text	  | String
-**getValue()**| Get value | String
-**is()**		|  Assert action	| TextAssert
-**list()**| Get list of dropdown | WebList
-**show ()**| Scroll to element| void
-**size()**| Get WebList size| int
-
-In these java test cases examples next classes have been used:
-
- - Java: com.epam.jdi.light.elements.composite.Section
-
- - Java: com.epam.jdi.light.elements.complex.ListGroup
-
- - Java: com.epam.jdi.light.ui.bootstrap.elements.common.Link
-
- - Java: com.epam.jdi.light.elements.complex.dropdown.Dropdown
-
-[Scrollspy in navbar Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyInNavbarTests.java)
-
-[Scrollspy with nested nav Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithNestedNavTests.java)
-
-[Scrollspy with list-group Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithListGroupTests.java)
-
-<br><br>
-
-### Media object
-
-```java 
-public class MediaObject extends Section {
-}
-```
-
-<a href="https://getbootstrap.com/docs/4.3/components/media-object" target=a_blank> Media object</a> helps build complex and repetitive components where some media is positioned alongside content that doesn’t wrap around said media.
-
-**Media object sample**
-
-![Media object sample](../images/bootstrap/media-object-sample.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-  ```java 
-  // @FindBy(css = "#media-object-sample")
-  @UI("#media-object-sample") public static MediaObjectSample mediaObjectSample; 
-  
-  public class MediaObjectSample extends MediaObject {
-  @UI("img") public Image imageOfMediaObject;
-  
-  @Title
-  @UI("h5") public Text headingOfMediaObject;
-  
-  @UI(".media-body") public Text bodyOfMediaObject;
-  }
-  
-  @Test
-  public void isValidationTestSample() {
-      mediaObjectSample.is().displayed();
-      mediaObjectSample.is().enabled();
-      mediaObjectSample.bodyOfMediaObject.is().text(is(bodyTextOfMediaObjectSample));
-      mediaObjectSample.bodyOfMediaObject.is().text(containsString("American comic books"));
-      assertThat(mediaObjectSample.headingOfMediaObject.core().css("font-size"), is("20px"));
-      assertThat(mediaObjectSample.bodyOfMediaObject.core().css("font-size"), is("14px"));
-      mediaObjectSample.bodyOfMediaObject.assertThat().displayed()
-              .and().text(is(bodyTextOfMediaObjectSample))
-              .core()
-              .css("font-size", is("14px"))
-              .cssClass("media-body")
-      ;
-  }
-  ```
-
-```html
-<div class="media" id="media-object-sample">
-    <img src="images/wolverin.jpg" class="mr-3" alt="...">
-    <div class="media-body">
-        <h5 class="mt-0">WOLVERINE</h5>
-        Wolverine is a fictional character appearing in American comic books published by Marvel
-        Comics, mostly in association with the X-Men. He is a mutant who possesses animal-keen
-        senses, enhanced physical capabilities, powerful regenerative ability known as a healing
-        factor, and three retractable claws in each hand.
-    </div>
-</div>
-```
-
-
-**Media object nesting**
-
-![Media object nesting](../images/bootstrap/media-object-nesting.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-  ```java 
-  // @FindBy(css = "#media-object-nesting")
-  @UI("#media-object-nesting") public static MediaObjectNesting mediaObjectNesting; 
-  
-  public class MediaObjectNesting extends MediaObject {
-  @UI("img") public Image imageOfMediaObject;
-  
-  @Title
-  @UI("h5") public Text headingOfMediaObject;
-  
-  @UI(".media-body") public Text bodyOfMediaObject;
-  
-  @UI("div.media div.media") public MediaObjectSample  nestingMediaObject;
-  }
-  
-  @Test
-  public void isValidationTestNesting() {
-      mediaObjectNesting.is().displayed();
-      mediaObjectNesting.is().enabled();
-      mediaObjectNesting.nestingMediaObject.bodyOfMediaObject.is().text(is(bodyTextOfMediaObjectNesting));
-      mediaObjectNesting.nestingMediaObject.bodyOfMediaObject.is().text(containsString("vel eu leo"));
-      assertThat(mediaObjectNesting.nestingMediaObject.headingOfMediaObject.core().css("font-size"), is("20px"));
-      assertThat(mediaObjectNesting.nestingMediaObject.bodyOfMediaObject.core().css("font-size"), is("14px"));
-      mediaObjectNesting.nestingMediaObject.bodyOfMediaObject.assertThat().displayed()
-              .and().text(is(bodyTextOfMediaObjectNesting))
-              .core()
-              .css("font-size", is("14px"))
-              .cssClass("media-body")
-      ;
-  
-  }
-  
-  ```
-  
-```html
-<div class="media" id="media-object-nesting">
-    <img src="images/wolverin.jpg" class="mr-3" alt="...">
-    <div class="media-body">
-        <h5 class="mt-0">Media heading</h5>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-        sollicitudin.
-        <div class="media mt-3">
-            <a class="mr-3" href="https://jdi-testing.github.io/jdi-light/index.html"
-               target="_blank">
-                <img src="images/punisher.jpg" class="mr-3" alt="...">
-            </a>
-            <div class="media-body">
-                <h5 class="mt-0">IRON MAN</h5>
-                Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-
-**Media object list**
-
-
-![Media object list](../images/bootstrap/media-object-list.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-    // @FindBy(css = "#media-object-list")
-    @UI("#media-object-list") public static JList<MediaObjectSample> mediaObjectList; 
-    
-    @Test
-    public void isValidationTestListMediaObject() {
-        mediaObjectList.is().displayed();
-        mediaObjectList.is().enabled();
-        mediaObjectList.get(1).headingOfMediaObject.is().text(is(listOfHeading.get(0)));
-        mediaObjectList.get(2).bodyOfMediaObject.is().text(containsString("Stark requires"));
-        assertThat(mediaObjectList.get(2).headingOfMediaObject.core().css("font-size"), is("20px"));
-        assertThat(mediaObjectList.get(1).bodyOfMediaObject.core().css("font-size"), is("14px"));
-        mediaObjectList.assertThat().displayed()
-                .core()
-                .css("font-size", is("14px"));
-    }
-
-```
-  
-```html
-<ul class="list-unstyled" id="media-object-list">
-    <li class="media">
-        <img src="images/wolverin.jpg" class="mr-3" alt="...">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">WOLVERINE first</h5>
-            Wolverine is a fictional character appearing in American comic books published by
-            Marvel Comics
-        </div>
-    </li>
-    <li class="media my-4">
-        <img src="images/punisher.jpg" class="mr-3" alt="...">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">IRON MAN second</h5>
-            I do anything and everything that Mr. Stark requires — including occasionally taking
-            out the trash
-        </div>
-    </li>
-    <li class="media">
-        <img src="images/spider-man.jpg" class="mr-3" alt="...">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">SPIDER MAN third</h5>
-            Spider-Man is a fictional superhero created by writer-editor Stan Lee and
-            writer-artist Steve Ditko.
-        </div>
-    </li>
-</ul>
-```
-
-Media object is represented by MediaObject class: 
-
-  <a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/MediaObject.java">MediaObject</a>  
-
-MediaObject class is inherited from Section class:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)
-  
-Inner elements of media object can be represented by the following classes:
-<ul>
-    <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-    <li> [Label](https://jdi-docs.github.io/jdi-light/#label) </li>
-    <li> [Link](https://jdi-docs.github.io/jdi-light/#link)  </li>
-    <li> [Image](https://jdi-docs.github.io/jdi-light/#image)  </li>
-    <li> [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li>
-</ul>
-     
-   <a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/mediaObject/MediaObjectTests.java" target=a_blank> Bootstrap test examples </a>
-
-
-### Modal
-[Modal](https://getbootstrap.com/docs/4.3/components/modal/) is a dialog box/popup window that is displayed on page.
-
-#### [Modal Live demo](https://getbootstrap.com/docs/4.3/components/modal/#live-demo)
-Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
-
-![Modal_Live_demo](../images/bootstrap/modal-live-demo.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-//FindBy(css = "#modal-live-demo .bd-example .btn")
-@UI("#modal-live-demo .bd-example .btn") 
-public static Button modalLiveDemoLaunchButton;
-
-//FindBy(css = "#exampleModalLive")
-@UI("#exampleModalLive") 
-public static ModalLiveDemo modalLiveDemo;
-
-public class ModalLiveDemo extends Modal {
-    @UI(".modal-body") public Text body;
-    @UI("//div[@class='modal-footer']//button[1]") public Button closeButton;
-    @UI("//div[@class='modal-footer']//button[2]") public Button saveButton;
-    @UI(".modal-header .close") public Button closeX;
-}
-
-@Test
-public void modalContentTextTest() {
-    modalLiveDemoLaunchButton.is().text(is(launchButtonText));
-    modalLiveDemoLaunchButton.click();
-    modalLiveDemo.title.is().text(is(titleText));
-    modalLiveDemo.body.is().text(is(bodyText));
-    modalLiveDemo.saveButton.is().text(is(saveButtonText));
-    modalLiveDemo.closeButton.is().text(is(closeButtonText));
-    modalLiveDemo.close();
-}
-
-@Test
-public void saveAndCloseButtonsTest() {
-    modalLiveDemoLaunchButton.click();
-    modalLiveDemo.is().displayed();
-    modalLiveDemo.saveButton.click();
-    modalLiveDemo.is().displayed();
-    modalLiveDemo.closeButton.click();
-    modalLiveDemo.is().hidden();
-}
-```
-
-```html
-<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLiveLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Woohoo, you're reading this text in a modal!</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-Modal is represented by Section class in Java:
- 
-+ Section #BS
-
-Inner elements of Modal - Live demo are represented by the following classes:
-
-+ [Text](https://jdi-docs.github.io/jdi-light/#text)
-+ [Button](https://jdi-docs.github.io/jdi-light/#button)
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**close()** | Close modal | void
-**click()** | Click the button | void
-**getText()** | Returns text | String
-**is()** | Asserts element  | UIAssert
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalLiveDemoTests.java)
-
-#### [Scrolling Long Content Modal](https://getbootstrap.com/docs/4.3/components/modal/#scrolling-long-content)
-
-When modals become too long for the user’s viewport or device, they scroll independent of the page itself.
-
-![Modal long scrollable](../images/bootstrap/modal_scrollable1.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(id = "modal-scroll-long")
-@UI("#modal-scroll-long")
-public static SectionModalLongScrolling sectionModalLongScrolling;
-
-// @FindBy(id = "exampleModalLong")
-@UI("#exampleModalLong")
-public ModalWithButtons modalLong;
-
-// @FindBy(id = "exampleModalScrollable")
-@UI("#exampleModalScrollable")
-public ModalWithButtons modalScrollable;
-
-// @FindBy(css = "#modal-scroll-long div:nth-child(2) button")
-@UI("div:nth-child(2) button")
-public Button buttonLongScroll;
-
-// @FindBy(css = "#modal-scroll-long div:nth-child(4) button")
-@UI("div:nth-child(4) button")
-public Button buttonLongScrollable;
-
-@DataProvider
-public Object[][] listData() {
-    return new Object[][]{
-            {sectionModalLongScrolling.buttonLongScroll, sectionModalLongScrolling.modalLong},
-            {sectionModalLongScrolling.buttonLongScrollable, sectionModalLongScrolling.modalScrollable}
-    };
-}
-
-@Test(dataProvider = "listData")
-public void bottomButtonsTest(Button showModal, ModalWithButtons modal) {
-    showModal.click();
-    modal.is().displayed();
-    modal.bottomSave();
-    modal.bottomClose();
-    modal.is().disappear();
-}
-```
-
-```html 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
-![Modal scrollable](../images/bootstrap/modal_scrollable2.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```html 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
-Modal is represented by Section class in Java:
- 
-+ Section #BS
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**close()** | Close modal | void
-**displayed()** | Asserts element is displayed  | UIAssert
-**is()** | Asserts element  | UIAssert
-**hidden()** | Asserts element is hidden | UIAssert
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalScrollingLongContentTests.java)
-
-#### [Vertically Centered Modal](https://getbootstrap.com/docs/4.3/components/modal/#vertically-centered)
-
-Add ``.modal-dialog-centered`` to ``.modal-dialog`` to vertically center the modal.
-
-![Modal Vertically Centered](../images/bootstrap/modal-vertically-centered.png)
-
-```java 
-
-// @FindBy(id = "modal-vertically-centered")
-@UI("#modal-vertically-centered")
-public static ModalVerticallyCentered modalVerticallyCentered;
-
-@Test(dataProvider = "modalBasicData")
-public void modalBasicFunctionalityTest(Button showButton,
-                                        Button dismissButton,
-                                        Modal modal,
-                                        String modalId) {
-    WebDriverWait wait = new WebDriverWait(WebDriverFactory.getDriver(), 5);
-
-    showButton.show();
-    showButton.click();
-
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(modalId)));
-
-    modal.is().displayed();
-
-    dismissButton.show();
-    dismissButton.click();
-
-    modal.is().hidden();
-}
-```
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<div id="exModalCenter" class="modal fade" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div id="modal-vertical-content-1" class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exModalCenterTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
-                    facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
-                    vestibulum at eros.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-Modal is represented by Section class in Java:
- 
-+ Section #BS
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**close()** | Close modal | void 
-**displayed()** | Asserts element is displayed  | UIAssert
-**hidden()** | Asserts element is hidden | UIAssert 
-**is()** | Asserts element  | UIAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalVerticallyCenteredTests.java" target="_blank">Bootstrap Test Examples</a>
-
-#### Modal - Tooltips and popovers
-
-**Modal - Tooltips and popovers**
-
-Tooltips and popovers can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
-
-
-![Modal - Tooltips and popovers](../images/bootstrap/modal-tooltips-and-popovers.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-//@Findby(xpath="//h4[.='Modal - Tooltips and popovers']/../..")
-@UI("//h4[.='Modal - Tooltips and popovers']/../..")
-public static ModalTooltipsAndPopovers modalTooltipsAndPopovers;
-
-public class ModalTooltipsAndPopovers extends Section {
-//@Findby(xpath="//button")
-    @UI("//button") public Button demoModalButton;
-    public ModalTooltipsAndPopoversDialog modalDlg;
-}
-
-public class ModalTooltipsAndPopoversDialog extends Modal {
-//@Findby(css=".modal-body")
-    @UI(".modal-body")
-    public ModalTooltipsAndPopoversBody body;
-    @UI("//div[@class='modal-footer']//button[1]")
-    public Button closeButton;
-    @UI("//div[@class='modal-footer']//button[2]")
-    public Button saveButton;
-}
-
-public class ModalTooltipsAndPopoversBody extends Section {
-//@Findby(css="h5:nth-child(1)")
-    @UI("h5:nth-child(1)") public Text title1;
-    public Popover popover;
-    @UI("h5:nth-child(4)") public Text title2;
-    @UI("p:nth-child(5) > a:nth-child(1)") public Link thisLink;
-    public Tooltip tooltipOnLink;
-    @UI("p:nth-child(5) > a:nth-child(2)") public Link thatLink;
-}
-
-@Test
-public void verifyOpenModalDialogTooltips() {
-    modalTooltipsAndPopovers.demoModalButton.click();
-    modalTooltipsAndPopovers.modalDlg.title.is().text(is(TITLE));
-    modalTooltipsAndPopovers.modalDlg.body.title1.is().text(is(BODY_TITLE1));
-    modalTooltipsAndPopovers.modalDlg.body.title2.is().text(is(BODY_TITLE2));
-    modalTooltipsAndPopovers.modalDlg.body.thisLink.is().text(is(THIS_LINK));
-    modalTooltipsAndPopovers.modalDlg.body.thatLink.is().text(is(THAT_LINK));
-    modalTooltipsAndPopovers.modalDlg.saveButton.is().text(is(SAVE_BUTTON));
-    modalTooltipsAndPopovers.modalDlg.closeButton.is().text(is(CLOSE_BUTTON));
-    modalTooltipsAndPopovers.modalDlg.closeButton.click();
-}
-
-```
-
-```html
-<div id="exampleModalPopovers" class="modal fade" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalPopoversLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5>Popover in a modal</h5>
-                <p>This <a href="#exampleModalPopovers" role="button" class="btn btn-secondary popover-test"
-                           title="Popover title" data-toggle="popover"
-                           data-content="Popover body content is set in this attribute."
-                           data-container="#exampleModalPopovers">button</a> triggers a popover on click.
-                </p>
-                <hr/>
-                <h5>Tooltips in a modal</h5>
-                <p><a href="#exampleModalPopovers" class="tooltip-test" title="Tooltip" data-toggle="tooltip"
-                      data-container="#exampleModalPopovers">This link</a> and
-                    <a href="#exampleModalPopovers" class="tooltip-test" title="Tooltip" data-toggle="tooltip"
-                       data-container="#exampleModalPopovers">that link</a> have tooltips on hover.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-Modal is represented by Section class in Java:
- 
-+ Section #BS
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**close()** | Close modal | void 
-**displayed()** | Asserts element is displayed  | UIAssert
-**hidden()** | Asserts element is hidden | UIAssert 
-**is()** | Asserts element  | UIAssert
-
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalTooltipsAndPopoversTests.java" target="_blank">Bootstrap Test Examples</a>
-
-<br><br>
-
-**Modal using grid**
-
-<a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/modal/#using-the-grid">Modal using grid</a>
-
-![Modal using grid example](../images/bootstrap/modal-grid.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-public class GridModalBody extends Section {
-//FindBy(css = ".row")
-@UI(".row")
-private JList<GridRow> allGridRows;
-
-//FindBy(css = '[class*='col']')
-@UI("[class*='col']")
-private JList<GridCell> allGridCells;
-
-public JList<GridCell> getAllCells() {
-   return allGridCells;
-}
-
-public JList<GridRow> getAllRows() {
-   return allGridRows;
-}
-
-public GridRow getGridRow(int rowN) {
-   return allGridRows.get(rowN);
-}
-
-public GridCell getCellInRow(int rowN, int cellN) {
-    return getGridRow(rowN).getCell(cellN);
-}
-
-public String getTextFromCellInRow(int rowN, int cellN) {
-        return getCellInRow(rowN, cellN).getText();
-    }
-}
-
-@Test(dataProvider = "gridData")
-public void checkTextInCell(int rowN, int cellN, String textExpected, String max_width) {
-GridCell cell = gridModalSection.getGridModalWindow().getBody()
-    .getCellInRow(rowN, cellN);
-    cell.highlight("blue");
-    cell.is().core()
-             .text(textExpected)
-             .and()
-             .css("max-width", startsWith(max_width));
-    cell.unhighlight();
-    }
-
-@Test
-public void checkCloseXModalButton() {
-     gridModalSection.getGridModalWindow().getBtnCloseX().highlight("red");
-     gridModalSection.getGridModalWindow().close();
-     gridModalSection.getGridModalWindow().is().disappear();
-    }
-
-@Test
-public void checkCloseByEscapeButton() {
-     gridModalSection.getGridModalWindow().core().sendKeys(Keys.ESCAPE);
-     gridModalSection.getGridModalWindow().is().disappear();
-    }
-```
-
-```html
-<div id="grid-modal-base" class="html-left mb-3">
-    <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog"
-         aria-labelledby="gridModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="gridModalLabel">Grids in modals</h5>
-                    <button id="close-modal-cross" type="button" class="close" data-dismiss="modal"
-                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid bd-example-row">
-                        <div class="row">
-                            <div class="col-md-4">.col-md-4</div>
-                            <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
-                            <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-9">
-                                Level 1: .col-sm-9
-                                <div class="row">
-                                    <div class="col-8 col-sm-6">
-                                        Level 2: .col-8 .col-sm-6
-                                    </div>
-                                    <div class="col-4 col-sm-6">
-                                        Level 2: .col-4 .col-sm-6
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="close-modal" type="button" class="btn btn-secondary"
-                            data-dismiss="modal">Close
-                    </button>
-                    <button id="save-modal" type="button" class="btn btn-primary">Save changes
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="bd-example">
-        <button id="btn-modal-using-grid" type="button" class="btn btn-primary" data-toggle="modal"
-                data-target="#gridSystemModal">Launch demo modal
-        </button>
-    </div>
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method/Property | Description | Return Type
---- | --- | ---
-**close()** | Close Modal Window using X control | void
-**clickBtnClose()** | Close Modal Window  | void
-**displayed()** | Asserts element is displayed  | UIAssert
-**disappear()** | Asserts element is not displayed | UIAssert 
-**getCellInRow(int rowN, int cellN)** | Get cellN from rowN | GridCell
-**getGridRow(int rowN)** | Get rowN  | GridRow
-**getTitle()** | Get Modal Window Title | Text
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/GridModalTests.java)
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-**Varying modal content**
-
-Have a bunch of buttons that all trigger the same modal with slightly different contents? Use event.relatedTarget and HTML data-* attributes (possibly via jQuery) to <a href="https://getbootstrap.com/docs/4.3/components/modal/#varying-modal-content">vary the contents</a> of the modal depending on which button was clicked.
-
-![Varying modal content example](../images/bootstrap/modal-varying-content.PNG)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-    public class Modal extends Section {
-        //@FindBy(xpath = "div/h5[@class='modal-title']")
-        @UI(".modal-header .modal-title")
-        public Text title;
-    }
-
-    public class ModalVaryingContent extends Modal {
-        //@FindBy(xpath = "div/button[@class='close']")
-        @UI(".modal-header .close")
-        public Button closeX;
-    }
-
-    @Test(dataProvider = "modalVaryingContentButtonsWithRecipients")
-    public void modalButtonsTest(Button modalButton, String recipient) {
-        checkButton(modalButton, String.format("Open modal for @%s", recipient), 
-        whiteColor, blueColorBackground, blueColorBorder);
-    }
-
-    @Test(dataProvider = "modalVaryingContentButtonsWithRecipients")
-    public void headerValidationTest(Button modalButton, String recipient) {
-        modalButton.click();
-        modalVaryingContentWindow.is().displayed();
-        modalVaryingContentWindow.title.core().is()
-                .text(String.format("NEW MESSAGE TO @%s", recipient.toUpperCase()));
-        modalVaryingContentWindow.closeX.click();
-        modalVaryingContentWindow.is().hidden();
-    }
-
-    private void checkButton(Button button, String text, String color, 
-    String backgroundColor, String borderColor) {
-        button.is().core()
-                .text(text)
-                .tag("button")
-                .css("color", color)
-                .css("background-color", backgroundColor)
-                .css("border-color", borderColor);
-    }
-```
-
-```html
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div id="modalVaryingContentWindow" class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-name"
-                               class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                </button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method/Property | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action  | TextAssert
-**click()** | Click button  | void
-**displayed()** | Assert is displayed  | void
-**getTitle()** | Get Modal Window Title | Text 
-**getText()** | Get text value of the element | String
-
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalVaryingContentTests.java)
-
-<br><br>
-
-**Embedding YouTube videos**
-
-Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. See <a href="https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">this helpful Stack Overflow post</a> for more information.
-
-![Embedding YouTube video example](../images/bootstrap/modal-youtube.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java  
-@UI("#modal-youtube button.btn-primary")
-public static Button modalEmbeddedVideoButton;
-@UI("#youTubeModalLabel")
-public static EmbeddedVideoModal embeddedVideoModal;
-
-private final static String VIDEO_TITLE = "Forget about Selenium. May the JDI Light force be with you";
-private final static String VIDEO_URL = "https://www.youtube.com/watch?v=lw4g9ItC7Sc";
-
-@Test
-public void videoTitleTest() {
-    modalEmbeddedVideoButton.click();
-    embeddedVideoModal.getVideoModalFrame().getVideoTitle().is()
-        .displayed()
-        .enabled()
-        .ref(VIDEO_URL)
-        .text(VIDEO_TITLE);
-    embeddedVideoModal.close();
-}
-
-@Test
-public void playVideoTest() {
-    modalEmbeddedVideoButton.click();
-    embeddedVideoModal.getVideoModalFrame().getPlayButton().click();
-    embeddedVideoModal.getVideoModalFrame().getProgressBar().assertThat()
-        .displayed()
-        .attr("aria-valuenow", Matchers.matchesPattern("[1-9]{1}[0-9]*"));
-    embeddedVideoModal.close();
-}
-```
-
-```html
-<div id="modal-youtube" class="html-left mb-3">
-    <div class="bd-example">
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal"
-                data-target="#youTubeModalLabel">Embedding YouTube video
-        </button>
-    </div>
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="youTubeModalLabel"
-         id="youTubeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h5 class="modal-title h4">Embedding YouTube video</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen="" src="https://www.youtube.com/embed/lw4g9ItC7Sc"
-                            width="1120" height="630" frameborder="0"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method/Property | Description | Return Type
---- | --- | ---
-**close()** | Close Modal Window using X control | void
-**displayed()** | Asserts element is displayed  | UIAssert
-**disappear()** | Asserts element is not displayed | UIAssert
-**waitFor()** | Assert action | UIAssert 
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalEmbeddingVideoTests.java)
-
-<br><br>
-
-**Optional Sizes**
-
-Modals have three <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#optional-sizes" target="_blank">optional sizes</a>, available via modifier classes to be placed on a ``.modal-dialog``. 
-These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
-
-![Modal Optional Sizes Example](../images/bootstrap/modal-optional-sizes.jpg)
-
-```java  
-// @FindBy(id = "modal-optional-sizes")
-@UI("#modal-optional-sizes")
-public static ModalOptionalSizes modalOptionalSizes;
-
-// @FindBy(css = "button:nth-of-type(1)")
-@UI("button:nth-of-type(1)")
-public Button xlButton;
-
-// @FindBy(css = "button:nth-of-type(2)")
-@UI("button:nth-of-type(2)")
-public Button lgButton;
-
-// @FindBy(css = "button:nth-of-type(3)")
-@UI("button:nth-of-type(3)")
-public Button smButton;
-
-@Test(dataProvider = "modalCssData")
-public void modalCssTest(Button button, Modal modal, String modalCss) {
-    button.show();
-    button.click();
-
-    modal.is().displayed();
-
-    modal.children().get(1).core().is().hasClass(modalCss);
-
-    modal.close();
-}
-
-@Test(dataProvider = "modalSizeData")
-public void modalSizeTest(Button button,
-                          Modal modal,
-                          int modalWidth) {
-    button.show();
-    button.click();
-
-    modal.is().displayed();
-
-    assertThat(modal.children().get(2).core().getRect().width, equalTo(modalWidth));
-
-    modal.close();
-}
-```
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"
-     aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title h4" id="myExtraLargeModalLabel">Extra large modal</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-Modal is represented by Section class in Java:
- 
-+ Section #BS
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**close()** | Close modal | void 
-**displayed()** | Asserts element is displayed  | UIAssert
-**hidden()** | Asserts element is hidden | UIAssert 
-**hasClass()** | Matches passed value with the element class | IsAssert 
-**is()** | Asserts element  | UIAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalOptionalSizesTests.java" target="_blank">Bootstrap Test Examples</a>
-
-### Popovers
-
-***[Popovers](https://getbootstrap.com/docs/4.3/components/popovers/)***
-
-#### Example
-**[Popover example](https://getbootstrap.com/docs/4.3/components/popovers/#example)** 
-
-![Popover example](../images/bootstrap/popover-title.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "body") public static Popover popover;
-@UI("body") public static Popover popover;
-
-@Test
-public void isValidationTests() {
-    popover.getPopover(locator);
-    popover.popoverButton.is()
-            .displayed()
-            .enabled()
-            .core()
-            .attr("data-toggle", "popover")
-            .attr("data-content", popoverBody)
-            .attr("data-original-title", popoverHeader)
-            .text(is(buttonText));
-    popover.container
-            .is()
-            .enabled()
-            .core()
-            .hasClass("popover fade bs-popover-right show")
-            .attr("role", "tooltip")
-            .attr("x-placement", "right");
-    popover.body
-            .is()
-            .enabled()
-            .core()
-            .hasClass("popover-body")
-            .text(is(popoverBody));
-    popover.header
-            .is()
-            .core()
-            .hasClass("popover-header")
-            .text(is(popoverHeader.toUpperCase()));
-    popover.popoverButton.click();
-}
-
-@Test()
-public void clickableTests() {
-    popover.getPopover(locator);
-    popover.popoverButton.click();
-    popover.popoverButton
-            .is()
-            .core()
-            .attr("aria-describedby", containsString("popover"));
-    popover.container
-            .is()
-            .enabled();
-    popover.container.click();
-    popover.popoverButton
-            .is()
-            .core()
-            .attr("aria-describedby", "");
-    assertFalse(popover.container.isDisplayed());
-}
-```
-
-```html
-<button type="button" class="btn btn-lg btn-danger btn-block mb-3" id="popover-title"
-        data-toggle="popover" title="Popover title"
-        data-content="And here's some amazing content. It's very engaging. Right?">Click to
-    toggle popover
-</button>
-```
-
-```html 
-<div class="popover fade bs-popover-right show" role="tooltip" id="popover757247" style="will-change: 
-    transform; position: absolute; transform: translate3d(542px, 39291px, 0px); top: 0px; left: 0px;" x-placement=
-    "right">
-    <div class="arrow" style="top: 35px;"></div>
-    <h3 class="popover-header">Popover title</h3><div class="popover-body">And here's some amazing content. It's very engaging. Right?</div>
-</div>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
- **assertThat()** | Assert action | TextAssert
- **click()** | Get button text | void
- **disabled()** | assert is disabled | TextAssert
- **displayed()** | assert is displayed | TextAssert
- **get()** | Select button by index | UIElement
- **getText()** | Get button text | String
- **getPopover(String locator)** | Get the popover click  | void
- **getBody()** | Get body of popover  |  String
- **getContainer()** | Get container of popover  |  String
- **getHeader()** | Get header of popover  |  String
- **enabled()** | assert is enabled | TextAssert
- **highlight()** | Get button text | void
- **is()** | Assert action | TextAssert 
- **unhighlight()** | Get button text | void
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/popover/PopoverTests.java)<br>
-
-Popover group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-Inner elements of input group can be represented by following classes:
- <ul>
-  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-  
-  <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li> 
-  
-  <li> [MediaObject](https://jdi-docs.github.io/jdi-light/#media-object) </li>
- </ul>
- 
-
-#### Four directions popovers
-**[Four directions popovers](https://getbootstrap.com/docs/4.3/components/popovers/#four-directions)** 
-
-Popover top
-
-![Four directions popover top example](../images/bootstrap/popover-top.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "body") public static Popover popover;
-@UI("body") public static Popover popover;
-
-@Test
-public void isValidationTests() {
-    popover.getPopover(locator);
-    popover.popoverButton.is()
-            .displayed()
-            .enabled()
-            .core()
-            .attr("data-toggle", "popover")
-            .attr("data-content", popoverBody)
-            .attr("data-original-title", popoverHeader)
-            .text(is(buttonText));
-    popover.container
-            .is()
-            .enabled()
-            .core()
-            .hasClass("popover fade bs-popover-right show")
-            .attr("role", "tooltip")
-            .attr("x-placement", "right");
-    popover.body
-            .is()
-            .enabled()
-            .core()
-            .hasClass("popover-body")
-            .text(is(popoverBody));
-    popover.header
-            .is()
-            .core()
-            .hasClass("popover-header")
-            .text(is(popoverHeader.toUpperCase()));
-    popover.popoverButton.click();
-}
-
-@Test()
-public void clickableTests() {
-    popover.getPopover(locator);
-    popover.popoverButton.click();
-    popover.popoverButton
-            .is()
-            .core()
-            .attr("aria-describedby", containsString("popover"));
-    popover.container
-            .is()
-            .enabled();
-    popover.container.click();
-    popover.popoverButton
-            .is()
-            .core()
-            .attr("aria-describedby", "");
-    assertFalse(popover.container.isDisplayed());
-}
-```
-
-```html
-<button type="button" class="btn btn-secondary btn-block mb-3" id="popover-top"
-        data-container="body" data-toggle="popover" data-placement="top"
-        data-content="Top popover is visible.">
-    Popover on top
-</button>
-```
-
-```html 
-<div class="popover fade show bs-popover-top" role="tooltip" id="popover561586" x-placement="top" 
-    style="position: absolute; transform: translate3d(320px, 39051px, 0px); top: 0px; left: 0px; will-change: 
-    transform;">
-    <div class="arrow" style="left: 68px;"></div>
-    <h3 class="popover-header"></h3><div class="popover-body">Top popover is visible.</div>
-</div>
-```
-
-<br><br>
-
-Popover right
-
-![Four directions popover right example](../images/bootstrap/popover-right.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<button type="button" class="btn btn-secondary btn-block mb-3" id="popover-right"
-        data-container="body" data-toggle="popover" data-placement="right"
-        data-content="Right popover is visible.">
-    Popover on right
-</button>
-```
-
-```html 
-<div class="popover fade bs-popover-right show" role="tooltip" id="popover525348" x-placement="right" 
-    style="position: absolute; transform: translate3d(542px, 39152px, 0px); top: 0px; left: 0px; will-change: 
-    transform;">
-    <div class="arrow" style="top: 7px;"></div>
-    <h3 class="popover-header"></h3>
-    <div class="popover-body">Right popover is visible.</div>
-</div>
-```
-
-<br><br>
-
-Popover bottom
-
-![Four directions popover bottom example](../images/bootstrap/popover-bottom.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<button type="button" class="btn btn-secondary btn-block mb-3" id="popover-bottom"
-        data-container="body" data-toggle="popover" data-placement="bottom"
-        data-content="Bottom popover is visible.">
-    Popover on bottom
-</button>
-```
-
-```html 
-<div class="popover fade show bs-popover-bottom" role="tooltip" id="popover24015" x-placement="bottom" 
-    style="position: absolute; transform: translate3d(308px, 39244px, 0px); top: 0px; left: 0px; will-change: 
-    transform;">
-    <div class="arrow" style="left: 80px;"></div>
-    <h3 class="popover-header"></h3>
-    <div class="popover-body">Bottom popover is visible.</div>
-</div>
-```
-<br><br>
-
-Popover left
-
-![Four directions popover left example](../images/bootstrap/popover-left.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<button type="button" class="btn btn-secondary btn-block mb-3" id="popover-left"
-        data-container="body" data-toggle="popover" data-placement="left"
-        data-content="Left popover is visible.">
-    Popover on left
-</button>
-```
-
-```html 
-<div class="popover fade bs-popover-left show" role="tooltip" id="popover587895" x-placement="left" 
-    style="position: absolute; transform: translate3d(88px, 39260px, 0px); top: 0px; left: 0px; will-change: 
-    transform;">
-    <div class="arrow" style="top: 7px;"></div>
-    <h3 class="popover-header"></h3>
-    <div class="popover-body">Left popover is visible.</div>
-</div>
-```
-<br><br>
-
-
-
-|Method | Description | Return Type
---- | --- | ---
- **assertThat()** | Assert action | TextAssert
- **click()** | Get button text | void
- **enabled()** | assert is enabled | TextAssert
- **disabled()** | assert is disabled | TextAssert
- **displayed()** | assert is displayed | TextAssert
- **get()** | Select button by index | UIElement
- **getText()** | Get button text | String
- **highlight()** | Get button text | void
- **is()** | Assert action | TextAssert 
- **unhighlight()** | Get button text | void
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/popover/PopoverTests.java)<br>
-
-Popover group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-Inner elements of input group can be represented by following classes:
- <ul>
-  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-  
-  <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li> 
-  
-  <li> [MediaObject](https://jdi-docs.github.io/jdi-light/#media-object) </li>
- </ul>
-
-
-#### Dismissible
-**[Dismissible popover](https://getbootstrap.com/docs/4.3/components/popovers/#dismiss-on-next-click)** 
-
-![Dismissible popover example](../images/bootstrap/popover-dismissible.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "body") public static Popover popover;
-@UI("body") public static Popover popover;
-
-@Test
-public void isValidationTests() {
-    popover.getPopover(locator);
-    popover.popoverButton.is()
-            .displayed()
-            .enabled()
-            .core()
-            .attr("data-toggle", "popover")
-            .attr("data-content", popoverBody)
-            .attr("data-original-title", popoverHeader)
-            .text(is(buttonText));
-    popover.container
-            .is()
-            .enabled()
-            .core()
-            .hasClass("popover fade bs-popover-right show")
-            .attr("role", "tooltip")
-            .attr("x-placement", "right");
-    popover.body
-            .is()
-            .enabled()
-            .core()
-            .hasClass("popover-body")
-            .text(is(popoverBody));
-    popover.header
-            .is()
-            .core()
-            .hasClass("popover-header")
-            .text(is(popoverHeader.toUpperCase()));
-    popover.popoverButton.click();
-}
-
-@Test()
-public void clickableTests() {
-    popover.getPopover(locator);
-    popover.popoverButton.click();
-    popover.popoverButton
-            .is()
-            .core()
-            .attr("aria-describedby", containsString("popover"));
-    popover.container
-            .is()
-            .enabled();
-    popover.container.click();
-    popover.popoverButton
-            .is()
-            .core()
-            .attr("aria-describedby", "");
-    assertFalse(popover.container.isDisplayed());
-}
-```
-
-```html
-<a tabindex="0" class="btn btn-lg btn-danger btn-block mb-3" role="button"
-   id="popover-dismissible" data-toggle="popover" data-trigger="focus"
-   title="Dismissible popover"
-   data-content="And here's some amazing content. It's very engaging. Right?">Dismissible
-    popover</a>
-```
-
-```html 
-<div class="popover fade bs-popover-right" role="tooltip" id="popover278744" 
-    style="will-change: transform; position: absolute; transform: translate3d(542px, 39355px, 0px); top: 0px; left: 0px;" 
-    x-placement="right">
-    <div class="arrow" style="top: 35px;"></div>
-    <h3 class="popover-header">Dismissible popover</h3>
-    <div class="popover-body">And here's some amazing content. It's very engaging. Right?</div>
-</div>
-```
-
-|Method | Description | Return Type
---- | --- | ---
- **assertThat()** | Assert action | TextAssert
- **click()** | Get button text | void
- **disabled()** | assert is disabled | TextAssert
- **displayed()** | assert is displayed | TextAssert
- **enabled()** | assert is enabled | TextAssert
- **get()** | Select button by index | UIElement
- **getText()** | Get button text | String
- **highlight()** | Get button text | void
- **is()** | Assert action | TextAssert 
- **unhighlight()** | Get button text | void
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/popover/PopoverTests.java)<br>
-
-Popover group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-Inner elements of input group can be represented by following classes:
- <ul>
-  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-  
-  <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li> 
-  
-  <li> [MediaObject](https://jdi-docs.github.io/jdi-light/#media-object) </li>
- </ul>
-
-
- 
-#### Disabled elements popover
- 
-**[Disabled elements popover](https://getbootstrap.com/docs/4.3/components/popovers/#disabled-elements)** 
- 
-![Disabled elements popover example](../images/bootstrap/popover-disabled.png)
- 
-Here is an example with provided Bootstrap v4.3 code:
- 
- ```java 
- // @FindBy(css = "body") public static Popover popover;
- @UI("body") public static Popover popover;
- 
- @Test
- public void isValidationTests() {
-     popover.getPopover(locator);
-     popover.popoverButton.is()
-             .displayed()
-             .enabled()
-             .core()
-             .attr("data-toggle", "popover")
-             .attr("data-content", popoverBody)
-             .attr("data-original-title", popoverHeader)
-             .text(is(buttonText));
-     popover.container
-             .is()
-             .enabled()
-             .core()
-             .hasClass("popover fade bs-popover-right show")
-             .attr("role", "tooltip")
-             .attr("x-placement", "right");
-     popover.body
-             .is()
-             .enabled()
-             .core()
-             .hasClass("popover-body")
-             .text(is(popoverBody));
-     popover.header
-             .is()
-             .core()
-             .hasClass("popover-header")
-             .text(is(popoverHeader.toUpperCase()));
-     popover.popoverButton.click();
- }
- 
- @Test()
- public void clickableTests() {
-     popover.getPopover(locator);
-     popover.popoverButton.click();
-     popover.popoverButton
-             .is()
-             .core()
-             .attr("aria-describedby", containsString("popover"));
-     popover.container
-             .is()
-             .enabled();
-     popover.container.click();
-     popover.popoverButton
-             .is()
-             .core()
-             .attr("aria-describedby", "");
-     assertFalse(popover.container.isDisplayed());
- }
- ```
- 
-```html
-<span class="d-inline-block mb-3" style="width:100%;" data-toggle="popover"
-      id="popover-disabled" data-content="Disabled popover">
-        <button class="btn btn-primary btn-block" style="pointer-events: none;" type="button"
-                disabled>Disabled button</button>
-</span>
-```
- 
-```html 
-<div class="popover fade show bs-popover-right" role="tooltip" id="popover180279" x-placement="right" 
-    style="will-change: transform; position: absolute; transform: translate3d(542px, 39442px, 0px); top: 0px; left: 0px;">
-    <div class="arrow" style="top: 7px;"></div>
-    <h3 class="popover-header"></h3>
-    <div class="popover-body">Disabled popover</div>
-</div>
-```
- 
-
-
-|Method | Description | Return Type
---- | --- | ---
- **assertThat()** | Assert action | TextAssert
- **click()** | Get button text | void
- **disabled()** | assert is disabled | TextAssert
- **displayed()** | assert is displayed | TextAssert
- **enabled()** | assert is enabled | TextAssert
- **get()** | Select button by index | UIElement
- **getText()** | Get button text | String
- **highlight()** | Get button text | void
- **is()** | Assert action | TextAssert 
- **unhighlight()** | Get button text | void
-
-<br>
- 
- [Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/popover/PopoverTests.java)<br>
- 
-Popover group is represented by Section class in Java:
-  
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
- 
-<br>
- 
-Inner elements of input group can be represented by following classes:
-<ul>
-    <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-    <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li> 
-    <li> [MediaObject](https://jdi-docs.github.io/jdi-light/#media-object) </li>
-</ul>
-
-### List group
-
-***[List groups](https://getbootstrap.com/docs/4.3/components/list-group/)*** are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.
-
-
-#### Basic Example
-
-***[List group basic example](https://getbootstrap.com/docs/4.3/components/list-group/#basic-example)*** - an unordered list with list items and the proper classes.
-
-List Group is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
-  
-
-![List group basic example](../images/bootstrap/list-group-basic.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#list-group-basic-example") public static ListGroupBasicExample listGroupBasicExample;
-// @FindBy(css = "#list-group-basic-example") public static ListGroupBasicExample listGroupBasicExample;
-
-public class ListGroupBasicExample extends Section {
-    @UI("li") public ListGroup listGroup;
-}
-
-public void listGroupIsValidationTest() {
-    listGroupBasicExample.listGroup.is()
-            .size(5);
-}
-
-@Test(dataProvider = "listData")
-public void listGroupTests(int num, String text) {
-    listGroupBasicExample.listGroup.get(num).is()
-            .text(is(text))
-            .css("font-size", is("14px"));
-}
-```
-
-```html
-<ul class="list-group mb-3" id="list-group-basic-example">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-</ul>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**get()** | Select button by index | action
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/BasicExampleTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Active Items
-
-***[List group active Items](https://getbootstrap.com/docs/4.3/components/list-group/#active-items)***
-
-List Group is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
-  
-
-![List group active items example](../images/bootstrap/list-group-active.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#list-group-active-items") public static ListGroupActiveItems listGroupActiveItems;
-// @FindBy(css = "#list-group-active-items") public static ListGroupActiveItems listGroupActiveItems;)
-
-public class ListGroupActiveItems extends Section {
-    @UI("li") public ListGroup listGroup;
-}
-
-@Test(dataProvider = "listData")
-public void listGroupTextTests(int num, String text) {
-    listGroupActiveItems.listGroup.get(num).is()
-            .text(text)
-            .css("font-size", is("14px"));
-}
-
-@Test
-public void isValidationTests() {
-    listGroupActiveItems.listGroup.is()
-            .size(5);
-    listGroupActiveItems.is()
-            .displayed()
-            .enabled()
-            .core()
-            .hasClass("list-group");
-    listGroupActiveItems.listGroup.get(1).is()
-            .hasClass(listClass + " active");
-}
-```
-
-```html
-<ul class="list-group mb-3" id="list-group-active-items">
-    <li class="list-group-item active">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-</ul>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**get()** | Select button by index | action
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/ActiveItemsTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Disabled Items
-
-***[List group disabled Items](https://getbootstrap.com/docs/4.3/components/list-group/#disabled-items)***
-
-List Group is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
-  
-
-![List group disabled items example](../images/bootstrap/list-group-disabled.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#disabled-items") public static ListGroupDisabledItems listGroupDisabledItems;
-// @FindBy(css = "#disabled-items") public static ListGroupDisabledItems listGroupDisabledItems;
-
-public class ListGroupDisabledItems extends Section {
-    @UI("li") public ListGroup listGroup;
-}
-
-@Test
-public void isValidationTests() {
-    listGroupDisabledItems.listGroup.is()
-            .size(5);
-    listGroupDisabledItems.is()
-            .displayed()
-            .enabled()
-            .core()
-            .hasClass("list-group");
-    listGroupDisabledItems.listGroup.get(1).is()
-            .hasClass(listClass + " disabled")
-            .attr("aria-disabled", "true");
-}
-
-@Test(dataProvider = "listData")
-public void listGroupTextTests(int num, String text) {
-    listGroupDisabledItems.listGroup.get(num).is()
-            .text(text)
-            .css("font-size", is("14px"));
-}
-```
-
-```html
-<ul class="list-group mb-3" id="disabled-items">
-    <li class="list-group-item disabled" aria-disabled="true">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-</ul>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**get()** | Select button by index | action
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/DisabledItemsTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Links
-
-***[List group links and buttons](https://getbootstrap.com/docs/4.3/components/list-group/#links-and-buttons)***
-
-List Group is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
-  
-
-![List group links example](../images/bootstrap/list-group-links.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#list-group-links") public static ListGroupLinks listGroupLinks;
-// @FindBy(css = "#list-group-links") public static ListGroupLinks listGroupLinks;
-
-public class ListGroupLinks extends Section {
-    @UI("a") public ListGroup listGroup;
-}
-
-@Test(dataProvider = "clickValidate")
-public void linkClickableTests(int index, String pageTitle) {
-    listGroupLinks.listGroup.get(index).highlight();
-    listGroupLinks.listGroup.get(index).click();
-    newWindowTitleCheck(pageTitle);
-    listGroupLinks.listGroup.get(index).unhighlight();
-}
-
-@Test
-public void isValidationTests() {
-    listGroupLinks.listGroup.is()
-            .size(5);
-    listGroupLinks.is()
-            .displayed()
-            .enabled()
-            .core()
-            .hasClass("list-group");
-    listGroupLinks.listGroup.get(1).is()
-            .hasClass(listClass + " active");
-    listGroupLinks.listGroup.get(5).is()
-            .hasClass(listClass + " disabled");
-    assertFalse(listGroupLinks.listGroup.get(5).isClickable());
-}
-```
-
-```html
-<div class="list-group mb-3" id="list-group-links">
-    <a href="https://github.com/jdi-docs"
-       class="list-group-item list-group-item-action active" target="_blank">
-        JDI Docs
-    </a>
-    <a href="https://github.com/jdi-testing" class="list-group-item list-group-item-action"
-       target="_blank">JDI - testing tool</a>
-    <a href="https://jdi-testing.github.io/jdi-light/index.html"
-       class="list-group-item list-group-item-action" target="_blank">JDI website</a>
-    <a href="https://getbootstrap.com/docs/4.3/components/list-group/#links-and-buttons"
-       class="list-group-item list-group-item-action" target="_blank">Bootstrap</a>
-    <a href="https://github.com/jdi-docs"
-       class="list-group-item list-group-item-action disabled" tabindex="-1"
-       aria-disabled="true" target="_blank">JDI Docs</a>
-</div>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button | void
-**get()** | Select button by index | action
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/LinksTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Buttons
-
-***[List group links and buttons](https://getbootstrap.com/docs/4.3/components/list-group/#links-and-buttons)***
-
-List Group is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
-  
-
-![List group buttons example](../images/bootstrap/list-group-buttons.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#list-group-buttons") public static ListGroupButtons listGroupButtons;
-// @FindBy(css = "#list-group-buttons") public static ListGroupButtons listGroupButtons;
-
-public class ListGroupButtons extends Section {
-    @UI("button") public ListGroup listGroup;
-}
-
-@Test
-public void isValidationTests() {
-    listGroupButtons.listGroup.is()
-            .size(5);
-    listGroupButtons.is()
-            .displayed()
-            .enabled()
-            .core()
-            .hasClass("list-group");
-    listGroupButtons.listGroup.get(1).is()
-            .hasClass(listClass + " active");
-    listGroupButtons.listGroup.get(5).is()
-            .disabled();
-}
-
-@Test(dataProvider = "clickValidate")
-public void buttonClickableTests(int index, String text) {
-    listGroupButtons.listGroup.get(index).highlight();
-    listGroupButtons.listGroup.get(index).click();
-    validateAlert(is(text));
-    listGroupButtons.listGroup.get(index).unhighlight();
-}
-```
-
-```html
-<div class="list-group mb-3" id="list-group-buttons">
-    <button type="button" class="list-group-item list-group-item-action active"
-            onclick="alert('Cras justo odio');">Cras justo odio
-    </button>
-    <button type="button" class="list-group-item list-group-item-action"
-            onclick="alert('Dapibus ac facilisis in');">Dapibus ac facilisis in
-    </button>
-    <button type="button" class="list-group-item list-group-item-action"
-            onclick="alert('Morbi leo risus');">Morbi leo risus
-    </button>
-    <button type="button" class="list-group-item list-group-item-action"
-            onclick="alert('Porta ac consectetur ac');">Porta ac consectetur ac
-    </button>
-    <button type="button" class="list-group-item list-group-item-action"
-            onclick="alert('Vestibulum at eros');" disabled>Vestibulum at eros
-    </button>
-</div>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button | void
-**get()** | Select button by index | action
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/Buttons.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Flush
-
-***[List group flush](https://getbootstrap.com/docs/4.3/components/list-group/#flush)***
-
-List Group is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
-  
-
-![List group flush example](../images/bootstrap/list-group-flush.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#list-group-flush") public static ListGroupFlush listGroupFlush;
-// @FindBy(css = "#list-group-flush") public static ListGroupFlush listGroupFlush;
-
-public class ListGroupFlush extends Section {
-    @UI("li") public ListGroup listGroup;
-}
-
-@Test(dataProvider = "listData")
-public void listGroupTests(int num, String text) {
-    listGroupFlush.listGroup.get(num).is()
-            .text(text)
-            .css("font-size", is("14px"));
-}
-
-@Test
-public void initTests() {
-    listGroupFlush.listGroup.is().size(5);
-    listGroupFlush.is()
-            .displayed()
-            .enabled()
-            .core()
-            .hasClass("list-group list-group-flush");
-}
-```
-
-```html  
-<div class="html-left">
-    <ul class="list-group list-group-flush mb-3" id="list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-</div>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**get()** | Select button by index | action
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/FlushTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Horizontal
-
-***[List group horizontal](https://getbootstrap.com/docs/4.3/components/list-group/#horizontal)***
-
-List Group is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
-  
-
-![List group horizontal example](../images/bootstrap/list-group-horizontal.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#list-group-horizontal") public static ListGroupHorizontal listGroupHorizontal;
-// @FindBy(css = "#list-group-horizontal") public static ListGroupHorizontal listGroupHorizontal;
-
-public class ListGroupHorizontal extends Section {
-    @UI("li") public ListGroup listGroup;
-}
-
-@Test
-public void initTests() {
-    listGroupHorizontal.listGroup.is()
-            .size(3);
-}
-
-@Test(dataProvider = "listData")
-public void listGroupTests(int num, String text) {
-    listGroupHorizontal.listGroup.get(num).is()
-            .text(text)
-            .css("font-size", is("14px"));
-}
-```
-
-```html
-<ul class="list-group list-group-horizontal mb-3" id="list-group-horizontal">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-</ul>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**get()** | Select button by index | action
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/Horizontal.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### With Badges
-
-***[List group with badges](https://getbootstrap.com/docs/4.3/components/list-group/#with-badges)***
-
-List Group is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
-  
-
-![List group with badges example](../images/bootstrap/list-group-badges.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#list-group-with-badges") public static ListGroupWithBadges listGroupWithBadges;
-// @FindBy(css = "#list-group-with-badges") public static ListGroupWithBadges listGroupWithBadges;
-
-public class ListGroupWithBadges extends Section {
-    @UI("li") public ListGroup listGroup;
-    @UI("li span") public ListGroup badge;
-}
-
-@Test
-public void initTests() {
-    listGroupWithBadges.listGroup.is()
-            .size(3);
-    listGroupWithBadges.badge.is()
-            .size(3);
-}
-
-@Test(dataProvider = "listData")
-public void listGroupTests(int num, String text) {
-    listGroupWithBadges.listGroup.get(num).is()
-            .text(containsString(text))
-            .css("font-size", is("14px"))
-            .hasClass("list-group-item d-flex justify-content-between align-items-center");
-}
-```
-
-```html
-<ul class="list-group mb-3" id="list-group-with-badges">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Cras justo odio
-        <span class="badge badge-primary badge-pill">14</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Dapibus ac facilisis in
-        <span class="badge badge-primary badge-pill">2</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Morbi leo risus
-        <span class="badge badge-primary badge-pill">1</span>
-    </li>
-</ul>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**get()** | Select button by index | action
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/WithBadgesTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Custom Content
-
-***[List group custom content](https://getbootstrap.com/docs/4.3/components/list-group/#custom-content)***
-
-List Group is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
-  
-
-![List group custom content example](../images/bootstrap/list-group-custom.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#list-group-custom-content") public static ListGroupCustomContent listGroupCustomContent;
-// @FindBy(css = "#list-group-custom-content") public static ListGroupCustomContent listGroupCustomContent;
-
-public class ListGroupCustomContent extends Section {
-    @UI("a") public ListGroup listGroup;
-    @UI("a div h5") public ListGroup header;
-    @UI("a div small") public ListGroup dateText;
-    @UI("a p") public ListGroup mainText;
-    @UI("small.footer") public ListGroup footer;
-    @UI("a div") public ListGroup container;
-}
-
-@Test
- public void isValidationTests() {
-     listGroupCustomContent.listGroup.is()
-             .size(3);
-     listGroupCustomContent.container.is()
-             .size(3);
-}
-
-@Test(dataProvider = "clickValidate")
-public void linkClickableTests(int index, String pageTitle) {
-    listGroupCustomContent.listGroup.get(index).highlight();
-    listGroupCustomContent.listGroup.get(index).click();
-    newWindowTitleCheck(pageTitle);
-    listGroupCustomContent.listGroup.get(index).unhighlight();
-}
-```
-
-```html
-<div class="list-group mb-3" id="list-group-custom-content">
-    <a href="https://jdi-testing.github.io/jdi-light/index.html"
-       class="list-group-item list-group-item-action active" target="_blank">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading one</h5>
-            <small>3 days ago</small>
-        </div>
-        <p class="mb-1">Some simple text for first section of custom list group.</p>
-        <small class="footer">JDI website</small>
-    </a>
-    <a href="https://github.com/jdi-testing" class="list-group-item list-group-item-action"
-       target="_blank">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading two</h5>
-            <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Some simple text for second section of custom list group.</p>
-        <small class="text-muted footer">JDI - testing tool</small>
-    </a>
-    <a href="https://github.com/jdi-docs" class="list-group-item list-group-item-action"
-       target="_blank">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading three</h5>
-            <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Some simple text for third section of custom list group.</p>
-        <small class="text-muted footer">JDI Docs</small>
-    </a>
-</div>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the button | void
-**get()** | Select button by index | action
-**getText()** | Get button text | String
-**is()** | Assert action | TextAssert 
-**select()** | Select button | void
-**selected()** | Radio button is selected | TextAssert
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/CustomContentTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-### Toast
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/" target="_blank">Toast</a> - Toasts are lightweight notifications designed to mimic the push notifications.
-<br />
-__Options for toasts:__
-<br />
- - _Animation<br/>_
- - _Autohide <br/>_
- - _Delay <br/>_
- <br/>
-__Events for toasts:__
-<br>
-  - _show.bs.toast_ - this event fires immediately when the show instance method is called.<br/>
-  - _shown.bs.toast_ - this event is fired when the toast has been made visible to the user<br/>
-  - _hide.bs.toast_ - this event is fired immediately when the hide instance method has been called.<br/>
-  - _hidden.bs.toast_ - this event is fired when the toast has finished being hidden from the user<br/>
- <br /> 
-
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/#basic" target="_blank">**Simple Toast**</a>
-<br />
-
-![Simple toast example](../images/bootstrap/toast.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-```java 
-//@FindBy(id="simpleToast")
-@UI("#simpleToast") public static Toast simpleToast; 
-
-@Test
-public void simpleToastValidationTest() {
-    simpleToastButton.click();
-    simpleToast.is().displayed();
-    simpleToast.headerText.is().text(toastHeaderText);
-    simpleToast.body.is().text(toastBodyText);
-}
-
-```
-  
-```html
-<div class="toast" role="alert" data-animation="false" aria-live="assertive"
-     aria-atomic="true" id="simpleToast">
-    <div class="toast-header">
-        <img src="images/range-circle.png" class="rounded mr-2" alt="...">
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">11 mins ago</small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
-                aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body">
-        Hello, world! This is a toast message.
-    </div>
-</div>
-```
-
-<br>
-
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/#translucent" target="_blank">**Translucent Toast**</a>
-
-
-![Translucent toast example](../images/bootstrap/toast_center.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-//@FindBy(id="translucentToast")
-@UI("#translucentToast") public static Toast translucentToast; 
-
-@Test
-public void translucentToastValidationTest() {
-    translucentToastButton.click();
-    translucentToast.is().displayed();
-    translucentToast.headerText.is().text(toastHeaderText);
-    translucentToast.body.is().text(toastBodyText);
-}
-
-```
-  
-```html
-<div aria-live="polite" aria-atomic="true"
-     style="min-height: 200px;background-color: grey;">
-    <div class="toast" role="alert" data-animation="false" aria-live="assertive"
-         aria-atomic="true" id="translucentToast">
-        <div class="toast-header">
-            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
-            <strong class="mr-auto">Bootstrap</strong>
-            <small class="text-muted">11 mins ago</small>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
-                    aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body">
-            Hello, world! This is a toast message.
-        </div>
-    </div>
-</div>
-```
-
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/#stacking" target="_blank">**Stacking**</a>
-
-When you have multiple toasts, we default to vertically stacking them in a readable manner
-
-![Toast stack example](../images/bootstrap/stack_of_toast.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-```java 
-//@FindBy(id="firstMultipleToast")
-@UI("#firstMultipleToast") public static Toast firstStackToast; 
-//@FindBy(id="secondMultipleToast")
-@UI("#secondMultipleToast") public static Toast secondStackToast; 
-
-@Test
-public void stackOfToastsValidationTest() {
-    stackOfToastsButton.click();
-    firstStackToast.is().displayed();
-    secondStackToast.is().displayed();
-    firstStackToast.headerText.is().text(toastHeaderText);
-    firstStackToast.body.is().text(stackToastBodyText);
-    secondStackToast.headerText.is().text(toastHeaderText);
-    secondStackToast.body.is().text(secondStackToastBodyText);
-}
-
-```
-  
-```html
-<div aria-live="polite" aria-atomic="true"
-     style="min-height: 200px;background-color: grey;">
-    <div class="toast several" role="alert" aria-live="assertive" id="firstMultipleToast"
-         aria-atomic="true">
-        <div class="toast-header">
-            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
-            <strong class="mr-auto">Bootstrap</strong>
-            <small class="text-muted">just now</small>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
-                    aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body">
-            See? Just like this.
-        </div>
-    </div>
-    <div class="toast several" role="alert" aria-live="assertive" id="secondMultipleToast"
-         aria-atomic="true">
-        <div class="toast-header">
-            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
-            <strong class="mr-auto">Bootstrap</strong>
-            <small class="text-muted">2 seconds ago</small>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
-                    aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body">
-            Heads up, toasts will stack automatically
-        </div>
-    </div>
-</div>
-```
-
-
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/#stacking" target="_blank">**Placement**</a>
-
-Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle.
-<br /><br />
-Example with top right align:
-
-![Toast top right example](../images/bootstrap/toast_align.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-//@FindBy(id="toastRightTop")
-@UI("#toastRightTop") public static Toast toastWithTopAlign; 
-
-@Test
-public void toastWithTopAlignValidationTest() {
-    toastWithTopAlignButton.click();
-    toastWithTopAlign.is().displayed();
-    toastWithTopAlign.headerText.is().text(toastHeaderText);
-    toastWithTopAlign.body.is().text(toastBodyText);
-    toastWithTopAlign.closeButton.click();
-    toastWithTopAlign.base().waitSec(1);
-    toastWithTopAlign.is().hidden();
-}
-
-```
-  
-```html
-<div aria-live="polite" aria-atomic="true"
-     style="position: relative; min-height: 200px;background-color: grey;">
-    <div class="toast" id="toastRightTop" style="position: absolute; top: 0; right: 0;"
-         data-autohide="false">
-        <div class="toast-header">
-            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
-            <strong class="mr-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
-                    aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body">
-            Hello, world! This is a toast message.
-        </div>
-    </div>
-</div>
-```
-
-Example with top right align stack of toasts:
-
-![Toast top right stack example](../images/bootstrap/stack_top_html.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java  
-//@FindBy(id="firstStackToast")
-@UI("#firstStackToast") public static Toast firstTopAlignStackToast; 
-//@FindBy(id="secondStackToast")
-@UI("#secondStackToast") public static Toast secondTopAlignStackToast; 
-
-@Test
- public void stackOfTopAlignToastsValidationTest() {
-    stackOfToastsWithTopAlignButton.click();
-    firstTopAlignStackToast.headerText.is().text(toastHeaderText);
-    firstTopAlignStackToast.body.is().text(stackToastBodyText);
-    secondTopAlignStackToast.headerText.is().text(toastHeaderText);
-    secondTopAlignStackToast.body.is().text(secondStackToastBodyText);
-    firstTopAlignStackToast.is().displayed();
-    secondTopAlignStackToast.is().displayed();
-}
-
-``` 
-  
-```html
-<div aria-live="polite" aria-atomic="true"
-     style="position: relative; min-height: 200px; background-color: grey;">
-    <!-- Position it -->
-    <div style="position: absolute; top: 0; right: 0;">
-
-        <!-- Then put toasts within -->
-        <div class="toast severalWithPosition" role="alert" aria-live="assertive"
-             id="firstStackToast" aria-atomic="true">
-            <div class="toast-header">
-                <img src="images/range-circle.png" class="rounded mr-2" alt="...">
-                <strong class="mr-auto">Bootstrap</strong>
-                <small class="text-muted">just now</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
-                        aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                See? Just like this.
-            </div>
-        </div>
-
-        <div class="toast severalWithPosition" role="alert" aria-live="assertive"
-             id="secondStackToast" aria-atomic="true">
-            <div class="toast-header">
-                <img src="images/range-circle.png" class="rounded mr-2" alt="...">
-                <strong class="mr-auto">Bootstrap</strong>
-                <small class="text-muted">2 seconds ago</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
-                        aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                Heads up, toasts will stack automatically
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-Example with center align toast:
-
-![Toast top right stack example](../images/bootstrap/toast_center.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-```java 
-//@FindBy(id="toastCenterTop")
-@UI("#toastCenterTop") public static Toast toastWithCenterAlign; 
-//@FindBy(id="toastRightTop")
-@UI("#toastRightTop") public static Toast toastWithTopAlign; 
-
-@Test
-public void toastWithCenterAlignValidationTest() {
-    toastWithCenterAlignButton.click();
-    toastWithCenterAlign.is().displayed();
-    toastWithCenterAlign.headerText.is().text(toastHeaderText);
-    toastWithCenterAlign.body.is().text(toastBodyText);
-    toastWithCenterAlign.closeButton.click();
-    toastWithCenterAlign.base().waitSec(1);
-    toastWithCenterAlign.is().hidden();
-}
-
-```
-  
-```html
-<div aria-live="polite" aria-atomic="true"
-     class="d-flex justify-content-center align-items-center"
-     style="min-height: 200px;background-color: grey;">
-
-    <!-- Then put toasts within -->
-    <div class="toast" role="alert" id="toastCenterTop" aria-live="assertive"
-         aria-atomic="true" data-delay="3000">
-        <div class="toast-header">
-            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
-            <strong class="mr-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
-                    aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body">
-            Hello, world! This is a toast message.
-        </div>
-    </div>
-</div>
-```
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** |	Assert action |	TextAssert
-**close()** |	Close toast |	void
-**getText()** |	Get toast text |	String
-**getTitle()** |	Get toast title |	String
-**is()** |	Assert action |	TextAssert
-**isDisplayed()** | Show\wait that toast element displayed on the screen | Boolean
-
-[Toast test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/)
- 
-<br>
-
-### Pagination
-
-#### Overview
-
-***[Pagination overview](https://getbootstrap.com/docs/4.3/components/pagination/#overview)***
-
-Pagination is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
-  
-
-![Pagination overview example](../images/bootstrap/pagination-overview-example.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "#pagination-overview") public static PaginationOverview paginationOverview;
-@UI("#pagination-overview") public static PaginationOverview paginationOverview;
-
-public class PaginationOverview extends Section {
-    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
-}
-
-@Test
- public void isValidationTests() {
-     paginationOverview.paginationItems.is()
-             .size(5);
-     paginationOverview.is()
-             .core()
-             .hasClass("pagination");
- }
-
- @Test(dataProvider = "listData")
- public void linkTextTests(int index, String linkText) {
-     paginationOverview.paginationItems.get(index).is()
-             .displayed()
-             .enabled()
-             .css("font-size", is("14px"))
-             .hasClass("page-item")
-             .text(is(linkText));
- }
-
- @Test(dataProvider = "listPageTitles")
- public void linkClickableTests(int index, String pageTitle) {
-     paginationOverview.paginationItems.get(index).hover();
-     paginationOverview.paginationItems.get(index).highlight();
-     paginationOverview.paginationItems.get(index).click();
-     newWindowTitleCheck(pageTitle);
-     paginationOverview.paginationItems.get(index).unhighlight();
- }
-```
-
-```html
-<nav aria-label="Page navigation example">
-    <ul class="pagination" id="pagination-overview">
-        <li class="page-item"><a class="page-link" href="https://github.com/jdi-docs"
-                                 target="_blank">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
-                                 target="_blank">1</a></li>
-        <li class="page-item"><a class="page-link"
-                                 href="https://jdi-testing.github.io/jdi-light/index.html"
-                                 target="_blank">2</a></li>
-        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
-                                 target="_blank">3</a></li>
-        <li class="page-item"><a class="page-link"
-                                 href="https://jdi-docs.github.io/jdi-light/"
-                                 target="_blank">Next</a></li>
-    </ul>
-</nav>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the element | void
-**get()** | Select button by index | UIElement
-**getText()** | Get button text | String
-**highlight()** | Highlight element | void
-**hover()** | Hover on the element | void
-**is()** | Assert action | TextAssert 
-**unhighlight()** | Unhighlight element | void
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/OverviewTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Working with icons
-
-***[Pagination working with icons](https://getbootstrap.com/docs/4.3/components/pagination/#working-with-icons)***
-
-Pagination is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
-  
-
-![Pagination working with icons example](../images/bootstrap/pagination-icons-example.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "#pagination-icons") public static PaginationIcons paginationIcons;
-@UI("#pagination-icons") public static PaginationIcons paginationIcons;
-
-public class PaginationIcons extends Section {
-    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
-}
-
-@Test
-public void isValidationTests() {
-    paginationIcons.paginationItems.is()
-            .size(5);
-    paginationIcons.is()
-            .core()
-            .hasClass("pagination");
-}
-
-@Test(dataProvider = "listPageTitles")
-public void linkClickableTests(int index, String pageTitle) {
-    paginationIcons.paginationItems.get(index).hover();
-    paginationIcons.paginationItems.get(index).highlight();
-    paginationIcons.paginationItems.get(index).click();
-    newWindowTitleCheck(pageTitle);
-    paginationIcons.paginationItems.get(index).unhighlight();
-}
-```
-
-```html
-<nav aria-label="Page navigation example">
-    <ul class="pagination" id="pagination-icons">
-        <li class="page-item">
-            <a class="page-link" href="https://github.com/jdi-docs" target="_blank"
-               aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
-                                 target="_blank">1</a></li>
-        <li class="page-item"><a class="page-link"
-                                 href="https://jdi-testing.github.io/jdi-light/index.html"
-                                 target="_blank">2</a></li>
-        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
-                                 target="_blank">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="https://jdi-docs.github.io/jdi-light/"
-               target="_blank" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the element | void
-**get()** | Select button by index | UIElement
-**getText()** | Get button text | String
-**highlight()** | Highlight element | void
-**hover()** | Hover on the element | void
-**is()** | Assert action | TextAssert 
-**unhighlight()** | Unhighlight element | void
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/IconsTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Disabled and active states
-
-***[Pagination disabled and active states](https://getbootstrap.com/docs/4.3/components/pagination/#disabled-and-active-states)***
-
-Pagination is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
-  
-
-![Pagination disabled and active states example](../images/bootstrap/pagination-dis-and-active-example.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "#pagination-states") public static PaginationStates paginationStates;
-@UI("#pagination-states") public static PaginationStates paginationStates;
-
-public class PaginationStates extends Section {
-    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
-}
-
-@Test
-public void isValidationTests() {
-    paginationStates.paginationItems.is()
-            .size(5);
-    paginationStates.is()
-            .core()
-            .hasClass("pagination");
-    paginationStates.paginationItems.get(1).is()
-            .core()
-            .hasClass("disabled");
-    paginationStates.paginationItems.get(3).is()
-            .core()
-            .hasClass("active");
-}
-
-@Test(dataProvider = "listPageTitles")
-public void linkClickableTests(int index, String pageTitle) {
-    paginationStates.paginationItems.get(index).hover();
-    paginationStates.paginationItems.get(index).highlight();
-    paginationStates.paginationItems.get(index).click();
-    newWindowTitleCheck(pageTitle);
-    paginationStates.paginationItems.get(index).unhighlight();
-}
-```
-
-```html
-<nav aria-label="disabled-and-active-states">
-    <ul class="pagination" id="pagination-states">
-        <li class="page-item disabled">
-            <a class="page-link" href="https://github.com/jdi-docs" target="_blank"
-               tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
-                                 target="_blank">1</a></li>
-        <li class="page-item active" aria-current="page">
-            <a class="page-link" href="https://jdi-testing.github.io/jdi-light/index.html"
-               target="_blank">2 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
-                                 target="_blank">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="https://jdi-docs.github.io/jdi-light/"
-               target="_blank">Next</a>
-        </li>
-    </ul>
-</nav>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the element | void
-**get()** | Select button by index | UIElement
-**getText()** | Get button text | String
-**highlight()** | Highlight element | void
-**hover()** | Hover on the element | void
-**is()** | Assert action | TextAssert 
-**unhighlight()** | Unhighlight element | void
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/StatesTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Sizing
-
-***[Pagination sizing](https://getbootstrap.com/docs/4.3/components/pagination/#sizing)***
-
-Pagination is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
-  
-
-![Pagination sizing example](../images/bootstrap/pagination-sizing-example.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "#pagination-big") public static PaginationSizeBig paginationSizeBig;
-// @FindBy(css = "#pagination-small") public static PaginationSizeSmall paginationSizeSmall;
-@UI("#pagination-big") public static PaginationSizeBig paginationSizeBig;
-@UI("#pagination-small") public static PaginationSizeSmall paginationSizeSmall;
-
-public class PaginationSizeBig extends Section {
-    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
-    @UI(".page-link") public Pagination paginationItemsText; // @FindBy(css = ".page-link") public Pagination paginationItemsText;
-}
-
-public class PaginationSizeSmall extends Section {
-    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
-    @UI(".page-link") public Pagination paginationItemsText; // @FindBy(css = ".page-link") public Pagination paginationItemsText;
-}
-
-@Test
-public void isValidationTests() {
-    paginationSizeBig.paginationItems.is()
-            .size(3);
-    paginationSizeBig.is()
-            .core()
-            .hasClass("pagination pagination-lg");
-    paginationSizeSmall.paginationItems.is()
-            .size(3);
-    paginationSizeSmall.is()
-            .core()
-            .hasClass("pagination pagination-sm");
-}
-
-@Test(dataProvider = "listData")
-public void linkTextTests(int index, String linkText) {
-    paginationSizeBig.paginationItemsText.get(index).is()
-            .core()
-            .css("font-size", is("20px"));
-    paginationSizeSmall.paginationItemsText.get(index).is()
-            .core()
-            .css("font-size", is("14px"));
-}
-```
-
-```html
-<nav aria-label="sizing-big">
-    <ul class="pagination pagination-lg" id="pagination-big">
-        <li class="page-item active" aria-current="page">
-            <span class="page-link">1<span class="sr-only">(current)</span></span>
-        </li>
-        <li class="page-item"><a class="page-link"
-                                 href="https://jdi-testing.github.io/jdi-light/index.html"
-                                 target="_blank">2</a></li>
-        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
-                                 target="_blank">3</a></li>
-    </ul>
-</nav>
-
-<nav aria-label="sizing-small">
-    <ul class="pagination pagination-sm" id="pagination-small">
-        <li class="page-item active" aria-current="page">
-            <span class="page-link">1<span class="sr-only">(current)</span></span>
-        </li>
-        <li class="page-item"><a class="page-link"
-                                 href="https://jdi-testing.github.io/jdi-light/index.html"
-                                 target="_blank">2</a></li>
-        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
-                                 target="_blank">3</a></li>
-    </ul>
-</nav>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the element | void
-**get()** | Select button by index | UIElement
-**getText()** | Get button text | String
-**highlight()** | Highlight element | void
-**hover()** | Hover on the element | void
-**is()** | Assert action | TextAssert 
-**unhighlight()** | Unhighlight element | void
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/SizingTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-#### Alignment
-
-***[Pagination alignment](https://getbootstrap.com/docs/4.3/components/pagination/#alignment)***
-
-Pagination is located in the following classes:
- 
-  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
-  
-
-![Pagination alignment example](../images/bootstrap/pagination-alignment-example.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "#pagination-center") public static PaginationAlignCenter paginationAlignCenter;
-// @FindBy(css = "#pagination-end") public static PaginationAlignEnd paginationAlignEnd; 
-@UI("#pagination-center") public static PaginationAlignCenter paginationAlignCenter;
-@UI("#pagination-end") public static PaginationAlignEnd paginationAlignEnd;
-
-public class PaginationAlignCenter extends Section {
-    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
-}
-
-public class PaginationAlignEnd extends Section {
-    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
-}
-
-@Test
-public void isValidationTests() {
-    paginationAlignCenter.paginationItems.is()
-            .size(5);
-    paginationAlignCenter.is()
-            .core()
-            .hasClass("pagination justify-content-center");
-    paginationAlignCenter.paginationItems.get(1).is()
-            .core()
-            .hasClass("disabled");
-    paginationAlignEnd.paginationItems.is()
-            .size(5);
-    paginationAlignEnd.is()
-            .core()
-            .hasClass("pagination justify-content-end");
-    paginationAlignEnd.paginationItems.get(1).is()
-            .core()
-            .hasClass("disabled");
-}
-
-@Test(dataProvider = "listPageTitles")
-public void linkClickableCenterTests(int index, String pageTitle) {
-    paginationAlignCenter.paginationItems.get(index).hover();
-    paginationAlignCenter.paginationItems.get(index).highlight();
-    paginationAlignCenter.paginationItems.get(index).click();
-    newWindowTitleCheck(pageTitle);
-    paginationAlignCenter.paginationItems.get(index).unhighlight();
-}
-```
-
-```html
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center" id="pagination-center">
-        <li class="page-item disabled">
-            <a class="page-link" href="https://github.com/jdi-docs" target="_blank"
-               tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
-                                 target="_blank">1</a></li>
-        <li class="page-item"><a class="page-link"
-                                 href="https://jdi-testing.github.io/jdi-light/index.html"
-                                 target="_blank">2</a></li>
-        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
-                                 target="_blank">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="https://jdi-docs.github.io/jdi-light/"
-               target="_blank">Next</a>
-        </li>
-    </ul>
-</nav>
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-end" id="pagination-end">
-        <li class="page-item disabled">
-            <a class="page-link" href="https://github.com/jdi-docs" target="_blank"
-               tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
-                                 target="_blank">1</a></li>
-        <li class="page-item"><a class="page-link"
-                                 href="https://jdi-testing.github.io/jdi-light/index.html"
-                                 target="_blank">2</a></li>
-        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
-                                 target="_blank">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="https://jdi-docs.github.io/jdi-light/"
-               target="_blank">Next</a>
-        </li>
-    </ul>
-</nav>
-```
-
-
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | Assert action | TextAssert
-**click()** | Click the element | void
-**get()** | Select button by index | UIElement
-**getText()** | Get button text | String
-**highlight()** | Highlight element | void
-**hover()** | Hover on the element | void
-**is()** | Assert action | TextAssert 
-**unhighlight()** | Unhighlight element | void
-
-<br>
-
-[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/AlignTests.java)
-<br>
-
-Button group is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-
-<br>
-
-
-### Input group
-#### Basic Example
-**<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#basic-example" target="_blank">Input group</a>** – Place one add-on or button on either side of an input. You may also place one on both sides of an input.
-<br />
-
-```java 
-
-    //@FindBy(css = "#input-group-basic-example1")
-   @UI("#input-group-basic-example1") public static InputGroupInputWithText inputGroupBasicExample1;
-
-   public class InputGroupInputWithText extends Section{
-       @UI(".input-group-text") public Text text;
-       @UI(".form-control") public TextField input;
-   }
-
-   @Test(priority = 1)
-   public void setTextTestExample1() {
-        inputGroupBasicExample1.input.setText(textExample1);
-        inputGroupBasicExample1.input.is().text(is(textExample1));
-   }
-
-```
-**1.Input group example - Input + left span**
-
-<img src="images/bootstrap/input-group-base-example1.png" alt="Input group example1" height="50%" width="50%">
-
-Here is an example with provided Bootstrap v4.3 code:
-
-
-```html
-<div class="input-group mb-3" id="input-group-basic-example1">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon">@</span>
-    </div>
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-           aria-describedby="basic-addon1">
-</div>
-```
-
-```java 
-
-    //@FindBy(css = "#input-group-basic-example2")
-   @UI("#input-group-basic-example2") public static InputGroupInputWithText inputGroupBasicExample2;
-
-   public class InputGroupInputWithText extends Section{
-       @UI(".input-group-text") public Text text;
-       @UI(".form-control") public TextField input;
-   }
-
-    @Test(priority = 4)
-    public void checkAddonConsistTextTestExample2() {
-       inputGroupBasicExample2.text.is().text(containsString(partOfAddonExample2));
-    }
-
-```
-<br /><br /><br /><br /><br /><br />
-**2.Input group example - Input + right span** 
-
-<img src="images/bootstrap/input-group-base-example2.png" alt="Input group example1" height="50%" width="50%">
-
-Here is an example with provided Bootstrap v4.3 code:
-
-
-```html
-<div class="input-group mb-3" id="input-group-basic-example2">
-    <input type="text" class="form-control" placeholder="Recipient's username"
-           aria-label="Recipient's username" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-        <span class="input-group-text" id="basic-addon2">@example.com</span>
-    </div>
-</div>
-``` 
-
-```java 
-
-    //@FindBy(css = "#input-group-basic-example3")
-   @UI("#input-group-basic-example3") public static InputGroupInputWithLabelAndText inputGroupBasicExample3;
-
-   public class InputGroupInputWithLabelAndText extends Section{
-       @UI(".input-group-text") public Text text;
-       @UI("#basic-url") public TextField input;
-   }
-
-   @Test(priority = 6)
-   public void checkLabelExample3() {
-       assertEquals(inputGroupBasicExample3.input.core().label().getText(), labelExample3);
-   }
-
-```
-<br /><br /><br /><br />
-**3.Input group example - Input + label + left span**
-
-<img src="images/bootstrap/input-group-base-example3.png" alt="Input group example1" height="50%" width="50%">
-
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<div class="input-group mb-3" id="input-group-basic-example3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-    </div>
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-</div>
-```
-
-
-```java 
-
-   //@FindBy(css = "#input-group-basic-example4")
-  @UI("#input-group-basic-example4") public static InputGroupInputWithTwoText inputGroupBasicExample4;
-
-  public class InputGroupInputWithTwoText extends Section{
-      @UI(".input-group-prepend .input-group-text") public Text text_pretend;
-      @UI(".input-group-append .input-group-text") public Text text_append;
-      @UI(".form-control") public TextField input;
-  }
-
-  @Test(priority = 7)
-  public void checkAddonsExample4() {
-      inputGroupBasicExample4.text_append.is().enabled();
-      inputGroupBasicExample4.text_append.is().text(is(addonAppendExample4));
-      inputGroupBasicExample4.text_pretend.is().enabled();
-      inputGroupBasicExample4.text_pretend.is().text(is(addonPretendExample4));
-  }
-
-``` 
-<br /><br />
-**4.Input group example - Input + left and right span**
-
-<img src="images/bootstrap/input-group-base-example4.png" alt="Input group example4" height="50%" width="50%">
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<div class="input-group mb-3" id="input-group-basic-example4">
-    <div class="input-group-prepend">
-        <span class="input-group-text">$</span>
-    </div>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-    <div class="input-group-append">
-        <span class="input-group-text">.00</span>
-    </div>
-</div>
-```
-
-```java 
-
-   //@FindBy(css = "#input-group-basic-example5")
-  @UI("#input-group-basic-example5") public static InputGroupTextareaWithText inputGroupBasicExample5;
-
-  public class InputGroupTextareaWithText extends Section{
-      @UI(".input-group-text") public Text text;
-      @UI(".form-control") public TextArea area;
-  }
-
-  @Test(priority = 9)
-  public void getLinesTestExample5() {
-      inputGroupBasicExample5.area.setLines(linesTextArea);
-      assertEquals(inputGroupBasicExample5.area.getLines(), asList(linesTextArea));
-  }
-
-```
-
-<br /><br /><br /><br/><br />
-**5.Input group example - Input + textarea**
-
-<img src="images/bootstrap/input-group-base-example5.png" alt="Input group example5" height="50%" width="50%">
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```html
-<div class="input-group" id="input-group-basic-example5">
-    <div class="input-group-prepend">
-        <span class="input-group-text">With textarea</span>
-    </div>
-    <textarea class="form-control" aria-label="With textarea"></textarea>
-</div>
-```
-
-Input group are represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-  
-Inner elements of input group can be represented by following classes:
- <ul>
-  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-  
-  <li> [TextField](https://jdi-docs.github.io/jdi-light/#textfield) </li> 
-  
-  <li> [TextArea](https://jdi-docs.github.io/jdi-light/#textarea) </li>
- 
-  
- <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
- </ul>
-
-[Bootstrap test example ](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup)
-
-#### Sizing
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#sizing" target="_blank">Sizing</a> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-```java 
-    @UI("#input-group-default") public static InputGroupSizing inputGroupDefaultSizing;
-    @UI("#input-group-small") public static InputGroupSizing inputGroupSmallSizing;
-    @UI("#input-group-large") public static InputGroupSizing inputGroupLargeSizing;
-    //@FindBy(css = "#input-group-default")
-    //@FindBy(css = "#input-group-small")
-    //@FindBy(css = "#input-group-large")
-
-    @Test
-    public void getTextFromSizingTest() {
-        assertEquals(inputGroupDefaultSizing.input.getText(), text);
-        assertEquals(inputGroupSmallSizing.input.getText(), text);
-        assertEquals(inputGroupLargeSizing.input.getText(), text);
-    }
-
-    @Test
-    public void clearSizingTest() {
-        inputGroupDefaultSizing.input.clear();
-        assertEquals(inputGroupDefaultSizing.input.getText(), "");
-        inputGroupSmallSizing.input.clear();
-        assertEquals(inputGroupDefaultSizing.input.getText(), "");
-        inputGroupLargeSizing.input.clear();
-        assertEquals(inputGroupDefaultSizing.input.getText(), "");
-    }
-```
-
-
-**Sizing on the individual input group elements isn’t supported.**
-![Sizing](../images/bootstrap/sizing.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-```html
-<div class="input-group input-group-sm mb-3" id="input-group-small">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
-    </div>
-    <input type="text" class="form-control" aria-label="Sizing example input"
-           aria-describedby="inputGroup-sizing-sm">
-</div>
-
-<div class="input-group mb-3" id="input-group-default">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-    </div>
-    <input type="text" class="form-control" aria-label="Sizing example input"
-           aria-describedby="inputGroup-sizing-default">
-</div>
-
-<div class="input-group input-group-lg" id="input-group-large">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
-    </div>
-    <input type="text" class="form-control" aria-label="Sizing example input"
-           aria-describedby="inputGroup-sizing-lg">
-</div>
-```
-
-And here are methods available in Java:
-    
-|Method / Property | Description | Return Type
---- | --- | ---
-**assertThat()** | property that returns object for work with assertions| TextAssert
-**clear()** | clears the text field | void
-**focus()** | places cursor within the text field | void
-**getText()** | returns text from the text field  | String
-**getValue()** | returns text from the text field| String
-**is()** | property that returns object for work with assertions| TextAssert
-**setText(String value)** | adds text to the field | void
-
-
-#### Wrapping
-```java 
-   public static UIElement inputGroupWrap,inputGroupNowrap;//@FindBy(css = "#input-group-wrap")
-
-   @Test
-   public void checkWrapping() {
-       assertFalse(inputGroupWrap.hasClass("flex-nowrap"));
-       inputGroupWrap.assertThat().core().css("flex-wrap", "wrap");
-   }
- 
-   @Test
-   public void checkNoWrapping() {
-       assertTrue(inputGroupNowrap.hasClass("flex-nowrap"));
-       inputGroupNowrap.assertThat().core().css("flex-wrap", "nowrap");
-   } 
-```
-
- 
-**<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#wrapping" target="_blank">Wrapping</a>** – Input groups wrap by default via flex-wrap: wrap in order to accommodate custom form field validation within an input group. You may disable this with .flex-nowrap.
-
-![Wrapping](../images/bootstrap/wrapping.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-```html
-<div class="input-group flex-nowrap" id="input-group-nowrap">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="addon-wrapping1">@</span>
-    </div>
-    <input type="text" class="form-control" placeholder="Input group with nowrap"
-           aria-label="Username" aria-describedby="addon-wrapping">
-</div>
-```
-
-Wrapping property can be checked by using following class:
- 
-  - _com.epam.jdi.light.elements.common.UIElement_
-  
-<a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupWrapping.java" target="_blank">Bootstrap test example wrapping</a>
-
-
-#### Checkboxes and radios
-
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a> – Place any checkbox or radio option within an input group’s addon instead of text.
-
-__Example with radio__
-
-```java 
-  @UI("#input-group-radio") public static InputGroupInputWithRadio inputGroupRadio;// @FindBy(css = "#input-group-radio")
-
-  public class InputGroupInputWithRadio extends Section{
-      @Css("[type=\"radio\"]") public RadioButtons radio;
-      @Css(".form-control") public TextField input;
-  }
-  
-  @Test
-  public void getSizeRadioButtons() {
-      inputGroupRadio.radio.is().size(1);
-  }
-
-   @Test
-   public void inputTest() {
-       inputGroupRadio.input.input(new_text);
-       inputGroupRadio.input.assertThat().text(is(new_text));
-   }
-
- 
-```
-
-![radio](../images/bootstrap/input-group-radio.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-```html
-<div class="input-group" id="input-group-radio">
-    <div class="input-group-prepend">
-        <div class="input-group-text">
-            <input type="radio" name="radio-button" id="radio-button"
-                   aria-label="Radio button for following text input">
-        </div>
-    </div>
-    <input type="text" class="form-control" aria-label="Text input with radio button">
-</div>
-```
-
-This input group example is represented by the following classes in Java:
- 
-+ [Section](https://jdi-docs.github.io/jdi-light/#section)    
-+ [RadioButtons](https://jdi-docs.github.io/jdi-light/#radiobuttons)   
-   
-  <a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupRadioTests.java" target="_blank">Bootstrap test example with radio</a>
-
-<br />
-
-```java 
- @UI("#input-group-checkbox") public static InputGroupInputWithCheckBox inputGroupCheckBox;// @FindBy(css = "#input-group-checkbox")
-
- public class InputGroupInputWithCheckBox extends Section{
-     @Css("[type=\"checkbox\"]") public Checkbox checkbox;
-     @Css(".form-control") public TextField input;
- }
-  
- @Test
- public void checkCheckboxTest() {
-     inputGroupCheckBox.checkbox.check();
-     inputGroupCheckBox.checkbox.isSelected();
- }
-
-   @Test
-   public void inputTest() {
-       inputGroupRadio.input.input(new_text);
-       inputGroupRadio.input.assertThat().text(is(new_text));
-   }
-
- 
-```
-__Example with checkbox__
-
-![Checkbox](../images/bootstrap/input-group-checkbox.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-```html
-<div class="input-group mb-3" id="input-group-checkbox">
-    <div class="input-group-prepend">
-        <div class="input-group-text">
-            <input type="checkbox" aria-label="Checkbox for following text input">
-        </div>
-    </div>
-    <input type="text" class="form-control" aria-label="Text input with checkbox">
-</div>
-```
-
-This input group example is represented by the following classes in Java:
- 
-+ [Section](https://jdi-docs.github.io/jdi-light/#section)   
-+ [CheckBox](https://jdi-docs.github.io/jdi-light/#checkbox)
-
-  <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCheckboxesTests.java" target="_blank">Bootstrap test example with checkbox</a>
-
-<br /><br /><br /><br /><br />
- 
-#### Multiple inputs 
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">Multiple inputs</a> – While multiple inputs are supported visually, validation styles are only available for input groups with a single input.
-
-![Multiple inputs](../images/bootstrap/multiple_inputs.png)
-
-```java 
-//FindBy(css = "#multiple-inputs"")
-@UI("#multiple-inputs") public static MultipleInputs multipleInputs;
-
-@Test
-public void getTextTest() {
-     int index = 1;
-
-     String name = multipleInputs.getText(index);
-     assertEquals(name, inputData.get(index));
-
-     String surname = multipleInputs.getText("#mi-i-2");
-     assertEquals(surname, inputData.get(2));
-
-     String text = multipleInputs.getText();
-     assertEquals(text, inputData.get(1));
-}
-
-@Test
-public void getTextAllTest() {
-    assertEquals(multipleInputs.getAllTexts(), inputDataList);
-}
-
-@Test
-public void setValueTest() {
-    multipleInputs.clearAll();
-
-    String value = inputData.get(1);
-    multipleInputs.setValue(value);
-    multipleInputs.is().text(value, 1);
-
-    int index = 2;
-    String name = inputData.get(index);
-    multipleInputs.setValue(name, index);
-    multipleInputs.is().text(name, index);
-
-    String locator = "#mi-i-2";
-    String surname = inputData.get(2);
-    multipleInputs.clear(locator);
-    multipleInputs.setValue(surname, locator);
-    multipleInputs.is().text(surname, locator);
-}
-
-@Test
-public void setAllValuesTest() {
-    multipleInputs.clearAll();
-    multipleInputs.setAllValues(inputDataList);
-    multipleInputs.is().texts(inputDataList);
-}
-```
-
-Here is an example with provided Bootstrap v4.3 code:
-  
-```html
-<div class="input-group" id="multiple-inputs">
-    <div class="input-group-prepend">
-        <span class="input-group-text">First and last name</span>
-    </div>
-    <input type="text" aria-label="First name" class="form-control" id="mi-i-1">
-    <input type="text" aria-label="Last name" class="form-control" id="mi-i-2">
-</div>
-```
-
-And here are methods available in Java:
-    
-|Method | Description | Return Type
---- | --- | ---
- **assertThat()**| Property that returns object for work with assertions | MultipleInputsAssert
- **clear()**| Clear first input within element | void
- **clear(String locator)**| Clear input within element with *locator* | void
- **clear(int index)**| Clear input within element with *index* | void
- **clearAll()**| Clear all inputs within element | void
- **focus()**| Focus on first input within element | void
- **focus(String locator)**| Focus on input within element with *locator* | void
- **focus(int index)**| Focus on input within element with *index* | void
- **getAllText()**| Return texts for all inputs within element | List\<String>
- **getAllValue()**| Return values for all inputs within element | List\<String>
- **getText()**| Return text for first input within element | String
- **getText(String locator)**| Return text for input within element with *locator* | String
- **getText(int index)**| Return text for input within element with *index* | String
- **getValue()**| Return value for first input within element | String
- **getValue(String locator)**| Return value for input within element with *locator* | String
- **getValue(int index)**| Return value for input within element with *index* | String
- **input(String value)**| Set text for first input within element | void
- **input(String value, String locator)**| Set text for input within element with *locator* | void
- **input(String value, int index)**| Set text for input within element with *index* | void
- **inputAll()**| Set texts for all inputs within element | void
- **is()**| Property that returns object for work with assertions | MultipleInputsAssert
- **placeholder()**| Return placeholder from first input within element | String
- **placeholder(String locator)**| Return placeholder from input within element with *locator* | String
- **placeholder(int index)**| Return placeholder from input within element with *index* | String
- **placeholderAll()**| Return placeholders for all inputs within element | List\<String>
- **sendKeys(String value)**| Send text to first input within element | void
- **sendKeys(String value, String locator)**| Send text to input within element with *locator* | void
- **sendKeys(String value, int index)**| Send text to input within element with *index* | void
- **sendKeysAll(List\<String> values)**| Send texts to all inputs within element | void
- **setAllValue(List\<String> values)**| Set values for all inputs within element | void 
- **setValue(String value)**| Set value for first input within element | void
- **setValue(String value, String locator)**| Set value for input within element with *locator* | void
- **setValue(String value, int index)**| Set value for input within element with *index* | void
- 
- <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/MultipleInputsTests.java" target="_blank">Bootstrap test example with multiple inputs</a>
- 
- 
-#### Multiple addons 
-<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#multiple-addons" target="_blank">Multiple addons</a> are supported and can be mixed with checkbox and radio input versions.
-
-![Multiple addons](../images/bootstrap/multiple_addons.png)
-
-```java 
- @UI("#multiple-addons-1")  public static InputGroupMultipleAddonsUpper multipleAddonUpper; //@FindBy(css = "#multiple-addons-1")
- @UI("#multiple-addons-2")  public static InputGroupMultipleAddonsLower multipleAddonLower; //@FindBy(css = "#multiple-addons-2")
- 
- public class InputGroupMultipleAddonsUpper extends Section {
-     @UI("#left-sign") public Label firstLabel; //@FindBy(css = "#left-sign")
-     @UI("#left-nil") public Label secondLabel; //@FindBy(css = "#left-nil")
-     @UI(".form-control") public TextField textField; //@FindBy(css = ".form-control")
- }
-
- @Test(dataProvider = "InputGroupMultipleAddonsLabels")
- public void assertTextFromValueTest(Label multipleAddonsLabel, String labelValue) {
-    multipleAddonsLabel.is().text(labelValue);
- }
- 
- @Test(dataProvider = "InputGroupMultipleAddonsLabels")
- public void isValidationTest(Label multipleAddonsLabel, String labelValue) {
-     multipleAddonsLabel.is()
-        .displayed()
-        .core()
-        .hasClass("input-group-text")
-        .text(labelValue);
- }
- 
- @Test(dataProvider = "InputGroupMultipleAddonsTextFields")
- public void inputTest(TextField textField) {
-     textField.input(text);
-     textField.assertThat().text(is(text));
- }
- 
- @Test(dataProvider = "InputGroupMultipleAddonsTextFields")
- public void textFieldTests(TextField textField) {
-     textField.setText(text);
-     textField.is().text(text);
-     textField.is().text(containsString(partOfText));
-     textField.clear();
-     textField.is().text(emptyText);
- }
-```
-Here is an example with provided Bootstrap v4.3 code:
-  
-```html
-<div class="input-group mb-3" id="multiple-addons-1">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="left-sign">$</span>
-        <span class="input-group-text" id="left-nil">0.00</span>
-    </div>
-    <input type="text" class="form-control"
-           aria-label="Dollar amount (with dot and two decimal places)">
-</div>
-
-<div class="input-group mb-3" id="multiple-addons-2">
-    <input type="text" class="form-control"
-           aria-label="Dollar amount (with dot and two decimal places)">
-    <div class="input-group-append">
-        <span class="input-group-text" id="right-sign">$</span>
-        <span class="input-group-text" id="right-nil">0.00</span>
-    </div>
-</div>
-```
-
-
-Multiple input is represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)
-  
-Inner elements of multiple input can be represented by the following classes:
-
- + [TextField](https://jdi-docs.github.io/jdi-light/#textfield)
- + [Label](https://jdi-docs.github.io/jdi-light/#label)
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupMultipleAddonsTests.java" target="_blank">Bootstrap test example with multiple addons</a>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /> 
-#### Button addons 
-
-**[Button addons](https://getbootstrap.com/docs/4.3/components/input-group/#button-addons)** – Multiple buttons have no detailed information on Bootstrap website
-
-
-![Button addons](../images/bootstrap/button_addons.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-
-```java 
-//@FindBy(css = "#input-group-button-addon4") public static ButtonAddons inputGroupButtonAddons4;
-@UI("#input-group-button-addon1") public static ButtonAddons inputGroupButtonAddons1;
-@UI("#input-group-button-addon2") public static ButtonAddons inputGroupButtonAddons2;
-@UI("#input-group-button-addon3") public static ButtonAddons inputGroupButtonAddons3;
-@UI("#input-group-button-addon4") public static ButtonAddons inputGroupButtonAddons4;
-
-public class ButtonAddons extends Section {
-    @UI("button") public Button button;
-    @UI("input") public TextField input;
-    @UI("button") public ListGroup listButtons;
-    @UI("input") public TextField inputField;
-}
-
-@Test
-public void checkButtonAddon2Test() {
-    inputGroupButtonAddons2.input.input(text);
-    inputGroupButtonAddons2.button.click();
-    inputGroupButtonAddons2.input.input(placeholder_text);
-    inputGroupButtonAddons2.input.assertThat().text(placeholder_text);
-}
-
-@Test
-public void checkButtonAddon4Test() {
-    inputGroupButtonAddons4.inputField.input(text);
-    inputGroupButtonAddons4.listButtons.get(1).click();
-    inputGroupButtonAddons4.inputField.input(placeholder_text);
-    inputGroupButtonAddons4.listButtons.get(2).click();
-    inputGroupButtonAddons4.inputField.assertThat().text(placeholder_text);
-}
-```
-
-  
-```html
-<div class="input-group mb-3" id="input-group-button-addon1">
-    <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button
-        </button>
-    </div>
-    <input type="text" class="form-control" placeholder=""
-           aria-label="Example text with button addon" aria-describedby="button-addon1">
-</div>
-
-<div class="input-group mb-3" id="input-group-button-addon2">
-    <input type="text" class="form-control" placeholder="Recipient's username"
-           aria-label="Recipient's username" aria-describedby="button-addon2">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button
-        </button>
-    </div>
-</div>
-
-<div class="input-group mb-3" id="input-group-button-addon3">
-    <div class="input-group-prepend" id="button-addon3">
-        <button class="btn btn-outline-secondary" type="button">Button</button>
-        <button class="btn btn-outline-secondary" type="button">Button</button>
-    </div>
-    <input type="text" class="form-control" placeholder=""
-           aria-label="Example text with two button addons"
-           aria-describedby="button-addon3">
-</div>
-
-<div class="input-group" id="input-group-button-addon4">
-    <input type="text" class="form-control" placeholder="Recipient's username"
-           aria-label="Recipient's username with two button addons"
-           aria-describedby="button-addon4">
-    <div class="input-group-append" id="button-addon4">
-        <button class="btn btn-outline-secondary" type="button">Button</button>
-        <button class="btn btn-outline-secondary" type="button">Button</button>
-    </div>
-</div>
-```
-
-And here are methods available in Java:
-    
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | property that returns object for work with assertions| TextAssert
-**clear()** | clears the text field | void
-**click()** | click on button | void
-**displayed()** | check item is displayed | TextAssert
-**enabled()** | check item is enabled | TextAssert
-**expand()** | expand dropdown menu | void
-**expanded()** | check that dropdown is expanded | TextAssert
-**focus()** | places cursor within the text field | void
-**getText()** | returns text from the text field  | String
-**getValue()** | returns text from the text field| String
-**input(String value)** | adds text to the field | void
-**is()** | property that returns object for work with assertions| TextAssert
-**sendKeys(String value)** | adds text to the field | void
-**setText(String value)** | adds text to the field | void
-  
- <br>
-Input group are represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-  
-Inner elements of input group can be represented by following classes:
- <ul>
-  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-  
-  <li> [TextField](https://jdi-docs.github.io/jdi-light/#textfield) </li> 
-  
-  <li> [TextArea](https://jdi-docs.github.io/jdi-light/#textarea) </li>
-  
-  <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li>
- 
- <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
- </ul>
- <br>
-
-<a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonAddonsTests.java" target="_blank">Button Addons test example</a>
-
-
-#### Buttons with dropdowns 
-
-**[Buttons with dropdowns](https://getbootstrap.com/docs/4.3/components/input-group/#buttons-with-dropdowns)** – Buttons with dropdowns have no detailed information on Bootstrap website
-
-![Buttons with dropdowns](../images/bootstrap/buttons_with_dropdowns.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#button-with-dropdown") public static ButtonWithDropdown buttonWithDropdown;
-// @FindBy(css = "#button-with-dropdown") public static ButtonWithDropdown buttonWithDropdown;
-
-public class ButtonWithDropdown extends Section {
-@UI("input") public TextField textInputArea;
-@UI("button") public Button dropdownButton;
-@JDropdown(expand = ".input-group-prepend",
-        value = ".dropdown-toggle",
-        list = ".dropdown-item")
-public Dropdown dropdownMenu;
-}
-
-@Test
-public void dropdownMenuTests() {
-    buttonWithDropdown.dropdownMenu.expand();
-    buttonWithDropdown.dropdownMenu.is().expanded();
-    buttonWithDropdown.dropdownMenu.is().size(4);
-    buttonWithDropdown.dropdownMenu.list().get(0).is().text(action);
-}
-
-@Test
-public void textInputAreaTests() {
-    buttonWithDropdown.textInputArea.sendKeys(testText);
-    buttonWithDropdown.textInputArea.is().text(testText);
-    buttonWithDropdown.textInputArea.clear();
-    buttonWithDropdown.textInputArea.is().text("");
-}
-
-@Test
-public void dropdownButtonTests() {
-    buttonWithDropdown.dropdownButton.is().displayed();
-    buttonWithDropdown.dropdownButton.is().enabled();
-    buttonWithDropdown.dropdownButton.is().text(dropdownButton);
-}
-```
-  
-```html
-<div class="input-group mb-3" id="button-with-dropdown">
-    <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div role="separator" class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-    </div>
-    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-</div>
-```
-
-And here are methods available in Java:
-    
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | property that returns object for work with assertions| TextAssert
-**clear()** | clears the text field | void
-**click()** | click on button | void
-**displayed()** | check item is displayed | TextAssert
-**enabled()** | check item is enabled | TextAssert
-**expand()** | expand dropdown menu | void
-**expanded()** | check that dropdown is expanded | TextAssert
-**focus()** | places cursor within the text field | void
-**getText()** | returns text from the text field  | String
-**getValue()** | returns text from the text field| String
-**is()** | property that returns object for work with assertions| TextAssert
-**sendKeys(String value)** | adds text to the field | void
-**setText(String value)** | adds text to the field | void
- 
- <br>
-Input group are represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-  
-Inner elements of input group can be represented by following classes:
- <ul>
-  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-  
-  <li> [TextField](https://jdi-docs.github.io/jdi-light/#textfield) </li> 
-  
-  <li> [TextArea](https://jdi-docs.github.io/jdi-light/#textarea) </li>
-  
-  <li> [Dropdown](https://jdi-docs.github.io/jdi-light/#dropdown-2) </li>
- 
- <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
- </ul>
- <br>
-
-   
-[Buttons with dropdowns test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonWithDropdownTests.java) <br>
-<br>
- 
-#### Segmented buttons
-**[Segmented buttons](https://getbootstrap.com/docs/4.3/components/input-group/#segmented-buttons)** – Segmented buttons have no detailed information on Bootstrap website
-
-![Segmented buttons](../images/bootstrap/segmented_buttons.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#segmented-button") public static SegmentedButton segmentedButton;
-// @FindBy(css = "#segmented-button") public static SegmentedButton segmentedButton;
-
-public class SegmentedButton extends Section {
-    @UI("#Segmented-action-button") public Button actionButton;
-    @UI("input") public TextField textInputArea;
-    @JDropdown(expand = ".dropdown-toggle",
-            value = ".sr-only",
-            list = ".dropdown-item")
-    public Dropdown dropdownMenu;
-}
-
-@Test
-public void textInputAreaTests() {
-    segmentedButton.textInputArea.is()
-            .displayed()
-            .enabled();
-    segmentedButton.textInputArea.sendKeys(testText);
-    segmentedButton.textInputArea.is().text(testText);
-    segmentedButton.textInputArea.clear();
-    segmentedButton.textInputArea.is().text("");
-}
-
-@Test
-public void dropdownMenuTests() {
-    segmentedButton.dropdownMenu.expand();
-    segmentedButton.dropdownMenu.is().expanded();
-    segmentedButton.dropdownMenu.is().size(4);
-    segmentedButton.dropdownMenu.list().get(0).is().text(action);
-    segmentedButton.dropdownMenu.select(action);
-    newWindowTitleCheck();
-}
-
-@Test
-public void actionButtonTests() {
-    segmentedButton.actionButton.is().displayed();
-    segmentedButton.actionButton.is().enabled();
-    segmentedButton.actionButton.is().text(action);
-    segmentedButton.actionButton.click();
-    validateAlert(is(actionButtonClickAlert));
-}
-```
-  
-```html
-<div class="input-group mb-3" id="segmented-button">
-    <div class="input-group-prepend">
-        <button type="button" class="btn btn-outline-secondary" id="Segmented-action-button"
-                onclick="alert('Action Button Alert');">Action
-        </button>
-        <button type="button"
-                class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item"
-               href="https://jdi-testing.github.io/jdi-light/index.html"
-               target="_blank">Action</a>
-            <a class="dropdown-item"
-               href="https://jdi-testing.github.io/jdi-light/index.html" target="_blank">Another
-                action</a>
-            <a class="dropdown-item"
-               href="https://jdi-testing.github.io/jdi-light/index.html" target="_blank">Something
-                else here</a>
-            <div role="separator" class="dropdown-divider"></div>
-            <a class="dropdown-item"
-               href="https://jdi-testing.github.io/jdi-light/index.html" target="_blank">Separated
-                link</a>
-        </div>
-    </div>
-    <input type="text" class="form-control"
-           aria-label="Text input with segmented dropdown button">
-</div>
-```
-
-And here are methods available in Java:
-    
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | property that returns object for work with assertions| TextAssert
-**clear()** | clears the text field | void
-**click()** | click on button | void
-**displayed()** | check item is displayed | TextAssert
-**enabled()** | check item is enabled | TextAssert
-**expand()** | expand dropdown menu | void
-**expanded()** | check that dropdown is expanded | TextAssert
-**focus()** | places cursor within the text field | void
-**getText()** | returns text from the text field  | String
-**getValue()** | returns text from the text field| String
-**is()** | property that returns object for work with assertions| TextAssert
-**sendKeys(String value)** | adds text to the field | void
-**setText(String value)** | adds text to the field | void
-
- <br>
-Input group are represented by Section class in Java:
- 
-  [Section](https://jdi-docs.github.io/jdi-light/#section)  
-  
-Inner elements of input group can be represented by following classes:
- <ul>
-  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-  
-  <li> [TextField](https://jdi-docs.github.io/jdi-light/#textfield) </li> 
-  
-  <li> [TextArea](https://jdi-docs.github.io/jdi-light/#textarea) </li>
-  
-  <li> [Dropdown](https://jdi-docs.github.io/jdi-light/#dropdown-2) </li>
- 
- <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
- </ul>
- <br>
- 
-  
-[Segmented buttons test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupSegmentedButtonTests.java) <br>
-
- 
-#### Custom select 
-**[Custom select](https://getbootstrap.com/docs/4.3/components/input-group/#custom-select)** – Input groups include support for custom selects and text field. Browser default versions of these are not supported.
-
-![Custom select](../images/bootstrap/custom_select.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#custom-select-01") public static CustomSelect customSelect;
-// @FindBy(css = "#custom-select-01") public static CustomSelect customSelect;
-
-public class CustomSelect extends Section {
-    @UI(".input-group-prepend") public Text optionText;
-    @UI("#inputGroupSelect01") public Selector selector;
-}
-
-@Test
-   public void isValidationOptionsSectionTests() {
-       customSelect.optionText.is().text(optionText);
-}
-
-@Test
-public void selectorByIndexTests() {
-    customSelect.selector.is().selected(selectChoose);
-    customSelect.selector.select(2);
-    customSelect.selector.is().selected(selectOne);
-    customSelect.selector.select(1);
-    customSelect.selector.is().selected(selectChoose);
-}
-
-@Test(priority = 1)
-public void selectorByValueTests() {
-    customSelect.selector.select(selectOne);
-    customSelect.selector.is().selected(selectOne);
-    customSelect.selector.select(selectTwo);
-    customSelect.selector.is().selected(selectTwo);
-}
-
-@Test
-public void selectorIsValidationTests() {
-    customSelect.selector.is().displayed()
-            .enabled();
-    customSelect.selector.is().size(4);
-}
-```
-  
-```html
-<div class="input-group mb-3" id="custom-select-01">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Options</label>
-    </div>
-    <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-</div>
-
-<div class="input-group mb-3" id="custom-select-02">
-    <select class="custom-select" id="inputGroupSelect02">
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <div class="input-group-append">
-        <label class="input-group-text" for="inputGroupSelect02">Options</label>
-    </div>
-</div>
-```
-
-<br><br><br><br><br><br><br><br><br><br>
-**[Custom select with button](https://getbootstrap.com/docs/4.3/components/input-group/#custom-select)** – Input groups include support for custom selects and button. Browser default versions of these are not supported.
-
-![Custom select with button](../images/bootstrap/custom-select-with-button.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-@UI("#custom-select-button-01") public static CustomSelectWithButton customSelectWithButton;
-// @FindBy(css = "#custom-select-button-01") public static CustomSelect customSelect;
-
-public class CustomSelectWithButton extends Section {
-    @UI("#inputGroupSelect03") public Selector selector;
-    @UI("button") public Button button;
-}
-
-@Test
-public void buttonTests() {
-    customSelectWithButton.button.is().displayed();
-    customSelectWithButton.button.is().enabled();
-    customSelectWithButton.button.is().text(buttonText);
-    customSelectWithButton.button.hover();
-    customSelectWithButton.button.click();
-    validateAlert(is(buttonClickAlert));
-}
-
-@Test
-public void selectorByIndexTests() {
-    customSelectWithButton.selector.is().selected(selectChoose);
-    customSelectWithButton.selector.select(2);
-    customSelectWithButton.selector.is().selected(selectOne);
-    customSelectWithButton.selector.select(3);
-    customSelectWithButton.selector.is().selected(selectTwo);
-}
-
-@Test(priority = 1)
-public void selectorByValueTests() {
-    customSelectWithButton.selector.select(selectTwo);
-    customSelectWithButton.selector.is().selected(selectTwo);
-    customSelectWithButton.selector.select(selectThree);
-    customSelectWithButton.selector.is().selected(selectThree);
-}
-
-@Test
-public void selectorIsValidationTests() {
-    customSelectWithButton.selector.is().displayed()
-            .enabled();
-    customSelectWithButton.selector.is().size(4);
-}
-```
-  
-```html
-<div class="input-group mb-3" id="custom-select-button-01">
-    <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary" type="button"
-                onclick="alert('Button clicked, thank you!');">Button
-        </button>
-    </div>
-    <select class="custom-select" id="inputGroupSelect03"
-            aria-label="Example select with button addon">
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-</div>
-
-<div class="input-group mb-3" id="custom-select-button-02">
-    <select class="custom-select" id="inputGroupSelect04"
-            aria-label="Example select with button addon">
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button"
-                onclick="alert('Button clicked, thank you!');">Button
-        </button>
-    </div>
-</div>
-```
-
-
-
-And here are methods available in Java:
-    
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | property that returns object for work with assertions| TextAssert
-**clear()** | clears the text field | void
-**click()** | click on button | void
-**displayed()** | check item is displayed | TextAssert
-**enabled()** | check item is enabled | TextAssert
-**focus()** | places cursor within the text field | void
-**getText()** | returns text from the text field  | String
-**getValue()** | returns text from the text field| String
-**is()** | property that returns object for work with assertions| TextAssert
-**select(int value)** | choose item by index | void
-**selected** | returns text from the selected item | TextAssert
-**sendKeys(String value)** | adds text to the field | void
-**setText(String value)** | adds text to the field | void
- 
- 
-  <br>
- Input group are represented by Section class in Java:
-  
-   [Section](https://jdi-docs.github.io/jdi-light/#section)  
-   
- Inner elements of input group can be represented by following classes:
-  <ul>
-   <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
-  
-  <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
-  </ul>
-  <br>
- 
-[Custom select test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelect.java) <br>
-[Custom select with button test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelectWithButton.java)
- 
-#### Custom file input 
-
-[Custom file input](https://getbootstrap.com/docs/4.3/components/input-group/#custom-file-input) – Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
-
-![Custom file input](../images/bootstrap/custom_file_input.png)
-
-```java 
-public class InputGroupCustomUploadFile extends Section {
-    
-@UI("label[for='upload-file-c']") //@FindBy(css ="label[for='upload-file-c']")
-public Label labelInputFile;
-@UI("input#upload-file-c") //@FindBy(css ="input#upload-file-c")
-public FileInput fileInput; 
-@UI("button") //@FindBy(css = "button") 
-public Button btnSubmit;
-
-public void clickSubmitButton() {
-        btnSubmit.click();
-    }
-}
-
-public class InputGroupCustomFileInput extends Section {
-@UI("label[for='file-input-c']") //@FindBy(css ="label[for='file-input-c']") 
-public Label labelInputFile;
-@UI("input#file-input-c")   //@FindBy(css ="input#file-input-c")
-public FileInput fileInput;
-}
- 
-@BeforeMethod
-public void before() {
-States.shouldBeLoggedIn();
-bsPage.shouldBeOpened();
-inputGroupCustomFileInput.fileInput.core().
-                        setup(jdiB -> jdiB.setSearchRule(ANY_ELEMENT));
-inputGroupCustomFileInput.fileInput.core().setClickArea(ACTION_CLICK);
-inputGroupCustomUploadFile.fileInput.core().
-                        setup(jdiB -> jdiB.setSearchRule(ANY_ELEMENT));
-inputGroupCustomUploadFile.fileInput.core().setClickArea(ACTION_CLICK);
-}
-
-@Test
-public void uploadTest() {
-clearInput();
-inputGroupCustomFileInput.fileInput.uploadFile(mergePath(PROJECT_PATH,
-                "/src/test/resources/general.xml"));
-inputGroupCustomFileInput.fileInput.is().text(containsString("general.xml"));
-inputGroupCustomFileInput.fileInput.is().value(containsString("general.xml"));
-}
-
-@Test
-public void buttonUploadFileTest() {
-inputGroupCustomUploadFile.btnSubmit.is().text("Submit");
-inputGroupCustomUploadFile.clickSubmitButton();
-validateAlert(is(alertMessage));
-}
-```
-
-```html
-<div class="input-group mb-3" id="file-input">
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="file-input-c">
-        <label class="custom-file-label" for="file-input-c">Choose file</label>
-    </div>
-</div>
-<div class="input-group" id="upload-file">
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="upload-file-c">
-        <label class="custom-file-label" for="upload-file-c">Choose file</label>
-    </div>
-    <div class="input-group-append">
-         <button class="btn btn-outline-secondary" type="button" 
-                    onclick="alert('Button clicked, thank you!');">Submit</button>
-    </div>
-</div> 
-```
-
-And here are methods available in Java:
-
-|Method | Description | Return Type
---- | --- | ---
-**assertThat()** | property that returns object for work with assertions | UIAssert
-**click()** | click on element | void
-**getValue()** | Get file name | String
-**hover()** | hover on element | void
-**is()** | property that returns object for work with assertions | UIAssert
-**label()**| Get label | Label
-**setValue(String value)** | set file path to input | void
-**text()** | returns text of input field | String
-**uploadFile(String path)** | set file path to input | void
-**uploadFileRobot(String path, long mSecDelay)** | set file path to input | void
-<br>
-
-The Custom file input is defined as a section and uses additional web elements: Button, FileInput and Label.
-
-They are located in the following Java classes:
-
-- com.epam.jdi.light.ui.html.common.Button
-
-- com.epam.jdi.light.elements.common;
-
-- com.epam.jdi.light.ui.bootstrap.elements.common;
-
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputgroup/InputGroupCustomFileInputTests.java)
-
 
 ### Card
 
@@ -17701,72 +12359,6 @@ Available methods in Java JDI Light:
 
 [Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/card/CardColumnsTests.java)
 
-### Jumbotron
-
-[Jumbotron](https://getbootstrap.com/docs/4.3/components/jumbotron) – Lightweight, flexible component for showcasing hero
-
-![Jumbotron](../images/bootstrap/jumbotron.png)
-
-Here is an example with provided Bootstrap v4.3 code:
-
-```java 
-// @FindBy(css = "#jumbotron")
-@Css("#jumbotron")
-public static Jumbotron jumbotron;
-
-public class Jumbotron extends Section implements IsJumbotron {
-    @Css(".display-4") public Text title;
-    @Css(".lead") public Text description;
-    @Css(".btn") public Button learnMoreBtn;
-}
-
-@Test
-public void getTextTest() {
-    assertEquals(jumbotron.getText(), mJumbotronWithButton);
-}
-
-@Test
-public void clickTest() {
-    jumbotron.learnMoreBtn.click();
-    ArrayList<String> tabs = new ArrayList<>(WebDriverFactory.getDriver().getWindowHandles());
-    WebDriver driver = WebDriverFactory.getDriver();
-    driver.switchTo().window(tabs.get(1));
-    assertEquals(getUrl(), mJumbotronUrl);
-    driver.close();
-    driver.switchTo().window(tabs.get(0));
-} 
-```
-
-```html
-<div class="jumbotron" id="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple
-        jumbotron-style component for calling extra attention to
-        featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to
-        space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg"
-       href="https://getbootstrap.com/docs/4.3/components/jumbotron/"
-       target="_blank" role="button">Learn more</a>
-</div>
-```
-
-Jumbotron is represented by Section class in Java:
-
-[Section](https://jdi-docs.github.io/jdi-light/#section)
-
-Inner elements of jumbotron can be represented by the following classes:
-
-- [Text](https://jdi-docs.github.io/jdi-light/#text)
-- [Button](https://jdi-docs.github.io/jdi-light/#button)
-- [Label](https://jdi-docs.github.io/jdi-light/#label)
-- [Link](https://jdi-docs.github.io/jdi-light/#link)
-
-[See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements)
-
-[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/jumbotron)
-
 ### Dropdown
 <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/dropdowns/" target="_blank">Dropdowns</a> are toggleable, contextual overlays for displaying lists of links and more. 
 
@@ -18895,6 +13487,6066 @@ Here is an example with Bootstrap v4.3 code:
 <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/dropdown/DropdownOptionsTests.java" target="_blank">Bootstrap Test Examples</a>
 
 
+### Forms
+<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/forms/" target="_blank">Forms</a> – logical part of a web page that represents an HTML form.
+Form can consists of:
+<ul>
+<li>Textual form controls(inputs, selects, and textareas)</li>
+<li>File inputs</li>
+<li>Range inputs</li>
+<li>Checkboxes and Radiobuttons</li>
+<li>Help text</li>
+<li>Fieldsets(which can disable all the controls within)</li>
+</ul>
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**add(T entity)** | Fills all settable elements and clicks “add” Button or ”addButton” | void
+**back(T entity)** | Fills all settable elements and clicks “back” Button or ”backButton” | void
+**cancel(T entity)** | Fills all settable elements and clicks “cancel” Button or ”cancelButton” | void
+**check(T entity)** | Verifies that form has been filled correctly. If not, throws an exception | void
+**close(T entity)** | Fills all settable elements and clicks “close” Button or ”closeButton” | void
+**fill(T entity)** | Fills all settable elements of the form that can be matched with fields of the input entity | void
+**fillAction(Field field, Object element, Object parent, String setValue)** | Defines the specifics of how form elements will be filled | void
+**getAction(Field field, Object element, Object parent)** | Defines the specifics of how form elements will be obtained for verification and checks | String
+**is()** | Asserts element  | UIAssert
+**login()** | Clicks "login" Button or "loginButton"| void
+**login(T entity)** | Fills all settable elements and clicks “login” Button or ”loginButton” | void
+**loginAs(T entity)** | Fills all settable elements and clicks “login” Button or ”loginButton” | void
+**next(T entity)** | Fills all settable elements and clicks “next” Button or ”nextButton” | void
+**onlyMandatory()** | Sets form filter option to **MANDATORY**, meaning that only mandatory form elements are filled/submitted or verified/checked for the duration of a single form action | void
+**onlyOptional()** | Sets form filter option to **OPTIONAL**, meaning that only optional form elements are filled/submitted or verified/checked for the duration of a single form action | void
+**pressButton(String buttonName)** | Clicks “buttonName” Button or "buttonNamebutton". Allows different buttons to send one form, e.g. save/publish/cancel/search/update/... | void
+**publish(T entity)** | Fills all settable elements and clicks “publish” Button or ”publishButton” | void
+**save(T entity)** | Fills all settable elements and clicks “save” Button or ”saveButton” | void
+**search(T entity)** | Fills all settable elements and clicks “search” Button or ”searchButton” | void
+**select(T entity)** | Fills all settable elements and clicks “select” Button or ”selectButton” | void
+**send()** | Sends the form by clicking “send” Button or "sendButton" | void
+**send(T entity)** | Fills all settable elements and clicks “send” Button or ”sendButton” | void
+**submit()** | Sends the form by clicking "submit" Button or "submitButton" | void
+**submit(String text)** | Fills first settable form field with value and clicks "submit" Button or "submitButton"  | void
+**submit(T entity)** | Fills all settable elements and clicks "submit" Button or "submitButton"  | void
+**submit(String text, String buttonName)** | Fills first settable field with value and clicks “buttonName” Button or "buttonNamebutton"| void
+**submit(T entity, String buttonName)** | Fills all settable elements and clicks “buttonName” Button or "buttonNamebutton" | void
+**update(T entity)** | Fills all settable elements and clicks “update” Button or ”updateButton” | void
+**verify(T entity)** | Verifies that form has been filled correctly. If not, returns a list of keys where verification has failed | List<String>
+
+#### Simple form
+This is an example of simple form consisting of some basic elements.
+![Simple form](../images/bootstrap/form-simple.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+     public class BootstrapFormsPage extends WebPage {
+         // FindBy(css = "#support-form")
+         @UI("#support-form")      
+         public static SupportMessageForm supportMessageForm;
+     }
+    
+    @Test
+    public void submitButtonTest() {
+        supportMessageForm.supportButtonSubmit.click();
+        lastLogEntry.has().text(containsString(logLineSubmit));
+    }
+
+    @Test
+    public void clearButtonTest() {
+        supportMessageForm.supportButtonClear.click();
+        lastLogEntry.has().text(containsString(logLineClear));
+    }
+
+    @Test
+    public void submitFormTest() {
+        setDefaultValues();
+        supportMessageForm.submit(EXAMPLE_MESSAGE);
+        lastLogEntry.has().text(containsString(logLineSubmit));
+        supportMessageForm.check(EXAMPLE_MESSAGE);
+    }
+
+    @Test
+    public void fillFormTest() {
+        setDefaultValues();
+        supportMessageForm.fill(EXAMPLE_MESSAGE);
+        supportMessageForm.supportEmail.has().text(EXAMPLE_MESSAGE.supportEmail);
+        supportMessageForm.supportMessage.has().text(EXAMPLE_MESSAGE.supportMessage);
+        supportMessageForm.check(EXAMPLE_MESSAGE);
+    }
+
+    @Test
+    public void clearFormTest() {
+        setDefaultValues();
+        supportMessageForm.clear(EXAMPLE_MESSAGE);
+        lastLogEntry.has().text(containsString(logLineClear));
+        supportMessageForm.check(TEMPLATE_MESSAGE);
+    }
+```
+
+```html 
+<form id="support-form">
+    <div class="form-group">
+        <label for="support-email">Please enter your email address at which
+            our manager can contact you</label>
+        <input type="email" class="form-control" id="support-email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+            else.</small>
+    </div>
+    <div class="form-group">
+        <label for="support-message">Your message</label>
+        <textarea class="form-control" id="support-message" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" id="support-button-submit">Submit</button>
+    <button type="reset" class="btn btn-danger" id="support-button-clear">Clear</button>
+</form>
+```
+
+[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/SimpleFormTests.java)
+<br><br><br><br><br><br><br><br><br><br><br>
+
+#### Complicated form
+This is an example of complicated form consisting of various specific elements.
+![Complicated form](../images/bootstrap/form-complicated.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+    public class BootstrapFormsPage extends WebPage {
+        // @FindBy(css = "#superhero-creation-form")
+        @UI("#superhero-creation-form") 
+        public static SuperheroForm superheroForm;
+        // @FindBy(css = ".logs  li:first-child")        
+        @UI(".logs  li:first-child") 
+        public static Text lastLogEntry;
+    }
+    
+    @Test
+    public void submitButtonTest() {
+        superheroForm.superheroButtonSubmit.click();
+        lastLogEntry.has().text(containsString(logLineSubmit));
+    }
+    
+    @Test
+    public void clearButtonTest() {
+        superheroForm.superheroButtonClear.click();
+        lastLogEntry.has().text(containsString(logLineClear));
+    }
+    
+    @Test
+    public void submitFormTest() {
+        superheroForm.submit(EXAMPLE_HERO);
+        lastLogEntry.has().text(containsString(logLineSubmit));
+        superheroForm.check(EXAMPLE_HERO);
+    }
+    
+    @Test
+    public void clearFormTest() {
+        superheroForm.clear(EXAMPLE_HERO);
+        lastLogEntry.has().text(containsString(logLineClear));
+        superheroForm.check(TEMPLATE_HERO);
+    }
+``` 
+
+```html 
+<form id="superhero-creation-form">
+    <div class="form-group">
+        <label for="current-alias">Enter your alias</label>
+        <input type="text" class="form-control" id="current-alias" aria-describedby="emailHelp" placeholder="Enter alias">
+    </div>
+    <div class="form-group">
+        <label for="alter-ego">Enter your alter ego</label>
+        <input type="text" class="form-control" id="alter-ego" aria-describedby="emailHelp" placeholder="Enter alter ego">
+    </div>
+    <!-- Radios start -->
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Species</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="superheroSpecies" id="human" value="option1" checked="">
+                    <label class="form-check-label" for="human">
+                        Human
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="superheroSpecies" id="symbiote" value="option2">
+                    <label class="form-check-label" for="symbiote">
+                        Symbiote
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="superheroSpecies" id="skrulls" value="option3">
+                    <label class="form-check-label" for="skrulls">
+                        Skrulls
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="superheroSpecies" id="kryptonian" value="option4">
+                    <label class="form-check-label" for="kryptonian">
+                        Kryptonian
+                    </label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <!-- Radios end -->
+    <div>
+        <label for="superhero-range">Power scale:</label>
+        <input type="range" class="custom-range mb-3" min="0" max="100" id="superhero-range">
+    </div>
+    <label for="select-universe">Universe:</label>
+    <select class="custom-select mb-3" id="select-universe">
+        <option selected="">Select character's universe</option>
+        <option value="1">DC</option>
+        <option value="2">Marvel Earth-616</option>
+        <option value="3">Marvel Cinematic Universe</option>
+    </select>
+    <div class="custom-control custom-switch mb-3" id="superhero-switch-div">
+        <input type="checkbox" class="custom-control-input" id="superhero-switch">
+        <label class="custom-control-label" for="superhero-switch">I'm not going to destroy all living beings</label>
+    </div>
+    <button type="submit" class="btn btn-primary" id="superhero-button-submit">Submit</button>
+    <button type="reset" class="btn btn-danger" id="superhero-button-clear">Clear</button>
+</form>
+```
+
+[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/ComplicatedFormTests.java)
+
+####Sizing
+<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.0/components/forms/#sizing" target="_blank">Set</a> heights using classes like .form-control-lg and .form-control-sm.
+
+![Forms_sizing](../images/bootstrap/forms-sizing.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#forms-sizing")  //@FindBy(css = "#forms-sizing")
+public static FormsSizing formsSizing;
+
+@UI("#form-sizing-lg")  //@FindBy(css = "#form-sizing-lg")
+public TextField largeTextField;
+
+@UI("#form-sizing-select-lg")  //@FindBy(css = "#form-sizing-select-lg")
+public DropdownSelect largeSelect;
+
+private String text = "TextField";
+private String placeholderLarge = ".form-control-lg";
+private String placeholderDefault = "Default input";
+private String placeholderSmall = ".form-control-sm";
+
+@Test
+public void sendKeysTest() {
+    formsSizing.largeTextField.sendKeys("Test");
+    assertEquals(formsSizing.largeTextField.getText(), text+"Test");
+}
+
+@Test
+public void selectOptionTest() {
+    formsSizing.largeSelect.select("Large select");
+    assertEquals(formsSizing.largeSelect.getValue(), "Large select");
+}
+
+@Test
+public void isValidationTest() {
+    formsSizing.largeTextField.is()
+                    .enabled()
+                    .text(is(text));
+    formsSizing.largeSelect.is()
+                    .displayed()
+                    .selected("Large option");
+    formsSizing.largeTextField.is()
+                    .enabled()
+                    .placeholder(placeholderLarge);
+}
+
+```
+
+````html
+<div class="html-left" id="forms-sizing">
+    <div class="mb-3">
+        <input class="form-control form-control-lg mb-3" id="form-sizing-lg" type="text"
+               placeholder=".form-control-lg">
+        <input class="form-control mb-3" id="form-sizing-default" type="text"
+               placeholder="Default input">
+        <input class="form-control form-control-sm mb-3" id="form-sizing-sm" type="text"
+               placeholder=".form-control-sm">
+    </div>
+
+    <div class="mb-3">
+        <select class="form-control form-control-lg mb-3" id="form-sizing-select-lg">
+            <option>Large select</option>
+            <option>Large option</option>
+        </select>
+        <select class="form-control mb-3" id="form-sizing-select-default">
+            <option>Default select</option>
+            <option>Default option</option>
+        </select>
+        <select class="form-control form-control-sm mb-3" id="form-sizing-select-sm">
+            <option>Small select</option>
+            <option>Small option</option>
+        </select>
+    </div>
+</div>
+````
+
+Form group is represented by Section class in Java:
+
+  [Section](https://jdi-docs.github.io/jdi-light/#section)
+
+Inner elements of Forms - Sizing are represented by the following classes:
+
++ [TextField](https://jdi-docs.github.io/jdi-light/#textfield)
+
++ DropdownSelect    TBD 
+
+|Method / Property | Description | Return Type
+--- | --- | ---
+**AssertThat** | Assert action | TextAssert
+**GetText()** | returns text from the text field  | String
+**GetValue()** | returns text from the text field| String
+**Is** | Assert action | TextAssert
+**select(string/int)** | Select data by value/index| void
+**SendKeys(string value)** | adds text to the field | void
+**SetText(String value)** | sets new text | void
+
+[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormReadOnlyTests.java)
+
+<br><br>
+**Readonly**
+
+Add the <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#readonly">readonly</a> boolean attribute on an input to prevent modification of the input’s value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
+
+![Forms_readonly_example](../images/bootstrap/form-readonly.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+//@FindBy(css = "#forms-readonly-input")
+@UI("#forms-readonly-input")
+public static TextField readonlyInput;
+
+
+@Test
+public void checkReadonlyAttribute() {
+    assertTrue(readonlyInput.attrs().has("readonly"));
+    readonlyInput.highlight();
+    readonlyInput.is()
+            .displayed()
+            .enabled();
+}
+
+@Test(expectedExceptions = {InvalidElementStateException.class})
+public void check() {
+    readonlyInput.setValue(text);
+    readonlyInput.sendKeys(text);
+}
+
+
+```
+
+```html
+<input class="form-control mb-3" id="forms-readonly-input" type="text"
+                                   placeholder="Readonly input here..." readonly>
+```
+
+Available methods in Java JDI Light:
+
+|Method / Property | Description | Return Type
+--- | --- | ---
+**AssertThat()** | property that returns object for work with assertions| TextAssert
+**Focus()** | places cursor within the text field | void
+**GetText()** | returns text from the text field  | String
+**GetValue()** | returns text from the text field| String
+**Is()** | property that returns object for work with assertions| TextAssert
+**Input(string text)** | sets new text  | void
+**Placeholder** | returns value of the placeholder attribute | String
+**SendKeys(string value)** | adds text to the field | void
+**SetText(String value)** | sets new text | void
+
+
+<a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite.section.form.FormReadOnlyTests.java" target=a_blank> Bootstrap test examples </a>
+
+
+<br><br>
+####Readonly plain text
+
+If you want to have input readonly elements in your form styled as 
+<a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#readonly-plain-text">plain text</a>,
+ use the <b>.form-control-plaintext</b> class to remove the default form field styling and preserve the correct margin and padding.
+Compare items with plaintext mark (upper) and without it (lower):
+
+![Forms_readonly_plain_text_example](../images/bootstrap/readonly_plain_text.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+//@FindBy(css = "#readonlyPlainText1")
+@UI("#readonlyPlainText1")
+public static ReadonlyPlainText readonlyPlainText1;
+
+@Test
+public void isValidationTest() {
+    readonlyPlainText1.is().core().hasClass("form-control-plaintext");
+    assertTrue(readonlyPlainText1.hasAttribute("readonly"));
+    readonlyPlainText1.is().core().attr("type", "text");
+
+@Test
+public void textValidationTest() {
+    readonlyPlainText1.is().text("email@example.com");
+}
+
+@Test
+public void labelTest() {
+    readonlyPlainText1.label().is().text("Email");
+}
+```
+
+```html
+<div class="form-group row">
+    <label for="readonlyPlainText1" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="readonlyPlainText1"
+               value="email@example.com">
+    </div>
+</div>
+```
+
+
+Available methods in Java JDI Light:
+
+|Method/Property | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**attr()** | Match passed value with element attribute | ICoreElement
+**getValue()** | Get item value | String
+**hasClass()** | Match passed value with element class | ICoreElement
+**is()** | Various assert actions for Progress | ProgressAssert 
+**label()** | Get label associated with an item | Label
+**labelText()** | Get text of a label associated with an item | String
+
+<a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/mposite.section.form.ReadonlyPlainTextTests.java" target=a_blank> Bootstrap test examples </a>
+
+<br><br>
+
+####Range input
+
+Set horizontally scrollable <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#range-inputs">range inputs</a>
+using .form-control-range.
+
+![Forms_range_input_example](../images/bootstrap/range_input.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+//@FindBy(css = "#formControlRange")
+@UI("#formControlRange")
+public static RangeInput rangeInput;
+
+ @Test
+ public void itemHasProperClass() {
+    rangeInput.is().core().hasClass("form-control-range");
+ }
+
+ @Test
+ public void itemHasProperType() {
+    rangeInput.is().core().attr("type", "range");
+ }
+
+ @Test
+ public void labelValidationTest() {
+    rangeInput.label().is().text("Example Range input");
+ }
+```
+
+```html
+<form class="mb-3">
+    <div class="form-group">
+        <label for="formControlRange">Example Range input</label>
+        <input type="range" class="form-control-range" id="formControlRange">
+    </div>
+</form>
+```
+
+Available methods in Java JDI Light:
+
+|Method/Property | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | UIAssert
+**attr()** | Match passed value with element attribute | String
+**hasClass()** | Match passed value with element class | boolean
+**is()** | Various assert actions for Progress | UIAssert 
+**label()** | Get label associated with an item | Label
+**labelText()** | Get text of a label associated with an item | String
+
+<a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/RangeInputTests.java" target=a_blank> Bootstrap test examples </a>
+
+####Select menu
+
+```java 
+public class SelectMenu extends Form implements ISelector {
+    //FindBy(css = "option")
+    @UI("option") public WebList optionsSelectMenu;
+    //FindBy(css = "option[selected]")
+    @UI("option[selected]") public UIElement selectedOptionsSelectMenu;
+    @Override
+    public WebList list() { return optionsSelectMenu; }
+}
+
+//FindBy(id = "forms-select-menu")
+@UI("#forms-select-menu")
+public static SelectMenu formsSelectMenu;
+
+@Test
+public void getSelectedOptionFormsSelectMenuTest() {
+  formsSelectMenu.selectedOptionsSelectMenu.is().text("Open this select menu");
+}
+
+//FindBy(id = "forms-select-menu-large")
+@UI("#forms-select-menu-large")
+public static SelectMenu formsSelectMenuLarge;
+ 
+@Test(dataProvider = "optionFormSelectMenuTest")
+public void getTextFormsSelectMenuTest(int i, String optionText, String value) {
+  formsSelectMenuLarge.optionsSelectMenu.get(i).is().text(optionText);
+  formsSelectMenuLarge.optionsSelectMenu.get(i).assertThat().attr("value", value);
+}
+
+
+
+
+//FindBy(id = "forms-select-menu-small")
+@UI("#forms-select-menu-small")
+public static SelectMenu formsSelectMenuSmall;
+
+
+
+
+
+
+
+
+//FindBy(id = "forms-select-menu-multiple")
+@UI("#forms-select-menu-multiple")
+public static SelectMenu formsSelectMenuMultiple;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//FindBy(id = "forms-select-menu-size")
+@UI("#forms-select-menu-size")
+public static SelectMenu formsSelectMenuSize;
+
+
+
+
+
+
+@Test
+public void selectOptionFormsSelectMenuTest() {
+  formsSelectMenuSize.optionsSelectMenu.get(4).click();
+  assertEquals(formsSelectMenuSize.getValue(), "Three");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+You can use custom <a href = "https://getbootstrap.com/docs/4.3/components/forms/#select-menu" target = "a_blank">select menus</a>.
+
+Select menu is located in the following classes:
+
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.common.SelectMenu*_
+  
+
+![Select menu](../images/bootstrap/form-select-menu.png) <br>
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<select class="custom-select mb-3" id="forms-select-menu">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+``` 
+<br>
+
+**Large select menu**
+![Select menu](../images/bootstrap/form-select-menu-large.png) <br>
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<select class="custom-select custom-select-lg mb-3" id="forms-select-menu-large">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+```
+ <br>
+
+**Small select menu**
+![Select menu](../images/bootstrap/form-select-menu-small.png) <br>
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<select class="custom-select custom-select-sm mb-3" id="forms-select-menu-small">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+```
+<br>
+
+**Select menu multiple**
+![Select menu](../images/bootstrap/form-select-menu-multiple.png) <br>
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<select class="custom-select mb-3" multiple id="forms-select-menu-multiple">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+```
+<br>
+
+**Select menu size**
+![Select menu](../images/bootstrap/form-select-menu-size.png) <br>
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<select class="custom-select mb-3" size="3" id="forms-select-menu-size">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+```
+<br>
+
+Available methods in Java JDI Light:
+<br>
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button | void
+**is()** | Assert action | TextAssert 
+<br>
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/FormsSelectMenuTests.java" target=a_blank> Bootstrap test examples </a>
+
+####Range
+
+Create custom <a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/forms/#range">range</a>
+ controls (`<input type="range">`) with .custom-range. The track (the background) and thumb (the value) are both styled to appear the same across browsers. 
+Range inputs have implicit values for min and max: 0 and 100, respectively. You may specify new values for those using the min and max attributes.
+  
+![Range_example](../images/bootstrap/range.png)
+ 
+Here is an example with provided Bootstrap v4.3 code:
+ 
+```java 
+//@FindBy(css = "#customRange3")
+@UI("#customRange3")
+public static Range range;
+
+@Test
+public void labelTest() {\
+    range.label().is().text(labelText);
+ }
+
+@Test
+public void validateThumbMinMaxAndStepValuesTest() {
+    range.is().thumbValue(2.5);
+    range.is().minValue(0);
+    range.is().maxValue(5);
+    range.is().step(0.5);
+}
+ 
+@Test
+public void setThumbValueTest() {
+    range3.setThumbValue(5);
+    range3.is().thumbValue(5);
+}
+```
+
+```html
+<div class="html-left">
+    <label for="customRange1">Example range</label>
+    <input type="range" class="custom-range" id="customRange1">
+
+    <label for="customRange2">Example range</label>
+    <input type="range" class="custom-range" min="0" max="5" id="customRange2">
+
+    <label for="customRange3">Example range</label>
+    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method/Property | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | UIAssert
+**getValue()** | Get thumb value as String | String
+**is()** | Various assert actions for Progress | RangeAssert 
+**label()** | Get label associated with an item | Label
+**labelText()** | Get text of a label associated with an item | String
+**max()** | Get maximal limit of range | double
+**min()** | Get minimal limit of range | double
+**step()** | Get incremental step of range | double
+**setThumbValue()** | Set thumb value with a "double" parameter | void
+**setValue()** | Set thumb value with a String parameter | void
+**thumbValue()** | Get thumb value | double
+
+
+<a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/RangeTests.java" target=a_blank> Bootstrap test examples </a>
+
+<br><br>
+ 
+#### Form Validation
+
+##### Custom style
+You can use custom <a href = "https://getbootstrap.com/docs/4.3/components/forms/#custom-styles" target = "a_blank">Bootstrap form validation</a> messages.
+
+![Custom style validation](../images/bootstrap/form-bootstrap-validation.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#validated-form")
+public FormValidationForm form;
+
+@Test
+public void bootstrapValidationTest() {
+    String name = "ValidName";
+    String email = "InvalidEmail";
+    String phone = "InvalidPhone";
+
+    SimpleContact entity = new SimpleContact(name, email, phone);
+
+    form.fill(entity);
+    form.submit();
+
+    Map<String, String> validFeedback = form.getValidFeedback();
+    MatcherAssert.assertThat("Number of valid feedbacks not equals 1", validFeedback.size() == 1);
+    MatcherAssert.assertThat(validFeedback.keySet(), Matchers.hasItems("Name"));
+    MatcherAssert.assertThat(validFeedback.values(), Matchers.hasItem("Hi, " + name + "!"));
+
+    Map<String, String> invalidFeedback = form.getInvalidFeedback();
+    MatcherAssert.assertThat("Number of invalid feedbacks not equals 2", invalidFeedback.size() == 2);
+    MatcherAssert.assertThat(invalidFeedback.keySet(), 
+        Matchers.hasItems("Email", "Phone"));
+    MatcherAssert.assertThat(invalidFeedback.values(), 
+        Matchers.hasItems("Enter valid email!", "It doesn't look like a valid phone number"));
+}
+```
+
+ ```html 
+<form id="validated-form" class="" novalidate="">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <input id="validated-form-name-field" type="text" class="form-control" placeholder="Enter name" required="">
+                <div id="name-valid-feedback" class="valid-feedback">Hi, Valid Name!</div>
+                <div class="invalid-feedback">Enter your name!</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <input type="email" class="form-control" id="validated-form-email" placeholder="Enter email" required="">
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Enter valid email!</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control" id="validated-form-phone" placeholder="Enter phone" pattern="^[-+0-9()\s]+$">
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">It doesn't look like a valid phone number</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        <button type="submit" class="btn btn-primary" id="validated-form-submit">Send</button>
+        <button type="reset" class="btn btn-danger" id="validated-form-reset">Clear</button>
+        </div>
+    </div>
+</form>
+```
+
+Additional JavaScript code to use Bootstrap validation:
+
+![Browser default validation](../images/bootstrap/form-bootstrap-validation-js.png)
+
+##### Browser default
+
+Also you can use <a href = "https://getbootstrap.com/docs/4.3/components/forms/#browser-defaults" target = "a_blank">browser default validation</a>.
+
+![Browser default validation](../images/bootstrap/form-browser-defaults.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#validated-form")
+public FormValidationForm form;
+
+@Test
+public void browserValidationTest() {
+    String name = "ValidName";
+    String email = "InvalidEmail";
+    String phone = "InvalidPhone";
+
+    SimpleContact entity = new SimpleContact(name, email, phone);
+
+    form.fill(entity);
+    form.submit();
+
+    Map<String, String> validFeedback = form.getValidationMessages();
+
+    MatcherAssert.assertThat("", validFeedback.get("Email"),
+        Matchers.is("Please include an '@' in the email address. 'InvalidEmail' is missing an '@'.")); //Browser dependent message
+    MatcherAssert.assertThat("", validFeedback.get("Phone"),
+        Matchers.is("Please match the requested format.")); //Browser dependent message
+    MatcherAssert.assertThat("", validFeedback.get("Name"), Matchers.is(""));
+}
+```
+
+ ```html 
+<form id="validated-form"">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <input id="validated-form-name-field" type="text" class="form-control" placeholder="Enter name" required="">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <input type="email" class="form-control" id="validated-form-email" placeholder="Enter email" required="">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control" id="validated-form-phone" placeholder="Enter phone" pattern="^[-+0-9()\s]+$">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        <button type="submit" class="btn btn-primary" id="validated-form-submit">Send</button>
+        <button type="reset" class="btn btn-danger" id="validated-form-reset">Clear</button>
+        </div>
+    </div>
+</form>
+```
+ 
+Available methods for form validation in Java JDI Light:
+
+|Method/Property | Description | Return Type
+--- | --- | ---
+**isValid()** | Return if form valid | boolean 
+**getValidationMessages()** | Return map field names to browser validation messages | Map<String, String>
+**getValidFeedback()** |  Return map field names to visible valid bootstrap feedback text | Map<String, String>
+**getInvalidFeedback()** |  Return map field names to visible invalid bootstrap feedback text | Map<String, String>
+**getFeedbackElements()** |  Return map field names to visible bootstrap feedback elements | Map<String, UIElement>
+
+ <a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/BootstrapValidationTest.java" target="_blank">Bootstrap Test Examples</a>
+ 
+ ### Input group
+ #### Basic Example
+ **<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#basic-example" target="_blank">Input group</a>** – Place one add-on or button on either side of an input. You may also place one on both sides of an input.
+ <br />
+ 
+ ```java 
+ 
+     //@FindBy(css = "#input-group-basic-example1")
+    @UI("#input-group-basic-example1") public static InputGroupInputWithText inputGroupBasicExample1;
+ 
+    public class InputGroupInputWithText extends Section{
+        @UI(".input-group-text") public Text text;
+        @UI(".form-control") public TextField input;
+    }
+ 
+    @Test(priority = 1)
+    public void setTextTestExample1() {
+         inputGroupBasicExample1.input.setText(textExample1);
+         inputGroupBasicExample1.input.is().text(is(textExample1));
+    }
+ 
+ ```
+ **1.Input group example - Input + left span**
+ 
+ <img src="images/bootstrap/input-group-base-example1.png" alt="Input group example1" height="50%" width="50%">
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ 
+ ```html
+ <div class="input-group mb-3" id="input-group-basic-example1">
+     <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon">@</span>
+     </div>
+     <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+            aria-describedby="basic-addon1">
+ </div>
+ ```
+ 
+ ```java 
+ 
+     //@FindBy(css = "#input-group-basic-example2")
+    @UI("#input-group-basic-example2") public static InputGroupInputWithText inputGroupBasicExample2;
+ 
+    public class InputGroupInputWithText extends Section{
+        @UI(".input-group-text") public Text text;
+        @UI(".form-control") public TextField input;
+    }
+ 
+     @Test(priority = 4)
+     public void checkAddonConsistTextTestExample2() {
+        inputGroupBasicExample2.text.is().text(containsString(partOfAddonExample2));
+     }
+ 
+ ```
+ <br /><br /><br /><br /><br /><br />
+ **2.Input group example - Input + right span** 
+ 
+ <img src="images/bootstrap/input-group-base-example2.png" alt="Input group example1" height="50%" width="50%">
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ 
+ ```html
+ <div class="input-group mb-3" id="input-group-basic-example2">
+     <input type="text" class="form-control" placeholder="Recipient's username"
+            aria-label="Recipient's username" aria-describedby="basic-addon2">
+     <div class="input-group-append">
+         <span class="input-group-text" id="basic-addon2">@example.com</span>
+     </div>
+ </div>
+ ``` 
+ 
+ ```java 
+ 
+     //@FindBy(css = "#input-group-basic-example3")
+    @UI("#input-group-basic-example3") public static InputGroupInputWithLabelAndText inputGroupBasicExample3;
+ 
+    public class InputGroupInputWithLabelAndText extends Section{
+        @UI(".input-group-text") public Text text;
+        @UI("#basic-url") public TextField input;
+    }
+ 
+    @Test(priority = 6)
+    public void checkLabelExample3() {
+        assertEquals(inputGroupBasicExample3.input.core().label().getText(), labelExample3);
+    }
+ 
+ ```
+ <br /><br /><br /><br />
+ **3.Input group example - Input + label + left span**
+ 
+ <img src="images/bootstrap/input-group-base-example3.png" alt="Input group example1" height="50%" width="50%">
+ 
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ ```html
+ <div class="input-group mb-3" id="input-group-basic-example3">
+     <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+     </div>
+     <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+ </div>
+ ```
+ 
+ 
+ ```java 
+ 
+    //@FindBy(css = "#input-group-basic-example4")
+   @UI("#input-group-basic-example4") public static InputGroupInputWithTwoText inputGroupBasicExample4;
+ 
+   public class InputGroupInputWithTwoText extends Section{
+       @UI(".input-group-prepend .input-group-text") public Text text_pretend;
+       @UI(".input-group-append .input-group-text") public Text text_append;
+       @UI(".form-control") public TextField input;
+   }
+ 
+   @Test(priority = 7)
+   public void checkAddonsExample4() {
+       inputGroupBasicExample4.text_append.is().enabled();
+       inputGroupBasicExample4.text_append.is().text(is(addonAppendExample4));
+       inputGroupBasicExample4.text_pretend.is().enabled();
+       inputGroupBasicExample4.text_pretend.is().text(is(addonPretendExample4));
+   }
+ 
+ ``` 
+ <br /><br />
+ **4.Input group example - Input + left and right span**
+ 
+ <img src="images/bootstrap/input-group-base-example4.png" alt="Input group example4" height="50%" width="50%">
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ ```html
+ <div class="input-group mb-3" id="input-group-basic-example4">
+     <div class="input-group-prepend">
+         <span class="input-group-text">$</span>
+     </div>
+     <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+     <div class="input-group-append">
+         <span class="input-group-text">.00</span>
+     </div>
+ </div>
+ ```
+ 
+ ```java 
+ 
+    //@FindBy(css = "#input-group-basic-example5")
+   @UI("#input-group-basic-example5") public static InputGroupTextareaWithText inputGroupBasicExample5;
+ 
+   public class InputGroupTextareaWithText extends Section{
+       @UI(".input-group-text") public Text text;
+       @UI(".form-control") public TextArea area;
+   }
+ 
+   @Test(priority = 9)
+   public void getLinesTestExample5() {
+       inputGroupBasicExample5.area.setLines(linesTextArea);
+       assertEquals(inputGroupBasicExample5.area.getLines(), asList(linesTextArea));
+   }
+ 
+ ```
+ 
+ <br /><br /><br /><br/><br />
+ **5.Input group example - Input + textarea**
+ 
+ <img src="images/bootstrap/input-group-base-example5.png" alt="Input group example5" height="50%" width="50%">
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ ```html
+ <div class="input-group" id="input-group-basic-example5">
+     <div class="input-group-prepend">
+         <span class="input-group-text">With textarea</span>
+     </div>
+     <textarea class="form-control" aria-label="With textarea"></textarea>
+ </div>
+ ```
+ 
+ Input group are represented by Section class in Java:
+  
+   [Section](https://jdi-docs.github.io/jdi-light/#section)  
+   
+ Inner elements of input group can be represented by following classes:
+  <ul>
+   <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+   
+   <li> [TextField](https://jdi-docs.github.io/jdi-light/#textfield) </li> 
+   
+   <li> [TextArea](https://jdi-docs.github.io/jdi-light/#textarea) </li>
+  
+   
+  <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
+  </ul>
+ 
+ [Bootstrap test example ](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup)
+ 
+ #### Sizing
+ <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#sizing" target="_blank">Sizing</a> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ 
+ ```java 
+     @UI("#input-group-default") public static InputGroupSizing inputGroupDefaultSizing;
+     @UI("#input-group-small") public static InputGroupSizing inputGroupSmallSizing;
+     @UI("#input-group-large") public static InputGroupSizing inputGroupLargeSizing;
+     //@FindBy(css = "#input-group-default")
+     //@FindBy(css = "#input-group-small")
+     //@FindBy(css = "#input-group-large")
+ 
+     @Test
+     public void getTextFromSizingTest() {
+         assertEquals(inputGroupDefaultSizing.input.getText(), text);
+         assertEquals(inputGroupSmallSizing.input.getText(), text);
+         assertEquals(inputGroupLargeSizing.input.getText(), text);
+     }
+ 
+     @Test
+     public void clearSizingTest() {
+         inputGroupDefaultSizing.input.clear();
+         assertEquals(inputGroupDefaultSizing.input.getText(), "");
+         inputGroupSmallSizing.input.clear();
+         assertEquals(inputGroupDefaultSizing.input.getText(), "");
+         inputGroupLargeSizing.input.clear();
+         assertEquals(inputGroupDefaultSizing.input.getText(), "");
+     }
+ ```
+ 
+ 
+ **Sizing on the individual input group elements isn’t supported.**
+ ![Sizing](../images/bootstrap/sizing.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+   
+ ```html
+ <div class="input-group input-group-sm mb-3" id="input-group-small">
+     <div class="input-group-prepend">
+         <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+     </div>
+     <input type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm">
+ </div>
+ 
+ <div class="input-group mb-3" id="input-group-default">
+     <div class="input-group-prepend">
+         <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+     </div>
+     <input type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default">
+ </div>
+ 
+ <div class="input-group input-group-lg" id="input-group-large">
+     <div class="input-group-prepend">
+         <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
+     </div>
+     <input type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg">
+ </div>
+ ```
+ 
+ And here are methods available in Java:
+     
+ |Method / Property | Description | Return Type
+ --- | --- | ---
+ **assertThat()** | property that returns object for work with assertions| TextAssert
+ **clear()** | clears the text field | void
+ **focus()** | places cursor within the text field | void
+ **getText()** | returns text from the text field  | String
+ **getValue()** | returns text from the text field| String
+ **is()** | property that returns object for work with assertions| TextAssert
+ **setText(String value)** | adds text to the field | void
+ 
+ 
+ #### Wrapping
+ ```java 
+    public static UIElement inputGroupWrap,inputGroupNowrap;//@FindBy(css = "#input-group-wrap")
+ 
+    @Test
+    public void checkWrapping() {
+        assertFalse(inputGroupWrap.hasClass("flex-nowrap"));
+        inputGroupWrap.assertThat().core().css("flex-wrap", "wrap");
+    }
+  
+    @Test
+    public void checkNoWrapping() {
+        assertTrue(inputGroupNowrap.hasClass("flex-nowrap"));
+        inputGroupNowrap.assertThat().core().css("flex-wrap", "nowrap");
+    } 
+ ```
+ 
+  
+ **<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#wrapping" target="_blank">Wrapping</a>** – Input groups wrap by default via flex-wrap: wrap in order to accommodate custom form field validation within an input group. You may disable this with .flex-nowrap.
+ 
+ ![Wrapping](../images/bootstrap/wrapping.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+   
+ ```html
+ <div class="input-group flex-nowrap" id="input-group-nowrap">
+     <div class="input-group-prepend">
+         <span class="input-group-text" id="addon-wrapping1">@</span>
+     </div>
+     <input type="text" class="form-control" placeholder="Input group with nowrap"
+            aria-label="Username" aria-describedby="addon-wrapping">
+ </div>
+ ```
+ 
+ Wrapping property can be checked by using following class:
+  
+   - _com.epam.jdi.light.elements.common.UIElement_
+   
+ <a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupWrapping.java" target="_blank">Bootstrap test example wrapping</a>
+ 
+ 
+ #### Checkboxes and radios
+ 
+ <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a> – Place any checkbox or radio option within an input group’s addon instead of text.
+ 
+ __Example with radio__
+ 
+ ```java 
+   @UI("#input-group-radio") public static InputGroupInputWithRadio inputGroupRadio;// @FindBy(css = "#input-group-radio")
+ 
+   public class InputGroupInputWithRadio extends Section{
+       @Css("[type=\"radio\"]") public RadioButtons radio;
+       @Css(".form-control") public TextField input;
+   }
+   
+   @Test
+   public void getSizeRadioButtons() {
+       inputGroupRadio.radio.is().size(1);
+   }
+ 
+    @Test
+    public void inputTest() {
+        inputGroupRadio.input.input(new_text);
+        inputGroupRadio.input.assertThat().text(is(new_text));
+    }
+ 
+  
+ ```
+ 
+ ![radio](../images/bootstrap/input-group-radio.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+   
+ ```html
+ <div class="input-group" id="input-group-radio">
+     <div class="input-group-prepend">
+         <div class="input-group-text">
+             <input type="radio" name="radio-button" id="radio-button"
+                    aria-label="Radio button for following text input">
+         </div>
+     </div>
+     <input type="text" class="form-control" aria-label="Text input with radio button">
+ </div>
+ ```
+ 
+ This input group example is represented by the following classes in Java:
+  
+ + [Section](https://jdi-docs.github.io/jdi-light/#section)    
+ + [RadioButtons](https://jdi-docs.github.io/jdi-light/#radiobuttons)   
+    
+   <a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupRadioTests.java" target="_blank">Bootstrap test example with radio</a>
+ 
+ <br />
+ 
+ ```java 
+  @UI("#input-group-checkbox") public static InputGroupInputWithCheckBox inputGroupCheckBox;// @FindBy(css = "#input-group-checkbox")
+ 
+  public class InputGroupInputWithCheckBox extends Section{
+      @Css("[type=\"checkbox\"]") public Checkbox checkbox;
+      @Css(".form-control") public TextField input;
+  }
+   
+  @Test
+  public void checkCheckboxTest() {
+      inputGroupCheckBox.checkbox.check();
+      inputGroupCheckBox.checkbox.isSelected();
+  }
+ 
+    @Test
+    public void inputTest() {
+        inputGroupRadio.input.input(new_text);
+        inputGroupRadio.input.assertThat().text(is(new_text));
+    }
+ 
+  
+ ```
+ __Example with checkbox__
+ 
+ ![Checkbox](../images/bootstrap/input-group-checkbox.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+   
+ ```html
+ <div class="input-group mb-3" id="input-group-checkbox">
+     <div class="input-group-prepend">
+         <div class="input-group-text">
+             <input type="checkbox" aria-label="Checkbox for following text input">
+         </div>
+     </div>
+     <input type="text" class="form-control" aria-label="Text input with checkbox">
+ </div>
+ ```
+ 
+ This input group example is represented by the following classes in Java:
+  
+ + [Section](https://jdi-docs.github.io/jdi-light/#section)   
+ + [CheckBox](https://jdi-docs.github.io/jdi-light/#checkbox)
+ 
+   <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCheckboxesTests.java" target="_blank">Bootstrap test example with checkbox</a>
+ 
+ <br /><br /><br /><br /><br />
+  
+ #### Multiple inputs 
+ <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">Multiple inputs</a> – While multiple inputs are supported visually, validation styles are only available for input groups with a single input.
+ 
+ ![Multiple inputs](../images/bootstrap/multiple_inputs.png)
+ 
+ ```java 
+ //FindBy(css = "#multiple-inputs"")
+ @UI("#multiple-inputs") public static MultipleInputs multipleInputs;
+ 
+ @Test
+ public void getTextTest() {
+      int index = 1;
+ 
+      String name = multipleInputs.getText(index);
+      assertEquals(name, inputData.get(index));
+ 
+      String surname = multipleInputs.getText("#mi-i-2");
+      assertEquals(surname, inputData.get(2));
+ 
+      String text = multipleInputs.getText();
+      assertEquals(text, inputData.get(1));
+ }
+ 
+ @Test
+ public void getTextAllTest() {
+     assertEquals(multipleInputs.getAllTexts(), inputDataList);
+ }
+ 
+ @Test
+ public void setValueTest() {
+     multipleInputs.clearAll();
+ 
+     String value = inputData.get(1);
+     multipleInputs.setValue(value);
+     multipleInputs.is().text(value, 1);
+ 
+     int index = 2;
+     String name = inputData.get(index);
+     multipleInputs.setValue(name, index);
+     multipleInputs.is().text(name, index);
+ 
+     String locator = "#mi-i-2";
+     String surname = inputData.get(2);
+     multipleInputs.clear(locator);
+     multipleInputs.setValue(surname, locator);
+     multipleInputs.is().text(surname, locator);
+ }
+ 
+ @Test
+ public void setAllValuesTest() {
+     multipleInputs.clearAll();
+     multipleInputs.setAllValues(inputDataList);
+     multipleInputs.is().texts(inputDataList);
+ }
+ ```
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+   
+ ```html
+ <div class="input-group" id="multiple-inputs">
+     <div class="input-group-prepend">
+         <span class="input-group-text">First and last name</span>
+     </div>
+     <input type="text" aria-label="First name" class="form-control" id="mi-i-1">
+     <input type="text" aria-label="Last name" class="form-control" id="mi-i-2">
+ </div>
+ ```
+ 
+ And here are methods available in Java:
+     
+ |Method | Description | Return Type
+ --- | --- | ---
+  **assertThat()**| Property that returns object for work with assertions | MultipleInputsAssert
+  **clear()**| Clear first input within element | void
+  **clear(String locator)**| Clear input within element with *locator* | void
+  **clear(int index)**| Clear input within element with *index* | void
+  **clearAll()**| Clear all inputs within element | void
+  **focus()**| Focus on first input within element | void
+  **focus(String locator)**| Focus on input within element with *locator* | void
+  **focus(int index)**| Focus on input within element with *index* | void
+  **getAllText()**| Return texts for all inputs within element | List\<String>
+  **getAllValue()**| Return values for all inputs within element | List\<String>
+  **getText()**| Return text for first input within element | String
+  **getText(String locator)**| Return text for input within element with *locator* | String
+  **getText(int index)**| Return text for input within element with *index* | String
+  **getValue()**| Return value for first input within element | String
+  **getValue(String locator)**| Return value for input within element with *locator* | String
+  **getValue(int index)**| Return value for input within element with *index* | String
+  **input(String value)**| Set text for first input within element | void
+  **input(String value, String locator)**| Set text for input within element with *locator* | void
+  **input(String value, int index)**| Set text for input within element with *index* | void
+  **inputAll()**| Set texts for all inputs within element | void
+  **is()**| Property that returns object for work with assertions | MultipleInputsAssert
+  **placeholder()**| Return placeholder from first input within element | String
+  **placeholder(String locator)**| Return placeholder from input within element with *locator* | String
+  **placeholder(int index)**| Return placeholder from input within element with *index* | String
+  **placeholderAll()**| Return placeholders for all inputs within element | List\<String>
+  **sendKeys(String value)**| Send text to first input within element | void
+  **sendKeys(String value, String locator)**| Send text to input within element with *locator* | void
+  **sendKeys(String value, int index)**| Send text to input within element with *index* | void
+  **sendKeysAll(List\<String> values)**| Send texts to all inputs within element | void
+  **setAllValue(List\<String> values)**| Set values for all inputs within element | void 
+  **setValue(String value)**| Set value for first input within element | void
+  **setValue(String value, String locator)**| Set value for input within element with *locator* | void
+  **setValue(String value, int index)**| Set value for input within element with *index* | void
+  
+  <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/MultipleInputsTests.java" target="_blank">Bootstrap test example with multiple inputs</a>
+  
+  
+ #### Multiple addons 
+ <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#multiple-addons" target="_blank">Multiple addons</a> are supported and can be mixed with checkbox and radio input versions.
+ 
+ ![Multiple addons](../images/bootstrap/multiple_addons.png)
+ 
+ ```java 
+  @UI("#multiple-addons-1")  public static InputGroupMultipleAddonsUpper multipleAddonUpper; //@FindBy(css = "#multiple-addons-1")
+  @UI("#multiple-addons-2")  public static InputGroupMultipleAddonsLower multipleAddonLower; //@FindBy(css = "#multiple-addons-2")
+  
+  public class InputGroupMultipleAddonsUpper extends Section {
+      @UI("#left-sign") public Label firstLabel; //@FindBy(css = "#left-sign")
+      @UI("#left-nil") public Label secondLabel; //@FindBy(css = "#left-nil")
+      @UI(".form-control") public TextField textField; //@FindBy(css = ".form-control")
+  }
+ 
+  @Test(dataProvider = "InputGroupMultipleAddonsLabels")
+  public void assertTextFromValueTest(Label multipleAddonsLabel, String labelValue) {
+     multipleAddonsLabel.is().text(labelValue);
+  }
+  
+  @Test(dataProvider = "InputGroupMultipleAddonsLabels")
+  public void isValidationTest(Label multipleAddonsLabel, String labelValue) {
+      multipleAddonsLabel.is()
+         .displayed()
+         .core()
+         .hasClass("input-group-text")
+         .text(labelValue);
+  }
+  
+  @Test(dataProvider = "InputGroupMultipleAddonsTextFields")
+  public void inputTest(TextField textField) {
+      textField.input(text);
+      textField.assertThat().text(is(text));
+  }
+  
+  @Test(dataProvider = "InputGroupMultipleAddonsTextFields")
+  public void textFieldTests(TextField textField) {
+      textField.setText(text);
+      textField.is().text(text);
+      textField.is().text(containsString(partOfText));
+      textField.clear();
+      textField.is().text(emptyText);
+  }
+ ```
+ Here is an example with provided Bootstrap v4.3 code:
+   
+ ```html
+ <div class="input-group mb-3" id="multiple-addons-1">
+     <div class="input-group-prepend">
+         <span class="input-group-text" id="left-sign">$</span>
+         <span class="input-group-text" id="left-nil">0.00</span>
+     </div>
+     <input type="text" class="form-control"
+            aria-label="Dollar amount (with dot and two decimal places)">
+ </div>
+ 
+ <div class="input-group mb-3" id="multiple-addons-2">
+     <input type="text" class="form-control"
+            aria-label="Dollar amount (with dot and two decimal places)">
+     <div class="input-group-append">
+         <span class="input-group-text" id="right-sign">$</span>
+         <span class="input-group-text" id="right-nil">0.00</span>
+     </div>
+ </div>
+ ```
+ 
+ 
+ Multiple input is represented by Section class in Java:
+  
+   [Section](https://jdi-docs.github.io/jdi-light/#section)
+   
+ Inner elements of multiple input can be represented by the following classes:
+ 
+  + [TextField](https://jdi-docs.github.io/jdi-light/#textfield)
+  + [Label](https://jdi-docs.github.io/jdi-light/#label)
+ 
+ <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupMultipleAddonsTests.java" target="_blank">Bootstrap test example with multiple addons</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /> 
+ #### Button addons 
+ 
+ **[Button addons](https://getbootstrap.com/docs/4.3/components/input-group/#button-addons)** – Multiple buttons have no detailed information on Bootstrap website
+ 
+ 
+ ![Button addons](../images/bootstrap/button_addons.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ 
+ ```java 
+ //@FindBy(css = "#input-group-button-addon4") public static ButtonAddons inputGroupButtonAddons4;
+ @UI("#input-group-button-addon1") public static ButtonAddons inputGroupButtonAddons1;
+ @UI("#input-group-button-addon2") public static ButtonAddons inputGroupButtonAddons2;
+ @UI("#input-group-button-addon3") public static ButtonAddons inputGroupButtonAddons3;
+ @UI("#input-group-button-addon4") public static ButtonAddons inputGroupButtonAddons4;
+ 
+ public class ButtonAddons extends Section {
+     @UI("button") public Button button;
+     @UI("input") public TextField input;
+     @UI("button") public ListGroup listButtons;
+     @UI("input") public TextField inputField;
+ }
+ 
+ @Test
+ public void checkButtonAddon2Test() {
+     inputGroupButtonAddons2.input.input(text);
+     inputGroupButtonAddons2.button.click();
+     inputGroupButtonAddons2.input.input(placeholder_text);
+     inputGroupButtonAddons2.input.assertThat().text(placeholder_text);
+ }
+ 
+ @Test
+ public void checkButtonAddon4Test() {
+     inputGroupButtonAddons4.inputField.input(text);
+     inputGroupButtonAddons4.listButtons.get(1).click();
+     inputGroupButtonAddons4.inputField.input(placeholder_text);
+     inputGroupButtonAddons4.listButtons.get(2).click();
+     inputGroupButtonAddons4.inputField.assertThat().text(placeholder_text);
+ }
+ ```
+ 
+   
+ ```html
+ <div class="input-group mb-3" id="input-group-button-addon1">
+     <div class="input-group-prepend">
+         <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button
+         </button>
+     </div>
+     <input type="text" class="form-control" placeholder=""
+            aria-label="Example text with button addon" aria-describedby="button-addon1">
+ </div>
+ 
+ <div class="input-group mb-3" id="input-group-button-addon2">
+     <input type="text" class="form-control" placeholder="Recipient's username"
+            aria-label="Recipient's username" aria-describedby="button-addon2">
+     <div class="input-group-append">
+         <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button
+         </button>
+     </div>
+ </div>
+ 
+ <div class="input-group mb-3" id="input-group-button-addon3">
+     <div class="input-group-prepend" id="button-addon3">
+         <button class="btn btn-outline-secondary" type="button">Button</button>
+         <button class="btn btn-outline-secondary" type="button">Button</button>
+     </div>
+     <input type="text" class="form-control" placeholder=""
+            aria-label="Example text with two button addons"
+            aria-describedby="button-addon3">
+ </div>
+ 
+ <div class="input-group" id="input-group-button-addon4">
+     <input type="text" class="form-control" placeholder="Recipient's username"
+            aria-label="Recipient's username with two button addons"
+            aria-describedby="button-addon4">
+     <div class="input-group-append" id="button-addon4">
+         <button class="btn btn-outline-secondary" type="button">Button</button>
+         <button class="btn btn-outline-secondary" type="button">Button</button>
+     </div>
+ </div>
+ ```
+ 
+ And here are methods available in Java:
+     
+ |Method | Description | Return Type
+ --- | --- | ---
+ **assertThat()** | property that returns object for work with assertions| TextAssert
+ **clear()** | clears the text field | void
+ **click()** | click on button | void
+ **displayed()** | check item is displayed | TextAssert
+ **enabled()** | check item is enabled | TextAssert
+ **expand()** | expand dropdown menu | void
+ **expanded()** | check that dropdown is expanded | TextAssert
+ **focus()** | places cursor within the text field | void
+ **getText()** | returns text from the text field  | String
+ **getValue()** | returns text from the text field| String
+ **input(String value)** | adds text to the field | void
+ **is()** | property that returns object for work with assertions| TextAssert
+ **sendKeys(String value)** | adds text to the field | void
+ **setText(String value)** | adds text to the field | void
+   
+  <br>
+ Input group are represented by Section class in Java:
+  
+   [Section](https://jdi-docs.github.io/jdi-light/#section)  
+   
+ Inner elements of input group can be represented by following classes:
+  <ul>
+   <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+   
+   <li> [TextField](https://jdi-docs.github.io/jdi-light/#textfield) </li> 
+   
+   <li> [TextArea](https://jdi-docs.github.io/jdi-light/#textarea) </li>
+   
+   <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li>
+  
+  <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
+  </ul>
+  <br>
+ 
+ <a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonAddonsTests.java" target="_blank">Button Addons test example</a>
+ 
+ 
+ #### Buttons with dropdowns 
+ 
+ **[Buttons with dropdowns](https://getbootstrap.com/docs/4.3/components/input-group/#buttons-with-dropdowns)** – Buttons with dropdowns have no detailed information on Bootstrap website
+ 
+ ![Buttons with dropdowns](../images/bootstrap/buttons_with_dropdowns.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ ```java 
+ @UI("#button-with-dropdown") public static ButtonWithDropdown buttonWithDropdown;
+ // @FindBy(css = "#button-with-dropdown") public static ButtonWithDropdown buttonWithDropdown;
+ 
+ public class ButtonWithDropdown extends Section {
+ @UI("input") public TextField textInputArea;
+ @UI("button") public Button dropdownButton;
+ @JDropdown(expand = ".input-group-prepend",
+         value = ".dropdown-toggle",
+         list = ".dropdown-item")
+ public Dropdown dropdownMenu;
+ }
+ 
+ @Test
+ public void dropdownMenuTests() {
+     buttonWithDropdown.dropdownMenu.expand();
+     buttonWithDropdown.dropdownMenu.is().expanded();
+     buttonWithDropdown.dropdownMenu.is().size(4);
+     buttonWithDropdown.dropdownMenu.list().get(0).is().text(action);
+ }
+ 
+ @Test
+ public void textInputAreaTests() {
+     buttonWithDropdown.textInputArea.sendKeys(testText);
+     buttonWithDropdown.textInputArea.is().text(testText);
+     buttonWithDropdown.textInputArea.clear();
+     buttonWithDropdown.textInputArea.is().text("");
+ }
+ 
+ @Test
+ public void dropdownButtonTests() {
+     buttonWithDropdown.dropdownButton.is().displayed();
+     buttonWithDropdown.dropdownButton.is().enabled();
+     buttonWithDropdown.dropdownButton.is().text(dropdownButton);
+ }
+ ```
+   
+ ```html
+ <div class="input-group mb-3" id="button-with-dropdown">
+     <div class="input-group-prepend">
+         <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown
+         </button>
+         <div class="dropdown-menu">
+             <a class="dropdown-item" href="#">Action</a>
+             <a class="dropdown-item" href="#">Another action</a>
+             <a class="dropdown-item" href="#">Something else here</a>
+             <div role="separator" class="dropdown-divider"></div>
+             <a class="dropdown-item" href="#">Separated link</a>
+         </div>
+     </div>
+     <input type="text" class="form-control" aria-label="Text input with dropdown button">
+ </div>
+ ```
+ 
+ And here are methods available in Java:
+     
+ |Method | Description | Return Type
+ --- | --- | ---
+ **assertThat()** | property that returns object for work with assertions| TextAssert
+ **clear()** | clears the text field | void
+ **click()** | click on button | void
+ **displayed()** | check item is displayed | TextAssert
+ **enabled()** | check item is enabled | TextAssert
+ **expand()** | expand dropdown menu | void
+ **expanded()** | check that dropdown is expanded | TextAssert
+ **focus()** | places cursor within the text field | void
+ **getText()** | returns text from the text field  | String
+ **getValue()** | returns text from the text field| String
+ **is()** | property that returns object for work with assertions| TextAssert
+ **sendKeys(String value)** | adds text to the field | void
+ **setText(String value)** | adds text to the field | void
+  
+  <br>
+ Input group are represented by Section class in Java:
+  
+   [Section](https://jdi-docs.github.io/jdi-light/#section)  
+   
+ Inner elements of input group can be represented by following classes:
+  <ul>
+   <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+   
+   <li> [TextField](https://jdi-docs.github.io/jdi-light/#textfield) </li> 
+   
+   <li> [TextArea](https://jdi-docs.github.io/jdi-light/#textarea) </li>
+   
+   <li> [Dropdown](https://jdi-docs.github.io/jdi-light/#dropdown-2) </li>
+  
+  <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
+  </ul>
+  <br>
+ 
+    
+ [Buttons with dropdowns test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonWithDropdownTests.java) <br>
+ <br>
+  
+ #### Segmented buttons
+ **[Segmented buttons](https://getbootstrap.com/docs/4.3/components/input-group/#segmented-buttons)** – Segmented buttons have no detailed information on Bootstrap website
+ 
+ ![Segmented buttons](../images/bootstrap/segmented_buttons.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ ```java 
+ @UI("#segmented-button") public static SegmentedButton segmentedButton;
+ // @FindBy(css = "#segmented-button") public static SegmentedButton segmentedButton;
+ 
+ public class SegmentedButton extends Section {
+     @UI("#Segmented-action-button") public Button actionButton;
+     @UI("input") public TextField textInputArea;
+     @JDropdown(expand = ".dropdown-toggle",
+             value = ".sr-only",
+             list = ".dropdown-item")
+     public Dropdown dropdownMenu;
+ }
+ 
+ @Test
+ public void textInputAreaTests() {
+     segmentedButton.textInputArea.is()
+             .displayed()
+             .enabled();
+     segmentedButton.textInputArea.sendKeys(testText);
+     segmentedButton.textInputArea.is().text(testText);
+     segmentedButton.textInputArea.clear();
+     segmentedButton.textInputArea.is().text("");
+ }
+ 
+ @Test
+ public void dropdownMenuTests() {
+     segmentedButton.dropdownMenu.expand();
+     segmentedButton.dropdownMenu.is().expanded();
+     segmentedButton.dropdownMenu.is().size(4);
+     segmentedButton.dropdownMenu.list().get(0).is().text(action);
+     segmentedButton.dropdownMenu.select(action);
+     newWindowTitleCheck();
+ }
+ 
+ @Test
+ public void actionButtonTests() {
+     segmentedButton.actionButton.is().displayed();
+     segmentedButton.actionButton.is().enabled();
+     segmentedButton.actionButton.is().text(action);
+     segmentedButton.actionButton.click();
+     validateAlert(is(actionButtonClickAlert));
+ }
+ ```
+   
+ ```html
+ <div class="input-group mb-3" id="segmented-button">
+     <div class="input-group-prepend">
+         <button type="button" class="btn btn-outline-secondary" id="Segmented-action-button"
+                 onclick="alert('Action Button Alert');">Action
+         </button>
+         <button type="button"
+                 class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <div class="dropdown-menu">
+             <a class="dropdown-item"
+                href="https://jdi-testing.github.io/jdi-light/index.html"
+                target="_blank">Action</a>
+             <a class="dropdown-item"
+                href="https://jdi-testing.github.io/jdi-light/index.html" target="_blank">Another
+                 action</a>
+             <a class="dropdown-item"
+                href="https://jdi-testing.github.io/jdi-light/index.html" target="_blank">Something
+                 else here</a>
+             <div role="separator" class="dropdown-divider"></div>
+             <a class="dropdown-item"
+                href="https://jdi-testing.github.io/jdi-light/index.html" target="_blank">Separated
+                 link</a>
+         </div>
+     </div>
+     <input type="text" class="form-control"
+            aria-label="Text input with segmented dropdown button">
+ </div>
+ ```
+ 
+ And here are methods available in Java:
+     
+ |Method | Description | Return Type
+ --- | --- | ---
+ **assertThat()** | property that returns object for work with assertions| TextAssert
+ **clear()** | clears the text field | void
+ **click()** | click on button | void
+ **displayed()** | check item is displayed | TextAssert
+ **enabled()** | check item is enabled | TextAssert
+ **expand()** | expand dropdown menu | void
+ **expanded()** | check that dropdown is expanded | TextAssert
+ **focus()** | places cursor within the text field | void
+ **getText()** | returns text from the text field  | String
+ **getValue()** | returns text from the text field| String
+ **is()** | property that returns object for work with assertions| TextAssert
+ **sendKeys(String value)** | adds text to the field | void
+ **setText(String value)** | adds text to the field | void
+ 
+  <br>
+ Input group are represented by Section class in Java:
+  
+   [Section](https://jdi-docs.github.io/jdi-light/#section)  
+   
+ Inner elements of input group can be represented by following classes:
+  <ul>
+   <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+   
+   <li> [TextField](https://jdi-docs.github.io/jdi-light/#textfield) </li> 
+   
+   <li> [TextArea](https://jdi-docs.github.io/jdi-light/#textarea) </li>
+   
+   <li> [Dropdown](https://jdi-docs.github.io/jdi-light/#dropdown-2) </li>
+  
+  <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
+  </ul>
+  <br>
+  
+   
+ [Segmented buttons test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupSegmentedButtonTests.java) <br>
+ 
+  
+ #### Custom select 
+ **[Custom select](https://getbootstrap.com/docs/4.3/components/input-group/#custom-select)** – Input groups include support for custom selects and text field. Browser default versions of these are not supported.
+ 
+ ![Custom select](../images/bootstrap/custom_select.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ ```java 
+ @UI("#custom-select-01") public static CustomSelect customSelect;
+ // @FindBy(css = "#custom-select-01") public static CustomSelect customSelect;
+ 
+ public class CustomSelect extends Section {
+     @UI(".input-group-prepend") public Text optionText;
+     @UI("#inputGroupSelect01") public Selector selector;
+ }
+ 
+ @Test
+    public void isValidationOptionsSectionTests() {
+        customSelect.optionText.is().text(optionText);
+ }
+ 
+ @Test
+ public void selectorByIndexTests() {
+     customSelect.selector.is().selected(selectChoose);
+     customSelect.selector.select(2);
+     customSelect.selector.is().selected(selectOne);
+     customSelect.selector.select(1);
+     customSelect.selector.is().selected(selectChoose);
+ }
+ 
+ @Test(priority = 1)
+ public void selectorByValueTests() {
+     customSelect.selector.select(selectOne);
+     customSelect.selector.is().selected(selectOne);
+     customSelect.selector.select(selectTwo);
+     customSelect.selector.is().selected(selectTwo);
+ }
+ 
+ @Test
+ public void selectorIsValidationTests() {
+     customSelect.selector.is().displayed()
+             .enabled();
+     customSelect.selector.is().size(4);
+ }
+ ```
+   
+ ```html
+ <div class="input-group mb-3" id="custom-select-01">
+     <div class="input-group-prepend">
+         <label class="input-group-text" for="inputGroupSelect01">Options</label>
+     </div>
+     <select class="custom-select" id="inputGroupSelect01">
+         <option selected>Choose...</option>
+         <option value="1">One</option>
+         <option value="2">Two</option>
+         <option value="3">Three</option>
+     </select>
+ </div>
+ 
+ <div class="input-group mb-3" id="custom-select-02">
+     <select class="custom-select" id="inputGroupSelect02">
+         <option selected>Choose...</option>
+         <option value="1">One</option>
+         <option value="2">Two</option>
+         <option value="3">Three</option>
+     </select>
+     <div class="input-group-append">
+         <label class="input-group-text" for="inputGroupSelect02">Options</label>
+     </div>
+ </div>
+ ```
+ 
+ <br><br><br><br><br><br><br><br><br><br>
+ **[Custom select with button](https://getbootstrap.com/docs/4.3/components/input-group/#custom-select)** – Input groups include support for custom selects and button. Browser default versions of these are not supported.
+ 
+ ![Custom select with button](../images/bootstrap/custom-select-with-button.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ ```java 
+ @UI("#custom-select-button-01") public static CustomSelectWithButton customSelectWithButton;
+ // @FindBy(css = "#custom-select-button-01") public static CustomSelect customSelect;
+ 
+ public class CustomSelectWithButton extends Section {
+     @UI("#inputGroupSelect03") public Selector selector;
+     @UI("button") public Button button;
+ }
+ 
+ @Test
+ public void buttonTests() {
+     customSelectWithButton.button.is().displayed();
+     customSelectWithButton.button.is().enabled();
+     customSelectWithButton.button.is().text(buttonText);
+     customSelectWithButton.button.hover();
+     customSelectWithButton.button.click();
+     validateAlert(is(buttonClickAlert));
+ }
+ 
+ @Test
+ public void selectorByIndexTests() {
+     customSelectWithButton.selector.is().selected(selectChoose);
+     customSelectWithButton.selector.select(2);
+     customSelectWithButton.selector.is().selected(selectOne);
+     customSelectWithButton.selector.select(3);
+     customSelectWithButton.selector.is().selected(selectTwo);
+ }
+ 
+ @Test(priority = 1)
+ public void selectorByValueTests() {
+     customSelectWithButton.selector.select(selectTwo);
+     customSelectWithButton.selector.is().selected(selectTwo);
+     customSelectWithButton.selector.select(selectThree);
+     customSelectWithButton.selector.is().selected(selectThree);
+ }
+ 
+ @Test
+ public void selectorIsValidationTests() {
+     customSelectWithButton.selector.is().displayed()
+             .enabled();
+     customSelectWithButton.selector.is().size(4);
+ }
+ ```
+   
+ ```html
+ <div class="input-group mb-3" id="custom-select-button-01">
+     <div class="input-group-prepend">
+         <button class="btn btn-outline-secondary" type="button"
+                 onclick="alert('Button clicked, thank you!');">Button
+         </button>
+     </div>
+     <select class="custom-select" id="inputGroupSelect03"
+             aria-label="Example select with button addon">
+         <option selected>Choose...</option>
+         <option value="1">One</option>
+         <option value="2">Two</option>
+         <option value="3">Three</option>
+     </select>
+ </div>
+ 
+ <div class="input-group mb-3" id="custom-select-button-02">
+     <select class="custom-select" id="inputGroupSelect04"
+             aria-label="Example select with button addon">
+         <option selected>Choose...</option>
+         <option value="1">One</option>
+         <option value="2">Two</option>
+         <option value="3">Three</option>
+     </select>
+     <div class="input-group-append">
+         <button class="btn btn-outline-secondary" type="button"
+                 onclick="alert('Button clicked, thank you!');">Button
+         </button>
+     </div>
+ </div>
+ ```
+ 
+ 
+ 
+ And here are methods available in Java:
+     
+ |Method | Description | Return Type
+ --- | --- | ---
+ **assertThat()** | property that returns object for work with assertions| TextAssert
+ **clear()** | clears the text field | void
+ **click()** | click on button | void
+ **displayed()** | check item is displayed | TextAssert
+ **enabled()** | check item is enabled | TextAssert
+ **focus()** | places cursor within the text field | void
+ **getText()** | returns text from the text field  | String
+ **getValue()** | returns text from the text field| String
+ **is()** | property that returns object for work with assertions| TextAssert
+ **select(int value)** | choose item by index | void
+ **selected** | returns text from the selected item | TextAssert
+ **sendKeys(String value)** | adds text to the field | void
+ **setText(String value)** | adds text to the field | void
+  
+  
+   <br>
+  Input group are represented by Section class in Java:
+   
+    [Section](https://jdi-docs.github.io/jdi-light/#section)  
+    
+  Inner elements of input group can be represented by following classes:
+   <ul>
+    <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+   
+   <li>  [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li> 
+   </ul>
+   <br>
+  
+ [Custom select test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelect.java) <br>
+ [Custom select with button test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelectWithButton.java)
+  
+ #### Custom file input 
+ 
+ [Custom file input](https://getbootstrap.com/docs/4.3/components/input-group/#custom-file-input) – Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
+ 
+ ![Custom file input](../images/bootstrap/custom_file_input.png)
+ 
+ ```java 
+ public class InputGroupCustomUploadFile extends Section {
+     
+ @UI("label[for='upload-file-c']") //@FindBy(css ="label[for='upload-file-c']")
+ public Label labelInputFile;
+ @UI("input#upload-file-c") //@FindBy(css ="input#upload-file-c")
+ public FileInput fileInput; 
+ @UI("button") //@FindBy(css = "button") 
+ public Button btnSubmit;
+ 
+ public void clickSubmitButton() {
+         btnSubmit.click();
+     }
+ }
+ 
+ public class InputGroupCustomFileInput extends Section {
+ @UI("label[for='file-input-c']") //@FindBy(css ="label[for='file-input-c']") 
+ public Label labelInputFile;
+ @UI("input#file-input-c")   //@FindBy(css ="input#file-input-c")
+ public FileInput fileInput;
+ }
+  
+ @BeforeMethod
+ public void before() {
+ States.shouldBeLoggedIn();
+ bsPage.shouldBeOpened();
+ inputGroupCustomFileInput.fileInput.core().
+                         setup(jdiB -> jdiB.setSearchRule(ANY_ELEMENT));
+ inputGroupCustomFileInput.fileInput.core().setClickArea(ACTION_CLICK);
+ inputGroupCustomUploadFile.fileInput.core().
+                         setup(jdiB -> jdiB.setSearchRule(ANY_ELEMENT));
+ inputGroupCustomUploadFile.fileInput.core().setClickArea(ACTION_CLICK);
+ }
+ 
+ @Test
+ public void uploadTest() {
+ clearInput();
+ inputGroupCustomFileInput.fileInput.uploadFile(mergePath(PROJECT_PATH,
+                 "/src/test/resources/general.xml"));
+ inputGroupCustomFileInput.fileInput.is().text(containsString("general.xml"));
+ inputGroupCustomFileInput.fileInput.is().value(containsString("general.xml"));
+ }
+ 
+ @Test
+ public void buttonUploadFileTest() {
+ inputGroupCustomUploadFile.btnSubmit.is().text("Submit");
+ inputGroupCustomUploadFile.clickSubmitButton();
+ validateAlert(is(alertMessage));
+ }
+ ```
+ 
+ ```html
+ <div class="input-group mb-3" id="file-input">
+     <div class="custom-file">
+         <input type="file" class="custom-file-input" id="file-input-c">
+         <label class="custom-file-label" for="file-input-c">Choose file</label>
+     </div>
+ </div>
+ <div class="input-group" id="upload-file">
+     <div class="custom-file">
+         <input type="file" class="custom-file-input" id="upload-file-c">
+         <label class="custom-file-label" for="upload-file-c">Choose file</label>
+     </div>
+     <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" 
+                     onclick="alert('Button clicked, thank you!');">Submit</button>
+     </div>
+ </div> 
+ ```
+ 
+ And here are methods available in Java:
+ 
+ |Method | Description | Return Type
+ --- | --- | ---
+ **assertThat()** | property that returns object for work with assertions | UIAssert
+ **click()** | click on element | void
+ **getValue()** | Get file name | String
+ **hover()** | hover on element | void
+ **is()** | property that returns object for work with assertions | UIAssert
+ **label()**| Get label | Label
+ **setValue(String value)** | set file path to input | void
+ **text()** | returns text of input field | String
+ **uploadFile(String path)** | set file path to input | void
+ **uploadFileRobot(String path, long mSecDelay)** | set file path to input | void
+ <br>
+ 
+ The Custom file input is defined as a section and uses additional web elements: Button, FileInput and Label.
+ 
+ They are located in the following Java classes:
+ 
+ - com.epam.jdi.light.ui.html.common.Button
+ 
+ - com.epam.jdi.light.elements.common;
+ 
+ - com.epam.jdi.light.ui.bootstrap.elements.common;
+ 
+ 
+ [Bootstrap test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputgroup/InputGroupCustomFileInputTests.java)
+ 
+ ### Jumbotron
+ 
+ [Jumbotron](https://getbootstrap.com/docs/4.3/components/jumbotron) – Lightweight, flexible component for showcasing hero
+ 
+ ![Jumbotron](../images/bootstrap/jumbotron.png)
+ 
+ Here is an example with provided Bootstrap v4.3 code:
+ 
+ ```java 
+ // @FindBy(css = "#jumbotron")
+ @Css("#jumbotron")
+ public static Jumbotron jumbotron;
+ 
+ public class Jumbotron extends Section implements IsJumbotron {
+     @Css(".display-4") public Text title;
+     @Css(".lead") public Text description;
+     @Css(".btn") public Button learnMoreBtn;
+ }
+ 
+ @Test
+ public void getTextTest() {
+     assertEquals(jumbotron.getText(), mJumbotronWithButton);
+ }
+ 
+ @Test
+ public void clickTest() {
+     jumbotron.learnMoreBtn.click();
+     ArrayList<String> tabs = new ArrayList<>(WebDriverFactory.getDriver().getWindowHandles());
+     WebDriver driver = WebDriverFactory.getDriver();
+     driver.switchTo().window(tabs.get(1));
+     assertEquals(getUrl(), mJumbotronUrl);
+     driver.close();
+     driver.switchTo().window(tabs.get(0));
+ } 
+ ```
+ 
+ ```html
+ <div class="jumbotron" id="jumbotron">
+     <h1 class="display-4">Hello, world!</h1>
+     <p class="lead">This is a simple hero unit, a simple
+         jumbotron-style component for calling extra attention to
+         featured content or information.</p>
+     <hr class="my-4">
+     <p>It uses utility classes for typography and spacing to
+         space content out within the larger container.</p>
+     <a class="btn btn-primary btn-lg"
+        href="https://getbootstrap.com/docs/4.3/components/jumbotron/"
+        target="_blank" role="button">Learn more</a>
+ </div>
+ ```
+ 
+ Jumbotron is represented by Section class in Java:
+ 
+ [Section](https://jdi-docs.github.io/jdi-light/#section)
+ 
+ Inner elements of jumbotron can be represented by the following classes:
+ 
+ - [Text](https://jdi-docs.github.io/jdi-light/#text)
+ - [Button](https://jdi-docs.github.io/jdi-light/#button)
+ - [Label](https://jdi-docs.github.io/jdi-light/#label)
+ - [Link](https://jdi-docs.github.io/jdi-light/#link)
+ 
+ [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements)
+ 
+ [Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/jumbotron)
+
+### List group
+
+***[List groups](https://getbootstrap.com/docs/4.3/components/list-group/)*** are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.
+
+
+#### Basic Example
+
+***[List group basic example](https://getbootstrap.com/docs/4.3/components/list-group/#basic-example)*** - an unordered list with list items and the proper classes.
+
+List Group is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
+  
+
+![List group basic example](../images/bootstrap/list-group-basic.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#list-group-basic-example") public static ListGroupBasicExample listGroupBasicExample;
+// @FindBy(css = "#list-group-basic-example") public static ListGroupBasicExample listGroupBasicExample;
+
+public class ListGroupBasicExample extends Section {
+    @UI("li") public ListGroup listGroup;
+}
+
+public void listGroupIsValidationTest() {
+    listGroupBasicExample.listGroup.is()
+            .size(5);
+}
+
+@Test(dataProvider = "listData")
+public void listGroupTests(int num, String text) {
+    listGroupBasicExample.listGroup.get(num).is()
+            .text(is(text))
+            .css("font-size", is("14px"));
+}
+```
+
+```html
+<ul class="list-group mb-3" id="list-group-basic-example">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**get()** | Select button by index | action
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/BasicExampleTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Active Items
+
+***[List group active Items](https://getbootstrap.com/docs/4.3/components/list-group/#active-items)***
+
+List Group is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
+  
+
+![List group active items example](../images/bootstrap/list-group-active.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#list-group-active-items") public static ListGroupActiveItems listGroupActiveItems;
+// @FindBy(css = "#list-group-active-items") public static ListGroupActiveItems listGroupActiveItems;)
+
+public class ListGroupActiveItems extends Section {
+    @UI("li") public ListGroup listGroup;
+}
+
+@Test(dataProvider = "listData")
+public void listGroupTextTests(int num, String text) {
+    listGroupActiveItems.listGroup.get(num).is()
+            .text(text)
+            .css("font-size", is("14px"));
+}
+
+@Test
+public void isValidationTests() {
+    listGroupActiveItems.listGroup.is()
+            .size(5);
+    listGroupActiveItems.is()
+            .displayed()
+            .enabled()
+            .core()
+            .hasClass("list-group");
+    listGroupActiveItems.listGroup.get(1).is()
+            .hasClass(listClass + " active");
+}
+```
+
+```html
+<ul class="list-group mb-3" id="list-group-active-items">
+    <li class="list-group-item active">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**get()** | Select button by index | action
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/ActiveItemsTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Disabled Items
+
+***[List group disabled Items](https://getbootstrap.com/docs/4.3/components/list-group/#disabled-items)***
+
+List Group is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
+  
+
+![List group disabled items example](../images/bootstrap/list-group-disabled.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#disabled-items") public static ListGroupDisabledItems listGroupDisabledItems;
+// @FindBy(css = "#disabled-items") public static ListGroupDisabledItems listGroupDisabledItems;
+
+public class ListGroupDisabledItems extends Section {
+    @UI("li") public ListGroup listGroup;
+}
+
+@Test
+public void isValidationTests() {
+    listGroupDisabledItems.listGroup.is()
+            .size(5);
+    listGroupDisabledItems.is()
+            .displayed()
+            .enabled()
+            .core()
+            .hasClass("list-group");
+    listGroupDisabledItems.listGroup.get(1).is()
+            .hasClass(listClass + " disabled")
+            .attr("aria-disabled", "true");
+}
+
+@Test(dataProvider = "listData")
+public void listGroupTextTests(int num, String text) {
+    listGroupDisabledItems.listGroup.get(num).is()
+            .text(text)
+            .css("font-size", is("14px"));
+}
+```
+
+```html
+<ul class="list-group mb-3" id="disabled-items">
+    <li class="list-group-item disabled" aria-disabled="true">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**get()** | Select button by index | action
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/DisabledItemsTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Links
+
+***[List group links and buttons](https://getbootstrap.com/docs/4.3/components/list-group/#links-and-buttons)***
+
+List Group is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
+  
+
+![List group links example](../images/bootstrap/list-group-links.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#list-group-links") public static ListGroupLinks listGroupLinks;
+// @FindBy(css = "#list-group-links") public static ListGroupLinks listGroupLinks;
+
+public class ListGroupLinks extends Section {
+    @UI("a") public ListGroup listGroup;
+}
+
+@Test(dataProvider = "clickValidate")
+public void linkClickableTests(int index, String pageTitle) {
+    listGroupLinks.listGroup.get(index).highlight();
+    listGroupLinks.listGroup.get(index).click();
+    newWindowTitleCheck(pageTitle);
+    listGroupLinks.listGroup.get(index).unhighlight();
+}
+
+@Test
+public void isValidationTests() {
+    listGroupLinks.listGroup.is()
+            .size(5);
+    listGroupLinks.is()
+            .displayed()
+            .enabled()
+            .core()
+            .hasClass("list-group");
+    listGroupLinks.listGroup.get(1).is()
+            .hasClass(listClass + " active");
+    listGroupLinks.listGroup.get(5).is()
+            .hasClass(listClass + " disabled");
+    assertFalse(listGroupLinks.listGroup.get(5).isClickable());
+}
+```
+
+```html
+<div class="list-group mb-3" id="list-group-links">
+    <a href="https://github.com/jdi-docs"
+       class="list-group-item list-group-item-action active" target="_blank">
+        JDI Docs
+    </a>
+    <a href="https://github.com/jdi-testing" class="list-group-item list-group-item-action"
+       target="_blank">JDI - testing tool</a>
+    <a href="https://jdi-testing.github.io/jdi-light/index.html"
+       class="list-group-item list-group-item-action" target="_blank">JDI website</a>
+    <a href="https://getbootstrap.com/docs/4.3/components/list-group/#links-and-buttons"
+       class="list-group-item list-group-item-action" target="_blank">Bootstrap</a>
+    <a href="https://github.com/jdi-docs"
+       class="list-group-item list-group-item-action disabled" tabindex="-1"
+       aria-disabled="true" target="_blank">JDI Docs</a>
+</div>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button | void
+**get()** | Select button by index | action
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/LinksTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Buttons
+
+***[List group links and buttons](https://getbootstrap.com/docs/4.3/components/list-group/#links-and-buttons)***
+
+List Group is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
+  
+
+![List group buttons example](../images/bootstrap/list-group-buttons.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#list-group-buttons") public static ListGroupButtons listGroupButtons;
+// @FindBy(css = "#list-group-buttons") public static ListGroupButtons listGroupButtons;
+
+public class ListGroupButtons extends Section {
+    @UI("button") public ListGroup listGroup;
+}
+
+@Test
+public void isValidationTests() {
+    listGroupButtons.listGroup.is()
+            .size(5);
+    listGroupButtons.is()
+            .displayed()
+            .enabled()
+            .core()
+            .hasClass("list-group");
+    listGroupButtons.listGroup.get(1).is()
+            .hasClass(listClass + " active");
+    listGroupButtons.listGroup.get(5).is()
+            .disabled();
+}
+
+@Test(dataProvider = "clickValidate")
+public void buttonClickableTests(int index, String text) {
+    listGroupButtons.listGroup.get(index).highlight();
+    listGroupButtons.listGroup.get(index).click();
+    validateAlert(is(text));
+    listGroupButtons.listGroup.get(index).unhighlight();
+}
+```
+
+```html
+<div class="list-group mb-3" id="list-group-buttons">
+    <button type="button" class="list-group-item list-group-item-action active"
+            onclick="alert('Cras justo odio');">Cras justo odio
+    </button>
+    <button type="button" class="list-group-item list-group-item-action"
+            onclick="alert('Dapibus ac facilisis in');">Dapibus ac facilisis in
+    </button>
+    <button type="button" class="list-group-item list-group-item-action"
+            onclick="alert('Morbi leo risus');">Morbi leo risus
+    </button>
+    <button type="button" class="list-group-item list-group-item-action"
+            onclick="alert('Porta ac consectetur ac');">Porta ac consectetur ac
+    </button>
+    <button type="button" class="list-group-item list-group-item-action"
+            onclick="alert('Vestibulum at eros');" disabled>Vestibulum at eros
+    </button>
+</div>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button | void
+**get()** | Select button by index | action
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/Buttons.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Flush
+
+***[List group flush](https://getbootstrap.com/docs/4.3/components/list-group/#flush)***
+
+List Group is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
+  
+
+![List group flush example](../images/bootstrap/list-group-flush.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#list-group-flush") public static ListGroupFlush listGroupFlush;
+// @FindBy(css = "#list-group-flush") public static ListGroupFlush listGroupFlush;
+
+public class ListGroupFlush extends Section {
+    @UI("li") public ListGroup listGroup;
+}
+
+@Test(dataProvider = "listData")
+public void listGroupTests(int num, String text) {
+    listGroupFlush.listGroup.get(num).is()
+            .text(text)
+            .css("font-size", is("14px"));
+}
+
+@Test
+public void initTests() {
+    listGroupFlush.listGroup.is().size(5);
+    listGroupFlush.is()
+            .displayed()
+            .enabled()
+            .core()
+            .hasClass("list-group list-group-flush");
+}
+```
+
+```html  
+<div class="html-left">
+    <ul class="list-group list-group-flush mb-3" id="list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+</div>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**get()** | Select button by index | action
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/FlushTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Horizontal
+
+***[List group horizontal](https://getbootstrap.com/docs/4.3/components/list-group/#horizontal)***
+
+List Group is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
+  
+
+![List group horizontal example](../images/bootstrap/list-group-horizontal.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#list-group-horizontal") public static ListGroupHorizontal listGroupHorizontal;
+// @FindBy(css = "#list-group-horizontal") public static ListGroupHorizontal listGroupHorizontal;
+
+public class ListGroupHorizontal extends Section {
+    @UI("li") public ListGroup listGroup;
+}
+
+@Test
+public void initTests() {
+    listGroupHorizontal.listGroup.is()
+            .size(3);
+}
+
+@Test(dataProvider = "listData")
+public void listGroupTests(int num, String text) {
+    listGroupHorizontal.listGroup.get(num).is()
+            .text(text)
+            .css("font-size", is("14px"));
+}
+```
+
+```html
+<ul class="list-group list-group-horizontal mb-3" id="list-group-horizontal">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+</ul>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**get()** | Select button by index | action
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/Horizontal.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### With Badges
+
+***[List group with badges](https://getbootstrap.com/docs/4.3/components/list-group/#with-badges)***
+
+List Group is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
+  
+
+![List group with badges example](../images/bootstrap/list-group-badges.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#list-group-with-badges") public static ListGroupWithBadges listGroupWithBadges;
+// @FindBy(css = "#list-group-with-badges") public static ListGroupWithBadges listGroupWithBadges;
+
+public class ListGroupWithBadges extends Section {
+    @UI("li") public ListGroup listGroup;
+    @UI("li span") public ListGroup badge;
+}
+
+@Test
+public void initTests() {
+    listGroupWithBadges.listGroup.is()
+            .size(3);
+    listGroupWithBadges.badge.is()
+            .size(3);
+}
+
+@Test(dataProvider = "listData")
+public void listGroupTests(int num, String text) {
+    listGroupWithBadges.listGroup.get(num).is()
+            .text(containsString(text))
+            .css("font-size", is("14px"))
+            .hasClass("list-group-item d-flex justify-content-between align-items-center");
+}
+```
+
+```html
+<ul class="list-group mb-3" id="list-group-with-badges">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Cras justo odio
+        <span class="badge badge-primary badge-pill">14</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Dapibus ac facilisis in
+        <span class="badge badge-primary badge-pill">2</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Morbi leo risus
+        <span class="badge badge-primary badge-pill">1</span>
+    </li>
+</ul>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**get()** | Select button by index | action
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/WithBadgesTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Custom Content
+
+***[List group custom content](https://getbootstrap.com/docs/4.3/components/list-group/#custom-content)***
+
+List Group is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.ListGroup_
+  
+
+![List group custom content example](../images/bootstrap/list-group-custom.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+@UI("#list-group-custom-content") public static ListGroupCustomContent listGroupCustomContent;
+// @FindBy(css = "#list-group-custom-content") public static ListGroupCustomContent listGroupCustomContent;
+
+public class ListGroupCustomContent extends Section {
+    @UI("a") public ListGroup listGroup;
+    @UI("a div h5") public ListGroup header;
+    @UI("a div small") public ListGroup dateText;
+    @UI("a p") public ListGroup mainText;
+    @UI("small.footer") public ListGroup footer;
+    @UI("a div") public ListGroup container;
+}
+
+@Test
+ public void isValidationTests() {
+     listGroupCustomContent.listGroup.is()
+             .size(3);
+     listGroupCustomContent.container.is()
+             .size(3);
+}
+
+@Test(dataProvider = "clickValidate")
+public void linkClickableTests(int index, String pageTitle) {
+    listGroupCustomContent.listGroup.get(index).highlight();
+    listGroupCustomContent.listGroup.get(index).click();
+    newWindowTitleCheck(pageTitle);
+    listGroupCustomContent.listGroup.get(index).unhighlight();
+}
+```
+
+```html
+<div class="list-group mb-3" id="list-group-custom-content">
+    <a href="https://jdi-testing.github.io/jdi-light/index.html"
+       class="list-group-item list-group-item-action active" target="_blank">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading one</h5>
+            <small>3 days ago</small>
+        </div>
+        <p class="mb-1">Some simple text for first section of custom list group.</p>
+        <small class="footer">JDI website</small>
+    </a>
+    <a href="https://github.com/jdi-testing" class="list-group-item list-group-item-action"
+       target="_blank">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading two</h5>
+            <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-1">Some simple text for second section of custom list group.</p>
+        <small class="text-muted footer">JDI - testing tool</small>
+    </a>
+    <a href="https://github.com/jdi-docs" class="list-group-item list-group-item-action"
+       target="_blank">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading three</h5>
+            <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-1">Some simple text for third section of custom list group.</p>
+        <small class="text-muted footer">JDI Docs</small>
+    </a>
+</div>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the button | void
+**get()** | Select button by index | action
+**getText()** | Get button text | String
+**is()** | Assert action | TextAssert 
+**select()** | Select button | void
+**selected()** | Radio button is selected | TextAssert
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/listGroup/CustomContentTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+
+
+
+
+### Media object
+
+```java 
+public class MediaObject extends Section {
+}
+```
+
+<a href="https://getbootstrap.com/docs/4.3/components/media-object" target=a_blank> Media object</a> helps build complex and repetitive components where some media is positioned alongside content that doesn’t wrap around said media.
+
+**Media object sample**
+
+![Media object sample](../images/bootstrap/media-object-sample.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+  
+  ```java 
+  // @FindBy(css = "#media-object-sample")
+  @UI("#media-object-sample") public static MediaObjectSample mediaObjectSample; 
+  
+  public class MediaObjectSample extends MediaObject {
+  @UI("img") public Image imageOfMediaObject;
+  
+  @Title
+  @UI("h5") public Text headingOfMediaObject;
+  
+  @UI(".media-body") public Text bodyOfMediaObject;
+  }
+  
+  @Test
+  public void isValidationTestSample() {
+      mediaObjectSample.is().displayed();
+      mediaObjectSample.is().enabled();
+      mediaObjectSample.bodyOfMediaObject.is().text(is(bodyTextOfMediaObjectSample));
+      mediaObjectSample.bodyOfMediaObject.is().text(containsString("American comic books"));
+      assertThat(mediaObjectSample.headingOfMediaObject.core().css("font-size"), is("20px"));
+      assertThat(mediaObjectSample.bodyOfMediaObject.core().css("font-size"), is("14px"));
+      mediaObjectSample.bodyOfMediaObject.assertThat().displayed()
+              .and().text(is(bodyTextOfMediaObjectSample))
+              .core()
+              .css("font-size", is("14px"))
+              .cssClass("media-body")
+      ;
+  }
+  ```
+
+```html
+<div class="media" id="media-object-sample">
+    <img src="images/wolverin.jpg" class="mr-3" alt="...">
+    <div class="media-body">
+        <h5 class="mt-0">WOLVERINE</h5>
+        Wolverine is a fictional character appearing in American comic books published by Marvel
+        Comics, mostly in association with the X-Men. He is a mutant who possesses animal-keen
+        senses, enhanced physical capabilities, powerful regenerative ability known as a healing
+        factor, and three retractable claws in each hand.
+    </div>
+</div>
+```
+
+
+**Media object nesting**
+
+![Media object nesting](../images/bootstrap/media-object-nesting.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+  
+  ```java 
+  // @FindBy(css = "#media-object-nesting")
+  @UI("#media-object-nesting") public static MediaObjectNesting mediaObjectNesting; 
+  
+  public class MediaObjectNesting extends MediaObject {
+  @UI("img") public Image imageOfMediaObject;
+  
+  @Title
+  @UI("h5") public Text headingOfMediaObject;
+  
+  @UI(".media-body") public Text bodyOfMediaObject;
+  
+  @UI("div.media div.media") public MediaObjectSample  nestingMediaObject;
+  }
+  
+  @Test
+  public void isValidationTestNesting() {
+      mediaObjectNesting.is().displayed();
+      mediaObjectNesting.is().enabled();
+      mediaObjectNesting.nestingMediaObject.bodyOfMediaObject.is().text(is(bodyTextOfMediaObjectNesting));
+      mediaObjectNesting.nestingMediaObject.bodyOfMediaObject.is().text(containsString("vel eu leo"));
+      assertThat(mediaObjectNesting.nestingMediaObject.headingOfMediaObject.core().css("font-size"), is("20px"));
+      assertThat(mediaObjectNesting.nestingMediaObject.bodyOfMediaObject.core().css("font-size"), is("14px"));
+      mediaObjectNesting.nestingMediaObject.bodyOfMediaObject.assertThat().displayed()
+              .and().text(is(bodyTextOfMediaObjectNesting))
+              .core()
+              .css("font-size", is("14px"))
+              .cssClass("media-body")
+      ;
+  
+  }
+  
+  ```
+  
+```html
+<div class="media" id="media-object-nesting">
+    <img src="images/wolverin.jpg" class="mr-3" alt="...">
+    <div class="media-body">
+        <h5 class="mt-0">Media heading</h5>
+        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+        sollicitudin.
+        <div class="media mt-3">
+            <a class="mr-3" href="https://jdi-testing.github.io/jdi-light/index.html"
+               target="_blank">
+                <img src="images/punisher.jpg" class="mr-3" alt="...">
+            </a>
+            <div class="media-body">
+                <h5 class="mt-0">IRON MAN</h5>
+                Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+
+**Media object list**
+
+
+![Media object list](../images/bootstrap/media-object-list.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+    // @FindBy(css = "#media-object-list")
+    @UI("#media-object-list") public static JList<MediaObjectSample> mediaObjectList; 
+    
+    @Test
+    public void isValidationTestListMediaObject() {
+        mediaObjectList.is().displayed();
+        mediaObjectList.is().enabled();
+        mediaObjectList.get(1).headingOfMediaObject.is().text(is(listOfHeading.get(0)));
+        mediaObjectList.get(2).bodyOfMediaObject.is().text(containsString("Stark requires"));
+        assertThat(mediaObjectList.get(2).headingOfMediaObject.core().css("font-size"), is("20px"));
+        assertThat(mediaObjectList.get(1).bodyOfMediaObject.core().css("font-size"), is("14px"));
+        mediaObjectList.assertThat().displayed()
+                .core()
+                .css("font-size", is("14px"));
+    }
+
+```
+  
+```html
+<ul class="list-unstyled" id="media-object-list">
+    <li class="media">
+        <img src="images/wolverin.jpg" class="mr-3" alt="...">
+        <div class="media-body">
+            <h5 class="mt-0 mb-1">WOLVERINE first</h5>
+            Wolverine is a fictional character appearing in American comic books published by
+            Marvel Comics
+        </div>
+    </li>
+    <li class="media my-4">
+        <img src="images/punisher.jpg" class="mr-3" alt="...">
+        <div class="media-body">
+            <h5 class="mt-0 mb-1">IRON MAN second</h5>
+            I do anything and everything that Mr. Stark requires — including occasionally taking
+            out the trash
+        </div>
+    </li>
+    <li class="media">
+        <img src="images/spider-man.jpg" class="mr-3" alt="...">
+        <div class="media-body">
+            <h5 class="mt-0 mb-1">SPIDER MAN third</h5>
+            Spider-Man is a fictional superhero created by writer-editor Stan Lee and
+            writer-artist Steve Ditko.
+        </div>
+    </li>
+</ul>
+```
+
+Media object is represented by MediaObject class: 
+
+  <a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap/src/main/java/com/epam/jdi/light/ui/bootstrap/elements/composite/MediaObject.java">MediaObject</a>  
+
+MediaObject class is inherited from Section class:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)
+  
+Inner elements of media object can be represented by the following classes:
+<ul>
+    <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+    <li> [Label](https://jdi-docs.github.io/jdi-light/#label) </li>
+    <li> [Link](https://jdi-docs.github.io/jdi-light/#link)  </li>
+    <li> [Image](https://jdi-docs.github.io/jdi-light/#image)  </li>
+    <li> [See more elements](https://jdi-docs.github.io/jdi-light/#html5-common-elements) </li>
+</ul>
+     
+   <a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/mediaObject/MediaObjectTests.java" target=a_blank> Bootstrap test examples </a>
+
+
+### Modal
+[Modal](https://getbootstrap.com/docs/4.3/components/modal/) is a dialog box/popup window that is displayed on page.
+
+#### [Modal Live demo](https://getbootstrap.com/docs/4.3/components/modal/#live-demo)
+Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
+
+![Modal_Live_demo](../images/bootstrap/modal-live-demo.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+//FindBy(css = "#modal-live-demo .bd-example .btn")
+@UI("#modal-live-demo .bd-example .btn") 
+public static Button modalLiveDemoLaunchButton;
+
+//FindBy(css = "#exampleModalLive")
+@UI("#exampleModalLive") 
+public static ModalLiveDemo modalLiveDemo;
+
+public class ModalLiveDemo extends Modal {
+    @UI(".modal-body") public Text body;
+    @UI("//div[@class='modal-footer']//button[1]") public Button closeButton;
+    @UI("//div[@class='modal-footer']//button[2]") public Button saveButton;
+    @UI(".modal-header .close") public Button closeX;
+}
+
+@Test
+public void modalContentTextTest() {
+    modalLiveDemoLaunchButton.is().text(is(launchButtonText));
+    modalLiveDemoLaunchButton.click();
+    modalLiveDemo.title.is().text(is(titleText));
+    modalLiveDemo.body.is().text(is(bodyText));
+    modalLiveDemo.saveButton.is().text(is(saveButtonText));
+    modalLiveDemo.closeButton.is().text(is(closeButtonText));
+    modalLiveDemo.close();
+}
+
+@Test
+public void saveAndCloseButtonsTest() {
+    modalLiveDemoLaunchButton.click();
+    modalLiveDemo.is().displayed();
+    modalLiveDemo.saveButton.click();
+    modalLiveDemo.is().displayed();
+    modalLiveDemo.closeButton.click();
+    modalLiveDemo.is().hidden();
+}
+```
+
+```html
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLiveLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Woohoo, you're reading this text in a modal!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                </button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Modal is represented by Section class in Java:
+ 
++ Section #BS
+
+Inner elements of Modal - Live demo are represented by the following classes:
+
++ [Text](https://jdi-docs.github.io/jdi-light/#text)
++ [Button](https://jdi-docs.github.io/jdi-light/#button)
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**close()** | Close modal | void
+**click()** | Click the button | void
+**getText()** | Returns text | String
+**is()** | Asserts element  | UIAssert
+
+[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalLiveDemoTests.java)
+
+#### [Scrolling Long Content Modal](https://getbootstrap.com/docs/4.3/components/modal/#scrolling-long-content)
+
+When modals become too long for the user’s viewport or device, they scroll independent of the page itself.
+
+![Modal long scrollable](../images/bootstrap/modal_scrollable1.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(id = "modal-scroll-long")
+@UI("#modal-scroll-long")
+public static SectionModalLongScrolling sectionModalLongScrolling;
+
+// @FindBy(id = "exampleModalLong")
+@UI("#exampleModalLong")
+public ModalWithButtons modalLong;
+
+// @FindBy(id = "exampleModalScrollable")
+@UI("#exampleModalScrollable")
+public ModalWithButtons modalScrollable;
+
+// @FindBy(css = "#modal-scroll-long div:nth-child(2) button")
+@UI("div:nth-child(2) button")
+public Button buttonLongScroll;
+
+// @FindBy(css = "#modal-scroll-long div:nth-child(4) button")
+@UI("div:nth-child(4) button")
+public Button buttonLongScrollable;
+
+@DataProvider
+public Object[][] listData() {
+    return new Object[][]{
+            {sectionModalLongScrolling.buttonLongScroll, sectionModalLongScrolling.modalLong},
+            {sectionModalLongScrolling.buttonLongScrollable, sectionModalLongScrolling.modalScrollable}
+    };
+}
+
+@Test(dataProvider = "listData")
+public void bottomButtonsTest(Button showModal, ModalWithButtons modal) {
+    showModal.click();
+    modal.is().displayed();
+    modal.bottomSave();
+    modal.bottomClose();
+    modal.is().disappear();
+}
+```
+
+```html 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+![Modal scrollable](../images/bootstrap/modal_scrollable2.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```html 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+Modal is represented by Section class in Java:
+ 
++ Section #BS
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**close()** | Close modal | void
+**displayed()** | Asserts element is displayed  | UIAssert
+**is()** | Asserts element  | UIAssert
+**hidden()** | Asserts element is hidden | UIAssert
+
+[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalScrollingLongContentTests.java)
+
+#### [Vertically Centered Modal](https://getbootstrap.com/docs/4.3/components/modal/#vertically-centered)
+
+Add ``.modal-dialog-centered`` to ``.modal-dialog`` to vertically center the modal.
+
+![Modal Vertically Centered](../images/bootstrap/modal-vertically-centered.png)
+
+```java 
+
+// @FindBy(id = "modal-vertically-centered")
+@UI("#modal-vertically-centered")
+public static ModalVerticallyCentered modalVerticallyCentered;
+
+@Test(dataProvider = "modalBasicData")
+public void modalBasicFunctionalityTest(Button showButton,
+                                        Button dismissButton,
+                                        Modal modal,
+                                        String modalId) {
+    WebDriverWait wait = new WebDriverWait(WebDriverFactory.getDriver(), 5);
+
+    showButton.show();
+    showButton.click();
+
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(modalId)));
+
+    modal.is().displayed();
+
+    dismissButton.show();
+    dismissButton.click();
+
+    modal.is().hidden();
+}
+```
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<div id="exModalCenter" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div id="modal-vertical-content-1" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+                    facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+                    vestibulum at eros.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                </button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Modal is represented by Section class in Java:
+ 
++ Section #BS
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**close()** | Close modal | void 
+**displayed()** | Asserts element is displayed  | UIAssert
+**hidden()** | Asserts element is hidden | UIAssert 
+**is()** | Asserts element  | UIAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalVerticallyCenteredTests.java" target="_blank">Bootstrap Test Examples</a>
+
+#### Modal - Tooltips and popovers
+
+**Modal - Tooltips and popovers**
+
+Tooltips and popovers can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
+
+
+![Modal - Tooltips and popovers](../images/bootstrap/modal-tooltips-and-popovers.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+//@Findby(xpath="//h4[.='Modal - Tooltips and popovers']/../..")
+@UI("//h4[.='Modal - Tooltips and popovers']/../..")
+public static ModalTooltipsAndPopovers modalTooltipsAndPopovers;
+
+public class ModalTooltipsAndPopovers extends Section {
+//@Findby(xpath="//button")
+    @UI("//button") public Button demoModalButton;
+    public ModalTooltipsAndPopoversDialog modalDlg;
+}
+
+public class ModalTooltipsAndPopoversDialog extends Modal {
+//@Findby(css=".modal-body")
+    @UI(".modal-body")
+    public ModalTooltipsAndPopoversBody body;
+    @UI("//div[@class='modal-footer']//button[1]")
+    public Button closeButton;
+    @UI("//div[@class='modal-footer']//button[2]")
+    public Button saveButton;
+}
+
+public class ModalTooltipsAndPopoversBody extends Section {
+//@Findby(css="h5:nth-child(1)")
+    @UI("h5:nth-child(1)") public Text title1;
+    public Popover popover;
+    @UI("h5:nth-child(4)") public Text title2;
+    @UI("p:nth-child(5) > a:nth-child(1)") public Link thisLink;
+    public Tooltip tooltipOnLink;
+    @UI("p:nth-child(5) > a:nth-child(2)") public Link thatLink;
+}
+
+@Test
+public void verifyOpenModalDialogTooltips() {
+    modalTooltipsAndPopovers.demoModalButton.click();
+    modalTooltipsAndPopovers.modalDlg.title.is().text(is(TITLE));
+    modalTooltipsAndPopovers.modalDlg.body.title1.is().text(is(BODY_TITLE1));
+    modalTooltipsAndPopovers.modalDlg.body.title2.is().text(is(BODY_TITLE2));
+    modalTooltipsAndPopovers.modalDlg.body.thisLink.is().text(is(THIS_LINK));
+    modalTooltipsAndPopovers.modalDlg.body.thatLink.is().text(is(THAT_LINK));
+    modalTooltipsAndPopovers.modalDlg.saveButton.is().text(is(SAVE_BUTTON));
+    modalTooltipsAndPopovers.modalDlg.closeButton.is().text(is(CLOSE_BUTTON));
+    modalTooltipsAndPopovers.modalDlg.closeButton.click();
+}
+
+```
+
+```html
+<div id="exampleModalPopovers" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalPopoversLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>Popover in a modal</h5>
+                <p>This <a href="#exampleModalPopovers" role="button" class="btn btn-secondary popover-test"
+                           title="Popover title" data-toggle="popover"
+                           data-content="Popover body content is set in this attribute."
+                           data-container="#exampleModalPopovers">button</a> triggers a popover on click.
+                </p>
+                <hr/>
+                <h5>Tooltips in a modal</h5>
+                <p><a href="#exampleModalPopovers" class="tooltip-test" title="Tooltip" data-toggle="tooltip"
+                      data-container="#exampleModalPopovers">This link</a> and
+                    <a href="#exampleModalPopovers" class="tooltip-test" title="Tooltip" data-toggle="tooltip"
+                       data-container="#exampleModalPopovers">that link</a> have tooltips on hover.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                </button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Modal is represented by Section class in Java:
+ 
++ Section #BS
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**close()** | Close modal | void 
+**displayed()** | Asserts element is displayed  | UIAssert
+**hidden()** | Asserts element is hidden | UIAssert 
+**is()** | Asserts element  | UIAssert
+
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalTooltipsAndPopoversTests.java" target="_blank">Bootstrap Test Examples</a>
+
+<br><br>
+
+**Modal using grid**
+
+<a style="font-weight: bold;" target="_blank" href="https://getbootstrap.com/docs/4.3/components/modal/#using-the-grid">Modal using grid</a>
+
+![Modal using grid example](../images/bootstrap/modal-grid.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+public class GridModalBody extends Section {
+//FindBy(css = ".row")
+@UI(".row")
+private JList<GridRow> allGridRows;
+
+//FindBy(css = '[class*='col']')
+@UI("[class*='col']")
+private JList<GridCell> allGridCells;
+
+public JList<GridCell> getAllCells() {
+   return allGridCells;
+}
+
+public JList<GridRow> getAllRows() {
+   return allGridRows;
+}
+
+public GridRow getGridRow(int rowN) {
+   return allGridRows.get(rowN);
+}
+
+public GridCell getCellInRow(int rowN, int cellN) {
+    return getGridRow(rowN).getCell(cellN);
+}
+
+public String getTextFromCellInRow(int rowN, int cellN) {
+        return getCellInRow(rowN, cellN).getText();
+    }
+}
+
+@Test(dataProvider = "gridData")
+public void checkTextInCell(int rowN, int cellN, String textExpected, String max_width) {
+GridCell cell = gridModalSection.getGridModalWindow().getBody()
+    .getCellInRow(rowN, cellN);
+    cell.highlight("blue");
+    cell.is().core()
+             .text(textExpected)
+             .and()
+             .css("max-width", startsWith(max_width));
+    cell.unhighlight();
+    }
+
+@Test
+public void checkCloseXModalButton() {
+     gridModalSection.getGridModalWindow().getBtnCloseX().highlight("red");
+     gridModalSection.getGridModalWindow().close();
+     gridModalSection.getGridModalWindow().is().disappear();
+    }
+
+@Test
+public void checkCloseByEscapeButton() {
+     gridModalSection.getGridModalWindow().core().sendKeys(Keys.ESCAPE);
+     gridModalSection.getGridModalWindow().is().disappear();
+    }
+```
+
+```html
+<div id="grid-modal-base" class="html-left mb-3">
+    <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog"
+         aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gridModalLabel">Grids in modals</h5>
+                    <button id="close-modal-cross" type="button" class="close" data-dismiss="modal"
+                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid bd-example-row">
+                        <div class="row">
+                            <div class="col-md-4">.col-md-4</div>
+                            <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
+                            <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                Level 1: .col-sm-9
+                                <div class="row">
+                                    <div class="col-8 col-sm-6">
+                                        Level 2: .col-8 .col-sm-6
+                                    </div>
+                                    <div class="col-4 col-sm-6">
+                                        Level 2: .col-4 .col-sm-6
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="close-modal" type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Close
+                    </button>
+                    <button id="save-modal" type="button" class="btn btn-primary">Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bd-example">
+        <button id="btn-modal-using-grid" type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#gridSystemModal">Launch demo modal
+        </button>
+    </div>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method/Property | Description | Return Type
+--- | --- | ---
+**close()** | Close Modal Window using X control | void
+**clickBtnClose()** | Close Modal Window  | void
+**displayed()** | Asserts element is displayed  | UIAssert
+**disappear()** | Asserts element is not displayed | UIAssert 
+**getCellInRow(int rowN, int cellN)** | Get cellN from rowN | GridCell
+**getGridRow(int rowN)** | Get rowN  | GridRow
+**getTitle()** | Get Modal Window Title | Text
+
+[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/GridModalTests.java)
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+**Varying modal content**
+
+Have a bunch of buttons that all trigger the same modal with slightly different contents? Use event.relatedTarget and HTML data-* attributes (possibly via jQuery) to <a href="https://getbootstrap.com/docs/4.3/components/modal/#varying-modal-content">vary the contents</a> of the modal depending on which button was clicked.
+
+![Varying modal content example](../images/bootstrap/modal-varying-content.PNG)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+    public class Modal extends Section {
+        //@FindBy(xpath = "div/h5[@class='modal-title']")
+        @UI(".modal-header .modal-title")
+        public Text title;
+    }
+
+    public class ModalVaryingContent extends Modal {
+        //@FindBy(xpath = "div/button[@class='close']")
+        @UI(".modal-header .close")
+        public Button closeX;
+    }
+
+    @Test(dataProvider = "modalVaryingContentButtonsWithRecipients")
+    public void modalButtonsTest(Button modalButton, String recipient) {
+        checkButton(modalButton, String.format("Open modal for @%s", recipient), 
+        whiteColor, blueColorBackground, blueColorBorder);
+    }
+
+    @Test(dataProvider = "modalVaryingContentButtonsWithRecipients")
+    public void headerValidationTest(Button modalButton, String recipient) {
+        modalButton.click();
+        modalVaryingContentWindow.is().displayed();
+        modalVaryingContentWindow.title.core().is()
+                .text(String.format("NEW MESSAGE TO @%s", recipient.toUpperCase()));
+        modalVaryingContentWindow.closeX.click();
+        modalVaryingContentWindow.is().hidden();
+    }
+
+    private void checkButton(Button button, String text, String color, 
+    String backgroundColor, String borderColor) {
+        button.is().core()
+                .text(text)
+                .tag("button")
+                .css("color", color)
+                .css("background-color", backgroundColor)
+                .css("border-color", borderColor);
+    }
+```
+
+```html
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div id="modalVaryingContentWindow" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name"
+                               class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                </button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method/Property | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action  | TextAssert
+**click()** | Click button  | void
+**displayed()** | Assert is displayed  | void
+**getTitle()** | Get Modal Window Title | Text 
+**getText()** | Get text value of the element | String
+
+
+[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalVaryingContentTests.java)
+
+<br><br>
+
+**Embedding YouTube videos**
+
+Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. See <a href="https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">this helpful Stack Overflow post</a> for more information.
+
+![Embedding YouTube video example](../images/bootstrap/modal-youtube.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java  
+@UI("#modal-youtube button.btn-primary")
+public static Button modalEmbeddedVideoButton;
+@UI("#youTubeModalLabel")
+public static EmbeddedVideoModal embeddedVideoModal;
+
+private final static String VIDEO_TITLE = "Forget about Selenium. May the JDI Light force be with you";
+private final static String VIDEO_URL = "https://www.youtube.com/watch?v=lw4g9ItC7Sc";
+
+@Test
+public void videoTitleTest() {
+    modalEmbeddedVideoButton.click();
+    embeddedVideoModal.getVideoModalFrame().getVideoTitle().is()
+        .displayed()
+        .enabled()
+        .ref(VIDEO_URL)
+        .text(VIDEO_TITLE);
+    embeddedVideoModal.close();
+}
+
+@Test
+public void playVideoTest() {
+    modalEmbeddedVideoButton.click();
+    embeddedVideoModal.getVideoModalFrame().getPlayButton().click();
+    embeddedVideoModal.getVideoModalFrame().getProgressBar().assertThat()
+        .displayed()
+        .attr("aria-valuenow", Matchers.matchesPattern("[1-9]{1}[0-9]*"));
+    embeddedVideoModal.close();
+}
+```
+
+```html
+<div id="modal-youtube" class="html-left mb-3">
+    <div class="bd-example">
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal"
+                data-target="#youTubeModalLabel">Embedding YouTube video
+        </button>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="youTubeModalLabel"
+         id="youTubeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title h4">Embedding YouTube video</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen="" src="https://www.youtube.com/embed/lw4g9ItC7Sc"
+                            width="1120" height="630" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method/Property | Description | Return Type
+--- | --- | ---
+**close()** | Close Modal Window using X control | void
+**displayed()** | Asserts element is displayed  | UIAssert
+**disappear()** | Asserts element is not displayed | UIAssert
+**waitFor()** | Assert action | UIAssert 
+
+[Bootstrap test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalEmbeddingVideoTests.java)
+
+<br><br>
+
+**Optional Sizes**
+
+Modals have three <a style="font-weight: bold;" href="https://getbootstrap.com/docs/4.3/components/modal/#optional-sizes" target="_blank">optional sizes</a>, available via modifier classes to be placed on a ``.modal-dialog``. 
+These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
+
+![Modal Optional Sizes Example](../images/bootstrap/modal-optional-sizes.jpg)
+
+```java  
+// @FindBy(id = "modal-optional-sizes")
+@UI("#modal-optional-sizes")
+public static ModalOptionalSizes modalOptionalSizes;
+
+// @FindBy(css = "button:nth-of-type(1)")
+@UI("button:nth-of-type(1)")
+public Button xlButton;
+
+// @FindBy(css = "button:nth-of-type(2)")
+@UI("button:nth-of-type(2)")
+public Button lgButton;
+
+// @FindBy(css = "button:nth-of-type(3)")
+@UI("button:nth-of-type(3)")
+public Button smButton;
+
+@Test(dataProvider = "modalCssData")
+public void modalCssTest(Button button, Modal modal, String modalCss) {
+    button.show();
+    button.click();
+
+    modal.is().displayed();
+
+    modal.children().get(1).core().is().hasClass(modalCss);
+
+    modal.close();
+}
+
+@Test(dataProvider = "modalSizeData")
+public void modalSizeTest(Button button,
+                          Modal modal,
+                          int modalWidth) {
+    button.show();
+    button.click();
+
+    modal.is().displayed();
+
+    assertThat(modal.children().get(2).core().getRect().width, equalTo(modalWidth));
+
+    modal.close();
+}
+```
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"
+     aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="myExtraLargeModalLabel">Extra large modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Modal is represented by Section class in Java:
+ 
++ Section #BS
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**close()** | Close modal | void 
+**displayed()** | Asserts element is displayed  | UIAssert
+**hidden()** | Asserts element is hidden | UIAssert 
+**hasClass()** | Matches passed value with the element class | IsAssert 
+**is()** | Asserts element  | UIAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/modal/ModalOptionalSizesTests.java" target="_blank">Bootstrap Test Examples</a>
+
+### Pagination
+
+#### Overview
+
+***[Pagination overview](https://getbootstrap.com/docs/4.3/components/pagination/#overview)***
+
+Pagination is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
+  
+
+![Pagination overview example](../images/bootstrap/pagination-overview-example.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "#pagination-overview") public static PaginationOverview paginationOverview;
+@UI("#pagination-overview") public static PaginationOverview paginationOverview;
+
+public class PaginationOverview extends Section {
+    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
+}
+
+@Test
+ public void isValidationTests() {
+     paginationOverview.paginationItems.is()
+             .size(5);
+     paginationOverview.is()
+             .core()
+             .hasClass("pagination");
+ }
+
+ @Test(dataProvider = "listData")
+ public void linkTextTests(int index, String linkText) {
+     paginationOverview.paginationItems.get(index).is()
+             .displayed()
+             .enabled()
+             .css("font-size", is("14px"))
+             .hasClass("page-item")
+             .text(is(linkText));
+ }
+
+ @Test(dataProvider = "listPageTitles")
+ public void linkClickableTests(int index, String pageTitle) {
+     paginationOverview.paginationItems.get(index).hover();
+     paginationOverview.paginationItems.get(index).highlight();
+     paginationOverview.paginationItems.get(index).click();
+     newWindowTitleCheck(pageTitle);
+     paginationOverview.paginationItems.get(index).unhighlight();
+ }
+```
+
+```html
+<nav aria-label="Page navigation example">
+    <ul class="pagination" id="pagination-overview">
+        <li class="page-item"><a class="page-link" href="https://github.com/jdi-docs"
+                                 target="_blank">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
+                                 target="_blank">1</a></li>
+        <li class="page-item"><a class="page-link"
+                                 href="https://jdi-testing.github.io/jdi-light/index.html"
+                                 target="_blank">2</a></li>
+        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
+                                 target="_blank">3</a></li>
+        <li class="page-item"><a class="page-link"
+                                 href="https://jdi-docs.github.io/jdi-light/"
+                                 target="_blank">Next</a></li>
+    </ul>
+</nav>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the element | void
+**get()** | Select button by index | UIElement
+**getText()** | Get button text | String
+**highlight()** | Highlight element | void
+**hover()** | Hover on the element | void
+**is()** | Assert action | TextAssert 
+**unhighlight()** | Unhighlight element | void
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/OverviewTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Working with icons
+
+***[Pagination working with icons](https://getbootstrap.com/docs/4.3/components/pagination/#working-with-icons)***
+
+Pagination is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
+  
+
+![Pagination working with icons example](../images/bootstrap/pagination-icons-example.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "#pagination-icons") public static PaginationIcons paginationIcons;
+@UI("#pagination-icons") public static PaginationIcons paginationIcons;
+
+public class PaginationIcons extends Section {
+    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
+}
+
+@Test
+public void isValidationTests() {
+    paginationIcons.paginationItems.is()
+            .size(5);
+    paginationIcons.is()
+            .core()
+            .hasClass("pagination");
+}
+
+@Test(dataProvider = "listPageTitles")
+public void linkClickableTests(int index, String pageTitle) {
+    paginationIcons.paginationItems.get(index).hover();
+    paginationIcons.paginationItems.get(index).highlight();
+    paginationIcons.paginationItems.get(index).click();
+    newWindowTitleCheck(pageTitle);
+    paginationIcons.paginationItems.get(index).unhighlight();
+}
+```
+
+```html
+<nav aria-label="Page navigation example">
+    <ul class="pagination" id="pagination-icons">
+        <li class="page-item">
+            <a class="page-link" href="https://github.com/jdi-docs" target="_blank"
+               aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
+                                 target="_blank">1</a></li>
+        <li class="page-item"><a class="page-link"
+                                 href="https://jdi-testing.github.io/jdi-light/index.html"
+                                 target="_blank">2</a></li>
+        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
+                                 target="_blank">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="https://jdi-docs.github.io/jdi-light/"
+               target="_blank" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the element | void
+**get()** | Select button by index | UIElement
+**getText()** | Get button text | String
+**highlight()** | Highlight element | void
+**hover()** | Hover on the element | void
+**is()** | Assert action | TextAssert 
+**unhighlight()** | Unhighlight element | void
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/IconsTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Disabled and active states
+
+***[Pagination disabled and active states](https://getbootstrap.com/docs/4.3/components/pagination/#disabled-and-active-states)***
+
+Pagination is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
+  
+
+![Pagination disabled and active states example](../images/bootstrap/pagination-dis-and-active-example.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "#pagination-states") public static PaginationStates paginationStates;
+@UI("#pagination-states") public static PaginationStates paginationStates;
+
+public class PaginationStates extends Section {
+    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
+}
+
+@Test
+public void isValidationTests() {
+    paginationStates.paginationItems.is()
+            .size(5);
+    paginationStates.is()
+            .core()
+            .hasClass("pagination");
+    paginationStates.paginationItems.get(1).is()
+            .core()
+            .hasClass("disabled");
+    paginationStates.paginationItems.get(3).is()
+            .core()
+            .hasClass("active");
+}
+
+@Test(dataProvider = "listPageTitles")
+public void linkClickableTests(int index, String pageTitle) {
+    paginationStates.paginationItems.get(index).hover();
+    paginationStates.paginationItems.get(index).highlight();
+    paginationStates.paginationItems.get(index).click();
+    newWindowTitleCheck(pageTitle);
+    paginationStates.paginationItems.get(index).unhighlight();
+}
+```
+
+```html
+<nav aria-label="disabled-and-active-states">
+    <ul class="pagination" id="pagination-states">
+        <li class="page-item disabled">
+            <a class="page-link" href="https://github.com/jdi-docs" target="_blank"
+               tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
+                                 target="_blank">1</a></li>
+        <li class="page-item active" aria-current="page">
+            <a class="page-link" href="https://jdi-testing.github.io/jdi-light/index.html"
+               target="_blank">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
+                                 target="_blank">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="https://jdi-docs.github.io/jdi-light/"
+               target="_blank">Next</a>
+        </li>
+    </ul>
+</nav>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the element | void
+**get()** | Select button by index | UIElement
+**getText()** | Get button text | String
+**highlight()** | Highlight element | void
+**hover()** | Hover on the element | void
+**is()** | Assert action | TextAssert 
+**unhighlight()** | Unhighlight element | void
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/StatesTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Sizing
+
+***[Pagination sizing](https://getbootstrap.com/docs/4.3/components/pagination/#sizing)***
+
+Pagination is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
+  
+
+![Pagination sizing example](../images/bootstrap/pagination-sizing-example.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "#pagination-big") public static PaginationSizeBig paginationSizeBig;
+// @FindBy(css = "#pagination-small") public static PaginationSizeSmall paginationSizeSmall;
+@UI("#pagination-big") public static PaginationSizeBig paginationSizeBig;
+@UI("#pagination-small") public static PaginationSizeSmall paginationSizeSmall;
+
+public class PaginationSizeBig extends Section {
+    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
+    @UI(".page-link") public Pagination paginationItemsText; // @FindBy(css = ".page-link") public Pagination paginationItemsText;
+}
+
+public class PaginationSizeSmall extends Section {
+    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
+    @UI(".page-link") public Pagination paginationItemsText; // @FindBy(css = ".page-link") public Pagination paginationItemsText;
+}
+
+@Test
+public void isValidationTests() {
+    paginationSizeBig.paginationItems.is()
+            .size(3);
+    paginationSizeBig.is()
+            .core()
+            .hasClass("pagination pagination-lg");
+    paginationSizeSmall.paginationItems.is()
+            .size(3);
+    paginationSizeSmall.is()
+            .core()
+            .hasClass("pagination pagination-sm");
+}
+
+@Test(dataProvider = "listData")
+public void linkTextTests(int index, String linkText) {
+    paginationSizeBig.paginationItemsText.get(index).is()
+            .core()
+            .css("font-size", is("20px"));
+    paginationSizeSmall.paginationItemsText.get(index).is()
+            .core()
+            .css("font-size", is("14px"));
+}
+```
+
+```html
+<nav aria-label="sizing-big">
+    <ul class="pagination pagination-lg" id="pagination-big">
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">1<span class="sr-only">(current)</span></span>
+        </li>
+        <li class="page-item"><a class="page-link"
+                                 href="https://jdi-testing.github.io/jdi-light/index.html"
+                                 target="_blank">2</a></li>
+        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
+                                 target="_blank">3</a></li>
+    </ul>
+</nav>
+
+<nav aria-label="sizing-small">
+    <ul class="pagination pagination-sm" id="pagination-small">
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">1<span class="sr-only">(current)</span></span>
+        </li>
+        <li class="page-item"><a class="page-link"
+                                 href="https://jdi-testing.github.io/jdi-light/index.html"
+                                 target="_blank">2</a></li>
+        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
+                                 target="_blank">3</a></li>
+    </ul>
+</nav>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the element | void
+**get()** | Select button by index | UIElement
+**getText()** | Get button text | String
+**highlight()** | Highlight element | void
+**hover()** | Hover on the element | void
+**is()** | Assert action | TextAssert 
+**unhighlight()** | Unhighlight element | void
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/SizingTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+#### Alignment
+
+***[Pagination alignment](https://getbootstrap.com/docs/4.3/components/pagination/#alignment)***
+
+Pagination is located in the following classes:
+ 
+  - __Java__: _com.epam.jdi.light.ui.bootstrap.elements.complex.Pagination_
+  
+
+![Pagination alignment example](../images/bootstrap/pagination-alignment-example.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "#pagination-center") public static PaginationAlignCenter paginationAlignCenter;
+// @FindBy(css = "#pagination-end") public static PaginationAlignEnd paginationAlignEnd; 
+@UI("#pagination-center") public static PaginationAlignCenter paginationAlignCenter;
+@UI("#pagination-end") public static PaginationAlignEnd paginationAlignEnd;
+
+public class PaginationAlignCenter extends Section {
+    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
+}
+
+public class PaginationAlignEnd extends Section {
+    @UI("li") public Pagination paginationItems; // @FindBy(css = "li") public Pagination paginationItems;
+}
+
+@Test
+public void isValidationTests() {
+    paginationAlignCenter.paginationItems.is()
+            .size(5);
+    paginationAlignCenter.is()
+            .core()
+            .hasClass("pagination justify-content-center");
+    paginationAlignCenter.paginationItems.get(1).is()
+            .core()
+            .hasClass("disabled");
+    paginationAlignEnd.paginationItems.is()
+            .size(5);
+    paginationAlignEnd.is()
+            .core()
+            .hasClass("pagination justify-content-end");
+    paginationAlignEnd.paginationItems.get(1).is()
+            .core()
+            .hasClass("disabled");
+}
+
+@Test(dataProvider = "listPageTitles")
+public void linkClickableCenterTests(int index, String pageTitle) {
+    paginationAlignCenter.paginationItems.get(index).hover();
+    paginationAlignCenter.paginationItems.get(index).highlight();
+    paginationAlignCenter.paginationItems.get(index).click();
+    newWindowTitleCheck(pageTitle);
+    paginationAlignCenter.paginationItems.get(index).unhighlight();
+}
+```
+
+```html
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center" id="pagination-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="https://github.com/jdi-docs" target="_blank"
+               tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
+                                 target="_blank">1</a></li>
+        <li class="page-item"><a class="page-link"
+                                 href="https://jdi-testing.github.io/jdi-light/index.html"
+                                 target="_blank">2</a></li>
+        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
+                                 target="_blank">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="https://jdi-docs.github.io/jdi-light/"
+               target="_blank">Next</a>
+        </li>
+    </ul>
+</nav>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end" id="pagination-end">
+        <li class="page-item disabled">
+            <a class="page-link" href="https://github.com/jdi-docs" target="_blank"
+               tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="https://github.com/jdi-testing"
+                                 target="_blank">1</a></li>
+        <li class="page-item"><a class="page-link"
+                                 href="https://jdi-testing.github.io/jdi-light/index.html"
+                                 target="_blank">2</a></li>
+        <li class="page-item"><a class="page-link" href="https://getbootstrap.com"
+                                 target="_blank">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="https://jdi-docs.github.io/jdi-light/"
+               target="_blank">Next</a>
+        </li>
+    </ul>
+</nav>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | Assert action | TextAssert
+**click()** | Click the element | void
+**get()** | Select button by index | UIElement
+**getText()** | Get button text | String
+**highlight()** | Highlight element | void
+**hover()** | Hover on the element | void
+**is()** | Assert action | TextAssert 
+**unhighlight()** | Unhighlight element | void
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/pagination/AlignTests.java)
+<br>
+
+Button group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+### Popovers
+
+***[Popovers](https://getbootstrap.com/docs/4.3/components/popovers/)***
+
+#### Example
+**[Popover example](https://getbootstrap.com/docs/4.3/components/popovers/#example)** 
+
+![Popover example](../images/bootstrap/popover-title.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "body") public static Popover popover;
+@UI("body") public static Popover popover;
+
+@Test
+public void isValidationTests() {
+    popover.getPopover(locator);
+    popover.popoverButton.is()
+            .displayed()
+            .enabled()
+            .core()
+            .attr("data-toggle", "popover")
+            .attr("data-content", popoverBody)
+            .attr("data-original-title", popoverHeader)
+            .text(is(buttonText));
+    popover.container
+            .is()
+            .enabled()
+            .core()
+            .hasClass("popover fade bs-popover-right show")
+            .attr("role", "tooltip")
+            .attr("x-placement", "right");
+    popover.body
+            .is()
+            .enabled()
+            .core()
+            .hasClass("popover-body")
+            .text(is(popoverBody));
+    popover.header
+            .is()
+            .core()
+            .hasClass("popover-header")
+            .text(is(popoverHeader.toUpperCase()));
+    popover.popoverButton.click();
+}
+
+@Test()
+public void clickableTests() {
+    popover.getPopover(locator);
+    popover.popoverButton.click();
+    popover.popoverButton
+            .is()
+            .core()
+            .attr("aria-describedby", containsString("popover"));
+    popover.container
+            .is()
+            .enabled();
+    popover.container.click();
+    popover.popoverButton
+            .is()
+            .core()
+            .attr("aria-describedby", "");
+    assertFalse(popover.container.isDisplayed());
+}
+```
+
+```html
+<button type="button" class="btn btn-lg btn-danger btn-block mb-3" id="popover-title"
+        data-toggle="popover" title="Popover title"
+        data-content="And here's some amazing content. It's very engaging. Right?">Click to
+    toggle popover
+</button>
+```
+
+```html 
+<div class="popover fade bs-popover-right show" role="tooltip" id="popover757247" style="will-change: 
+    transform; position: absolute; transform: translate3d(542px, 39291px, 0px); top: 0px; left: 0px;" x-placement=
+    "right">
+    <div class="arrow" style="top: 35px;"></div>
+    <h3 class="popover-header">Popover title</h3><div class="popover-body">And here's some amazing content. It's very engaging. Right?</div>
+</div>
+```
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+ **assertThat()** | Assert action | TextAssert
+ **click()** | Get button text | void
+ **disabled()** | assert is disabled | TextAssert
+ **displayed()** | assert is displayed | TextAssert
+ **get()** | Select button by index | UIElement
+ **getText()** | Get button text | String
+ **getPopover(String locator)** | Get the popover click  | void
+ **getBody()** | Get body of popover  |  String
+ **getContainer()** | Get container of popover  |  String
+ **getHeader()** | Get header of popover  |  String
+ **enabled()** | assert is enabled | TextAssert
+ **highlight()** | Get button text | void
+ **is()** | Assert action | TextAssert 
+ **unhighlight()** | Get button text | void
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/popover/PopoverTests.java)<br>
+
+Popover group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+Inner elements of input group can be represented by following classes:
+ <ul>
+  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+  
+  <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li> 
+  
+  <li> [MediaObject](https://jdi-docs.github.io/jdi-light/#media-object) </li>
+ </ul>
+ 
+
+#### Four directions popovers
+**[Four directions popovers](https://getbootstrap.com/docs/4.3/components/popovers/#four-directions)** 
+
+Popover top
+
+![Four directions popover top example](../images/bootstrap/popover-top.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "body") public static Popover popover;
+@UI("body") public static Popover popover;
+
+@Test
+public void isValidationTests() {
+    popover.getPopover(locator);
+    popover.popoverButton.is()
+            .displayed()
+            .enabled()
+            .core()
+            .attr("data-toggle", "popover")
+            .attr("data-content", popoverBody)
+            .attr("data-original-title", popoverHeader)
+            .text(is(buttonText));
+    popover.container
+            .is()
+            .enabled()
+            .core()
+            .hasClass("popover fade bs-popover-right show")
+            .attr("role", "tooltip")
+            .attr("x-placement", "right");
+    popover.body
+            .is()
+            .enabled()
+            .core()
+            .hasClass("popover-body")
+            .text(is(popoverBody));
+    popover.header
+            .is()
+            .core()
+            .hasClass("popover-header")
+            .text(is(popoverHeader.toUpperCase()));
+    popover.popoverButton.click();
+}
+
+@Test()
+public void clickableTests() {
+    popover.getPopover(locator);
+    popover.popoverButton.click();
+    popover.popoverButton
+            .is()
+            .core()
+            .attr("aria-describedby", containsString("popover"));
+    popover.container
+            .is()
+            .enabled();
+    popover.container.click();
+    popover.popoverButton
+            .is()
+            .core()
+            .attr("aria-describedby", "");
+    assertFalse(popover.container.isDisplayed());
+}
+```
+
+```html
+<button type="button" class="btn btn-secondary btn-block mb-3" id="popover-top"
+        data-container="body" data-toggle="popover" data-placement="top"
+        data-content="Top popover is visible.">
+    Popover on top
+</button>
+```
+
+```html 
+<div class="popover fade show bs-popover-top" role="tooltip" id="popover561586" x-placement="top" 
+    style="position: absolute; transform: translate3d(320px, 39051px, 0px); top: 0px; left: 0px; will-change: 
+    transform;">
+    <div class="arrow" style="left: 68px;"></div>
+    <h3 class="popover-header"></h3><div class="popover-body">Top popover is visible.</div>
+</div>
+```
+
+<br><br>
+
+Popover right
+
+![Four directions popover right example](../images/bootstrap/popover-right.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<button type="button" class="btn btn-secondary btn-block mb-3" id="popover-right"
+        data-container="body" data-toggle="popover" data-placement="right"
+        data-content="Right popover is visible.">
+    Popover on right
+</button>
+```
+
+```html 
+<div class="popover fade bs-popover-right show" role="tooltip" id="popover525348" x-placement="right" 
+    style="position: absolute; transform: translate3d(542px, 39152px, 0px); top: 0px; left: 0px; will-change: 
+    transform;">
+    <div class="arrow" style="top: 7px;"></div>
+    <h3 class="popover-header"></h3>
+    <div class="popover-body">Right popover is visible.</div>
+</div>
+```
+
+<br><br>
+
+Popover bottom
+
+![Four directions popover bottom example](../images/bootstrap/popover-bottom.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<button type="button" class="btn btn-secondary btn-block mb-3" id="popover-bottom"
+        data-container="body" data-toggle="popover" data-placement="bottom"
+        data-content="Bottom popover is visible.">
+    Popover on bottom
+</button>
+```
+
+```html 
+<div class="popover fade show bs-popover-bottom" role="tooltip" id="popover24015" x-placement="bottom" 
+    style="position: absolute; transform: translate3d(308px, 39244px, 0px); top: 0px; left: 0px; will-change: 
+    transform;">
+    <div class="arrow" style="left: 80px;"></div>
+    <h3 class="popover-header"></h3>
+    <div class="popover-body">Bottom popover is visible.</div>
+</div>
+```
+<br><br>
+
+Popover left
+
+![Four directions popover left example](../images/bootstrap/popover-left.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```html
+<button type="button" class="btn btn-secondary btn-block mb-3" id="popover-left"
+        data-container="body" data-toggle="popover" data-placement="left"
+        data-content="Left popover is visible.">
+    Popover on left
+</button>
+```
+
+```html 
+<div class="popover fade bs-popover-left show" role="tooltip" id="popover587895" x-placement="left" 
+    style="position: absolute; transform: translate3d(88px, 39260px, 0px); top: 0px; left: 0px; will-change: 
+    transform;">
+    <div class="arrow" style="top: 7px;"></div>
+    <h3 class="popover-header"></h3>
+    <div class="popover-body">Left popover is visible.</div>
+</div>
+```
+<br><br>
+
+
+
+|Method | Description | Return Type
+--- | --- | ---
+ **assertThat()** | Assert action | TextAssert
+ **click()** | Get button text | void
+ **enabled()** | assert is enabled | TextAssert
+ **disabled()** | assert is disabled | TextAssert
+ **displayed()** | assert is displayed | TextAssert
+ **get()** | Select button by index | UIElement
+ **getText()** | Get button text | String
+ **highlight()** | Get button text | void
+ **is()** | Assert action | TextAssert 
+ **unhighlight()** | Get button text | void
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/popover/PopoverTests.java)<br>
+
+Popover group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+Inner elements of input group can be represented by following classes:
+ <ul>
+  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+  
+  <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li> 
+  
+  <li> [MediaObject](https://jdi-docs.github.io/jdi-light/#media-object) </li>
+ </ul>
+
+
+#### Dismissible
+**[Dismissible popover](https://getbootstrap.com/docs/4.3/components/popovers/#dismiss-on-next-click)** 
+
+![Dismissible popover example](../images/bootstrap/popover-dismissible.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+// @FindBy(css = "body") public static Popover popover;
+@UI("body") public static Popover popover;
+
+@Test
+public void isValidationTests() {
+    popover.getPopover(locator);
+    popover.popoverButton.is()
+            .displayed()
+            .enabled()
+            .core()
+            .attr("data-toggle", "popover")
+            .attr("data-content", popoverBody)
+            .attr("data-original-title", popoverHeader)
+            .text(is(buttonText));
+    popover.container
+            .is()
+            .enabled()
+            .core()
+            .hasClass("popover fade bs-popover-right show")
+            .attr("role", "tooltip")
+            .attr("x-placement", "right");
+    popover.body
+            .is()
+            .enabled()
+            .core()
+            .hasClass("popover-body")
+            .text(is(popoverBody));
+    popover.header
+            .is()
+            .core()
+            .hasClass("popover-header")
+            .text(is(popoverHeader.toUpperCase()));
+    popover.popoverButton.click();
+}
+
+@Test()
+public void clickableTests() {
+    popover.getPopover(locator);
+    popover.popoverButton.click();
+    popover.popoverButton
+            .is()
+            .core()
+            .attr("aria-describedby", containsString("popover"));
+    popover.container
+            .is()
+            .enabled();
+    popover.container.click();
+    popover.popoverButton
+            .is()
+            .core()
+            .attr("aria-describedby", "");
+    assertFalse(popover.container.isDisplayed());
+}
+```
+
+```html
+<a tabindex="0" class="btn btn-lg btn-danger btn-block mb-3" role="button"
+   id="popover-dismissible" data-toggle="popover" data-trigger="focus"
+   title="Dismissible popover"
+   data-content="And here's some amazing content. It's very engaging. Right?">Dismissible
+    popover</a>
+```
+
+```html 
+<div class="popover fade bs-popover-right" role="tooltip" id="popover278744" 
+    style="will-change: transform; position: absolute; transform: translate3d(542px, 39355px, 0px); top: 0px; left: 0px;" 
+    x-placement="right">
+    <div class="arrow" style="top: 35px;"></div>
+    <h3 class="popover-header">Dismissible popover</h3>
+    <div class="popover-body">And here's some amazing content. It's very engaging. Right?</div>
+</div>
+```
+
+|Method | Description | Return Type
+--- | --- | ---
+ **assertThat()** | Assert action | TextAssert
+ **click()** | Get button text | void
+ **disabled()** | assert is disabled | TextAssert
+ **displayed()** | assert is displayed | TextAssert
+ **enabled()** | assert is enabled | TextAssert
+ **get()** | Select button by index | UIElement
+ **getText()** | Get button text | String
+ **highlight()** | Get button text | void
+ **is()** | Assert action | TextAssert 
+ **unhighlight()** | Get button text | void
+
+<br>
+
+[Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/popover/PopoverTests.java)<br>
+
+Popover group is represented by Section class in Java:
+ 
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+
+<br>
+
+Inner elements of input group can be represented by following classes:
+ <ul>
+  <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+  
+  <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li> 
+  
+  <li> [MediaObject](https://jdi-docs.github.io/jdi-light/#media-object) </li>
+ </ul>
+
+
+ 
+#### Disabled elements popover
+ 
+**[Disabled elements popover](https://getbootstrap.com/docs/4.3/components/popovers/#disabled-elements)** 
+ 
+![Disabled elements popover example](../images/bootstrap/popover-disabled.png)
+ 
+Here is an example with provided Bootstrap v4.3 code:
+ 
+ ```java 
+ // @FindBy(css = "body") public static Popover popover;
+ @UI("body") public static Popover popover;
+ 
+ @Test
+ public void isValidationTests() {
+     popover.getPopover(locator);
+     popover.popoverButton.is()
+             .displayed()
+             .enabled()
+             .core()
+             .attr("data-toggle", "popover")
+             .attr("data-content", popoverBody)
+             .attr("data-original-title", popoverHeader)
+             .text(is(buttonText));
+     popover.container
+             .is()
+             .enabled()
+             .core()
+             .hasClass("popover fade bs-popover-right show")
+             .attr("role", "tooltip")
+             .attr("x-placement", "right");
+     popover.body
+             .is()
+             .enabled()
+             .core()
+             .hasClass("popover-body")
+             .text(is(popoverBody));
+     popover.header
+             .is()
+             .core()
+             .hasClass("popover-header")
+             .text(is(popoverHeader.toUpperCase()));
+     popover.popoverButton.click();
+ }
+ 
+ @Test()
+ public void clickableTests() {
+     popover.getPopover(locator);
+     popover.popoverButton.click();
+     popover.popoverButton
+             .is()
+             .core()
+             .attr("aria-describedby", containsString("popover"));
+     popover.container
+             .is()
+             .enabled();
+     popover.container.click();
+     popover.popoverButton
+             .is()
+             .core()
+             .attr("aria-describedby", "");
+     assertFalse(popover.container.isDisplayed());
+ }
+ ```
+ 
+```html
+<span class="d-inline-block mb-3" style="width:100%;" data-toggle="popover"
+      id="popover-disabled" data-content="Disabled popover">
+        <button class="btn btn-primary btn-block" style="pointer-events: none;" type="button"
+                disabled>Disabled button</button>
+</span>
+```
+ 
+```html 
+<div class="popover fade show bs-popover-right" role="tooltip" id="popover180279" x-placement="right" 
+    style="will-change: transform; position: absolute; transform: translate3d(542px, 39442px, 0px); top: 0px; left: 0px;">
+    <div class="arrow" style="top: 7px;"></div>
+    <h3 class="popover-header"></h3>
+    <div class="popover-body">Disabled popover</div>
+</div>
+```
+ 
+
+
+|Method | Description | Return Type
+--- | --- | ---
+ **assertThat()** | Assert action | TextAssert
+ **click()** | Get button text | void
+ **disabled()** | assert is disabled | TextAssert
+ **displayed()** | assert is displayed | TextAssert
+ **enabled()** | assert is enabled | TextAssert
+ **get()** | Select button by index | UIElement
+ **getText()** | Get button text | String
+ **highlight()** | Get button text | void
+ **is()** | Assert action | TextAssert 
+ **unhighlight()** | Get button text | void
+
+<br>
+ 
+ [Java test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/popover/PopoverTests.java)<br>
+ 
+Popover group is represented by Section class in Java:
+  
+  [Section](https://jdi-docs.github.io/jdi-light/#section)  
+ 
+<br>
+ 
+Inner elements of input group can be represented by following classes:
+<ul>
+    <li> [Text](https://jdi-docs.github.io/jdi-light/#text) </li>
+    <li> [Button](https://jdi-docs.github.io/jdi-light/#button-2) </li> 
+    <li> [MediaObject](https://jdi-docs.github.io/jdi-light/#media-object) </li>
+</ul>
+### Scrollspy
+**[Scrollspy](https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar)** – automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
+<br><br>
+- [Scrollspy in navbar] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar) 
+<br>
+
+
+
+![Scrollspy](../images/bootstrap/scroll_spy1.png)<br>
+
+```java 
+    // @FindBy(css = "#navbar-example2")
+    @UI("#navbar-example2") public static NavbarWithDropdown navbarWithDropdown;
+    // @FindBy(css = "#navbar-example2~div")
+    @UI("#navbar-example2~div") public static ScrollSpyNav scrollSpyInNavbar;
+    
+    public class NavbarWithDropdown extends Section {
+        // @FindBy(css = "ul>li")
+        @UI("ul>li") 
+        public ListGroup navGroup;
+        // @FindBy(css ="ul>li>a")
+        @UI("ul>li>a") 
+        public ListGroup navItemLink;
+        @JDropdown(expand = ".dropdown-toggle",
+                value = ".dropdown-toggle",
+                list = ".dropdown-item")
+        public Dropdown dropdownMenu;
+        // @FindBy(css = ".navbar-brand")
+        @UI(".navbar-brand") 
+        public Link navbarLink;
+    }
+  
+    public class ScrollSpyNav extends Section {
+        // @FindBy(xpath = ".//h4 | .//h5")
+        @UI(".//h4 | .//h5") public ListGroup header;
+        // @FindBy(css = "p")
+        @UI("p") public ListGroup mainText;          
+    
+        public void scrollParagraph(ListGroup listGroup, int index, String className){
+            mainText.get(index).show();
+    
+            if (!listGroup.get(index).core().hasClass(className) &&
+                    index < header.size()) {
+                header.get(index + 1).show();
+            }
+        }
+    }
+
+    private String itemLink = "https://jdi-testing.github.io/jdi-light/bootstrap.html#";
+    
+    @DataProvider
+    public Object[][] dropdownCheck() {
+        return new Object[][]{
+                {3, itemLink + "one", "one"},
+                {4, itemLink + "two", "two"},
+                {5, itemLink + "three", "three"}
+        };
+    }
+
+    @Test(dataProvider = "dropdownCheck", priority = 1)
+    public void dropdownCheckTests(int _index, String link, String header) {
+        navbarWithDropdown.dropdownMenu.expand();
+        navbarWithDropdown.dropdownMenu.list().get(header).is()
+                .core()
+                .displayed()
+                .enabled()
+                .text(is(header))
+                .value(is(header))
+                .attr(ATTR_NAME_HREF, is(link));
+    }
+
+    @Test
+    public void navbarLinkClickableTests() {
+        navbarWithDropdown.navbarLink.click();
+        newWindowTitleCheck(pageTitle);
+    }
+
+    @Test
+    public void isValidationTests() {
+        navbarWithDropdown.navItemLink.get(3).is().text(dropdown);
+        navbarWithDropdown.navItemLink.get(3).is().value(dropdown);
+        navbarWithDropdown.navItemLink.is().size(3);
+        navbarWithDropdown.navGroup.is().size(3);
+
+        navbarWithDropdown.dropdownMenu.expand();
+        navbarWithDropdown.dropdownMenu.is().size(3);
+
+        navbarWithDropdown.find(By.className("dropdown-divider")).is()
+                .core()
+                .displayed()
+                .enabled()
+                .attr("role", "separator");
+    }
+      
+```
+
+```html
+<nav id="navbar-example2" class="navbar navbar-light bg-light">
+    <a class="navbar-brand"
+       href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar"
+       target="_blank">Navbar</a>
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link" href="#fat">@fat</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#mdo">@mdo</a>
+        </li>
+        <li class="nav-item dropdown"><a
+                class="nav-link dropdown-toggle" data-toggle="dropdown"
+                href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#one">one</a> <a
+                    class="dropdown-item" href="#two">two</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#three">three</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div data-spy="scroll" data-target="#navbar-example2"
+     data-offset="0" class="scrollspy-example">
+    <h4 id="fat">@fat</h4>
+    <p>...</p>
+    <h4 id="mdo">@mdo</h4>
+    <p>...</p>
+    <h4 id="one">one</h4>
+    <p>...</p>
+    <h4 id="two">two</h4>
+    <p>...</p>
+    <h4 id="three">three</h4>
+    <p>...</p>
+</div>
+```
+<br>
+<br>
+
+
+
+
+
+
+- [Scrollspy with nested nav] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-nested-nav)
+<br> 
+
+![Scrollspy](../images/bootstrap/scroll_spy2.png)<br>
+
+```java 
+// @FindBy(css = "#navbar-example3")
+@UI("#navbar-example3") public static NestedNav nestedNav;
+// @FindBy(css = "#navbar-example3~div")
+@UI("#navbar-example3~div") public static ScrollSpyNav scrollSpyWithNestedNav;
+  
+public class NestedNav extends Section {
+    // @FindBy(css = "nav")
+    @UI("nav") public ListGroup navGroup;          
+    // @FindBy(css = "nav nav a")
+    @UI("nav nav a") public ListGroup navItemLink; 
+    // @FindBy(css = ".navbar-brand")
+    @UI(".navbar-brand") public Link navbarLink;   
+}
+
+public class ScrollSpyNav extends Section {
+    // @FindBy(xpath = ".//h4 | .//h5")
+    @UI(".//h4 | .//h5") public ListGroup header;
+    // @FindBy(css = "p")
+    @UI("p") public ListGroup mainText;          
+
+    public void scrollParagraph(ListGroup listGroup, int index, String className){
+        mainText.get(index).show();
+
+        if (!listGroup.get(index).core().hasClass(className) &&
+                index < header.size()) {
+            header.get(index + 1).show();
+        }
+    }
+}
+
+@DataProvider
+public Object[][] itemsCheck() {
+    return new Object[][]{
+            {1}, {2}, {3}, {4}, {5}, {6}, {7}
+    };
+}
+
+@Test(dataProvider = "itemsCheck")
+public void paragraphClickableTests(int index) {
+    scrollSpyWithNestedNav.mainText.get(index).highlight();
+
+    scrollSpyWithNestedNav.scrollParagraph(nestedNav.navItemLink, index, CLASS_NAME_ACTIVE);
+
+    assertTrue(nestedNav.navItemLink.get(index).hasClass(CLASS_NAME_ACTIVE));
+    nestedNav.navItemLink.get(index).unhighlight();
+}
+
+
+@Test
+public void isValidationTests() {
+    nestedNav.navItemLink.is().size(7);
+    nestedNav.navGroup.is().size(3);
+    scrollSpyWithNestedNav.mainText.is().size(7);
+    scrollSpyWithNestedNav.header.is().size(7);
+}
+```
+
+```html
+<nav id="navbar-example3" class="navbar navbar-light bg-light">
+    <a class="navbar-brand"
+       href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-nested-nav"
+       target="_blank">Navbar</a>
+    <nav class="nav nav-pills flex-column">
+        <a class="nav-link" href="#item-1">Item 1</a>
+        <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a> <a
+                class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
+        </nav>
+        <a class="nav-link" href="#item-2">Item 2</a> <a
+            class="nav-link" href="#item-3">Item 3</a>
+        <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a> <a
+                class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+        </nav>
+    </nav>
+</nav>
+
+<div data-spy="scroll" data-target="#navbar-example3"
+     data-offset="0" class="scrollspy-example-2">
+    <h4 id="item-1">Item 1</h4>
+    <p>...</p>
+    <h5 id="item-1-1">Item 1-1</h5>
+    <p>...</p>
+    <h5 id="item-1-2">Item 1-2</h5>
+    <p>...</p>
+    <h4 id="item-2">Item 2</h4>
+    <p>...</p>
+    <h4 id="item-3">Item 3</h4>
+    <p>...</p>
+    <h5 id="item-3-1">Item 3-1</h5>
+    <p>...</p>
+    <h5 id="item-3-2">Item 3-2</h5>
+    <p>...</p>
+</div>
+```
+<br>
+<br>
+
+- [Scrollspy with list-group] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-list-group)
+<br>
+
+![Scrollspy](../images/bootstrap/scroll_spy3.png)<br>
+
+```java 
+// @FindBy(css = "#list-example>a")
+@UI("#list-example>a") public static ListGroup listGroupForScrollSpy;
+// @FindBy(css = "#list-example~div")
+@UI("#list-example~div") public static ScrollSpyNav scrollSpyWithListGroup;
+
+public class ScrollSpyNav extends Section {
+    // @FindBy(xpath = ".//h4 | .//h5")
+    @UI(".//h4 | .//h5") public ListGroup header;
+    // @FindBy(css = "p")
+    @UI("p") public ListGroup mainText;          
+
+    public void scrollParagraph(ListGroup listGroup, int index, String className){
+        mainText.get(index).show();
+
+        if (!listGroup.get(index).core().hasClass(className) &&
+                index < header.size()) {
+            header.get(index + 1).show();
+        }
+    }
+}
+
+@DataProvider
+public Object[][] itemsCheck() {
+    return new Object[][]{
+            {1}, {2}, {3}, {4}
+    };
+}   
+
+@Test(dataProvider = "itemsCheck")
+public void paragraphClickableTests(int index) {
+    scrollSpyWithListGroup.mainText.get(index).highlight();
+
+    scrollSpyWithListGroup.scrollParagraph(listGroupForScrollSpy, index, CLASS_NAME_ACTIVE);
+
+    listGroupForScrollSpy.get(index)
+            .is()
+            .core()
+            .displayed()
+            .enabled()
+            .cssClass(CLASS_NAME_LIST_GROUP_ITEM_LIST_GROUP_ITEM_ACTION_ACTIVE)
+            .css(CSS_NAME_BACKGROUND_COLOR, "rgba(0, 123, 255, 1)")//#007bff Color Hex
+            .css(CSS_NAME_BORDER_COLOR, "rgb(0, 123, 255)");//#007bff Color Hex
+
+    listGroupForScrollSpy.get(index).unhighlight();
+}
+
+@Test
+public void isValidationTests() {
+    scrollSpyWithListGroup.header.is().size(4);
+    scrollSpyWithListGroup.mainText.is().size(4);
+    listGroupForScrollSpy.is().size(4);
+}
+```
+
+```html
+<div id="list-example" class="list-group">
+    <a class="list-group-item list-group-item-action"
+       href="#list-item-1">Item 1</a> <a
+        class="list-group-item list-group-item-action"
+        href="#list-item-2">Item 2</a> <a
+        class="list-group-item list-group-item-action"
+        href="#list-item-3">Item 3</a> <a
+        class="list-group-item list-group-item-action"
+        href="#list-item-4">Item 4</a>
+</div>
+<div data-spy="scroll" data-target="#list-example"
+     data-offset="0" class="scrollspy-example">
+    <h4 id="list-item-1">Item 1</h4>
+    <p>...</p>
+    <h4 id="list-item-2">Item 2</h4>
+    <p>...</p>
+    <h4 id="list-item-3">Item 3</h4>
+    <p>...</p>
+    <h4 id="list-item-4">Item 4</h4>
+    <p>...</p>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()**	|  Assert action	| TextAssert
+**click()**	| Click element | void
+**expand()**| Expand dropdown|void  
+**get(int)**	| Select element by index	 | UIElement
+**get(String)**	| Select element by text	 | UIElement
+**getText()**|Get text	  | String
+**getValue()**| Get value | String
+**is()**		|  Assert action	| TextAssert
+**list()**| Get list of dropdown | WebList
+**show ()**| Scroll to element| void
+**size()**| Get WebList size| int
+
+In these java test cases examples next classes have been used:
+
+ - Java: com.epam.jdi.light.elements.composite.Section
+
+ - Java: com.epam.jdi.light.elements.complex.ListGroup
+
+ - Java: com.epam.jdi.light.ui.bootstrap.elements.common.Link
+
+ - Java: com.epam.jdi.light.elements.complex.dropdown.Dropdown
+
+[Scrollspy in navbar Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyInNavbarTests.java)
+
+[Scrollspy with nested nav Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithNestedNavTests.java)
+
+[Scrollspy with list-group Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithListGroupTests.java)
+
+<br><br>
+
+
+### Scrollspy
+**[Scrollspy](https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar)** – automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
+<br><br>
+- [Scrollspy in navbar] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar) 
+<br>
+
+
+
+![Scrollspy](../images/bootstrap/scroll_spy1.png)<br>
+
+```java 
+    // @FindBy(css = "#navbar-example2")
+    @UI("#navbar-example2") public static NavbarWithDropdown navbarWithDropdown;
+    // @FindBy(css = "#navbar-example2~div")
+    @UI("#navbar-example2~div") public static ScrollSpyNav scrollSpyInNavbar;
+    
+    public class NavbarWithDropdown extends Section {
+        // @FindBy(css = "ul>li")
+        @UI("ul>li") 
+        public ListGroup navGroup;
+        // @FindBy(css ="ul>li>a")
+        @UI("ul>li>a") 
+        public ListGroup navItemLink;
+        @JDropdown(expand = ".dropdown-toggle",
+                value = ".dropdown-toggle",
+                list = ".dropdown-item")
+        public Dropdown dropdownMenu;
+        // @FindBy(css = ".navbar-brand")
+        @UI(".navbar-brand") 
+        public Link navbarLink;
+    }
+  
+    public class ScrollSpyNav extends Section {
+        // @FindBy(xpath = ".//h4 | .//h5")
+        @UI(".//h4 | .//h5") public ListGroup header;
+        // @FindBy(css = "p")
+        @UI("p") public ListGroup mainText;          
+    
+        public void scrollParagraph(ListGroup listGroup, int index, String className){
+            mainText.get(index).show();
+    
+            if (!listGroup.get(index).core().hasClass(className) &&
+                    index < header.size()) {
+                header.get(index + 1).show();
+            }
+        }
+    }
+
+    private String itemLink = "https://jdi-testing.github.io/jdi-light/bootstrap.html#";
+    
+    @DataProvider
+    public Object[][] dropdownCheck() {
+        return new Object[][]{
+                {3, itemLink + "one", "one"},
+                {4, itemLink + "two", "two"},
+                {5, itemLink + "three", "three"}
+        };
+    }
+
+    @Test(dataProvider = "dropdownCheck", priority = 1)
+    public void dropdownCheckTests(int _index, String link, String header) {
+        navbarWithDropdown.dropdownMenu.expand();
+        navbarWithDropdown.dropdownMenu.list().get(header).is()
+                .core()
+                .displayed()
+                .enabled()
+                .text(is(header))
+                .value(is(header))
+                .attr(ATTR_NAME_HREF, is(link));
+    }
+
+    @Test
+    public void navbarLinkClickableTests() {
+        navbarWithDropdown.navbarLink.click();
+        newWindowTitleCheck(pageTitle);
+    }
+
+    @Test
+    public void isValidationTests() {
+        navbarWithDropdown.navItemLink.get(3).is().text(dropdown);
+        navbarWithDropdown.navItemLink.get(3).is().value(dropdown);
+        navbarWithDropdown.navItemLink.is().size(3);
+        navbarWithDropdown.navGroup.is().size(3);
+
+        navbarWithDropdown.dropdownMenu.expand();
+        navbarWithDropdown.dropdownMenu.is().size(3);
+
+        navbarWithDropdown.find(By.className("dropdown-divider")).is()
+                .core()
+                .displayed()
+                .enabled()
+                .attr("role", "separator");
+    }
+      
+```
+
+```html
+<nav id="navbar-example2" class="navbar navbar-light bg-light">
+    <a class="navbar-brand"
+       href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-in-navbar"
+       target="_blank">Navbar</a>
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link" href="#fat">@fat</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#mdo">@mdo</a>
+        </li>
+        <li class="nav-item dropdown"><a
+                class="nav-link dropdown-toggle" data-toggle="dropdown"
+                href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#one">one</a> <a
+                    class="dropdown-item" href="#two">two</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#three">three</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div data-spy="scroll" data-target="#navbar-example2"
+     data-offset="0" class="scrollspy-example">
+    <h4 id="fat">@fat</h4>
+    <p>...</p>
+    <h4 id="mdo">@mdo</h4>
+    <p>...</p>
+    <h4 id="one">one</h4>
+    <p>...</p>
+    <h4 id="two">two</h4>
+    <p>...</p>
+    <h4 id="three">three</h4>
+    <p>...</p>
+</div>
+```
+<br>
+<br>
+
+
+
+
+
+
+- [Scrollspy with nested nav] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-nested-nav)
+<br> 
+
+![Scrollspy](../images/bootstrap/scroll_spy2.png)<br>
+
+```java 
+// @FindBy(css = "#navbar-example3")
+@UI("#navbar-example3") public static NestedNav nestedNav;
+// @FindBy(css = "#navbar-example3~div")
+@UI("#navbar-example3~div") public static ScrollSpyNav scrollSpyWithNestedNav;
+  
+public class NestedNav extends Section {
+    // @FindBy(css = "nav")
+    @UI("nav") public ListGroup navGroup;          
+    // @FindBy(css = "nav nav a")
+    @UI("nav nav a") public ListGroup navItemLink; 
+    // @FindBy(css = ".navbar-brand")
+    @UI(".navbar-brand") public Link navbarLink;   
+}
+
+public class ScrollSpyNav extends Section {
+    // @FindBy(xpath = ".//h4 | .//h5")
+    @UI(".//h4 | .//h5") public ListGroup header;
+    // @FindBy(css = "p")
+    @UI("p") public ListGroup mainText;          
+
+    public void scrollParagraph(ListGroup listGroup, int index, String className){
+        mainText.get(index).show();
+
+        if (!listGroup.get(index).core().hasClass(className) &&
+                index < header.size()) {
+            header.get(index + 1).show();
+        }
+    }
+}
+
+@DataProvider
+public Object[][] itemsCheck() {
+    return new Object[][]{
+            {1}, {2}, {3}, {4}, {5}, {6}, {7}
+    };
+}
+
+@Test(dataProvider = "itemsCheck")
+public void paragraphClickableTests(int index) {
+    scrollSpyWithNestedNav.mainText.get(index).highlight();
+
+    scrollSpyWithNestedNav.scrollParagraph(nestedNav.navItemLink, index, CLASS_NAME_ACTIVE);
+
+    assertTrue(nestedNav.navItemLink.get(index).hasClass(CLASS_NAME_ACTIVE));
+    nestedNav.navItemLink.get(index).unhighlight();
+}
+
+
+@Test
+public void isValidationTests() {
+    nestedNav.navItemLink.is().size(7);
+    nestedNav.navGroup.is().size(3);
+    scrollSpyWithNestedNav.mainText.is().size(7);
+    scrollSpyWithNestedNav.header.is().size(7);
+}
+```
+
+```html
+<nav id="navbar-example3" class="navbar navbar-light bg-light">
+    <a class="navbar-brand"
+       href="https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-nested-nav"
+       target="_blank">Navbar</a>
+    <nav class="nav nav-pills flex-column">
+        <a class="nav-link" href="#item-1">Item 1</a>
+        <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a> <a
+                class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
+        </nav>
+        <a class="nav-link" href="#item-2">Item 2</a> <a
+            class="nav-link" href="#item-3">Item 3</a>
+        <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a> <a
+                class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+        </nav>
+    </nav>
+</nav>
+
+<div data-spy="scroll" data-target="#navbar-example3"
+     data-offset="0" class="scrollspy-example-2">
+    <h4 id="item-1">Item 1</h4>
+    <p>...</p>
+    <h5 id="item-1-1">Item 1-1</h5>
+    <p>...</p>
+    <h5 id="item-1-2">Item 1-2</h5>
+    <p>...</p>
+    <h4 id="item-2">Item 2</h4>
+    <p>...</p>
+    <h4 id="item-3">Item 3</h4>
+    <p>...</p>
+    <h5 id="item-3-1">Item 3-1</h5>
+    <p>...</p>
+    <h5 id="item-3-2">Item 3-2</h5>
+    <p>...</p>
+</div>
+```
+<br>
+<br>
+
+- [Scrollspy with list-group] (https://getbootstrap.com/docs/4.3/components/scrollspy/#example-with-list-group)
+<br>
+
+![Scrollspy](../images/bootstrap/scroll_spy3.png)<br>
+
+```java 
+// @FindBy(css = "#list-example>a")
+@UI("#list-example>a") public static ListGroup listGroupForScrollSpy;
+// @FindBy(css = "#list-example~div")
+@UI("#list-example~div") public static ScrollSpyNav scrollSpyWithListGroup;
+
+public class ScrollSpyNav extends Section {
+    // @FindBy(xpath = ".//h4 | .//h5")
+    @UI(".//h4 | .//h5") public ListGroup header;
+    // @FindBy(css = "p")
+    @UI("p") public ListGroup mainText;          
+
+    public void scrollParagraph(ListGroup listGroup, int index, String className){
+        mainText.get(index).show();
+
+        if (!listGroup.get(index).core().hasClass(className) &&
+                index < header.size()) {
+            header.get(index + 1).show();
+        }
+    }
+}
+
+@DataProvider
+public Object[][] itemsCheck() {
+    return new Object[][]{
+            {1}, {2}, {3}, {4}
+    };
+}   
+
+@Test(dataProvider = "itemsCheck")
+public void paragraphClickableTests(int index) {
+    scrollSpyWithListGroup.mainText.get(index).highlight();
+
+    scrollSpyWithListGroup.scrollParagraph(listGroupForScrollSpy, index, CLASS_NAME_ACTIVE);
+
+    listGroupForScrollSpy.get(index)
+            .is()
+            .core()
+            .displayed()
+            .enabled()
+            .cssClass(CLASS_NAME_LIST_GROUP_ITEM_LIST_GROUP_ITEM_ACTION_ACTIVE)
+            .css(CSS_NAME_BACKGROUND_COLOR, "rgba(0, 123, 255, 1)")//#007bff Color Hex
+            .css(CSS_NAME_BORDER_COLOR, "rgb(0, 123, 255)");//#007bff Color Hex
+
+    listGroupForScrollSpy.get(index).unhighlight();
+}
+
+@Test
+public void isValidationTests() {
+    scrollSpyWithListGroup.header.is().size(4);
+    scrollSpyWithListGroup.mainText.is().size(4);
+    listGroupForScrollSpy.is().size(4);
+}
+```
+
+```html
+<div id="list-example" class="list-group">
+    <a class="list-group-item list-group-item-action"
+       href="#list-item-1">Item 1</a> <a
+        class="list-group-item list-group-item-action"
+        href="#list-item-2">Item 2</a> <a
+        class="list-group-item list-group-item-action"
+        href="#list-item-3">Item 3</a> <a
+        class="list-group-item list-group-item-action"
+        href="#list-item-4">Item 4</a>
+</div>
+<div data-spy="scroll" data-target="#list-example"
+     data-offset="0" class="scrollspy-example">
+    <h4 id="list-item-1">Item 1</h4>
+    <p>...</p>
+    <h4 id="list-item-2">Item 2</h4>
+    <p>...</p>
+    <h4 id="list-item-3">Item 3</h4>
+    <p>...</p>
+    <h4 id="list-item-4">Item 4</h4>
+    <p>...</p>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()**	|  Assert action	| TextAssert
+**click()**	| Click element | void
+**expand()**| Expand dropdown|void  
+**get(int)**	| Select element by index	 | UIElement
+**get(String)**	| Select element by text	 | UIElement
+**getText()**|Get text	  | String
+**getValue()**| Get value | String
+**is()**		|  Assert action	| TextAssert
+**list()**| Get list of dropdown | WebList
+**show ()**| Scroll to element| void
+**size()**| Get WebList size| int
+
+In these java test cases examples next classes have been used:
+
+ - Java: com.epam.jdi.light.elements.composite.Section
+
+ - Java: com.epam.jdi.light.elements.complex.ListGroup
+
+ - Java: com.epam.jdi.light.ui.bootstrap.elements.common.Link
+
+ - Java: com.epam.jdi.light.elements.complex.dropdown.Dropdown
+
+[Scrollspy in navbar Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyInNavbarTests.java)
+
+[Scrollspy with nested nav Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithNestedNavTests.java)
+
+[Scrollspy with list-group Tests Example](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/scrollspy/ScrollspyWithListGroupTests.java)
+
+<br><br>
+
+### Toast
+<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/" target="_blank">Toast</a> - Toasts are lightweight notifications designed to mimic the push notifications.
+<br />
+__Options for toasts:__
+<br />
+ - _Animation<br/>_
+ - _Autohide <br/>_
+ - _Delay <br/>_
+ <br/>
+__Events for toasts:__
+<br>
+  - _show.bs.toast_ - this event fires immediately when the show instance method is called.<br/>
+  - _shown.bs.toast_ - this event is fired when the toast has been made visible to the user<br/>
+  - _hide.bs.toast_ - this event is fired immediately when the hide instance method has been called.<br/>
+  - _hidden.bs.toast_ - this event is fired when the toast has finished being hidden from the user<br/>
+ <br /> 
+
+<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/#basic" target="_blank">**Simple Toast**</a>
+<br />
+
+![Simple toast example](../images/bootstrap/toast.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+  
+```java 
+//@FindBy(id="simpleToast")
+@UI("#simpleToast") public static Toast simpleToast; 
+
+@Test
+public void simpleToastValidationTest() {
+    simpleToastButton.click();
+    simpleToast.is().displayed();
+    simpleToast.headerText.is().text(toastHeaderText);
+    simpleToast.body.is().text(toastBodyText);
+}
+
+```
+  
+```html
+<div class="toast" role="alert" data-animation="false" aria-live="assertive"
+     aria-atomic="true" id="simpleToast">
+    <div class="toast-header">
+        <img src="images/range-circle.png" class="rounded mr-2" alt="...">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small class="text-muted">11 mins ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+                aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body">
+        Hello, world! This is a toast message.
+    </div>
+</div>
+```
+
+<br>
+
+<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/#translucent" target="_blank">**Translucent Toast**</a>
+
+
+![Translucent toast example](../images/bootstrap/toast_center.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+//@FindBy(id="translucentToast")
+@UI("#translucentToast") public static Toast translucentToast; 
+
+@Test
+public void translucentToastValidationTest() {
+    translucentToastButton.click();
+    translucentToast.is().displayed();
+    translucentToast.headerText.is().text(toastHeaderText);
+    translucentToast.body.is().text(toastBodyText);
+}
+
+```
+  
+```html
+<div aria-live="polite" aria-atomic="true"
+     style="min-height: 200px;background-color: grey;">
+    <div class="toast" role="alert" data-animation="false" aria-live="assertive"
+         aria-atomic="true" id="translucentToast">
+        <div class="toast-header">
+            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small class="text-muted">11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+                    aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+```
+
+<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/#stacking" target="_blank">**Stacking**</a>
+
+When you have multiple toasts, we default to vertically stacking them in a readable manner
+
+![Toast stack example](../images/bootstrap/stack_of_toast.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+  
+```java 
+//@FindBy(id="firstMultipleToast")
+@UI("#firstMultipleToast") public static Toast firstStackToast; 
+//@FindBy(id="secondMultipleToast")
+@UI("#secondMultipleToast") public static Toast secondStackToast; 
+
+@Test
+public void stackOfToastsValidationTest() {
+    stackOfToastsButton.click();
+    firstStackToast.is().displayed();
+    secondStackToast.is().displayed();
+    firstStackToast.headerText.is().text(toastHeaderText);
+    firstStackToast.body.is().text(stackToastBodyText);
+    secondStackToast.headerText.is().text(toastHeaderText);
+    secondStackToast.body.is().text(secondStackToastBodyText);
+}
+
+```
+  
+```html
+<div aria-live="polite" aria-atomic="true"
+     style="min-height: 200px;background-color: grey;">
+    <div class="toast several" role="alert" aria-live="assertive" id="firstMultipleToast"
+         aria-atomic="true">
+        <div class="toast-header">
+            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+                    aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            See? Just like this.
+        </div>
+    </div>
+    <div class="toast several" role="alert" aria-live="assertive" id="secondMultipleToast"
+         aria-atomic="true">
+        <div class="toast-header">
+            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small class="text-muted">2 seconds ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+                    aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Heads up, toasts will stack automatically
+        </div>
+    </div>
+</div>
+```
+
+
+<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/toasts/#stacking" target="_blank">**Placement**</a>
+
+Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle.
+<br /><br />
+Example with top right align:
+
+![Toast top right example](../images/bootstrap/toast_align.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java 
+//@FindBy(id="toastRightTop")
+@UI("#toastRightTop") public static Toast toastWithTopAlign; 
+
+@Test
+public void toastWithTopAlignValidationTest() {
+    toastWithTopAlignButton.click();
+    toastWithTopAlign.is().displayed();
+    toastWithTopAlign.headerText.is().text(toastHeaderText);
+    toastWithTopAlign.body.is().text(toastBodyText);
+    toastWithTopAlign.closeButton.click();
+    toastWithTopAlign.base().waitSec(1);
+    toastWithTopAlign.is().hidden();
+}
+
+```
+  
+```html
+<div aria-live="polite" aria-atomic="true"
+     style="position: relative; min-height: 200px;background-color: grey;">
+    <div class="toast" id="toastRightTop" style="position: absolute; top: 0; right: 0;"
+         data-autohide="false">
+        <div class="toast-header">
+            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+                    aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+```
+
+Example with top right align stack of toasts:
+
+![Toast top right stack example](../images/bootstrap/stack_top_html.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+
+```java  
+//@FindBy(id="firstStackToast")
+@UI("#firstStackToast") public static Toast firstTopAlignStackToast; 
+//@FindBy(id="secondStackToast")
+@UI("#secondStackToast") public static Toast secondTopAlignStackToast; 
+
+@Test
+ public void stackOfTopAlignToastsValidationTest() {
+    stackOfToastsWithTopAlignButton.click();
+    firstTopAlignStackToast.headerText.is().text(toastHeaderText);
+    firstTopAlignStackToast.body.is().text(stackToastBodyText);
+    secondTopAlignStackToast.headerText.is().text(toastHeaderText);
+    secondTopAlignStackToast.body.is().text(secondStackToastBodyText);
+    firstTopAlignStackToast.is().displayed();
+    secondTopAlignStackToast.is().displayed();
+}
+
+``` 
+  
+```html
+<div aria-live="polite" aria-atomic="true"
+     style="position: relative; min-height: 200px; background-color: grey;">
+    <!-- Position it -->
+    <div style="position: absolute; top: 0; right: 0;">
+
+        <!-- Then put toasts within -->
+        <div class="toast severalWithPosition" role="alert" aria-live="assertive"
+             id="firstStackToast" aria-atomic="true">
+            <div class="toast-header">
+                <img src="images/range-circle.png" class="rounded mr-2" alt="...">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small class="text-muted">just now</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                See? Just like this.
+            </div>
+        </div>
+
+        <div class="toast severalWithPosition" role="alert" aria-live="assertive"
+             id="secondStackToast" aria-atomic="true">
+            <div class="toast-header">
+                <img src="images/range-circle.png" class="rounded mr-2" alt="...">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small class="text-muted">2 seconds ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Heads up, toasts will stack automatically
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Example with center align toast:
+
+![Toast top right stack example](../images/bootstrap/toast_center.png)
+
+Here is an example with provided Bootstrap v4.3 code:
+  
+```java 
+//@FindBy(id="toastCenterTop")
+@UI("#toastCenterTop") public static Toast toastWithCenterAlign; 
+//@FindBy(id="toastRightTop")
+@UI("#toastRightTop") public static Toast toastWithTopAlign; 
+
+@Test
+public void toastWithCenterAlignValidationTest() {
+    toastWithCenterAlignButton.click();
+    toastWithCenterAlign.is().displayed();
+    toastWithCenterAlign.headerText.is().text(toastHeaderText);
+    toastWithCenterAlign.body.is().text(toastBodyText);
+    toastWithCenterAlign.closeButton.click();
+    toastWithCenterAlign.base().waitSec(1);
+    toastWithCenterAlign.is().hidden();
+}
+
+```
+  
+```html
+<div aria-live="polite" aria-atomic="true"
+     class="d-flex justify-content-center align-items-center"
+     style="min-height: 200px;background-color: grey;">
+
+    <!-- Then put toasts within -->
+    <div class="toast" role="alert" id="toastCenterTop" aria-live="assertive"
+         aria-atomic="true" data-delay="3000">
+        <div class="toast-header">
+            <img src="images/range-circle.png" class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+                    aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+```
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** |	Assert action |	TextAssert
+**close()** |	Close toast |	void
+**getText()** |	Get toast text |	String
+**getTitle()** |	Get toast title |	String
+**is()** |	Assert action |	TextAssert
+**isDisplayed()** | Show\wait that toast element displayed on the screen | Boolean
+
+[Toast test examples](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/common/)
+ 
+<br>
+
+
+
+
+
+
 ## JDI Features for parameters in BDD steps 
 
 ### Using aliases as locators parameters 
@@ -19014,245 +19666,6 @@ Note: domain is read from test.properties automatically. <br><br><br><br><br>
 
 ## JDI Light BDD Steps
 
-### Label 
-
-```gherkin
-Label action examples:
-
-When I click on "JDI Title"
-
-Label validation examples:
-
-Then the "JDI Title" text equals to "JDI TESTING PLATFORM"
-Then the "JDI Title" text contains "JDI"
-Then the "JDI Title" text matches to ".* TESTING .*"
-Then the "JDI Title" is enabled 
-Then the "JDI Title" is disabled 
-Then the "JDI Title" is displayed 
-Then the "JDI Title" disappears 
-Then the "JDI Title" is hidden 
-Then the "JDI Title" does not appear 
-Then the "JDI Title" does not appear during "5" seconds 
-
-Scenario example for Label:
-
- Scenario: Text equals
-    Given I open "Html5 Page"
-    Then the "Jdi Title" text equals to "JDI TESTING PLATFORM"
-```
-Actions: <br>
-
-**When** \<I\> click on "\<ELEMENT NAME\>" <br>
-<br>
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Label.feature" target="_blank">Cucumber tests</a> for Label<br>
-<br><br><br><br>
-
-### ColorPicker
-
-```gherkin
-ColorPicker action example:
-
-When I set "Color Picker" to "#00FF00" color
-
-
-ColorPicker validation examples:
-
-Then the "Color Picker" color equals to "#00FF00"
-Then the "Color Picker" label text equals to "Select a color"
-Then the "Color Picker" color is "#00FF00"
-Then the "Color Picker" is enabled 
-Then the "Color Picker" is disabled 
-Then the "Color Picker" is displayed 
-Then the "Color Picker" disappears 
-Then the "Color Picker" is hidden 
-Then the "Color Picker" does not appear 
-Then the "Color Picker" does not appear during "5" seconds 
-
-
-Scenario example for ColorPicker:
-
-  Scenario: Color picker set color test
-    Given I open "Html5 Page"
-    When I set "Color Picker" to "#ffd7a6" color
-    Then the "Color Picker" color equals to "#ffd7a6"
-    
-```
-
-Actions: <br>
-
-**When** \<I\> set "\<ELEMENT NAME\>" to "\<COLOR HEX CODE\>"<br>
-<br><br>
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" color equals to "\<COLOR HEX CODE>" <br>
-**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT>" <br>
-**Then** the "\<ELEMENT NAME\>" color is "\<COLOR HEX CODE>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/ColorPicker.feature" target="_blank">Cucumber tests</a> for ColorPicker<br>
-
-<br><br><br><br><br><br>
-
-### DropDown
-
-```gherkin
-DropDown action example:
-
-When I Select "Pirate" field from "Drop Down"
-
-
-DropDown validation examples:
-
-Then the "Pirate" in "Drop Down" is selected
-Then the "Drop Down" is enabled 
-Then the "Drop Down" is disabled 
-Then the "Drop Down" is displayed 
-Then the "Drop Down" disappears 
-Then the "Drop Down" is hidden 
-Then the "Drop Down" does not appear 
-Then the "Drop Down" does not appear during "5" seconds 
-
-
-Scenario example for DropDown:
-
-  Scenario: Selected Test
-    Given I open "Html5 Page"
-    When I Select "Pirate" field from "Dress Code"
-    Then the "Pirate" in "Dress Code" is selected
-    
-```
-
-Actions: <br>
-
-**When** \<I\> select "\<TEXT\>" field from "\<ELEMENT NAME\>"<br>
-<br><br>
-Validations: <br>
-
-**Then** the "\<TEXT\>" in "\<ELEMENT NAME>" is selected <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DropDown.feature" target="_blank">Cucumber tests</a> for DropDown<br>
-
-<br><br><br><br><br>
-
-### Image
-
-````gherkin
-Image validation examples:
-
-  Then the "Jdi Logo" attribute "src" equals to "https;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
-  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "height" contains "100"
-  Then the "Jdi Logo" attribute "width" contains "101"
-  Then the "Jdi Logo" is enabled 
-  Then the "Jdi Logo" is disabled 
-  Then the "Jdi Logo" is displayed 
-  Then the "Jdi Logo" disappears
-  Then the "Jdi Logo" is hidden 
-  Then the "Jdi Logo" does not appear 
-  Then the "Jdi Logo" does not appear during "5" seconds 
-
-Scenario example for Image:
-
-  Scenario: Image validation test
-    Given I open "Html5 Page"
-    And refresh webpage
-    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-    And the "Jdi Logo" attribute "height" contains "100"
-    And the "Jdi Logo" attribute "width" contains "101"
-
-````
-
-Validations: <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-### Icon
-
-````gherkin
-Image validation examples:
-
-  Then the "Jdi Logo" attribute "src" equals to "http;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
-  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-  Then the "Jdi Logo" attribute "height" contains "100"
-  Then the "Jdi Logo" attribute "width" contains "101"
-  Then the "Jdi Logo" is enabled 
-  Then the "Jdi Logo" is disabled 
-  Then the "Jdi Logo" is displayed 
-  Then the "Jdi Logo" disappears
-  Then the "Jdi Logo" is hidden 
-  Then the "Jdi Logo" does not appear 
-  Then the "Jdi Logo" does not appear during "5" seconds 
-
-Scenario example for Image:
-
-  Scenario: Image validation test
-    Given I open "Html5 Page"
-    And refresh webpage
-    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
-    And the "Jdi Logo" attribute "height" contains "100"
-    And the "Jdi Logo" attribute "width" contains "101"
-
-````
-Note: this element is an alias for Image<br>
-<br>
-Validations: <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 ### Alert
 
 ````gherkin
@@ -19303,151 +19716,6 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <br>
 <br>
 
-### FileInput
-
-```gherkin
-FileInput action examples:
-
-When I upload file "/res/general.xml" by "Avatar" file input element
-When try to upload file "/res/general.xml" by "File Input" file input element
-
-
-FileInput validation examples:
-
-Then the "Avatar" file input element label equals to "Profile picture"
-Then the "Avatar" file input element label contains "picture"
-Then the "Avatar" file input element text equals to "fakepath\general.xml"
-Then the "Avatar" file input element text contains "general.xml"
-Then the "Avatar" attribute "id" equals to "avatar"
-Then "File Input" is enabled
-Then "File Input" is disabled
-Then "File Input" is displayed
-Then "File Input" disapears
-Then "File Input" is hidden
-Then "File Input" does not appear
-Then "File Input" is does not appear during "5" seconds 
-
-
-
-
-
-
-
-Scenario example for FileInput:
-
-  Scenario: Upload file by enabled file input element
-    Given I open "Html5 Page"
-    When I upload file "/res/general.xml" by "Avatar" file input element
-    Then the "Avatar" text contains "general.xml"
-```
-
-Actions:<br>
-**When** \<I\> upload file "\<PATH TO FILE\>" by "\<ELEMENT NAME\>" file input element<br>
-**When** \<I\> try to upload file "\<PATH TO FILE\>" by "\<ELEMENT NAME\>" file input element<br>
-
-Validations:<br>
-**Then** the "\<ELEMENT NAME\>" file input element label equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" file input element label contains "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" file input element text equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" file input element text contains "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/FileInput.feature" target="_blank">Cucumber tests</a> for FileInput<br>
-
-<br><br><br><br><br><br>
-
-### Link 
-
-```gherkin
-Link action examples:
-
-When I click on "Github Link"
-When I higlight "Github Link"
-When I show "Github Link"
-When I set "Github Link" attribute "alt" with value "Github JDI Link EDITED"
-
-```
-
-Actions: <br>
-
-**When** \<I\> click on "\<ELEMENT NAME\>" <br>
-**When** \<I\> highlight "\<ELEMENT NAME\>" <br>
-**When** \<I\> show "\<ELEMENT NAME\>" <br>
-**When** \<I\> set "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" with value "\<ATTRIBUTE NAME\>" <br><br><br><br>
-
-```gherkin
-Link validation examples:
-
-Then the "Github Link" is enabled
-Then the "Github Link" is disabled
-Then the "Github Link" is displayed
-Then the "Github Link" is hidden
-Then the "Github Link" URL path equals to "/jdi-testing"
-Then the "Github Link" text equals to "Github JDI"
-Then the "Github Link" text contains "JDI"
-Then the "Github Link" text matches to "[a-zA-Z]{6} JE*DI"
-Then the "Github Link" reference equals to "https//github.com/jdi-testing"
-Then the "Github Link" reference contains "github"
-Then the "Github Link" reference matches to "https//github.com/.*"
-Then the "Github Link" alternative text equals to "Github JDI Link"
-Then the "Github Link" alternative text contains "JDI"
-Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
-Then the "Github Link" attribute "alt" equals to "Github JDI Link"
-Then the "Github Link" attribute "href" contains "https//github.com"
-Then the "Github Link" attribute "ui" matches to "github.link"
-Then the "Github Link" does not appear
-Then the "Github Link" does not appear during "5" seconds
-
-Scenario examples for Link:
-
-  Scenario: Click link test
-     Given I open "Html5 Page"
-     When click on "Github Link"
-     Then the current URL is "https//github.com/jdi-testing"
-    
-  Scenario: Link alternative text matching to RegExp
-     Given I open "Html5 Page"
-     Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
-  
-
-```
-
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" URL path equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" reference equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" reference contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" reference match to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" alternative text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" alternative text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" alternative text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Link.feature" target="_blank">Cucumber tests</a> for Link<br>
-
-
-<br><br><br>
 ### Button
 
 ```gherkin
@@ -19534,63 +19802,6 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Button.feature" target="_blank">Cucumber tests</a>) for Button<br>
 
 <br>
-### DateTimeSelector
-
-```gherkin
-DateTimeSelector action example:
-
-When I set date "2018-11-13" in "Birth Date"
-
-DateTimeSelector validation example:
-
-Then the "Birth Date" text equals to "1985-06-18"
-Then the "Birth Date" text contains "1985"
-Then the "Birth Date" is enabled
-Then the "Birth Date" label text equals to "Birth date"
-Then the "Birth Date" label text contains "Birth"
-Then the "Birth Date" attribute min equals to "1970-01-01"
-Then the "Birth Date" attribute max equals to "2030-12-31"
-
-Scenario example for DateTimeSelector:
-
-  Scenario: Set date
-    Given I open "Html5 Page"
-    Then the "Birth Date" text equals to "1985-06-18"
-    When Set date "2018-11-13" in "Birth Date"
-    Then the "Birth Date" text equals to "2018-11-13"
-
-```
-Actions:<br>
-
-**When** \<I\> set date "\<TEXT\>" in "\<ELEMENT NAME\>" <br>
-
-Validations:<br>
-
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" label text contains "\<TEXT\>"_ <br>
-**Then** the "\<ELEMENT NAME\>" attribute min equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" attribute max equals to "\<TEXT\>"<br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-
-There are BDD test examples for Input Type Date derivatives:<br>
-[Input Type Date](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Date.feature),
-[Input Type Week](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Week.feature),
-[Input Type Month](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Month.feature),<br>
-[Input Type Time](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Time.feature),
-[DateTime-Local](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DateTime.feature)<br><br>
-
-
-
-
-
-
-
-
-
 
 ### Checkbox  
 
@@ -19652,102 +19863,142 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Checkbox.feature" target="_blank">Cucumber tests</a> for Checkbox<br>
 
 <br><br><br><br><br><br><br><br>
-### Progress Bar
-  
+
+### CheckList
+
 ```gherkin
-Progress Bar validation examples:
+CheckList actions examples:
 
-Then the "Progress" attribute "max" equals to "110"
-Then the "Progress" progress volume greater or equal to 10
-Then the "Progress" progress volume less or equal to 110
-Then the "Progress" label text equals to "Progress"
-Then the "Progress" label text contains "ress"
-Then the "Progress" is enabled
-Then the "Progress" is disabled
-Then the "Progress" is displayed
-Then the "Progress" is hidden
-Then the "Progress" does not appear
-Then the "Progress" does not appear during "5" seconds <br>
+When I check element "Hot option" in "Weather" checklist
+When I select fields from "Weather" checklist
+     | Cold       | 
+     | Hot option |
+When I check elements in "Weather" checklist
+     | Hot option |
+When I select in "Weather" checklist elements by numbers
+     | 1 |
+     | 2 |
+When I check all elements in "Weather" checklist
+When I uncheck all elements in "Weather" checklist
+When I check elements in "Weather" checklist
+     | Rainy day |
+     | Sunny     |
 
-Scenario example for Progress Bar:
 
-  Scenario: progress bar validation
-    Given I open "Html5 Page" page
-    Then the "Progress" attribute "max" equals to "100"
-    And the "Progress" progress volume greater or equal to 10
-    And the "Progress" progress volume less or equal to 100
-    And the "Progress" attribute "value" equals to "70"
-    And the "Progress" is enabled
-  
+CheckList validation examples:
+
+Then in the "Weather" checklist checked element is "Cold"
+Then the "Weather" checklist text is "Hot option"
+Then count of selected elements in "Weather" checklist is "2"
+Then in the "Weather" checklist checked elements are
+     | Hot option |
+     | Sunny      |
+
+Scenario example for CheckList:
+
+Scenario: Check element via numbers test
+  When I check in "Weather" checklist elements by numbers
+      | 1 |
+      | 4 |
+  Then in the "Weather" checklist checked elements are
+      | Hot option |
+      | Sunny      |
+
 ```
+Actions: <br>
 
+ **When**  \<I\> check element "\<VALUE\>" in "\<ELEMENT NAME\>" checklist <br>
+ **When**  \<I\> select fields from "\<ELEMENT NAME\>" checklist:  <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> check elements in "\<ELEMENT NAME\>" checklist:  <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> uncheck element "\<VALUE\>" in "\<ELEMENT NAME\>" checklist <br>
+ **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist elements:  <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist elements by numbers: <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br> 
+ **When**  \<I\> check in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br>
+ **When**  \<I\> check in "\<ELEMENT NAME\>" checklist elements by numbers: <br> 
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> select in "\<ELEMENT NAME\>" checklist elements by numbers: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When**  \<I\> select in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br>
+ **When**  \<I\> check all elements in "\<ELEMENT NAME\>" checklist  <br>
+ **When**  \<I\> uncheck all elements in "\<ELEMENT NAME\>" checklist  <br> 
+ 
 Validations: <br>
 
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" progress volume greater or equal to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" progress volume less or equal to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" label text contains "\<TEXT\>" <br>
+**Then** in the "\<ELEMENT NAME\>" checklist checked element is "\<VALUE\>" <br>
+**Then** count of selected elements in "\<ELEMENT NAME\>" checklist is "\<COUNT\>" <br>
+**Then** in the "\<ELEMENT NAME\>" checklist checked element are: <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+**Then** the "\<ELEMENT NAME\>" checklist text is "\<ELEMENT NAME\>" <br>
 **Then** the "\<ELEMENT NAME\>" is enabled <br>
 **Then** the "\<ELEMENT NAME\>" is disabled <br>
 **Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden	 <br>
-**Then** the "\<ELEMENT NAME\>" does not appear	<br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<NUMBER\>" seconds <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial) <br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/ProgressBar.feature" target="_blank">Cucumber tests</a> for Progress Bar<br>
-<br><br><br><br><br><br><br><br>
-
-### Text
-
-```gherkin
-Text validation examples:
-
-Then the "Jdi Text" text equals to "Powerful Framework for UI Tests Automation. Suitable for any UI project such as Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc."
-Then the "Jdi Text" text contains "Powerful Framework for UI"
-Then the "Jdi Text" is enabled
-Then the "Jdi Text" text matches to ".+"
-Then the "Jdi Text" css "font-size" equals to "14px"
-Then the "Jdi Text" css "font-family" contains "Source Sans Pro"
-Then the "Jdi Text" css "font-family" matches to "(.*)sans-serif"
-Then the "Jdi Text" is enabled
-Then the "Jdi Text" is disabled
-Then the "Jdi Text" is displayed
-Then the "Jdi Text" disappears
-Then the "Jdi Text" is hidden
-Then the "Jdi Text" does not appear
-Then the "Jdi Text" does not appear during "5" seconds
-
-
-
-Scenario example for Text:
-
-    Scenario: Text validation test
-        Given I open "Html5 Page"
-        Then the "Jdi Text" is enabled
-        Then the "Jdi Text" text contains "Powerful Framework for UI"
-
-```
-Validations:<br>
-
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" contains "\<TEXT\>"<br>
-**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" matches to "\<REGEXP\>"<br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
 **Then** the "\<ELEMENT NAME\>" is hidden	 <br>
 **Then** the "\<ELEMENT NAME\>" does not appear	<br>
 **Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
 
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Text.feature" target="_blank">Cucumber tests</a> for Text<br><br>
-<br><br><br><br><br><br><br><br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/CheckList.feature" target="_blank">Cucumber tests</a> for CheckList<br>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+
+### ColorPicker
+
+```gherkin
+ColorPicker action example:
+
+When I set "Color Picker" to "#00FF00" color
+
+
+ColorPicker validation examples:
+
+Then the "Color Picker" color equals to "#00FF00"
+Then the "Color Picker" label text equals to "Select a color"
+Then the "Color Picker" color is "#00FF00"
+Then the "Color Picker" is enabled 
+Then the "Color Picker" is disabled 
+Then the "Color Picker" is displayed 
+Then the "Color Picker" disappears 
+Then the "Color Picker" is hidden 
+Then the "Color Picker" does not appear 
+Then the "Color Picker" does not appear during "5" seconds 
+
+
+Scenario example for ColorPicker:
+
+  Scenario: Color picker set color test
+    Given I open "Html5 Page"
+    When I set "Color Picker" to "#ffd7a6" color
+    Then the "Color Picker" color equals to "#ffd7a6"
+    
+```
+
+Actions: <br>
+
+**When** \<I\> set "\<ELEMENT NAME\>" to "\<COLOR HEX CODE\>"<br>
+<br><br>
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" color equals to "\<COLOR HEX CODE>" <br>
+**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT>" <br>
+**Then** the "\<ELEMENT NAME\>" color is "\<COLOR HEX CODE>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/ColorPicker.feature" target="_blank">Cucumber tests</a> for ColorPicker<br>
+
+<br><br><br><br><br><br>
 
 ### ComboBox
 
@@ -19901,6 +20152,776 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DataList.feature" target="_blank">Cucumber tests</a> for DataList<br><br>
 <br><br><br><br><br><br><br><br>
 
+### DataTable
+
+Note: this element is an alias for Table
+
+```gherkin
+Table validation examples:
+
+Then the "Users Table" is enabled
+Then the "Users Table" is disabled
+Then the "Users Table" is displayed
+Then the "Users Table" is hidden
+Then the "Users Table" does not appear
+Then the "Users Table" does not appear during "5" seconds
+Then the "Users Table" table columns count equals "4"
+Then the "Users Table" table rows count equals "6"
+Then the "Users Table" table header has items
+Then the "Users Table" table preview equals values
+Then the "Users Table" table has size "6"
+Then the "Users Table" table has size greater than "3"
+Then the "Users Table" table has size less or equal to "6"
+Then the "Users Table" table is not empty
+Then the "Users Table" table has row that contains value "Ivan" in column "User"
+Then the "Users Table" table all rows contain value "Vip" in column "Description"
+Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
+Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
+Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
+Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
+
+Scenario examples for Table:
+
+  Scenario: Get label text test
+    Given I open "Users Page"
+    Then the "Users Table" table columns count equals "4"
+    And the "Users Table" table rows count equals "6"
+    And the "Users Table" table header has items
+      | Number      |
+      | Type        |
+      | User        |
+      | Description |
+
+  Scenario: Common matchers test
+    Given I open "Users Page"
+    Then the "Users Table" table has size "6"
+    And the "Users Table" table has size greater than "3"
+    And the "Users Table" table has size less or equal to "6"
+    And the "Users Table" table is not empty
+
+```
+
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+**Then** the "\<ELEMENT NAME\>" table columns count equals "\<COUNT\>" <br>
+**Then** the "\<ELEMENT NAME\>" table rows count equals "\<COUNT\>" <br>
+**Then** the "\<ELEMENT NAME\>" table header has items: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+**Then** the "\<ELEMENT NAME\>" table preview equals values: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+**Then** the "\<ELEMENT NAME\>" table has size "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has size greater than "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has size less or equal to "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table is not empty <br>
+**Then** the "\<ELEMENT NAME\>" table has row that contains value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table all rows contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has no rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has at least "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which have value "\<TEXT\>" in column "\<COLUMN\>" <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Table.feature" target="_blank">Cucumber tests</a> for Table<br>
+<br><br><br><br><br><br><br><br><br><br><br>
+
+### DateTimeSelector
+
+```gherkin
+DateTimeSelector action example:
+
+When I set date "2018-11-13" in "Birth Date"
+
+DateTimeSelector validation example:
+
+Then the "Birth Date" text equals to "1985-06-18"
+Then the "Birth Date" text contains "1985"
+Then the "Birth Date" is enabled
+Then the "Birth Date" label text equals to "Birth date"
+Then the "Birth Date" label text contains "Birth"
+Then the "Birth Date" attribute min equals to "1970-01-01"
+Then the "Birth Date" attribute max equals to "2030-12-31"
+
+Scenario example for DateTimeSelector:
+
+  Scenario: Set date
+    Given I open "Html5 Page"
+    Then the "Birth Date" text equals to "1985-06-18"
+    When Set date "2018-11-13" in "Birth Date"
+    Then the "Birth Date" text equals to "2018-11-13"
+
+```
+Actions:<br>
+
+**When** \<I\> set date "\<TEXT\>" in "\<ELEMENT NAME\>" <br>
+
+Validations:<br>
+
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" label text contains "\<TEXT\>"_ <br>
+**Then** the "\<ELEMENT NAME\>" attribute min equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" attribute max equals to "\<TEXT\>"<br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+
+There are BDD test examples for Input Type Date derivatives:<br>
+[Input Type Date](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Date.feature),
+[Input Type Week](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Week.feature),
+[Input Type Month](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Month.feature),<br>
+[Input Type Time](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Time.feature),
+[DateTime-Local](https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DateTime.feature)<br><br>
+
+### DropDown
+
+```gherkin
+DropDown action example:
+
+When I Select "Pirate" field from "Drop Down"
+
+
+DropDown validation examples:
+
+Then the "Pirate" in "Drop Down" is selected
+Then the "Drop Down" is enabled 
+Then the "Drop Down" is disabled 
+Then the "Drop Down" is displayed 
+Then the "Drop Down" disappears 
+Then the "Drop Down" is hidden 
+Then the "Drop Down" does not appear 
+Then the "Drop Down" does not appear during "5" seconds 
+
+
+Scenario example for DropDown:
+
+  Scenario: Selected Test
+    Given I open "Html5 Page"
+    When I Select "Pirate" field from "Dress Code"
+    Then the "Pirate" in "Dress Code" is selected
+    
+```
+
+Actions: <br>
+
+**When** \<I\> select "\<TEXT\>" field from "\<ELEMENT NAME\>"<br>
+<br><br>
+Validations: <br>
+
+**Then** the "\<TEXT\>" in "\<ELEMENT NAME>" is selected <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/DropDown.feature" target="_blank">Cucumber tests</a> for DropDown<br>
+
+<br><br><br><br><br>
+
+### FileInput
+
+```gherkin
+FileInput action examples:
+
+When I upload file "/res/general.xml" by "Avatar" file input element
+When try to upload file "/res/general.xml" by "File Input" file input element
+
+
+FileInput validation examples:
+
+Then the "Avatar" file input element label equals to "Profile picture"
+Then the "Avatar" file input element label contains "picture"
+Then the "Avatar" file input element text equals to "fakepath\general.xml"
+Then the "Avatar" file input element text contains "general.xml"
+Then the "Avatar" attribute "id" equals to "avatar"
+Then "File Input" is enabled
+Then "File Input" is disabled
+Then "File Input" is displayed
+Then "File Input" disapears
+Then "File Input" is hidden
+Then "File Input" does not appear
+Then "File Input" is does not appear during "5" seconds 
+
+
+
+
+
+
+
+Scenario example for FileInput:
+
+  Scenario: Upload file by enabled file input element
+    Given I open "Html5 Page"
+    When I upload file "/res/general.xml" by "Avatar" file input element
+    Then the "Avatar" text contains "general.xml"
+```
+
+Actions:<br>
+**When** \<I\> upload file "\<PATH TO FILE\>" by "\<ELEMENT NAME\>" file input element<br>
+**When** \<I\> try to upload file "\<PATH TO FILE\>" by "\<ELEMENT NAME\>" file input element<br>
+
+Validations:<br>
+**Then** the "\<ELEMENT NAME\>" file input element label equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" file input element label contains "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" file input element text equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" file input element text contains "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/FileInput.feature" target="_blank">Cucumber tests</a> for FileInput<br>
+
+<br><br><br><br><br><br>
+
+### Form
+
+```gherkin
+Form actions examples:
+
+When fill form "Contact Form" with data
+    | name | Roman |
+    | lastName| Iovlev |
+    | position| ChiefQA |
+    | passportNumber| 654321 |
+    | passportSeria| 1234 |
+    | description| JDI - awesome UI automation tool |
+    | acceptConditions| true | 
+    | gender| Female |
+    | religion| Other |
+When I submit form "Contact Form"
+When I save form
+
+JSON data file examples:
+When fill form "Contact Form" with "Roman Contacts"
+When send form "Contact Form" with "Roman Contacts"
+
+Form validation examples:
+
+Then the form "Contact Form" data equals to
+    | name| Roman |
+    | lastName | Iovlev |
+    | position | ChiefQA |
+    | passportNumber | 654321 |
+    | passportSeria | 1234 |
+    | description | JDI - awesome UI automation tool |
+    | acceptConditions | true |
+    | gender| Female |
+    | religion| Other |
+Then the form "Contact Form" is displayed
+Then the form "Contact Form" is hidden
+Then the form "Contact Form" does not appear
+Then the form "Contact Form" does not appear during 7
+Then the form "Contact Form" disappear
+
+JSON data file examples:
+Then the form "Contact Form" data equals to "Roman Contacts"
+
+Form scenario example:
+
+  Scenario: fillContactForm
+    Given I open "Contact Form Page"
+    When fill form "Contact Form" with data
+    | name| Roman |
+    | lastName | Iovlev |
+    | position | ChiefQA |
+    | passportNumber | 654321 |
+    | passportSeria | 1234 |
+    | description | JDI - awesome UI automation tool |
+    | acceptConditions | true |
+    | gender | Female |
+    | religion | Other |
+    And I submit form "Contact Form"
+    Then the form "Contact Form" data equals to
+    | name | Roman |
+    | lastName | Iovlev |
+    | position | ChiefQA |
+    | passportNumber | 654321 |
+    | passportSeria | 1234 |
+    | description | JDI - awesome UI automation tool |
+    | acceptConditions | true |
+    | gender | Female |
+    | religion | Other |
+
+```
+Actions: <br>
+
+ **When** \<I\> fill form \<ELEMENT NAME\> with data:<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form \<ELEMENT NAME\> with data:<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+ **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form<br>
+ 
+ It's also possible to use JSON data files:<br>
+ **When** \<I\> fill form \<ELEMENT NAME\> with \<JSON DATA FILE NAME\><br>
+ **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form \<ELEMENT NAME\> with \<JSON DATA FILE NAME\><br>
+ <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/json/test/data/Roman%20Contacts.json" target="_blank">JSON data file example</a>
+ 
+Validations: <br>
+
+ **Then** the form \<ELEMENT NAME\> data equals to: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the form \<ELEMENT NAME\> is displayed<br>
+ **Then** the form \<ELEMENT NAME\> is hidden<br>
+ **Then** the form \<ELEMENT NAME\> does not appear<br>
+ **Then** the form \<ELEMENT NAME\> does not appear during \<SECONDS\><br>
+ **Then** the form \<ELEMENT NAME\> disappear<br>
+ 
+ It's also possible to use JSON data files:<br>
+ **Then** the form \<ELEMENT NAME\> data equals to \<JSON DATA FILE NAME\><br>
+ <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/json/test/data/Roman%20Contacts.json" target="_blank">JSON data file example</a>
+
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Form.feature" target="_blank">Cucumber tests</a> for Form<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+<br>
+
+### Icon
+
+````gherkin
+Image validation examples:
+
+  Then the "Jdi Logo" attribute "src" equals to "http;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
+  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
+  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
+  Then the "Jdi Logo" attribute "height" contains "100"
+  Then the "Jdi Logo" attribute "width" contains "101"
+  Then the "Jdi Logo" is enabled 
+  Then the "Jdi Logo" is disabled 
+  Then the "Jdi Logo" is displayed 
+  Then the "Jdi Logo" disappears
+  Then the "Jdi Logo" is hidden 
+  Then the "Jdi Logo" does not appear 
+  Then the "Jdi Logo" does not appear during "5" seconds 
+
+Scenario example for Image:
+
+  Scenario: Image validation test
+    Given I open "Html5 Page"
+    And refresh webpage
+    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
+    And the "Jdi Logo" attribute "height" contains "100"
+    And the "Jdi Logo" attribute "width" contains "101"
+
+````
+Note: this element is an alias for Image<br>
+<br>
+Validations: <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+### Image
+
+````gherkin
+Image validation examples:
+
+  Then the "Jdi Logo" attribute "src" equals to "https;//jdi-testing.github.io/jdi-light/images/jdi-logo.jpg"
+  Then the "Jdi Logo" attribute "alt" equals to "Jdi Logo 2"
+  Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
+  Then the "Jdi Logo" attribute "height" contains "100"
+  Then the "Jdi Logo" attribute "width" contains "101"
+  Then the "Jdi Logo" is enabled 
+  Then the "Jdi Logo" is disabled 
+  Then the "Jdi Logo" is displayed 
+  Then the "Jdi Logo" disappears
+  Then the "Jdi Logo" is hidden 
+  Then the "Jdi Logo" does not appear 
+  Then the "Jdi Logo" does not appear during "5" seconds 
+
+Scenario example for Image:
+
+  Scenario: Image validation test
+    Given I open "Html5 Page"
+    And refresh webpage
+    Then the "Jdi Logo" attribute "src" contains "jdi-logo.jpg"
+    And the "Jdi Logo" attribute "height" contains "100"
+    And the "Jdi Logo" attribute "width" contains "101"
+
+````
+
+Validations: <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Image.feature" target="_blank">Cucumber tests</a> for Image <br>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+### Label 
+
+```gherkin
+Label action examples:
+
+When I click on "JDI Title"
+
+Label validation examples:
+
+Then the "JDI Title" text equals to "JDI TESTING PLATFORM"
+Then the "JDI Title" text contains "JDI"
+Then the "JDI Title" text matches to ".* TESTING .*"
+Then the "JDI Title" is enabled 
+Then the "JDI Title" is disabled 
+Then the "JDI Title" is displayed 
+Then the "JDI Title" disappears 
+Then the "JDI Title" is hidden 
+Then the "JDI Title" does not appear 
+Then the "JDI Title" does not appear during "5" seconds 
+
+Scenario example for Label:
+
+ Scenario: Text equals
+    Given I open "Html5 Page"
+    Then the "Jdi Title" text equals to "JDI TESTING PLATFORM"
+```
+Actions: <br>
+
+**When** \<I\> click on "\<ELEMENT NAME\>" <br>
+<br>
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Label.feature" target="_blank">Cucumber tests</a> for Label<br>
+<br><br><br><br>
+
+### Link 
+
+```gherkin
+Link action examples:
+
+When I click on "Github Link"
+When I higlight "Github Link"
+When I show "Github Link"
+When I set "Github Link" attribute "alt" with value "Github JDI Link EDITED"
+
+```
+
+Actions: <br>
+
+**When** \<I\> click on "\<ELEMENT NAME\>" <br>
+**When** \<I\> highlight "\<ELEMENT NAME\>" <br>
+**When** \<I\> show "\<ELEMENT NAME\>" <br>
+**When** \<I\> set "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" with value "\<ATTRIBUTE NAME\>" <br><br><br><br>
+
+```gherkin
+Link validation examples:
+
+Then the "Github Link" is enabled
+Then the "Github Link" is disabled
+Then the "Github Link" is displayed
+Then the "Github Link" is hidden
+Then the "Github Link" URL path equals to "/jdi-testing"
+Then the "Github Link" text equals to "Github JDI"
+Then the "Github Link" text contains "JDI"
+Then the "Github Link" text matches to "[a-zA-Z]{6} JE*DI"
+Then the "Github Link" reference equals to "https//github.com/jdi-testing"
+Then the "Github Link" reference contains "github"
+Then the "Github Link" reference matches to "https//github.com/.*"
+Then the "Github Link" alternative text equals to "Github JDI Link"
+Then the "Github Link" alternative text contains "JDI"
+Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
+Then the "Github Link" attribute "alt" equals to "Github JDI Link"
+Then the "Github Link" attribute "href" contains "https//github.com"
+Then the "Github Link" attribute "ui" matches to "github.link"
+Then the "Github Link" does not appear
+Then the "Github Link" does not appear during "5" seconds
+
+Scenario examples for Link:
+
+  Scenario: Click link test
+     Given I open "Html5 Page"
+     When click on "Github Link"
+     Then the current URL is "https//github.com/jdi-testing"
+    
+  Scenario: Link alternative text matching to RegExp
+     Given I open "Html5 Page"
+     Then the "Github Link" alternative text matches to "Git.* JE*DI Link"
+  
+
+```
+
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" URL path equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" reference equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" reference contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" reference match to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" alternative text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" alternative text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" alternative text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Link.feature" target="_blank">Cucumber tests</a> for Link<br>
+
+
+<br><br><br>
+
+### Menu 
+
+```gherkin
+Menu actions examples:
+
+When I select "Contact form" in "Left Menu" menu
+When I select "Service;Dates" items in "Left Menu" menu
+When I show "Contact form" in "Left Menu" menu
+
+Menu validations examples:
+
+Then the "Left Menu" is enabled
+Then the "Left Menu" is disabled
+Then the "Left Menu" is displayed
+Then the "Left Menu" is hidden
+Then the "Left Menu" does not appear
+Then the "Left Menu" does not appear during "5" seconds
+Then the "Contact form" in "Left Menu" menu is selected
+Then the "Contact form" in "Left Menu" menu is deselected
+
+Scenario examples for Menu:
+
+  Scenario: Select items test
+    Given I open "Html5 Page"
+    When I check "Accept Conditions"
+    When select items in "Left Menu" menu
+     | Service |
+     | Dates   |
+    Then the "Dates Page" page is opened
+
+  Scenario: Is validation test
+    Given I open "Html5 Page"
+    When I check "Accept Conditions"
+    Then the "HTML 5" in "Left Menu" menu is selected
+
+```
+
+Actions: <br>
+
+**When** \<I\> select "\<VALUE\>" in "\<ELEMENT NAME\>" menu <br>
+**When** \<I\> select items in "\<ELEMENT NAME\>" menu:<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+**When** \<I\> show "\<VALUE\>" in "\<ELEMENT NAME\>" menu <br>
+
+
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+**Then** the "\<VALUE\>" in "\<ELEMENT NAME\>" menu is selected <br>
+**Then** the "\<VALUE\>" in "\<ELEMENT NAME\>" menu is deselected <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Menu.feature" target="_blank">Cucumber tests</a> for Menu<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### MultiDropDown
+
+<p style="color:#FFA500">Note: this element is an alias for MultiSelector</p>
+
+```gherkin
+MultiDropDown actions examples:
+
+ When I check in the "Multi Dropdown" values
+      | Electro | Metalic |
+ When I check in the "Multi Dropdown" values by number
+      | 1 | 5 |
+ When I check value "Steam" in the "Multi Dropdown"
+
+```
+Actions: <br>
+
+ **When** \<I\> check in the  \<ELEMENT NAME\>  values:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **When** \<I\> check in the  \<ELEMENT NAME\>  values by number:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **When** \<I\> check value  \<ELEMENT NAME\>  in the  \<ELEMENT NAME\> <br>
+
+```gherkin
+MultiDropDown validation examples:
+
+ Then the "Multi Dropdown" selected values
+      | Electro | Wood |
+ Then the "Multi Dropdown" selected value is "Steam"
+ Then the "Multi Dropdown" values has item "Wood"
+ Then the "Multi Dropdown" has disabled item "Disabled"
+ Then the "Multi Dropdown" has no enabled item "Disabled"
+ Then the "Multi Dropdown" has enabled items
+      | Electro | Metalic |
+ Then the "Multi Dropdown" contains items
+      | Disabled | Wood | Steam | Electro | Metalic |
+    
+Scenario: MultiDropDown validation
+    Given I open "Html5 Page"
+    Then the "Ages" selected value is "Steam"
+    And the "Ages" values has item "Wood"
+    And  the "Ages" has disabled item "Disabled"
+    And the "Ages" has no enabled item "Disabled"
+    And the "Ages" has enabled items
+      | Electro | Metalic |
+
+```
+Validations: <br>
+
+ **Then** the \<ELEMENT NAME\> selected values:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the \<ELEMENT NAME\> selected value is \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> values has item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has disabled item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has no enabled item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has enabled items:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the \<ELEMENT NAME\> contains items:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/MultiDropDown.feature" target="_blank">Cucumber tests</a> for CheckList<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### MultiSelector
+```gherkin
+MultiSelector actions examples:
+
+ When I check in the "Multi Dropdown" values
+      | Electro | Metalic |
+ When I check in the "Multi Dropdown" values by number
+      | 1 | 5 |
+ When I check value "Steam" in the "Multi Dropdown"
+
+```
+Actions: <br>
+
+ **When** \<I\> check in the  \<ELEMENT NAME\>  values:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **When** \<I\> check in the  \<ELEMENT NAME\>  values by number:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **When** \<I\> check value  \<ELEMENT NAME\>  in the  \<ELEMENT NAME\> <br>
+
+```gherkin
+MultiSelector validation examples:
+
+ Then the "Multi Dropdown" selected values
+      | Electro | Wood |
+ Then the "Multi Dropdown" selected value is "Steam"
+ Then the "Multi Dropdown" values has item "Wood"
+ Then the "Multi Dropdown" has disabled item "Disabled"
+ Then the "Multi Dropdown" has no enabled item "Disabled"
+ Then the "Multi Dropdown" has enabled items
+      | Electro | Metalic |
+ Then the "Multi Dropdown" contains items
+      | Disabled | Wood | Steam | Electro | Metalic |
+    
+Scenario: MultiSelector validation
+    Given I open "Html5 Page"
+    Then the "Ages" selected value is "Steam"
+    And the "Ages" values has item "Wood"
+    And  the "Ages" has disabled item "Disabled"
+    And the "Ages" has no enabled item "Disabled"
+    And the "Ages" has enabled items
+      | Electro | Metalic |
+
+```
+Validations: <br>
+
+ **Then** the \<ELEMENT NAME\> selected values:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the \<ELEMENT NAME\> selected value is \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> values has item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has disabled item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has no enabled item \<VALUE\> <br>
+ **Then** the \<ELEMENT NAME\> has enabled items:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+ **Then** the \<ELEMENT NAME\> contains items:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
+
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/MultiDropDown.feature" target="_blank">Cucumber tests</a> for CheckList<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ### NumberSelector
 
 ````gherkin
@@ -20007,6 +21028,126 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <br>
 <br>
 
+### Progress Bar
+  
+```gherkin
+Progress Bar validation examples:
+
+Then the "Progress" attribute "max" equals to "110"
+Then the "Progress" progress volume greater or equal to 10
+Then the "Progress" progress volume less or equal to 110
+Then the "Progress" label text equals to "Progress"
+Then the "Progress" label text contains "ress"
+Then the "Progress" is enabled
+Then the "Progress" is disabled
+Then the "Progress" is displayed
+Then the "Progress" is hidden
+Then the "Progress" does not appear
+Then the "Progress" does not appear during "5" seconds <br>
+
+Scenario example for Progress Bar:
+
+  Scenario: progress bar validation
+    Given I open "Html5 Page" page
+    Then the "Progress" attribute "max" equals to "100"
+    And the "Progress" progress volume greater or equal to 10
+    And the "Progress" progress volume less or equal to 100
+    And the "Progress" attribute "value" equals to "70"
+    And the "Progress" is enabled
+  
+```
+
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" progress volume greater or equal to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" progress volume less or equal to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" label text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" label text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden	 <br>
+**Then** the "\<ELEMENT NAME\>" does not appear	<br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<NUMBER\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#tutorial) <br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/ProgressBar.feature" target="_blank">Cucumber tests</a> for Progress Bar<br>
+<br><br><br><br><br><br><br><br>
+
+### Radiobuttons
+
+```gherkin
+Radiobuttons actions examples:
+
+When I select "Blue" field from "Colors"
+When select the radio button with "1" index from "Colors" 
+When I highlight "Colors"	
+When set "Colors" attribute "test-jdi" with value "test-value" 
+
+Radiobuttons validation examples:
+
+Then the "Colors" text equals to "Blue"	
+Then the "Colors" text contains "Blue"	
+Then the "Colors" text matches to "\w{15}" 
+Then the "Colors" is enabled 
+Then the "Colors" is disabled 
+Then the "Colors" is displayed 
+Then the "Colors" is hidden 
+Then the "Colors" disappears 
+Then the "Colors" does not appear 
+Then the "Colors" does not appear during "2" seconds 
+Then the "Colors" css "type" equals to "radio" 
+Then the "Colors" consists of next values 
+Then the "Colors" contains "Blue" radio button 
+Then the "Colors" contains "Yellow" disabled radio button 
+Then the "Colors" does not contain "Yellow" enabled radio button 
+Then the "Colors" contains next enabled values
+	| Red | Green | Blue | Yellow |
+
+Scenario example for Radiobuttons:
+
+ Given I open "Html5 Page" page
+ Then the "Html5 Page.Colors" consists of next values
+      | Red | Green | Blue | Yellow |
+ When I highlight "Colors"	
+ When I Select "Blue" field from "Html5 Page.Colors"
+ Then the "Html5 Page.Colors" text equals to "Blue"
+
+
+
+```
+Actions: <br><br>
+
+**When** \<I\> select "TEXT" field from "\<ELEMENT NAME\>" <br>
+**When** \<I\> select the radio button with "\<INDEX\>" index from "\<ELEMENT NAME\>" <br>
+**When** \<I\> highlight "\<ELEMENT NAME\>"	<br>
+**When** \<I\> set "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" with value "\<ATTRIBUTE VALUE\>" <br>
+ 
+Validations: <br><br>
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>"	<br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>"	<br>
+**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" consists of next values <br>
+**Then** the "\<ELEMENT NAME\>" contains "\<TEXT\>" radio button <br>
+**Then** the "\<ELEMENT NAME\>" contains "\<TEXT\>" disabled radio button <br>
+**Then** the "\<ELEMENT NAME\>" does not contain "\<TEXT\>" enabled radio button <br>
+**Then** the "\<ELEMENT NAME\>" contains next enabled values: <br>
+    |"\<RADIO_3\>" | "\<RADIO_2\>" | "\<RADIO_3\>" |
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/RadioButtons.feature" target="_blank">Cucumber tests</a> for Radiobuttons<br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
 ### Range
 
 ```gherkin
@@ -20071,6 +21212,143 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <br>
 <br>
 <br>
+
+### Table
+
+```gherkin
+Table actions examples:
+
+When I click the cell in row "2" in column "2" of the table "Simple Table"
+
+Table validation examples:
+
+Then the "Users Table" is enabled
+Then the "Users Table" is disabled
+Then the "Users Table" is displayed
+Then the "Users Table" is hidden
+Then the cell in row "1" in column "3" of the table "Simple Table" is selected
+Then the cell in row "1" in column "3" of the table "Simple Table" is deselected
+Then the "Users Table" does not appear
+Then the "Users Table" does not appear during "5" seconds
+Then the "Users Table" table columns count equals "4"
+Then the "Users Table" table rows count equals "6"
+Then the "Users Table" table header has items
+Then the "Users Table" table preview equals values
+Then the "Users Table" table has size "6"
+Then the "Users Table" table has size greater than "3"
+Then the "Users Table" table has size less or equal to "6"
+Then the "Users Table" table is not empty
+Then the "Users Table" table has row that contains value "Ivan" in column "User"
+Then the "Users Table" table all rows contain value "Vip" in column "Description"
+Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
+Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
+Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
+Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
+
+Scenario examples for Table:
+
+  Scenario: Get label text test
+    Given I open "Users Page"
+    Then the "Users Table" table columns count equals "4"
+    And the "Users Table" table rows count equals "6"
+    And the "Users Table" table header has items
+      | Number      |
+      | Type        |
+      | User        |
+      | Description |
+
+  Scenario: Common matchers test
+    Given I open "Users Page"
+    Then the "Users Table" table has size "6"
+    And the "Users Table" table has size greater than "3"
+    And the "Users Table" table has size less or equal to "6"
+    And the "Users Table" table is not empty
+
+```
+Actions: <br>
+
+ **When** \<I\> click the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\><br>
+ 
+Validations: <br>
+
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" is hidden <br>
+**Then** the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\> is selected <br>
+**Then** the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\> is deselected <br>
+**Then** the "\<ELEMENT NAME\>" does not appear <br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+**Then** the "\<ELEMENT NAME\>" table columns count equals "\<COUNT\>" <br>
+**Then** the "\<ELEMENT NAME\>" table rows count equals "\<COUNT\>" <br>
+**Then** the "\<ELEMENT NAME\>" table header has items: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+**Then** the "\<ELEMENT NAME\>" table preview equals values: <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
+**Then** the "\<ELEMENT NAME\>" table has size "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has size greater than "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has size less or equal to "\<SIZE\>" <br>
+**Then** the "\<ELEMENT NAME\>" table is not empty <br>
+**Then** the "\<ELEMENT NAME\>" table has row that contains value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table all rows contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has no rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has at least "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
+**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which have value "\<TEXT\>" in column "\<COLUMN\>" <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Table.feature" target="_blank">Cucumber tests</a> for Table<br>
+<br><br><br><br><br><br><br><br><br><br><br>
+
+### Text
+
+```gherkin
+Text validation examples:
+
+Then the "Jdi Text" text equals to "Powerful Framework for UI Tests Automation. Suitable for any UI project such as Web(Html5, Angular, React...), Mobile(Android IOs), Desktop(Win app) etc."
+Then the "Jdi Text" text contains "Powerful Framework for UI"
+Then the "Jdi Text" is enabled
+Then the "Jdi Text" text matches to ".+"
+Then the "Jdi Text" css "font-size" equals to "14px"
+Then the "Jdi Text" css "font-family" contains "Source Sans Pro"
+Then the "Jdi Text" css "font-family" matches to "(.*)sans-serif"
+Then the "Jdi Text" is enabled
+Then the "Jdi Text" is disabled
+Then the "Jdi Text" is displayed
+Then the "Jdi Text" disappears
+Then the "Jdi Text" is hidden
+Then the "Jdi Text" does not appear
+Then the "Jdi Text" does not appear during "5" seconds
+
+
+
+Scenario example for Text:
+
+    Scenario: Text validation test
+        Given I open "Html5 Page"
+        Then the "Jdi Text" is enabled
+        Then the "Jdi Text" text contains "Powerful Framework for UI"
+
+```
+Validations:<br>
+
+**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>" <br>
+**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
+**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" contains "\<TEXT\>"<br>
+**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" matches to "\<REGEXP\>"<br>
+**Then** the "\<ELEMENT NAME\>" is enabled <br>
+**Then** the "\<ELEMENT NAME\>" is disabled <br>
+**Then** the "\<ELEMENT NAME\>" is displayed <br>
+**Then** the "\<ELEMENT NAME\>" disappears <br>
+**Then** the "\<ELEMENT NAME\>" is hidden	 <br>
+**Then** the "\<ELEMENT NAME\>" does not appear	<br>
+**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
+
+More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
+<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Text.feature" target="_blank">Cucumber tests</a> for Text<br><br>
+<br><br><br><br><br><br><br><br>
 
 ### TextArea 
 
@@ -20190,75 +21468,7 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi
 <br>
 <br>
 
-### Menu 
 
-```gherkin
-Menu actions examples:
-
-When I select "Contact form" in "Left Menu" menu
-When I select "Service;Dates" items in "Left Menu" menu
-When I show "Contact form" in "Left Menu" menu
-
-Menu validations examples:
-
-Then the "Left Menu" is enabled
-Then the "Left Menu" is disabled
-Then the "Left Menu" is displayed
-Then the "Left Menu" is hidden
-Then the "Left Menu" does not appear
-Then the "Left Menu" does not appear during "5" seconds
-Then the "Contact form" in "Left Menu" menu is selected
-Then the "Contact form" in "Left Menu" menu is deselected
-
-Scenario examples for Menu:
-
-  Scenario: Select items test
-    Given I open "Html5 Page"
-    When I check "Accept Conditions"
-    When select items in "Left Menu" menu
-     | Service |
-     | Dates   |
-    Then the "Dates Page" page is opened
-
-  Scenario: Is validation test
-    Given I open "Html5 Page"
-    When I check "Accept Conditions"
-    Then the "HTML 5" in "Left Menu" menu is selected
-
-```
-
-Actions: <br>
-
-**When** \<I\> select "\<VALUE\>" in "\<ELEMENT NAME\>" menu <br>
-**When** \<I\> select items in "\<ELEMENT NAME\>" menu:<br>
- &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
-**When** \<I\> show "\<VALUE\>" in "\<ELEMENT NAME\>" menu <br>
-
-
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-**Then** the "\<VALUE\>" in "\<ELEMENT NAME\>" menu is selected <br>
-**Then** the "\<VALUE\>" in "\<ELEMENT NAME\>" menu is deselected <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Menu.feature" target="_blank">Cucumber tests</a> for Menu<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 ### TextField
 ```gherkin
 TextField action example:
@@ -20312,566 +21522,6 @@ More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?jav
 <br>
 <br>
 <br>
-
-### MultiSelector
-```gherkin
-MultiSelector actions examples:
-
- When I check in the "Multi Dropdown" values
-      | Electro | Metalic |
- When I check in the "Multi Dropdown" values by number
-      | 1 | 5 |
- When I check value "Steam" in the "Multi Dropdown"
-
-```
-Actions: <br>
-
- **When** \<I\> check in the  \<ELEMENT NAME\>  values:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **When** \<I\> check in the  \<ELEMENT NAME\>  values by number:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **When** \<I\> check value  \<ELEMENT NAME\>  in the  \<ELEMENT NAME\> <br>
-
-```gherkin
-MultiSelector validation examples:
-
- Then the "Multi Dropdown" selected values
-      | Electro | Wood |
- Then the "Multi Dropdown" selected value is "Steam"
- Then the "Multi Dropdown" values has item "Wood"
- Then the "Multi Dropdown" has disabled item "Disabled"
- Then the "Multi Dropdown" has no enabled item "Disabled"
- Then the "Multi Dropdown" has enabled items
-      | Electro | Metalic |
- Then the "Multi Dropdown" contains items
-      | Disabled | Wood | Steam | Electro | Metalic |
-    
-Scenario: MultiSelector validation
-    Given I open "Html5 Page"
-    Then the "Ages" selected value is "Steam"
-    And the "Ages" values has item "Wood"
-    And  the "Ages" has disabled item "Disabled"
-    And the "Ages" has no enabled item "Disabled"
-    And the "Ages" has enabled items
-      | Electro | Metalic |
-
-```
-Validations: <br>
-
- **Then** the \<ELEMENT NAME\> selected values:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the \<ELEMENT NAME\> selected value is \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> values has item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has disabled item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has no enabled item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has enabled items:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the \<ELEMENT NAME\> contains items:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/MultiDropDown.feature" target="_blank">Cucumber tests</a> for CheckList<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### MultiDropDown
-
-<p style="color:#FFA500">Note: this element is an alias for MultiSelector</p>
-
-```gherkin
-MultiDropDown actions examples:
-
- When I check in the "Multi Dropdown" values
-      | Electro | Metalic |
- When I check in the "Multi Dropdown" values by number
-      | 1 | 5 |
- When I check value "Steam" in the "Multi Dropdown"
-
-```
-Actions: <br>
-
- **When** \<I\> check in the  \<ELEMENT NAME\>  values:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **When** \<I\> check in the  \<ELEMENT NAME\>  values by number:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **When** \<I\> check value  \<ELEMENT NAME\>  in the  \<ELEMENT NAME\> <br>
-
-```gherkin
-MultiDropDown validation examples:
-
- Then the "Multi Dropdown" selected values
-      | Electro | Wood |
- Then the "Multi Dropdown" selected value is "Steam"
- Then the "Multi Dropdown" values has item "Wood"
- Then the "Multi Dropdown" has disabled item "Disabled"
- Then the "Multi Dropdown" has no enabled item "Disabled"
- Then the "Multi Dropdown" has enabled items
-      | Electro | Metalic |
- Then the "Multi Dropdown" contains items
-      | Disabled | Wood | Steam | Electro | Metalic |
-    
-Scenario: MultiDropDown validation
-    Given I open "Html5 Page"
-    Then the "Ages" selected value is "Steam"
-    And the "Ages" values has item "Wood"
-    And  the "Ages" has disabled item "Disabled"
-    And the "Ages" has no enabled item "Disabled"
-    And the "Ages" has enabled items
-      | Electro | Metalic |
-
-```
-Validations: <br>
-
- **Then** the \<ELEMENT NAME\> selected values:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the \<ELEMENT NAME\> selected value is \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> values has item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has disabled item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has no enabled item \<VALUE\> <br>
- **Then** the \<ELEMENT NAME\> has enabled items:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the \<ELEMENT NAME\> contains items:<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/MultiDropDown.feature" target="_blank">Cucumber tests</a> for CheckList<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### CheckList
-
-```gherkin
-CheckList actions examples:
-
-When I check element "Hot option" in "Weather" checklist
-When I select fields from "Weather" checklist
-     | Cold       | 
-     | Hot option |
-When I check elements in "Weather" checklist
-     | Hot option |
-When I select in "Weather" checklist elements by numbers
-     | 1 |
-     | 2 |
-When I check all elements in "Weather" checklist
-When I uncheck all elements in "Weather" checklist
-When I check elements in "Weather" checklist
-     | Rainy day |
-     | Sunny     |
-
-
-CheckList validation examples:
-
-Then in the "Weather" checklist checked element is "Cold"
-Then the "Weather" checklist text is "Hot option"
-Then count of selected elements in "Weather" checklist is "2"
-Then in the "Weather" checklist checked elements are
-     | Hot option |
-     | Sunny      |
-
-Scenario example for CheckList:
-
-Scenario: Check element via numbers test
-  When I check in "Weather" checklist elements by numbers
-      | 1 |
-      | 4 |
-  Then in the "Weather" checklist checked elements are
-      | Hot option |
-      | Sunny      |
-
-```
-Actions: <br>
-
- **When**  \<I\> check element "\<VALUE\>" in "\<ELEMENT NAME\>" checklist <br>
- **When**  \<I\> select fields from "\<ELEMENT NAME\>" checklist:  <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> check elements in "\<ELEMENT NAME\>" checklist:  <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> uncheck element "\<VALUE\>" in "\<ELEMENT NAME\>" checklist <br>
- **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist elements:  <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist elements by numbers: <br>
-   &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> uncheck in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br> 
- **When**  \<I\> check in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br>
- **When**  \<I\> check in "\<ELEMENT NAME\>" checklist elements by numbers: <br> 
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> select in "\<ELEMENT NAME\>" checklist elements by numbers: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When**  \<I\> select in "\<ELEMENT NAME\>" checklist element by numbers "\<NUMBER\>"<br>
- **When**  \<I\> check all elements in "\<ELEMENT NAME\>" checklist  <br>
- **When**  \<I\> uncheck all elements in "\<ELEMENT NAME\>" checklist  <br> 
- 
-Validations: <br>
-
-**Then** in the "\<ELEMENT NAME\>" checklist checked element is "\<VALUE\>" <br>
-**Then** count of selected elements in "\<ELEMENT NAME\>" checklist is "\<COUNT\>" <br>
-**Then** in the "\<ELEMENT NAME\>" checklist checked element are: <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
-**Then** the "\<ELEMENT NAME\>" checklist text is "\<ELEMENT NAME\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden	 <br>
-**Then** the "\<ELEMENT NAME\>" does not appear	<br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#checklist)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/CheckList.feature" target="_blank">Cucumber tests</a> for CheckList<br>
-
-<br><br><br><br><br><br><br><br><br><br><br>
-
-### Table
-
-```gherkin
-Table actions examples:
-
-When I click the cell in row "2" in column "2" of the table "Simple Table"
-
-Table validation examples:
-
-Then the "Users Table" is enabled
-Then the "Users Table" is disabled
-Then the "Users Table" is displayed
-Then the "Users Table" is hidden
-Then the cell in row "1" in column "3" of the table "Simple Table" is selected
-Then the cell in row "1" in column "3" of the table "Simple Table" is deselected
-Then the "Users Table" does not appear
-Then the "Users Table" does not appear during "5" seconds
-Then the "Users Table" table columns count equals "4"
-Then the "Users Table" table rows count equals "6"
-Then the "Users Table" table header has items
-Then the "Users Table" table preview equals values
-Then the "Users Table" table has size "6"
-Then the "Users Table" table has size greater than "3"
-Then the "Users Table" table has size less or equal to "6"
-Then the "Users Table" table is not empty
-Then the "Users Table" table has row that contains value "Ivan" in column "User"
-Then the "Users Table" table all rows contain value "Vip" in column "Description"
-Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
-Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
-Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
-Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
-
-Scenario examples for Table:
-
-  Scenario: Get label text test
-    Given I open "Users Page"
-    Then the "Users Table" table columns count equals "4"
-    And the "Users Table" table rows count equals "6"
-    And the "Users Table" table header has items
-      | Number      |
-      | Type        |
-      | User        |
-      | Description |
-
-  Scenario: Common matchers test
-    Given I open "Users Page"
-    Then the "Users Table" table has size "6"
-    And the "Users Table" table has size greater than "3"
-    And the "Users Table" table has size less or equal to "6"
-    And the "Users Table" table is not empty
-
-```
-Actions: <br>
-
- **When** \<I\> click the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\><br>
- 
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\> is selected <br>
-**Then** the cell in row \<ROW NUMBER\> in column \<COLUMN NUMBER\> of the table \<ELEMENT\> is deselected <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-**Then** the "\<ELEMENT NAME\>" table columns count equals "\<COUNT\>" <br>
-**Then** the "\<ELEMENT NAME\>" table rows count equals "\<COUNT\>" <br>
-**Then** the "\<ELEMENT NAME\>" table header has items: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
-**Then** the "\<ELEMENT NAME\>" table preview equals values: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
-**Then** the "\<ELEMENT NAME\>" table has size "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has size greater than "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has size less or equal to "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table is not empty <br>
-**Then** the "\<ELEMENT NAME\>" table has row that contains value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table all rows contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has no rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has at least "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which have value "\<TEXT\>" in column "\<COLUMN\>" <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Table.feature" target="_blank">Cucumber tests</a> for Table<br>
-<br><br><br><br><br><br><br><br><br><br><br>
-
-### DataTable
-
-Note: this element is an alias for Table
-
-```gherkin
-Table validation examples:
-
-Then the "Users Table" is enabled
-Then the "Users Table" is disabled
-Then the "Users Table" is displayed
-Then the "Users Table" is hidden
-Then the "Users Table" does not appear
-Then the "Users Table" does not appear during "5" seconds
-Then the "Users Table" table columns count equals "4"
-Then the "Users Table" table rows count equals "6"
-Then the "Users Table" table header has items
-Then the "Users Table" table preview equals values
-Then the "Users Table" table has size "6"
-Then the "Users Table" table has size greater than "3"
-Then the "Users Table" table has size less or equal to "6"
-Then the "Users Table" table is not empty
-Then the "Users Table" table has row that contains value "Ivan" in column "User"
-Then the "Users Table" table all rows contain value "Vip" in column "Description"
-Then the "Users Table" table has no rows which contain value "Vip" in column "Description"
-Then the "Users Table" table has at least "3" rows which contain value " " in column "User"
-Then the "Users Table" table has exact "2" rows which contain value "R" in column "User"
-Then the "Users Table" table has exact "1" rows which have value "Roman" in column "User"
-
-Scenario examples for Table:
-
-  Scenario: Get label text test
-    Given I open "Users Page"
-    Then the "Users Table" table columns count equals "4"
-    And the "Users Table" table rows count equals "6"
-    And the "Users Table" table header has items
-      | Number      |
-      | Type        |
-      | User        |
-      | Description |
-
-  Scenario: Common matchers test
-    Given I open "Users Page"
-    Then the "Users Table" table has size "6"
-    And the "Users Table" table has size greater than "3"
-    And the "Users Table" table has size less or equal to "6"
-    And the "Users Table" table is not empty
-
-```
-
-Validations: <br>
-
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-**Then** the "\<ELEMENT NAME\>" table columns count equals "\<COUNT\>" <br>
-**Then** the "\<ELEMENT NAME\>" table rows count equals "\<COUNT\>" <br>
-**Then** the "\<ELEMENT NAME\>" table header has items: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
-**Then** the "\<ELEMENT NAME\>" table preview equals values: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
-**Then** the "\<ELEMENT NAME\>" table has size "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has size greater than "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has size less or equal to "\<SIZE\>" <br>
-**Then** the "\<ELEMENT NAME\>" table is not empty <br>
-**Then** the "\<ELEMENT NAME\>" table has row that contains value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table all rows contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has no rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has at least "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which contain value "\<TEXT\>" in column "\<COLUMN\>" <br>
-**Then** the "\<ELEMENT NAME\>" table has exact "\<COUNT\>" rows which have value "\<TEXT\>" in column "\<COLUMN\>" <br>
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Table.feature" target="_blank">Cucumber tests</a> for Table<br>
-<br><br><br><br><br><br><br><br><br><br><br>
-
-### Form
-
-```gherkin
-Form actions examples:
-
-When fill form "Contact Form" with data
-    | name | Roman |
-    | lastName| Iovlev |
-    | position| ChiefQA |
-    | passportNumber| 654321 |
-    | passportSeria| 1234 |
-    | description| JDI - awesome UI automation tool |
-    | acceptConditions| true | 
-    | gender| Female |
-    | religion| Other |
-When I submit form "Contact Form"
-When I save form
-
-JSON data file examples:
-When fill form "Contact Form" with "Roman Contacts"
-When send form "Contact Form" with "Roman Contacts"
-
-Form validation examples:
-
-Then the form "Contact Form" data equals to
-    | name| Roman |
-    | lastName | Iovlev |
-    | position | ChiefQA |
-    | passportNumber | 654321 |
-    | passportSeria | 1234 |
-    | description | JDI - awesome UI automation tool |
-    | acceptConditions | true |
-    | gender| Female |
-    | religion| Other |
-Then the form "Contact Form" is displayed
-Then the form "Contact Form" is hidden
-Then the form "Contact Form" does not appear
-Then the form "Contact Form" does not appear during 7
-Then the form "Contact Form" disappear
-
-JSON data file examples:
-Then the form "Contact Form" data equals to "Roman Contacts"
-
-Form scenario example:
-
-  Scenario: fillContactForm
-    Given I open "Contact Form Page"
-    When fill form "Contact Form" with data
-    | name| Roman |
-    | lastName | Iovlev |
-    | position | ChiefQA |
-    | passportNumber | 654321 |
-    | passportSeria | 1234 |
-    | description | JDI - awesome UI automation tool |
-    | acceptConditions | true |
-    | gender | Female |
-    | religion | Other |
-    And I submit form "Contact Form"
-    Then the form "Contact Form" data equals to
-    | name | Roman |
-    | lastName | Iovlev |
-    | position | ChiefQA |
-    | passportNumber | 654321 |
-    | passportSeria | 1234 |
-    | description | JDI - awesome UI automation tool |
-    | acceptConditions | true |
-    | gender | Female |
-    | religion | Other |
-
-```
-Actions: <br>
-
- **When** \<I\> fill form \<ELEMENT NAME\> with data:<br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form \<ELEMENT NAME\> with data:<br>
- &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>| <br>
- **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form<br>
- 
- It's also possible to use JSON data files:<br>
- **When** \<I\> fill form \<ELEMENT NAME\> with \<JSON DATA FILE NAME\><br>
- **When** \<I\> [submit|login as|send|add|publich|save|update|cancel|close|back|select|next|search] form \<ELEMENT NAME\> with \<JSON DATA FILE NAME\><br>
- <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/json/test/data/Roman%20Contacts.json" target="_blank">JSON data file example</a>
- 
-Validations: <br>
-
- **Then** the form \<ELEMENT NAME\> data equals to: <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;|\<GHERKIN DATA TABLE\>|<br>
- **Then** the form \<ELEMENT NAME\> is displayed<br>
- **Then** the form \<ELEMENT NAME\> is hidden<br>
- **Then** the form \<ELEMENT NAME\> does not appear<br>
- **Then** the form \<ELEMENT NAME\> does not appear during \<SECONDS\><br>
- **Then** the form \<ELEMENT NAME\> disappear<br>
- 
- It's also possible to use JSON data files:<br>
- **Then** the form \<ELEMENT NAME\> data equals to \<JSON DATA FILE NAME\><br>
- <a href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/json/test/data/Roman%20Contacts.json" target="_blank">JSON data file example</a>
-
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/?java#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/Form.feature" target="_blank">Cucumber tests</a> for Form<br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-<br>
-### Radiobuttons
-
-```gherkin
-Radiobuttons actions examples:
-
-When I select "Blue" field from "Colors"
-When select the radio button with "1" index from "Colors" 
-When I highlight "Colors"	
-When set "Colors" attribute "test-jdi" with value "test-value" 
-
-Radiobuttons validation examples:
-
-Then the "Colors" text equals to "Blue"	
-Then the "Colors" text contains "Blue"	
-Then the "Colors" text matches to "\w{15}" 
-Then the "Colors" is enabled 
-Then the "Colors" is disabled 
-Then the "Colors" is displayed 
-Then the "Colors" is hidden 
-Then the "Colors" disappears 
-Then the "Colors" does not appear 
-Then the "Colors" does not appear during "2" seconds 
-Then the "Colors" css "type" equals to "radio" 
-Then the "Colors" consists of next values 
-Then the "Colors" contains "Blue" radio button 
-Then the "Colors" contains "Yellow" disabled radio button 
-Then the "Colors" does not contain "Yellow" enabled radio button 
-Then the "Colors" contains next enabled values
-	| Red | Green | Blue | Yellow |
-
-Scenario example for Radiobuttons:
-
- Given I open "Html5 Page" page
- Then the "Html5 Page.Colors" consists of next values
-      | Red | Green | Blue | Yellow |
- When I highlight "Colors"	
- When I Select "Blue" field from "Html5 Page.Colors"
- Then the "Html5 Page.Colors" text equals to "Blue"
-
-
-
-```
-Actions: <br><br>
-
-**When** \<I\> select "TEXT" field from "\<ELEMENT NAME\>" <br>
-**When** \<I\> select the radio button with "\<INDEX\>" index from "\<ELEMENT NAME\>" <br>
-**When** \<I\> highlight "\<ELEMENT NAME\>"	<br>
-**When** \<I\> set "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" with value "\<ATTRIBUTE VALUE\>" <br>
- 
-Validations: <br><br>
-**Then** the "\<ELEMENT NAME\>" text equals to "\<TEXT\>"	<br>
-**Then** the "\<ELEMENT NAME\>" text contains "\<TEXT\>"	<br>
-**Then** the "\<ELEMENT NAME\>" text matches to "\<REGEXP\>" <br>
-**Then** the "\<ELEMENT NAME\>" is enabled <br>
-**Then** the "\<ELEMENT NAME\>" is disabled <br>
-**Then** the "\<ELEMENT NAME\>" is displayed <br>
-**Then** the "\<ELEMENT NAME\>" is hidden <br>
-**Then** the "\<ELEMENT NAME\>" disappears <br>
-**Then** the "\<ELEMENT NAME\>" does not appear <br>
-**Then** the "\<ELEMENT NAME\>" does not appear during "\<SECONDS\>" seconds <br>
-**Then** the "\<ELEMENT NAME\>" css "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" attribute "\<ATTRIBUTE NAME\>" equals to "\<TEXT\>" <br>
-**Then** the "\<ELEMENT NAME\>" consists of next values <br>
-**Then** the "\<ELEMENT NAME\>" contains "\<TEXT\>" radio button <br>
-**Then** the "\<ELEMENT NAME\>" contains "\<TEXT\>" disabled radio button <br>
-**Then** the "\<ELEMENT NAME\>" does not contain "\<TEXT\>" enabled radio button <br>
-**Then** the "\<ELEMENT NAME\>" contains next enabled values: <br>
-    |"\<RADIO_3\>" | "\<RADIO_2\>" | "\<RADIO_3\>" |
-
-More information in the [**Tutorial**](https://jdi-docs.github.io/jdi-light/#jdi-light-in-bdd-style-even-for-manual-qa)<br>
-<a style="font-weight:bold" href="https://github.com/jdi-testing/jdi-light/blob/master/jdi-bdd-tests/src/test/resources/features/RadioButtons.feature" target="_blank">Cucumber tests</a> for Radiobuttons<br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
 
 ### WebPage
 ```gherkin
