@@ -460,6 +460,9 @@
 								<a href="#mobiledevice" class="toc-h2 h3 toc-link" data-title="MobileDevice">MobileDevice</a>
                             </li>
                             <li>
+								<a href="#mobile-device-activity" class="toc-h2 h3 toc-link" data-title="Mobile Device Activity">Mobile Device Activity</a>
+                            </li>
+                            <li>
 								<a href="#mobilefilemanager" class="toc-h2 h3 toc-link" data-title="MobileFileManager">MobileFileManager</a>
                             </li>
                             <li>
@@ -2738,6 +2741,54 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <td>String</td>
 </tr>
 </tbody></table>
+<h3 id='mobile-device-activity'>Mobile Device Activity</h3><pre class="highlight java tab-java"><code>
+      <span class="nd">@DataProvider</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"forStartActivityTest"</span><span class="o">)</span>
+      <span class="kd">public</span> <span class="n">Object</span><span class="o">[][]</span> <span class="nf">providerForStartActivity</span><span class="o">()</span> <span class="o">{</span>
+          <span class="k">return</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[][]{</span>
+              <span class="c1">//packageName, activityName</span>
+              <span class="o">{</span><span class="s">"com.android.dialer"</span><span class="o">,</span>                  <span class="s">".main.impl.MainActivity"</span><span class="o">},</span>         
+              <span class="o">{</span><span class="s">"com.google.android.apps.messaging"</span><span class="o">,</span>   <span class="s">".ui.ConversationListActivity"</span><span class="o">},</span>       
+              <span class="o">{</span><span class="s">"com.android.settings"</span><span class="o">,</span>                <span class="s">".Settings"</span><span class="o">}</span>                            
+          <span class="o">};</span>
+      <span class="o">}</span>
+
+      <span class="nd">@Test</span><span class="o">(</span><span class="n">dataProvider</span> <span class="o">=</span> <span class="s">"forStartActivityTest"</span><span class="o">)</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">startActivityTest</span><span class="o">(</span><span class="n">String</span> <span class="n">expPack</span><span class="o">,</span> <span class="n">String</span> <span class="n">expActivity</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">MobileDeviceActivity</span><span class="o">.</span><span class="na">startActivity</span><span class="o">(</span><span class="n">expPack</span><span class="o">,</span> <span class="n">expActivity</span><span class="o">);</span>
+          <span class="n">String</span> <span class="n">currentPack</span> <span class="o">=</span> <span class="n">MobileDeviceActivity</span><span class="o">.</span><span class="na">currentPackage</span><span class="o">();</span>
+          <span class="n">String</span> <span class="n">currentActivity</span> <span class="o">=</span> <span class="n">MobileDeviceActivity</span><span class="o">.</span><span class="na">currentActivity</span><span class="o">();</span>
+          <span class="n">SoftAssert</span> <span class="n">softAssert</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SoftAssert</span><span class="o">();</span>
+          <span class="n">softAssert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">currentPack</span><span class="o">,</span> <span class="n">expPack</span><span class="o">);</span>
+          <span class="n">softAssert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">currentActivity</span><span class="o">,</span> <span class="n">expActivity</span><span class="o">);</span>
+          <span class="n">softAssert</span><span class="o">.</span><span class="na">assertAll</span><span class="o">();</span>
+      <span class="o">}</span>
+
+</code></pre>
+<p>Available mobile device activity methods in Java JDI Light Mobile (for Android only):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>startActivity(String package, String activityName)</strong></td>
+<td>Launches an activity by providing package and activity names</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>currentActivity()</strong></td>
+<td>Returns the name of the current activity</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>currentPackage()</strong></td>
+<td>Returns the name of the current package</td>
+<td>String</td>
+</tr>
+</tbody></table>
 <h3 id='mobilefilemanager'>MobileFileManager</h3><pre class="highlight java tab-java"><code>
   <span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">pushAndPull</span><span class="o">()</span> <span class="o">{</span>
@@ -3257,7 +3308,7 @@ It allows the user to select one or more options from a set. </p>
 <h3 id='rating-bar'>Rating Bar</h3>
 <p><a href="https://developer.android.com/reference/android/widget/RatingBar" target="_blank" style="font-weight: bold;">RatingBar</a> is an extension of SeekBar and ProgressBar that shows a rating in stars.</p>
 <pre class="highlight java tab-java"><code>
-<span class="nd">@Test</span>
+    <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">RatingBarTestExample</span><span class="o">(){</span>
         <span class="n">RatingBarPage</span><span class="o">.</span><span class="na">ratingBar1</span><span class="o">.</span><span class="na">setRating</span><span class="o">(</span><span class="mf">4.0</span><span class="o">);</span>
         <span class="n">RatingBarPage</span><span class="o">.</span><span class="na">ratingBar1</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="mf">4.0</span><span class="o">);</span>
