@@ -580,6 +580,23 @@
                         </ul>
                   </li>
                   <li>
+                    <a href="#html-5-mobile-elements" class="toc-h2 toc-link" data-title="HTML 5 Mobile elements">HTML 5 Mobile elements</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#check-box" class="toc-h2 h3 toc-link" data-title="Check Box">Check Box</a>
+                            </li>
+                            <li>
+								<a href="#progress-bar-2" class="toc-h2 h3 toc-link" data-title="Progress Bar">Progress Bar</a>
+                            </li>
+                            <li>
+								<a href="#textfield" class="toc-h2 h3 toc-link" data-title="TextField">TextField</a>
+                            </li>
+                            <li>
+								<a href="#text-area" class="toc-h2 h3 toc-link" data-title="Text Area">Text Area</a>
+                            </li>
+                        </ul>
+                  </li>
+                  <li>
                     <a href="#html5-common-elements" class="toc-h2 toc-link" data-title="HTML5 Common elements">HTML5 Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
@@ -628,7 +645,7 @@
 								<a href="#textarea" class="toc-h2 h3 toc-link" data-title="TextArea">TextArea</a>
                             </li>
                             <li>
-								<a href="#textfield" class="toc-h2 h3 toc-link" data-title="TextField">TextField</a>
+								<a href="#textfield-2" class="toc-h2 h3 toc-link" data-title="TextField">TextField</a>
                             </li>
                             <li>
 								<a href="#title" class="toc-h2 h3 toc-link" data-title="Title">Title</a>
@@ -858,7 +875,7 @@
 								<a href="#numberselector-2" class="toc-h2 h3 toc-link" data-title="NumberSelector">NumberSelector</a>
                             </li>
                             <li>
-								<a href="#progress-bar-2" class="toc-h2 h3 toc-link" data-title="Progress Bar">Progress Bar</a>
+								<a href="#progress-bar-3" class="toc-h2 h3 toc-link" data-title="Progress Bar">Progress Bar</a>
                             </li>
                             <li>
 								<a href="#radiobuttons-3" class="toc-h2 h3 toc-link" data-title="Radiobuttons">Radiobuttons</a>
@@ -876,7 +893,7 @@
 								<a href="#textarea-2" class="toc-h2 h3 toc-link" data-title="TextArea">TextArea</a>
                             </li>
                             <li>
-								<a href="#textfield-2" class="toc-h2 h3 toc-link" data-title="TextField">TextField</a>
+								<a href="#textfield-3" class="toc-h2 h3 toc-link" data-title="TextField">TextField</a>
                             </li>
                             <li>
 								<a href="#webpage-2" class="toc-h2 h3 toc-link" data-title="WebPage">WebPage</a>
@@ -4773,6 +4790,352 @@ appears at the bottom of an app screen and provides the ability to quickly switc
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/PhotosAppTests.java" target="_blank">Test examples in Java</a></p>
+<h2 id='html-5-mobile-elements'>HTML 5 Mobile elements</h2><h3 id='check-box'>Check Box</h3><pre class="highlight java tab-java"><code><span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#accept-conditions"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">UIElement</span> <span class="n">singleCheckBox</span><span class="o">;</span>
+
+<span class="nd">@FindBy</span><span class="o">(</span><span class="n">xpath</span> <span class="o">=</span> <span class="s">"//input[@name='checks-group']/.."</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">nameArea</span><span class="o">;</span>       
+
+     <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkBoxClick</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+            <span class="n">leftMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">htmlMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">singleCheckBox</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">singleCheckBox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isCheckBoxDisplayed</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+            <span class="n">leftMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">htmlMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">singleCheckBox</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">singleCheckBox</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getCheckBoxByText</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+            <span class="n">leftMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">htmlMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">UIElement</span> <span class="n">checkBoxHot</span> <span class="o">=</span> <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">checkList</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"hot"</span><span class="o">));</span>
+            <span class="n">checkBoxHot</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">checkBoxHot</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+
+            <span class="n">UIElement</span> <span class="n">checkBoxCold</span> <span class="o">=</span> <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">checkList</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"cold"</span><span class="o">));</span>
+            <span class="n">checkBoxCold</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">checkBoxCold</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+
+            <span class="n">UIElement</span> <span class="n">checkBoxRainy</span> <span class="o">=</span> <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">checkList</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"rainy"</span><span class="o">));</span>
+            <span class="n">checkBoxRainy</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">checkBoxRainy</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+
+            <span class="n">UIElement</span> <span class="n">checkBoxSunny</span> <span class="o">=</span> <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">checkList</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"sunny-day"</span><span class="o">));</span>
+            <span class="n">checkBoxSunny</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">checkBoxSunny</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+
+            <span class="n">UIElement</span> <span class="n">checkBoxDisabled</span> <span class="o">=</span> <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">checkList</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"disabled-ch"</span><span class="o">));</span>
+            <span class="n">checkBoxDisabled</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">is</span><span class="o">().</span><span class="na">disabled</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">verifyOtherCheckBoxesNotSelected</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+            <span class="n">leftMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">htmlMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">UIElement</span> <span class="n">checkBoxHot</span> <span class="o">=</span> <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">checkList</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"hot"</span><span class="o">));</span>
+            <span class="n">checkBoxHot</span><span class="o">.</span><span class="na">core</span><span class="o">().</span><span class="na">click</span><span class="o">();</span>
+            <span class="n">checkBoxHot</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">();</span>
+
+            <span class="n">UIElement</span> <span class="n">checkBoxCold</span> <span class="o">=</span> <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">checkList</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"cold"</span><span class="o">));</span>
+            <span class="n">checkBoxCold</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+
+            <span class="n">UIElement</span> <span class="n">checkBoxRainy</span> <span class="o">=</span> <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">checkList</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"rainy"</span><span class="o">));</span>
+            <span class="n">checkBoxRainy</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+
+            <span class="n">UIElement</span> <span class="n">checkBoxSunny</span> <span class="o">=</span> <span class="n">htmlMobilePage</span><span class="o">.</span><span class="na">checkList</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"sunny-day"</span><span class="o">));</span>
+            <span class="n">checkBoxSunny</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">deselected</span><span class="o">();</span>
+        <span class="o">}</span>
+</code></pre>
+<p><img src="images/html/checkbox_html.png" alt="Check Box" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>selected()</strong></td>
+<td>select check box</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>deselected()</strong></td>
+<td>deselect check box</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>Assert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileCheckBoxTests.java" target="_blank">Java test examples</a>
+<br></p>
+<h3 id='progress-bar-2'>Progress Bar</h3><pre class="highlight java tab-java"><code><span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#progress"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ProgressBar</span> <span class="n">staticProgressBar</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">progressBarGetValue</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+            <span class="n">leftMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+            <span class="n">htmlMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+            <span class="n">staticProgressBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">value</span><span class="o">(</span><span class="mi">70</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Test</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">progressBarIsDisplayed</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+            <span class="n">leftMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+            <span class="n">htmlMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+            <span class="n">staticProgressBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="o">}</span>
+</code></pre>
+<p><img src="images/html/progressbar_html.png" alt="Progress Bar" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>value()</strong></td>
+<td>get value</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>Assert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileWebProgressBarTests.java" target="_blank">Java test examples</a>
+<br></p>
+<h3 id='textfield'>TextField</h3><pre class="highlight java tab-java"><code><span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#name"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">nameArea</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">CONDITION1</span> <span class="o">=</span> <span class="s">"111"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">CONDITION2</span> <span class="o">=</span> <span class="s">"!}{?)"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">CONDITION3</span> <span class="o">=</span> <span class="s">"17"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">CONDITION4</span> <span class="o">=</span> <span class="s">"MyName"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">CONDITION5</span> <span class="o">=</span> <span class="s">"Мое имя"</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">textFieldTests</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+        <span class="n">leftMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">htmlMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">focus</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">CONDITION1</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">CONDITION1</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">focus</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">CONDITION2</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">CONDITION2</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">focus</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">CONDITION3</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">CONDITION3</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">focus</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">CONDITION4</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">CONDITION4</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">focus</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">CONDITION5</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">CONDITION5</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTextTests</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+        <span class="n">leftMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">htmlMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">CONDITION1</span><span class="o">);</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">placeholder</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">CONDITION1</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">isNameAreaDisplayed</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+        <span class="n">leftMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">htmlMenu</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">nameArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+<p><strong><em>Text Field</em></strong> - Element that represents text field for enter chars</p>
+
+<p><img src="images/html/textField_html.png" alt="TextField" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>clear()</strong></td>
+<td>Clear text area</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue</strong></td>
+<td>Input text to field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>focus()</strong></td>
+<td>Focused on text area</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>Assert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileWebTextFieldTests.java" target="_blank">Java test examples</a>
+<br></p>
+<h3 id='text-area'>Text Area</h3><pre class="highlight java tab-java"><code><span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#text-area"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">TextArea</span> <span class="n">textArea</span><span class="o">;</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">textAreaIsDisplayed</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+   <span class="n">leftMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+   <span class="n">htmlMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+   <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">enterTextToArea</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">inputText</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+   <span class="n">inputText</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"New text for text area."</span><span class="o">);</span>
+   <span class="n">inputText</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"JDI-Light mobile is very good and convenient."</span><span class="o">);</span>
+   <span class="n">inputText</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"It is very convenient to write auto tests"</span><span class="o">);</span>
+
+   <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+   <span class="n">leftMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+   <span class="n">htmlMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+   <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">focus</span><span class="o">();</span>
+   <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+   <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">inputText</span><span class="o">));</span>
+   <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">inputText</span><span class="o">));</span>
+   <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">addNewLinesTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">inputText</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">inputText</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"New text for text area."</span><span class="o">);</span>
+        <span class="n">inputText</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"JDI-Light mobile is very good and convenient."</span><span class="o">);</span>
+        <span class="n">inputText</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"It is very convenient to write auto tests"</span><span class="o">);</span>
+
+        <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+        <span class="n">leftMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">htmlMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">focus</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">inputText</span><span class="o">));</span>
+        <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">addNewLine</span><span class="o">(</span><span class="s">"New line for text area"</span><span class="o">);</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">getLines</span><span class="o">().</span><span class="na">size</span><span class="o">(),</span> <span class="mi">2</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">addNewLinesAndClearOld</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">inputText</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+       <span class="n">inputText</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"New text for text area."</span><span class="o">);</span>
+       <span class="n">inputText</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"JDI-Light mobile is very good and convenient."</span><span class="o">);</span>
+       <span class="n">inputText</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"It is very convenient to write auto tests"</span><span class="o">);</span>
+
+       <span class="n">shouldBeLoggedIn</span><span class="o">();</span>
+       <span class="n">leftMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+       <span class="n">htmlMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+       <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">focus</span><span class="o">();</span>
+       <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">input</span><span class="o">(</span><span class="s">"New line instead old"</span><span class="o">);</span>
+       <span class="n">HtmlMobilePage</span><span class="o">.</span><span class="na">textArea</span><span class="o">.</span><span class="na">placeholder</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"New line instead old"</span><span class="o">);</span>
+<span class="o">}</span>
+
+
+</code></pre>
+<p><strong>Text Area</strong> - Element that represents area for enter chars</p>
+
+<p><img src="images/html/textArea_html.png" alt="TextArea" /></p>
+
+<p>Available methods in Java JDI Light:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>clear()</strong></td>
+<td>Clear text area</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>input()</strong></td>
+<td>Input text to area</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>Click the button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>focus()</strong></td>
+<td>Focused on text area</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>Assert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileWebTextAreaTests.java" target="_blank">Java test examples</a>
+<br></p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='button'>Button</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[value*='Red Button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "[value*='Red Button']")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">redButton</span><span class="o">;</span>
 
@@ -7251,7 +7614,7 @@ class="uui-button red" onclick="alert('Red button');"&gt;
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light-csharp/blob/master/JDI.Light/JDI.Light.Tests/Tests/Simple/TextAreaTests.cs" target="_blank">Test examples in C#</a><br></p>
-<h3 id='textfield'>TextField</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#name")</span>
+<h3 id='textfield-2'>TextField</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"#name"</span><span class="o">)</span> <span class="c1">//@FindBy(css = "#name")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">TextField</span> <span class="n">name</span><span class="o">;</span>
 
 <span class="nd">@Test</span>
@@ -28607,7 +28970,7 @@ Validations: <br>
 <br>
 <br>
 <br></p>
-<h3 id='progress-bar-2'>Progress Bar</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Progress Bar validation examples</span><span class="p">:</span>
+<h3 id='progress-bar-3'>Progress Bar</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">Progress Bar validation examples</span><span class="p">:</span>
 
 <span class="nf">Then</span> the <span class="s">"Progress"</span> attribute <span class="s">"max"</span> equals to <span class="s">"110"</span>
 <span class="nf">Then</span> the <span class="s">"Progress"</span> progress volume greater or equal to 10
@@ -29019,7 +29382,7 @@ More information in the <a href="https://jdi-docs.github.io/jdi-light/?java#tuto
 <br>
 <br>
 <br></p>
-<h3 id='textfield-2'>TextField</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">TextField action example</span><span class="p">:</span>
+<h3 id='textfield-3'>TextField</h3><pre class="highlight gherkin tab-gherkin"><code><span class="err">TextField action example</span><span class="p">:</span>
 
 <span class="nf">When</span> I send keys <span class="s">"Lorem"</span> to <span class="s">"Name"</span>
 <span class="nf">When</span> I set text <span class="s">"Lorem"</span> in <span class="s">"Name"</span>
