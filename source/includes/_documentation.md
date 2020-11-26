@@ -1289,6 +1289,287 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/PhotosAppTests.java" target="_blank">Test examples in Java</a>
 
+## HTML 5 Mobile elements
+
+### Check Box
+
+```java 
+@FindBy(css = "#accept-conditions")
+public static UIElement singleCheckBox;
+
+@FindBy(xpath = "//input[@name='checks-group']/..")
+public static TextField nameArea;	    
+
+     @Test
+        public void checkBoxClick() {
+            shouldBeLoggedIn();
+            leftMenu.click();
+            htmlMenu.click();
+            htmlMobilePage.singleCheckBox.click();
+            htmlMobilePage.singleCheckBox.is().selected();
+        }
+    
+        @Test
+        public void isCheckBoxDisplayed() {
+            shouldBeLoggedIn();
+            leftMenu.click();
+            htmlMenu.click();
+            htmlMobilePage.singleCheckBox.click();
+            htmlMobilePage.singleCheckBox.is().displayed();
+        }
+    
+        @Test
+        public void getCheckBoxByText() {
+            shouldBeLoggedIn();
+            leftMenu.click();
+            htmlMenu.click();
+            UIElement checkBoxHot = htmlMobilePage.checkList.find(By.id("hot"));
+            checkBoxHot.core().click();
+            checkBoxHot.is().selected();
+    
+            UIElement checkBoxCold = htmlMobilePage.checkList.find(By.id("cold"));
+            checkBoxCold.core().click();
+            checkBoxCold.is().selected();
+    
+            UIElement checkBoxRainy = htmlMobilePage.checkList.find(By.id("rainy"));
+            checkBoxRainy.core().click();
+            checkBoxRainy.is().selected();
+    
+            UIElement checkBoxSunny = htmlMobilePage.checkList.find(By.id("sunny-day"));
+            checkBoxSunny.core().click();
+            checkBoxSunny.is().selected();
+    
+            UIElement checkBoxDisabled = htmlMobilePage.checkList.find(By.id("disabled-ch"));
+            checkBoxDisabled.core().is().disabled();
+        }
+    
+        @Test
+        public void verifyOtherCheckBoxesNotSelected() {
+            shouldBeLoggedIn();
+            leftMenu.click();
+            htmlMenu.click();
+            UIElement checkBoxHot = htmlMobilePage.checkList.find(By.id("hot"));
+            checkBoxHot.core().click();
+            checkBoxHot.is().selected();
+    
+            UIElement checkBoxCold = htmlMobilePage.checkList.find(By.id("cold"));
+            checkBoxCold.is().deselected();
+    
+            UIElement checkBoxRainy = htmlMobilePage.checkList.find(By.id("rainy"));
+            checkBoxRainy.is().deselected();
+    
+            UIElement checkBoxSunny = htmlMobilePage.checkList.find(By.id("sunny-day"));
+            checkBoxSunny.is().deselected();
+        }
+```
+
+![Check Box](../images/html/checkbox_html.png)
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**selected()** | select check box | void
+**deselected()** | deselect check box | void
+**is()** | Assert action | Assert 
+
+<a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileCheckBoxTests.java" target="_blank">Java test examples</a>
+<br>
+
+### Progress Bar
+
+```java 
+@FindBy(css = "#progress")
+public static ProgressBar staticProgressBar;
+
+    @Test
+        public void progressBarGetValue() {
+            shouldBeLoggedIn();
+            leftMenu.tap();
+            htmlMenu.tap();
+            staticProgressBar.is().value(70);
+        }
+    
+        @Test
+        public void progressBarIsDisplayed() {
+            shouldBeLoggedIn();
+            leftMenu.tap();
+            htmlMenu.tap();
+            staticProgressBar.is().displayed();
+        }
+```
+
+![Progress Bar](../images/html/progressbar_html.png)
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**value()** | get value | void
+**is()** | Assert action | Assert 
+
+<a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileWebProgressBarTests.java" target="_blank">Java test examples</a>
+<br>
+
+### TextField
+
+```java 
+@FindBy(css = "#name")
+public static TextField nameArea;
+
+    private static String CONDITION1 = "111";
+    private static String CONDITION2 = "!}{?)";
+    private static String CONDITION3 = "17";
+    private static String CONDITION4 = "MyName";
+    private static String CONDITION5 = "Мое имя";
+
+    @Test
+    public void textFieldTests() {
+        shouldBeLoggedIn();
+        leftMenu.click();
+        htmlMenu.click();
+
+        HtmlMobilePage.nameArea.focus();
+        HtmlMobilePage.nameArea.sendKeys(CONDITION1);
+        HtmlMobilePage.nameArea.has().text(CONDITION1);
+        HtmlMobilePage.nameArea.clear();
+
+        HtmlMobilePage.nameArea.focus();
+        HtmlMobilePage.nameArea.sendKeys(CONDITION2);
+        HtmlMobilePage.nameArea.has().text(CONDITION2);
+        HtmlMobilePage.nameArea.clear();
+
+        HtmlMobilePage.nameArea.focus();
+        HtmlMobilePage.nameArea.sendKeys(CONDITION3);
+        HtmlMobilePage.nameArea.has().text(CONDITION3);
+        HtmlMobilePage.nameArea.clear();
+
+        HtmlMobilePage.nameArea.focus();
+        HtmlMobilePage.nameArea.sendKeys(CONDITION4);
+        HtmlMobilePage.nameArea.has().text(CONDITION4);
+        HtmlMobilePage.nameArea.clear();
+
+        HtmlMobilePage.nameArea.focus();
+        HtmlMobilePage.nameArea.sendKeys(CONDITION5);
+        HtmlMobilePage.nameArea.has().text(CONDITION5);
+        HtmlMobilePage.nameArea.clear();
+    }
+
+@Test
+public void setTextTests() {
+        shouldBeLoggedIn();
+        leftMenu.click();
+        htmlMenu.click();
+        HtmlMobilePage.nameArea.setValue(CONDITION1);
+        HtmlMobilePage.nameArea.placeholder().equals(CONDITION1);
+}
+
+@Test
+public void isNameAreaDisplayed() {
+        shouldBeLoggedIn();
+        leftMenu.click();
+        htmlMenu.click();
+        HtmlMobilePage.nameArea.is().displayed();
+}
+```
+***Text Field*** - Element that represents text field for enter chars
+
+![TextField](../images/html/textField_html.png)
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**clear()** | Clear text area | void
+**setValue** | Input text to field | String
+**click()** | Click the button  | void
+**focus()** | Focused on text area | void
+**is()** | Assert action | Assert 
+
+<a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileWebTextFieldTests.java" target="_blank">Java test examples</a>
+<br>
+
+### Text Area
+
+```java 
+@FindBy(css = "#text-area")
+public static TextArea textArea;
+
+@Test
+public void textAreaIsDisplayed() {
+   shouldBeLoggedIn();
+   leftMenu.tap();
+   htmlMenu.tap();
+   HtmlMobilePage.textArea.is().displayed();
+}
+
+@Test
+public void enterTextToArea() {
+   List<String> inputText = new ArrayList<>();
+   inputText.add("New text for text area.");
+   inputText.add("JDI-Light mobile is very good and convenient.");
+   inputText.add("It is very convenient to write auto tests");
+
+   shouldBeLoggedIn();
+   leftMenu.tap();
+   htmlMenu.tap();
+   HtmlMobilePage.textArea.focus();
+   HtmlMobilePage.textArea.clear();
+   HtmlMobilePage.textArea.input(String.valueOf(inputText));
+   HtmlMobilePage.textArea.has().text(String.valueOf(inputText));
+   HtmlMobilePage.textArea.clear();
+}
+
+@Test
+public void addNewLinesTest() {
+        List<String> inputText = new ArrayList<>();
+        inputText.add("New text for text area.");
+        inputText.add("JDI-Light mobile is very good and convenient.");
+        inputText.add("It is very convenient to write auto tests");
+
+        shouldBeLoggedIn();
+        leftMenu.tap();
+        htmlMenu.tap();
+        HtmlMobilePage.textArea.focus();
+        HtmlMobilePage.textArea.clear();
+        HtmlMobilePage.textArea.sendKeys(String.valueOf(inputText));
+        HtmlMobilePage.textArea.addNewLine("New line for text area");
+        Assert.assertEquals(HtmlMobilePage.textArea.getLines().size(), 2);
+}
+
+@Test
+public void addNewLinesAndClearOld() {
+       List<String> inputText = new ArrayList<>();
+       inputText.add("New text for text area.");
+       inputText.add("JDI-Light mobile is very good and convenient.");
+       inputText.add("It is very convenient to write auto tests");
+            
+       shouldBeLoggedIn();
+       leftMenu.tap();
+       htmlMenu.tap();
+       HtmlMobilePage.textArea.focus();
+       HtmlMobilePage.textArea.input("New line instead old");
+       HtmlMobilePage.textArea.placeholder().equals("New line instead old");
+}
+
+
+```
+**Text Area** - Element that represents area for enter chars
+
+![TextArea](../images/html/textArea_html.png)
+
+Available methods in Java JDI Light:
+
+|Method | Description | Return Type
+--- | --- | ---
+**clear()** | Clear text area | void
+**input()** | Input text to area | void
+**click()** | Click the button  | void
+**focus()** | Focused on text area | void
+**is()** | Assert action | Assert 
+
+<a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileWebTextAreaTests.java" target="_blank">Java test examples</a>
+<br>
 
 ## HTML5 Common elements
 
