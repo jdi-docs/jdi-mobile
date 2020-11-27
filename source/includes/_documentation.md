@@ -757,6 +757,57 @@ Available methods in Java JDI Mobile:
 
 <a href="***">Test examples in Java</a>
 
+### ExpandableListView
+
+<a href="https://developer.android.com/reference/android/widget/ExpandableListView">ExpandableListView</a>
+A view that shows items in a vertically scrolling two-level list. This differs from the ListView by allowing two levels: groups which can individually be expanded to show its children. The items come from the ExpandableListAdapter associated with this view.
+
+```java 
+
+  @Test
+    public void customAdapterTest() {
+        customAdapter.tap();
+        peopleNames.tap();
+        dogNames.tap();
+        catNames.tap();
+        fishNames.tap();
+        
+        arnoldName.is().enabled();
+        arnoldName.is().displayed();
+        arnoldName.is().text("Arnold");
+
+        bubblesName.is().enabled();
+        bubblesName.is().displayed();
+        bubblesName.is().text("Bubbles");
+    }
+
+    @Test
+    public void simpleAdapterTest(){
+        simpleAdapter.tap();
+        group0.tap();
+        child1.is().enabled();
+        child1.is().displayed();
+        child1.is().text("Child 1");
+        group0.tap();
+    }
+```
+
+![ExpandableListView](../images/android/expanable_list_view.PNG)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap** | Tap | void
+**is()** | Assert action | TextAssert
+**enabled()** | Checks that the search field is enabled | boolean
+**displayed()** | Checks that the search field is displayed | boolean
+
+
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ExpandableListTests.java">Test examples in Java</a>
+
+
 ## Android Native Application Composite elements
 
 ### Context Menu
