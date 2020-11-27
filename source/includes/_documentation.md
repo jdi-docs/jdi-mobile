@@ -757,6 +757,38 @@ Available methods in Java JDI Mobile:
 
 <a href="***">Test examples in Java</a>
 
+## Android Native Application Composite elements
+
+### Context Menu
+With <a href="https://developer.android.com/reference/android/view/ContextMenu" target="_blank" style="font-weight: bold;">Context Menu</a> you can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.
+
+```java 
+   
+    @Test
+    public void contextMenuTests() {
+        appPage.click();
+        fragmentPage.click();
+        contextMenuPage.tap();
+        longPressButton.shouldBe().visible();
+
+        longPressButton.longPress();
+        menuView.shouldBe().visible();
+    }
+  
+```
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ContextMenuTests.java" target="_blank">Test examples in Java</a>
+
+
 ## iOS Native Application Common elements
 
 ### Buttons
