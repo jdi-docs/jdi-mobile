@@ -4628,19 +4628,21 @@ appears at the top of an app screen, below the status bar, and enables navigatio
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/segmented-controls/" target="_blank" style="font-weight: bold;">A Segmented control </a>
 is a linear set of two or more segments, each of which functions as a mutually exclusive button.</p>
 <pre class="highlight java tab-java"><code>
-    <span class="nd">@Test</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">segmentedControlTest</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">CalendarPage</span><span class="o">.</span><span class="na">inboxButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+      <span class="nd">@Test</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">segmentedControlTest</span><span class="o">()</span> <span class="o">{</span>
+          <span class="n">menuSegmentedControl</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-            <span class="n">InboxPage</span><span class="o">.</span><span class="na">eventTypesSegmentedControl</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">segments</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"New"</span><span class="o">,</span> <span class="s">"Replied"</span><span class="o">));</span>
+          <span class="n">segmentedControl</span><span class="o">.</span><span class="na">tapSegment</span><span class="o">(</span><span class="s">"Two"</span><span class="o">);</span>
+          <span class="n">segmentedControl</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Two"</span><span class="o">);</span>
 
-            <span class="n">InboxPage</span><span class="o">.</span><span class="na">eventTypesSegmentedControl</span><span class="o">.</span><span class="na">tapSegment</span><span class="o">(</span><span class="s">"Replied"</span><span class="o">);</span>
-            <span class="n">InboxPage</span><span class="o">.</span><span class="na">eventTypesSegmentedControl</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Replied"</span><span class="o">);</span>
-            <span class="n">InboxPage</span><span class="o">.</span><span class="na">eventsInfoText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"No Events You’ve Replied To"</span><span class="o">);</span>
-        <span class="o">}</span>
+          <span class="n">segmentedControl</span><span class="o">.</span><span class="na">tapSegment</span><span class="o">(</span><span class="s">"Three"</span><span class="o">);</span>
+          <span class="n">segmentedControl</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Three"</span><span class="o">);</span>
 
+          <span class="n">segmentedControl</span><span class="o">.</span><span class="na">tapSegment</span><span class="o">(</span><span class="s">"One"</span><span class="o">);</span>
+          <span class="n">segmentedControl</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"One"</span><span class="o">);</span>
+      <span class="o">}</span>
 </code></pre>
-<p><img src="images/ios/segmented_control.png" alt="Segmented control" /></p>
+<p><img src="images/ios/segmented_control_testing_app.png" alt="Segmented control" /></p>
 
 <p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
 
@@ -4693,7 +4695,7 @@ is a linear set of two or more segments, each of which functions as a mutually e
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/SegmentedContolTest.java" target="_blank">Test examples in Java</a></p>
 <h3 id='search-bar'>Search Bar</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/search-bars/" target="_blank" style="font-weight: bold;">A Search bar </a>
 allows people to search through a large collection of values by typing text into a field.</p>
