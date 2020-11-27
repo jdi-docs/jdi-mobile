@@ -525,6 +525,14 @@
                         </ul>
                   </li>
                   <li>
+                    <a href="#android-native-application-composite-elements" class="toc-h2 toc-link" data-title="Android Native Application Composite elements">Android Native Application Composite elements</a>
+                        <ul class="toc-list-h2">
+                            <li>
+								<a href="#context-menu" class="toc-h2 h3 toc-link" data-title="Context Menu">Context Menu</a>
+                            </li>
+                        </ul>
+                  </li>
+                  <li>
                     <a href="#ios-native-application-common-elements" class="toc-h2 toc-link" data-title="iOS Native Application Common elements">iOS Native Application Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
@@ -560,7 +568,7 @@
                     <a href="#ios-native-application-composite-elements" class="toc-h2 toc-link" data-title="iOS Native Application Composite elements">iOS Native Application Composite elements</a>
                         <ul class="toc-list-h2">
                             <li>
-								<a href="#context-menu" class="toc-h2 h3 toc-link" data-title="Context Menu">Context Menu</a>
+								<a href="#context-menu-2" class="toc-h2 h3 toc-link" data-title="Context Menu">Context Menu</a>
                             </li>
                             <li>
 								<a href="#edit-menu" class="toc-h2 h3 toc-link" data-title="Edit menu">Edit menu</a>
@@ -3798,6 +3806,58 @@ all other available values, from which the user can select a new one.</p>
 </tbody></table>
 
 <p><a href="***">Test examples in Java</a></p>
+<h2 id='android-native-application-composite-elements'>Android Native Application Composite elements</h2><h3 id='context-menu'>Context Menu</h3>
+<p>With <a href="https://developer.android.com/reference/android/view/ContextMenu" target="_blank" style="font-weight: bold;">Context Menu</a> you can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">contextMenuTests</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">appPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">fragmentPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">contextMenuPage</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">longPressButton</span><span class="o">.</span><span class="na">shouldBe</span><span class="o">().</span><span class="na">visible</span><span class="o">();</span>
+
+        <span class="n">longPressButton</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">menuView</span><span class="o">.</span><span class="na">shouldBe</span><span class="o">().</span><span class="na">visible</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p>Available methods in Java JDI Mobile</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ContextMenuTests.java" target="_blank">Test examples in Java</a></p>
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
@@ -4356,7 +4416,7 @@ A Text Field</a> is a single-line, fixed-height field, often with rounded corner
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> </p>
-<h2 id='ios-native-application-composite-elements'>iOS Native Application Composite elements</h2><h3 id='context-menu'>Context Menu</h3>
+<h2 id='ios-native-application-composite-elements'>iOS Native Application Composite elements</h2><h3 id='context-menu-2'>Context Menu</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/context-menus/" target="_blank" style="font-weight: bold;">Context menu.</a><br>
 You can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.</p>
 <pre class="highlight java tab-java"><code>
