@@ -1247,20 +1247,22 @@ is a linear set of two or more segments, each of which functions as a mutually e
 
 ```java 
    
-    @Test
-        public void segmentedControlTest() {
-            CalendarPage.inboxButton.tap();
-    
-            InboxPage.eventTypesSegmentedControl.has().segments(Arrays.asList("New", "Replied"));
-    
-            InboxPage.eventTypesSegmentedControl.tapSegment("Replied");
-            InboxPage.eventTypesSegmentedControl.is().selected("Replied");
-            InboxPage.eventsInfoText.is().text("No Events You’ve Replied To");
-        }
+      @Test
+      public void segmentedControlTest() {
+          menuSegmentedControl.tap();
   
+          segmentedControl.tapSegment("Two");
+          segmentedControl.is().selected("Two");
+  
+          segmentedControl.tapSegment("Three");
+          segmentedControl.is().selected("Three");
+  
+          segmentedControl.tapSegment("One");
+          segmentedControl.is().selected("One");
+      }
 ```
 
-![Segmented control](../images/ios/segmented_control.png)
+![Segmented control](../images/ios/segmented_control_testing_app.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1275,7 +1277,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/SegmentedContolTest.java" target="_blank">Test examples in Java</a>
 
 ### Search Bar
 
