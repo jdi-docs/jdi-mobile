@@ -1380,19 +1380,22 @@ appears at the bottom of an app screen and provides the ability to quickly switc
 ```java 
    
     @Test
-        public void tabBarTest() {
-            PhotosPage.photosTabBar.has().values(Arrays.asList("All Photos", "For You", "Albums", "Search"));
-    
-            PhotosPage.photosTabBar.tapBarButton("Search");
-            PhotosPage.photosTabBar.is().selected("Search");
-    
-            PhotosPage.photosTabBar.tapBarButton("For You");
-            PhotosPage.noContentText.is().displayed();
-        }
+    public void tapBarSelectTest(){
+        menuTabView.tap();
+
+        tabBar.tapBarButton("Second");
+        tabBar.is().selected("Second");
+
+        tabBar.tapBarButton("First");
+        tabBar.is().selected("First");
+
+        tabBar.tapBarButton("Exit");
+        tabBar.is().selected("Exit");
+    }
   
 ```
 
-![Tab bar](../images/ios/tab_bar.png)
+![Tab bar](../images/ios/tab_bar_ios_app.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1407,7 +1410,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/PhotosAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java.java" target="_blank">Test examples in Java</a>
 
 ## HTML 5 Mobile elements
 
