@@ -1100,22 +1100,21 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 ```java 
    
-  @Test
-  public void switchTest() {
-      RemindersListPage.todayRemindersButton.tap();
+    @Test
+    public void switchTest() {
+        menuToggleSwitch.tap();
 
-      RemindersPage.newReminderButton.tap();
-      RemindersPage.editDetailsInfoButton.openDetails();
+        switchButton.setToOn();
+        switchButton.is().on();
 
-      EditDetailsPage.remindSwitch.setToOff();
-      EditDetailsPage.remindSwitch.is().off();
-      EditDetailsPage.remindSwitch.setToOn();
-      EditDetailsPage.remindSwitch.is().on();
-  }
+        switchButton.setToOff();
+        switchButton.is().off();
+
+    }
   
 ```
  
-![Switch](../images/ios/switch.png)
+![Switch](../images/ios/switch_button_ios.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1127,8 +1126,8 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **setToOn()** | Set switch to on | void
 **setToOff()** | Set switch to off | void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
-
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/SwitchTest.java" target="_blank">Test examples in Java</a>
+                                                                                               
 ### Text Field
 
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
