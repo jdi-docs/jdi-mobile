@@ -4356,21 +4356,20 @@ A Slider</a> is a horizontal track with a control called a thumb, which you can 
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/switches/" target="_blank" style="font-weight: bold;">A switch</a><br>
  is a visual toggle between two mutually exclusive states — on and off.</p>
 <pre class="highlight java tab-java"><code>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">switchTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">RemindersListPage</span><span class="o">.</span><span class="na">todayRemindersButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">switchTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">menuToggleSwitch</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-      <span class="n">RemindersPage</span><span class="o">.</span><span class="na">newReminderButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-      <span class="n">RemindersPage</span><span class="o">.</span><span class="na">editDetailsInfoButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
+        <span class="n">switchButton</span><span class="o">.</span><span class="na">setToOn</span><span class="o">();</span>
+        <span class="n">switchButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">on</span><span class="o">();</span>
 
-      <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">remindSwitch</span><span class="o">.</span><span class="na">setToOff</span><span class="o">();</span>
-      <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">remindSwitch</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
-      <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">remindSwitch</span><span class="o">.</span><span class="na">setToOn</span><span class="o">();</span>
-      <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">remindSwitch</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">on</span><span class="o">();</span>
-  <span class="o">}</span>
+        <span class="n">switchButton</span><span class="o">.</span><span class="na">setToOff</span><span class="o">();</span>
+        <span class="n">switchButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">off</span><span class="o">();</span>
+
+    <span class="o">}</span>
 
 </code></pre>
-<p><img src="images/ios/switch.png" alt="Switch" /></p>
+<p><img src="images/ios/switch_button_ios.png" alt="Switch" /></p>
 
 <p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
 
@@ -4408,7 +4407,7 @@ A Slider</a> is a horizontal track with a control called a thumb, which you can 
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/SwitchTest.java" target="_blank">Test examples in Java</a></p>
 <h3 id='text-field'>Text Field</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
 A Text Field</a> is a single-line, fixed-height field, often with rounded corners, that automatically brings up a keyboard when the user taps it. Use a text field to request a small amount of information, such as an email address.</p>
@@ -4855,18 +4854,21 @@ allows people to search through a large collection of values by typing text into
 appears at the bottom of an app screen and provides the ability to quickly switch between different sections of an app.</p>
 <pre class="highlight java tab-java"><code>
     <span class="nd">@Test</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tabBarTest</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">photosTabBar</span><span class="o">.</span><span class="na">has</span><span class="o">().</span><span class="na">values</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"All Photos"</span><span class="o">,</span> <span class="s">"For You"</span><span class="o">,</span> <span class="s">"Albums"</span><span class="o">,</span> <span class="s">"Search"</span><span class="o">));</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tapBarSelectTest</span><span class="o">(){</span>
+        <span class="n">menuTabView</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">photosTabBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Search"</span><span class="o">);</span>
-            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">photosTabBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Search"</span><span class="o">);</span>
+        <span class="n">tabBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Second"</span><span class="o">);</span>
+        <span class="n">tabBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Second"</span><span class="o">);</span>
 
-            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">photosTabBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"For You"</span><span class="o">);</span>
-            <span class="n">PhotosPage</span><span class="o">.</span><span class="na">noContentText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="o">}</span>
+        <span class="n">tabBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"First"</span><span class="o">);</span>
+        <span class="n">tabBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"First"</span><span class="o">);</span>
+
+        <span class="n">tabBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Exit"</span><span class="o">);</span>
+        <span class="n">tabBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">selected</span><span class="o">(</span><span class="s">"Exit"</span><span class="o">);</span>
+    <span class="o">}</span>
 
 </code></pre>
-<p><img src="images/ios/tab_bar.png" alt="Tab bar" /></p>
+<p><img src="images/ios/tab_bar_ios_app.png" alt="Tab bar" /></p>
 
 <p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
 
@@ -4919,7 +4921,7 @@ appears at the bottom of an app screen and provides the ability to quickly switc
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/PhotosAppTests.java" target="_blank">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java.java" target="_blank">Test examples in Java</a></p>
 <h2 id='html-5-mobile-elements'>HTML 5 Mobile elements</h2><h3 id='check-box'>Check Box</h3><pre class="highlight java tab-java"><code><span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#accept-conditions"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">UIElement</span> <span class="n">singleCheckBox</span><span class="o">;</span>
 
