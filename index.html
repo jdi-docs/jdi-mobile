@@ -4488,15 +4488,24 @@ A Text Field</a> is a single-line, fixed-height field, often with rounded corner
 You can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.</p>
 <pre class="highlight java tab-java"><code>
     <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">contextMenuTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">johnAppleseedCard</span><span class="o">.</span><span class="na">longPress</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
-        <span class="n">ContactContextMenu</span><span class="o">.</span><span class="na">johnApplessedPhoto</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">ContactContextMenu</span><span class="o">.</span><span class="na">messageOptionExpand</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-        <span class="n">ContactContextMenu</span><span class="o">.</span><span class="na">johnAppleseedEmail</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">contextMenuTest</span><span class="o">(){</span>
+        <span class="n">menuContextMenu</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+
+        <span class="n">contextMenu</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">optionOne</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">optionOne</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+        <span class="n">contextMenu</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">optionTwo</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">optionTwo</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+        <span class="n">contextMenu</span><span class="o">.</span><span class="na">longPress</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">optionThree</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">optionThree</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
     <span class="o">}</span>
 
 </code></pre>
-<p><img src="images/ios/context_menu.png" alt="Context menu" /></p>
+<p><img src="images/ios/context_menu_ios_testing_app.png" alt="Context menu" /></p>
 
 <p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
 
@@ -4534,7 +4543,7 @@ You can use context menus to give people access to additional functionality rela
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/ContextMenuTest.java" target="_blank">Test examples in Java</a></p>
 <h3 id='edit-menu'>Edit menu</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/edit-menus/" target="_blank" style="font-weight: bold;">Edit menu.</a><br>
 People can touch and hold or double-tap an element in a text field, a text view, a web view, or an image view to select content and reveal edit options, such as Copy and Paste.</p>
@@ -4921,7 +4930,7 @@ appears at the bottom of an app screen and provides the ability to quickly switc
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java.java" target="_blank">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java" target="_blank">Test examples in Java</a></p>
 <h2 id='html-5-mobile-elements'>HTML 5 Mobile elements</h2><h3 id='check-box'>Check Box</h3><pre class="highlight java tab-java"><code><span class="nd">@FindBy</span><span class="o">(</span><span class="n">css</span> <span class="o">=</span> <span class="s">"#accept-conditions"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">UIElement</span> <span class="n">singleCheckBox</span><span class="o">;</span>
 
