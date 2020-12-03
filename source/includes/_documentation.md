@@ -720,6 +720,54 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ProgressBarTests.java">Test examples in Java</a>
 
+### Popup Menu
+
+<a href="https://developer.android.com/reference/android/widget/PopupMenu">PopupMenu</a>
+
+```java 
+
+@Test
+    public void isPopupDisplayedFromSearchItem() {
+        PopupPage.makePopupButton.click();
+        PopupPage.searchItem.longPress();
+        PopupPage.screen.find(By.linkText("Clicked popup menu item Search")).is().hidden();
+    }
+
+    @Test
+    public void isPopupDisplayedFromAddItem() {
+        PopupPage.makePopupButton.click();
+        PopupPage.addItem.longPress();
+        PopupPage.screen.find(By.linkText("Clicked popup menu item Add")).is().hidden();
+    }
+
+    @Test
+    public void isPopupDisplayedFromEditItem() {
+        PopupPage.makePopupButton.click();
+        PopupPage.editItem.longPress();
+        PopupPage.screen.find(By.linkText("Clicked popup menu item Edit")).is().hidden();
+    }
+
+    @Test
+    public void isPopupDisplayedFromShareItem() {
+        PopupPage.makePopupButton.click();
+        PopupPage.editItem.longPress();
+        PopupPage.shareItem.longPress();
+        PopupPage.screen.find(By.linkText("Clicked popup menu item Share")).is().hidden();
+    }
+```
+
+![Popup Menu](../images/android/popupMenu.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**longPress()** | Long press on button | void
+**is()** | Assert action | TextAssert
+
+<a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/PopupTests.java">Test examples in Java</a>
+
+
 ### Spinner
 
 <a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
