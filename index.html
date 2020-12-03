@@ -520,6 +520,9 @@
 								<a href="#progress-bar" class="toc-h2 h3 toc-link" data-title="Progress Bar">Progress Bar</a>
                             </li>
                             <li>
+								<a href="#popup-menu" class="toc-h2 h3 toc-link" data-title="Popup Menu">Popup Menu</a>
+                            </li>
+                            <li>
 								<a href="#spinner" class="toc-h2 h3 toc-link" data-title="Spinner">Spinner</a>
                             </li>
                             <li>
@@ -3759,6 +3762,62 @@ Available methods in Java JDI Mobile:</p>
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ProgressBarTests.java">Test examples in Java</a></p>
+<h3 id='popup-menu'>Popup Menu</h3>
+<p><a href="https://developer.android.com/reference/android/widget/PopupMenu">PopupMenu</a></p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isPopupDisplayedFromSearchItem</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">makePopupButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">searchItem</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">screen</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">linkText</span><span class="o">(</span><span class="s">"Clicked popup menu item Search"</span><span class="o">)).</span><span class="na">isExist</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isPopupDisplayedFromAddItem</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">makePopupButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">addItem</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">screen</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">linkText</span><span class="o">(</span><span class="s">"Clicked popup menu item Add"</span><span class="o">)).</span><span class="na">isExist</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isPopupDisplayedFromEditItem</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">makePopupButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">editItem</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">screen</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">linkText</span><span class="o">(</span><span class="s">"Clicked popup menu item Edit"</span><span class="o">)).</span><span class="na">isExist</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">isPopupDisplayedFromShareItem</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">makePopupButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">editItem</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">shareItem</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">PopupPage</span><span class="o">.</span><span class="na">screen</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">linkText</span><span class="o">(</span><span class="s">"Clicked popup menu item Share"</span><span class="o">)).</span><span class="na">isExist</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre>
+<p><img src="images/android/popupMenu.png" alt="Popup Menu" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press on button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/PopupTests.java">Test examples in Java</a></p>
 <h3 id='spinner'>Spinner</h3>
 <p><a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
 In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
