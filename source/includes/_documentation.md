@@ -1177,25 +1177,16 @@ You can use context menus to give people access to additional functionality rela
 ```java 
    
     @Test
-    public void contextMenuTest(){
-        menuContextMenu.tap();
-
-        contextMenu.longPress();
-        optionOne.tap();
-        optionOne.is().displayed();
-
-        contextMenu.longPress();
-        optionTwo.tap();
-        optionTwo.is().displayed();
-
-        contextMenu.longPress(2);
-        optionThree.tap();
-        optionThree.is().displayed();
+    public void contextMenuTest() {
+        ContactsListPage.johnAppleseedCard.longPress(2);
+        ContactContextMenu.johnApplessedPhoto.is().displayed();
+        ContactContextMenu.messageOptionExpand.tap();
+        ContactContextMenu.johnAppleseedEmail.is().displayed();
     }
   
 ```
 
-![Context menu](../images/ios/context_menu_ios_testing_app.png)
+![Context menu](../images/ios/context_menu.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1207,7 +1198,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/ContextMenuTest.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Edit menu
 
@@ -1418,7 +1409,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java.java" target="_blank">Test examples in Java</a>
 
 ## HTML 5 Mobile elements
 
