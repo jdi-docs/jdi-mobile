@@ -805,6 +805,89 @@ Available methods in Java JDI Mobile:
 
 <a href="***">Test examples in Java</a>
 
+### ExpandableListView
+
+<a href="https://developer.android.com/reference/android/widget/ExpandableListView">ExpandableListView</a>
+A view that shows items in a vertically scrolling two-level list. This differs from the ListView by allowing two levels: groups which can individually be expanded to show its children. The items come from the ExpandableListAdapter associated with this view.
+
+```java 
+
+  @Test
+    public void customAdapterTest() {
+        customAdapter.tap();
+        peopleNames.tap();
+        dogNames.tap();
+        catNames.tap();
+        fishNames.tap();
+        
+        arnoldName.is().enabled();
+        arnoldName.is().displayed();
+        arnoldName.is().text("Arnold");
+
+        bubblesName.is().enabled();
+        bubblesName.is().displayed();
+        bubblesName.is().text("Bubbles");
+    }
+
+    @Test
+    public void simpleAdapterTest(){
+        simpleAdapter.tap();
+        group0.tap();
+        child1.is().enabled();
+        child1.is().displayed();
+        child1.is().text("Child 1");
+        group0.tap();
+    }
+```
+
+![ExpandableListView](../images/android/expanable_list_view.PNG)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap** | Tap | void
+**is()** | Assert action | TextAssert
+**enabled()** | Checks that the search field is enabled | boolean
+**displayed()** | Checks that the search field is displayed | boolean
+
+
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ExpandableListTests.java">Test examples in Java</a>
+
+
+## Android Native Application Composite elements
+
+### Context Menu
+With <a href="https://developer.android.com/reference/android/view/ContextMenu" target="_blank" style="font-weight: bold;">Context Menu</a> you can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.
+
+```java 
+   
+    @Test
+    public void contextMenuTests() {
+        appPage.click();
+        fragmentPage.click();
+        contextMenuPage.tap();
+        longPressButton.shouldBe().visible();
+
+        longPressButton.longPress();
+        menuView.shouldBe().visible();
+    }
+  
+```
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ContextMenuTests.java" target="_blank">Test examples in Java</a>
+
+
 ## iOS Native Application Common elements
 
 ### Buttons
@@ -1065,22 +1148,21 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 ```java 
    
-  @Test
-  public void switchTest() {
-      RemindersListPage.todayRemindersButton.tap();
+    @Test
+    public void switchTest() {
+        menuToggleSwitch.tap();
 
-      RemindersPage.newReminderButton.tap();
-      RemindersPage.editDetailsInfoButton.openDetails();
+        switchButton.setToOn();
+        switchButton.is().on();
 
-      EditDetailsPage.remindSwitch.setToOff();
-      EditDetailsPage.remindSwitch.is().off();
-      EditDetailsPage.remindSwitch.setToOn();
-      EditDetailsPage.remindSwitch.is().on();
-  }
+        switchButton.setToOff();
+        switchButton.is().off();
+
+    }
   
 ```
  
-![Switch](../images/ios/switch.png)
+![Switch](../images/ios/switch_button_ios.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1092,8 +1174,8 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **setToOn()** | Set switch to on | void
 **setToOff()** | Set switch to off | void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/RemindersAppTests.java" target="_blank">Test examples in Java</a>
-
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/SwitchTest.java" target="_blank">Test examples in Java</a>
+                                                                                               
 ### Text Field
 
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
@@ -1263,20 +1345,22 @@ is a linear set of two or more segments, each of which functions as a mutually e
 
 ```java 
    
-    @Test
-        public void segmentedControlTest() {
-            CalendarPage.inboxButton.tap();
-    
-            InboxPage.eventTypesSegmentedControl.has().segments(Arrays.asList("New", "Replied"));
-    
-            InboxPage.eventTypesSegmentedControl.tapSegment("Replied");
-            InboxPage.eventTypesSegmentedControl.is().selected("Replied");
-            InboxPage.eventsInfoText.is().text("No Events You’ve Replied To");
-        }
+      @Test
+      public void segmentedControlTest() {
+          menuSegmentedControl.tap();
   
+          segmentedControl.tapSegment("Two");
+          segmentedControl.is().selected("Two");
+  
+          segmentedControl.tapSegment("Three");
+          segmentedControl.is().selected("Three");
+  
+          segmentedControl.tapSegment("One");
+          segmentedControl.is().selected("One");
+      }
 ```
 
-![Segmented control](../images/ios/segmented_control.png)
+![Segmented control](../images/ios/segmented_control_testing_app.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1291,7 +1375,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/SegmentedContolTest.java" target="_blank">Test examples in Java</a>
 
 ### Search Bar
 
@@ -1343,19 +1427,22 @@ appears at the bottom of an app screen and provides the ability to quickly switc
 ```java 
    
     @Test
-        public void tabBarTest() {
-            PhotosPage.photosTabBar.has().values(Arrays.asList("All Photos", "For You", "Albums", "Search"));
-    
-            PhotosPage.photosTabBar.tapBarButton("Search");
-            PhotosPage.photosTabBar.is().selected("Search");
-    
-            PhotosPage.photosTabBar.tapBarButton("For You");
-            PhotosPage.noContentText.is().displayed();
-        }
+    public void tapBarSelectTest(){
+        menuTabView.tap();
+
+        tabBar.tapBarButton("Second");
+        tabBar.is().selected("Second");
+
+        tabBar.tapBarButton("First");
+        tabBar.is().selected("First");
+
+        tabBar.tapBarButton("Exit");
+        tabBar.is().selected("Exit");
+    }
   
 ```
 
-![Tab bar](../images/ios/tab_bar.png)
+![Tab bar](../images/ios/tab_bar_ios_app.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1370,7 +1457,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/PhotosAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java.java" target="_blank">Test examples in Java</a>
 
 ## HTML 5 Mobile elements
 
