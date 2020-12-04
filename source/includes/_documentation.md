@@ -359,6 +359,43 @@ TBD
 
 ## Android Native Application Common elements
 
+### ImageSwitcher and Gallery
+
+<a href="https://developer.android.com/reference/android/widget/ImageSwitcher" target="_blank" style="font-weight: bold;">ImageSwitcher</a> that switches between two ImageViews when a new image is set on it.
+
+<a href="https://developer.android.com/reference/android/widget/Gallery" target="_blank" style="font-weight: bold;">Gallery</a>  that shows items in a center-locked, horizontally scrolling list. 
+
+Both methods work on the same principle.
+
+```java 
+
+    @Test
+    public void selectPhotosInImageSwitcher() {
+        viewsPage.click();
+        AndroidScreen.scrollDown(1000);
+        imageSwitcherPage.click();
+
+        element = select(1);
+        itemIsSelected(element,true);
+
+        element = select(2);
+        itemIsSelected(element,false);
+
+        element.click();
+        itemIsSelected(element,true);
+    }
+
+```
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**isSelected()** | Check that image is selected  | boolean 
+**isDisplayed()** | Check that image is displayed | boolean
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ImageSwitcherTests.java#L18" target="_blank">Test examples in Java</a>
+
+
 ### Checkbox
 
 <a href="https://developer.android.com/guide/topics/ui/controls/checkbox" target="_blank" style="font-weight: bold;">Checkbox</a>  is a specific type of two-states button that can be either checked or unchecked.
