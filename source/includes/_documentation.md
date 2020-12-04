@@ -955,7 +955,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/IosButtonTest.java" target="_blank">Test examples in Java</a>
 
 ### Add Contact Button
 
