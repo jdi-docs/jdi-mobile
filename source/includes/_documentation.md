@@ -1494,7 +1494,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java" target="_blank">Test examples in Java</a>
 
 ## HTML 5 Mobile elements
 
