@@ -1293,23 +1293,33 @@ People can touch and hold or double-tap an element in a text field, a text view,
 ```java 
    
     @Test
-    public void editMenuTest() {
-        MessagesListPage.newMessageButton.tap();
+    public void editMenuTest(){
+        menuTextField.tap();
 
-        NewMessagePage.messageTextField.setValue("Test");
-        NewMessagePage.messageTextField.doubleTap();
-        NewMessagePage.messageEditMenu.copy();
-        NewMessagePage.messageTextField.doubleTap();
-        NewMessagePage.messageEditMenu.cut();
-        NewMessagePage.messageTextField.is().empty();
-        NewMessagePage.messageTextField.doubleTap();
-        NewMessagePage.messageEditMenu.paste();
-        NewMessagePage.messageTextField.is().text("Test");
+        TextFieldPage.textField.setValue("Test");
+
+        TextFieldPage.textField.doubleTap();
+        TextFieldPage.editMenu.cut();
+        TextFieldPage.textField.is().text(DEFAULT_TEXT);
+
+        TextFieldPage.textField.doubleTap();
+        TextFieldPage.editMenu.paste();
+        TextFieldPage.textField.is().text("Test");
+
+        TextFieldPage.textField.doubleTap();
+        TextFieldPage.editMenu.copy();
+        TextFieldPage.textField.doubleTap();
+        TextFieldPage.editMenu.cut();
+        TextFieldPage.textField.is().text(DEFAULT_TEXT);
+
+        TextFieldPage.textField.doubleTap();
+        TextFieldPage.editMenu.paste();
+        TextFieldPage.textField.is().text("Test");
     }
   
 ```
 
-![Edit menu](../images/ios/edit_menu.png)
+![Edit menu](../images/ios/edit_menu_ios.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1326,7 +1336,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **lookUp()** | Tap Look Up menu option | void 
 **share()** | Tap Share... menu option | void 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/EditMenuTest.java" target="_blank">Test examples in Java</a> 
 
 ### Navigation Bar
 
