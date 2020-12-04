@@ -491,6 +491,9 @@
                     <a href="#android-native-application-common-elements" class="toc-h2 toc-link" data-title="Android Native Application Common elements">Android Native Application Common elements</a>
                         <ul class="toc-list-h2">
                             <li>
+								<a href="#imageswitcher-and-gallery" class="toc-h2 h3 toc-link" data-title="ImageSwitcher and Gallery">ImageSwitcher and Gallery</a>
+                            </li>
+                            <li>
 								<a href="#checkbox" class="toc-h2 h3 toc-link" data-title="Checkbox">Checkbox</a>
                             </li>
                             <li>
@@ -3250,7 +3253,53 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 </tbody></table>
 <h3 id='weblist'>WebList</h3><h2 id='extended-selenium-features'>Extended Selenium features</h2>
 <p>TBD</p>
-<h2 id='android-native-application-common-elements'>Android Native Application Common elements</h2><h3 id='checkbox'>Checkbox</h3>
+<h2 id='android-native-application-common-elements'>Android Native Application Common elements</h2><h3 id='imageswitcher-and-gallery'>ImageSwitcher and Gallery</h3>
+<p><a href="https://developer.android.com/reference/android/widget/ImageSwitcher" target="_blank" style="font-weight: bold;">ImageSwitcher</a> that switches between two ImageViews when a new image is set on it.</p>
+
+<p><a href="https://developer.android.com/reference/android/widget/Gallery" target="_blank" style="font-weight: bold;">Gallery</a>  that shows items in a center-locked, horizontally scrolling list. </p>
+
+<p>Both methods work on the same principle.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectPhotosInImageSwitcher</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">viewsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">scrollDown</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+        <span class="n">imageSwitcherPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+        <span class="n">element</span> <span class="o">=</span> <span class="n">select</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">itemIsSelected</span><span class="o">(</span><span class="n">element</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="n">element</span> <span class="o">=</span> <span class="n">select</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">itemIsSelected</span><span class="o">(</span><span class="n">element</span><span class="o">,</span><span class="kc">false</span><span class="o">);</span>
+
+        <span class="n">element</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">itemIsSelected</span><span class="o">(</span><span class="n">element</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p>Available methods in Java JDI Mobile</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isSelected()</strong></td>
+<td>Check that image is selected</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>isDisplayed()</strong></td>
+<td>Check that image is displayed</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ImageSwitcherTests.java#L18" target="_blank">Test examples in Java</a></p>
+<h3 id='checkbox'>Checkbox</h3>
 <p><a href="https://developer.android.com/guide/topics/ui/controls/checkbox" target="_blank" style="font-weight: bold;">Checkbox</a>  is a specific type of two-states button that can be either checked or unchecked.
 It allows the user to select one or more options from a set. </p>
 <pre class="highlight java tab-java"><code>
