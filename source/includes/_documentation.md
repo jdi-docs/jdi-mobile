@@ -889,8 +889,38 @@ Available methods in Java JDI Mobile:
 **displayed()** | Checks that the search field is displayed | boolean
 
 
-
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ExpandableListTests.java">Test examples in Java</a>
+
+### Radio Buttons
+
+<a href="https://developer.android.com/guide/topics/ui/controls/radiobutton">Radio Buttons</a>
+Radio buttons allow the user to select one option from a set. You should use radio buttons for optional sets that are mutually exclusive if you think that the user needs to see all available options side-by-side. 
+
+```java 
+
+  @Test
+      public void verifyThatButtonsNotSelected() {
+          getItemByText("All of them").click();
+          logChose.is().displayed();
+          logChose.is().text("You have selected: 2131296294");
+  
+          buttonClear.click();
+          logChose.is().text("You have selected: (none)");
+  
+          getItemByText("Dinner").click();
+          logChose.is().text("You have selected: 2131296401");
+      }
+```
+
+![ExpandableListView](../images/android/radio_buttons_group.PNG)
+
+**click** | click | void
+**is()** | Assert action | TextAssert
+**displayed()** | Checks that the search field is displayed | boolean
+**text()** | Gets text | String
+
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RadioButtonsTests.java">Test examples in Java</a>
 
 
 ## Android Native Application Composite elements
