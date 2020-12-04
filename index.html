@@ -4648,22 +4648,32 @@ You can use context menus to give people access to additional functionality rela
 People can touch and hold or double-tap an element in a text field, a text view, a web view, or an image view to select content and reveal edit options, such as Copy and Paste.</p>
 <pre class="highlight java tab-java"><code>
     <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">editMenuTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">MessagesListPage</span><span class="o">.</span><span class="na">newMessageButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">editMenuTest</span><span class="o">(){</span>
+        <span class="n">menuTextField</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">copy</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">cut</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">empty</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">paste</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">editMenu</span><span class="o">.</span><span class="na">cut</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">DEFAULT_TEXT</span><span class="o">);</span>
+
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">editMenu</span><span class="o">.</span><span class="na">paste</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">editMenu</span><span class="o">.</span><span class="na">copy</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">editMenu</span><span class="o">.</span><span class="na">cut</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">DEFAULT_TEXT</span><span class="o">);</span>
+
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">editMenu</span><span class="o">.</span><span class="na">paste</span><span class="o">();</span>
+        <span class="n">TextFieldPage</span><span class="o">.</span><span class="na">textField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
     <span class="o">}</span>
 
 </code></pre>
-<p><img src="images/ios/edit_menu.png" alt="Edit menu" /></p>
+<p><img src="images/ios/edit_menu_ios.png" alt="Edit menu" /></p>
 
 <p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
 
@@ -4726,7 +4736,7 @@ People can touch and hold or double-tap an element in a text field, a text view,
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> </p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/EditMenuTest.java" target="_blank">Test examples in Java</a> </p>
 <h3 id='navigation-bar'>Navigation Bar</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/navigation-bars/" target="_blank" style="font-weight: bold;">A Navigation bar </a>
 appears at the top of an app screen, below the status bar, and enables navigation through a series of hierarchical screens.</p>
