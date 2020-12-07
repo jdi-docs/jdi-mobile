@@ -912,8 +912,11 @@ Radio buttons allow the user to select one option from a set. You should use rad
       }
 ```
 
-![ExpandableListView](../images/android/radio_buttons_group.PNG)
+![RadioButtons](../images/android/radio_buttons_group.PNG)
 
+
+|Method | Description | Return Type
+--- | --- | ---
 **click** | click | void
 **is()** | Assert action | TextAssert
 **displayed()** | Checks that the search field is displayed | boolean
