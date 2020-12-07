@@ -649,6 +649,34 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
 
+### Tooltip
+
+<a href="https://developer.android.com/guide/topics/ui/tooltips">Tooltip</a> is a small descriptive message that appears near a view when users long press the view or hover their mouse over it.
+
+```java 
+
+@Test
+    public void tooltipTests() {
+        viewsPage.tap();
+        MobileScreen.scrollToElementInList(galleryPage);
+        galleryPage.tap();
+        photos.tap();
+        select(0).click();
+        assertTrue(WebDriverFactory.getDriver().findElement(MobileBy.xpath("//*[@class='android.widget.Toast']")).getText().equals("0"));
+    }
+
+```
+
+![Tooltip](../images/android/tooltip.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**is()** | Assert action | TextAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/TooltipsTest.java">Test examples in Java</a>
+
 
 ## Android Native Application Complex elements
 
