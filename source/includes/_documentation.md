@@ -357,44 +357,102 @@ Aliases in Java JDI Light:
 ## Extended Selenium features
 TBD
 
-## Android Native Application Common elements
+### Android Native App Tests
 
-### ImageSwitcher and Gallery
+### Action Bar
 
-<a href="https://developer.android.com/reference/android/widget/ImageSwitcher" target="_blank" style="font-weight: bold;">ImageSwitcher</a> that switches between two ImageViews when a new image is set on it.
-
-<a href="https://developer.android.com/reference/android/widget/Gallery" target="_blank" style="font-weight: bold;">Gallery</a>  that shows items in a center-locked, horizontally scrolling list. 
-
-Both methods work on the same principle.
+<a href="https://developer.android.com/reference/androidx/appcompat/app/ActionBar">Action Bar</a> is a primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
 
 ```java 
 
     @Test
-    public void selectPhotosInImageSwitcher() {
-        viewsPage.click();
-        AndroidScreen.scrollDown(1000);
-        imageSwitcherPage.click();
-
-        element = select(1);
-        itemIsSelected(element,true);
-
-        element = select(2);
-        itemIsSelected(element,false);
-
-        element.click();
-        itemIsSelected(element,true);
-    }
-
+        public void actionBarUsagePageSearchTest() {
+            ActionBarUsagePage.searchButton.is().iconifiedByDefault();
+            ActionBarUsagePage.searchButton.setExpanded();
+            ActionBarUsagePage.searchVield.is().enabled();
+            ActionBarUsagePage.searchVield.has().text(PLACEHOLDER);
+            ActionBarUsagePage.searchVield.input("Internet");
+            ActionBarUsagePage.text.has().text("Query so far: Internet");
+            ActionBarUsagePage.clearQuery.click();
+            ActionBarUsagePage.searchButton.isIconified();
+        }
+    
+        @Test
+        public void actionBarUsagePageEditTest() {
+            ActionBarUsagePage.edit.is().enabled();
+            ActionBarUsagePage.edit.click();
+            ActionBarUsagePage.text.is().displayed();
+        }
+    
+        @Test
+        public void actionBarUsagePageMoreOptionsTest() {
+            ActionBarUsagePage.moreOptions.is().enabled();
+            ActionBarUsagePage.moreOptions.click();
+            ActionBarUsagePage.listView.selectOption("Sort");
+            ActionBarUsagePage.listView.selectOption("Alphabetically");
+            ActionBarUsagePage.text.is().displayed();
+        }
+    
+        @Test
+        public void displayOptionsPageMoreOptionsTest() {
+            ActionBarDisplayOptionsPage.moreOptions.is().enabled();
+            ActionBarDisplayOptionsPage.moreOptions.click();
+            ActionBarDisplayOptionsPage.listView.selectOption("Menu Item");
+        }
+    
+        @Test
+        public void displayOptionsPageDisplayHomeAsUpTest() {
+            ActionBarDisplayOptionsPage.displayHomeAsUp.is().enabled();
+            ActionBarDisplayOptionsPage.displayHomeAsUp.click();
+            ActionBarDisplayOptionsPage.navigateUp.is().displayed();
+        }
+    
+        @Test
+        public void displayOptionsPageDisplayShowHomeAndDisplayUseLogoTest() {
+            ActionBarDisplayOptionsPage.displayShowHome.is().enabled();
+            ActionBarDisplayOptionsPage.displayShowHome.click();
+            ActionBarDisplayOptionsPage.imageView.is().displayed();
+            ActionBarDisplayOptionsPage.displayUseLogo.is().enabled();
+            ActionBarDisplayOptionsPage.displayUseLogo.click();
+            ActionBarDisplayOptionsPage.imageView.is().displayed();
+        }
+    
+        @Test
+        public void displayOptionsPageDisplayShowTitleAndDisplayShowCustomAndCycleCustomGravityTest() {
+            ActionBarDisplayOptionsPage.displayShowTitle.is().enabled();
+            ActionBarDisplayOptionsPage.displayShowTitle.click();
+            ActionBarDisplayOptionsPage.textView.is().hidden();
+            ActionBarDisplayOptionsPage.displayShowCustom.is().enabled();
+            ActionBarDisplayOptionsPage.displayShowCustom.click();
+            ActionBarDisplayOptionsPage.customView.is().displayed();
+            ActionBarDisplayOptionsPage.cycleCustomViewGravity.is().enabled();
+            ActionBarDisplayOptionsPage.cycleCustomViewGravity.click();
+        }
+    
+        @Test
+        public void displayOptionsPageNavigationTest() {
+            ActionBarDisplayOptionsPage.navigation.is().enabled();
+            ActionBarDisplayOptionsPage.navigation.click();
+            ActionBarDisplayOptionsPage.horizontalScrollView.is().displayed();
+            ActionBarDisplayOptionsPage.horizontalScrollView.selectOption("TAB 1");
+        }
 ```
-Available methods in Java JDI Mobile
+![Action Bar](../images/android/ActionBar.PNG)
+
+Available methods in Java JDI Mobile:
 
 |Method | Description | Return Type
 --- | --- | ---
-**isSelected()** | Check that image is selected  | boolean 
-**isDisplayed()** | Check that image is displayed | boolean
+**isIconified()**  | Checks that the Search View in the Action Bar is in iconified state | boolean
+**setExpanded()** | Sets the search field expanded | void
+**expanded()** | Checks that the search field is expanded | boolean
+**input(String value)** | Inputs values into the the search field | void
+**clear()** | Remove values from the search field | void
+**selectOption(String text)** | Selects value from a list of options | void
+**is()** | Assert action | ActionBarAssert
+**has()** | Assert action | ActionBarAssert
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ImageSwitcherTests.java#L18" target="_blank">Test examples in Java</a>
-
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a>
 
 ### Checkbox
 
@@ -403,52 +461,45 @@ It allows the user to select one or more options from a set.
 
 ```java 
 
-@BeforeMethod
-    public void initSteps() {
-        animationPage.click();
-        layoutAnimationsButton.click();
-    }
-
     @Test
-    public void customAnimationsCheckboxTest(){
-        customAnimationsCheckbox.check();
-        customAnimationsCheckbox.is().selected();
-        customAnimationsCheckbox.uncheck();
-        customAnimationsCheckbox.is().deselected();
-
-    }
-
-    @Test
-    public void inCheckboxTest(){
-        inCheckbox.check();
-        inCheckbox.is().selected();
-        inCheckbox.uncheck();
-        inCheckbox.is().deselected();
-    }
-
-    @Test
-    public void outCheckboxTest(){
-        outCheckbox.check();
-        outCheckbox.is().selected();
-        outCheckbox.uncheck();
-        outCheckbox.is().deselected();
-    }
-
-    @Test
-    public void changingInCheckboxTest(){
-        changingInCheckbox.check();
-        changingInCheckbox.is().selected();
-        changingInCheckbox.uncheck();
-        changingInCheckbox.is().deselected();
-    }
-
-    @Test
-    public void changingOutCheckboxTest(){
-        changingOutCheckbox.check();
-        changingOutCheckbox.is().selected();
-        changingOutCheckbox.uncheck();
-        changingOutCheckbox.is().deselected();
-    }
+        public void customAnimationsCheckboxTest(){
+            customAnimationsCheckbox.check();
+            customAnimationsCheckbox.is().selected();
+            customAnimationsCheckbox.uncheck();
+            customAnimationsCheckbox.is().deselected();
+        }
+    
+        @Test
+        public void inCheckboxTest(){
+            inCheckbox.check();
+            inCheckbox.is().selected();
+            inCheckbox.uncheck();
+            inCheckbox.is().deselected();
+        }
+    
+        @Test
+        public void outCheckboxTest(){
+            outCheckbox.check();
+            outCheckbox.is().selected();
+            outCheckbox.uncheck();
+            outCheckbox.is().deselected();
+        }
+    
+        @Test
+        public void changingInCheckboxTest(){
+            changingInCheckbox.check();
+            changingInCheckbox.is().selected();
+            changingInCheckbox.uncheck();
+            changingInCheckbox.is().deselected();
+        }
+    
+        @Test
+        public void changingOutCheckboxTest(){
+            changingOutCheckbox.check();
+            changingOutCheckbox.is().selected();
+            changingOutCheckbox.uncheck();
+            changingOutCheckbox.is().deselected();
+        }
 
 ```
 
@@ -466,22 +517,431 @@ Available methods in Java JDI Mobile
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile/src/main/java/com/epam/jdi/light/mobile/elements/common/app/android/Checkbox.java" target="_blank">Test examples in Java</a>
 
-### Rating Bar
+### Context Menu
+With <a href="https://developer.android.com/reference/android/view/ContextMenu" target="_blank" style="font-weight: bold;">Context Menu</a> you can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.
 
-<a href="https://developer.android.com/reference/android/widget/RatingBar" target="_blank" style="font-weight: bold;">RatingBar</a> is an extension of SeekBar and ProgressBar that shows a rating in stars.
+```java 
+   
+    @Test
+    public void contextMenuTests() {
+        longPressButton.shouldBe().visible();
+        longPressButton.longPress();
+        menuView.shouldBe().visible();
+    }
+  
+```
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ContextMenuTests.java" target="_blank">Test examples in Java</a>
+
+### ExpandableListView
+
+<a href="https://developer.android.com/reference/android/widget/ExpandableListView">ExpandableListView</a>
+A view that shows items in a vertically scrolling two-level list. This differs from the ListView by allowing two levels: groups which can individually be expanded to show its children. The items come from the ExpandableListAdapter associated with this view.
+
+```java 
+
+  @Test
+      public void customAdapterTest() {
+          customAdapter.tap();
+          peopleNames.tap();
+          dogNames.tap();
+          catNames.tap();
+          fishNames.tap();
+  
+          arnoldName.is().enabled();
+          arnoldName.is().displayed();
+          arnoldName.is().text("Arnold");
+  
+          bubblesName.is().enabled();
+          bubblesName.is().displayed();
+          bubblesName.is().text("Bubbles");
+      }
+  
+      @Test
+      public void simpleAdapterTest(){
+          simpleAdapter.tap();
+          group0.tap();
+          child1.is().enabled();
+          child1.is().displayed();
+          child1.is().text("Child 1");
+          group0.tap();
+      }
+```
+
+![ExpandableListView](../images/android/expanable_list_view.PNG)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap** | Tap | void
+**is()** | Assert action | TextAssert
+**enabled()** | Checks that the search field is enabled | boolean
+**displayed()** | Checks that the search field is displayed | boolean
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ExpandableListTests.java">Test examples in Java</a>
+
+### Gallery
 
 ```java 
 
     @Test
-    public void RatingBarTestExample(){
-        RatingBarPage.ratingBar1.setRating(4.0);
-        RatingBarPage.ratingBar1.is().value(4.0);
-        RatingBarPage.ratingBar1.setRatingByClick(3.0, 6.0);
-        RatingBarPage.ratingBar1.is().value(3.0);
-    }
+        public void selectPhotosInGallery() {
+            element = select(0);
+            itemIsSelected(element,true);
+    
+            element = select(1);
+            itemIsSelected(element,false);
+    
+            element.click();
+            itemIsSelected(element,true);
+        }
   
 ```
 
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**itemIsSelected(element,boolean)** | Is item selected | BooleanAssert
+
+<a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/GalleryTests.java ">Test examples in Java</a>
+
+
+![Gallery](../images/android/gallery.png)
+
+### Image Switcher
+
+```java 
+
+    @Test
+        public void selectPhotosInImageSwitcher() {
+            element = select(1);
+            itemIsSelected(element,true);
+    
+            element = select(2);
+            itemIsSelected(element,false);
+    
+            element.click();
+            itemIsSelected(element,true);
+        }
+  
+```
+
+![Image Switcher](../images/android/gallery.png)
+
+Available methods in Java JDI Mobile
+
+|Method | Description | Return Type
+--- | --- | ---
+**itemIsSelected(element,boolean)** | Is item selected | BooleanAssert
+
+<a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ImageSwitcher.java ">Test examples in Java</a>
+
+### Picker
+
+<a href="https://developer.android.com/guide/topics/ui/controls/pickers#:~:text=Android%20provides%20controls%20for%20the,ready%2Dto%2Duse%20dialogs.&text=Using%20these%20pickers%20helps%20ensure,each%20time%20or%20date%20picker.">Pickers</a>
+
+```java 
+
+@Test
+    public void radialPickerTest(){
+        radialTimePickerButton.click();
+        hoursHeader.click();
+        radialPicker.selectTimePicker("7");
+        hoursHeader.is().text("7");
+        minutesHeader.click();
+        radialPicker.selectTimePicker("35");
+        minutesHeader.is().text("35");
+    }
+
+    @Test
+    public void datePickerTest(){
+        datePickerButton.click();
+        yearPickerHeader.click();
+        yearPicker.selectYearPicker("2018");
+        yearPickerHeader.is().text("2018");
+        nextMonth.click();
+        datePicker.selectDatePicker("23 December 2018");
+        datePickerHeader.is().text("Sun, Dec 23");
+        yearPickerHeader.is().text("2018");
+    }
+
+    @Test
+    public void swipePickerTest(){
+        timePickerButton.click();
+        picker.is().displayed();
+        picker.swipeHour("7");
+        picker.is().selected("7");
+        picker.swipeMinute("20");
+        picker.is().selected("20");
+        picker.swipeInterval("PM");
+        picker.is().selected("PM");
+    }
+
+    @Test
+    public void typePickerTest(){
+        timePickerButton.click();
+        picker.is().displayed();
+        picker.setHour();
+        pressKey(new KeyEvent(AndroidKey.DIGIT_5));
+        pressKey(new KeyEvent(AndroidKey.ENTER));
+        picker.is().selected("5");
+        picker.setMinute();
+        pressKey(new KeyEvent(AndroidKey.DIGIT_5));
+        pressKey(new KeyEvent(AndroidKey.ENTER));
+        picker.is().selected("05");
+        picker.setInterval("PM");
+        picker.is().selected("PM");
+
+    }
+```
+
+![Popup Menu](../images/android/pickers.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**click()** | Click on button | void
+**setMinute()** | Set minute | void
+**setInterval()** | Set interval | void
+**is()** | Assert action | TextAssert
+
+<a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/PickersTests.java">Test examples in Java</a>
+
+### Progress Bar
+
+<a href="https://developer.android.com/reference/android/widget/ProgressBar">ProgressBar</a>
+```java
+        @Test
+        public void decreaseStandardProgressBar() {
+            ProgressBarPage.decreaseStandardButton.click();
+            ProgressBarPage.decreaseStandardButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+        @Test
+        public void increaseStandardProgressBar() {
+            ProgressBarPage.increaseStandardButton.click();
+            ProgressBarPage.increaseStandardButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+        @Test
+        public void decreaseSecondaryProgressBar() {
+            ProgressBarPage.decreaseSecondaryButton.click();
+            ProgressBarPage.decreaseSecondaryButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+    
+        @Test
+        public void increaseSecondaryProgressBar() {
+            ProgressBarPage.increaseSecondaryButton.click();
+            ProgressBarPage.increaseSecondaryButton.is().enabled();
+            ProgressBarPage.progressBarLine.isExist();
+        }
+
+```
+![Progress Bar](../images/android/progress_bar.PNG)
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**enabled()**  | Button availiable for click | boolean
+**is()** | Assert action | ActionBarAssert
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ProgressBarTests.java">Test examples in Java</a>
+
+### Popup Menu
+
+<a href="https://developer.android.com/reference/android/widget/PopupMenu">PopupMenu</a>
+
+```java 
+
+@Test
+    public void isPopupDisplayedFromSearchItem() {
+        PopupPage.makePopupButton.click();
+        PopupPage.searchItem.longPress();
+        PopupPage.screen.find(By.linkText("Clicked popup menu item Search")).isExist();
+    }
+
+    @Test
+    public void isPopupDisplayedFromAddItem() {
+        PopupPage.makePopupButton.click();
+        PopupPage.addItem.longPress();
+        PopupPage.screen.find(By.linkText("Clicked popup menu item Add")).isExist();
+    }
+
+    @Test
+    public void isPopupDisplayedFromEditItem() {
+        PopupPage.makePopupButton.click();
+        PopupPage.editItem.longPress();
+        PopupPage.screen.find(By.linkText("Clicked popup menu item Edit")).isExist();
+    }
+
+    @Test
+    public void isPopupDisplayedFromShareItem() {
+        PopupPage.makePopupButton.click();
+        PopupPage.editItem.longPress();
+        PopupPage.shareItem.longPress();
+        PopupPage.screen.find(By.linkText("Clicked popup menu item Share")).isExist();
+    }
+```
+
+![Popup Menu](../images/android/popupMenu.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**longPress()** | Long press on button | void
+**is()** | Assert action | TextAssert
+
+<a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/PopupTests.java">Test examples in Java</a>
+
+### Radio Buttons
+
+<a href="https://developer.android.com/guide/topics/ui/controls/radiobutton">RadioButton</a>
+
+```java 
+@Test
+    public void clickOverAllRadioButtons() {
+        getItemByText("Snack").click();
+        logChose.is().displayed();
+        logChose.is().text("You have selected: 2131296728");
+
+        getItemByText("Breakfast").click();
+        logChose.is().displayed();
+        logChose.is().text("You have selected: 2131296319");
+
+        getItemByText("Lunch").click();
+        logChose.is().displayed();
+        logChose.is().text("You have selected: 2131296544");
+
+        getItemByText("Dinner").click();
+        logChose.is().displayed();
+        logChose.is().text("You have selected: 2131296401");
+
+        getItemByText("All of them").click();
+        logChose.is().displayed();
+        logChose.is().text("You have selected: 2131296294");
+    }
+
+    @Test
+    public void verifyThatButtonsNotSelected() {
+        getItemByText("All of them").click();
+        logChose.is().displayed();
+        logChose.is().text("You have selected: 2131296294");
+
+        buttonClear.click();
+        logChose.is().text("You have selected: (none)");
+
+        getItemByText("Dinner").click();
+        logChose.is().text("You have selected: 2131296401");
+    }
+
+    private WebElement getItemByText(String item) {
+        return  getDriver().findElements(By.className("android.widget.RadioButton"))
+                .stream()
+                .filter(e -> e.getText().equals(item))
+                .findAny().get();
+    }
+```
+
+![Radio Button](../images/android/radioButton.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**is()** | Assert action | BooleanAssert
+
+<a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RadioButtonsTests.java ">Test examples in Java</a>
+
+### Rating Bar
+
+<a href="https://developer.android.com/reference/android/widget/RatingBar" target="_blank" style="font-weight: bold;">RatingBar</a> is an extension of SeekBar and ProgressBar that shows a rating in stars.
+
+```
+@DataProvider
+    public Object[][] threeStarsData(){
+        return new Object[][]{
+                {1.0}, {3.0}, {4.0}, {6.0}
+        };
+    }
+    @DataProvider
+    public Object[][] fiveStarsData(){
+        return new Object[][]{
+                {1.0}, {2.0}, {3.0}, {4.0}, {6.0}, {7.0}, {8.0}, {9.0}, {10.0}
+        };
+    }
+
+    @DataProvider
+    public Object[][] incorrectData(){
+        return new Object[][]{
+                {-1.0}, {7.0}
+        };
+    }
+
+    @BeforeMethod
+    public void init(){
+        IndexPage.viewsPage.click();
+        MobileScreen.scrollToElementInList(IndexPage.goToRatingBar);
+        ViewsPage.ratingBarPage.click();
+    }
+
+    @Test
+    public void checkInitialCondition(){
+        RatingBarPage.ratingBar1.is().value(5.0);
+        RatingBarPage.ratingBar2.is().value(5.0);
+        RatingBarPage.indicatorRatingBar.is().value(0.0);
+        RatingBarPage.smallRatingBar.is().value(0.0);
+    }
+
+    @Test(dataProvider = "threeStarsData")
+    public void checkThreeStarsByClick(double data){
+        RatingBarPage.ratingBar1.setRatingByClick(data, 6.0);
+        RatingBarPage.ratingBar1.is().value(data);
+        RatingBarPage.indicatorRatingBar.is().value(data);
+        RatingBarPage.smallRatingBar.is().value(data);
+        RatingBarPage.rating.is().text("Rating: " + data / 2 + "/3");
+    }
+
+    @Test(dataProvider = "threeStarsData")
+    public void checkThreeStars(double data){
+        RatingBarPage.ratingBar1.setRating(data);
+        RatingBarPage.ratingBar1.is().value(data);
+    }
+
+    @Test(dataProvider = "fiveStarsData")
+    public void checkFiveStarsByClick(double data){
+        RatingBarPage.ratingBar2.setRatingByClick(data, 10.0);
+        RatingBarPage.ratingBar2.is().value(data);
+        RatingBarPage.indicatorRatingBar.is().value(data);
+        RatingBarPage.smallRatingBar.is().value(data);
+        RatingBarPage.rating.is().text("Rating: " + data / 2 + "/5");
+    }
+
+    @Test(dataProvider = "fiveStarsData")
+    public void checkFiveStars(double data){
+        RatingBarPage.ratingBar2.setRating(data);
+        RatingBarPage.ratingBar2.is().value(data);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class, dataProvider = "incorrectData")
+    public void checkIncorrectValue(double value){
+        RatingBarPage.ratingBar1.setRatingByClick(value, 6.0);
+    }
+
+```
 
 ![RatingBar](../images/android/ratingBar_example.png)
 
@@ -495,7 +955,44 @@ Available methods in Java JDI Mobile
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/2391-ratingBar/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RatingBarTests.java">Test examples in Java</a>
 
-###SeekBar
+### Spinner
+
+<a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
+In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
+all other available values, from which the user can select a new one.
+
+```java 
+
+@Test
+    public void toggleButtonTest() {
+        IndexPage.viewsPage.click();
+        AndroidScreen.scrollDown(3000);
+        ViewsPage.spinnerPage.click();
+        SpinnerPage.colorSpinner.is().displayed();
+        SpinnerPage.colorSpinner.has().text("red");
+        SpinnerPage.colorSpinner.tap();
+        SpinnerPage.colorSpinner.select("yellow");
+        SpinnerPage.colorSpinner.has().text("yellow");
+        SpinnerPage.colorSpinner.tap();
+        SpinnerPage.colorSpinner.select("violet");
+        SpinnerPage.colorSpinner.has().text("violet");
+    }
+
+```
+
+![Spinner](../images/android/spinner.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**select** | Select value in spinner | void
+**is()** | Assert action | TextAssert
+**has()** | Assert action | TextAssert
+
+<a href="***">Test examples in Java</a>
+
+### Seek Bar
 
 <a href="https://developer.android.com/reference/android/widget/SeekBar" target="_blank" style="font-weight: bold;">SeekBar</a> is an extension of ProgressBar that adds a draggable thumb. The user can touch the thumb and drag left or right to set the current progress level or use the arrow keys. Placing focusable widgets to the left or right of a SeekBar is discouraged.
 
@@ -616,6 +1113,65 @@ Available methods in Java JDI Mobile
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
 
+### Status Bar
+
+<a href="https://developer.android.com/guide/topics/ui/notifiers/notifications" target="_blank" style="font-weight: bold;">StatusBar</a> is an extension of ProgressBar that adds a draggable thumb. The user can touch the thumb and drag left or right to set the current progress level or use the arrow keys. Placing focusable widgets to the left or right of a SeekBar is discouraged.
+
+```java 
+
+@Test
+    public void openNotificationTest() {
+
+        AndroidScreen.openNotificationPanel();
+        notificationPanel.is().displayed();
+        appIcon.is().displayed();
+
+        appName.is().text("API Demos");
+        title.is().text("Mood ring");
+        appText.is().text("I am happy");
+
+        statusBarLatestEventContent.click();
+        happyIconButton.is().displayed();
+        happyIconButton.click();
+    }
+
+    @Test
+    public void clearNotificationButtonTest(){
+
+        AndroidScreen.openNotificationPanel();
+        notificationPanel.is().displayed();
+        AndroidScreen.closeNotificationPanel();
+
+        clearNotificationButton.click();
+        AndroidScreen.openNotificationPanel();
+        noNotifications.is().displayed();
+    }
+
+    @Test
+    public void clearAllButtonTest(){
+
+        AndroidScreen.openNotificationPanel();
+        notificationPanel.is().displayed();
+        clearAllButton.click();
+        notificationPanel.waitFor().hidden();
+
+        AndroidScreen.openNotificationPanel();
+        noNotifications.is().displayed();
+    }
+
+```
+
+![Staus Bar](../images/android/statusBar.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**openNotificationPanel()** | Open notification panel | void
+**is()** | Assert SeekBar value | TextAssert
+
+<a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/StatusBarTests.java" target="_blank">Test examples in Java</a>
+
 ### Toggle Button
 
 <a href="https://developer.android.com/guide/topics/ui/controls/togglebutton">Toggle Button</a> allows the user to change a setting between two states (ON or OFF) as a button with a light indicator.
@@ -648,315 +1204,6 @@ Available methods in Java JDI Mobile:
 **is()** | Assert action | SwitchAssert
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
-
-
-## Android Native Application Complex elements
-
-### Action Bar
-
-<a href="https://developer.android.com/reference/androidx/appcompat/app/ActionBar">Action Bar</a> is a primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
-
-```java 
-
-    @Test
-    public void actionBarUsagePageSearchTest() {
-        IndexPage.appPage.click();
-        AppPage.actionBarPage.click();
-        ActionBarPage.actionBarUsagePage.click();
-        ActionBarUsagePage.searchButton.is().iconifiedByDefault();
-        ActionBarUsagePage.searchButton.setExpanded();
-        ActionBarUsagePage.searchVield.is().enabled();
-        ActionBarUsagePage.searchVield.has().text(PLACEHOLDER);
-        ActionBarUsagePage.searchVield.input("Internet");
-        ActionBarUsagePage.text.has().text("Query so far: Internet");
-        ActionBarUsagePage.clearQuery.click();
-        ActionBarUsagePage.searchButton.isIconified();
-    }
-
-    @Test
-    public void actionBarUsagePageMoreOptionsTest() {
-        IndexPage.appPage.click();
-        AppPage.actionBarPage.click();
-        ActionBarPage.actionBarUsagePage.click();
-        ActionBarUsagePage.moreOptions.is().enabled();
-        ActionBarUsagePage.moreOptions.click();
-        ActionBarUsagePage.moreOptions.selectOption("Add");
-        ActionBarUsagePage.text.is().displayed();
-        ActionBarUsagePage.moreOptions.click();
-        ActionBarUsagePage.moreOptions.selectOption("Sort");
-        ActionBarUsagePage.moreOptions.selectOption("Alphabetically");
-    }
-
-    @Test
-    public void displayOptionsPageNavigationTest() {
-        IndexPage.appPage.click();
-        AppPage.actionBarPage.click();
-        ActionBarPage.displayOptionsPage.click();
-        ActionBarDisplayOptionsPage.navigation.is().enabled();
-        ActionBarDisplayOptionsPage.navigation.click();
-        ActionBarDisplayOptionsPage.horizontalScrollView.is().displayed();
-        ActionBarDisplayOptionsPage.horizontalScrollView.selectOption("TAB 1");
-    }
-```
-![Action Bar](../images/android/ActionBar.PNG)
-
-Available methods in Java JDI Mobile:
-
-|Method | Description | Return Type
---- | --- | ---
-**isIconified()**  | Checks that the Search View in the Action Bar is in iconified state | boolean
-**setExpanded()** | Sets the search field expanded | void
-**expanded()** | Checks that the search field is expanded | boolean
-**input(String value)** | Inputs values into the the search field | void
-**clear()** | Remove values from the search field | void
-**selectOption(String text)** | Selects value from a list of options | void
-**is()** | Assert action | ActionBarAssert
-**has()** | Assert action | ActionBarAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ActionBarTests.java">Test examples in Java</a>
-
-### Progress Bar
-
-<a href="https://developer.android.com/reference/android/widget/ProgressBar">ProgressBar</a>
-```java
-    @Test
-        public void decreaseStandardProgressBar() {
-            ProgressBarPage.decreaseStandardButton.click();
-            ProgressBarPage.decreaseStandardButton.is().enabled();
-            ProgressBarPage.progressBarLine.isExist();
-        }
-    
-        @Test
-        public void increaseStandardProgressBar() {
-            ProgressBarPage.increaseStandardButton.click();
-            ProgressBarPage.increaseStandardButton.is().enabled();
-            ProgressBarPage.progressBarLine.isExist();
-        }
-    
-        @Test
-        public void decreaseSecondaryProgressBar() {
-            ProgressBarPage.decreaseSecondaryButton.click();
-            ProgressBarPage.decreaseSecondaryButton.is().enabled();
-            ProgressBarPage.progressBarLine.isExist();
-        }
-    
-        @Test
-        public void increaseSecondaryProgressBar() {
-            ProgressBarPage.increaseSecondaryButton.click();
-            ProgressBarPage.increaseSecondaryButton.is().enabled();
-            ProgressBarPage.progressBarLine.isExist();
-        }
-```
-![Progress Bar](../images/android/progress_bar.PNG)
-Available methods in Java JDI Mobile:
-
-|Method | Description | Return Type
---- | --- | ---
-**enabled()**  | Button availiable for click | boolean
-**is()** | Assert action | ActionBarAssert
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ProgressBarTests.java">Test examples in Java</a>
-
-### Popup Menu
-
-<a href="https://developer.android.com/reference/android/widget/PopupMenu">PopupMenu</a>
-
-```java 
-
-@Test
-    public void isPopupDisplayedFromSearchItem() {
-        PopupPage.makePopupButton.click();
-        PopupPage.searchItem.longPress();
-        PopupPage.screen.find(By.linkText("Clicked popup menu item Search")).isExist();
-    }
-
-    @Test
-    public void isPopupDisplayedFromAddItem() {
-        PopupPage.makePopupButton.click();
-        PopupPage.addItem.longPress();
-        PopupPage.screen.find(By.linkText("Clicked popup menu item Add")).isExist();
-    }
-
-    @Test
-    public void isPopupDisplayedFromEditItem() {
-        PopupPage.makePopupButton.click();
-        PopupPage.editItem.longPress();
-        PopupPage.screen.find(By.linkText("Clicked popup menu item Edit")).isExist();
-    }
-
-    @Test
-    public void isPopupDisplayedFromShareItem() {
-        PopupPage.makePopupButton.click();
-        PopupPage.editItem.longPress();
-        PopupPage.shareItem.longPress();
-        PopupPage.screen.find(By.linkText("Clicked popup menu item Share")).isExist();
-    }
-```
-
-![Popup Menu](../images/android/popupMenu.png)
-
-Available methods in Java JDI Mobile:
-
-|Method | Description | Return Type
---- | --- | ---
-**longPress()** | Long press on button | void
-**is()** | Assert action | TextAssert
-
-<a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/PopupTests.java">Test examples in Java</a>
-
-
-### Spinner
-
-<a href="https://developer.android.com/guide/topics/ui/controls/spinner">Spinner</a> provide a quick way to select one value from a set. 
-In the default state, a spinner shows its currently selected value. Touching the spinner displays a dropdown menu with 
-all other available values, from which the user can select a new one.
-
-```java 
-
-@Test
-    public void toggleButtonTest() {
-        IndexPage.viewsPage.click();
-        AndroidScreen.scrollDown(3000);
-        ViewsPage.spinnerPage.click();
-        SpinnerPage.colorSpinner.is().displayed();
-        SpinnerPage.colorSpinner.has().text("red");
-        SpinnerPage.colorSpinner.tap();
-        SpinnerPage.colorSpinner.select("yellow");
-        SpinnerPage.colorSpinner.has().text("yellow");
-        SpinnerPage.colorSpinner.tap();
-        SpinnerPage.colorSpinner.select("violet");
-        SpinnerPage.colorSpinner.has().text("violet");
-    }
-
-```
-
-![Spinner](../images/android/spinner.png)
-
-Available methods in Java JDI Mobile:
-
-|Method | Description | Return Type
---- | --- | ---
-**select** | Select value in spinner | void
-**is()** | Assert action | TextAssert
-**has()** | Assert action | TextAssert
-
-<a href="***">Test examples in Java</a>
-
-### ExpandableListView
-
-<a href="https://developer.android.com/reference/android/widget/ExpandableListView">ExpandableListView</a>
-A view that shows items in a vertically scrolling two-level list. This differs from the ListView by allowing two levels: groups which can individually be expanded to show its children. The items come from the ExpandableListAdapter associated with this view.
-
-```java 
-
-  @Test
-    public void customAdapterTest() {
-        customAdapter.tap();
-        peopleNames.tap();
-        dogNames.tap();
-        catNames.tap();
-        fishNames.tap();
-        
-        arnoldName.is().enabled();
-        arnoldName.is().displayed();
-        arnoldName.is().text("Arnold");
-
-        bubblesName.is().enabled();
-        bubblesName.is().displayed();
-        bubblesName.is().text("Bubbles");
-    }
-
-    @Test
-    public void simpleAdapterTest(){
-        simpleAdapter.tap();
-        group0.tap();
-        child1.is().enabled();
-        child1.is().displayed();
-        child1.is().text("Child 1");
-        group0.tap();
-    }
-```
-
-![ExpandableListView](../images/android/expanable_list_view.PNG)
-
-Available methods in Java JDI Mobile:
-
-|Method | Description | Return Type
---- | --- | ---
-**tap** | Tap | void
-**is()** | Assert action | TextAssert
-**enabled()** | Checks that the search field is enabled | boolean
-**displayed()** | Checks that the search field is displayed | boolean
-
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ExpandableListTests.java">Test examples in Java</a>
-
-### Radio Buttons
-
-<a href="https://developer.android.com/guide/topics/ui/controls/radiobutton">Radio Buttons</a>
-Radio buttons allow the user to select one option from a set. You should use radio buttons for optional sets that are mutually exclusive if you think that the user needs to see all available options side-by-side. 
-
-```java 
-
-  @Test
-      public void verifyThatButtonsNotSelected() {
-          getItemByText("All of them").click();
-          logChose.is().displayed();
-          logChose.is().text("You have selected: 2131296294");
-  
-          buttonClear.click();
-          logChose.is().text("You have selected: (none)");
-  
-          getItemByText("Dinner").click();
-          logChose.is().text("You have selected: 2131296401");
-      }
-```
-
-![RadioButtons](../images/android/radio_buttons_group.PNG)
-
-
-|Method | Description | Return Type
---- | --- | ---
-**click** | click | void
-**is()** | Assert action | TextAssert
-**displayed()** | Checks that the search field is displayed | boolean
-**text()** | Gets text | String
-
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RadioButtonsTests.java">Test examples in Java</a>
-
-
-## Android Native Application Composite elements
-
-### Context Menu
-With <a href="https://developer.android.com/reference/android/view/ContextMenu" target="_blank" style="font-weight: bold;">Context Menu</a> you can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.
-
-```java 
-   
-    @Test
-    public void contextMenuTests() {
-        appPage.click();
-        fragmentPage.click();
-        contextMenuPage.tap();
-        longPressButton.shouldBe().visible();
-
-        longPressButton.longPress();
-        menuView.shouldBe().visible();
-    }
-  
-```
-Available methods in Java JDI Mobile
-
-|Method | Description | Return Type
---- | --- | ---
-**tap()** | Tap | void
-**doubleTap()** | Double tap  | void
-**longPress()** | Long press | void
-**longPress(int seconds)** | Long press | void
-**is()** | Assert action | TextAssert 
-
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ContextMenuTests.java" target="_blank">Test examples in Java</a>
-
 
 ## iOS Native Application Common elements
 
@@ -1326,33 +1573,23 @@ People can touch and hold or double-tap an element in a text field, a text view,
 ```java 
    
     @Test
-    public void editMenuTest(){
-        menuTextField.tap();
+    public void editMenuTest() {
+        MessagesListPage.newMessageButton.tap();
 
-        TextFieldPage.textField.setValue("Test");
-
-        TextFieldPage.textField.doubleTap();
-        TextFieldPage.editMenu.cut();
-        TextFieldPage.textField.is().text(DEFAULT_TEXT);
-
-        TextFieldPage.textField.doubleTap();
-        TextFieldPage.editMenu.paste();
-        TextFieldPage.textField.is().text("Test");
-
-        TextFieldPage.textField.doubleTap();
-        TextFieldPage.editMenu.copy();
-        TextFieldPage.textField.doubleTap();
-        TextFieldPage.editMenu.cut();
-        TextFieldPage.textField.is().text(DEFAULT_TEXT);
-
-        TextFieldPage.textField.doubleTap();
-        TextFieldPage.editMenu.paste();
-        TextFieldPage.textField.is().text("Test");
+        NewMessagePage.messageTextField.setValue("Test");
+        NewMessagePage.messageTextField.doubleTap();
+        NewMessagePage.messageEditMenu.copy();
+        NewMessagePage.messageTextField.doubleTap();
+        NewMessagePage.messageEditMenu.cut();
+        NewMessagePage.messageTextField.is().empty();
+        NewMessagePage.messageTextField.doubleTap();
+        NewMessagePage.messageEditMenu.paste();
+        NewMessagePage.messageTextField.is().text("Test");
     }
   
 ```
 
-![Edit menu](../images/ios/edit_menu_ios.png)
+![Edit menu](../images/ios/edit_menu.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1369,7 +1606,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **lookUp()** | Tap Look Up menu option | void 
 **share()** | Tap Share... menu option | void 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/EditMenuTest.java" target="_blank">Test examples in Java</a> 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
 
 ### Navigation Bar
 
@@ -1537,289 +1774,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java" target="_blank">Test examples in Java</a>
-
-## HTML 5 Mobile elements
-
-### Check Box
-
-```java 
-@FindBy(css = "#accept-conditions")
-public static UIElement singleCheckBox;
-
-@FindBy(xpath = "//input[@name='checks-group']/..")
-public static TextField nameArea;	    
-
-     @Test
-        public void checkBoxClick() {
-            shouldBeLoggedIn();
-            leftMenu.click();
-            htmlMenu.click();
-            htmlMobilePage.singleCheckBox.click();
-            htmlMobilePage.singleCheckBox.is().selected();
-        }
-    
-        @Test
-        public void isCheckBoxDisplayed() {
-            shouldBeLoggedIn();
-            leftMenu.click();
-            htmlMenu.click();
-            htmlMobilePage.singleCheckBox.click();
-            htmlMobilePage.singleCheckBox.is().displayed();
-        }
-    
-        @Test
-        public void getCheckBoxByText() {
-            shouldBeLoggedIn();
-            leftMenu.click();
-            htmlMenu.click();
-            UIElement checkBoxHot = htmlMobilePage.checkList.find(By.id("hot"));
-            checkBoxHot.core().click();
-            checkBoxHot.is().selected();
-    
-            UIElement checkBoxCold = htmlMobilePage.checkList.find(By.id("cold"));
-            checkBoxCold.core().click();
-            checkBoxCold.is().selected();
-    
-            UIElement checkBoxRainy = htmlMobilePage.checkList.find(By.id("rainy"));
-            checkBoxRainy.core().click();
-            checkBoxRainy.is().selected();
-    
-            UIElement checkBoxSunny = htmlMobilePage.checkList.find(By.id("sunny-day"));
-            checkBoxSunny.core().click();
-            checkBoxSunny.is().selected();
-    
-            UIElement checkBoxDisabled = htmlMobilePage.checkList.find(By.id("disabled-ch"));
-            checkBoxDisabled.core().is().disabled();
-        }
-    
-        @Test
-        public void verifyOtherCheckBoxesNotSelected() {
-            shouldBeLoggedIn();
-            leftMenu.click();
-            htmlMenu.click();
-            UIElement checkBoxHot = htmlMobilePage.checkList.find(By.id("hot"));
-            checkBoxHot.core().click();
-            checkBoxHot.is().selected();
-    
-            UIElement checkBoxCold = htmlMobilePage.checkList.find(By.id("cold"));
-            checkBoxCold.is().deselected();
-    
-            UIElement checkBoxRainy = htmlMobilePage.checkList.find(By.id("rainy"));
-            checkBoxRainy.is().deselected();
-    
-            UIElement checkBoxSunny = htmlMobilePage.checkList.find(By.id("sunny-day"));
-            checkBoxSunny.is().deselected();
-        }
-```
-
-![Check Box](../images/html/checkbox_html.png)
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**selected()** | select check box | void
-**deselected()** | deselect check box | void
-**is()** | Assert action | Assert 
-
-<a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileCheckBoxTests.java" target="_blank">Java test examples</a>
-<br>
-
-### Progress Bar
-
-```java 
-@FindBy(css = "#progress")
-public static ProgressBar staticProgressBar;
-
-    @Test
-        public void progressBarGetValue() {
-            shouldBeLoggedIn();
-            leftMenu.tap();
-            htmlMenu.tap();
-            staticProgressBar.is().value(70);
-        }
-    
-        @Test
-        public void progressBarIsDisplayed() {
-            shouldBeLoggedIn();
-            leftMenu.tap();
-            htmlMenu.tap();
-            staticProgressBar.is().displayed();
-        }
-```
-
-![Progress Bar](../images/html/progressbar_html.png)
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**value()** | get value | void
-**is()** | Assert action | Assert 
-
-<a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileWebProgressBarTests.java" target="_blank">Java test examples</a>
-<br>
-
-### TextField
-
-```java 
-@FindBy(css = "#name")
-public static TextField nameArea;
-
-    private static String CONDITION1 = "111";
-    private static String CONDITION2 = "!}{?)";
-    private static String CONDITION3 = "17";
-    private static String CONDITION4 = "MyName";
-    private static String CONDITION5 = "Мое имя";
-
-    @Test
-    public void textFieldTests() {
-        shouldBeLoggedIn();
-        leftMenu.click();
-        htmlMenu.click();
-
-        HtmlMobilePage.nameArea.focus();
-        HtmlMobilePage.nameArea.sendKeys(CONDITION1);
-        HtmlMobilePage.nameArea.has().text(CONDITION1);
-        HtmlMobilePage.nameArea.clear();
-
-        HtmlMobilePage.nameArea.focus();
-        HtmlMobilePage.nameArea.sendKeys(CONDITION2);
-        HtmlMobilePage.nameArea.has().text(CONDITION2);
-        HtmlMobilePage.nameArea.clear();
-
-        HtmlMobilePage.nameArea.focus();
-        HtmlMobilePage.nameArea.sendKeys(CONDITION3);
-        HtmlMobilePage.nameArea.has().text(CONDITION3);
-        HtmlMobilePage.nameArea.clear();
-
-        HtmlMobilePage.nameArea.focus();
-        HtmlMobilePage.nameArea.sendKeys(CONDITION4);
-        HtmlMobilePage.nameArea.has().text(CONDITION4);
-        HtmlMobilePage.nameArea.clear();
-
-        HtmlMobilePage.nameArea.focus();
-        HtmlMobilePage.nameArea.sendKeys(CONDITION5);
-        HtmlMobilePage.nameArea.has().text(CONDITION5);
-        HtmlMobilePage.nameArea.clear();
-    }
-
-@Test
-public void setTextTests() {
-        shouldBeLoggedIn();
-        leftMenu.click();
-        htmlMenu.click();
-        HtmlMobilePage.nameArea.setValue(CONDITION1);
-        HtmlMobilePage.nameArea.placeholder().equals(CONDITION1);
-}
-
-@Test
-public void isNameAreaDisplayed() {
-        shouldBeLoggedIn();
-        leftMenu.click();
-        htmlMenu.click();
-        HtmlMobilePage.nameArea.is().displayed();
-}
-```
-***Text Field*** - Element that represents text field for enter chars
-
-![TextField](../images/html/textField_html.png)
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**clear()** | Clear text area | void
-**setValue** | Input text to field | String
-**click()** | Click the button  | void
-**focus()** | Focused on text area | void
-**is()** | Assert action | Assert 
-
-<a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileWebTextFieldTests.java" target="_blank">Java test examples</a>
-<br>
-
-### Text Area
-
-```java 
-@FindBy(css = "#text-area")
-public static TextArea textArea;
-
-@Test
-public void textAreaIsDisplayed() {
-   shouldBeLoggedIn();
-   leftMenu.tap();
-   htmlMenu.tap();
-   HtmlMobilePage.textArea.is().displayed();
-}
-
-@Test
-public void enterTextToArea() {
-   List<String> inputText = new ArrayList<>();
-   inputText.add("New text for text area.");
-   inputText.add("JDI-Light mobile is very good and convenient.");
-   inputText.add("It is very convenient to write auto tests");
-
-   shouldBeLoggedIn();
-   leftMenu.tap();
-   htmlMenu.tap();
-   HtmlMobilePage.textArea.focus();
-   HtmlMobilePage.textArea.clear();
-   HtmlMobilePage.textArea.input(String.valueOf(inputText));
-   HtmlMobilePage.textArea.has().text(String.valueOf(inputText));
-   HtmlMobilePage.textArea.clear();
-}
-
-@Test
-public void addNewLinesTest() {
-        List<String> inputText = new ArrayList<>();
-        inputText.add("New text for text area.");
-        inputText.add("JDI-Light mobile is very good and convenient.");
-        inputText.add("It is very convenient to write auto tests");
-
-        shouldBeLoggedIn();
-        leftMenu.tap();
-        htmlMenu.tap();
-        HtmlMobilePage.textArea.focus();
-        HtmlMobilePage.textArea.clear();
-        HtmlMobilePage.textArea.sendKeys(String.valueOf(inputText));
-        HtmlMobilePage.textArea.addNewLine("New line for text area");
-        Assert.assertEquals(HtmlMobilePage.textArea.getLines().size(), 2);
-}
-
-@Test
-public void addNewLinesAndClearOld() {
-       List<String> inputText = new ArrayList<>();
-       inputText.add("New text for text area.");
-       inputText.add("JDI-Light mobile is very good and convenient.");
-       inputText.add("It is very convenient to write auto tests");
-            
-       shouldBeLoggedIn();
-       leftMenu.tap();
-       htmlMenu.tap();
-       HtmlMobilePage.textArea.focus();
-       HtmlMobilePage.textArea.input("New line instead old");
-       HtmlMobilePage.textArea.placeholder().equals("New line instead old");
-}
-
-
-```
-**Text Area** - Element that represents area for enter chars
-
-![TextArea](../images/html/textArea_html.png)
-
-Available methods in Java JDI Light:
-
-|Method | Description | Return Type
---- | --- | ---
-**clear()** | Clear text area | void
-**input()** | Input text to area | void
-**click()** | Click the button  | void
-**focus()** | Focused on text area | void
-**is()** | Assert action | Assert 
-
-<a href="https://github.com/jdi-light-mobile-tests/src/test/java/io/github/epam/mobile/tests/MobileWebTextAreaTests.java" target="_blank">Java test examples</a>
-<br>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java.java" target="_blank">Test examples in Java</a>
 
 ## HTML5 Common elements
 
