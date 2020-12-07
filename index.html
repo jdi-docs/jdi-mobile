@@ -531,6 +531,9 @@
                             <li>
 								<a href="#expandablelistview" class="toc-h2 h3 toc-link" data-title="ExpandableListView">ExpandableListView</a>
                             </li>
+                            <li>
+								<a href="#radio-buttons" class="toc-h2 h3 toc-link" data-title="Radio Buttons">Radio Buttons</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -3982,6 +3985,55 @@ A view that shows items in a vertically scrolling two-level list. This differs f
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ExpandableListTests.java">Test examples in Java</a></p>
+<h3 id='radio-buttons'>Radio Buttons</h3>
+<p><a href="https://developer.android.com/guide/topics/ui/controls/radiobutton">Radio Buttons</a>
+Radio buttons allow the user to select one option from a set. You should use radio buttons for optional sets that are mutually exclusive if you think that the user needs to see all available options side-by-side. </p>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">verifyThatButtonsNotSelected</span><span class="o">()</span> <span class="o">{</span>
+          <span class="n">getItemByText</span><span class="o">(</span><span class="s">"All of them"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+          <span class="n">logChose</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+          <span class="n">logChose</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"You have selected: 2131296294"</span><span class="o">);</span>
+
+          <span class="n">buttonClear</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+          <span class="n">logChose</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"You have selected: (none)"</span><span class="o">);</span>
+
+          <span class="n">getItemByText</span><span class="o">(</span><span class="s">"Dinner"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+          <span class="n">logChose</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"You have selected: 2131296401"</span><span class="o">);</span>
+      <span class="o">}</span>
+</code></pre>
+<p><img src="images/android/radio_buttons_group.PNG" alt="RadioButtons" /></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>click</strong></td>
+<td>click</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>Checks that the search field is displayed</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>Gets text</td>
+<td>String</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/RadioButtonsTests.java">Test examples in Java</a></p>
 <h2 id='android-native-application-composite-elements'>Android Native Application Composite elements</h2><h3 id='context-menu'>Context Menu</h3>
 <p>With <a href="https://developer.android.com/reference/android/view/ContextMenu" target="_blank" style="font-weight: bold;">Context Menu</a> you can use context menus to give people access to additional functionality related to onscreen items without cluttering the interface.</p>
 <pre class="highlight java tab-java"><code>
