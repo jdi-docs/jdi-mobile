@@ -1205,6 +1205,37 @@ Available methods in Java JDI Mobile:
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a>
 
+### Tooltip
+
+<a href="https://developer.android.com/guide/topics/ui/tooltips#:~:text=A%20tooltip%20is%20a%20small,save%20space%20in%20the%20layout.">Tooltip</a> allows the user to get additional information about android object.
+
+```java 
+
+@Test
+    public void getAllToolTipsFromGallery() {
+        GalleryPage.photoOne.longPress();
+        GalleryPage.galleryLayout.find(By.linkText("0")).isExist();
+
+        GalleryPage.photoTwo.longPress();
+        GalleryPage.galleryLayout.find(By.linkText("1")).isExist();
+
+        GalleryPage.photoThree.longPress();
+        GalleryPage.galleryLayout.find(By.linkText("2")).isExist();
+    }
+
+```
+
+![Tooltip](../images/android/toolTip.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**longPress()**  | Long press on object | void
+**isExist()** | Assert action | booleean
+
+<a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/TooltipsTest.java ">Test examples in Java</a>
+
 ## iOS Native Application Common elements
 
 ### Buttons
@@ -1540,7 +1571,6 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **clear()** | Clear value in text field | void
  
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a> 
-
 
 ## iOS Native Application Composite elements
 
