@@ -538,6 +538,9 @@
                             <li>
 								<a href="#toggle-button" class="toc-h2 h3 toc-link" data-title="Toggle Button">Toggle Button</a>
                             </li>
+                            <li>
+								<a href="#tooltip" class="toc-h2 h3 toc-link" data-title="Tooltip">Tooltip</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -728,7 +731,7 @@
 								<a href="#spinner-buttons" class="toc-h2 h3 toc-link" data-title="Spinner Buttons">Spinner Buttons</a>
                             </li>
                             <li>
-								<a href="#tooltip" class="toc-h2 h3 toc-link" data-title="Tooltip">Tooltip</a>
+								<a href="#tooltip-2" class="toc-h2 h3 toc-link" data-title="Tooltip">Tooltip</a>
                             </li>
                         </ul>
                   </li>
@@ -4323,6 +4326,46 @@ Switches are either on or off. Providing labels that describe these states is re
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/ToggleButtonTests.java">Test examples in Java</a></p>
+<h3 id='tooltip'>Tooltip</h3>
+<p><a href="https://developer.android.com/guide/topics/ui/tooltips#:~:text=A%20tooltip%20is%20a%20small,save%20space%20in%20the%20layout.">Tooltip</a> allows the user to get additional information about android object.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getAllToolTipsFromGallery</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">GalleryPage</span><span class="o">.</span><span class="na">photoOne</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">GalleryPage</span><span class="o">.</span><span class="na">galleryLayout</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">linkText</span><span class="o">(</span><span class="s">"0"</span><span class="o">)).</span><span class="na">isExist</span><span class="o">();</span>
+
+        <span class="n">GalleryPage</span><span class="o">.</span><span class="na">photoTwo</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">GalleryPage</span><span class="o">.</span><span class="na">galleryLayout</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">linkText</span><span class="o">(</span><span class="s">"1"</span><span class="o">)).</span><span class="na">isExist</span><span class="o">();</span>
+
+        <span class="n">GalleryPage</span><span class="o">.</span><span class="na">photoThree</span><span class="o">.</span><span class="na">longPress</span><span class="o">();</span>
+        <span class="n">GalleryPage</span><span class="o">.</span><span class="na">galleryLayout</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">linkText</span><span class="o">(</span><span class="s">"2"</span><span class="o">)).</span><span class="na">isExist</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/android/toolTip.png" alt="Tooltip" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press on object</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>isExist()</strong></td>
+<td>Assert action</td>
+<td>booleean</td>
+</tr>
+</tbody></table>
+
+<p><a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/TooltipsTest.java ">Test examples in Java</a></p>
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
@@ -15725,7 +15768,7 @@ Here is an example with provided Bootstrap v4.3 code:</p>
          Loading...
      <span class="nt">&lt;/button&gt;</span>
  <span class="nt">&lt;/div&gt;</span>
-</code></pre><h3 id='tooltip'>Tooltip</h3>
+</code></pre><h3 id='tooltip-2'>Tooltip</h3>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/tooltips/" target="_blank">Tooltip</a> is a hint that used in conjuction with a pointer.</p>
 
 <p><img src="images/bootstrap/tooltip_top.png" alt="Tooltip top" /></p>
