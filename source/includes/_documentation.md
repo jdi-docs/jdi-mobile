@@ -1212,8 +1212,18 @@ Available methods in Java JDI Mobile:
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
 You can also design fully custom buttons.
+```java 
+   
+    @Test
+    public void iosButtonTest() {
+        menuAlertDialog.tap();
 
-![Button](../images/ios/button.png)
+        AlertDialogPage.buttonShowAlert.tap();
+        AlertDialogPage.alert.is().displayed();
+    }
+  
+```
+![Button](../images/ios/button_ios.png)
 
 Available methods in Java JDI Mobile (**iOS 13** compatible):
 
@@ -1225,7 +1235,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **longPress(int seconds)** | Long press | void
 **is()** | Assert action | TextAssert
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/CalendarAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/IosButtonTest.java" target="_blank">Test examples in Java</a>
 
 ### Add Contact Button
 
