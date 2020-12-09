@@ -550,6 +550,9 @@
 								<a href="#buttons" class="toc-h2 h3 toc-link" data-title="Buttons">Buttons</a>
                             </li>
                             <li>
+								<a href="#add-contact-button" class="toc-h2 h3 toc-link" data-title="Add Contact Button">Add Contact Button</a>
+                            </li>
+                            <li>
 								<a href="#detail-disclosure-button" class="toc-h2 h3 toc-link" data-title="Detail Disclosure Button">Detail Disclosure Button</a>
                             </li>
                             <li>
@@ -4369,49 +4372,72 @@ Switches are either on or off. Providing labels that describe these states is re
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon.
 The system provides a number of predefined button styles for most use cases.
-You can also design fully custom buttons.
-```java </p>
+You can also design fully custom buttons.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">iosButtonTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">menuAlertDialog</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-<p>@Test
-    public void iosButtonTest() {
-        menuAlertDialog.tap();</p>
+        <span class="n">AlertDialogPage</span><span class="o">.</span><span class="na">buttonShowAlert</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">AlertDialogPage</span><span class="o">.</span><span class="na">alert</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="o">}</span>
 
-<p>AlertDialogPage.buttonShowAlert.tap();
-        AlertDialogPage.alert.is().displayed();
-    }</p>
-<pre class="highlight plaintext"><code>![Button](../images/ios/button_ios.png)
+</code></pre>
+<p><img src="images/ios/button_ios.png" alt="Button" /></p>
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
 
-|Method | Description | Return Type
---- | --- | ---
-**tap()** | Tap | void
-**doubleTap()** | Double tap  | void
-**longPress()** | Long press | void
-**longPress(int seconds)** | Long press | void
-**is()** | Assert action | TextAssert
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
 
-&lt;a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/IosButtonTest.java" target="_blank"&gt;Test examples in Java&lt;/a&gt;
-
-### Add Contact Button
-
-&lt;a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;"&gt;Add contact buttons&lt;/a&gt;&lt;br&gt;
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/IosButtonTest.java" target="_blank">Test examples in Java</a></p>
+<h3 id='add-contact-button'>Add Contact Button</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Add contact buttons</a><br>
 Users can tap an Add Contact button to browse a list of existing contacts and to select one for insertion into a text field or other view. 
-In Mail, for example, you can tap the Add Contact button in the To field of a message to select a recipient from your list of contacts.
+In Mail, for example, you can tap the Add Contact button in the To field of a message to select a recipient from your list of contacts.</p>
+<pre class="highlight java tab-java"><code>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addContactButtonTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+      <span class="n">MessagesListPage</span><span class="o">.</span><span class="na">newMessageButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-```java 
+      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">addContactButton</span><span class="o">.</span><span class="na">openContacts</span><span class="o">();</span>
 
-  @Test
-  public void addContactButtonTest() throws InterruptedException {
-      MessagesListPage.newMessageButton.tap();
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
 
-      NewMessagePage.addContactButton.openContacts();
-
-      ContactsListPage.contactNavBar.is().displayed();
-      ContactsListPage.cancelButton.cancel();
-
-      NewMessagePage.addContactButton.is().displayed();
-  }
+      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">addContactButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+  <span class="o">}</span>
 
 </code></pre>
 <p><img src="images/ios/add_contact_button.png" alt="Add contact button" /></p>
