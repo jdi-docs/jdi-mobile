@@ -272,8 +272,8 @@ Available mobile keyboard-specific methods in Java JDI Light Mobile:
 **zoomOut(double ratio)** | Zoom out the screen by a given ratio | void
 **startRecordingScreen()** | Start recording screen with default options | String
 **startRecordingScreen(T options)** | Stop recording screen with default options | <T extends BaseStartScreenRecordingOptions<?>> String
-**stopRecordingScreen()** | Start recording screen with options | String
-**stopRecordingScreen(T options)** | Stop recording screen with options | <T extends BaseStopScreenRecordingOptions<?>> String
+**stopRecordingScreen()** | Start recording screen with <a href="http://appium.io/docs/en/commands/device/recording-screen/start-recording-screen/" target="_blank" style="font-weight: bold;">options</a>   | String
+**stopRecordingScreen(T options)** | Stop recording screen with <a href="http://appium.io/docs/en/commands/device/recording-screen/stop-recording-screen/" target="_blank" style="font-weight: bold;">options</a> | <T extends BaseStopScreenRecordingOptions<?>> String
 
 ## Base Elements
 
