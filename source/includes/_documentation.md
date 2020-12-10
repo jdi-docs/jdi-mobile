@@ -250,6 +250,31 @@ Available mobile keyboard-specific methods in Java JDI Light Mobile:
 **pressKey(KeyEvent keyEvent)** | Send a key event to the mobile device ***(Android only)*** | void
 **longPressKey(KeyEvent keyEvent)** | Send a long press key event to the mobile  device ***(Android only)*** | void
 
+### MobileScreen
+
+Available mobile keyboard-specific methods in Java JDI Light Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**getScreenSize()** | Provides the dimensions of the mobile screen ***(Android native app only)*** | Dimension
+**scrollUp(int offset)** | Scrolls up for offset in pixel | void
+**scrollDown(int offset)** | Scrolls down for offset in pixel | void
+**scrollRight(int offset)** | Scrolls right for offset in pixel | void
+**scrollLeft(int offset)** | Scrolls left for offset in pixel | void
+**swipeToElement(WebElement startElement, WebElement endElement)** | Swipes from start element to end element ***Android only*** | void
+**scrollDownToXpath(String xpath)** | Scrolls to element by xpath | void
+**scrollToElementInList(Button element)** | Scrolls to element | UIAssert
+**scrollToTop()** | Scrolls to top of the page | void
+**scrollToBottom()** | Scrolls to bottom of the page | void
+**zoomIn()** | Zoom in the screen twice | void
+**zoomOut()** | Zoom out the screen twice | void
+**zoomIn(double ratio)** | Zoom in the screen by a given ratio | void
+**zoomOut(double ratio)** | Zoom out the screen by a given ratio | void
+**startRecordingScreen()** | Start recording screen with default options | String
+**startRecordingScreen(T options)** | Stop recording screen with default options | <T extends BaseStartScreenRecordingOptions<?>> String
+**stopRecordingScreen()** | Start recording screen with options | String
+**stopRecordingScreen(T options)** | Stop recording screen with options | <T extends BaseStopScreenRecordingOptions<?>> String
+
 ## Base Elements
 
 ### UIBaseElement
