@@ -126,6 +126,15 @@ Available mobile app-specific methods in Java JDI Light Mobile:
         assertThat(getText.contains(text));
     }
   
+    @Test
+    public void performanceDataTest() {
+        System.out.println(MobileDevice.getPerformanceDataTypes());
+        System.out.println(MobileDevice.getPerformanceData("", "cpuinfo", 5));
+        //System.out.println(MobileDevice.getPerformanceData("com.google.android.deskclock","memoryinfo",5));
+        System.out.println(MobileDevice.getPerformanceData("", "batteryinfo", 5));
+        System.out.println(MobileDevice.getPerformanceData("", "networkinfo", 5));
+    }
+
 ```
 
 Available mobile device-specific methods in Java JDI Light Mobile: 
@@ -147,8 +156,10 @@ Available mobile device-specific methods in Java JDI Light Mobile:
 **getDeviceTime(String format)** | Returns device date and time in specific format | String
 **shake()** | Simulates shaking the device ***(iOS only)*** | void
 **performTouchId(boolean match)** | Simulates touchId event ***(iOS only)*** | void
-** TouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
+**TouchIDEnrollment(boolean enabled)** | Enrolls touchId in iOS Simulators ***(iOS only)*** | void
 **fingerPrint(int fingerPrintId)** | Authenticates user by using finger print scan on supported emulators ***(Android only)*** | void
+**getPerformanceDataTypes()** | Returns the information types of the system state which is supported to read as like cpu, memory, network traffic, and battery | List<String>
+**getPerformanceData(String packageName, String dataType, int dataReadTimeout)** |  Returns the information of the system state which is supported to read as like cpu, memory, network traffic, and battery | List<List<Object>>
 **setClipBoardText(String text)** | Set the content of the system clipboard ***(Android only)*** | void
 **getClipBoardText()** | Get the content of the system clipboard ***(Android only)*** | String
 
