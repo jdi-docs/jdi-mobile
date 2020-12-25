@@ -3275,43 +3275,6 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
             <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">moreOptions</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
             <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">listView</span><span class="o">.</span><span class="na">selectOption</span><span class="o">(</span><span class="s">"Menu Item"</span><span class="o">);</span>
         <span class="o">}</span>
-
-        <span class="nd">@Test</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">displayOptionsPageDisplayHomeAsUpTest</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayHomeAsUp</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayHomeAsUp</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">navigateUp</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="o">}</span>
-
-        <span class="nd">@Test</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">displayOptionsPageDisplayShowHomeAndDisplayUseLogoTest</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayShowHome</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayShowHome</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">imageView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayUseLogo</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayUseLogo</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">imageView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="o">}</span>
-
-        <span class="nd">@Test</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">displayOptionsPageDisplayShowTitleAndDisplayShowCustomAndCycleCustomGravityTest</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayShowTitle</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayShowTitle</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">textView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">hidden</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayShowCustom</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">displayShowCustom</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">customView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">cycleCustomViewGravity</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">cycleCustomViewGravity</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="o">}</span>
-
-        <span class="nd">@Test</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">displayOptionsPageNavigationTest</span><span class="o">()</span> <span class="o">{</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">navigation</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">enabled</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">navigation</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">horizontalScrollView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-            <span class="n">ActionBarDisplayOptionsPage</span><span class="o">.</span><span class="na">horizontalScrollView</span><span class="o">.</span><span class="na">selectOption</span><span class="o">(</span><span class="s">"TAB 1"</span><span class="o">);</span>
-        <span class="o">}</span>
 </code></pre>
 <p><img src="images/android/ActionBar.PNG" alt="Action Bar" /></p>
 
@@ -3637,18 +3600,6 @@ A view that shows items in a vertically scrolling two-level list. This differs f
         <span class="n">minutesHeader</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
         <span class="n">radialPicker</span><span class="o">.</span><span class="na">selectTimePicker</span><span class="o">(</span><span class="s">"35"</span><span class="o">);</span>
         <span class="n">minutesHeader</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"35"</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">datePickerTest</span><span class="o">(){</span>
-        <span class="n">datePickerButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">yearPickerHeader</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">yearPicker</span><span class="o">.</span><span class="na">selectYearPicker</span><span class="o">(</span><span class="s">"2018"</span><span class="o">);</span>
-        <span class="n">yearPickerHeader</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"2018"</span><span class="o">);</span>
-        <span class="n">nextMonth</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-        <span class="n">datePicker</span><span class="o">.</span><span class="na">selectDatePicker</span><span class="o">(</span><span class="s">"23 December 2018"</span><span class="o">);</span>
-        <span class="n">datePickerHeader</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Sun, Dec 23"</span><span class="o">);</span>
-        <span class="n">yearPickerHeader</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"2018"</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="nd">@Test</span>
