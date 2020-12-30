@@ -562,7 +562,7 @@
 								<a href="#system-button" class="toc-h2 h3 toc-link" data-title="System Button">System Button</a>
                             </li>
                             <li>
-								<a href="#picker-wheel" class="toc-h2 h3 toc-link" data-title="Picker Wheel">Picker Wheel</a>
+								<a href="#pickers" class="toc-h2 h3 toc-link" data-title="Pickers">Pickers</a>
                             </li>
                             <li>
 								<a href="#slider" class="toc-h2 h3 toc-link" data-title="Slider">Slider</a>
@@ -4334,7 +4334,7 @@ Switches are either on or off. Providing labels that describe these states is re
 </code></pre>
 <p><img src="images/ios/button_ios.png" alt="Button" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -4376,22 +4376,23 @@ Switches are either on or off. Providing labels that describe these states is re
 Users can tap an Add Contact button to browse a list of existing contacts and to select one for insertion into a text field or other view. 
 In Mail, for example, you can tap the Add Contact button in the To field of a message to select a recipient from your list of contacts.</p>
 <pre class="highlight java tab-java"><code>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addContactButtonTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
-      <span class="n">MessagesListPage</span><span class="o">.</span><span class="na">newMessageButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">systemButtonTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">groupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">groupsPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsListView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
 
-      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">addContactButton</span><span class="o">.</span><span class="na">openContacts</span><span class="o">();</span>
-
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-
-      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">addContactButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-  <span class="o">}</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">addNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">addNewContactPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="o">}</span>
 
 </code></pre>
-<p><img src="images/ios/add_contact_button.png" alt="Add contact button" /></p>
+<p><img src="images/ios/add_button_ios.png" alt="Add contact button" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -4432,7 +4433,7 @@ In Mail, for example, you can tap the Add Contact button in the To field of a me
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a></p>
 <h3 id='detail-disclosure-button'>Detail Disclosure Button</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Detail disclosure buttons</a> open views—typically, modal views—containing additional information or functionality related to a specific item onscreen.
 They are commonly used in tables to access information about specific rows.</p>
@@ -4501,23 +4502,19 @@ They are commonly used in tables to access information about specific rows.</p>
 reveals configuration details about an app, sometimes on the back of the current view, after flipping the view around. 
 Info buttons come in two styles—light and dark. Pick the style that best coordinates with your app’s design and doesn’t get lost onscreen.</p>
 <pre class="highlight java tab-java"><code>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">infoButtonTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">RemindersApp</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">())</span>
-          <span class="n">RemindersApp</span><span class="o">.</span><span class="na">continueButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">infoButtonTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">remindersListPage</span><span class="o">.</span><span class="na">todayRemindersButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-      <span class="n">RemindersListPage</span><span class="o">.</span><span class="na">todayRemindersButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">remindersPage</span><span class="o">.</span><span class="na">newReminderButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">remindersPage</span><span class="o">.</span><span class="na">editDetailsInfoButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
 
-      <span class="n">RemindersPage</span><span class="o">.</span><span class="na">newReminderButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-      <span class="n">RemindersPage</span><span class="o">.</span><span class="na">editDetailsInfoButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
-
-      <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">detailsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-  <span class="o">}</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">detailsNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="o">}</span>
 
 </code></pre>
 <p><img src="images/ios/info_button.png" alt="Info button" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -4562,23 +4559,23 @@ Info buttons come in two styles—light and dark. Pick the style that best coord
 <h3 id='system-button'>System Button</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">System buttons</a> often appear in navigation bars and toolbars, but may be used anywhere.</p>
 <pre class="highlight java tab-java"><code>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">systemButtonTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-      <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-      <span class="n">GroupsPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsListView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">systemButtonTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">groupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">groupsPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsListView</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
 
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-      <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-      <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-      <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-  <span class="o">}</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">addNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">addNewContactPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="o">}</span>
 
 </code></pre>
 <p><img src="images/ios/system_button.png" alt="System button" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13 compatible</strong>):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14 compatible</strong>):</p>
 
 <table><thead>
 <tr>
@@ -4630,33 +4627,39 @@ Info buttons come in two styles—light and dark. Pick the style that best coord
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a></p>
-<h3 id='picker-wheel'>Picker Wheel</h3>
+<h3 id='pickers'>Pickers</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/pickers/" target="_blank" style="font-weight: bold;">
-A Picker Wheel</a> is a scrollable list of distinct values from which people can choose. Make it easy for people to enter information by choosing single or multipart values.</p>
+A Picker</a> is a scrollable list of distinct values from which people can choose. Make it easy for people to enter information by choosing single or multipart values.</p>
 <pre class="highlight java tab-java"><code>
-<span class="nd">@Test</span>
+    <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">pickerWheelTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">RemindersListPage</span><span class="o">.</span><span class="na">todayRemindersButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">remindersListPage</span><span class="o">.</span><span class="na">todayRemindersButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-        <span class="n">RemindersPage</span><span class="o">.</span><span class="na">newReminderButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-        <span class="n">RemindersPage</span><span class="o">.</span><span class="na">editDetailsInfoButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
+        <span class="n">remindersPage</span><span class="o">.</span><span class="na">newReminderButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">remindersPage</span><span class="o">.</span><span class="na">editDetailsInfoButton</span><span class="o">.</span><span class="na">openDetails</span><span class="o">();</span>
 
-        <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">alarm</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-        <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">yearPicker</span><span class="o">.</span><span class="na">setPickerWheelValue</span><span class="o">(</span><span class="s">"2015"</span><span class="o">);</span>
-        <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">yearPicker</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"2015"</span><span class="o">);</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">dateButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">showYearPicker</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-        <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">yearPicker</span><span class="o">.</span><span class="na">movePickerWheelForward</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
-        <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">yearPicker</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"2016"</span><span class="o">);</span>
+        <span class="n">LocalDate</span> <span class="n">localDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">year</span> <span class="o">=</span> <span class="n">localDate</span><span class="o">.</span><span class="na">getYear</span><span class="o">();</span>
+        <span class="n">Month</span> <span class="n">month</span> <span class="o">=</span> <span class="n">localDate</span><span class="o">.</span><span class="na">getMonth</span><span class="o">();</span>
 
-        <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">monthPicker</span><span class="o">.</span><span class="na">setPickerWheelValue</span><span class="o">(</span><span class="s">"April"</span><span class="o">);</span>
-        <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">monthPicker</span><span class="o">.</span><span class="na">movePickerWheelBackward</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
-        <span class="n">EditDetailsPage</span><span class="o">.</span><span class="na">monthPicker</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"March"</span><span class="o">);</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">yearPicker</span><span class="o">.</span><span class="na">movePickerWheelForward</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">yearPicker</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="o">));</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">yearPicker</span><span class="o">.</span><span class="na">movePickerWheelBackward</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">yearPicker</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">year</span><span class="o">));</span>
+
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">monthPicker</span><span class="o">.</span><span class="na">movePickerWheelBackward</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">monthPicker</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">onlyFirstLetterToUpperCase</span><span class="o">(</span><span class="n">month</span><span class="o">.</span><span class="na">minus</span><span class="o">(</span><span class="mi">1</span><span class="o">)));</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">monthPicker</span><span class="o">.</span><span class="na">movePickerWheelForward</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
+        <span class="n">editDetailsPage</span><span class="o">.</span><span class="na">monthPicker</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="n">onlyFirstLetterToUpperCase</span><span class="o">(</span><span class="n">month</span><span class="o">));</span>
     <span class="o">}</span>
 
 </code></pre>
-<p><img src="images/ios/picker.png" alt="Picker Wheel" /></p>
+<p><img src="images/ios/picker_ios.png" alt="Picker Wheel" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -4772,7 +4775,7 @@ A Slider</a> is a horizontal track with a control called a thumb, which you can 
 </code></pre>
 <p><img src="images/ios/switch_button_ios.png" alt="Switch" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -4813,21 +4816,21 @@ A Slider</a> is a horizontal track with a control called a thumb, which you can 
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
 A Text Field</a> is a single-line, fixed-height field, often with rounded corners, that automatically brings up a keyboard when the user taps it. Use a text field to request a small amount of information, such as an email address.</p>
 <pre class="highlight java tab-java"><code>
-  <span class="nd">@Test</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">textFieldTest</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">MessagesListPage</span><span class="o">.</span><span class="na">newMessageButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">textFieldTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">messagesListPage</span><span class="o">.</span><span class="na">firstMenInMessages</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
-      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
 
-      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
-      <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">empty</span><span class="o">();</span>
-  <span class="o">}</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"iMessage"</span><span class="o">);</span>
+    <span class="o">}</span>
 
 </code></pre>
 <p><img src="images/ios/textfield.png" alt="Text Field" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -4890,16 +4893,15 @@ You can use context menus to give people access to additional functionality rela
 <pre class="highlight java tab-java"><code>
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">contextMenuTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">johnAppleseedCard</span><span class="o">.</span><span class="na">longPress</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
-        <span class="n">ContactContextMenu</span><span class="o">.</span><span class="na">johnApplessedPhoto</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">ContactContextMenu</span><span class="o">.</span><span class="na">messageOptionExpand</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-        <span class="n">ContactContextMenu</span><span class="o">.</span><span class="na">johnAppleseedEmail</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">manNameCard</span><span class="o">.</span><span class="na">longPress</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">contactContextMenu</span><span class="o">.</span><span class="na">mensPhoto</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">contactContextMenu</span><span class="o">.</span><span class="na">mensMail</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
     <span class="o">}</span>
 
 </code></pre>
 <p><img src="images/ios/context_menu.png" alt="Context menu" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -4942,23 +4944,23 @@ People can touch and hold or double-tap an element in a text field, a text view,
 <pre class="highlight java tab-java"><code>
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">editMenuTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">MessagesListPage</span><span class="o">.</span><span class="na">newMessageButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">messagesListPage</span><span class="o">.</span><span class="na">firstMenInMessages</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
 
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">copy</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">cut</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">empty</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">paste</span><span class="o">();</span>
-        <span class="n">NewMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">copy</span><span class="o">();</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">cut</span><span class="o">();</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"iMessage"</span><span class="o">);</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">doubleTap</span><span class="o">();</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageEditMenu</span><span class="o">.</span><span class="na">paste</span><span class="o">();</span>
+        <span class="n">newMessagePage</span><span class="o">.</span><span class="na">messageTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
     <span class="o">}</span>
 
 </code></pre>
 <p><img src="images/ios/edit_menu.png" alt="Edit menu" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -5026,31 +5028,31 @@ appears at the top of an app screen, below the status bar, and enables navigatio
 <pre class="highlight java tab-java"><code>
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">navigationBarTest</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Groups"</span><span class="o">);</span>
-        <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Done"</span><span class="o">);</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">tapButton</span><span class="o">(</span><span class="s">"Groups"</span><span class="o">);</span>
+        <span class="n">groupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">groupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">tapButton</span><span class="o">(</span><span class="s">"Done"</span><span class="o">);</span>
 
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-        <span class="n">GroupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">GroupsPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">groupsButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">groupsPage</span><span class="o">.</span><span class="na">groupsBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">groupsPage</span><span class="o">.</span><span class="na">doneButton</span><span class="o">.</span><span class="na">done</span><span class="o">();</span>
 
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
-        <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+        <span class="n">addNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">addNewContactPage</span><span class="o">.</span><span class="na">cancelButton</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
 
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Add"</span><span class="o">);</span>
-        <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-        <span class="n">AddNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">tapBarButton</span><span class="o">(</span><span class="s">"Cancel"</span><span class="o">);</span>
-        <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">tapButton</span><span class="o">(</span><span class="s">"Add"</span><span class="o">);</span>
+        <span class="n">addNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">addNewContactPage</span><span class="o">.</span><span class="na">newContactNavBar</span><span class="o">.</span><span class="na">tapButton</span><span class="o">(</span><span class="s">"Cancel"</span><span class="o">);</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
     <span class="o">}</span>
 
 </code></pre>
-<p><img src="images/ios/navigation_bar.png" alt="Navigation bar" /></p>
+<p><img src="images/ios/groups_ios.png" alt="Navigation bar" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -5112,7 +5114,7 @@ is a linear set of two or more segments, each of which functions as a mutually e
 </code></pre>
 <p><img src="images/ios/segmented_control_testing_app.png" alt="Segmented control" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -5168,22 +5170,22 @@ is a linear set of two or more segments, each of which functions as a mutually e
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/search-bars/" target="_blank" style="font-weight: bold;">A Search bar </a>
 allows people to search through a large collection of values by typing text into a field.</p>
 <pre class="highlight java tab-java"><code>
-   <span class="nd">@Test</span>
-       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">searchBarTest</span><span class="o">()</span> <span class="o">{</span>
-           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"John"</span><span class="o">);</span>
-           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">johnAppleseedCard</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">searchBarTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Daniel"</span><span class="o">);</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">manNameCard</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
 
-           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">tapClearButton</span><span class="o">();</span>
-           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Search"</span><span class="o">);</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">tapClearButton</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Search"</span><span class="o">);</span>
 
-           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">tapCancelButton</span><span class="o">();</span>
-           <span class="n">ContactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
-       <span class="o">}</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsSearchBar</span><span class="o">.</span><span class="na">tapCancelButton</span><span class="o">();</span>
+        <span class="n">contactsListPage</span><span class="o">.</span><span class="na">contactsNavigationBar</span><span class="o">.</span><span class="na">addButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+    <span class="o">}</span>
 
 </code></pre>
 <p><img src="images/ios/search_bar.png" alt="Search bar" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -5271,7 +5273,7 @@ appears at the bottom of an app screen and provides the ability to quickly switc
 </code></pre>
 <p><img src="images/ios/tab_bar_ios_app.png" alt="Tab bar" /></p>
 
-<p>Available methods in Java JDI Mobile (<strong>iOS 13</strong> compatible):</p>
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
 
 <table><thead>
 <tr>
@@ -30877,9 +30879,9 @@ object
 <li>Always leave newline symbol as a last symbol of file</li>
 </ol>
 <h2 id='launch-ios-native-applications-tests-example'>Launch iOS native applications tests example</h2>
-<p><strong><em>Example tests work properly only on macOS computers and iOS 13.4 iPhone simulators</em></strong>
+<p><strong><em>Example tests work properly only on macOS computers and iOS 14.2 iPhone simulators</em></strong>
 <br>
-<strong>Required tools:</strong> macOS 10.15, Xcode 11.5, iOS Simulator 13.4, Appium 1.17.0</p>
+<strong>Required tools:</strong> macOS Big Sur, Xcode 12.2 beta 4, iOS Simulator 14.2, Appium 1.18.3</p>
 
 <ol>
 <li>Set following settings in test.properties file: <br>
