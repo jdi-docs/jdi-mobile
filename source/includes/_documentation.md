@@ -1206,7 +1206,7 @@ Available methods in Java JDI Mobile:
 ```
 ![Button](../images/ios/button_ios.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1226,23 +1226,24 @@ In Mail, for example, you can tap the Add Contact button in the To field of a me
 
 ```java 
    
-  @Test
-  public void addContactButtonTest() throws InterruptedException {
-      MessagesListPage.newMessageButton.tap();
-      
-      NewMessagePage.addContactButton.openContacts();
+    @Test
+    public void systemButtonTest() {
+        contactsListPage.contactsNavigationBar.groupsButton.tap();
+        groupsPage.groupsBar.is().displayed();
+        groupsPage.doneButton.done();
+        contactsListPage.contactsListView.is().displayed();
 
-      ContactsListPage.contactNavBar.is().displayed();
-      ContactsListPage.cancelButton.cancel();
-
-      NewMessagePage.addContactButton.is().displayed();
-  }
+        contactsListPage.contactsNavigationBar.addButton.tap();
+        addNewContactPage.newContactNavBar.is().displayed();
+        addNewContactPage.cancelButton.cancel();
+        contactsListPage.contactsNavigationBar.addButton.is().displayed();
+    }
   
 ```
  
-![Add contact button](../images/ios/add_contact_button.png)
+![Add contact button](../images/ios/add_button_ios.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1253,7 +1254,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 **is()** | Assert action | TextAssert 
 **openContacts()** | Alias of tap() for button| void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/MessagesAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
 ### Detail Disclosure Button
 
@@ -1301,24 +1302,20 @@ Info buttons come in two styles—light and dark. Pick the style that best coord
 
 ```java 
    
-  @Test
-  public void infoButtonTest() {
-      if (RemindersApp.continueButton.isDisplayed())
-          RemindersApp.continueButton.click();
+    public void infoButtonTest() {
+        remindersListPage.todayRemindersButton.tap();
 
-      RemindersListPage.todayRemindersButton.tap();
+        remindersPage.newReminderButton.tap();
+        remindersPage.editDetailsInfoButton.openDetails();
 
-      RemindersPage.newReminderButton.tap();
-      RemindersPage.editDetailsInfoButton.openDetails();
-
-      EditDetailsPage.detailsNavBar.is().displayed();
-  }
+        editDetailsPage.detailsNavBar.is().displayed();
+    }
   
 ```
 
 ![Info button](../images/ios/info_button.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1338,24 +1335,24 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 ```java 
   
-  @Test
-  public void systemButtonTest() {
-      ContactsListPage.groupsButton.tap();
-      GroupsPage.groupsBar.is().displayed();
-      GroupsPage.doneButton.done();
-      ContactsListPage.contactsListView.is().displayed();
+    @Test
+    public void systemButtonTest() {
+        contactsListPage.contactsNavigationBar.groupsButton.tap();
+        groupsPage.groupsBar.is().displayed();
+        groupsPage.doneButton.done();
+        contactsListPage.contactsListView.is().displayed();
 
-      ContactsListPage.addButton.tap();
-      AddNewContactPage.newContactNavBar.is().displayed();
-      AddNewContactPage.cancelButton.cancel();
-      ContactsListPage.addButton.is().displayed();
-  }
+        contactsListPage.contactsNavigationBar.addButton.tap();
+        addNewContactPage.newContactNavBar.is().displayed();
+        addNewContactPage.cancelButton.cancel();
+        contactsListPage.contactsNavigationBar.addButton.is().displayed();
+    }
   
 ```
 
 ![System button](../images/ios/system_button.png)
 
-Available methods in Java JDI Mobile (**iOS 13 compatible**):
+Available methods in Java JDI Mobile (**iOS 14 compatible**):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1370,36 +1367,42 @@ Available methods in Java JDI Mobile (**iOS 13 compatible**):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
 
-### Picker Wheel
+### Pickers
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/pickers/" target="_blank" style="font-weight: bold;">
-A Picker Wheel</a> is a scrollable list of distinct values from which people can choose. Make it easy for people to enter information by choosing single or multipart values.
+A Picker</a> is a scrollable list of distinct values from which people can choose. Make it easy for people to enter information by choosing single or multipart values.
 
 ```java 
 
-@Test
+    @Test
     public void pickerWheelTest() {
-        RemindersListPage.todayRemindersButton.tap();
+        remindersListPage.todayRemindersButton.tap();
 
-        RemindersPage.newReminderButton.tap();
-        RemindersPage.editDetailsInfoButton.openDetails();
+        remindersPage.newReminderButton.tap();
+        remindersPage.editDetailsInfoButton.openDetails();
 
-        EditDetailsPage.alarm.tap();
-        EditDetailsPage.yearPicker.setPickerWheelValue("2015");
-        EditDetailsPage.yearPicker.is().text("2015");
+        editDetailsPage.dateButton.tap();
+        editDetailsPage.showYearPicker.tap();
 
-        EditDetailsPage.yearPicker.movePickerWheelForward("0.1");
-        EditDetailsPage.yearPicker.is().text("2016");
+        LocalDate localDate = LocalDate.now();
+        int year = localDate.getYear();
+        Month month = localDate.getMonth();
 
-        EditDetailsPage.monthPicker.setPickerWheelValue("April");
-        EditDetailsPage.monthPicker.movePickerWheelBackward("0.1");
-        EditDetailsPage.monthPicker.is().text("March");
+        editDetailsPage.yearPicker.movePickerWheelForward("0.1");
+        editDetailsPage.yearPicker.is().text(String.valueOf(year + 1));
+        editDetailsPage.yearPicker.movePickerWheelBackward("0.1");
+        editDetailsPage.yearPicker.is().text(String.valueOf(year));
+
+        editDetailsPage.monthPicker.movePickerWheelBackward("0.1");
+        editDetailsPage.monthPicker.is().text(onlyFirstLetterToUpperCase(month.minus(1)));
+        editDetailsPage.monthPicker.movePickerWheelForward("0.1");
+        editDetailsPage.monthPicker.is().text(onlyFirstLetterToUpperCase(month));
     }
 
 ```
 
-![Picker Wheel](../images/ios/picker.png)
+![Picker Wheel](../images/ios/picker_ios.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1472,7 +1475,7 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
  
 ![Switch](../images/ios/switch_button_ios.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1491,22 +1494,22 @@ A Text Field</a> is a single-line, fixed-height field, often with rounded corner
 
 ```java 
    
-  @Test
-  public void textFieldTest() {
-      MessagesListPage.newMessageButton.tap();
+    @Test
+    public void textFieldTest() {
+        messagesListPage.firstMenInMessages.tap();
 
-      NewMessagePage.messageTextField.setValue("Test");
-      NewMessagePage.messageTextField.is().text("Test");
+        newMessagePage.messageTextField.setValue("Test");
+        newMessagePage.messageTextField.is().text("Test");
 
-      NewMessagePage.messageTextField.clear();
-      NewMessagePage.messageTextField.is().empty();
-  }
+        newMessagePage.messageTextField.clear();
+        newMessagePage.messageTextField.is().text("iMessage");
+    }
   
 ```
 
 ![Text Field](../images/ios/textfield.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1533,17 +1536,16 @@ You can use context menus to give people access to additional functionality rela
    
     @Test
     public void contextMenuTest() {
-        ContactsListPage.johnAppleseedCard.longPress(2);
-        ContactContextMenu.johnApplessedPhoto.is().displayed();
-        ContactContextMenu.messageOptionExpand.tap();
-        ContactContextMenu.johnAppleseedEmail.is().displayed();
+        contactsListPage.manNameCard.longPress(2);
+        contactContextMenu.mensPhoto.is().displayed();
+        contactContextMenu.mensMail.is().displayed();
     }
   
 ```
 
 ![Context menu](../images/ios/context_menu.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1564,24 +1566,24 @@ People can touch and hold or double-tap an element in a text field, a text view,
    
     @Test
     public void editMenuTest() {
-        MessagesListPage.newMessageButton.tap();
+        messagesListPage.firstMenInMessages.tap();
 
-        NewMessagePage.messageTextField.setValue("Test");
-        NewMessagePage.messageTextField.doubleTap();
-        NewMessagePage.messageEditMenu.copy();
-        NewMessagePage.messageTextField.doubleTap();
-        NewMessagePage.messageEditMenu.cut();
-        NewMessagePage.messageTextField.is().empty();
-        NewMessagePage.messageTextField.doubleTap();
-        NewMessagePage.messageEditMenu.paste();
-        NewMessagePage.messageTextField.is().text("Test");
+        newMessagePage.messageTextField.setValue("Test");
+        newMessagePage.messageTextField.doubleTap();
+        newMessagePage.messageEditMenu.copy();
+        newMessagePage.messageTextField.doubleTap();
+        newMessagePage.messageEditMenu.cut();
+        newMessagePage.messageTextField.is().text("iMessage");
+        newMessagePage.messageTextField.doubleTap();
+        newMessagePage.messageEditMenu.paste();
+        newMessagePage.messageTextField.is().text("Test");
     }
   
 ```
 
 ![Edit menu](../images/ios/edit_menu.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1607,32 +1609,32 @@ appears at the top of an app screen, below the status bar, and enables navigatio
    
     @Test
     public void navigationBarTest() {
-        ContactsListPage.contactsNavigationBar.is().displayed();
-        ContactsListPage.contactsNavigationBar.groupsButton.is().displayed();
-        ContactsListPage.contactsNavigationBar.tapBarButton("Groups");
-        GroupsPage.groupsBar.is().displayed();
-        GroupsPage.groupsBar.tapBarButton("Done");
+        contactsListPage.contactsNavigationBar.is().displayed();
+        contactsListPage.contactsNavigationBar.groupsButton.is().displayed();
+        contactsListPage.contactsNavigationBar.tapButton("Groups");
+        groupsPage.groupsBar.is().displayed();
+        groupsPage.groupsBar.tapButton("Done");
 
-        ContactsListPage.contactsNavigationBar.groupsButton.tap();
-        GroupsPage.groupsBar.is().displayed();
-        GroupsPage.doneButton.done();
+        contactsListPage.contactsNavigationBar.groupsButton.tap();
+        groupsPage.groupsBar.is().displayed();
+        groupsPage.doneButton.done();
 
-        ContactsListPage.contactsNavigationBar.addButton.tap();
-        AddNewContactPage.newContactNavBar.is().displayed();
-        AddNewContactPage.cancelButton.cancel();
-        ContactsListPage.contactsNavigationBar.addButton.is().displayed();
+        contactsListPage.contactsNavigationBar.addButton.tap();
+        addNewContactPage.newContactNavBar.is().displayed();
+        addNewContactPage.cancelButton.cancel();
+        contactsListPage.contactsNavigationBar.addButton.is().displayed();
 
-        ContactsListPage.contactsNavigationBar.tapBarButton("Add");
-        AddNewContactPage.newContactNavBar.is().displayed();
-        AddNewContactPage.newContactNavBar.tapBarButton("Cancel");
-        ContactsListPage.contactsNavigationBar.addButton.is().displayed();
+        contactsListPage.contactsNavigationBar.tapButton("Add");
+        addNewContactPage.newContactNavBar.is().displayed();
+        addNewContactPage.newContactNavBar.tapButton("Cancel");
+        contactsListPage.contactsNavigationBar.addButton.is().displayed();
     }
   
 ```
 
-![Navigation bar](../images/ios/navigation_bar.png)
+![Navigation bar](../images/ios/groups_ios.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1669,7 +1671,7 @@ is a linear set of two or more segments, each of which functions as a mutually e
 
 ![Segmented control](../images/ios/segmented_control_testing_app.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1691,23 +1693,23 @@ allows people to search through a large collection of values by typing text into
 
 ```java 
    
-   @Test
-       public void searchBarTest() {
-           ContactsListPage.contactsSearchBar.setValue("John");
-           ContactsListPage.johnAppleseedCard.is().displayed();
-   
-           ContactsListPage.contactsSearchBar.tapClearButton();
-           ContactsListPage.contactsSearchBar.is().text("Search");
-   
-           ContactsListPage.contactsSearchBar.tapCancelButton();
-           ContactsListPage.contactsNavigationBar.addButton.is().displayed();
-       }
+    @Test
+    public void searchBarTest() {
+        contactsListPage.contactsSearchBar.setValue("Daniel");
+        contactsListPage.manNameCard.is().displayed();
+
+        contactsListPage.contactsSearchBar.tapClearButton();
+        contactsListPage.contactsSearchBar.is().text("Search");
+
+        contactsListPage.contactsSearchBar.tapCancelButton();
+        contactsListPage.contactsNavigationBar.addButton.is().displayed();
+    }
   
 ```
 
 ![Search bar](../images/ios/search_bar.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -1751,7 +1753,7 @@ appears at the bottom of an app screen and provides the ability to quickly switc
 
 ![Tab bar](../images/ios/tab_bar_ios_app.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
@@ -22708,9 +22710,9 @@ object
 
 ## Launch iOS native applications tests example
 
-***Example tests work properly only on macOS computers and iOS 13.4 iPhone simulators***
+***Example tests work properly only on macOS computers and iOS 14.2 iPhone simulators***
 <br>
-**Required tools:** macOS 10.15, Xcode 11.5, iOS Simulator 13.4, Appium 1.17.0
+**Required tools:** macOS Big Sur, Xcode 12.2 beta 4, iOS Simulator 14.2, Appium 1.18.3
 
 1. Set following settings in test.properties file: <br>
    **`driver=ios`** <br>
