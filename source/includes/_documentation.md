@@ -1479,9 +1479,9 @@ A label </a> describes an onscreen interface element or provides a short message
 
 ```
 
-![Slider](../images/ios/label_ios.png)
+![Label](../images/ios/label_ios.png)
 
-Available methods in Java JDI Mobile (**iOS 13** compatible):
+Available methods in Java JDI Mobile (**iOS 14** compatible):
 
 |Method | Description | Return Type
 --- | --- | ---
