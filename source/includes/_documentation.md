@@ -1452,6 +1452,44 @@ Available methods in Java JDI Mobile (**iOS 13** compatible):
 
 <a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/SettingsAppTests.java" target="_blank">Test examples in Java</a>
 
+### Label
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/labels/" target="_blank" style="font-weight: bold;">
+A label </a> describes an onscreen interface element or provides a short message.
+
+```java 
+
+    @Test
+    public void iosLabelsTest() {
+        menuLabelView.tap();
+
+        Assert.assertEquals(LabelViewPage.label1.getValue(), "Label1");
+        Assert.assertEquals(LabelViewPage.label2.getValue(), "Label2");
+
+    }
+
+    @Test
+    public void iosTextUnderTheLabelsTest() {
+        menuLabelView.tap();
+        Assert.assertEquals(LabelViewPage.text_under_label1.getValue(),
+                "Text1 under the label");
+        Assert.assertEquals(LabelViewPage.text_under_label2.getValue(),
+                "Text2 under the label");
+
+    }
+
+```
+
+![Slider](../images/ios/label_ios.png)
+
+Available methods in Java JDI Mobile (**iOS 13** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**getValue()** | Get text of selected value | String
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/LabelsTest.java" target="_blank">Test examples in Java</a>
+
 ### Switch
 
 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/switches/" target="_blank" style="font-weight: bold;">A switch</a><br>
@@ -1608,31 +1646,19 @@ appears at the top of an app screen, below the status bar, and enables navigatio
 ```java 
    
     @Test
-    public void navigationBarTest() {
-        contactsListPage.contactsNavigationBar.is().displayed();
-        contactsListPage.contactsNavigationBar.groupsButton.is().displayed();
-        contactsListPage.contactsNavigationBar.tapButton("Groups");
-        groupsPage.groupsBar.is().displayed();
-        groupsPage.groupsBar.tapButton("Done");
+    public void navigationBarTest(){
+        menuNavigationBar.tap();
 
-        contactsListPage.contactsNavigationBar.groupsButton.tap();
-        groupsPage.groupsBar.is().displayed();
-        groupsPage.doneButton.done();
+        NavigationBarPage.navigationBarMainPage.tapButton("Show detail view");
+        NavigationBarPage.detailViewPageNavigationBar.is().displayed();
+        NavigationBarPage.detailViewPageNavigationBar.tapButton("Back");
+        NavigationBarPage.navigationBarMainPage.is().displayed();
 
-        contactsListPage.contactsNavigationBar.addButton.tap();
-        addNewContactPage.newContactNavBar.is().displayed();
-        addNewContactPage.cancelButton.cancel();
-        contactsListPage.contactsNavigationBar.addButton.is().displayed();
-
-        contactsListPage.contactsNavigationBar.tapButton("Add");
-        addNewContactPage.newContactNavBar.is().displayed();
-        addNewContactPage.newContactNavBar.tapButton("Cancel");
-        contactsListPage.contactsNavigationBar.addButton.is().displayed();
     }
   
 ```
 
-![Navigation bar](../images/ios/groups_ios.png)
+![Navigation bar](../images/ios/navigationBar_ios.png)
 
 Available methods in Java JDI Mobile (**iOS 14** compatible):
 
@@ -1645,7 +1671,7 @@ Available methods in Java JDI Mobile (**iOS 14** compatible):
 **is()** | Assert action | TextAssert 
 **tapBarButton(String buttonName)** | Tap button with buttonName on Navigation bar | void
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_ios/tests/ContactsAppTests.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/NavigationBarTests.java" target="_blank">Test examples in Java</a>
 
 ### Segmented Control
 
