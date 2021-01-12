@@ -1792,7 +1792,45 @@ Available methods in Java JDI Mobile (**iOS 14** compatible):
 **values()** | Get values of all elements | List<String>
 **is()** | Assert action | TextAssert 
 
-<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java.java" target="_blank">Test examples in Java</a>
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java" target="_blank">Test examples in Java</a>
+
+### ToolBar
+
+<a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/toolbars/" target="_blank" style="font-weight: bold;">A Toolbar </a>
+appears at the bottom of an app screen and contains buttons for performing actions relevant to the current view or content within it.
+
+```java 
+   
+    @Test
+    public void toolbarTest() {
+        menuToolBarPage.tap();
+
+        Assert.assertEquals(sizeOfList(ToolBarPage.listOfStrings), INITIAL_VALUE_OF_STRING);
+        ToolBarPage.toolBar.tapButton("Add");
+        Assert.assertEquals(sizeOfList(ToolBarPage.listOfStrings), INITIAL_VALUE_OF_STRING + 1);
+
+        ToolBarPage.toolBar.tapButton("Delete All");
+        ToolBarPage.toolBar.tapButton("Add");
+        Assert.assertEquals(sizeOfList(ToolBarPage.listOfStrings), 1);
+
+    }
+  
+```
+
+![Tool bar](../images/ios/ToolBarIos.png)
+
+Available methods in Java JDI Mobile (**iOS 14** compatible):
+
+|Method | Description | Return Type
+--- | --- | ---
+**tap()** | Tap | void
+**tapButton()** | Tap | void
+**doubleTap()** | Double tap  | void
+**longPress()** | Long press | void
+**longPress(int seconds)** | Long press | void
+**is()** | Assert action | TextAssert 
+
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/ToolBarTest.java" target="_blank">Test examples in Java</a>
 
 ## HTML5 Common elements
 
