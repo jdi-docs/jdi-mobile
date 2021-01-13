@@ -599,6 +599,9 @@
                             <li>
 								<a href="#tab-bar" class="toc-h2 h3 toc-link" data-title="Tab Bar">Tab Bar</a>
                             </li>
+                            <li>
+								<a href="#toolbar" class="toc-h2 h3 toc-link" data-title="ToolBar">ToolBar</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -5363,7 +5366,70 @@ appears at the bottom of an app screen and provides the ability to quickly switc
 </tr>
 </tbody></table>
 
-<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java.java" target="_blank">Test examples in Java</a></p>
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/TabBarTest.java" target="_blank">Test examples in Java</a></p>
+<h3 id='toolbar'>ToolBar</h3>
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/bars/toolbars/" target="_blank" style="font-weight: bold;">A Toolbar </a>
+appears at the bottom of an app screen and contains buttons for performing actions relevant to the current view or content within it.</p>
+<pre class="highlight java tab-java"><code>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">toolbarTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">menuToolBarPage</span><span class="o">.</span><span class="na">tap</span><span class="o">();</span>
+
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">sizeOfList</span><span class="o">(</span><span class="n">ToolBarPage</span><span class="o">.</span><span class="na">listOfStrings</span><span class="o">),</span> <span class="n">INITIAL_VALUE_OF_STRING</span><span class="o">);</span>
+        <span class="n">ToolBarPage</span><span class="o">.</span><span class="na">toolBar</span><span class="o">.</span><span class="na">tapButton</span><span class="o">(</span><span class="s">"Add"</span><span class="o">);</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">sizeOfList</span><span class="o">(</span><span class="n">ToolBarPage</span><span class="o">.</span><span class="na">listOfStrings</span><span class="o">),</span> <span class="n">INITIAL_VALUE_OF_STRING</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+
+        <span class="n">ToolBarPage</span><span class="o">.</span><span class="na">toolBar</span><span class="o">.</span><span class="na">tapButton</span><span class="o">(</span><span class="s">"Delete All"</span><span class="o">);</span>
+        <span class="n">ToolBarPage</span><span class="o">.</span><span class="na">toolBar</span><span class="o">.</span><span class="na">tapButton</span><span class="o">(</span><span class="s">"Add"</span><span class="o">);</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="n">sizeOfList</span><span class="o">(</span><span class="n">ToolBarPage</span><span class="o">.</span><span class="na">listOfStrings</span><span class="o">),</span> <span class="mi">1</span><span class="o">);</span>
+
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/ios/ToolBarIos.png" alt="Tool bar" /></p>
+
+<p>Available methods in Java JDI Mobile (<strong>iOS 14</strong> compatible):</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tap()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>tapButton()</strong></td>
+<td>Tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>doubleTap()</strong></td>
+<td>Double tap</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress()</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>longPress(int seconds)</strong></td>
+<td>Long press</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/ToolBarTest.java" target="_blank">Test examples in Java</a></p>
 <h2 id='html5-common-elements'>HTML5 Common elements</h2><h3 id='button'>Button</h3><pre class="highlight java tab-java"><code><span class="nd">@UI</span><span class="o">(</span><span class="s">"[value*='Red Button']"</span><span class="o">)</span> <span class="c1">// @FindBy(css = "[value*='Red Button']")</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Button</span> <span class="n">redButton</span><span class="o">;</span>
 
