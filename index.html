@@ -777,6 +777,12 @@
 								<a href="#forms-2" class="toc-h2 h3 toc-link" data-title="Forms">Forms</a>
                             </li>
                             <li>
+								<a href="#input-group" class="toc-h2 h3 toc-link" data-title="Input group">Input group</a>
+                            </li>
+                            <li>
+								<a href="#jumbotron" class="toc-h2 h3 toc-link" data-title="Jumbotron">Jumbotron</a>
+                            </li>
+                            <li>
 								<a href="#list-group" class="toc-h2 h3 toc-link" data-title="List group">List group</a>
                             </li>
                             <li>
@@ -22316,10 +22322,8 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/BootstrapValidationTest.java" target="_blank">Bootstrap Test Examples</a></p>
-
-<p>### Input group
- #### Basic Example
- <strong><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#basic-example" target="_blank">Input group</a></strong> – Place one add-on or button on either side of an input. You may also place one on both sides of an input.
+<h3 id='input-group'>Input group</h3><h4 id='basic-example'>Basic Example</h4>
+<p><strong><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#basic-example" target="_blank">Input group</a></strong> – Place one add-on or button on either side of an input. You may also place one on both sides of an input.
  <br /></p>
 <pre class="highlight java tab-java"><code>
      <span class="c1">//@FindBy(css = "#input-group-basic-example1")</span>
@@ -22483,9 +22487,8 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
   </ul></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup">Bootstrap test example </a></p>
-
-<p>#### Sizing
- <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#sizing" target="_blank">Sizing</a> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
+<h4 id='sizing-3'>Sizing</h4>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#sizing" target="_blank">Sizing</a> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
  <br>
  <br>
  <br>
@@ -22550,33 +22553,63 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </code></pre>
 <p>And here are methods available in Java:</p>
 
-<p>|Method / Property | Description | Return Type
- --- | --- | ---
- <strong>assertThat()</strong> | property that returns object for work with assertions| TextAssert
- <strong>clear()</strong> | clears the text field | void
- <strong>focus()</strong> | places cursor within the text field | void
- <strong>getText()</strong> | returns text from the text field  | String
- <strong>getValue()</strong> | returns text from the text field| String
- <strong>is()</strong> | property that returns object for work with assertions| TextAssert
- <strong>setText(String value)</strong> | adds text to the field | void</p>
+<table><thead>
+<tr>
+<th>Method/Property</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>clears the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>focus()</strong></td>
+<td>places cursor within the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>setText(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+</tbody></table>
+<h4 id='wrapping'>Wrapping</h4><pre class="highlight java tab-java"><code>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">UIElement</span> <span class="n">inputGroupWrap</span><span class="o">,</span><span class="n">inputGroupNowrap</span><span class="o">;</span><span class="c1">//@FindBy(css = "#input-group-wrap")</span>
 
-<p>#### Wrapping
- ```java 
-    public static UIElement inputGroupWrap,inputGroupNowrap;//@FindBy(css = &quot;#input-group-wrap&quot;)</p>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkWrapping</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertFalse</span><span class="o">(</span><span class="n">inputGroupWrap</span><span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"flex-nowrap"</span><span class="o">));</span>
+        <span class="n">inputGroupWrap</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"flex-wrap"</span><span class="o">,</span> <span class="s">"wrap"</span><span class="o">);</span>
+    <span class="o">}</span>
 
-<p>@Test
-    public void checkWrapping() {
-        assertFalse(inputGroupWrap.hasClass(&quot;flex-nowrap&quot;));
-        inputGroupWrap.assertThat().core().css(&quot;flex-wrap&quot;, &quot;wrap&quot;);
-    }</p>
-
-<p>@Test
-    public void checkNoWrapping() {
-        assertTrue(inputGroupNowrap.hasClass(&quot;flex-nowrap&quot;));
-        inputGroupNowrap.assertThat().core().css(&quot;flex-wrap&quot;, &quot;nowrap&quot;);
-    } 
- ```</p>
-
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkNoWrapping</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">inputGroupNowrap</span><span class="o">.</span><span class="na">hasClass</span><span class="o">(</span><span class="s">"flex-nowrap"</span><span class="o">));</span>
+        <span class="n">inputGroupNowrap</span><span class="o">.</span><span class="na">assertThat</span><span class="o">().</span><span class="na">core</span><span class="o">().</span><span class="na">css</span><span class="o">(</span><span class="s">"flex-wrap"</span><span class="o">,</span> <span class="s">"nowrap"</span><span class="o">);</span>
+    <span class="o">}</span> 
+</code></pre>
 <p><strong><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#wrapping" target="_blank">Wrapping</a></strong> – Input groups wrap by default via flex-wrap: wrap in order to accommodate custom form field validation within an input group. You may disable this with .flex-nowrap.</p>
 
 <p><img src="images/bootstrap/wrapping.png" alt="Wrapping" /></p>
@@ -22597,9 +22630,7 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </ul>
 
 <p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupWrapping.java" target="_blank">Bootstrap test example wrapping</a></p>
-
-<p>#### Checkboxes and radios</p>
-
+<h4 id='checkboxes-and-radios-2'>Checkboxes and radios</h4>
 <p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a> – Place any checkbox or radio option within an input group’s addon instead of text.</p>
 
 <p><strong>Example with radio</strong></p>
@@ -22691,9 +22722,8 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCheckboxesTests.java" target="_blank">Bootstrap test example with checkbox</a></p>
 
 <p><br /><br /><br /><br /><br /></p>
-
-<p>#### Multiple inputs 
- <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">Multiple inputs</a> – While multiple inputs are supported visually, validation styles are only available for input groups with a single input.</p>
+<h4 id='multiple-inputs'>Multiple inputs</h4>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">Multiple inputs</a> – While multiple inputs are supported visually, validation styles are only available for input groups with a single input.</p>
 
 <p><img src="images/bootstrap/multiple_inputs.png" alt="Multiple inputs" /></p>
 <pre class="highlight java tab-java"><code> <span class="c1">//FindBy(css = "#multiple-inputs"")</span>
@@ -22756,46 +22786,183 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </code></pre>
 <p>And here are methods available in Java:</p>
 
-<p>|Method | Description | Return Type
- --- | --- | ---
-  <strong>assertThat()</strong>| Property that returns object for work with assertions | MultipleInputsAssert
-  <strong>clear()</strong>| Clear first input within element | void
-  <strong>clear(String locator)</strong>| Clear input within element with <em>locator</em> | void
-  <strong>clear(int index)</strong>| Clear input within element with <em>index</em> | void
-  <strong>clearAll()</strong>| Clear all inputs within element | void
-  <strong>focus()</strong>| Focus on first input within element | void
-  <strong>focus(String locator)</strong>| Focus on input within element with <em>locator</em> | void
-  <strong>focus(int index)</strong>| Focus on input within element with <em>index</em> | void
-  <strong>getAllText()</strong>| Return texts for all inputs within element | List&lt;String&gt;
-  <strong>getAllValue()</strong>| Return values for all inputs within element | List&lt;String&gt;
-  <strong>getText()</strong>| Return text for first input within element | String
-  <strong>getText(String locator)</strong>| Return text for input within element with <em>locator</em> | String
-  <strong>getText(int index)</strong>| Return text for input within element with <em>index</em> | String
-  <strong>getValue()</strong>| Return value for first input within element | String
-  <strong>getValue(String locator)</strong>| Return value for input within element with <em>locator</em> | String
-  <strong>getValue(int index)</strong>| Return value for input within element with <em>index</em> | String
-  <strong>input(String value)</strong>| Set text for first input within element | void
-  <strong>input(String value, String locator)</strong>| Set text for input within element with <em>locator</em> | void
-  <strong>input(String value, int index)</strong>| Set text for input within element with <em>index</em> | void
-  <strong>inputAll()</strong>| Set texts for all inputs within element | void
-  <strong>is()</strong>| Property that returns object for work with assertions | MultipleInputsAssert
-  <strong>placeholder()</strong>| Return placeholder from first input within element | String
-  <strong>placeholder(String locator)</strong>| Return placeholder from input within element with <em>locator</em> | String
-  <strong>placeholder(int index)</strong>| Return placeholder from input within element with <em>index</em> | String
-  <strong>placeholderAll()</strong>| Return placeholders for all inputs within element | List&lt;String&gt;
-  <strong>sendKeys(String value)</strong>| Send text to first input within element | void
-  <strong>sendKeys(String value, String locator)</strong>| Send text to input within element with <em>locator</em> | void
-  <strong>sendKeys(String value, int index)</strong>| Send text to input within element with <em>index</em> | void
-  <strong>sendKeysAll(List&lt;String&gt; values)</strong>| Send texts to all inputs within element | void
-  <strong>setAllValue(List&lt;String&gt; values)</strong>| Set values for all inputs within element | void 
-  <strong>setValue(String value)</strong>| Set value for first input within element | void
-  <strong>setValue(String value, String locator)</strong>| Set value for input within element with <em>locator</em> | void
-  <strong>setValue(String value, int index)</strong>| Set value for input within element with <em>index</em> | void</p>
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>Property that returns object for work with assertions</td>
+<td>MultipleInputsAssert</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>Clear first input within element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>clear(String locator)</strong></td>
+<td>Clear input within element with <em>locator</em></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>clear(int index)</strong></td>
+<td>Clear input within element with <em>index</em></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>clearAll()</strong></td>
+<td>Clear all inputs within element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>focus()</strong></td>
+<td>Focus on first input within element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>focus(String locator)</strong></td>
+<td>Focus on input within element with <em>locator</em></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>focus(int index)</strong></td>
+<td>Focus on input within element with <em>index</em></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getAllText()</strong></td>
+<td>Return texts for all inputs within element</td>
+<td>List&lt;String&gt;</td>
+</tr>
+<tr>
+<td><strong>getAllValue()</strong></td>
+<td>Return values for all inputs within element</td>
+<td>List&lt;String&gt;</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Return text for first input within element</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getText(String locator)</strong></td>
+<td>Return text for input within element with <em>locator</em></td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getText(int index)</strong></td>
+<td>Return text for input within element with <em>index</em></td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Return value for first input within element</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue(String locator)</strong></td>
+<td>Return value for input within element with <em>locator</em></td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue(int index)</strong></td>
+<td>Return value for input within element with <em>index</em></td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>input(String value)</strong></td>
+<td>Set text for first input within element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>input(String value, String locator)</strong></td>
+<td>Set text for input within element with <em>locator</em></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>input(String value, int index)</strong></td>
+<td>Set text for input within element with <em>index</em></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>inputAll()</strong></td>
+<td>Set texts for all inputs within element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>Property that returns object for work with assertions</td>
+<td>MultipleInputsAssert</td>
+</tr>
+<tr>
+<td><strong>placeholder()</strong></td>
+<td>Return placeholder from first input within element</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>placeholder(String locator)</strong></td>
+<td>Return placeholder from input within element with <em>locator</em></td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>placeholder(int index)</strong></td>
+<td>Return placeholder from input within element with <em>index</em></td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>placeholderAll()</strong></td>
+<td>Return placeholders for all inputs within element</td>
+<td>List&lt;String&gt;</td>
+</tr>
+<tr>
+<td><strong>sendKeys(String value)</strong></td>
+<td>Send text to first input within element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>sendKeys(String value, String locator)</strong></td>
+<td>Send text to input within element with <em>locator</em></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>sendKeys(String value, int index)</strong></td>
+<td>Send text to input within element with <em>index</em></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>sendKeysAll(List&lt;String&gt; values)</strong></td>
+<td>Send texts to all inputs within element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setAllValue(List&lt;String&gt; values)</strong></td>
+<td>Set values for all inputs within element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue(String value)</strong></td>
+<td>Set value for first input within element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue(String value, String locator)</strong></td>
+<td>Set value for input within element with <em>locator</em></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setValue(String value, int index)</strong></td>
+<td>Set value for input within element with <em>index</em></td>
+<td>void</td>
+</tr>
+</tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/MultipleInputsTests.java" target="_blank">Bootstrap test example with multiple inputs</a></p>
-
-<p>#### Multiple addons 
- <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#multiple-addons" target="_blank">Multiple addons</a> are supported and can be mixed with checkbox and radio input versions.</p>
+<h4 id='multiple-addons'>Multiple addons</h4>
+<p><a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#multiple-addons" target="_blank">Multiple addons</a> are supported and can be mixed with checkbox and radio input versions.</p>
 
 <p><img src="images/bootstrap/multiple_addons.png" alt="Multiple addons" /></p>
 <pre class="highlight java tab-java"><code>  <span class="nd">@UI</span><span class="o">(</span><span class="s">"#multiple-addons-1"</span><span class="o">)</span>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">InputGroupMultipleAddonsUpper</span> <span class="n">multipleAddonUpper</span><span class="o">;</span> <span class="c1">//@FindBy(css = "#multiple-addons-1")</span>
@@ -22868,9 +23035,8 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupMultipleAddonsTests.java" target="_blank">Bootstrap test example with multiple addons</a></p>
 
-<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /> 
- #### Button addons </p>
-
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /></p>
+<h4 id='button-addons'>Button addons</h4>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#button-addons">Button addons</a></strong> – Multiple buttons have no detailed information on Bootstrap website</p>
 
 <p><img src="images/bootstrap/button_addons.png" alt="Button addons" /></p>
@@ -22945,22 +23111,84 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </code></pre>
 <p>And here are methods available in Java:</p>
 
-<p>|Method | Description | Return Type
- --- | --- | ---
- <strong>assertThat()</strong> | property that returns object for work with assertions| TextAssert
- <strong>clear()</strong> | clears the text field | void
- <strong>click()</strong> | click on button | void
- <strong>displayed()</strong> | check item is displayed | TextAssert
- <strong>enabled()</strong> | check item is enabled | TextAssert
- <strong>expand()</strong> | expand dropdown menu | void
- <strong>expanded()</strong> | check that dropdown is expanded | TextAssert
- <strong>focus()</strong> | places cursor within the text field | void
- <strong>getText()</strong> | returns text from the text field  | String
- <strong>getValue()</strong> | returns text from the text field| String
- <strong>input(String value)</strong> | adds text to the field | void
- <strong>is()</strong> | property that returns object for work with assertions| TextAssert
- <strong>sendKeys(String value)</strong> | adds text to the field | void
- <strong>setText(String value)</strong> | adds text to the field | void</p>
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>clears the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>check item is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>check item is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>expand dropdown menu</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>check that dropdown is expanded</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>focus()</strong></td>
+<td>places cursor within the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>input(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>sendKeys(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setText(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+</tbody></table>
 
 <p><br>
  Input group are represented by Section class in Java:</p>
@@ -22982,9 +23210,7 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
   <br></p>
 
 <p><a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonAddonsTests.java" target="_blank">Button Addons test example</a></p>
-
-<p>#### Buttons with dropdowns </p>
-
+<h4 id='buttons-with-dropdowns'>Buttons with dropdowns</h4>
 <p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#buttons-with-dropdowns">Buttons with dropdowns</a></strong> – Buttons with dropdowns have no detailed information on Bootstrap website</p>
 
 <p><img src="images/bootstrap/buttons_with_dropdowns.png" alt="Buttons with dropdowns" /></p>
@@ -23042,21 +23268,79 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </code></pre>
 <p>And here are methods available in Java:</p>
 
-<p>|Method | Description | Return Type
- --- | --- | ---
- <strong>assertThat()</strong> | property that returns object for work with assertions| TextAssert
- <strong>clear()</strong> | clears the text field | void
- <strong>click()</strong> | click on button | void
- <strong>displayed()</strong> | check item is displayed | TextAssert
- <strong>enabled()</strong> | check item is enabled | TextAssert
- <strong>expand()</strong> | expand dropdown menu | void
- <strong>expanded()</strong> | check that dropdown is expanded | TextAssert
- <strong>focus()</strong> | places cursor within the text field | void
- <strong>getText()</strong> | returns text from the text field  | String
- <strong>getValue()</strong> | returns text from the text field| String
- <strong>is()</strong> | property that returns object for work with assertions| TextAssert
- <strong>sendKeys(String value)</strong> | adds text to the field | void
- <strong>setText(String value)</strong> | adds text to the field | void</p>
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>clears the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>check item is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>check item is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>expand dropdown menu</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>check that dropdown is expanded</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>focus()</strong></td>
+<td>places cursor within the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>sendKeys(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setText(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+</tbody></table>
 
 <p><br>
  Input group are represented by Section class in Java:</p>
@@ -23079,9 +23363,8 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonWithDropdownTests.java">Buttons with dropdowns test examples</a> <br>
  <br></p>
-
-<p>#### Segmented buttons
- <strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#segmented-buttons">Segmented buttons</a></strong> – Segmented buttons have no detailed information on Bootstrap website</p>
+<h4 id='segmented-buttons'>Segmented buttons</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#segmented-buttons">Segmented buttons</a></strong> – Segmented buttons have no detailed information on Bootstrap website</p>
 
 <p><img src="images/bootstrap/segmented_buttons.png" alt="Segmented buttons" /></p>
 
@@ -23159,21 +23442,79 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </code></pre>
 <p>And here are methods available in Java:</p>
 
-<p>|Method | Description | Return Type
- --- | --- | ---
- <strong>assertThat()</strong> | property that returns object for work with assertions| TextAssert
- <strong>clear()</strong> | clears the text field | void
- <strong>click()</strong> | click on button | void
- <strong>displayed()</strong> | check item is displayed | TextAssert
- <strong>enabled()</strong> | check item is enabled | TextAssert
- <strong>expand()</strong> | expand dropdown menu | void
- <strong>expanded()</strong> | check that dropdown is expanded | TextAssert
- <strong>focus()</strong> | places cursor within the text field | void
- <strong>getText()</strong> | returns text from the text field  | String
- <strong>getValue()</strong> | returns text from the text field| String
- <strong>is()</strong> | property that returns object for work with assertions| TextAssert
- <strong>sendKeys(String value)</strong> | adds text to the field | void
- <strong>setText(String value)</strong> | adds text to the field | void</p>
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>clears the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>check item is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>check item is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>expand()</strong></td>
+<td>expand dropdown menu</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>expanded()</strong></td>
+<td>check that dropdown is expanded</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>focus()</strong></td>
+<td>places cursor within the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>sendKeys(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setText(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+</tbody></table>
 
 <p><br>
  Input group are represented by Section class in Java:</p>
@@ -23195,9 +23536,8 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
   <br></p>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupSegmentedButtonTests.java">Segmented buttons test examples</a> <br></p>
-
-<p>#### Custom select 
- <strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-select">Custom select</a></strong> – Input groups include support for custom selects and text field. Browser default versions of these are not supported.</p>
+<h4 id='custom-select'>Custom select</h4>
+<p><strong><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-select">Custom select</a></strong> – Input groups include support for custom selects and text field. Browser default versions of these are not supported.</p>
 
 <p><img src="images/bootstrap/custom_select.png" alt="Custom select" /></p>
 
@@ -23341,21 +23681,79 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </code></pre>
 <p>And here are methods available in Java:</p>
 
-<p>|Method | Description | Return Type
- --- | --- | ---
- <strong>assertThat()</strong> | property that returns object for work with assertions| TextAssert
- <strong>clear()</strong> | clears the text field | void
- <strong>click()</strong> | click on button | void
- <strong>displayed()</strong> | check item is displayed | TextAssert
- <strong>enabled()</strong> | check item is enabled | TextAssert
- <strong>focus()</strong> | places cursor within the text field | void
- <strong>getText()</strong> | returns text from the text field  | String
- <strong>getValue()</strong> | returns text from the text field| String
- <strong>is()</strong> | property that returns object for work with assertions| TextAssert
- <strong>select(int value)</strong> | choose item by index | void
- <strong>selected</strong> | returns text from the selected item | TextAssert
- <strong>sendKeys(String value)</strong> | adds text to the field | void
- <strong>setText(String value)</strong> | adds text to the field | void</p>
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>clears the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on button</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>displayed()</strong></td>
+<td>check item is displayed</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>enabled()</strong></td>
+<td>check item is enabled</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>focus()</strong></td>
+<td>places cursor within the text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>returns text from the text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>select(int value)</strong></td>
+<td>choose item by index</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>selected</strong></td>
+<td>returns text from the selected item</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>sendKeys(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>setText(String value)</strong></td>
+<td>adds text to the field</td>
+<td>void</td>
+</tr>
+</tbody></table>
 
 <p><br>
   Input group are represented by Section class in Java:</p>
@@ -23372,9 +23770,7 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelect.java">Custom select test examples</a> <br>
  <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelectWithButton.java">Custom select with button test examples</a></p>
-
-<p>#### Custom file input </p>
-
+<h4 id='custom-file-input'>Custom file input</h4>
 <p><a href="https://getbootstrap.com/docs/4.3/components/input-group/#custom-file-input">Custom file input</a> – Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.</p>
 
 <p><img src="images/bootstrap/custom_file_input.png" alt="Custom file input" /></p>
@@ -23445,19 +23841,66 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </code></pre>
 <p>And here are methods available in Java:</p>
 
-<p>|Method | Description | Return Type
- --- | --- | ---
- <strong>assertThat()</strong> | property that returns object for work with assertions | UIAssert
- <strong>click()</strong> | click on element | void
- <strong>getValue()</strong> | Get file name | String
- <strong>hover()</strong> | hover on element | void
- <strong>is()</strong> | property that returns object for work with assertions | UIAssert
- <strong>label()</strong>| Get label | Label
- <strong>setValue(String value)</strong> | set file path to input | void
- <strong>text()</strong> | returns text of input field | String
- <strong>uploadFile(String path)</strong> | set file path to input | void
- <strong>uploadFileRobot(String path, long mSecDelay)</strong> | set file path to input | void
- <br></p>
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>assertThat()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>click()</strong></td>
+<td>click on element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get file name</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>hover()</strong></td>
+<td>hover on element</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>is()</strong></td>
+<td>property that returns object for work with assertions</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>label()</strong></td>
+<td>Get label</td>
+<td>Label</td>
+</tr>
+<tr>
+<td><strong>setValue(String value)</strong></td>
+<td>set file path to input</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>text()</strong></td>
+<td>returns text of input field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>uploadFile(String path)</strong></td>
+<td>set file path to input</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>uploadFileRobot(String path, long mSecDelay)</strong></td>
+<td>set file path to input</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
 
 <p>The Custom file input is defined as a section and uses additional web elements: Button, FileInput and Label.</p>
 
@@ -23470,9 +23913,7 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 </ul>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputgroup/InputGroupCustomFileInputTests.java">Bootstrap test examples</a></p>
-
-<p>### Jumbotron</p>
-
+<h3 id='jumbotron'>Jumbotron</h3>
 <p><a href="https://getbootstrap.com/docs/4.3/components/jumbotron">Jumbotron</a> – Lightweight, flexible component for showcasing hero</p>
 
 <p><img src="images/bootstrap/jumbotron.png" alt="Jumbotron" /></p>
@@ -23534,7 +23975,7 @@ Range inputs have implicit values for min and max: 0 and 100, respectively. You 
 <p><a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/jumbotron">Bootstrap test examples</a></p>
 <h3 id='list-group'>List group</h3>
 <p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/">List groups</a></em></strong> are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
-<h4 id='basic-example'>Basic Example</h4>
+<h4 id='basic-example-2'>Basic Example</h4>
 <p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/list-group/#basic-example">List group basic example</a></em></strong> - an unordered list with list items and the proper classes.</p>
 
 <p>List Group is located in the following classes:</p>
@@ -25844,7 +26285,7 @@ These sizes kick in at certain breakpoints to avoid horizontal scrollbars on nar
 <p><a href="https://jdi-docs.github.io/jdi-light/#section">Section</a>  </p>
 
 <p><br></p>
-<h4 id='sizing-3'>Sizing</h4>
+<h4 id='sizing-4'>Sizing</h4>
 <p><strong><em><a href="https://getbootstrap.com/docs/4.3/components/pagination/#sizing">Pagination sizing</a></em></strong></p>
 
 <p>Pagination is located in the following classes:</p>
