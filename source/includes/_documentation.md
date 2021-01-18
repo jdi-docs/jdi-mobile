@@ -14913,9 +14913,14 @@ Available methods for form validation in Java JDI Light:
 **getFeedbackElements()** |  Return map field names to visible bootstrap feedback elements | Map<String, UIElement>
 
  <a href="https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/form/BootstrapValidationTest.java" target="_blank">Bootstrap Test Examples</a>
+
+
  
- ### Input group
- #### Basic Example
+### Input group
+
+
+#### Basic Example
+
  **<a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#basic-example" target="_blank">Input group</a>** – Place one add-on or button on either side of an input. You may also place one on both sides of an input.
  <br />
  
@@ -15112,7 +15117,9 @@ Available methods for form validation in Java JDI Light:
  
  [Bootstrap test example ](https://github.com/jdi-testing/jdi-light/tree/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup)
  
- #### Sizing
+
+#### Sizing
+
  <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#sizing" target="_blank">Sizing</a> – Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
  <br>
  <br>
@@ -15185,18 +15192,19 @@ Available methods for form validation in Java JDI Light:
  
  And here are methods available in Java:
      
- |Method / Property | Description | Return Type
- --- | --- | ---
- **assertThat()** | property that returns object for work with assertions| TextAssert
- **clear()** | clears the text field | void
- **focus()** | places cursor within the text field | void
- **getText()** | returns text from the text field  | String
- **getValue()** | returns text from the text field| String
- **is()** | property that returns object for work with assertions| TextAssert
- **setText(String value)** | adds text to the field | void
+|Method/Property | Description | Return Type
+--- | --- | ---
+**assertThat()** | property that returns object for work with assertions| TextAssert
+**clear()** | clears the text field | void
+**focus()** | places cursor within the text field | void
+**getText()** | returns text from the text field  | String
+**getValue()** | returns text from the text field| String
+**is()** | property that returns object for work with assertions| TextAssert
+**setText(String value)** | adds text to the field | void
  
  
- #### Wrapping
+#### Wrapping
+
  ```java 
     public static UIElement inputGroupWrap,inputGroupNowrap;//@FindBy(css = "#input-group-wrap")
  
@@ -15237,7 +15245,7 @@ Available methods for form validation in Java JDI Light:
  <a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupWrapping.java" target="_blank">Bootstrap test example wrapping</a>
  
  
- #### Checkboxes and radios
+#### Checkboxes and radios
  
  <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#checkboxes-and-radios" target="_blank">Checkboxes and radios</a> – Place any checkbox or radio option within an input group’s addon instead of text.
  
@@ -15338,7 +15346,7 @@ Available methods for form validation in Java JDI Light:
  
  <br /><br /><br /><br /><br />
   
- #### Multiple inputs 
+#### Multiple inputs 
  <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">Multiple inputs</a> – While multiple inputs are supported visually, validation styles are only available for input groups with a single input.
  
  ![Multiple inputs](../images/bootstrap/multiple_inputs.png)
@@ -15406,48 +15414,48 @@ Available methods for form validation in Java JDI Light:
  </div>
  ```
  
- And here are methods available in Java:
+And here are methods available in Java:
      
- |Method | Description | Return Type
- --- | --- | ---
-  **assertThat()**| Property that returns object for work with assertions | MultipleInputsAssert
-  **clear()**| Clear first input within element | void
-  **clear(String locator)**| Clear input within element with *locator* | void
-  **clear(int index)**| Clear input within element with *index* | void
-  **clearAll()**| Clear all inputs within element | void
-  **focus()**| Focus on first input within element | void
-  **focus(String locator)**| Focus on input within element with *locator* | void
-  **focus(int index)**| Focus on input within element with *index* | void
-  **getAllText()**| Return texts for all inputs within element | List\<String>
-  **getAllValue()**| Return values for all inputs within element | List\<String>
-  **getText()**| Return text for first input within element | String
-  **getText(String locator)**| Return text for input within element with *locator* | String
-  **getText(int index)**| Return text for input within element with *index* | String
-  **getValue()**| Return value for first input within element | String
-  **getValue(String locator)**| Return value for input within element with *locator* | String
-  **getValue(int index)**| Return value for input within element with *index* | String
-  **input(String value)**| Set text for first input within element | void
-  **input(String value, String locator)**| Set text for input within element with *locator* | void
-  **input(String value, int index)**| Set text for input within element with *index* | void
-  **inputAll()**| Set texts for all inputs within element | void
-  **is()**| Property that returns object for work with assertions | MultipleInputsAssert
-  **placeholder()**| Return placeholder from first input within element | String
-  **placeholder(String locator)**| Return placeholder from input within element with *locator* | String
-  **placeholder(int index)**| Return placeholder from input within element with *index* | String
-  **placeholderAll()**| Return placeholders for all inputs within element | List\<String>
-  **sendKeys(String value)**| Send text to first input within element | void
-  **sendKeys(String value, String locator)**| Send text to input within element with *locator* | void
-  **sendKeys(String value, int index)**| Send text to input within element with *index* | void
-  **sendKeysAll(List\<String> values)**| Send texts to all inputs within element | void
-  **setAllValue(List\<String> values)**| Set values for all inputs within element | void 
-  **setValue(String value)**| Set value for first input within element | void
-  **setValue(String value, String locator)**| Set value for input within element with *locator* | void
-  **setValue(String value, int index)**| Set value for input within element with *index* | void
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()**| Property that returns object for work with assertions | MultipleInputsAssert
+**clear()**| Clear first input within element | void
+**clear(String locator)**| Clear input within element with *locator* | void
+**clear(int index)**| Clear input within element with *index* | void
+**clearAll()**| Clear all inputs within element | void
+**focus()**| Focus on first input within element | void
+**focus(String locator)**| Focus on input within element with *locator* | void
+**focus(int index)**| Focus on input within element with *index* | void
+**getAllText()**| Return texts for all inputs within element | List\<String>
+**getAllValue()**| Return values for all inputs within element | List\<String>
+**getText()**| Return text for first input within element | String
+**getText(String locator)**| Return text for input within element with *locator* | String
+**getText(int index)**| Return text for input within element with *index* | String
+**getValue()**| Return value for first input within element | String
+**getValue(String locator)**| Return value for input within element with *locator* | String
+**getValue(int index)**| Return value for input within element with *index* | String
+**input(String value)**| Set text for first input within element | void
+**input(String value, String locator)**| Set text for input within element with *locator* | void
+**input(String value, int index)**| Set text for input within element with *index* | void
+**inputAll()**| Set texts for all inputs within element | void
+**is()**| Property that returns object for work with assertions | MultipleInputsAssert
+**placeholder()**| Return placeholder from first input within element | String
+**placeholder(String locator)**| Return placeholder from input within element with *locator* | String
+**placeholder(int index)**| Return placeholder from input within element with *index* | String
+**placeholderAll()**| Return placeholders for all inputs within element | List\<String>
+**sendKeys(String value)**| Send text to first input within element | void
+**sendKeys(String value, String locator)**| Send text to input within element with *locator* | void
+**sendKeys(String value, int index)**| Send text to input within element with *index* | void
+**sendKeysAll(List\<String> values)**| Send texts to all inputs within element | void
+**setAllValue(List\<String> values)**| Set values for all inputs within element | void 
+**setValue(String value)**| Set value for first input within element | void
+**setValue(String value, String locator)**| Set value for input within element with *locator* | void
+**setValue(String value, int index)**| Set value for input within element with *index* | void
   
   <a href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/complex/MultipleInputsTests.java" target="_blank">Bootstrap test example with multiple inputs</a>
   
   
- #### Multiple addons 
+#### Multiple addons 
  <a style="font-weight:bold" href="https://getbootstrap.com/docs/4.3/components/input-group/#multiple-addons" target="_blank">Multiple addons</a> are supported and can be mixed with checkbox and radio input versions.
  
  ![Multiple addons](../images/bootstrap/multiple_addons.png)
@@ -15536,8 +15544,10 @@ Available methods for form validation in Java JDI Light:
   
   
   
-  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /> 
- #### Button addons 
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br />
+
+ 
+#### Button addons 
  
  **[Button addons](https://getbootstrap.com/docs/4.3/components/input-group/#button-addons)** – Multiple buttons have no detailed information on Bootstrap website
  
@@ -15622,22 +15632,22 @@ Available methods for form validation in Java JDI Light:
  
  And here are methods available in Java:
      
- |Method | Description | Return Type
- --- | --- | ---
- **assertThat()** | property that returns object for work with assertions| TextAssert
- **clear()** | clears the text field | void
- **click()** | click on button | void
- **displayed()** | check item is displayed | TextAssert
- **enabled()** | check item is enabled | TextAssert
- **expand()** | expand dropdown menu | void
- **expanded()** | check that dropdown is expanded | TextAssert
- **focus()** | places cursor within the text field | void
- **getText()** | returns text from the text field  | String
- **getValue()** | returns text from the text field| String
- **input(String value)** | adds text to the field | void
- **is()** | property that returns object for work with assertions| TextAssert
- **sendKeys(String value)** | adds text to the field | void
- **setText(String value)** | adds text to the field | void
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | property that returns object for work with assertions| TextAssert
+**clear()** | clears the text field | void
+**click()** | click on button | void
+**displayed()** | check item is displayed | TextAssert
+**enabled()** | check item is enabled | TextAssert
+**expand()** | expand dropdown menu | void
+**expanded()** | check that dropdown is expanded | TextAssert
+**focus()** | places cursor within the text field | void
+**getText()** | returns text from the text field  | String
+**getValue()** | returns text from the text field| String
+**input(String value)** | adds text to the field | void
+**is()** | property that returns object for work with assertions| TextAssert
+**sendKeys(String value)** | adds text to the field | void
+**setText(String value)** | adds text to the field | void
    
   <br>
  Input group are represented by Section class in Java:
@@ -15661,7 +15671,7 @@ Available methods for form validation in Java JDI Light:
  <a  href="https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonAddonsTests.java" target="_blank">Button Addons test example</a>
  
  
- #### Buttons with dropdowns 
+#### Buttons with dropdowns 
  
  **[Buttons with dropdowns](https://getbootstrap.com/docs/4.3/components/input-group/#buttons-with-dropdowns)** – Buttons with dropdowns have no detailed information on Bootstrap website
  
@@ -15724,23 +15734,23 @@ Available methods for form validation in Java JDI Light:
  </div>
  ```
  
- And here are methods available in Java:
+And here are methods available in Java:
      
- |Method | Description | Return Type
- --- | --- | ---
- **assertThat()** | property that returns object for work with assertions| TextAssert
- **clear()** | clears the text field | void
- **click()** | click on button | void
- **displayed()** | check item is displayed | TextAssert
- **enabled()** | check item is enabled | TextAssert
- **expand()** | expand dropdown menu | void
- **expanded()** | check that dropdown is expanded | TextAssert
- **focus()** | places cursor within the text field | void
- **getText()** | returns text from the text field  | String
- **getValue()** | returns text from the text field| String
- **is()** | property that returns object for work with assertions| TextAssert
- **sendKeys(String value)** | adds text to the field | void
- **setText(String value)** | adds text to the field | void
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | property that returns object for work with assertions| TextAssert
+**clear()** | clears the text field | void
+**click()** | click on button | void
+**displayed()** | check item is displayed | TextAssert
+**enabled()** | check item is enabled | TextAssert
+**expand()** | expand dropdown menu | void
+**expanded()** | check that dropdown is expanded | TextAssert
+**focus()** | places cursor within the text field | void
+**getText()** | returns text from the text field  | String
+**getValue()** | returns text from the text field| String
+**is()** | property that returns object for work with assertions| TextAssert
+**sendKeys(String value)** | adds text to the field | void
+**setText(String value)** | adds text to the field | void
   
   <br>
  Input group are represented by Section class in Java:
@@ -15765,10 +15775,10 @@ Available methods for form validation in Java JDI Light:
  [Buttons with dropdowns test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupButtonWithDropdownTests.java) <br>
  <br>
   
- #### Segmented buttons
- **[Segmented buttons](https://getbootstrap.com/docs/4.3/components/input-group/#segmented-buttons)** – Segmented buttons have no detailed information on Bootstrap website
+#### Segmented buttons
+**[Segmented buttons](https://getbootstrap.com/docs/4.3/components/input-group/#segmented-buttons)** – Segmented buttons have no detailed information on Bootstrap website
  
- ![Segmented buttons](../images/bootstrap/segmented_buttons.png)
+![Segmented buttons](../images/bootstrap/segmented_buttons.png)
  
  Here is an example with provided Bootstrap v4.3 code:
  
@@ -15848,23 +15858,23 @@ Available methods for form validation in Java JDI Light:
  </div>
  ```
  
- And here are methods available in Java:
+And here are methods available in Java:
      
- |Method | Description | Return Type
- --- | --- | ---
- **assertThat()** | property that returns object for work with assertions| TextAssert
- **clear()** | clears the text field | void
- **click()** | click on button | void
- **displayed()** | check item is displayed | TextAssert
- **enabled()** | check item is enabled | TextAssert
- **expand()** | expand dropdown menu | void
- **expanded()** | check that dropdown is expanded | TextAssert
- **focus()** | places cursor within the text field | void
- **getText()** | returns text from the text field  | String
- **getValue()** | returns text from the text field| String
- **is()** | property that returns object for work with assertions| TextAssert
- **sendKeys(String value)** | adds text to the field | void
- **setText(String value)** | adds text to the field | void
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | property that returns object for work with assertions| TextAssert
+**clear()** | clears the text field | void
+**click()** | click on button | void
+**displayed()** | check item is displayed | TextAssert
+**enabled()** | check item is enabled | TextAssert
+**expand()** | expand dropdown menu | void
+**expanded()** | check that dropdown is expanded | TextAssert
+**focus()** | places cursor within the text field | void
+**getText()** | returns text from the text field  | String
+**getValue()** | returns text from the text field| String
+**is()** | property that returns object for work with assertions| TextAssert
+**sendKeys(String value)** | adds text to the field | void
+**setText(String value)** | adds text to the field | void
  
   <br>
  Input group are represented by Section class in Java:
@@ -15889,7 +15899,8 @@ Available methods for form validation in Java JDI Light:
  [Segmented buttons test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupSegmentedButtonTests.java) <br>
  
   
- #### Custom select 
+#### Custom select 
+
  **[Custom select](https://getbootstrap.com/docs/4.3/components/input-group/#custom-select)** – Input groups include support for custom selects and text field. Browser default versions of these are not supported.
  
  ![Custom select](../images/bootstrap/custom_select.png)
@@ -16046,23 +16057,23 @@ Available methods for form validation in Java JDI Light:
  
  
  
- And here are methods available in Java:
+And here are methods available in Java:
      
- |Method | Description | Return Type
- --- | --- | ---
- **assertThat()** | property that returns object for work with assertions| TextAssert
- **clear()** | clears the text field | void
- **click()** | click on button | void
- **displayed()** | check item is displayed | TextAssert
- **enabled()** | check item is enabled | TextAssert
- **focus()** | places cursor within the text field | void
- **getText()** | returns text from the text field  | String
- **getValue()** | returns text from the text field| String
- **is()** | property that returns object for work with assertions| TextAssert
- **select(int value)** | choose item by index | void
- **selected** | returns text from the selected item | TextAssert
- **sendKeys(String value)** | adds text to the field | void
- **setText(String value)** | adds text to the field | void
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | property that returns object for work with assertions| TextAssert
+**clear()** | clears the text field | void
+**click()** | click on button | void
+**displayed()** | check item is displayed | TextAssert
+**enabled()** | check item is enabled | TextAssert
+**focus()** | places cursor within the text field | void
+**getText()** | returns text from the text field  | String
+**getValue()** | returns text from the text field| String
+**is()** | property that returns object for work with assertions| TextAssert
+**select(int value)** | choose item by index | void
+**selected** | returns text from the selected item | TextAssert
+**sendKeys(String value)** | adds text to the field | void
+**setText(String value)** | adds text to the field | void
   
   
    <br>
@@ -16081,7 +16092,8 @@ Available methods for form validation in Java JDI Light:
  [Custom select test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelect.java) <br>
  [Custom select with button test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputGroup/InputGroupCustomSelectWithButton.java)
   
- #### Custom file input 
+
+#### Custom file input 
  
  [Custom file input](https://getbootstrap.com/docs/4.3/components/input-group/#custom-file-input) – Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
  
@@ -16159,19 +16171,19 @@ Available methods for form validation in Java JDI Light:
  
  And here are methods available in Java:
  
- |Method | Description | Return Type
- --- | --- | ---
- **assertThat()** | property that returns object for work with assertions | UIAssert
- **click()** | click on element | void
- **getValue()** | Get file name | String
- **hover()** | hover on element | void
- **is()** | property that returns object for work with assertions | UIAssert
- **label()**| Get label | Label
- **setValue(String value)** | set file path to input | void
- **text()** | returns text of input field | String
- **uploadFile(String path)** | set file path to input | void
- **uploadFileRobot(String path, long mSecDelay)** | set file path to input | void
- <br>
+|Method | Description | Return Type
+--- | --- | ---
+**assertThat()** | property that returns object for work with assertions | UIAssert
+**click()** | click on element | void
+**getValue()** | Get file name | String
+**hover()** | hover on element | void
+**is()** | property that returns object for work with assertions | UIAssert
+**label()**| Get label | Label
+**setValue(String value)** | set file path to input | void
+**text()** | returns text of input field | String
+**uploadFile(String path)** | set file path to input | void
+**uploadFileRobot(String path, long mSecDelay)** | set file path to input | void
+<br>
  
  The Custom file input is defined as a section and uses additional web elements: Button, FileInput and Label.
  
@@ -16186,7 +16198,7 @@ Available methods for form validation in Java JDI Light:
  
  [Bootstrap test examples](https://github.com/jdi-testing/jdi-light/blob/bootstrap/jdi-light-bootstrap-tests/src/test/java/io/github/epam/bootstrap/tests/composite/section/inputgroup/InputGroupCustomFileInputTests.java)
  
- ### Jumbotron
+### Jumbotron
  
  [Jumbotron](https://getbootstrap.com/docs/4.3/components/jumbotron) – Lightweight, flexible component for showcasing hero
  
