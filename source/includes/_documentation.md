@@ -357,7 +357,7 @@ Aliases in Java JDI Light:
 ## Extended Selenium features
 TBD
 
-### Android Native App Tests
+## Android Native Application Elements
 
 ### Action Bar
 
