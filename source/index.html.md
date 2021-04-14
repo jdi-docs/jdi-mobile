@@ -25,16 +25,14 @@ includes:
 search: true
 ---
 
-# JDI Light Framework
-JDI Light is a powerful Test Automation Framework that helps to make your tests fast, sustainable and provides obvious and predictable test run results.
+# JDI Light Mobile Framework
+JDI Light Mobile is a powerful Test Automation Framework that helps to make your tests fast, sustainable and provides obvious and predictable test run results.
 
-<font color="red">!!! ATTENTION: Only works properly with <strong>JDK 8</strong>. There may be some problems when using <strong>JDK 12</strong> or later.</font>
-
-JDI Light powered by Selenium and has simple integration with Selenium based projects
+JDI Light Mobile powered by Appium and has simple integration with Appium based projects
 ![Allure Log](images/intro/allure-report-log.png)
 
 # Highlights
-- Has simple integration with any Selenium based project, which allows to increase overall project stability, add user action logs and enrich standard WebElement capabilities with new features in just minutes (TBD add Guide)
+- Has simple integration with any Appium based project, which allows to increase overall project stability, add user action logs and enrich standard WebElement capabilities with new features in just minutes (TBD add Guide)
 - Extends the Page Objects pattern with powerful UI Elements: Buttons, TextFields, Forms, Tables etc... ( TBD add good links to examples)
 - Enables you to write stable and predictable tests that fail only because of business logic or layout changes. No more waits, thread sleeps and other flaky stuff.
 - Increase your overall test execution speed, especially for complex cases, like searching big tables, dropdowns with hundreds elements or entering text comprised of thousands of lines.
