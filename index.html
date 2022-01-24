@@ -2664,6 +2664,15 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
         <span class="n">assertThat</span><span class="o">(</span><span class="n">getText</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">text</span><span class="o">));</span>
     <span class="o">}</span>
 
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">performanceDataTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">MobileDevice</span><span class="o">.</span><span class="na">getPerformanceDataTypes</span><span class="o">());</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">MobileDevice</span><span class="o">.</span><span class="na">getPerformanceData</span><span class="o">(</span><span class="s">""</span><span class="o">,</span> <span class="s">"cpuinfo"</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+        <span class="c1">//System.out.println(MobileDevice.getPerformanceData("com.google.android.deskclock","memoryinfo",5));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">MobileDevice</span><span class="o">.</span><span class="na">getPerformanceData</span><span class="o">(</span><span class="s">""</span><span class="o">,</span> <span class="s">"batteryinfo"</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">MobileDevice</span><span class="o">.</span><span class="na">getPerformanceData</span><span class="o">(</span><span class="s">""</span><span class="o">,</span> <span class="s">"networkinfo"</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+    <span class="o">}</span>
+
 </code></pre>
 <p>Available mobile device-specific methods in Java JDI Light Mobile: </p>
 
@@ -2750,7 +2759,7 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <td>void</td>
 </tr>
 <tr>
-<td>** TouchIDEnrollment(boolean enabled)**</td>
+<td><strong>TouchIDEnrollment(boolean enabled)</strong></td>
 <td>Enrolls touchId in iOS Simulators <strong><em>(iOS only)</em></strong></td>
 <td>void</td>
 </tr>
@@ -2758,6 +2767,16 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <td><strong>fingerPrint(int fingerPrintId)</strong></td>
 <td>Authenticates user by using finger print scan on supported emulators <strong><em>(Android only)</em></strong></td>
 <td>void</td>
+</tr>
+<tr>
+<td><strong>getPerformanceDataTypes()</strong></td>
+<td>Returns the information types of the system state which is supported to read as like cpu, memory, network traffic, and battery</td>
+<td>List<String></td>
+</tr>
+<tr>
+<td><strong>getPerformanceData(String packageName, String dataType, int dataReadTimeout)</strong></td>
+<td>Returns the information of the system state which is supported to read as like cpu, memory, network traffic, and battery</td>
+<td>List<List<Object>&gt;</td>
 </tr>
 <tr>
 <td><strong>setClipBoardText(String text)</strong></td>
