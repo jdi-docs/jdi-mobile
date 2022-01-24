@@ -541,6 +541,12 @@
                             <li>
 								<a href="#tooltip" class="toc-h2 h3 toc-link" data-title="Tooltip">Tooltip</a>
                             </li>
+                            <li>
+								<a href="#text-field" class="toc-h2 h3 toc-link" data-title="Text Field">Text Field</a>
+                            </li>
+                            <li>
+								<a href="#status-bar-2" class="toc-h2 h3 toc-link" data-title="Status Bar">Status Bar</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -574,7 +580,7 @@
 								<a href="#switch-2" class="toc-h2 h3 toc-link" data-title="Switch">Switch</a>
                             </li>
                             <li>
-								<a href="#text-field" class="toc-h2 h3 toc-link" data-title="Text Field">Text Field</a>
+								<a href="#text-field-2" class="toc-h2 h3 toc-link" data-title="Text Field">Text Field</a>
                             </li>
                         </ul>
                   </li>
@@ -4349,6 +4355,164 @@ Switches are either on or off. Providing labels that describe these states is re
 </tbody></table>
 
 <p><a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/TooltipsTest.java ">Test examples in Java</a></p>
+<h3 id='text-field'>Text Field</h3>
+<p><a href="https://stuff.mit.edu/afs/sipb/project/android/docs/guide/topics/ui/controls/text.html#:~:text=A%20text%20field%20allows%20the,and%20automatically%20displays%20the%20keyboard.&text=You%20can%20add%20a%20text,layout%20with%20the%20EditText%20object" target="_blank" style="font-weight: bold;">Text Field </a> 
+allows the user to type text into your app. It can be either single line or multi-line. Touching a text field places the cursor and automatically displays the keyboard.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@BeforeMethod</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initSteps</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">viewsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">scrollDown</span><span class="o">(</span><span class="mi">3000</span><span class="o">);</span>
+        <span class="n">textFieldsPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">textFieldTest</span><span class="o">(){</span>
+
+        <span class="n">visibleTextField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">visibleTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">visibleTextField</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">visibleTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">empty</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hiddenInputFieldTest</span><span class="o">(){</span>
+
+        <span class="n">hiddenInputTextField</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">hiddenInputTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"••••"</span><span class="o">);</span>
+        <span class="n">displayedInputTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="n">hiddenInputTextField</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">hiddenInputTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">empty</span><span class="o">();</span>
+        <span class="n">displayedInputTextField</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">empty</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/android/textField.png" alt="TextField" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>setValue()</strong></td>
+<td>Set value in text field</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>getValue()</strong></td>
+<td>Get value from text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>getText()</strong></td>
+<td>Get text from text field</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>clear()</strong></td>
+<td>Clear value in text field</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/TextFieldTests.java" target="_blank">Test examples in Java</a></p>
+<h3 id='status-bar-2'>Status Bar</h3>
+<p><a href="https://developer.android.com/guide/topics/ui/notifiers/notifications" target="_blank" style="font-weight: bold;">Status Bar </a> 
+contains notification icons and system icons on Android.</p>
+<pre class="highlight java tab-java"><code>
+<span class="nd">@BeforeMethod</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initSteps</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">appPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">notificationPage</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+        <span class="n">statusBarButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">happyButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">openNotificationTest</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">openStatusBar</span><span class="o">();</span>
+        <span class="n">notificationPanel</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">appIcon</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+
+        <span class="n">appName</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"API Demos"</span><span class="o">);</span>
+        <span class="n">title</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"Mood ring"</span><span class="o">);</span>
+        <span class="n">appText</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">text</span><span class="o">(</span><span class="s">"I am happy"</span><span class="o">);</span>
+
+        <span class="n">statusBarLatestEventContent</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">happyIconButton</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">happyIconButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearNotificationButtonTest</span><span class="o">(){</span>
+
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">openStatusBar</span><span class="o">();</span>
+        <span class="n">notificationPanel</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">closeStatusBar</span><span class="o">();</span>
+
+        <span class="n">clearNotificationButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">openStatusBar</span><span class="o">();</span>
+        <span class="n">noNotifications</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">closeStatusBar</span><span class="o">();</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clearAllButtonTest</span><span class="o">(){</span>
+
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">openStatusBar</span><span class="o">();</span>
+        <span class="n">notificationPanel</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">clearAllButton</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">openStatusBar</span><span class="o">();</span>
+        <span class="n">noNotifications</span><span class="o">.</span><span class="na">is</span><span class="o">().</span><span class="na">displayed</span><span class="o">();</span>
+        <span class="n">AndroidScreen</span><span class="o">.</span><span class="na">closeStatusBar</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre>
+<p><img src="images/android/statusBar1.png" alt="StatusBar" /></p>
+
+<p><img src="images/android/statusBar2.png" alt="StatusBar" /></p>
+
+<p>Available methods in Java JDI Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is()</strong></td>
+<td>Assert action</td>
+<td>TextAssert</td>
+</tr>
+<tr>
+<td><strong>openStatusBar()</strong></td>
+<td>Open status bar</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>closeStatusBar()</strong></td>
+<td>Closee status bar</td>
+<td>void</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/StatusBarTests.java" target="_blank">Test examples in Java</a></p>
 <h2 id='ios-native-application-common-elements'>iOS Native Application Common elements</h2><h3 id='buttons'>Buttons</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/buttons/" target="_blank" style="font-weight: bold;">Buttons</a> initiate app-specific actions, have customizable backgrounds, and can include a title or an icon. The system provides a number of predefined button styles for most use cases. You can also design fully custom buttons.</p>
 <pre class="highlight java tab-java"><code>
@@ -4889,7 +5053,7 @@ A label </a> describes an onscreen interface element or provides a short message
 </tbody></table>
 
 <p><a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/epamiostestapp/tests/SwitchTest.java" target="_blank">Test examples in Java</a></p>
-<h3 id='text-field'>Text Field</h3>
+<h3 id='text-field-2'>Text Field</h3>
 <p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/controls/text-fields/" target="_blank" style="font-weight: bold;">
 A Text Field</a> is a single-line, fixed-height field, often with rounded corners, that automatically brings up a keyboard when the user taps it. Use a text field to request a small amount of information, such as an email address.</p>
 <pre class="highlight java tab-java"><code>
