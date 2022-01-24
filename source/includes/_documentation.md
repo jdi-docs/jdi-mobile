@@ -1198,6 +1198,132 @@ Available methods in Java JDI Mobile:
 
 <a href="jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/TooltipsTest.java ">Test examples in Java</a>
 
+### Text Field
+
+<a href="https://stuff.mit.edu/afs/sipb/project/android/docs/guide/topics/ui/controls/text.html#:~:text=A%20text%20field%20allows%20the,and%20automatically%20displays%20the%20keyboard.&text=You%20can%20add%20a%20text,layout%20with%20the%20EditText%20object" target="_blank" style="font-weight: bold;">Text Field </a> 
+allows the user to type text into your app. It can be either single line or multi-line. Touching a text field places the cursor and automatically displays the keyboard.
+
+
+```java 
+
+@BeforeMethod
+    public void initSteps() {
+        viewsPage.click();
+        AndroidScreen.scrollDown(3000);
+        textFieldsPage.click();
+    }
+
+    @Test
+    public void textFieldTest(){
+
+        visibleTextField.setValue("Test");
+        visibleTextField.is().text("Test");
+        visibleTextField.clear();
+        visibleTextField.is().empty();
+    }
+
+    @Test
+    public void hiddenInputFieldTest(){
+
+        hiddenInputTextField.setValue("Test");
+        hiddenInputTextField.is().text("••••");
+        displayedInputTextField.is().text("Test");
+        hiddenInputTextField.clear();
+        hiddenInputTextField.is().empty();
+        displayedInputTextField.is().empty();
+    }
+
+```
+
+![TextField](../images/android/textField.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**is()** | Assert action | TextAssert 
+**setValue()** | Set value in text field | void
+**getValue()** | Get value from text field | String
+**getText()** | Get text from text field | String
+**clear()** | Clear value in text field | void
+ 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/TextFieldTests.java" target="_blank">Test examples in Java</a>
+
+### Status Bar
+
+<a href="https://developer.android.com/guide/topics/ui/notifiers/notifications" target="_blank" style="font-weight: bold;">Status Bar </a> 
+contains notification icons and system icons on Android.
+
+
+```java 
+
+@BeforeMethod
+    public void initSteps() {
+        appPage.click();
+        notificationPage.click();
+
+        statusBarButton.click();
+        happyButton.click();
+    }
+
+    @Test
+    public void openNotificationTest() {
+
+        AndroidScreen.openStatusBar();
+        notificationPanel.is().displayed();
+        appIcon.is().displayed();
+
+        appName.is().text("API Demos");
+        title.is().text("Mood ring");
+        appText.is().text("I am happy");
+
+        statusBarLatestEventContent.click();
+        happyIconButton.is().displayed();
+        happyIconButton.click();
+    }
+
+    @Test
+    public void clearNotificationButtonTest(){
+
+        AndroidScreen.openStatusBar();
+        notificationPanel.is().displayed();
+        AndroidScreen.closeStatusBar();
+
+        clearNotificationButton.click();
+        AndroidScreen.openStatusBar();
+        noNotifications.is().displayed();
+        AndroidScreen.closeStatusBar();
+
+    }
+
+    @Test
+    public void clearAllButtonTest(){
+
+        AndroidScreen.openStatusBar();
+        notificationPanel.is().displayed();
+        clearAllButton.click();
+
+        AndroidScreen.openStatusBar();
+        noNotifications.is().displayed();
+        AndroidScreen.closeStatusBar();
+    }
+
+```
+
+![StatusBar](../images/android/statusBar1.png)
+
+![StatusBar](../images/android/statusBar2.png)
+
+Available methods in Java JDI Mobile:
+
+|Method | Description | Return Type
+--- | --- | ---
+**is()** | Assert action | TextAssert 
+**openStatusBar()** | Open status bar | void
+**closeStatusBar()** | Closee status bar | void
+ 
+<a href="https://github.com/jdi-testing/jdi-light/blob/jdi-light-mobile/jdi-light-mobile-tests/src/test/java/nativeapp_android/tests/StatusBarTests.java" target="_blank">Test examples in Java</a>
+
 ## iOS Native Application Common elements
 
 ### Buttons
