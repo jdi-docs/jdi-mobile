@@ -468,6 +468,9 @@
                             <li>
 								<a href="#mobilekeyboard" class="toc-h2 h3 toc-link" data-title="MobileKeyboard">MobileKeyboard</a>
                             </li>
+                            <li>
+								<a href="#mobilescreen" class="toc-h2 h3 toc-link" data-title="MobileScreen">MobileScreen</a>
+                            </li>
                         </ul>
                   </li>
                   <li>
@@ -2947,6 +2950,107 @@ JDI Locator: <code>.nav-menu [data-role=header][3]</code></br></p>
 <td><strong>longPressKey(KeyEvent keyEvent)</strong></td>
 <td>Send a long press key event to the mobile  device <strong><em>(Android only)</em></strong></td>
 <td>void</td>
+</tr>
+</tbody></table>
+<h3 id='mobilescreen'>MobileScreen</h3>
+<p>Available mobile keyboard-specific methods in Java JDI Light Mobile:</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Return Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>getScreenSize()</strong></td>
+<td>Provides the dimensions of the mobile screen <strong><em>(Android native app only)</em></strong></td>
+<td>Dimension</td>
+</tr>
+<tr>
+<td><strong>scrollUp(int offset)</strong></td>
+<td>Scrolls up for offset in pixel</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>scrollDown(int offset)</strong></td>
+<td>Scrolls down for offset in pixel</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>scrollRight(int offset)</strong></td>
+<td>Scrolls right for offset in pixel</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>scrollLeft(int offset)</strong></td>
+<td>Scrolls left for offset in pixel</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>swipeToElement(WebElement startElement, WebElement endElement)</strong></td>
+<td>Swipes from start element to end element <strong><em>Android only</em></strong></td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>scrollDownToXpath(String xpath)</strong></td>
+<td>Scrolls to element by xpath</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>scrollToElementInList(Button element)</strong></td>
+<td>Scrolls to element</td>
+<td>UIAssert</td>
+</tr>
+<tr>
+<td><strong>scrollToTop()</strong></td>
+<td>Scrolls to top of the page</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>scrollToBottom()</strong></td>
+<td>Scrolls to bottom of the page</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>zoomIn()</strong></td>
+<td>Zoom in the screen twice</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>zoomOut()</strong></td>
+<td>Zoom out the screen twice</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>zoomIn(double ratio)</strong></td>
+<td>Zoom in the screen by a given ratio</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>zoomOut(double ratio)</strong></td>
+<td>Zoom out the screen by a given ratio</td>
+<td>void</td>
+</tr>
+<tr>
+<td><strong>startRecordingScreen()</strong></td>
+<td>Start recording screen with default options</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>startRecordingScreen(T options)</strong></td>
+<td>Stop recording screen with default options</td>
+<td><T extends BaseStartScreenRecordingOptions<?>&gt; String</td>
+</tr>
+<tr>
+<td><strong>stopRecordingScreen()</strong></td>
+<td>Start recording screen with <a href="http://appium.io/docs/en/commands/device/recording-screen/start-recording-screen/" target="_blank" style="font-weight: bold;">options</a></td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>stopRecordingScreen(T options)</strong></td>
+<td>Stop recording screen with <a href="http://appium.io/docs/en/commands/device/recording-screen/stop-recording-screen/" target="_blank" style="font-weight: bold;">options</a></td>
+<td><T extends BaseStopScreenRecordingOptions<?>&gt; String</td>
 </tr>
 </tbody></table>
 <h2 id='base-elements'>Base Elements</h2><h3 id='uibaseelement'>UIBaseElement</h3><h3 id='uielement'>UIElement</h3><pre class="highlight java tab-java"><code>
